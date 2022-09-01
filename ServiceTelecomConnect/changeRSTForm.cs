@@ -9,6 +9,7 @@ namespace ServiceTelecomConnect
 {
     public partial class changeRSTForm : Form
     {
+        int i = 0;
         private delegate DialogResult ShowOpenFileDialogInvoker();
         public changeRSTForm()
         {
