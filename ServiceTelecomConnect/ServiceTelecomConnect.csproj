@@ -260,6 +260,7 @@
     <Compile Include="DB_4.cs" />
     <Compile Include="FormClose.cs" />
     <Compile Include="InstanceChecker.cs" />
+    <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
     <Compile Include="remontRSTForm.cs">
       <SubType>Form</SubType>
@@ -477,6 +478,7 @@
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>tasklist /fi "imagename eq ServiceTelecomConnect.exe" |find ":" &gt; nul &amp; if errorlevel 1 taskkill /f /im "ServiceTelecomConnect.exe"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

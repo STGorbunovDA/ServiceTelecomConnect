@@ -6,12 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -216,7 +214,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -262,6 +260,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Columns[10].Width = 100;
                     dataGridView1.Columns[11].Width = 100;
                     dataGridView1.Columns[17].Width = 120;
+                    
                 }
                 catch (MySqlException)
                 {
@@ -310,7 +309,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (AvailabilityChanged_bool())
+                if (Internet_check.GetInstance.AvailabilityChanged_bool())
                 {
                     try
                     {
@@ -436,7 +435,7 @@ namespace ServiceTelecomConnect
         {
             Get_date_save_datagridview();
 
-            if (AvailabilityChanged_bool() == true)
+            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
                 new Thread(() => { Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
             }
@@ -445,7 +444,7 @@ namespace ServiceTelecomConnect
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -789,7 +788,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         async void Search(DataGridView dgw)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1016,7 +1015,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_delete_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1162,7 +1161,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_update_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1221,7 +1220,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1387,7 +1386,7 @@ namespace ServiceTelecomConnect
 
         void Button_form_act_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 Update_datagridview_number_act(dataGridView1);
                 ExportToExcelAct();
@@ -1719,6 +1718,8 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated8 = workSheet.Rows.get_Range("A38", "O38");
                             Excel.Range range_Consolidated9 = workSheet.Rows.get_Range("A41", "O41");
                             Excel.Range range_Consolidated10 = workSheet.Rows.get_Range("A42", "O43");
+                            Excel.Range range_Consolidated11 = workSheet.Rows.get_Range("B8", "C27");
+                            Excel.Range range_Consolidated12 = workSheet.Rows.get_Range("J8", "K27");
 
                             range_Consolidated.Font.Bold = true;
                             range_Consolidated.Font.Size = 10;
@@ -1733,6 +1734,8 @@ namespace ServiceTelecomConnect
                             range_Consolidated9.Font.Size = 7;
                             range_Consolidated10.Font.Size = 8;
                             range_Consolidated10.Font.Bold = true;
+                            range_Consolidated11.NumberFormat = "@";
+                            range_Consolidated12.NumberFormat = "@";
 
                             workSheet.Cells[1, 5] = $"{textBox_dateTO.Text.Remove(textBox_dateTO.Text.IndexOf(" "))}";
                             workSheet.Cells[1, 13] = $"{textBox_dateTO.Text.Remove(textBox_dateTO.Text.IndexOf(" "))}";
@@ -2305,17 +2308,6 @@ namespace ServiceTelecomConnect
                             Excel.Range rowHeight219 = workSheet2.get_Range("A20", "A39");
                             rowHeight219.EntireRow.RowHeight = 25;
 
-                            //int s10 = 20;
-
-
-                            //for (int i = 0; i < 20; i++)
-                            //{
-                            //    Excel.Range rowHeight220 = workSheet2.get_Range($"A{s10}", $"Y{s10}");
-                            //    rowHeight220.EntireRow.RowHeight = 25;
-                            //    s10++;
-                            //}
-
-
                             Excel.Range range_Consolidated200 = workSheet2.Rows.get_Range("H1", "I1");
                             Excel.Range range_Consolidated201 = workSheet2.Rows.get_Range("L1", "M1");
                             Excel.Range range_Consolidated202 = workSheet2.Rows.get_Range("T1", "V1");
@@ -2329,6 +2321,7 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated210 = workSheet2.Rows.get_Range("A20", "A39");
                             Excel.Range range_Consolidated211 = workSheet2.Rows.get_Range("K41", "P41");
                             Excel.Range range_Consolidated212 = workSheet2.Rows.get_Range("T41", "Y41");
+                            Excel.Range range_Consolidated213 = workSheet2.Rows.get_Range("A20", "A39");
 
                             range_Consolidated200.Font.Size = 18;
                             range_Consolidated200.Font.Bold = true;
@@ -2348,6 +2341,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated210.Font.Bold = true;
                             range_Consolidated211.Font.Bold = true;
                             range_Consolidated212.Font.Bold = true;
+                            range_Consolidated213.NumberFormat = "@";
 
                             workSheet2.Cells[1, 1] = $"Ведомость проверки параметров радиостанций №:";
                             workSheet2.Cells[1, 8] = $"{textBox_numberAct.Text}";
@@ -2676,6 +2670,7 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated129 = workSheet3.Rows.get_Range("C45", "D45");
                             Excel.Range range_Consolidated130 = workSheet3.Rows.get_Range("F45", "I45");
                             Excel.Range range_Consolidated131 = workSheet3.Rows.get_Range("A18", "I37");
+                            Excel.Range range_Consolidated132 = workSheet3.Rows.get_Range("D18", "F37");
 
 
                             Excel.Range rowHeight100 = workSheet3.get_Range("A38", "I41");
@@ -2751,6 +2746,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated129.Font.Bold = true;
                             range_Consolidated129.Font.Size = 8;
                             range_Consolidated131.Font.Size = 7;
+                            range_Consolidated132.NumberFormat = "@";
 
                             workSheet3.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ № {textBox_numberAct.Text}";
                             workSheet3.Cells[2, 1] = $"ОКАЗАННЫХ УСЛУГ ПО ТЕХНИЧЕСКОМУ ОБСЛУЖИВАНИЮ СИСТЕМ РАДИОСВЯЗИ";
@@ -3181,6 +3177,7 @@ namespace ServiceTelecomConnect
                         Excel.Range range_Consolidated13 = workSheet.Rows.get_Range("F32", "G32");
                         Excel.Range range_Consolidated14 = workSheet.Rows.get_Range("C17", "D17");
                         Excel.Range range_Consolidated15 = workSheet.Rows.get_Range("C18", "D18");
+                        Excel.Range range_Consolidated16 = workSheet.Rows.get_Range("C16", "D16");
 
                         range_Consolidated.Font.Bold = true;
                         range_Consolidated.Font.Size = 14;
@@ -3199,6 +3196,7 @@ namespace ServiceTelecomConnect
                         range_Consolidated13.Font.Size = 8;
                         range_Consolidated14.NumberFormat = "@";
                         range_Consolidated15.NumberFormat = "@";
+                        range_Consolidated16.NumberFormat = "@";
 
                         Excel.Range rowHeight = workSheet.get_Range("A5", "I5");
                         rowHeight.EntireRow.RowHeight = 12;
@@ -4309,7 +4307,7 @@ namespace ServiceTelecomConnect
 
         void PictureBox_seach_datadrid_replay_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
@@ -4323,7 +4321,7 @@ namespace ServiceTelecomConnect
 
         void Seach_DataGrid_Replay_RST(DataGridView dgw)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4502,7 +4500,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_update_Click_after_Seach_DataGrid_Replay_RST(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4537,7 +4535,7 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4574,7 +4572,7 @@ namespace ServiceTelecomConnect
 
         Boolean CheackNumberAct_radiostantion(string numberActRemont)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4612,7 +4610,7 @@ namespace ServiceTelecomConnect
         #region отк. формы добавления ремонтов
         private void button_new_add_rst_form_click_remont(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool() == true)
+            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
                 try
                 {
@@ -4682,7 +4680,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         private void button_new_add_rst_form_Click_change(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool() == true)
+            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
                 try
                 {
@@ -4699,6 +4697,7 @@ namespace ServiceTelecomConnect
                             changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
                             changeRSTForm.textBox_company.Text = textBox_company.Text;
                             changeRSTForm.textBox_location.Text = textBox_location.Text;
+                            //changeRSTForm.comboBox_model.Text = comboBox_model.Text;
                             changeRSTForm.comboBox_model.Items.Add(comboBox_model.Text).ToString();
                             changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
                             changeRSTForm.textBox_inventoryNumber.Text = textBox_inventoryNumber.Text;
@@ -4767,7 +4766,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         async void Update_datagridview_number_act(DataGridView dgw)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4817,6 +4816,7 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
+
         #region panel_remont_info 
 
         /// <summary>
@@ -4826,7 +4826,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_remont_act_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 if (textBox_numberActRemont.Text == "")
                 {
@@ -5645,27 +5645,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region функция проверки интернета
-
-        bool AvailabilityChanged_bool()
-        {
-            try
-            {
-                if (new Ping().Send("yandex.ru").Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                Get_date_save_datagridview();
-                MessageBox.Show(@"1.Отсутствует подключение к Интернету. Проверьте настройки сети и повторите попытку",
-                        "Сеть недоступна");
-            }
-            return false;
-        }
-        #endregion
-
         #region Функциональная панель
         void Close_Functional_loading_panel_Click(object sender, EventArgs e)
         {
@@ -5678,7 +5657,7 @@ namespace ServiceTelecomConnect
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 Block_ST_Work_Form_control();
                 Functional_loading_panel.Visible = true;
@@ -5691,7 +5670,7 @@ namespace ServiceTelecomConnect
 
         async void Loading_file_current_BD_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool() == true)
+            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
                 button_Uploading_JSON_file.Enabled = false;
                 button_Copying_current_BD_end_of_the_year.Enabled = false;
@@ -5717,7 +5696,7 @@ namespace ServiceTelecomConnect
 
         void Loading_file_current_BD()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -5736,11 +5715,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (AvailabilityChanged_bool() == true)
+                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (AvailabilityChanged_bool() == true)
+                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -5895,7 +5874,7 @@ namespace ServiceTelecomConnect
 
         void Loading_file_last_year()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -5914,11 +5893,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (AvailabilityChanged_bool() == true)
+                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (AvailabilityChanged_bool() == true)
+                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -6074,7 +6053,7 @@ namespace ServiceTelecomConnect
 
         void Loading_file_full_BD_method()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6093,11 +6072,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (AvailabilityChanged_bool() == true)
+                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (AvailabilityChanged_bool() == true)
+                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -6407,7 +6386,7 @@ namespace ServiceTelecomConnect
 
         async void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 button_Copying_current_BD_end_of_the_year.Enabled = false;
                 clear_BD_current_year.Enabled = false;
@@ -6506,7 +6485,7 @@ namespace ServiceTelecomConnect
 
         void Copy_BD_radiostantion_in_radiostantion_copy()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6514,7 +6493,7 @@ namespace ServiceTelecomConnect
 
                     MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection());
 
-                    if (AvailabilityChanged_bool() == true)
+                    if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                     {
                         DB_3.GetInstance.openConnection();
                         command.ExecuteNonQuery();
@@ -6524,7 +6503,7 @@ namespace ServiceTelecomConnect
                     var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
                     MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection());
-                    if (AvailabilityChanged_bool() == true)
+                    if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
                     {
                         DB_3.GetInstance.openConnection();
                         command2.ExecuteNonQuery();
@@ -6712,7 +6691,7 @@ namespace ServiceTelecomConnect
 
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6790,7 +6769,7 @@ namespace ServiceTelecomConnect
 
         void btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6896,11 +6875,8 @@ namespace ServiceTelecomConnect
                 label_cell_rows.Text = c.ToString();
                 label_sum_TO_selection.Text = sum.ToString();
             }
-        }
-
+        }     
         #endregion
-
-
     }
 }
 

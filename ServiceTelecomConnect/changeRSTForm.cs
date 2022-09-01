@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Threading;
@@ -9,7 +10,6 @@ namespace ServiceTelecomConnect
 {
     public partial class changeRSTForm : Form
     {
-        int i = 0;
         private delegate DialogResult ShowOpenFileDialogInvoker();
         public changeRSTForm()
         {
@@ -25,6 +25,27 @@ namespace ServiceTelecomConnect
         void ChangeRSTForm_Load(object sender, EventArgs e)
         {
             comboBox_model.Text = comboBox_model.Items[0].ToString();
+        }
+
+        void ComboBox_model_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            {
+                DB.GetInstance.openConnection();
+                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                {
+                    DataTable model_RSR_table = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(model_RSR_table);
+                        comboBox_model.DataSource = model_RSR_table;
+                        comboBox_model.ValueMember = "id";
+                        comboBox_model.DisplayMember = "model_radiostation_name";
+                    }
+                }
+                DB.GetInstance.closeConnection();
+            }
         }
 
         #region изменяем рст
@@ -1053,8 +1074,8 @@ namespace ServiceTelecomConnect
         }
 
 
-        #endregion
 
+        #endregion
 
     }
 }

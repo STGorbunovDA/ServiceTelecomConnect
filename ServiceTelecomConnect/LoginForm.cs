@@ -15,8 +15,8 @@ namespace ServiceTelecomConnect
         {
             InitializeComponent();
             if (!InstanceChecker.TakeMemory())
-            
-            StartPosition = FormStartPosition.CenterScreen;
+
+                StartPosition = FormStartPosition.CenterScreen;
             Environment.GetCommandLineArgs().ToList().ForEach(x =>
             {
                 if (x.EndsWith("/Admin"))
@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
             hidePassword.Visible = false;
             loginField.MaxLength = 100;
             passField.MaxLength = 32;
-            if(loginField.Text == "Admin" || passField.Text == "1818")
+            if (loginField.Text == "Admin" || passField.Text == "1818")
                 EnterButtonLogin_Click(sender, e);
 
         }
@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if(AvailabilityChanged_bool())
+                if (Internet_check.GetInstance.AvailabilityChanged_bool())
                 {
                     var loginUser = loginField.Text;
                     var passUser = md5.hashPassword(passField.Text);
@@ -61,10 +61,12 @@ namespace ServiceTelecomConnect
                                 var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
 
                                 //MessageBox.Show("Вы успешно авторизировались!");
-                                Menu menu = new Menu(user);
-                                this.Hide();
-                                menu.ShowDialog();
-                                DB.GetInstance.closeConnection();
+                                using (Menu menu = new Menu(user))
+                                {
+                                    this.Hide();
+                                    menu.ShowDialog();
+                                    DB.GetInstance.closeConnection();
+                                }
                             }
                             else
                             {
@@ -74,7 +76,7 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                                       
+
             }
             catch (MySqlException)
             {
@@ -113,10 +115,12 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void RegistrationLoginForm_Click(object sender, EventArgs e)
         {
-            RegistrationForm registrationForm = new RegistrationForm();
-            this.Hide();
-            registrationForm.ShowDialog();
-            this.Show();
+            using (RegistrationForm registrationForm = new RegistrationForm())
+            {
+                this.Hide();
+                registrationForm.ShowDialog();
+                this.Show();
+            }
         }
         #region Подсветка
         /// <summary>
@@ -184,24 +188,5 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region функция проверки интернета
-
-        bool AvailabilityChanged_bool()
-        {
-            try
-            {
-                if (new Ping().Send("yandex.ru").Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(@"1.Отсутствует подключение к Интернету. Проверьте настройки сети и повторите попытку",
-                        "Сеть недоступна");
-            }
-            return false;
-        }
-        #endregion
     }
 }

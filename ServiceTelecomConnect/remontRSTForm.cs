@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Globalization;
-using System.Net.NetworkInformation;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -10,7 +9,6 @@ namespace ServiceTelecomConnect
 {
     public partial class remontRSTForm : Form
     {
-        DB dB = new DB();
         private delegate DialogResult ShowOpenFileDialogInvoker(); // делаг для invoke
         public remontRSTForm()
         {
@@ -19,13 +17,12 @@ namespace ServiceTelecomConnect
             StartPosition = FormStartPosition.CenterScreen;
             var myCulture = new CultureInfo("ru-RU");
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
-            //dataGridView1.Columns[1].DefaultCellStyle.FormatProvider = myCulture;
             Thread.CurrentThread.CurrentCulture = myCulture;
         }
 
         void Button_save_add_rst_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 string Mesage;
                 Mesage = "Вы действительно хотите добавить ремонт?";
@@ -88,7 +85,7 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("В Базе данных номер акта ремонта уже существует");
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -99,28 +96,31 @@ namespace ServiceTelecomConnect
         }
         Boolean CheackNumberAct_radiostantion(string numberActRemont)
         {
-            if (AvailabilityChanged_bool() == true)
+            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
                 try
                 {
                     string querystring = $"SELECT * FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
 
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        return true;
-                    }
 
-                    else
-                    {
-                        return false;
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count > 0)
+                            {
+                                return true;
+                            }
+
+                            else
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -326,7 +326,7 @@ namespace ServiceTelecomConnect
                         button_save_add_rst_remont.Enabled = true;
                     }
 
-                    else if(textBox_model.Text == "Motorola DP-2400" || textBox_model.Text == "Motorola DP-2400е")
+                    else if (textBox_model.Text == "Motorola DP-2400" || textBox_model.Text == "Motorola DP-2400е")
                     {
                         textBox_сompleted_works_1.Text = "Замена динамика";
                         textBox_parts_1.Text = "50012013001 Динамик";
@@ -730,7 +730,7 @@ namespace ServiceTelecomConnect
                     {
                         textBox_сompleted_works_1.Text = "Замена верхнего уплотнителя";
                         textBox_parts_1.Text = "32012089001 Верхний уплотнитель";
-                        
+
                         textBox_сompleted_works_2.Text = "Замена контактов АКБ";
                         textBox_parts_2.Text = "0915184H01 Контакты АКБ";
 
@@ -998,7 +998,7 @@ namespace ServiceTelecomConnect
                         textBox_parts_1.Text = "PMAD4120 Антенна PMAD4120 (146-160мГц)";
 
                         textBox_сompleted_works_2.Text = "Замена  ручки регулятора громкости";
-                        textBox_parts_2.Text = "36012016001 Ручка регулятора громкости"; 
+                        textBox_parts_2.Text = "36012016001 Ручка регулятора громкости";
 
                         textBox_сompleted_works_3.Text = "Замена гибкого шлейфа динамика";
                         textBox_parts_3.Text = "PF001006A02 Гибкий шлейф динамика";
@@ -1268,7 +1268,7 @@ namespace ServiceTelecomConnect
 
                         textBox_сompleted_works_3.Text = "Замена уплотнителя контактов АКБ";
                         textBox_parts_3.Text = "32012110001 Уплотнитель контактов АКБ";
-                        
+
                         textBox_сompleted_works_4.Text = "Замена верхнего уплотнителя";
                         textBox_parts_4.Text = "32012089001 Верхний уплотнитель";
 
@@ -1430,7 +1430,7 @@ namespace ServiceTelecomConnect
 
                         textBox_сompleted_works_4.Text = "Замена фильтра";
                         textBox_parts_4.Text = "Фильтр S.XTRAL CR-664A 15.300 MHz";
-                        
+
                         textBox_сompleted_works_5.Text = "Замена уплотнителя";
                         textBox_parts_5.Text = "2251 JACK RUBBER Резин.уплотнитель разъема гарнитуры IC-F3/4/GT/GS";
 
@@ -1536,7 +1536,7 @@ namespace ServiceTelecomConnect
                         textBox_parts_3.Text = "50012013001 Динамик";
 
                         textBox_сompleted_works_4.Text = "Замена  ручки регулятора громкости";
-                        textBox_parts_4.Text = "36012016001 Ручка регулятора громкости"; 
+                        textBox_parts_4.Text = "36012016001 Ручка регулятора громкости";
 
                         textBox_сompleted_works_5.Text = "Замена регулятора громкости";
                         textBox_parts_5.Text = "1875103С04 Регулятор громкости";
@@ -1895,7 +1895,7 @@ namespace ServiceTelecomConnect
                         button_save_add_rst_remont.Enabled = true;
                     }
                 }
-      
+
                 if (comboBox_remont_select.Text == "13")
                 {
                     if (textBox_model.Text == "Motorola GP-340")
@@ -1928,7 +1928,7 @@ namespace ServiceTelecomConnect
                     {
                         textBox_сompleted_works_1.Text = "Замена уплотнителя контактов АКБ";
                         textBox_parts_1.Text = "32012110001 Уплотнитель контактов АКБ";
-                        
+
                         textBox_сompleted_works_2.Text = "Замена динамика";
                         textBox_parts_2.Text = "50012013001 Динамик";
 
@@ -2230,7 +2230,7 @@ namespace ServiceTelecomConnect
 
                         textBox_сompleted_works_4.Text = "Замена ручки";
                         textBox_parts_4.Text = "KNOB N-276 Ручка регулятора громкости";
-                        
+
                         textBox_сompleted_works_5.Text = "Замена транзистора";
                         textBox_parts_5.Text = "Транзистор 2SK2973 (MTS101P)";
 
@@ -2295,7 +2295,7 @@ namespace ServiceTelecomConnect
                         button_save_add_rst_remont.Enabled = true;
                     }
                 }
-                
+
             }
 
             if (comboBox_сategory.Text == "5")
@@ -4295,26 +4295,6 @@ namespace ServiceTelecomConnect
 
         }
 
-        #endregion
-
-        #region функция проверки интернета
-
-        bool AvailabilityChanged_bool()
-        {
-            try
-            {
-                if (new Ping().Send("yandex.ru").Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(@"Отсутствует подключение к Интернету. Проверьте настройки сети и повторите попытку",
-                        "Сеть недоступна");
-            }
-            return false;
-        }
         #endregion
     }
 }

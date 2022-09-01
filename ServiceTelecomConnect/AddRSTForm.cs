@@ -29,22 +29,26 @@ namespace ServiceTelecomConnect
 
         void AddRSTForm_Load(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
                     DB.GetInstance.openConnection();
                     string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-                    DataTable model_RSR_table = new DataTable();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-                    adapter.Fill(model_RSR_table);
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DataTable model_RSR_table = new DataTable();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(model_RSR_table);
 
-                    comboBox_model.DataSource = model_RSR_table;
-                    comboBox_model.ValueMember = "id";
-                    comboBox_model.DisplayMember = "model_radiostation_name";
+                            comboBox_model.DataSource = model_RSR_table;
+                            comboBox_model.ValueMember = "id";
+                            comboBox_model.DisplayMember = "model_radiostation_name";
 
-                    DB.GetInstance.closeConnection();
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -62,7 +66,7 @@ namespace ServiceTelecomConnect
 
         void Add_rst_radiostantion()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 string Mesage;
                 Mesage = "Вы действительно хотите добавить радиостанцию?";
@@ -414,7 +418,7 @@ namespace ServiceTelecomConnect
         }
         void Add_rst_radiostantion_full()
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -517,7 +521,7 @@ namespace ServiceTelecomConnect
 
         Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -536,7 +540,7 @@ namespace ServiceTelecomConnect
                         try
                         {
                             DB.GetInstance.openConnection();
-
+                            var model = comboBox_model.Text;
                             var inventoryNumber = textBox_inventoryNumber.Text;
                             var networkNumber = textBox_networkNumber.Text;
                             var dateTO = textBox_dateTO.Text;
@@ -547,7 +551,7 @@ namespace ServiceTelecomConnect
                             var post = textBox_post.Text;
                             var dateIssue = textBox_dateIssue.Text;
 
-                            var updateQuery = $"UPDATE radiostantion_full SET inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
+                            var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
 
                             using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
                             {
@@ -585,7 +589,7 @@ namespace ServiceTelecomConnect
         /// <returns></returns>
         Boolean CheacSerialNumber_radiostantion(string serialNumber)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -620,7 +624,7 @@ namespace ServiceTelecomConnect
         }
         Boolean CheackNumberAct_radiostantion(string numberAct)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1341,7 +1345,7 @@ namespace ServiceTelecomConnect
             string Mesage;
             Mesage = "Вы действительно хотите добавить модель радиостанции?";
 
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -1370,27 +1374,6 @@ namespace ServiceTelecomConnect
 
         }
 
-
-        #endregion
-
-        #region функция проверки интернета
-
-        bool AvailabilityChanged_bool()
-        {
-            try
-            {
-                if (new Ping().Send("yandex.ru").Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show(@"Отсутствует подключение к Интернету. Проверьте настройки сети и повторите попытку",
-                        "Сеть недоступна");
-            }
-            return false;
-        }
 
         #endregion
 

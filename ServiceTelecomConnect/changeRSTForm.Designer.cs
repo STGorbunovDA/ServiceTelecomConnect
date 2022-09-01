@@ -842,6 +842,7 @@
             this.comboBox_model.Size = new System.Drawing.Size(232, 28);
             this.comboBox_model.TabIndex = 52;
             this.comboBox_model.SelectedIndexChanged += new System.EventHandler(this.ComboBox_model_SelectedIndexChanged);
+            this.comboBox_model.Click += new System.EventHandler(this.ComboBox_model_Click);
             // 
             // monthCalendar2
             // 

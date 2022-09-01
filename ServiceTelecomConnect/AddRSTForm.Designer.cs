@@ -126,7 +126,7 @@
             this.button_save_add_rst.Name = "button_save_add_rst";
             this.button_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.button_save_add_rst.TabIndex = 28;
-            this.button_save_add_rst.Text = "Сохранить";
+            this.button_save_add_rst.Text = "Добавить";
             this.button_save_add_rst.UseVisualStyleBackColor = false;
             this.button_save_add_rst.Click += new System.EventHandler(this.Button_save_add_rst_Click);
             // 

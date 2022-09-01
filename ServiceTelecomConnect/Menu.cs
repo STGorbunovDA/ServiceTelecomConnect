@@ -69,9 +69,11 @@ namespace ServiceTelecomConnect
 
         void label_baza_Click(object sender, EventArgs e)
         {
-            ST_WorkForm sT_WorkForm = new ST_WorkForm(_user);
-            this.Hide();   
-            sT_WorkForm.ShowDialog();
+            using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
+            {
+                this.Hide();
+                sT_WorkForm.ShowDialog();
+            }
         }
 
         void label_section_foreman_MouseEnter(object sender, EventArgs e)
@@ -85,13 +87,15 @@ namespace ServiceTelecomConnect
         }
         void label_TutorialEngineers_Click(object sender, EventArgs e)
         {
-            TutorialForm tutorialForm = new TutorialForm();
-            this.Hide();
-            tutorialForm.ShowDialog();
-            this.Show();
+            using (TutorialForm tutorialForm = new TutorialForm())
+            {
+                this.Hide();
+                tutorialForm.ShowDialog();
+                this.Show();
+            }
         }
         void label_TutorialEngineers_MouseEnter(object sender, EventArgs e)
-        {       
+        {
             label_TutorialEngineers.ForeColor = Color.White;
         }
         void label_TutorialEngineers_MouseLeave(object sender, EventArgs e)
@@ -100,10 +104,12 @@ namespace ServiceTelecomConnect
         }
         void label1_Click(object sender, EventArgs e)
         {
-            ComparisonForm comparisonForm = new ComparisonForm();
-            this.Hide();
-            comparisonForm.ShowDialog();
-            this.Show();
+            using (ComparisonForm comparisonForm = new ComparisonForm())
+            {
+                this.Hide();
+                comparisonForm.ShowDialog();
+                this.Show();
+            }
         }
         void label_сomparison_MouseEnter(object sender, EventArgs e)
         {
@@ -117,10 +123,12 @@ namespace ServiceTelecomConnect
         #region открываем форму управления правами доступа user's
         void pictureBox1_setting_Click(object sender, EventArgs e)
         {
-            Setting_user setting_User = new Setting_user();
-            this.Hide();
-            setting_User.ShowDialog();
-            this.Show();
+            using (Setting_user setting_User = new Setting_user())
+            {
+                this.Hide();
+                setting_User.ShowDialog();
+                this.Show();
+            }
         }
         #endregion
 

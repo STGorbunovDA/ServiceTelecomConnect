@@ -64,7 +64,7 @@ namespace ServiceTelecomConnect
 
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -108,35 +108,12 @@ namespace ServiceTelecomConnect
         }
         void Setting_user_Load(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        #region функция проверки интернета
-
-        bool AvailabilityChanged_bool()
-        {
-            try
-            {
-                if (new Ping().Send("yandex.ru").Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-                //get_date_save_datagridview();
-                MessageBox.Show(@"1.Отсутствует подключение к Интернету. Проверьте настройки сети и повторите попытку",
-                        "Сеть недоступна");
-            }
-            return false;
-        }
-
-
-        #endregion
 
         public string DecodeFrom64(string encodedData)
         {
@@ -157,10 +134,6 @@ namespace ServiceTelecomConnect
                     DataGridViewRow row = dataGridView1.Rows[selectedRow];
                     textBox_id.Text = row.Cells[0].Value.ToString();
                     textBox_login.Text = row.Cells[1].Value.ToString();
-
-                   // textBox_pass.Text = DecodeFrom64(row.Cells[2].Value.ToString());
-
-
                     textBox_pass.Text = row.Cells[2].Value.ToString();
                     comboBox_is_admin.Text = row.Cells[3].Value.ToString();
                 }
@@ -181,7 +154,7 @@ namespace ServiceTelecomConnect
 
         private void Button_update_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -197,7 +170,7 @@ namespace ServiceTelecomConnect
 
         void Button_delete_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -205,7 +178,7 @@ namespace ServiceTelecomConnect
                     {
                         dataGridView1.Rows[row.Index].Cells[4].Value = RowState.Deleted;
                     }
-                    if (AvailabilityChanged_bool())
+                    if (Internet_check.GetInstance.AvailabilityChanged_bool())
                     {
                         try
                         {
@@ -265,7 +238,7 @@ namespace ServiceTelecomConnect
         }
         void Button_change_Click(object sender, EventArgs e)
         {
-            if (AvailabilityChanged_bool())
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
                 {
