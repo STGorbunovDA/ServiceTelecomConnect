@@ -152,6 +152,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns.Add("parts_5", "Израсходованные материалы и детали_5");
                 dataGridView1.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
                 dataGridView1.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
+                dataGridView1.Columns.Add("decommissionSerialNumber", "№ акта списания");
                 dataGridView1.Columns.Add("IsNew", String.Empty);
                 dataGridView1.Columns[12].Visible = false;
                 dataGridView1.Columns[13].Visible = false;
@@ -176,7 +177,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns[35].Visible = false;
                 dataGridView1.Columns[36].Visible = false;
                 dataGridView1.Columns[37].Visible = false;
-                dataGridView1.Columns[38].Visible = false;
+                dataGridView1.Columns[39].Visible = false;
             }
             catch (Exception ex)
             {
@@ -200,7 +201,7 @@ namespace ServiceTelecomConnect
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
                          record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                          record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), RowState.ModifieldNew)));
+                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), RowState.ModifieldNew)));
             }
             catch (Exception ex)
             {
@@ -260,7 +261,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Columns[10].Width = 100;
                     dataGridView1.Columns[11].Width = 100;
                     dataGridView1.Columns[17].Width = 120;
-                    
+
                 }
                 catch (MySqlException)
                 {
@@ -440,6 +441,47 @@ namespace ServiceTelecomConnect
                 new Thread(() => { Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
             }
         }
+
+        #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
+        void Copy_BD_radiostantion_in_radiostantion_copy()
+        {
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    var clearBD = "TRUNCATE TABLE radiostantion_copy";
+
+                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection()))
+                    {
+                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        {
+                            DB_3.GetInstance.openConnection();
+                            command.ExecuteNonQuery();
+                            DB_3.GetInstance.closeConnection();
+                        }
+                    }
+
+                    var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
+
+                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection()))
+                    {
+                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        {
+                            DB_3.GetInstance.openConnection();
+                            command2.ExecuteNonQuery();
+                            DB_3.GetInstance.closeConnection();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString()); ;
+                }
+            }
+
+        }
+
+        #endregion
 
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
@@ -772,6 +814,7 @@ namespace ServiceTelecomConnect
                     textBox_parts_5.Text = row.Cells[35].Value.ToString();
                     textBox_parts_6.Text = row.Cells[36].Value.ToString();
                     textBox_parts_7.Text = row.Cells[37].Value.ToString();
+                    txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -793,6 +836,7 @@ namespace ServiceTelecomConnect
                 try
                 {
                     string perem_comboBox = "numberAct";
+
                     dgw.Rows.Clear();
 
                     if (comboBox_seach.Text == "Полигон")
@@ -830,6 +874,10 @@ namespace ServiceTelecomConnect
                     else if (comboBox_seach.Text == "Представитель ПП")
                     {
                         perem_comboBox = "representative";
+                    }
+                    else if (comboBox_seach.Text == "Номер Акта списания")
+                    {
+                        perem_comboBox = "decommissionSerialNumber";
                     }
 
                     string searchString = $"SELECT * FROM radiostantion WHERE city = '{comboBox_city.Text}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search.Text + "%'";
@@ -877,22 +925,20 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                textBox_id.Text = "";
-                comboBox_poligon.Text = "";
-                textBox_company.Text = "";
-                comboBox_model.Text = "";
-                textBox_serialNumber.Text = "";
-                textBox_inventoryNumber.Text = "";
-                textBox_networkNumber.Text = "";
-                textBox_numberAct.Text = "";
-                textBox_location.Text = "";
-                textBox_dateTO.Text = "";
-                textBox_city.Text = "";
-                textBox_price.Text = "";
-                textBox_search.Text = "";
-                textBox_representative.Text = "";
-                textBox_numberActRemont.Text = "";
-                comboBox_сategory.Text = "";
+                foreach (Control control in panel1.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        control.Text = "";
+                    }
+                }
+                foreach (Control control in panel2.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        control.Text = "";
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1060,14 +1106,14 @@ namespace ServiceTelecomConnect
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    dataGridView1.Rows[row.Index].Cells[38].Value = RowState.Deleted;
+                    dataGridView1.Rows[row.Index].Cells[39].Value = RowState.Deleted;
                 }
 
                 DB.GetInstance.openConnection();
 
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
-                    var rowState = (RowState)dataGridView1.Rows[index].Cells[38].Value;//проверить индекс
+                    var rowState = (RowState)dataGridView1.Rows[index].Cells[39].Value;//проверить индекс
 
                     if (rowState == RowState.Deleted)
                     {
@@ -1079,68 +1125,6 @@ namespace ServiceTelecomConnect
                             command.ExecuteNonQuery();
                         }
                     }
-                    #region изменение радиостанций из интерфейса
-                    //if (rowState == RowState.Modifield)
-                    //{
-                    //    var id = dataGridView1.Rows[index].Cells[1].Value.ToString();
-                    //    var poligon = dataGridView1.Rows[index].Cells[2].Value.ToString();
-                    //    var company = dataGridView1.Rows[index].Cells[3].Value.ToString();
-                    //    var location = dataGridView1.Rows[index].Cells[4].Value.ToString();
-                    //    var model = dataGridView1.Rows[index].Cells[5].Value.ToString();
-                    //    var serialNumber = dataGridView1.Rows[index].Cells[6].Value.ToString();
-                    //    var inventoryNumber = dataGridView1.Rows[index].Cells[7].Value.ToString();
-                    //    var networkNumber = dataGridView1.Rows[index].Cells[8].Value.ToString();
-                    //    var dateTO = dataGridView1.Rows[index].Cells[9].Value.ToString();
-                    //    var numberAct = dataGridView1.Rows[index].Cells[10].Value.ToString();
-                    //    var city = dataGridView1.Rows[index].Cells[11].Value.ToString();
-                    //    var price = dataGridView1.Rows[index].Cells[12].Value.ToString();
-                    //    var representative = dataGridView1.Rows[index].Cells[13].Value.ToString();
-                    //    var post = dataGridView1.Rows[index].Cells[14].Value.ToString();
-                    //    var numberIdentification = dataGridView1.Rows[index].Cells[15].Value.ToString();
-                    //    var dateIssue = dataGridView1.Rows[index].Cells[16].Value.ToString();
-                    //    var phoneNumber = dataGridView1.Rows[index].Cells[17].Value.ToString();
-                    //    var numberActRemont = dataGridView1.Rows[index].Cells[18].Value.ToString();
-                    //    var сategory = dataGridView1.Rows[index].Cells[19].Value.ToString();
-                    //    var priceRemont = dataGridView1.Rows[index].Cells[20].Value.ToString();
-                    //    var antenna = dataGridView1.Rows[index].Cells[21].Value.ToString();
-                    //    var manipulator = dataGridView1.Rows[index].Cells[22].Value.ToString();
-                    //    var AKB = dataGridView1.Rows[index].Cells[23].Value.ToString();
-                    //    var batteryСharger = dataGridView1.Rows[index].Cells[24].Value.ToString();
-                    //    var сompleted_works_1 = dataGridView1.Rows[index].Cells[25].Value.ToString();
-                    //    var сompleted_works_2 = dataGridView1.Rows[index].Cells[26].Value.ToString();
-                    //    var сompleted_works_3 = dataGridView1.Rows[index].Cells[27].Value.ToString();
-                    //    var сompleted_works_4 = dataGridView1.Rows[index].Cells[28].Value.ToString();
-                    //    var сompleted_works_5 = dataGridView1.Rows[index].Cells[29].Value.ToString();
-                    //    var сompleted_works_6 = dataGridView1.Rows[index].Cells[30].Value.ToString();
-                    //    var сompleted_works_7 = dataGridView1.Rows[index].Cells[31].Value.ToString();
-                    //    var parts_1 = dataGridView1.Rows[index].Cells[32].Value.ToString();
-                    //    var parts_2 = dataGridView1.Rows[index].Cells[33].Value.ToString();
-                    //    var parts_3 = dataGridView1.Rows[index].Cells[34].Value.ToString();
-                    //    var parts_4 = dataGridView1.Rows[index].Cells[35].Value.ToString();
-                    //    var parts_5 = dataGridView1.Rows[index].Cells[36].Value.ToString();
-                    //    var parts_6 = dataGridView1.Rows[index].Cells[37].Value.ToString();
-                    //    var parts_7 = dataGridView1.Rows[index].Cells[38].Value.ToString();
-
-                    //    var changeQuery = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
-                    //        $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}'," +
-                    //        $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{city}', " +
-                    //        $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', post = '{post}', " +
-                    //        $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', phoneNumber = '{phoneNumber}', " +
-                    //        $"numberActRemont = '{numberActRemont}', сategory = '{сategory}', priceRemont = '{Convert.ToDecimal(priceRemont)}'," +
-                    //        $"antenna = '{antenna}',manipulator = '{manipulator}', AKB = '{AKB}', batteryСharger = '{batteryСharger}'," +
-                    //        $"сompleted_works_1 = '{сompleted_works_1}', сompleted_works_2 = '{сompleted_works_2}', " +
-                    //        $"сompleted_works_3 = '{сompleted_works_3}', сompleted_works_4 = '{сompleted_works_4}', " +
-                    //        $"сompleted_works_5 = '{сompleted_works_5}', сompleted_works_6 = '{сompleted_works_6}', " +
-                    //        $"сompleted_works_7 = '{сompleted_works_7}', parts_1 = '{parts_1}', parts_2 = '{parts_2}', " +
-                    //        $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', " +
-                    //        $"parts_7 = '{parts_7}' WHERE id = '{id}'";
-
-                    //    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                    //    {
-                    //        command.ExecuteNonQuery();
-                    //    }
-                    //}
-                    #endregion
                 }
                 DB.GetInstance.closeConnection();
 
@@ -4453,6 +4437,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
+                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
                     }
@@ -4578,22 +4563,25 @@ namespace ServiceTelecomConnect
                 {
                     string querystring = $"SELECT * FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
 
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        return true;
-                    }
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
 
-                    else
-                    {
-                        return false;
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count > 0)
+                            {
+                                return true;
+                            }
+
+                            else
+                            {
+                                return false;
+                            }
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -5314,6 +5302,7 @@ namespace ServiceTelecomConnect
             textBox_parts_5.Text = row.Cells[35].Value.ToString();
             textBox_parts_6.Text = row.Cells[36].Value.ToString();
             textBox_parts_7.Text = row.Cells[37].Value.ToString();
+            txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
         }
         #endregion
 
@@ -5672,28 +5661,29 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
             {
-                button_Uploading_JSON_file.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
                 clear_BD_current_year.Enabled = false;
                 manual_backup_current_DB.Enabled = false;
                 loading_json_file_BD.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
                 button_Loading_file_last_year.Enabled = false;
                 loading_file_full_BD.Enabled = false;
                 loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
                 await Task.Run(() => Loading_file_current_BD());
-                loading_file_current_DB.Enabled = true;
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
                 button_Loading_file_last_year.Enabled = true;
                 loading_file_full_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                loading_file_current_DB.Enabled = true;
                 button_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
             }
         }
-
         void Loading_file_current_BD()
         {
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
@@ -5733,7 +5723,7 @@ namespace ServiceTelecomConnect
                                             {
                                                 var values = line.Split(';');
 
-                                                if (CheacSerialNumber_radiostantion(values[4]) == false)
+                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(values[4]))
                                                 {
 
                                                     var mySql = $"insert into radiostantion (poligon, company, location, model, serialNumber, inventoryNumber, " +
@@ -5744,7 +5734,7 @@ namespace ServiceTelecomConnect
                                                        $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                        $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                        $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                       $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                       $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -5752,13 +5742,6 @@ namespace ServiceTelecomConnect
                                                         command.CommandType = System.Data.CommandType.Text;
                                                         command.ExecuteNonQuery();
                                                     }
-
-                                                    //var command = new MySqlCommand();
-                                                    //command.CommandText = mySql;
-                                                    //command.CommandType = System.Data.CommandType.Text;
-                                                    //command.Connection = connection;
-                                                    //command.ExecuteNonQuery();
-
                                                 }
                                                 else
                                                 {
@@ -5815,63 +5798,31 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-        Boolean CheacSerialNumber_radiostantion(string serialNumber)
-        {
-            try
-            {
-                string querystring = $"SELECT * FROM radiostantion WHERE serialNumber = '{serialNumber}'";
-
-                MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection());
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                DataTable table = new DataTable();
-
-
-                adapter.Fill(table);
-                if (table.Rows.Count > 0)
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                return true;
-            }
-        }
 
         async void Button_Loading_file_last_year_Click(object sender, EventArgs e)
         {
-            button_Uploading_JSON_file.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
             clear_BD_current_year.Enabled = false;
             manual_backup_current_DB.Enabled = false;
             loading_json_file_BD.Enabled = false;
+            button_Copying_current_BD_end_of_the_year.Enabled = false;
             button_Loading_file_last_year.Enabled = false;
             loading_file_full_BD.Enabled = false;
             loading_file_current_DB.Enabled = false;
+            button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
+            btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => Loading_file_last_year());
-            loading_file_current_DB.Enabled = true;
             clear_BD_current_year.Enabled = true;
             manual_backup_current_DB.Enabled = true;
             loading_json_file_BD.Enabled = true;
+            button_Copying_current_BD_end_of_the_year.Enabled = true;
             button_Loading_file_last_year.Enabled = true;
             loading_file_full_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
+            loading_file_current_DB.Enabled = true;
             button_Uploading_JSON_file.Enabled = true;
             btn_Show_DB_radiostantion_last_year.Enabled = true;
+            btn_Show_DB_radiostantion_full.Enabled = true;
         }
-
         void Loading_file_last_year()
         {
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
@@ -5911,9 +5862,8 @@ namespace ServiceTelecomConnect
                                             {
                                                 var values = line.Split(';');
 
-                                                if (CheacSerialNumber_radiostantion_last_year(values[4]) == false)
+                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_last_year(values[4]))
                                                 {
-
                                                     var mySql = $"insert into radiostantion_last_year (poligon, company, location, model, serialNumber, inventoryNumber, " +
                                                     $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
                                                     $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
@@ -5922,7 +5872,7 @@ namespace ServiceTelecomConnect
                                                     $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                     $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                     $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -5930,13 +5880,6 @@ namespace ServiceTelecomConnect
                                                         command.CommandType = System.Data.CommandType.Text;
                                                         command.ExecuteNonQuery();
                                                     }
-
-                                                    //var command = new MySqlCommand();
-                                                    //command.CommandText = mySql;
-                                                    //command.CommandType = System.Data.CommandType.Text;
-                                                    //command.Connection = connection;
-                                                    //command.ExecuteNonQuery();
-
                                                 }
                                                 else
                                                 {
@@ -5994,63 +5937,30 @@ namespace ServiceTelecomConnect
             }
         }
 
-        Boolean CheacSerialNumber_radiostantion_last_year(string serialNumber)
-        {
-            try
-            {
-                string querystring = $"SELECT * FROM radiostantion_last_year WHERE serialNumber = '{serialNumber}'";
-
-                MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection());
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                DataTable table = new DataTable();
-
-
-                adapter.Fill(table);
-                if (table.Rows.Count > 0)
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                return true;
-            }
-        }
-
         async void Loading_file_full_BD_Click(object sender, EventArgs e)
         {
-            button_Uploading_JSON_file.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
             clear_BD_current_year.Enabled = false;
             manual_backup_current_DB.Enabled = false;
             loading_json_file_BD.Enabled = false;
+            button_Copying_current_BD_end_of_the_year.Enabled = false;
             button_Loading_file_last_year.Enabled = false;
             loading_file_full_BD.Enabled = false;
             loading_file_current_DB.Enabled = false;
+            button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
+            btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => Loading_file_full_BD_method());
-            loading_file_current_DB.Enabled = true;
             clear_BD_current_year.Enabled = true;
             manual_backup_current_DB.Enabled = true;
             loading_json_file_BD.Enabled = true;
+            button_Copying_current_BD_end_of_the_year.Enabled = true;
             button_Loading_file_last_year.Enabled = true;
             loading_file_full_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
+            loading_file_current_DB.Enabled = true;
             button_Uploading_JSON_file.Enabled = true;
             btn_Show_DB_radiostantion_last_year.Enabled = true;
+            btn_Show_DB_radiostantion_full.Enabled = true;
         }
-
         void Loading_file_full_BD_method()
         {
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
@@ -6090,9 +6000,8 @@ namespace ServiceTelecomConnect
                                             {
                                                 var values = line.Split(';');
 
-                                                if (CheacSerialNumber_radiostantion_full_BD(values[4]) == false)
+                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(values[4]))
                                                 {
-
                                                     var mySql = $"insert into radiostantion_full (poligon, company, location, model, serialNumber, inventoryNumber, " +
                                                     $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
                                                     $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
@@ -6101,7 +6010,7 @@ namespace ServiceTelecomConnect
                                                     $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                     $"'{(values[8].Replace(" ", "").Trim())}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                     $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -6109,18 +6018,11 @@ namespace ServiceTelecomConnect
                                                         command.CommandType = System.Data.CommandType.Text;
                                                         command.ExecuteNonQuery();
                                                     }
-
-                                                    //var command = new MySqlCommand();
-                                                    //command.CommandText = mySql;
-                                                    //command.CommandType = System.Data.CommandType.Text;
-                                                    //command.Connection = connection;
-                                                    //command.ExecuteNonQuery();
                                                 }
                                                 else
                                                 {
                                                     continue;
                                                 }
-
                                             }
                                             lineNumber++;
                                         }
@@ -6139,7 +6041,6 @@ namespace ServiceTelecomConnect
                                 {
                                     MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
                                 }
-
                             }
                         }
                         else
@@ -6173,44 +6074,38 @@ namespace ServiceTelecomConnect
             }
         }
 
-        Boolean CheacSerialNumber_radiostantion_full_BD(string serialNumber)
-        {
-            try
-            {
-                string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
-                MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection());
-
-                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                DataTable table = new DataTable();
-
-
-                adapter.Fill(table);
-                if (table.Rows.Count > 0)
-                {
-                    return true;
-                }
-
-                else
-                {
-                    return false;
-                }
-
-
-            }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                return true;
-            }
-        }
-
         #endregion
 
         #region загрузка json в datagridview
 
+        async void Loading_json_file_BD_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            {
+                clear_BD_current_year.Enabled = false;
+                manual_backup_current_DB.Enabled = false;
+                loading_json_file_BD.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
+                loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
+                await Task.Run(() => Loading_json_file_BD_method());
+                clear_BD_current_year.Enabled = true;
+                manual_backup_current_DB.Enabled = true;
+                loading_json_file_BD.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
+                loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
+            }
+
+        }
         void Loading_json_file_BD_method()
         {
             try
@@ -6253,6 +6148,7 @@ namespace ServiceTelecomConnect
                 dataGridView2.Columns.Add("parts_5", "Израсходованные материалы и детали_5");
                 dataGridView2.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
                 dataGridView2.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
+                dataGridView2.Columns.Add("decommissionSerialNumber", "Номер  акта списания");
                 dataGridView2.Columns.Add("IsNew", String.Empty);
 
                 if (File.Exists("s.json"))
@@ -6309,10 +6205,9 @@ namespace ServiceTelecomConnect
                             dataGridView2.Rows[n].Cells[35].Value = fetch[i]["parts_5"].ToString();
                             dataGridView2.Rows[n].Cells[36].Value = fetch[i]["parts_6"].ToString();
                             dataGridView2.Rows[n].Cells[37].Value = fetch[i]["parts_7"].ToString();
+                            dataGridView2.Rows[n].Cells[38].Value = fetch[i]["decommissionSerialNumber"].ToString();
                         }
                     }
-
-
                     for (int i = 0; i < dataGridView2.Rows.Count; i++)
                     {
                         var id = dataGridView2.Rows[i].Cells["id"].Value;
@@ -6353,7 +6248,7 @@ namespace ServiceTelecomConnect
                         var parts_5 = dataGridView2.Rows[i].Cells["parts_5"].Value.ToString();
                         var parts_6 = dataGridView2.Rows[i].Cells["parts_6"].Value.ToString();
                         var parts_7 = dataGridView2.Rows[i].Cells["parts_7"].Value.ToString();
-
+                        var decommissionSerialNumber = dataGridView2.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
 
                         string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                             $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
@@ -6364,7 +6259,7 @@ namespace ServiceTelecomConnect
                             $"completed_works_2 = '{completed_works_2}', completed_works_3 = '{completed_works_3}', completed_works_4 = '{completed_works_4}', " +
                             $"completed_works_5 = '{completed_works_5}', completed_works_6 = '{completed_works_6}', completed_works_7 = '{completed_works_7}', " +
                             $"parts_1 = '{parts_1}', parts_2 = '{parts_2}', parts_3 = '{parts_3}',  parts_4 = '{parts_4}',  parts_5 = '{parts_5}', parts_6 = '{parts_6}',  " +
-                            $"parts_7 = '{parts_7}' WHERE id = '{id}'";
+                            $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}'  WHERE id = '{id}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                         {
@@ -6384,37 +6279,33 @@ namespace ServiceTelecomConnect
             }
         }
 
-        async void Loading_json_file_BD_Click(object sender, EventArgs e)
-        {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
-            {
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                await Task.Run(() => Loading_json_file_BD_method());
-                loading_file_current_DB.Enabled = true;
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-            }
-
-        }
         #endregion
 
         #region выгрузка всех данных из datagrid
 
         async void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
+            clear_BD_current_year.Enabled = false;
+            manual_backup_current_DB.Enabled = false;
+            loading_json_file_BD.Enabled = false;
+            button_Copying_current_BD_end_of_the_year.Enabled = false;
+            button_Loading_file_last_year.Enabled = false;
+            loading_file_full_BD.Enabled = false;
+            loading_file_current_DB.Enabled = false;
+            button_Uploading_JSON_file.Enabled = false;
+            btn_Show_DB_radiostantion_last_year.Enabled = false;
+            btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => Get_date_save_datagridview());
+            clear_BD_current_year.Enabled = true;
+            manual_backup_current_DB.Enabled = true;
+            loading_json_file_BD.Enabled = true;
+            button_Copying_current_BD_end_of_the_year.Enabled = true;
+            button_Loading_file_last_year.Enabled = true;
+            loading_file_full_BD.Enabled = true;
+            loading_file_current_DB.Enabled = true;
+            button_Uploading_JSON_file.Enabled = true;
+            btn_Show_DB_radiostantion_last_year.Enabled = true;
+            btn_Show_DB_radiostantion_full.Enabled = true;
         }
         void Get_date_save_datagridview()
         {
@@ -6463,7 +6354,8 @@ namespace ServiceTelecomConnect
                         parts_4 = row.Cells[34].Value,
                         parts_5 = row.Cells[35].Value,
                         parts_6 = row.Cells[36].Value,
-                        parts_7 = row.Cells[37].Value
+                        parts_7 = row.Cells[37].Value,
+                        decommissionSerialNumber = row.Cells[38].Value
                     });
                     products.Add(product);
                 }
@@ -6481,42 +6373,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region копирование и очищение БД
-
-        void Copy_BD_radiostantion_in_radiostantion_copy()
-        {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    var clearBD = "TRUNCATE TABLE radiostantion_copy";
-
-                    MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection());
-
-                    if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
-                    {
-                        DB_3.GetInstance.openConnection();
-                        command.ExecuteNonQuery();
-                        DB_3.GetInstance.closeConnection();
-                    }
-
-                    var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
-
-                    MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection());
-                    if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
-                    {
-                        DB_3.GetInstance.openConnection();
-                        command2.ExecuteNonQuery();
-                        DB_3.GetInstance.closeConnection();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString()); ;
-                }
-            }
-
-        }
+        #region копирование текущей таблицы radiostantion в radiostantion_last_year к концу года 
 
         /// <summary>
         /// Копирование текущей таблицы radiostantion в radiostantion_last_year
@@ -6542,40 +6399,55 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                close_Functional_loading_panel.Enabled = false;
                 clear_BD_current_year.Enabled = false;
+                manual_backup_current_DB.Enabled = false;
                 loading_json_file_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                loading_file_last_year.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
                 loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
                 var clearBD = "TRUNCATE TABLE radiostantion_last_year";
 
-                MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection());
-                DB_2.GetInstance.openConnection();
-                command.ExecuteNonQuery();
-                DB_2.GetInstance.closeConnection();
+                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                {
+                    DB_2.GetInstance.openConnection();
+                    command.ExecuteNonQuery();
+                    DB_2.GetInstance.closeConnection();
+                }
 
                 var copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
 
-                MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection());
-                DB_2.GetInstance.openConnection();
-                command2.ExecuteNonQuery();
-                DB_2.GetInstance.closeConnection();
+                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
+                {
+                    DB_2.GetInstance.openConnection();
+                    command2.ExecuteNonQuery();
+                    DB_2.GetInstance.closeConnection();
+                }
+
                 MessageBox.Show("База данных успешно скопирована!");
 
-                close_Functional_loading_panel.Enabled = true;
                 clear_BD_current_year.Enabled = true;
+                manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                loading_file_last_year.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
                 loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString()); ;
             }
         }
+        #endregion
 
+        #region функцональная панель ручное-резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
         /// <summary>
         /// Копирование данных БД(radiostantion) в резерв (radiostantion_copy) для дальнейшего пользования к концу года
         /// </summary>
@@ -6592,41 +6464,54 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                close_Functional_loading_panel.Enabled = false;
                 clear_BD_current_year.Enabled = false;
+                manual_backup_current_DB.Enabled = false;
                 loading_json_file_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                loading_file_last_year.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
                 loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
                 var clearBD = "TRUNCATE TABLE radiostantion_copy";
 
-                MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection());
-                DB_2.GetInstance.openConnection();
-                command.ExecuteNonQuery();
-                DB_2.GetInstance.closeConnection();
+                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                {
+                    DB_2.GetInstance.openConnection();
+                    command.ExecuteNonQuery();
+                    DB_2.GetInstance.closeConnection();
+                }
 
                 var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
-                MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection());
-                DB_2.GetInstance.openConnection();
-                command2.ExecuteNonQuery();
-                DB_2.GetInstance.closeConnection();
+                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
+                {
+                    DB_2.GetInstance.openConnection();
+                    command2.ExecuteNonQuery();
+                    DB_2.GetInstance.closeConnection();
+                }
                 MessageBox.Show("База данных успешно скопирована!");
 
-                close_Functional_loading_panel.Enabled = true;
                 clear_BD_current_year.Enabled = true;
+                manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                loading_file_last_year.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
                 loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString()); ;
             }
         }
+        #endregion
 
-
+        #region очистка текущей БД, текущий год (radiostantion)
         /// <summary>
         /// очистка БД (radiostantion)
         /// </summary>
@@ -6651,28 +6536,39 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                close_Functional_loading_panel.Enabled = false;
+                clear_BD_current_year.Enabled = false;
                 manual_backup_current_DB.Enabled = false;
                 loading_json_file_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                loading_file_last_year.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
                 loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
 
                 var clearBD = "TRUNCATE TABLE radiostantion";
 
-                MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection());
-                DB_2.GetInstance.openConnection();
-                command.ExecuteNonQuery();
-                DB_2.GetInstance.closeConnection();
+                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                {
+                    DB_2.GetInstance.openConnection();
+                    command.ExecuteNonQuery();
+                    DB_2.GetInstance.closeConnection();
+                }
 
                 MessageBox.Show("База данных успешно очищенна!");
                 RefreshDataGrid(dataGridView1);
-                close_Functional_loading_panel.Enabled = true;
+
+                clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                loading_file_last_year.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
                 loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -6680,17 +6576,22 @@ namespace ServiceTelecomConnect
             }
         }
 
-
-
-
-
-
         #endregion
 
         #region показать БД прошлго года по участку
 
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
+            clear_BD_current_year.Enabled = false;
+            manual_backup_current_DB.Enabled = false;
+            loading_json_file_BD.Enabled = false;
+            button_Copying_current_BD_end_of_the_year.Enabled = false;
+            button_Loading_file_last_year.Enabled = false;
+            loading_file_full_BD.Enabled = false;
+            loading_file_current_DB.Enabled = false;
+            button_Uploading_JSON_file.Enabled = false;
+            btn_Show_DB_radiostantion_last_year.Enabled = false;
+            btn_Show_DB_radiostantion_full.Enabled = false;
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
@@ -6756,6 +6657,16 @@ namespace ServiceTelecomConnect
                     DB.GetInstance.closeConnection();
                 }
             }
+            clear_BD_current_year.Enabled = true;
+            manual_backup_current_DB.Enabled = true;
+            loading_json_file_BD.Enabled = true;
+            button_Copying_current_BD_end_of_the_year.Enabled = true;
+            button_Loading_file_last_year.Enabled = true;
+            loading_file_full_BD.Enabled = true;
+            loading_file_current_DB.Enabled = true;
+            button_Uploading_JSON_file.Enabled = true;
+            btn_Show_DB_radiostantion_last_year.Enabled = true;
+            btn_Show_DB_radiostantion_full.Enabled = true;
             UpdateCountRST();
             UpdateSumTOrst();
             UpdateSumTOrstRemont();
@@ -6769,6 +6680,16 @@ namespace ServiceTelecomConnect
 
         void btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
+            clear_BD_current_year.Enabled = false;
+            manual_backup_current_DB.Enabled = false;
+            loading_json_file_BD.Enabled = false;
+            button_Copying_current_BD_end_of_the_year.Enabled = false;
+            button_Loading_file_last_year.Enabled = false;
+            loading_file_full_BD.Enabled = false;
+            loading_file_current_DB.Enabled = false;
+            button_Uploading_JSON_file.Enabled = false;
+            btn_Show_DB_radiostantion_last_year.Enabled = false;
+            btn_Show_DB_radiostantion_full.Enabled = false;
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 try
@@ -6834,10 +6755,27 @@ namespace ServiceTelecomConnect
                     DB.GetInstance.closeConnection();
                 }
             }
+            clear_BD_current_year.Enabled = true;
+            manual_backup_current_DB.Enabled = true;
+            loading_json_file_BD.Enabled = true;
+            button_Copying_current_BD_end_of_the_year.Enabled = true;
+            button_Loading_file_last_year.Enabled = true;
+            loading_file_full_BD.Enabled = true;
+            loading_file_current_DB.Enabled = true;
+            button_Uploading_JSON_file.Enabled = true;
+            btn_Show_DB_radiostantion_last_year.Enabled = true;
+            btn_Show_DB_radiostantion_full.Enabled = true;
             UpdateCountRST();
             UpdateSumTOrst();
             UpdateSumTOrstRemont();
             UpdateCountRSTRemont();
+        }
+        #endregion
+
+        #region показать списания
+        void Btn_show_radiostantion_decommission_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 
@@ -6875,7 +6813,132 @@ namespace ServiceTelecomConnect
                 label_cell_rows.Text = c.ToString();
                 label_sum_TO_selection.Text = sum.ToString();
             }
-        }     
+        }
+        #endregion
+
+        #region списание РСТ
+
+        void Btn_decommissionSerialNumber_close_Click(object sender, EventArgs e)
+        {
+            panel_decommissionSerialNumber.Visible = false;
+            panel_decommissionSerialNumber.Enabled = false;
+        }
+
+        void DecommissionSerialNumber(object sender, EventArgs e)
+        {
+            if (textBox_serialNumber.Text != "")
+            {
+                string Mesage;
+                Mesage = "Вы действительно хотите списать радиостанцию?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+                panel1.Enabled = false;
+                panel2.Enabled = false;
+                panel3.Enabled = false;
+                dataGridView1.Enabled = false;
+                panel_decommissionSerialNumber.Visible = true;
+                panel_decommissionSerialNumber.Enabled = true;
+            }
+
+        }
+
+        void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
+        {
+            if (textBox_decommissionSerialNumber.Text != "")
+            {
+                if (Internet_check.GetInstance.AvailabilityChanged_bool())
+                {
+                    try
+                    {
+                        string serialNumber = textBox_serialNumber.Text;
+                        var decommissionSerialNumber = textBox_decommissionSerialNumber.Text;
+                        if (textBox_serialNumber.Text != "")
+                        {
+                            var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                                $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
+                                $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
+                                $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
+                                $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
+
+                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.openConnection();
+                                command.ExecuteNonQuery();
+                                DB.GetInstance.closeConnection();
+                            }
+
+                            if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
+                            {
+
+                                var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                                    $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
+                                    $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
+                                    $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
+                                    $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
+
+
+                                using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.openConnection();
+                                    command2.ExecuteNonQuery();
+                                    DB.GetInstance.closeConnection();
+                                }
+                            }
+
+                            if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
+                            {
+                                var poligon = comboBox_poligon.Text;
+                                var company = textBox_company.Text;
+                                var location = textBox_location.Text;
+                                var model = comboBox_model.Text;
+                                var datedecommission = textBox_dateTO.Text;
+                                var city = textBox_city.Text;
+                                var price = textBox_price.Text;
+
+                                var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber, datedecommission, " +
+                                               $"city, price, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                               $"'{model.Trim()}','{serialNumber.Trim()}', '{datedecommission.Trim()}', '{city.Trim()}', " +
+                                               $"'{price.Trim()}','{decommissionSerialNumber.Trim()}')";
+
+                                using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.openConnection();
+                                    command3.ExecuteNonQuery();
+                                    DB.GetInstance.closeConnection();
+                                }
+                            }
+
+                        }
+
+                        Button_update_Click(sender, e);
+                        panel_decommissionSerialNumber.Visible = false;
+                        panel_decommissionSerialNumber.Enabled = false;
+                        panel1.Enabled = true;
+                        panel2.Enabled = true;
+                        panel3.Enabled = true;
+                        dataGridView1.Enabled = true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+            }
+            else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания!"); }
+        }
+
+
+        #endregion
+
+        #region показать списания
+        //void Btn_show_radiostantion_decommission_Click(object sender, EventArgs e)
+        //{
+
+        //}
         #endregion
     }
 }

@@ -53,38 +53,33 @@ namespace ServiceTelecomConnect
                     var parts_7 = textBox_parts_7.Text;
                     var serialNumber = textBox_serialNumber.Text;
 
-                    if (CheackNumberAct_radiostantion(numberActRemont) == false)
+
+                    if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
                     {
-                        if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
+                        var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
+                            $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1.Trim()}', completed_works_2 = '{сompleted_works_2.Trim()}', " +
+                            $"completed_works_3 = '{сompleted_works_3.Trim()}', completed_works_4 = '{сompleted_works_4.Trim()}', " +
+                            $"completed_works_5 = '{сompleted_works_5.Trim()}', completed_works_6 = '{сompleted_works_6.Trim()}', " +
+                            $"completed_works_7 = '{сompleted_works_7.Trim()}', parts_1 = '{parts_1.Trim()}', parts_2 = '{parts_2.Trim()}', " +
+                            $"parts_3 = '{parts_3.Trim()}', parts_4 = '{parts_4.Trim()}', parts_5 = '{parts_5.Trim()}', parts_6 = '{parts_6.Trim()}', parts_7 = '{parts_7.Trim()}'" +
+                            $"WHERE serialNumber = '{serialNumber}' ";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-                            var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
-                                $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1.Trim()}', completed_works_2 = '{сompleted_works_2.Trim()}', " +
-                                $"completed_works_3 = '{сompleted_works_3.Trim()}', completed_works_4 = '{сompleted_works_4.Trim()}', " +
-                                $"completed_works_5 = '{сompleted_works_5.Trim()}', completed_works_6 = '{сompleted_works_6.Trim()}', " +
-                                $"completed_works_7 = '{сompleted_works_7.Trim()}', parts_1 = '{parts_1.Trim()}', parts_2 = '{parts_2.Trim()}', " +
-                                $"parts_3 = '{parts_3.Trim()}', parts_4 = '{parts_4.Trim()}', parts_5 = '{parts_5.Trim()}', parts_6 = '{parts_6.Trim()}', parts_7 = '{parts_7.Trim()}'" +
-                                $"WHERE serialNumber = '{serialNumber}' ";
-
-                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.openConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
-                            }
-
-
-                            MessageBox.Show("Ремонт успешно добавлен!");
-
+                            DB.GetInstance.openConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
                         }
-                        else
-                        {
-                            MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                        }
+
+
+                        MessageBox.Show("Ремонт успешно добавлен!");
+
                     }
                     else
                     {
-                        MessageBox.Show("В Базе данных номер акта ремонта уже существует");
+                        MessageBox.Show("Вы не заполнили нужные поля со (*)!");
                     }
+
 
                 }
                 catch (Exception ex)
@@ -93,43 +88,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
-        Boolean CheackNumberAct_radiostantion(string numberActRemont)
-        {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
-            {
-                try
-                {
-                    string querystring = $"SELECT * FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
-
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            DataTable table = new DataTable();
-
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count > 0)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    return true;
-                }
-            }
-            return true;
         }
         void PictureBox4_Click(object sender, EventArgs e)
         {

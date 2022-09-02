@@ -255,6 +255,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheacSerialNumber.cs" />
     <Compile Include="DB_2.cs" />
     <Compile Include="DB_3.cs" />
     <Compile Include="DB_4.cs" />

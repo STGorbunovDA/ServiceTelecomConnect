@@ -356,9 +356,9 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                                 #endregion
-                                if (CheacSerialNumber_radiostantion(serialNumber) == false)
+                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
                                 {
-                                    if (CheackNumberAct_radiostantion(numberAct) == false)
+                                    if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
                                     {
 
                                         var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
@@ -366,12 +366,12 @@ namespace ServiceTelecomConnect
                                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                             $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                             $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
                                             $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
                                             $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
                                             $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                             $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}')";
+                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}')";
 
                                         using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                         {
@@ -457,12 +457,12 @@ namespace ServiceTelecomConnect
                                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                             $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                             $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
                                             $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
                                             $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
                                             $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                             $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}')";
+                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}','{""}')";
 
                             using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                             {
@@ -517,8 +517,7 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region проверка на совпадения в базе данных зав. номера и акта не более 20 рст
-
+        #region проверка в таблице radiostantion_full и если есть изменение записей
         Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
         {
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
@@ -527,48 +526,50 @@ namespace ServiceTelecomConnect
                 {
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
 
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        try
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
-                            DB.GetInstance.openConnection();
-                            var model = comboBox_model.Text;
-                            var inventoryNumber = textBox_inventoryNumber.Text;
-                            var networkNumber = textBox_networkNumber.Text;
-                            var dateTO = textBox_dateTO.Text;
-                            var numberAct = textBox_numberAct.Text;
-                            var representative = textBox_representative.Text;
-                            var numberIdentification = textBox_numberIdentification.Text;
-                            var phoneNumber = textBox_phoneNumber.Text;
-                            var post = textBox_post.Text;
-                            var dateIssue = textBox_dateIssue.Text;
+                            DataTable table = new DataTable();
 
-                            var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
+                            adapter.Fill(table);
 
-                            using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
+                            if (table.Rows.Count > 0)
                             {
-                                command5.ExecuteNonQuery();
+                                try
+                                {
+                                    DB.GetInstance.openConnection();
+                                    var model = comboBox_model.Text;
+                                    var inventoryNumber = textBox_inventoryNumber.Text;
+                                    var networkNumber = textBox_networkNumber.Text;
+                                    var dateTO = textBox_dateTO.Text;
+                                    var numberAct = textBox_numberAct.Text;
+                                    var representative = textBox_representative.Text;
+                                    var numberIdentification = textBox_numberIdentification.Text;
+                                    var phoneNumber = textBox_phoneNumber.Text;
+                                    var post = textBox_post.Text;
+                                    var dateIssue = textBox_dateIssue.Text;
+
+                                    var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
+
+                                    using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
+                                    {
+                                        command5.ExecuteNonQuery();
+                                    }
+                                    DB.GetInstance.closeConnection();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.ToString());
+                                }
+                                return true;
                             }
-                            DB.GetInstance.closeConnection();
+
+                            else
+                            {
+                                return false;
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                        }
-                        return true;
-                    }
-
-                    else
-                    {
-                        return false;
                     }
                 }
 
@@ -580,83 +581,7 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-
-        /// <summary>
-        /// Метод проверки наличия заводского номер в базе данных
-        /// </summary>
-        /// <param name="loginUser"></param>
-        /// <param name="passUser"></param>
-        /// <returns></returns>
-        Boolean CheacSerialNumber_radiostantion(string serialNumber)
-        {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    string querystring = $"SELECT * FROM radiostantion WHERE serialNumber = '{serialNumber}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-
-                    else
-                    {
-                        return false;
-                    }
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    return true;
-                }
-            }
-            return true;
-        }
-        Boolean CheackNumberAct_radiostantion(string numberAct)
-        {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    string querystring = $"SELECT * FROM radiostantion WHERE numberAct = '{numberAct}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count < 20)
-                    {
-                        return false;
-                    }
-
-                    else
-                    {
-                        return true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    return true;
-                }
-            }
-            return true;
-        }
-        #endregion
+        #endregion 
 
         #region календарь
         void TextBox_dateTO_Click(object sender, EventArgs e)

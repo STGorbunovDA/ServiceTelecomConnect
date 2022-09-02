@@ -31,9 +31,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
             this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -95,6 +95,7 @@
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txB_decommissionSerialNumber = new System.Windows.Forms.TextBox();
             this.txb_flag_all_BD = new System.Windows.Forms.TextBox();
             this.textBox_parts_7 = new System.Windows.Forms.TextBox();
             this.textBox_parts_6 = new System.Windows.Forms.TextBox();
@@ -173,11 +174,6 @@
             this.label_count_remont = new System.Windows.Forms.Label();
             this.label_count = new System.Windows.Forms.Label();
             this.label_summ = new System.Windows.Forms.Label();
-            this.panel_seach_datagrid = new System.Windows.Forms.Panel();
-            this.button_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
-            this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
-            this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel_info_phone_FIO = new System.Windows.Forms.Panel();
             this.panel_textbox_FIO_phoneNumber = new System.Windows.Forms.TextBox();
@@ -185,6 +181,27 @@
             this.button_close_panel_info_phone_FIO = new System.Windows.Forms.Button();
             this.panel_textbox_FIO_representative = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
+            this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.button_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.panel_ = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel_seach_datagrid = new System.Windows.Forms.Panel();
+            this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btn_record_decommissionSerialNumber = new System.Windows.Forms.Button();
+            this.btn_decommissionSerialNumber_close = new System.Windows.Forms.Button();
+            this.label33 = new System.Windows.Forms.Label();
+            this.textBox_decommissionSerialNumber = new System.Windows.Forms.TextBox();
+            this.btn_show_radiostantion_decommission = new System.Windows.Forms.Button();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -195,9 +212,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel_seach_datagrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel_info_phone_FIO.SuspendLayout();
+            this.panel_.SuspendLayout();
+            this.panel_seach_datagrid.SuspendLayout();
+            this.panel_decommissionSerialNumber.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_date
@@ -402,6 +422,7 @@
             this.Functional_loading_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Functional_loading_panel.BackColor = System.Drawing.Color.SkyBlue;
             this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.Functional_loading_panel.Controls.Add(this.btn_show_radiostantion_decommission);
             this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_full);
             this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_last_year);
             this.Functional_loading_panel.Controls.Add(this.button_Loading_file_last_year);
@@ -416,9 +437,9 @@
             this.Functional_loading_panel.Controls.Add(this.label36);
             this.Functional_loading_panel.Enabled = false;
             this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.Functional_loading_panel.Location = new System.Drawing.Point(355, 230);
+            this.Functional_loading_panel.Location = new System.Drawing.Point(355, 180);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
-            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 316);
+            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 364);
             this.Functional_loading_panel.TabIndex = 80;
             this.Functional_loading_panel.TabStop = true;
             this.Functional_loading_panel.Visible = false;
@@ -932,29 +953,29 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
@@ -976,6 +997,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txB_decommissionSerialNumber);
             this.panel2.Controls.Add(this.txb_flag_all_BD);
             this.panel2.Controls.Add(this.textBox_parts_7);
             this.panel2.Controls.Add(this.textBox_parts_6);
@@ -1013,18 +1035,27 @@
             this.panel2.Controls.Add(this.textBox_inventoryNumber);
             this.panel2.Controls.Add(this.textBox_company);
             this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(78, 587);
+            this.panel2.Location = new System.Drawing.Point(86, 646);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1078, 71);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
             // 
+            // txB_decommissionSerialNumber
+            // 
+            this.txB_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_decommissionSerialNumber.Location = new System.Drawing.Point(632, 42);
+            this.txB_decommissionSerialNumber.Name = "txB_decommissionSerialNumber";
+            this.txB_decommissionSerialNumber.Size = new System.Drawing.Size(35, 26);
+            this.txB_decommissionSerialNumber.TabIndex = 107;
+            this.txB_decommissionSerialNumber.Visible = false;
+            // 
             // txb_flag_all_BD
             // 
             this.txb_flag_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txb_flag_all_BD.Location = new System.Drawing.Point(971, 42);
+            this.txb_flag_all_BD.Location = new System.Drawing.Point(1022, 42);
             this.txb_flag_all_BD.Name = "txb_flag_all_BD";
-            this.txb_flag_all_BD.Size = new System.Drawing.Size(100, 26);
+            this.txb_flag_all_BD.Size = new System.Drawing.Size(49, 26);
             this.txb_flag_all_BD.TabIndex = 106;
             this.txb_flag_all_BD.Visible = false;
             // 
@@ -1681,7 +1712,8 @@
             "Дата ТО",
             "Номер акта ТО",
             "Номер акта Ремонта",
-            "Представитель ПП"});
+            "Представитель ПП",
+            "Номер Акта списания"});
             this.comboBox_seach.Location = new System.Drawing.Point(875, 11);
             this.comboBox_seach.Name = "comboBox_seach";
             this.comboBox_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1970,68 +2002,6 @@
             this.label_summ.TabIndex = 20;
             this.label_summ.Text = "999999999.99";
             // 
-            // panel_seach_datagrid
-            // 
-            this.panel_seach_datagrid.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_seach_datagrid.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_seach_datagrid.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_seach_datagrid.Controls.Add(this.button_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.button_close_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.textBox_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.label37);
-            this.panel_seach_datagrid.Enabled = false;
-            this.panel_seach_datagrid.Location = new System.Drawing.Point(400, 330);
-            this.panel_seach_datagrid.Name = "panel_seach_datagrid";
-            this.panel_seach_datagrid.Size = new System.Drawing.Size(528, 141);
-            this.panel_seach_datagrid.TabIndex = 37;
-            this.panel_seach_datagrid.Visible = false;
-            // 
-            // button_seach_panel_seach_datagrid
-            // 
-            this.button_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
-            this.button_seach_panel_seach_datagrid.Name = "button_seach_panel_seach_datagrid";
-            this.button_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
-            this.button_seach_panel_seach_datagrid.TabIndex = 36;
-            this.button_seach_panel_seach_datagrid.Text = "Поиск";
-            this.button_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
-            // 
-            // button_close_panel_seach_datagrid
-            // 
-            this.button_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
-            this.button_close_panel_seach_datagrid.Name = "button_close_panel_seach_datagrid";
-            this.button_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_seach_datagrid.TabIndex = 34;
-            this.button_close_panel_seach_datagrid.Text = "X";
-            this.button_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
-            // 
-            // textBox_seach_panel_seach_datagrid
-            // 
-            this.textBox_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_seach_panel_seach_datagrid.Location = new System.Drawing.Point(119, 49);
-            this.textBox_seach_panel_seach_datagrid.Name = "textBox_seach_panel_seach_datagrid";
-            this.textBox_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
-            this.textBox_seach_panel_seach_datagrid.TabIndex = 37;
-            this.textBox_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
-            this.textBox_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
-            this.textBox_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(25, 50);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(88, 23);
-            this.label37.TabIndex = 6;
-            this.label37.Text = "Поиск:";
-            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -2115,6 +2085,258 @@
             this.label21.TabIndex = 6;
             this.label21.Text = "ФИО:";
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.Transparent;
+            this.label37.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label37.Location = new System.Drawing.Point(25, 50);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(88, 23);
+            this.label37.TabIndex = 6;
+            this.label37.Text = "Поиск:";
+            // 
+            // textBox_seach_panel_seach_datagrid
+            // 
+            this.textBox_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_seach_panel_seach_datagrid.Location = new System.Drawing.Point(119, 49);
+            this.textBox_seach_panel_seach_datagrid.Name = "textBox_seach_panel_seach_datagrid";
+            this.textBox_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
+            this.textBox_seach_panel_seach_datagrid.TabIndex = 37;
+            this.textBox_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
+            this.textBox_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
+            this.textBox_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
+            // 
+            // button_close_panel_seach_datagrid
+            // 
+            this.button_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
+            this.button_close_panel_seach_datagrid.Name = "button_close_panel_seach_datagrid";
+            this.button_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
+            this.button_close_panel_seach_datagrid.TabIndex = 34;
+            this.button_close_panel_seach_datagrid.Text = "X";
+            this.button_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.button_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
+            // 
+            // button_seach_panel_seach_datagrid
+            // 
+            this.button_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
+            this.button_seach_panel_seach_datagrid.Name = "button_seach_panel_seach_datagrid";
+            this.button_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
+            this.button_seach_panel_seach_datagrid.TabIndex = 36;
+            this.button_seach_panel_seach_datagrid.Text = "Поиск";
+            this.button_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.button_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
+            // 
+            // panel_
+            // 
+            this.panel_.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_.Controls.Add(this.button1);
+            this.panel_.Controls.Add(this.button2);
+            this.panel_.Controls.Add(this.textBox1);
+            this.panel_.Controls.Add(this.label17);
+            this.panel_.Enabled = false;
+            this.panel_.Location = new System.Drawing.Point(400, 330);
+            this.panel_.Name = "panel_";
+            this.panel_.Size = new System.Drawing.Size(528, 141);
+            this.panel_.TabIndex = 38;
+            this.panel_.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(394, 88);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 29);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Поиск";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(495, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 29);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(119, 49);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(372, 29);
+            this.textBox1.TabIndex = 37;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.Location = new System.Drawing.Point(25, 50);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 23);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Поиск:";
+            // 
+            // panel_seach_datagrid
+            // 
+            this.panel_seach_datagrid.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_seach_datagrid.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_seach_datagrid.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_seach_datagrid.Controls.Add(this.panel_);
+            this.panel_seach_datagrid.Controls.Add(this.button_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.button_close_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.textBox_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.label37);
+            this.panel_seach_datagrid.Enabled = false;
+            this.panel_seach_datagrid.Location = new System.Drawing.Point(400, 330);
+            this.panel_seach_datagrid.Name = "panel_seach_datagrid";
+            this.panel_seach_datagrid.Size = new System.Drawing.Size(528, 141);
+            this.panel_seach_datagrid.TabIndex = 37;
+            this.panel_seach_datagrid.Visible = false;
+            // 
+            // panel_decommissionSerialNumber
+            // 
+            this.panel_decommissionSerialNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_decommissionSerialNumber.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_decommissionSerialNumber.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_decommissionSerialNumber.Controls.Add(this.textBox_decommissionSerialNumber);
+            this.panel_decommissionSerialNumber.Controls.Add(this.panel5);
+            this.panel_decommissionSerialNumber.Controls.Add(this.btn_record_decommissionSerialNumber);
+            this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
+            this.panel_decommissionSerialNumber.Controls.Add(this.label33);
+            this.panel_decommissionSerialNumber.Enabled = false;
+            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(450, 345);
+            this.panel_decommissionSerialNumber.Name = "panel_decommissionSerialNumber";
+            this.panel_decommissionSerialNumber.Size = new System.Drawing.Size(447, 116);
+            this.panel_decommissionSerialNumber.TabIndex = 39;
+            this.panel_decommissionSerialNumber.Visible = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel5.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel5.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel5.Controls.Add(this.button3);
+            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.label18);
+            this.panel5.Enabled = false;
+            this.panel5.Location = new System.Drawing.Point(359, 318);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(528, 141);
+            this.panel5.TabIndex = 38;
+            this.panel5.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(394, 88);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(98, 29);
+            this.button3.TabIndex = 36;
+            this.button3.Text = "Поиск";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(495, 2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(30, 29);
+            this.button4.TabIndex = 34;
+            this.button4.Text = "X";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(119, 49);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(372, 29);
+            this.textBox2.TabIndex = 37;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(25, 50);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(88, 23);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Поиск:";
+            // 
+            // btn_record_decommissionSerialNumber
+            // 
+            this.btn_record_decommissionSerialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_record_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_record_decommissionSerialNumber.Location = new System.Drawing.Point(335, 80);
+            this.btn_record_decommissionSerialNumber.Name = "btn_record_decommissionSerialNumber";
+            this.btn_record_decommissionSerialNumber.Size = new System.Drawing.Size(96, 29);
+            this.btn_record_decommissionSerialNumber.TabIndex = 36;
+            this.btn_record_decommissionSerialNumber.Text = "Записать";
+            this.btn_record_decommissionSerialNumber.UseVisualStyleBackColor = false;
+            this.btn_record_decommissionSerialNumber.Click += new System.EventHandler(this.Btn_record_decommissionSerialNumber_Click);
+            // 
+            // btn_decommissionSerialNumber_close
+            // 
+            this.btn_decommissionSerialNumber_close.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_decommissionSerialNumber_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_decommissionSerialNumber_close.Location = new System.Drawing.Point(401, 10);
+            this.btn_decommissionSerialNumber_close.Name = "btn_decommissionSerialNumber_close";
+            this.btn_decommissionSerialNumber_close.Size = new System.Drawing.Size(30, 29);
+            this.btn_decommissionSerialNumber_close.TabIndex = 34;
+            this.btn_decommissionSerialNumber_close.Text = "X";
+            this.btn_decommissionSerialNumber_close.UseVisualStyleBackColor = false;
+            this.btn_decommissionSerialNumber_close.Click += new System.EventHandler(this.Btn_decommissionSerialNumber_close_Click);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label33.Location = new System.Drawing.Point(25, 50);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(186, 22);
+            this.label33.TabIndex = 6;
+            this.label33.Text = "№ Акта списания:";
+            // 
+            // textBox_decommissionSerialNumber
+            // 
+            this.textBox_decommissionSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_decommissionSerialNumber.Location = new System.Drawing.Point(204, 45);
+            this.textBox_decommissionSerialNumber.Name = "textBox_decommissionSerialNumber";
+            this.textBox_decommissionSerialNumber.Size = new System.Drawing.Size(227, 29);
+            this.textBox_decommissionSerialNumber.TabIndex = 79;
+            // 
+            // btn_show_radiostantion_decommission
+            // 
+            this.btn_show_radiostantion_decommission.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_show_radiostantion_decommission.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_show_radiostantion_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_show_radiostantion_decommission.Location = new System.Drawing.Point(64, 300);
+            this.btn_show_radiostantion_decommission.Name = "btn_show_radiostantion_decommission";
+            this.btn_show_radiostantion_decommission.Size = new System.Drawing.Size(249, 40);
+            this.btn_show_radiostantion_decommission.TabIndex = 89;
+            this.btn_show_radiostantion_decommission.Text = "Показать списания";
+            this.btn_show_radiostantion_decommission.UseVisualStyleBackColor = false;
+            this.btn_show_radiostantion_decommission.Click += new System.EventHandler(this.Btn_show_radiostantion_decommission_Click);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2123,10 +2345,11 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.Functional_loading_panel);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
+            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel_date);
-            this.Controls.Add(this.Functional_loading_panel);
-            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_remont_information_company);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -2158,11 +2381,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel_seach_datagrid.ResumeLayout(false);
-            this.panel_seach_datagrid.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel_info_phone_FIO.ResumeLayout(false);
             this.panel_info_phone_FIO.PerformLayout();
+            this.panel_.ResumeLayout(false);
+            this.panel_.PerformLayout();
+            this.panel_seach_datagrid.ResumeLayout(false);
+            this.panel_seach_datagrid.PerformLayout();
+            this.panel_decommissionSerialNumber.ResumeLayout(false);
+            this.panel_decommissionSerialNumber.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2284,11 +2513,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label_polinon_full;
         private System.Windows.Forms.PictureBox pictureBox_seach_datadrid_replay;
-        private System.Windows.Forms.Panel panel_seach_datagrid;
-        private System.Windows.Forms.Button button_seach_panel_seach_datagrid;
-        private System.Windows.Forms.Button button_close_panel_seach_datagrid;
-        private System.Windows.Forms.TextBox textBox_seach_panel_seach_datagrid;
-        private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label_cell_rows;
         private System.Windows.Forms.Label label26;
@@ -2319,5 +2543,27 @@
         private System.Windows.Forms.TextBox txb_flag_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
+        private System.Windows.Forms.TextBox txB_decommissionSerialNumber;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox textBox_seach_panel_seach_datagrid;
+        private System.Windows.Forms.Button button_close_panel_seach_datagrid;
+        private System.Windows.Forms.Button button_seach_panel_seach_datagrid;
+        private System.Windows.Forms.Panel panel_;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel_seach_datagrid;
+        private System.Windows.Forms.Panel panel_decommissionSerialNumber;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btn_record_decommissionSerialNumber;
+        private System.Windows.Forms.Button btn_decommissionSerialNumber_close;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox textBox_decommissionSerialNumber;
+        private System.Windows.Forms.Button btn_show_radiostantion_decommission;
     }
 }
