@@ -4438,6 +4438,8 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                            m.MenuItems.Add(new MenuItem("Показать списания", Show_radiostantion_decommission_Click));
+
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
                     }
@@ -6772,13 +6774,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region показать списания
-        void Btn_show_radiostantion_decommission_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
         #endregion
 
         #region close form
@@ -6890,18 +6885,37 @@ namespace ServiceTelecomConnect
 
                             if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
                             {
+                                var city = textBox_city.Text;
                                 var poligon = comboBox_poligon.Text;
                                 var company = textBox_company.Text;
                                 var location = textBox_location.Text;
                                 var model = comboBox_model.Text;
-                                var datedecommission = textBox_dateTO.Text;
-                                var city = textBox_city.Text;
+                                var inventoryNumber = textBox_inventoryNumber.Text;
+                                var networkNumber = textBox_networkNumber.Text;
+                                var numberAct = textBox_numberAct.Text;
+                                var dateTO = textBox_dateTO.Text;
                                 var price = textBox_price.Text;
+                                var representative = textBox_representative.Text;
+                                var post = textBox_post.Text;
+                                var numberIdentification = textBox_numberIdentification.Text;
+                                var dateIssue = textBox_dateIssue.Text;
+                                var phoneNumber = textBox_phoneNumber.Text;
+                                var antenna = textBox_antenna.Text;
+                                var manipulator = textBox_manipulator.Text;
+                                var AKB = textBox_AKB.Text;
+                                var batteryСharger = textBox_batteryСharger.Text;
 
-                                var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber, datedecommission, " +
-                                               $"city, price, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                               $"'{model.Trim()}','{serialNumber.Trim()}', '{datedecommission.Trim()}', '{city.Trim()}', " +
-                                               $"'{price.Trim()}','{decommissionSerialNumber.Trim()}')";
+                                var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
+                                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                            $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                            $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                            $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                            $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
+                                            $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
+                                            $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
+                                            $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{decommissionSerialNumber}')";
 
                                 using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                 {
@@ -6931,14 +6945,83 @@ namespace ServiceTelecomConnect
             else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания!"); }
         }
 
+        #region показать списания
+        void Show_radiostantion_decommission_Click(object sender, EventArgs e)
+        {
+
+            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    panel1.Enabled = false;
+                    panel3.Enabled = false;
+
+                    if (comboBox_city.Text != "")
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dataGridView1.Rows.Clear();
+                        string queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{comboBox_city.Text.Trim()}%'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRow(dataGridView1, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
+
+                    dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dataGridView1.Columns[0].Width = 45;
+                    dataGridView1.Columns[3].Width = 170;
+                    dataGridView1.Columns[4].Width = 180;
+                    dataGridView1.Columns[5].Width = 150;
+                    dataGridView1.Columns[6].Width = 178;
+                    dataGridView1.Columns[7].Width = 178;
+                    dataGridView1.Columns[8].Width = 100;
+                    dataGridView1.Columns[9].Width = 110;
+                    dataGridView1.Columns[10].Width = 100;
+                    dataGridView1.Columns[11].Width = 100;
+                    dataGridView1.Columns[17].Width = 120;
+
+                    UpdateCountRST();
+                    UpdateSumTOrst();
+
+                }
+                catch (MySqlException)
+                {
+                    string Mesage2;
+                    Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
+
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
+                finally
+                {
+                    DB.GetInstance.closeConnection();
+                }
+            }
+        }
 
         #endregion
 
-        #region показать списания
-        //void Btn_show_radiostantion_decommission_Click(object sender, EventArgs e)
-        //{
-
-        //}
         #endregion
     }
 }
