@@ -426,6 +426,7 @@ namespace ServiceTelecomConnect
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
+
             }
             catch (Exception ex)
             {
@@ -1388,6 +1389,7 @@ namespace ServiceTelecomConnect
         void ExportToExcelAct()
         {
             Excel.Application exApp = new Excel.Application();
+
             try
             {
                 if (textBox_numberAct.Text != "")
@@ -4442,7 +4444,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Показать списания", Show_radiostantion_decommission_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", Create_act_decommissionSerialNumber));
+                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -5310,6 +5312,7 @@ namespace ServiceTelecomConnect
             textBox_parts_6.Text = row.Cells[36].Value.ToString();
             textBox_parts_7.Text = row.Cells[37].Value.ToString();
             txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
+            txB_comment.Text = row.Cells[39].Value.ToString();
         }
         #endregion
 
@@ -7036,17 +7039,33 @@ namespace ServiceTelecomConnect
 
         #region сформировать акт списания
 
-        void Create_act_decommissionSerialNumber(object sender, EventArgs e)
+        void PrintWord_Act_decommission(object sender, EventArgs e)
         {
-            if(txB_decommissionSerialNumber.Text != "")
+            if (txB_decommissionSerialNumber.Text != "")
             {
+                string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{textBox_company.Text}";
+                DateTime dateTime = DateTime.Today;
+                string dateDecommission = dateTime.ToString("dd.MM.yyyy");
+                string city = textBox_city.Text;
 
+                var items = new Dictionary<string, string>
+                {
+                    {"<numberActTZPP>", decommissionSerialNumber_company },
+                    {"<model>", comboBox_model.Text },
+                    {"<serialNumber>", textBox_serialNumber.Text },
+                    {"<company>", textBox_company.Text },
+                    {"<dateDecommission>", dateDecommission },
+                };
+
+                WordHelper.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city);
             }
         }
 
         #endregion
 
         #endregion
+
+
     }
 }
 

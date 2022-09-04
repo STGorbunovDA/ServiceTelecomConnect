@@ -95,6 +95,7 @@
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txB_comment = new System.Windows.Forms.TextBox();
             this.txB_decommissionSerialNumber = new System.Windows.Forms.TextBox();
             this.txb_flag_all_BD = new System.Windows.Forms.TextBox();
             this.textBox_parts_7 = new System.Windows.Forms.TextBox();
@@ -201,7 +202,7 @@
             this.btn_record_decommissionSerialNumber = new System.Windows.Forms.Button();
             this.btn_decommissionSerialNumber_close = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
-            this.txB_comment = new System.Windows.Forms.TextBox();
+            this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -1041,14 +1042,22 @@
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
             // 
+            // txB_comment
+            // 
+            this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_comment.Location = new System.Drawing.Point(673, 42);
+            this.txB_comment.Name = "txB_comment";
+            this.txB_comment.Size = new System.Drawing.Size(35, 26);
+            this.txB_comment.TabIndex = 108;
+            this.txB_comment.Visible = false;
+            // 
             // txB_decommissionSerialNumber
             // 
             this.txB_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_decommissionSerialNumber.Location = new System.Drawing.Point(632, 42);
+            this.txB_decommissionSerialNumber.Location = new System.Drawing.Point(630, 42);
             this.txB_decommissionSerialNumber.Name = "txB_decommissionSerialNumber";
-            this.txB_decommissionSerialNumber.Size = new System.Drawing.Size(35, 26);
+            this.txB_decommissionSerialNumber.Size = new System.Drawing.Size(33, 26);
             this.txB_decommissionSerialNumber.TabIndex = 107;
-            this.txB_decommissionSerialNumber.Visible = false;
             // 
             // txb_flag_all_BD
             // 
@@ -1415,7 +1424,7 @@
             this.textBox_serialNumber.Location = new System.Drawing.Point(12, 108);
             this.textBox_serialNumber.Name = "textBox_serialNumber";
             this.textBox_serialNumber.ReadOnly = true;
-            this.textBox_serialNumber.Size = new System.Drawing.Size(200, 26);
+            this.textBox_serialNumber.Size = new System.Drawing.Size(235, 26);
             this.textBox_serialNumber.TabIndex = 11;
             this.textBox_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -2324,14 +2333,10 @@
             this.label33.TabIndex = 6;
             this.label33.Text = "№ Акта списания:";
             // 
-            // txB_comment
+            // закрытьToolStripMenuItem
             // 
-            this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_comment.Location = new System.Drawing.Point(673, 42);
-            this.txB_comment.Name = "txB_comment";
-            this.txB_comment.Size = new System.Drawing.Size(35, 26);
-            this.txB_comment.TabIndex = 108;
-            this.txB_comment.Visible = false;
+            this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
+            this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // ST_WorkForm
             // 
@@ -2561,5 +2566,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox textBox_decommissionSerialNumber;
         private System.Windows.Forms.TextBox txB_comment;
+        private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
     }
 }
