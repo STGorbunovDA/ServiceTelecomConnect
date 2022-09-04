@@ -153,6 +153,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
                 dataGridView1.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
                 dataGridView1.Columns.Add("decommissionSerialNumber", "№ акта списания");
+                dataGridView1.Columns.Add("comment", "Примечание");
                 dataGridView1.Columns.Add("IsNew", String.Empty);
                 dataGridView1.Columns[12].Visible = false;
                 dataGridView1.Columns[13].Visible = false;
@@ -177,7 +178,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns[35].Visible = false;
                 dataGridView1.Columns[36].Visible = false;
                 dataGridView1.Columns[37].Visible = false;
-                dataGridView1.Columns[39].Visible = false;
+                dataGridView1.Columns[40].Visible = false;
             }
             catch (Exception ex)
             {
@@ -201,7 +202,7 @@ namespace ServiceTelecomConnect
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
                          record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                          record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), RowState.ModifieldNew)));
+                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39), RowState.ModifieldNew)));
             }
             catch (Exception ex)
             {
@@ -261,6 +262,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Columns[10].Width = 100;
                     dataGridView1.Columns[11].Width = 100;
                     dataGridView1.Columns[17].Width = 120;
+                    dataGridView1.Columns[39].Width = 300;
 
                 }
                 catch (MySqlException)
@@ -815,6 +817,7 @@ namespace ServiceTelecomConnect
                     textBox_parts_6.Text = row.Cells[36].Value.ToString();
                     textBox_parts_7.Text = row.Cells[37].Value.ToString();
                     txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
+                    txB_comment.Text = row.Cells[39].Value.ToString();
                 }
             }
             catch (Exception ex)
@@ -1106,14 +1109,14 @@ namespace ServiceTelecomConnect
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-                    dataGridView1.Rows[row.Index].Cells[39].Value = RowState.Deleted;
+                    dataGridView1.Rows[row.Index].Cells[40].Value = RowState.Deleted;
                 }
 
                 DB.GetInstance.openConnection();
 
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
-                    var rowState = (RowState)dataGridView1.Rows[index].Cells[39].Value;//проверить индекс
+                    var rowState = (RowState)dataGridView1.Rows[index].Cells[40].Value;//проверить индекс
 
                     if (rowState == RowState.Deleted)
                     {
@@ -4439,6 +4442,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Показать списания", Show_radiostantion_decommission_Click));
+                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", Create_act_decommissionSerialNumber));
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -4698,6 +4702,7 @@ namespace ServiceTelecomConnect
                             changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
                             changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
                             changeRSTForm.textBox_post.Text = textBox_post.Text;
+                            changeRSTForm.txB_comment.Text = txB_comment.Text;
 
                             if (textBox_dateIssue.Text == "")
                             {
@@ -5736,7 +5741,7 @@ namespace ServiceTelecomConnect
                                                        $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                        $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                        $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                       $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                       $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -5874,7 +5879,7 @@ namespace ServiceTelecomConnect
                                                     $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                     $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                     $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -6012,7 +6017,7 @@ namespace ServiceTelecomConnect
                                                     $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
                                                     $"'{(values[8].Replace(" ", "").Trim())}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
                                                     $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -6151,6 +6156,7 @@ namespace ServiceTelecomConnect
                 dataGridView2.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
                 dataGridView2.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
                 dataGridView2.Columns.Add("decommissionSerialNumber", "Номер  акта списания");
+                dataGridView2.Columns.Add("comment", "Примечание");
                 dataGridView2.Columns.Add("IsNew", String.Empty);
 
                 if (File.Exists("s.json"))
@@ -6208,6 +6214,7 @@ namespace ServiceTelecomConnect
                             dataGridView2.Rows[n].Cells[36].Value = fetch[i]["parts_6"].ToString();
                             dataGridView2.Rows[n].Cells[37].Value = fetch[i]["parts_7"].ToString();
                             dataGridView2.Rows[n].Cells[38].Value = fetch[i]["decommissionSerialNumber"].ToString();
+                            dataGridView2.Rows[n].Cells[38].Value = fetch[i]["comment"].ToString();
                         }
                     }
                     for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -6251,6 +6258,7 @@ namespace ServiceTelecomConnect
                         var parts_6 = dataGridView2.Rows[i].Cells["parts_6"].Value.ToString();
                         var parts_7 = dataGridView2.Rows[i].Cells["parts_7"].Value.ToString();
                         var decommissionSerialNumber = dataGridView2.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
+                        var comment = dataGridView2.Rows[i].Cells["comment"].Value.ToString();
 
                         string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                             $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
@@ -6261,7 +6269,7 @@ namespace ServiceTelecomConnect
                             $"completed_works_2 = '{completed_works_2}', completed_works_3 = '{completed_works_3}', completed_works_4 = '{completed_works_4}', " +
                             $"completed_works_5 = '{completed_works_5}', completed_works_6 = '{completed_works_6}', completed_works_7 = '{completed_works_7}', " +
                             $"parts_1 = '{parts_1}', parts_2 = '{parts_2}', parts_3 = '{parts_3}',  parts_4 = '{parts_4}',  parts_5 = '{parts_5}', parts_6 = '{parts_6}',  " +
-                            $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}'  WHERE id = '{id}'";
+                            $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}', comment = '{comment}'  WHERE id = '{id}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                         {
@@ -6357,7 +6365,8 @@ namespace ServiceTelecomConnect
                         parts_5 = row.Cells[35].Value,
                         parts_6 = row.Cells[36].Value,
                         parts_7 = row.Cells[37].Value,
-                        decommissionSerialNumber = row.Cells[38].Value
+                        decommissionSerialNumber = row.Cells[38].Value,
+                        comment = row.Cells[38].Value
                     });
                     products.Add(product);
                 }
@@ -6643,6 +6652,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Columns[10].Width = 100;
                     dataGridView1.Columns[11].Width = 100;
                     dataGridView1.Columns[17].Width = 120;
+                    dataGridView1.Columns[39].Width = 300;
                 }
                 catch (MySqlException)
                 {
@@ -6741,6 +6751,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Columns[10].Width = 100;
                     dataGridView1.Columns[11].Width = 100;
                     dataGridView1.Columns[17].Width = 120;
+                    dataGridView1.Columns[39].Width = 300;
                 }
                 catch (MySqlException)
                 {
@@ -6904,18 +6915,19 @@ namespace ServiceTelecomConnect
                                 var manipulator = textBox_manipulator.Text;
                                 var AKB = textBox_AKB.Text;
                                 var batteryСharger = textBox_batteryСharger.Text;
+                                var comment = txB_comment.Text;
 
                                 var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
                                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                             $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                             $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
                                             $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
                                             $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
                                             $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                             $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{decommissionSerialNumber}')";
+                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{decommissionSerialNumber}', '{comment}')";
 
                                 using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                 {
@@ -7017,6 +7029,18 @@ namespace ServiceTelecomConnect
                 {
                     DB.GetInstance.closeConnection();
                 }
+            }
+        }
+
+        #endregion
+
+        #region сформировать акт списания
+
+        void Create_act_decommissionSerialNumber(object sender, EventArgs e)
+        {
+            if(txB_decommissionSerialNumber.Text != "")
+            {
+
             }
         }
 

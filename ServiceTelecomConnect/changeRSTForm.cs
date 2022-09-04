@@ -80,6 +80,8 @@ namespace ServiceTelecomConnect
                 var manipulator = textBox_manipulator.Text;
                 var AKB = textBox_AKB.Text;
                 var batteryСharger = textBox_batteryСharger.Text;
+                var comment = txB_comment.Text;
+
                 if (dateIssue.Length > 0)
                 {
                     try
@@ -345,7 +347,7 @@ namespace ServiceTelecomConnect
                                 $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                 $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                 $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                $"batteryСharger = '{batteryСharger}' WHERE serialNumber = '{serialNumber}'";
+                                $"batteryСharger = '{batteryСharger}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
 
                             var changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
                                 $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
@@ -353,7 +355,7 @@ namespace ServiceTelecomConnect
                                 $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                 $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                 $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                $"batteryСharger = '{batteryСharger}' WHERE serialNumber = '{serialNumber}'";
+                                $"batteryСharger = '{batteryСharger}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
 
                             using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                             {

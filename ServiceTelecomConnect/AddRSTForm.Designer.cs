@@ -90,6 +90,8 @@
             this.button_Enable_editor_comBox_model = new System.Windows.Forms.Button();
             this.button_model_radiostation_name = new System.Windows.Forms.Button();
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
+            this.txB_comment = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -122,7 +124,7 @@
             this.button_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_save_add_rst.Enabled = false;
             this.button_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_save_add_rst.Location = new System.Drawing.Point(344, 476);
+            this.button_save_add_rst.Location = new System.Drawing.Point(699, 495);
             this.button_save_add_rst.Name = "button_save_add_rst";
             this.button_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.button_save_add_rst.TabIndex = 28;
@@ -835,13 +837,36 @@
             this.monthCalendar2.Visible = false;
             this.monthCalendar2.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar2_DateSelected);
             // 
+            // txB_comment
+            // 
+            this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_comment.Location = new System.Drawing.Point(153, 466);
+            this.txB_comment.MaxLength = 49;
+            this.txB_comment.Multiline = true;
+            this.txB_comment.Name = "txB_comment";
+            this.txB_comment.Size = new System.Drawing.Size(503, 59);
+            this.txB_comment.TabIndex = 100;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(18, 485);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(108, 20);
+            this.label14.TabIndex = 101;
+            this.label14.Text = "Примечание:";
+            // 
             // AddRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(859, 531);
+            this.ClientSize = new System.Drawing.Size(859, 551);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.monthCalendar2);
             this.Controls.Add(this.button_model_radiostation_name);
             this.Controls.Add(this.button_Enable_editor_comBox_model);
@@ -905,8 +930,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(875, 570);
-            this.MinimumSize = new System.Drawing.Size(875, 570);
+            this.MaximumSize = new System.Drawing.Size(875, 590);
+            this.MinimumSize = new System.Drawing.Size(875, 590);
             this.Name = "AddRSTForm";
             this.ShowIcon = false;
             this.Text = "Добавление радиостанции";
@@ -983,5 +1008,7 @@
         private System.Windows.Forms.Button button_Enable_editor_comBox_model;
         private System.Windows.Forms.Button button_model_radiostation_name;
         private System.Windows.Forms.MonthCalendar monthCalendar2;
+        internal System.Windows.Forms.TextBox txB_comment;
+        private System.Windows.Forms.Label label14;
     }
 }

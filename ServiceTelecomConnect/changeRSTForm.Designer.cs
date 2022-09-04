@@ -88,11 +88,11 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.textBox_batteryСharger = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.comboBox_model = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txB_comment = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -259,7 +259,7 @@
             this.button_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_save_add_rst.Enabled = false;
             this.button_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_save_add_rst.Location = new System.Drawing.Point(368, 508);
+            this.button_save_add_rst.Location = new System.Drawing.Point(696, 507);
             this.button_save_add_rst.Name = "button_save_add_rst";
             this.button_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.button_save_add_rst.TabIndex = 28;
@@ -808,28 +808,6 @@
             this.textBox_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_batteryСharger_KeyUp);
             this.textBox_batteryСharger.Leave += new System.EventHandler(this.TextBox_batteryСharger_Leave);
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.Transparent;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label41.Location = new System.Drawing.Point(36, 465);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(312, 18);
-            this.label41.TabIndex = 106;
-            this.label41.Text = "______________________________________";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.Transparent;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label42.Location = new System.Drawing.Point(498, 465);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(312, 18);
-            this.label42.TabIndex = 107;
-            this.label42.Text = "______________________________________";
-            // 
             // comboBox_model
             // 
             this.comboBox_model.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -853,6 +831,27 @@
             this.monthCalendar2.Visible = false;
             this.monthCalendar2.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar2_DateSelected);
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(21, 497);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(108, 20);
+            this.label36.TabIndex = 110;
+            this.label36.Text = "Примечание:";
+            // 
+            // txB_comment
+            // 
+            this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_comment.Location = new System.Drawing.Point(156, 478);
+            this.txB_comment.MaxLength = 49;
+            this.txB_comment.Multiline = true;
+            this.txB_comment.Name = "txB_comment";
+            this.txB_comment.Size = new System.Drawing.Size(503, 59);
+            this.txB_comment.TabIndex = 109;
+            // 
             // changeRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -860,9 +859,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 561);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.monthCalendar2);
-            this.Controls.Add(this.label42);
-            this.Controls.Add(this.label41);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.textBox_batteryСharger);
             this.Controls.Add(this.label35);
@@ -998,10 +997,10 @@
         internal System.Windows.Forms.TextBox textBox_manipulator;
         internal System.Windows.Forms.TextBox textBox_antenna;
         internal System.Windows.Forms.TextBox textBox_batteryСharger;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label42;
         internal System.Windows.Forms.ComboBox comboBox_model;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.MonthCalendar monthCalendar2;
+        private System.Windows.Forms.Label label36;
+        internal System.Windows.Forms.TextBox txB_comment;
     }
 }
