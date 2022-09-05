@@ -67,7 +67,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.GetInstance.AvailabilityChanged_bool())
+                if (Internet_check.AvailabilityChanged_bool())
                 {
                     var loginUser = loginField.Text;
                     var passUser = md5.hashPassword(passField.Text);
@@ -224,7 +224,7 @@ namespace ServiceTelecomConnect
         }
         Boolean CheackUser(string loginUser, string passUser)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
 

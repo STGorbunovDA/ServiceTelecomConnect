@@ -29,7 +29,7 @@ namespace ServiceTelecomConnect
 
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 DB.GetInstance.openConnection();
                 string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";

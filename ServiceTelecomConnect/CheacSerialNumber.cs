@@ -29,7 +29,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheacSerialNumber_radiostantion_decommission(string serialNumber)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -71,7 +71,7 @@ namespace ServiceTelecomConnect
         /// <returns></returns>
         public Boolean CheacSerialNumber_radiostantion(string serialNumber)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -106,7 +106,7 @@ namespace ServiceTelecomConnect
         }
         public Boolean CheackNumberAct_radiostantion(string numberAct)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -140,7 +140,7 @@ namespace ServiceTelecomConnect
         }
         public Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {

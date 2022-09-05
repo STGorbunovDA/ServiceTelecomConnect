@@ -22,7 +22,7 @@ namespace ServiceTelecomConnect
 
         void Button_save_add_rst_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 string Mesage;
                 Mesage = "Вы действительно хотите добавить ремонт?";

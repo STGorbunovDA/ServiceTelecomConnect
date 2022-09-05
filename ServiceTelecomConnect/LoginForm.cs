@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.GetInstance.AvailabilityChanged_bool())
+                if (Internet_check.AvailabilityChanged_bool())
                 {
                     var loginUser = loginField.Text;
                     var passUser = md5.hashPassword(passField.Text);

@@ -216,7 +216,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -312,7 +312,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.GetInstance.AvailabilityChanged_bool())
+                if (Internet_check.AvailabilityChanged_bool())
                 {
                     try
                     {
@@ -454,7 +454,7 @@ namespace ServiceTelecomConnect
         {
             Get_date_save_datagridview();
 
-            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool() == true)
             {
                 new Thread(() => { Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
             }
@@ -463,7 +463,7 @@ namespace ServiceTelecomConnect
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
         void Copy_BD_radiostantion_in_radiostantion_copy()
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -471,7 +471,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool() == true)
                         {
                             DB_3.GetInstance.openConnection();
                             command.ExecuteNonQuery();
@@ -483,7 +483,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool() == true)
                         {
                             DB_3.GetInstance.openConnection();
                             command2.ExecuteNonQuery();
@@ -504,7 +504,7 @@ namespace ServiceTelecomConnect
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -850,7 +850,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         async void Search(DataGridView dgw)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1080,7 +1080,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_delete_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1164,7 +1164,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_update_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1223,7 +1223,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -1389,7 +1389,7 @@ namespace ServiceTelecomConnect
 
         void Button_form_act_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 Update_datagridview_number_act(dataGridView1);
                 dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
@@ -4353,7 +4353,7 @@ namespace ServiceTelecomConnect
 
         void PictureBox_seach_datadrid_replay_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
@@ -4367,7 +4367,7 @@ namespace ServiceTelecomConnect
 
         void Seach_DataGrid_Replay_RST(DataGridView dgw)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4550,7 +4550,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_update_Click_after_Seach_DataGrid_Replay_RST(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4585,7 +4585,7 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4622,7 +4622,7 @@ namespace ServiceTelecomConnect
 
         Boolean CheackNumberAct_radiostantion(string numberActRemont)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4663,7 +4663,7 @@ namespace ServiceTelecomConnect
         #region отк. формы добавления ремонтов
         private void button_new_add_rst_form_click_remont(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool() == true)
             {
                 try
                 {
@@ -4733,7 +4733,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         private void button_new_add_rst_form_Click_change(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool() == true)
             {
                 try
                 {
@@ -4820,7 +4820,7 @@ namespace ServiceTelecomConnect
         /// <param name="dgw"></param>
         async void Update_datagridview_number_act(DataGridView dgw)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -4880,7 +4880,7 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_remont_act_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 if (textBox_numberActRemont.Text == "")
                 {
@@ -5713,7 +5713,7 @@ namespace ServiceTelecomConnect
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 Block_ST_Work_Form_control();
                 Functional_loading_panel.Visible = true;
@@ -5726,7 +5726,7 @@ namespace ServiceTelecomConnect
 
         async void Loading_file_current_BD_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool() == true)
             {
                 clear_BD_current_year.Enabled = false;
                 manual_backup_current_DB.Enabled = false;
@@ -5753,7 +5753,7 @@ namespace ServiceTelecomConnect
         }
         void Loading_file_current_BD()
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -5772,11 +5772,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                                if (Internet_check.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -5892,7 +5892,7 @@ namespace ServiceTelecomConnect
         }
         void Loading_file_last_year()
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -5911,11 +5911,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                                if (Internet_check.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -6030,7 +6030,7 @@ namespace ServiceTelecomConnect
         }
         void Loading_file_full_BD_method()
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6049,11 +6049,11 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool() == true)
                         {
                             using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                             {
-                                if (Internet_check.GetInstance.AvailabilityChanged_bool() == true)
+                                if (Internet_check.AvailabilityChanged_bool() == true)
                                 {
                                     connection.Open();
 
@@ -6147,7 +6147,7 @@ namespace ServiceTelecomConnect
 
         async void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 clear_BD_current_year.Enabled = false;
                 manual_backup_current_DB.Enabled = false;
@@ -6663,7 +6663,7 @@ namespace ServiceTelecomConnect
             button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6762,7 +6762,7 @@ namespace ServiceTelecomConnect
             button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -6881,7 +6881,7 @@ namespace ServiceTelecomConnect
                 label_complete.Visible = true;
                 lbl_full_complete_act.Visible = true;
                 //lbl_full_complete_act.Text += textBox_numberAct.Text + ", ";
-                lbl_full_complete_act.Text += $"{textBox_numberAct.Text}-{textBox_company.Text}, ";
+                if(lbl_full_complete_act.Text != $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,")
 
                 try
                 {
@@ -6894,8 +6894,8 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                label_cell_rows.Text = c.ToString();
-                label_sum_TO_selection.Text = sum.ToString();
+                //label_cell_rows.Text = c.ToString();
+                //label_sum_TO_selection.Text = sum.ToString();
             }
         }
         #region для редактирования актов заполняемых до конца
@@ -7014,7 +7014,7 @@ namespace ServiceTelecomConnect
         {
             if (textBox_decommissionSerialNumber.Text != "")
             {
-                if (Internet_check.GetInstance.AvailabilityChanged_bool())
+                if (Internet_check.AvailabilityChanged_bool())
                 {
                     try
                     {
@@ -7120,7 +7120,7 @@ namespace ServiceTelecomConnect
         void Show_radiostantion_decommission_Click(object sender, EventArgs e)
         {
 
-            if (Internet_check.GetInstance.AvailabilityChanged_bool())
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
