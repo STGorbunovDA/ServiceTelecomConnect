@@ -421,11 +421,26 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
                 dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
+                ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
                 timer.Interval = (15 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
+                /// получение актов который не заполенны из реестра, которые указал пользователь
+                RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                if (reg2 != null)
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    lbl_full_complete_act.Text = helloKey.GetValue("Акты_незаполненные").ToString();
+                    if (lbl_full_complete_act.Text != "")
+                    {
+                        label_complete.Visible = true;
+                        lbl_full_complete_act.Visible = true;
+                    }
+                    helloKey.Close();
+                }
 
             }
             catch (Exception ex)
@@ -6845,6 +6860,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region подсветка акта цветом и его подсчёт
+
         void DataGridView1_DefaultCellStyleChanged(object sender, EventArgs e)
         {
             if (textBox_numberAct.Text != "")
@@ -6861,13 +6877,108 @@ namespace ServiceTelecomConnect
                         c++;
                     }
                 }
+
                 label_complete.Visible = true;
                 lbl_full_complete_act.Visible = true;
-                lbl_full_complete_act.Text += textBox_numberAct.Text + ", ";
+                //lbl_full_complete_act.Text += textBox_numberAct.Text + ", ";
+                lbl_full_complete_act.Text += $"{textBox_numberAct.Text}-{textBox_company.Text}, ";
+
+                try
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    helloKey.SetValue("Акты_незаполненные", $"{lbl_full_complete_act.Text}");
+                    helloKey.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
                 label_cell_rows.Text = c.ToString();
                 label_sum_TO_selection.Text = sum.ToString();
             }
         }
+        #region для редактирования актов заполняемых до конца
+
+        void Lbl_full_complete_act_DoubleClick(object sender, EventArgs e)
+        {
+            lbl_full_complete_act.Visible = false;
+            txB_lbl_full_complete_act.Text = lbl_full_complete_act.Text;
+            txB_lbl_full_complete_act.Visible = true;
+        }
+
+        void Panel3_Click(object sender, EventArgs e)
+        {
+            if (txB_lbl_full_complete_act.Visible)
+            {
+                try
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    helloKey.SetValue("Акты_незаполненные", $"{txB_lbl_full_complete_act.Text}");
+                    helloKey.Close();
+
+                    RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    if (reg2 != null)
+                    {
+                        RegistryKey currentUserKey2 = Registry.CurrentUser;
+                        RegistryKey helloKey2 = currentUserKey2.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                        lbl_full_complete_act.Text = helloKey2.GetValue("Акты_незаполненные").ToString();
+
+                        label_complete.Visible = true;
+                        lbl_full_complete_act.Visible = true;
+                        txB_lbl_full_complete_act.Visible = false;
+
+                        helloKey2.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+
+        }
+
+        void TxB_lbl_full_complete_act_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)
+            {
+                if (txB_lbl_full_complete_act.Visible)
+                {
+                    try
+                    {
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                        helloKey.SetValue("Акты_незаполненные", $"{txB_lbl_full_complete_act.Text}");
+                        helloKey.Close();
+
+                        RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                        if (reg2 != null)
+                        {
+                            RegistryKey currentUserKey2 = Registry.CurrentUser;
+                            RegistryKey helloKey2 = currentUserKey2.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                            lbl_full_complete_act.Text = helloKey2.GetValue("Акты_незаполненные").ToString();
+
+                            label_complete.Visible = true;
+                            lbl_full_complete_act.Visible = true;
+                            txB_lbl_full_complete_act.Visible = false;
+
+                            helloKey2.Close();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region списание РСТ
@@ -7106,9 +7217,13 @@ namespace ServiceTelecomConnect
             }
         }
 
+
+
+
         #endregion
 
         #endregion
+
 
     }
 }
