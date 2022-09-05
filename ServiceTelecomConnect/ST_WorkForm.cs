@@ -1377,6 +1377,48 @@ namespace ServiceTelecomConnect
             if (Internet_check.GetInstance.AvailabilityChanged_bool())
             {
                 Update_datagridview_number_act(dataGridView1);
+                dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
+                textBox_id.Text = row.Cells[0].Value.ToString();
+                comboBox_poligon.Text = row.Cells[1].Value.ToString();
+                textBox_company.Text = row.Cells[2].Value.ToString();
+                textBox_location.Text = row.Cells[3].Value.ToString();
+                comboBox_model.Text = row.Cells[4].Value.ToString();
+                textBox_serialNumber.Text = row.Cells[5].Value.ToString();
+                textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
+                textBox_networkNumber.Text = row.Cells[7].Value.ToString();
+                textBox_dateTO.Text = row.Cells[8].Value.ToString();
+                textBox_numberAct.Text = row.Cells[9].Value.ToString();
+                textBox_city.Text = row.Cells[10].Value.ToString();
+                textBox_price.Text = row.Cells[11].Value.ToString();
+                textBox_representative.Text = row.Cells[12].Value.ToString();
+                textBox_post.Text = row.Cells[13].Value.ToString();
+                textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
+                textBox_dateIssue.Text = row.Cells[15].Value.ToString();
+                textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
+                textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
+                comboBox_сategory.Text = row.Cells[18].Value.ToString();
+                textBox_priceRemont.Text = row.Cells[19].Value.ToString();
+                textBox_antenna.Text = row.Cells[20].Value.ToString();
+                textBox_manipulator.Text = row.Cells[21].Value.ToString();
+                textBox_AKB.Text = row.Cells[22].Value.ToString();
+                textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
+                textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
+                textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
+                textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
+                textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
+                textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
+                textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
+                textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
+                textBox_parts_1.Text = row.Cells[31].Value.ToString();
+                textBox_parts_2.Text = row.Cells[32].Value.ToString();
+                textBox_parts_3.Text = row.Cells[33].Value.ToString();
+                textBox_parts_4.Text = row.Cells[34].Value.ToString();
+                textBox_parts_5.Text = row.Cells[35].Value.ToString();
+                textBox_parts_6.Text = row.Cells[36].Value.ToString();
+                textBox_parts_7.Text = row.Cells[37].Value.ToString();
+                txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
+                txB_comment.Text = row.Cells[39].Value.ToString();
                 ExportToExcelAct();
                 RefreshDataGrid(dataGridView1);
             }
@@ -6819,6 +6861,9 @@ namespace ServiceTelecomConnect
                         c++;
                     }
                 }
+                label_complete.Visible = true;
+                lbl_full_complete_act.Visible = true;
+                lbl_full_complete_act.Text += textBox_numberAct.Text + ", ";
                 label_cell_rows.Text = c.ToString();
                 label_sum_TO_selection.Text = sum.ToString();
             }
@@ -7064,7 +7109,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #endregion
-
 
     }
 }
