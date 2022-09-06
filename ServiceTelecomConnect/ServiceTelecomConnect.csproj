@@ -259,14 +259,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheacReggedit.cs" />
     <Compile Include="CheacSerialNumber.cs" />
     <Compile Include="DB_2.cs" />
     <Compile Include="DB_3.cs" />
     <Compile Include="DB_4.cs" />
+    <Compile Include="Filling_datagridview.cs" />
     <Compile Include="FormClose.cs" />
     <Compile Include="InstanceChecker.cs" />
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
+    <Compile Include="PrintDocOffice.cs" />
     <Compile Include="remontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
