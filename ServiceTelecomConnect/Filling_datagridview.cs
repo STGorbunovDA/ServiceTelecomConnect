@@ -13,7 +13,7 @@ namespace ServiceTelecomConnect
         /// <summary>
         /// заполняем dataGridView1 колонки
         /// </summary>
-        public static void CreateColums(DataGridView dgw)
+        internal static void CreateColums(DataGridView dgw)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace ServiceTelecomConnect
         /// </summary>
         /// <param name="dgw"></param>
         /// <param name="record"></param>
-        public static void ReedSingleRow(DataGridView dgw, IDataRecord record)
+        internal static void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace ServiceTelecomConnect
         /// выполняем подключение к базе данных, выполняем команду запроса и передаём данные ReedSingleRow
         /// </summary>
         /// <param name="dgw"></param>
-        public static void RefreshDataGrid(DataGridView dgw, string city)
+        internal static void RefreshDataGrid(DataGridView dgw, string city)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -188,7 +188,7 @@ namespace ServiceTelecomConnect
 
         #region загрузка всей таблицы ТО в текущем году
 
-        public static void Full_BD(DataGridView dgw)
+        internal static void Full_BD(DataGridView dgw)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -260,7 +260,7 @@ namespace ServiceTelecomConnect
         /// метод поиска по базе данных, подключение к базе, выполнение запроса так-же внутри  вызываем метод ReedSingleRow для вывода данных из базы
         /// </summary>
         /// <param name="dgw"></param>
-        public static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search)
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -348,7 +348,7 @@ namespace ServiceTelecomConnect
 
         #region поиск отсутсвующих рст исходя из предыдущего года
 
-        public static void Seach_DataGrid_Replay_RST(DataGridView dgw, string txb_flag_all_BD, string city)
+        internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, string txb_flag_all_BD, string city)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -451,7 +451,7 @@ namespace ServiceTelecomConnect
 
         #region update_datagridview_number_act
 
-        public static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct)
+        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -505,7 +505,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
-        public static void Copy_BD_radiostantion_in_radiostantion_copy()
+        internal static void Copy_BD_radiostantion_in_radiostantion_copy()
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -540,34 +540,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show(ex.ToString()); ;
                 }
             }
-
-        }
-
-        #endregion
-
-        #region Счётчики
-
-        public static Tuple<string, string, string, string> Counters(DataGridView dgw)
-        {
-            int colRows = dgw.Rows.Count;
-
-            int colRemont = 0;
-
-            decimal sumTO = 0;
-
-            decimal sumRemont = 0;
-
-            for (int i = 0; i < dgw.Rows.Count; ++i)
-            {
-                if ((Boolean)(dgw.Rows[i].Cells["category"].Value.ToString() != ""))
-                {
-                    colRemont++;
-                }
-                sumTO += Convert.ToDecimal(dgw.Rows[i].Cells["price"].Value);
-                sumRemont += Convert.ToDecimal(dgw.Rows[i].Cells["priceRemont"].Value);
-            }
-
-            return Tuple.Create(colRows.ToString(), sumTO.ToString(), colRemont.ToString(), sumRemont.ToString());
         }
 
         #endregion
@@ -577,7 +549,7 @@ namespace ServiceTelecomConnect
         /// <summary>
         /// метод удаления значения из базы данных
         /// </summary>
-        public static void DeleteRowСell(DataGridView dgw)
+        internal static void DeleteRowСell(DataGridView dgw)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
