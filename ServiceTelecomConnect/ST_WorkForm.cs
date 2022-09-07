@@ -718,6 +718,9 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
+                    
                     AddRSTForm addRSTForm = new AddRSTForm();
                     addRSTForm.DoubleBufferedForm(true);
                     addRSTForm.textBox_numberAct.Text = textBox_number_printing_doc_datePanel.Text + "/";
@@ -736,15 +739,16 @@ namespace ServiceTelecomConnect
                     addRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
                     addRSTForm.textBox_post.Text = textBox_post.Text;
                     addRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
-
+                    if (dataGridView1.RowCount != 0)
+                    {              
+                        addRSTForm.lbl_last_act.Text = row.Cells[9].Value.ToString();
+                    }
                     addRSTForm.ShowDialog();
                     Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
 
                     if (dataGridView1.RowCount != 0)
                     {
                         dataGridView1.ClearSelection();
-                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-                        DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
                         textBox_numberAct.Text = row.Cells[9].Value.ToString();
                     }
                     // обновляем по акту
@@ -872,7 +876,7 @@ namespace ServiceTelecomConnect
 
         #region cell_click_datagridview для печати акта ТО и ремонта
 
-        void cellClickDatagridview_printActTO_Remont()
+        void CellClickDatagridview_printActTO_Remont()
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
             DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
@@ -925,7 +929,7 @@ namespace ServiceTelecomConnect
         void Button_form_act_Click(object sender, EventArgs e)
         {
             Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
-            cellClickDatagridview_printActTO_Remont();
+            CellClickDatagridview_printActTO_Remont();
             PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                 label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                 label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
@@ -950,7 +954,7 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
-                cellClickDatagridview_printActTO_Remont();
+                CellClickDatagridview_printActTO_Remont();
                 PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                      label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                      label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text,
@@ -3656,7 +3660,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = false;
             panel3.Enabled = false;
             Filling_datagridview.Show_radiostantion_decommission(dataGridView1, textBox_city.Text);
-            Counters();           
+            Counters();
         }
 
         #endregion

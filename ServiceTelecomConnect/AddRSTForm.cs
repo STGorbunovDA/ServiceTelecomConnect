@@ -380,9 +380,9 @@ namespace ServiceTelecomConnect
                                             DB.GetInstance.closeConnection();
                                             Add_rst_radiostantion_full();
                                             MessageBox.Show("Радиостанция успешно добавлена!");
-                                            serialNumber = "";
-                                            inventoryNumber = "";
-                                            networkNumber = "";
+                                            textBox_serialNumber.Text = "";
+                                            textBox_inventoryNumber.Text = "";
+                                            textBox_networkNumber.Text = "";
                                         }
 
                                     }

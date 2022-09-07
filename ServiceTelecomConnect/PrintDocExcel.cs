@@ -359,13 +359,11 @@ namespace ServiceTelecomConnect
                             range_Consolidated11.NumberFormat = "@";
                             range_Consolidated12.NumberFormat = "@";
                             range_Consolidated13.Font.Size = 7;
-                            range_Consolidated13.Style.WrapText = true;
                             range_Consolidated14.Font.Size = 7;
-                            range_Consolidated14.Style.WrapText = true;
                             range_Consolidated15.Font.Size = 7;
-                            range_Consolidated15.Style.WrapText = true;
                             range_Consolidated16.Font.Size = 7;
-                            range_Consolidated16.Style.WrapText = true;
+
+                            post.Insert(post.Length/2, "\n");
 
                             workSheet.Cells[1, 5] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
                             workSheet.Cells[1, 13] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
@@ -429,12 +427,12 @@ namespace ServiceTelecomConnect
                             workSheet.Cells[40, 10] = $"{FIO_chief}";
                             workSheet.Cells[41, 9] = $"подпись";
                             workSheet.Cells[41, 10] = $"расшифровка подписи";
-                            workSheet.Cells[29, 13] = $"Сдал: {post}\n";
+                            workSheet.Cells[29, 13] = $"Сдал: {post}";
                             workSheet.Cells[31, 13] = $"должность";
                             workSheet.Cells[33, 14] = $"{representative}";
                             workSheet.Cells[34, 13] = $"подпись";
                             workSheet.Cells[34, 14] = $"расшифровка подписи";
-                            workSheet.Cells[36, 13] = $"Принял: {post}\n";
+                            workSheet.Cells[36, 13] = $"Принял: {post}";
                             workSheet.Cells[38, 13] = $"должность";
                             workSheet.Cells[40, 14] = $"{representative}";
                             workSheet.Cells[41, 13] = $"подпись";
@@ -1530,14 +1528,14 @@ namespace ServiceTelecomConnect
         internal static void PrintExcelActRemont(DataGridView dgw, string numberAct, string dateTO,
             string company, string location, string FIO_chief, string post, string representative,
             string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
-            string dateIssue, string city, string poligon, string сategory, string model, string serialNumber, 
-            string inventoryNumber, string networkNumber, string сompleted_works_1, string parts_1, 
+            string dateIssue, string city, string poligon, string сategory, string model, string serialNumber,
+            string inventoryNumber, string networkNumber, string сompleted_works_1, string parts_1,
             string сompleted_works_2, string parts_2, string сompleted_works_3, string parts_3,
             string сompleted_works_4, string parts_4, string сompleted_works_5, string parts_5,
-            string сompleted_works_6, string parts_6, string сompleted_works_7, string parts_7, string OKPO_remont, 
-            string BE_remont, string Full_name_company,string director_FIO_remont_company,string numberActRemont, 
-            string chairman_post_remont_company, string chairman_FIO_remont_company, string txb_1_post_remont_company, 
-            string txb_1_FIO_remont_company, string txb_2_post_remont_company, string txb_2_FIO_remont_company, 
+            string сompleted_works_6, string parts_6, string сompleted_works_7, string parts_7, string OKPO_remont,
+            string BE_remont, string Full_name_company, string director_FIO_remont_company, string numberActRemont,
+            string chairman_post_remont_company, string chairman_FIO_remont_company, string txb_1_post_remont_company,
+            string txb_1_FIO_remont_company, string txb_2_post_remont_company, string txb_2_FIO_remont_company,
             string txb_3_post_remont_company, string txb_3_FIO_remont_company)
         {
             Excel.Application exApp = new Excel.Application();

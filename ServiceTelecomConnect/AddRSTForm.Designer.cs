@@ -92,6 +92,8 @@
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
             this.txB_comment = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.lbl_last_act = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -858,6 +860,28 @@
             this.label14.TabIndex = 101;
             this.label14.Text = "Примечание:";
             // 
+            // lbl_last_act
+            // 
+            this.lbl_last_act.AutoSize = true;
+            this.lbl_last_act.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_last_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_last_act.Location = new System.Drawing.Point(769, 446);
+            this.lbl_last_act.Name = "lbl_last_act";
+            this.lbl_last_act.Size = new System.Drawing.Size(54, 15);
+            this.lbl_last_act.TabIndex = 102;
+            this.lbl_last_act.Text = "Пустой";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(680, 446);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(83, 15);
+            this.label36.TabIndex = 103;
+            this.label36.Text = "Крайний акт:";
+            // 
             // AddRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -865,6 +889,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 551);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.lbl_last_act);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.monthCalendar2);
@@ -1010,5 +1036,7 @@
         private System.Windows.Forms.MonthCalendar monthCalendar2;
         internal System.Windows.Forms.TextBox txB_comment;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label36;
+        internal System.Windows.Forms.Label lbl_last_act;
     }
 }
