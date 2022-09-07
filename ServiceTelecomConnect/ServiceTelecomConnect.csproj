@@ -269,7 +269,7 @@
     <Compile Include="InstanceChecker.cs" />
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
-    <Compile Include="PrintDocOffice.cs" />
+    <Compile Include="PrintDocExcel.cs" />
     <Compile Include="remontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,7 +343,7 @@
     <Compile Include="TutorialForm.Designer.cs">
       <DependentUpon>TutorialForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WordHelper.cs" />
+    <Compile Include="PrintDocWord.cs" />
     <EmbeddedResource Include="remontRSTForm.resx">
       <DependentUpon>remontRSTForm.cs</DependentUpon>
     </EmbeddedResource>

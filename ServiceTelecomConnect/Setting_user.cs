@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Globalization;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;

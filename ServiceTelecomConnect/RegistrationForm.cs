@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Drawing;
-using System.Net.NetworkInformation;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect

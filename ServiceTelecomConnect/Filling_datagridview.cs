@@ -9,6 +9,20 @@ namespace ServiceTelecomConnect
 {
     class Filling_datagridview
     {
+        #region состояние Rows
+        /// <summary>
+        /// для значений к базе данных, по данному статусу будем или удалять или редактировать
+        /// </summary>
+        enum RowState
+        {
+            Existed,
+            New,
+            Modifield,
+            ModifieldNew,
+            Deleted
+        }
+        #endregion
+
         #region заполнение datagrid
         /// <summary>
         /// заполняем dataGridView1 колонки
@@ -81,7 +95,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
-                dgw.Columns[40].Visible = false;
+               // dgw.Columns[40].Visible = false;
             }
             catch (Exception ex)
             {
@@ -560,8 +574,6 @@ namespace ServiceTelecomConnect
                         dgw.Rows[row.Index].Cells[40].Value = RowState.Deleted;
                     }
 
-                    DB.GetInstance.openConnection();
-
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
                         var rowState = (RowState)dgw.Rows[index].Cells[40].Value;//проверить индекс
@@ -573,12 +585,12 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                             {
+                                DB.GetInstance.openConnection();
                                 command.ExecuteNonQuery();
+                                DB.GetInstance.closeConnection();
                             }
                         }
                     }
-                    DB.GetInstance.closeConnection();
-
                 }
                 catch (Exception ex)
                 {
@@ -591,7 +603,7 @@ namespace ServiceTelecomConnect
 
         #region Удаление ремонта
 
-        public static void Delete_rst_remont(string numberActRemont, string serialNumber)
+        internal static void Delete_rst_remont(string numberActRemont, string serialNumber)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -663,6 +675,222 @@ namespace ServiceTelecomConnect
                 }
             }
             return true;
+        }
+
+        #endregion
+
+        #region списание рст
+
+        internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber, 
+            string city, string poligon, string company, string location, string model, string dateTO, string price, string representative, string post,
+            string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
+            string AKB, string batteryСharger, string comment)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (serialNumber != "")
+                    {
+                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
+                            $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
+                            $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
+                            $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                        }
+
+                        if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
+                        {
+
+                            var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                                $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
+                                $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
+                                $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
+                                $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
+
+
+                            using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.openConnection();
+                                command2.ExecuteNonQuery();
+                                DB.GetInstance.closeConnection();
+                            }
+                        }
+
+                        if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
+                        {
+                            var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
+                                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                        $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                        $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                        $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                        $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                        $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
+                                        $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
+                                        $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
+                                        $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                        $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{decommissionSerialNumber}', '{comment}')";
+
+                            using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.openConnection();
+                                command3.ExecuteNonQuery();
+                                DB.GetInstance.closeConnection();
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        #endregion
+
+        #region Удалить номер списание из таблицы radiostantion
+
+        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber, string city)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (decommissionSerialNumber != "")
+                    {
+                        var changeQuery = $"UPDATE radiostantion SET decommissionSerialNumber = '' WHERE serialNumber = '{serialNumber}' ";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                            MessageBox.Show("Списание удалено! Заполни инвентарный и сетевой номер заново!");          
+                        }
+
+                        CreateColums(dgw2);
+
+                        var queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%' AND serialNumber = '{serialNumber}'";
+                        using (MySqlCommand command2 = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+
+                            using (MySqlDataReader reader = command2.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRow(dgw2, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command2.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                        }
+                        dgw2.Rows[0].Cells[40].Value = RowState.Deleted;
+                        var id = Convert.ToInt32(dgw2.Rows[0].Cells[0].Value);
+                        var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE id = {id}";
+
+                        using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+                            command2.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    string Mesage2 = "Что-то полшло не так, мы обязательно разберёмся (Удаление из таблиц списаной рст)";
+
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                    {
+                        return;
+                    }
+                    MessageBox.Show(ex.ToString());
+                } 
+            }
+        }
+        #endregion
+
+
+        #region показать списания
+
+        internal static void Show_radiostantion_decommission(DataGridView dgw, string city)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (city != "")
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+                        string queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRow(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
+
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 180;
+                    dgw.Columns[5].Width = 150;
+                    dgw.Columns[6].Width = 178;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+                }
+                catch (Exception ex)
+                {
+                    string Mesage2 = "Что-то полшло не так, мы обязательно разберёмся (показать списания рст)";
+
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                    {
+                        return;
+                    }
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    DB.GetInstance.closeConnection();
+                }
+            }
         }
 
         #endregion

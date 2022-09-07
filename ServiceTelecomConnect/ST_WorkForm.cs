@@ -10,11 +10,9 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 using WinForms = System.Windows.Forms;
 
 
@@ -626,7 +624,7 @@ namespace ServiceTelecomConnect
             try
             {
                 string Mesage;
-                Mesage = "Вы действительно хотите удалить выделенную запись";
+                Mesage = $"Вы действительно хотите удалить радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -928,7 +926,7 @@ namespace ServiceTelecomConnect
         {
             Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
             cellClickDatagridview_printActTO_Remont();
-            PrintDocOffice.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
+            PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                 label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                 label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
             Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
@@ -953,16 +951,16 @@ namespace ServiceTelecomConnect
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
                 cellClickDatagridview_printActTO_Remont();
-                PrintDocOffice.PrintExcelActRemont(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
+                PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                      label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
-                     label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text, 
+                     label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text,
                      comboBox_model.Text, textBox_serialNumber.Text, textBox_inventoryNumber.Text, textBox_networkNumber.Text, textBox_сompleted_works_1.Text,
-                     textBox_parts_1.Text, textBox_сompleted_works_2.Text, textBox_parts_2.Text, textBox_сompleted_works_3.Text, textBox_parts_3.Text, 
-                     textBox_сompleted_works_4.Text, textBox_parts_4.Text, textBox_сompleted_works_5.Text, textBox_parts_5.Text, textBox_сompleted_works_6.Text, 
-                     textBox_parts_6.Text, textBox_сompleted_works_7.Text, textBox_parts_7.Text, textBox_OKPO_remont.Text, textBox_BE_remont.Text, 
-                     textBox_Full_name_company.Text, textBox_director_FIO_remont_company.Text, textBox_numberActRemont.Text, 
-                     textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text, 
-                     textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text, 
+                     textBox_parts_1.Text, textBox_сompleted_works_2.Text, textBox_parts_2.Text, textBox_сompleted_works_3.Text, textBox_parts_3.Text,
+                     textBox_сompleted_works_4.Text, textBox_parts_4.Text, textBox_сompleted_works_5.Text, textBox_parts_5.Text, textBox_сompleted_works_6.Text,
+                     textBox_parts_6.Text, textBox_сompleted_works_7.Text, textBox_parts_7.Text, textBox_OKPO_remont.Text, textBox_BE_remont.Text,
+                     textBox_Full_name_company.Text, textBox_director_FIO_remont_company.Text, textBox_numberActRemont.Text,
+                     textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text,
+                     textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text,
                      textBox_3_post_remont_company.Text, textBox_3_FIO_remont_company.Text);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 panel1.Enabled = true;
@@ -1233,8 +1231,12 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
-                            m.MenuItems.Add(new MenuItem("Показать списания", Show_radiostantion_decommission_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            if (txB_decommissionSerialNumber.Text != "")
+                            {
+                                m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                                m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
+                            }
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -1308,7 +1310,7 @@ namespace ServiceTelecomConnect
         void Delete_rst_remont_click(object sender, EventArgs e)
         {
             string Mesage;
-            Mesage = "Вы действительно хотите удалить ремонт?";
+            Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
@@ -3466,7 +3468,6 @@ namespace ServiceTelecomConnect
                 {
                     if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(textBox_numberAct.Text))
                     {
-                        //dataGridView1.Columns["numberAct"].DefaultCellStyle.ForeColor = Color.Gray;
                         dataGridView1.Rows[i].Cells["numberAct"].Style.BackColor = Color.Red;
                         sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                         c++;
@@ -3475,22 +3476,18 @@ namespace ServiceTelecomConnect
 
                 label_complete.Visible = true;
                 lbl_full_complete_act.Visible = true;
-                //lbl_full_complete_act.Text += textBox_numberAct.Text + ", ";
-                if (lbl_full_complete_act.Text != $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,")
-
-                    try
-                    {
-                        RegistryKey currentUserKey = Registry.CurrentUser;
-                        RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
-                        helloKey.SetValue("Акты_незаполненные", $"{lbl_full_complete_act.Text}");
-                        helloKey.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                //label_cell_rows.Text = c.ToString();
-                //label_sum_TO_selection.Text = sum.ToString();
+                lbl_full_complete_act.Text = $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
+                try
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    helloKey.SetValue("Акты_незаполненные", $"{lbl_full_complete_act.Text}");
+                    helloKey.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
         #region для редактирования актов заполняемых до конца
@@ -3578,18 +3575,27 @@ namespace ServiceTelecomConnect
 
         #region списание РСТ
 
+        /// <summary>
+        /// Закрытие панели заполнения № Акта списания
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Btn_decommissionSerialNumber_close_Click(object sender, EventArgs e)
         {
             panel_decommissionSerialNumber.Visible = false;
             panel_decommissionSerialNumber.Enabled = false;
         }
-
+        /// <summary>
+        /// Открытие панели заполнения № Акта списания
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
             if (textBox_serialNumber.Text != "")
             {
                 string Mesage;
-                Mesage = "Вы действительно хотите списать радиостанцию?";
+                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {textBox_serialNumber.Text} от предприятия {textBox_company.Text}";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -3605,184 +3611,52 @@ namespace ServiceTelecomConnect
 
         }
 
+        /// <summary>
+        /// Списание РСТ по номеру акта списания в БД и добавление в таблицу списание
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
         {
             if (textBox_decommissionSerialNumber.Text != "")
             {
-                if (Internet_check.AvailabilityChanged_bool())
-                {
-                    try
-                    {
-                        string serialNumber = textBox_serialNumber.Text;
-                        var decommissionSerialNumber = textBox_decommissionSerialNumber.Text;
-                        if (textBox_serialNumber.Text != "")
-                        {
-                            var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
-                                $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
-                                $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
-                                $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                                $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
-
-                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.openConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
-                            }
-
-                            if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
-                            {
-
-                                var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', " +
-                                    $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
-                                    $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
-                                    $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                                    $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
-
-
-                                using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.openConnection();
-                                    command2.ExecuteNonQuery();
-                                    DB.GetInstance.closeConnection();
-                                }
-                            }
-
-                            if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
-                            {
-                                var city = textBox_city.Text;
-                                var poligon = comboBox_poligon.Text;
-                                var company = textBox_company.Text;
-                                var location = textBox_location.Text;
-                                var model = comboBox_model.Text;
-                                var inventoryNumber = textBox_inventoryNumber.Text;
-                                var networkNumber = textBox_networkNumber.Text;
-                                var numberAct = textBox_numberAct.Text;
-                                var dateTO = textBox_dateTO.Text;
-                                var price = textBox_price.Text;
-                                var representative = textBox_representative.Text;
-                                var post = textBox_post.Text;
-                                var numberIdentification = textBox_numberIdentification.Text;
-                                var dateIssue = textBox_dateIssue.Text;
-                                var phoneNumber = textBox_phoneNumber.Text;
-                                var antenna = textBox_antenna.Text;
-                                var manipulator = textBox_manipulator.Text;
-                                var AKB = textBox_AKB.Text;
-                                var batteryСharger = textBox_batteryСharger.Text;
-                                var comment = txB_comment.Text;
-
-                                var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
-                                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
-                                            $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
-                                            $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
-                                            $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                            $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
-                                            $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
-                                            $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
-                                            $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{decommissionSerialNumber}', '{comment}')";
-
-                                using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.openConnection();
-                                    command3.ExecuteNonQuery();
-                                    DB.GetInstance.closeConnection();
-                                }
-                            }
-
-                        }
-
-                        Button_update_Click(sender, e);
-                        panel_decommissionSerialNumber.Visible = false;
-                        panel_decommissionSerialNumber.Enabled = false;
-                        panel1.Enabled = true;
-                        panel2.Enabled = true;
-                        panel3.Enabled = true;
-                        dataGridView1.Enabled = true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
+                Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
+                    textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
+                    textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
+                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text, txB_comment.Text);
+                Button_update_Click(sender, e);
+                panel_decommissionSerialNumber.Visible = false;
+                panel_decommissionSerialNumber.Enabled = false;
+                panel1.Enabled = true;
+                panel2.Enabled = true;
+                panel3.Enabled = true;
+                dataGridView1.Enabled = true;
             }
             else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания!"); }
         }
 
+        #region Удаление списания
+        void Delete_rst_decommission_click(object sender, EventArgs e)
+        {
+            string Mesage;
+            Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+
+            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+            Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, textBox_city.Text);
+            Button_update_Click(sender, e);
+        }
+        #endregion
+
         #region показать списания
         void Show_radiostantion_decommission_Click(object sender, EventArgs e)
         {
-
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    panel1.Enabled = false;
-                    panel3.Enabled = false;
-
-                    if (comboBox_city.Text != "")
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dataGridView1.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{comboBox_city.Text.Trim()}%'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.openConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        Filling_datagridview.ReedSingleRow(dataGridView1, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
-                        }
-                    }
-
-                    dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dataGridView1.Columns[0].Width = 45;
-                    dataGridView1.Columns[3].Width = 170;
-                    dataGridView1.Columns[4].Width = 180;
-                    dataGridView1.Columns[5].Width = 150;
-                    dataGridView1.Columns[6].Width = 178;
-                    dataGridView1.Columns[7].Width = 178;
-                    dataGridView1.Columns[8].Width = 100;
-                    dataGridView1.Columns[9].Width = 110;
-                    dataGridView1.Columns[10].Width = 100;
-                    dataGridView1.Columns[11].Width = 100;
-                    dataGridView1.Columns[17].Width = 120;
-
-                    Counters();
-
-                }
-                catch (MySqlException)
-                {
-                    string Mesage2;
-                    Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                finally
-                {
-                    DB.GetInstance.closeConnection();
-                }
-            }
+            panel1.Enabled = false;
+            panel3.Enabled = false;
+            Filling_datagridview.Show_radiostantion_decommission(dataGridView1, textBox_city.Text);
+            Counters();           
         }
 
         #endregion
@@ -3807,12 +3681,9 @@ namespace ServiceTelecomConnect
                     {"<dateDecommission>", dateDecommission },
                 };
 
-                WordHelper.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city);
+                PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city);
             }
         }
-
-
-
 
         #endregion
 
