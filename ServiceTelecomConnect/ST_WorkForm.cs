@@ -973,75 +973,9 @@ namespace ServiceTelecomConnect
 
         #region Сохранение БД на PC
 
-        /// <summary>
-        /// сохранение БД на H(S)DD
-        /// </summary>
-        void SaveFile()
-        {
-            try
-            {
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-
-                    string filename = sfd.FileName;
-
-                    using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.Unicode))
-                    {
-                        string note = string.Empty;
-
-                        note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
-                            $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
-                            $"Представитель предприятия\tДолжность\tНомер удостоверения\tДата выдачи\tНомер телефона\t" +
-                            $"Номер Акта ремонта\tКатегория\tЦена ремонта\tАнтенна\tМанипулятор\tАКБ\tЗУ\tВыполненные работы_1\t" +
-                            $"Выполненные работы_2\tВыполненные работы_3\tВыполненные работы_4\tВыполненные работы_5\t" +
-                            $"Выполненные работы_6\tВыполненные работы_7\tДеталь_1\tДеталь_2\tДеталь_3\tДеталь_4\tДеталь_5\t" +
-                            $"Деталь_6\tДеталь_7\t";
-
-                        sw.WriteLine(note);
-
-                        for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                        {
-                            for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                            {
-                                sw.Write((dataGridView1.Rows[i].Cells[j].Value + "\t").ToString());
-                            }
-
-                            sw.WriteLine();
-                        }
-
-                        MessageBox.Show("Файл успешно сохранен");
-                    }
-                }
-                else
-                {
-                    string Mesage;
-                    Mesage = "Файл не сохранён";
-
-                    if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                string Mesage;
-                Mesage = "Файл не сохранён!";
-
-                if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-                MessageBox.Show(ex.ToString());
-            }
-        }
         void Button_save_in_file_Click(object sender, EventArgs e)
         {
-            SaveFile();
+            SaveFileDataGridViewPC.SaveFilePC(dataGridView1);
         }
         #endregion
 
@@ -1387,7 +1321,7 @@ namespace ServiceTelecomConnect
                 {
                     if (textBox_numberActRemont.Text != "")
                     {
-                        if (CheackNumberAct_radiostantion(textBox_numberActRemont.Text) == true)
+                        if (CheacknumberActRemont_radiostantion(textBox_numberActRemont.Text))
                         {
                             string serialNumber = textBox_serialNumber.Text;
 
@@ -1416,7 +1350,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        Boolean CheackNumberAct_radiostantion(string numberActRemont)
+        Boolean CheacknumberActRemont_radiostantion(string numberActRemont)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {

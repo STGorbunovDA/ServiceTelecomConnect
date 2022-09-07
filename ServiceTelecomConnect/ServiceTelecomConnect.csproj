@@ -324,6 +324,7 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaveFileDataGridViewPC.cs" />
     <Compile Include="Setting_user.cs">
       <SubType>Form</SubType>
     </Compile>

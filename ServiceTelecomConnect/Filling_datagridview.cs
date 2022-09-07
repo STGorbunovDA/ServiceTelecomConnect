@@ -588,5 +588,12 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+        #region Удаление ремонта
+
+
+
+
+        #endregion
     }
 }
