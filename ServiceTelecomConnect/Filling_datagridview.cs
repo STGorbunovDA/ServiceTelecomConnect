@@ -584,15 +584,86 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }            
+            }
         }
 
         #endregion
 
         #region Удаление ремонта
 
+        public static void Delete_rst_remont(string numberActRemont, string serialNumber)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (numberActRemont != "")
+                    {
+                        if (CheacknumberActRemont_radiostantion(numberActRemont))
+                        {
 
+                            var changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
+                                $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
+                                $"completed_works_3 = '', completed_works_4 = '', " +
+                                $"completed_works_5 = '', completed_works_6 = '', " +
+                                $"completed_works_7 = '', parts_1 = '', parts_2 = '', " +
+                                $"parts_3 = '', parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = ''" +
+                                $"WHERE serialNumber = '{serialNumber}' ";
 
+                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.openConnection();
+                                command.ExecuteNonQuery();
+                                DB.GetInstance.closeConnection();
+                            }
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        static Boolean CheacknumberActRemont_radiostantion(string numberActRemont)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    string querystring = $"SELECT * FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
+
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count > 0)
+                            {
+                                return true;
+                            }
+
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    return true;
+                }
+            }
+            return true;
+        }
 
         #endregion
     }

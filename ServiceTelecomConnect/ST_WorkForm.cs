@@ -1314,78 +1314,8 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    if (textBox_numberActRemont.Text != "")
-                    {
-                        if (CheacknumberActRemont_radiostantion(textBox_numberActRemont.Text))
-                        {
-                            string serialNumber = textBox_serialNumber.Text;
-
-                            var changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
-                                $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
-                                $"completed_works_3 = '', completed_works_4 = '', " +
-                                $"completed_works_5 = '', completed_works_6 = '', " +
-                                $"completed_works_7 = '', parts_1 = '', parts_2 = '', " +
-                                $"parts_3 = '', parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = ''" +
-                                $"WHERE serialNumber = '{serialNumber}' ";
-
-                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.openConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
-                            }
-                        }
-                    }
-                    Button_update_Click(sender, e);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
-
-        Boolean CheacknumberActRemont_radiostantion(string numberActRemont)
-        {
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    string querystring = $"SELECT * FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
-
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-
-                            DataTable table = new DataTable();
-
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count > 0)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                    return true;
-                }
-            }
-            return true;
+            Filling_datagridview.Delete_rst_remont(textBox_numberActRemont.Text, textBox_serialNumber.Text);
+            Button_update_Click(sender, e);
         }
 
         #endregion
