@@ -266,6 +266,7 @@
     <Compile Include="DB_4.cs" />
     <Compile Include="Filling_datagridview.cs" />
     <Compile Include="FormClose.cs" />
+    <Compile Include="FunctionPanel.cs" />
     <Compile Include="InstanceChecker.cs" />
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
