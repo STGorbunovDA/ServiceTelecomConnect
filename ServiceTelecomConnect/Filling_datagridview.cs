@@ -474,7 +474,7 @@ namespace ServiceTelecomConnect
                     dgw.Rows.Clear();
                     dgw.AllowUserToAddRows = false;
 
-                    string searchString = $"SELECT * FROM radiostantion WHERE city = '{city.Trim()}' AND numberAct LIKE '" + numberAct.Trim() + "'";
+                    string searchString = $"SELECT * FROM radiostantion WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}'";
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {

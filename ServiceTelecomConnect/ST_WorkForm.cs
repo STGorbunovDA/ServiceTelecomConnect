@@ -718,9 +718,6 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-                    DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-                    
                     AddRSTForm addRSTForm = new AddRSTForm();
                     addRSTForm.DoubleBufferedForm(true);
                     addRSTForm.textBox_numberAct.Text = textBox_number_printing_doc_datePanel.Text + "/";
@@ -740,16 +737,26 @@ namespace ServiceTelecomConnect
                     addRSTForm.textBox_post.Text = textBox_post.Text;
                     addRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
                     if (dataGridView1.RowCount != 0)
-                    {              
+                    {
+                        this.dataGridView1.Sort(this.dataGridView1.Columns["numberAct"], ListSortDirection.Ascending);
+                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                        DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
                         addRSTForm.lbl_last_act.Text = row.Cells[9].Value.ToString();
+                        foreach (DataGridViewColumn column in dataGridView1.Columns)
+                        {
+                            column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        }
                     }
+
                     addRSTForm.ShowDialog();
+
                     Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
 
                     if (dataGridView1.RowCount != 0)
                     {
-                        dataGridView1.ClearSelection();
-                        textBox_numberAct.Text = row.Cells[9].Value.ToString();
+                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                        DataGridViewRow row2 = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
+                        textBox_numberAct.Text = row2.Cells[9].Value.ToString();
                     }
                     // обновляем по акту
                     Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);

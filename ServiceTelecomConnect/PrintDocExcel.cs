@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -363,7 +364,8 @@ namespace ServiceTelecomConnect
                             range_Consolidated15.Font.Size = 7;
                             range_Consolidated16.Font.Size = 7;
 
-                            post.Insert(post.Length/2, "\n");
+                            Regex reg = new Regex(" ");
+                            post = reg.Replace(post, "\n", 1);
 
                             workSheet.Cells[1, 5] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
                             workSheet.Cells[1, 13] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
@@ -1377,6 +1379,9 @@ namespace ServiceTelecomConnect
                             range_Consolidated131.Font.Size = 7;
                             range_Consolidated132.NumberFormat = "@";
                             range_Consolidated133.Font.Size = 7;
+
+                            Regex reg2 = new Regex("\n");
+                            post = reg2.Replace(post, " ", 1);
 
                             workSheet3.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ № {numberAct}";
                             workSheet3.Cells[2, 1] = $"ОКАЗАННЫХ УСЛУГ ПО ТЕХНИЧЕСКОМУ ОБСЛУЖИВАНИЮ СИСТЕМ РАДИОСВЯЗИ";
