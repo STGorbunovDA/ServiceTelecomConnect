@@ -952,6 +952,7 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated211 = workSheet2.Rows.get_Range("K41", "P41");
                             Excel.Range range_Consolidated212 = workSheet2.Rows.get_Range("T41", "Y41");
                             Excel.Range range_Consolidated213 = workSheet2.Rows.get_Range("A20", "A39");
+                            Excel.Range range_Consolidated243 = workSheet2.Rows.get_Range("B20", "B39");
 
                             range_Consolidated200.Font.Size = 18;
                             range_Consolidated200.Font.Bold = true;
@@ -972,6 +973,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated211.Font.Bold = true;
                             range_Consolidated212.Font.Bold = true;
                             range_Consolidated213.NumberFormat = "@";
+                            range_Consolidated243.Font.Size = 10;
 
                             workSheet2.Cells[1, 1] = $"Ведомость проверки параметров радиостанций №:";
                             workSheet2.Cells[1, 8] = $"{numberAct}";
@@ -1056,7 +1058,12 @@ namespace ServiceTelecomConnect
                                 _excelCells242.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                                 _excelCells242.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
+                                Excel.Range _excelCells270 = (Excel.Range)workSheet2.get_Range($"B{j4}").Cells;
+                                _excelCells270.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                _excelCells270.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
                                 workSheet2.Cells[19 + s4, 1] = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+                                workSheet2.Cells[19 + s4, 2] = dgw.Rows[i].Cells["AKB"].Value.ToString();
 
                                 Excel.Range _excelCells239 = (Excel.Range)workSheet2.get_Range($"V{j4}", $"Y{j4}").Cells;
                                 _excelCells239.Merge(Type.Missing);
