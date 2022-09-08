@@ -44,6 +44,7 @@ namespace ServiceTelecomConnect
 
         private delegate DialogResult ShowOpenFileDialogInvoker();
 
+        private static string taskCity;// для потоков
         /// <summary>
         /// переменная для индекса dataGridView1 
         /// </summary>
@@ -220,7 +221,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (15 * 60 * 1000); // 15 mins
+                timer.Interval = (30 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -239,6 +240,8 @@ namespace ServiceTelecomConnect
                     helloKey.Close();
                 }
 
+                taskCity = comboBox_city.Text;// для отдельных потоков
+
             }
             catch (Exception ex)
             {
@@ -247,11 +250,18 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Get_date_save_datagridview();
+            
 
-            if (Internet_check.AvailabilityChanged_bool() == true)
+            await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
+            await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
+
+            await Task.Run(() => Get_date_save_datagridview_json(dataGridView2, taskCity));
+
+            await Task.Run(() => SaveFileDataGridViewPC.autoSaveFilePC(dataGridView2, taskCity));
+
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
             }
@@ -984,7 +994,7 @@ namespace ServiceTelecomConnect
 
         void Button_save_in_file_Click(object sender, EventArgs e)
         {
-            SaveFileDataGridViewPC.SaveFilePC(dataGridView1);
+            SaveFileDataGridViewPC.userSaveFilePC(dataGridView1);
         }
         #endregion
 
@@ -2773,7 +2783,7 @@ namespace ServiceTelecomConnect
                 button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
-                await Task.Run(() => Loading_json_file_BD_method());
+                await Task.Run(() => Loading_json_file_BD_method(taskCity));
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
@@ -2787,57 +2797,19 @@ namespace ServiceTelecomConnect
             }
 
         }
-        void Loading_json_file_BD_method()
+        void Loading_json_file_BD_method(string city)
         {
             try
             {
-                dataGridView2.Columns.Add("id", "№");
-                dataGridView2.Columns.Add("poligon", "Полигон");
-                dataGridView2.Columns.Add("company", "Предприятие");
-                dataGridView2.Columns.Add("location", "Место нахождения");
-                dataGridView2.Columns.Add("model", "Модель радиостанции");
-                dataGridView2.Columns.Add("serialNumber", "Заводской номер");
-                dataGridView2.Columns.Add("inventoryNumber", "Инвентарный номер");
-                dataGridView2.Columns.Add("networkNumber", "Сетевой номер");
-                dataGridView2.Columns.Add("dateTO", "Дата ТО");
-                dataGridView2.Columns.Add("numberAct", "№ акта ТО");
-                dataGridView2.Columns.Add("city", "Город");
-                dataGridView2.Columns.Add("price", "Цена ТО");
-                dataGridView2.Columns.Add("representative", "Представитель предприятия");
-                dataGridView2.Columns.Add("post", "Должность");
-                dataGridView2.Columns.Add("numberIdentification", "Номер удостоверения");
-                dataGridView2.Columns.Add("dateIssue", "Дата выдачи удостоверения");
-                dataGridView2.Columns.Add("phoneNumber", "Номер телефона");
-                dataGridView2.Columns.Add("numberActRemont", "№ акта ремонта");
-                dataGridView2.Columns.Add("category", "Категория");
-                dataGridView2.Columns.Add("priceRemont", "Цена ремонта");
-                dataGridView2.Columns.Add("antenna", "Антенна");
-                dataGridView2.Columns.Add("manipulator", "Манипулятор");
-                dataGridView2.Columns.Add("AKB", "АКБ");
-                dataGridView2.Columns.Add("batteryСharger", "ЗУ");
-                dataGridView2.Columns.Add("completed_works_1", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_2", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_3", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_4", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_5", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_6", "Выполненные работы_1");
-                dataGridView2.Columns.Add("completed_works_7", "Выполненные работы_1");
-                dataGridView2.Columns.Add("parts_1", "Израсходованные материалы и детали_1");
-                dataGridView2.Columns.Add("parts_2", "Израсходованные материалы и детали_2");
-                dataGridView2.Columns.Add("parts_3", "Израсходованные материалы и детали_3");
-                dataGridView2.Columns.Add("parts_4", "Израсходованные материалы и детали_4");
-                dataGridView2.Columns.Add("parts_5", "Израсходованные материалы и детали_5");
-                dataGridView2.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
-                dataGridView2.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
-                dataGridView2.Columns.Add("decommissionSerialNumber", "Номер  акта списания");
-                dataGridView2.Columns.Add("comment", "Примечание");
-                dataGridView2.Columns.Add("IsNew", String.Empty);
+                Filling_datagridview.CreateColums(dataGridView2);
 
-                if (File.Exists("s.json"))
+                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
+
+                if (File.Exists(fileNamePath))
                 {
                     dataGridView2.Rows.Clear();
                     string result;
-                    using (var reader = new StreamReader("s.json"))
+                    using (var reader = new StreamReader(fileNamePath))
                     {
                         result = reader.ReadToEnd();
                     }
@@ -2888,7 +2860,7 @@ namespace ServiceTelecomConnect
                             dataGridView2.Rows[n].Cells[36].Value = fetch[i]["parts_6"].ToString();
                             dataGridView2.Rows[n].Cells[37].Value = fetch[i]["parts_7"].ToString();
                             dataGridView2.Rows[n].Cells[38].Value = fetch[i]["decommissionSerialNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[38].Value = fetch[i]["comment"].ToString();
+                            dataGridView2.Rows[n].Cells[39].Value = fetch[i]["comment"].ToString();
                         }
                     }
                     for (int i = 0; i < dataGridView2.Rows.Count; i++)
@@ -2903,7 +2875,7 @@ namespace ServiceTelecomConnect
                         var networkNumber = dataGridView2.Rows[i].Cells["networkNumber"].Value.ToString();
                         var dateTO = dataGridView2.Rows[i].Cells["dateTO"].Value.ToString();
                         var numberAct = dataGridView2.Rows[i].Cells["numberAct"].Value.ToString();
-                        var city = dataGridView2.Rows[i].Cells["city"].Value.ToString();
+                        var cityDGW = dataGridView2.Rows[i].Cells["city"].Value.ToString();
                         var price = dataGridView2.Rows[i].Cells["price"].Value;
                         var representative = dataGridView2.Rows[i].Cells["representative"].Value.ToString();
                         var post = dataGridView2.Rows[i].Cells["post"].Value.ToString();
@@ -2936,7 +2908,7 @@ namespace ServiceTelecomConnect
 
                         string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                             $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
-                            $"dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{city}', price = '{price}', representative = '{representative}', " +
+                            $"dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{cityDGW}', price = '{price}', representative = '{representative}', " +
                             $"post = '{post}', numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', phoneNumber = '{phoneNumber}', " +
                             $"numberActRemont = '{numberActRemont}', category = '{category}', priceRemont = '{priceRemont}', antenna = '{antenna}', " +
                             $"manipulator = '{manipulator}', AKB = '{AKB}', batteryСharger = '{batteryСharger}', completed_works_1 = '{completed_works_1}', " +
@@ -2954,6 +2926,8 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
+                else { MessageBox.Show("Отсутствует файл JSON"); };
+
                 MessageBox.Show("Радиостанции успешно загруженны из JSON");
 
             }
@@ -2979,7 +2953,7 @@ namespace ServiceTelecomConnect
             button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
-            await Task.Run(() => Get_date_save_datagridview());
+            await Task.Run(() => Get_date_save_datagridview_json(dataGridView1, comboBox_city.Text));
             clear_BD_current_year.Enabled = true;
             manual_backup_current_DB.Enabled = true;
             loading_json_file_BD.Enabled = true;
@@ -2991,13 +2965,13 @@ namespace ServiceTelecomConnect
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
-        void Get_date_save_datagridview()
+        void Get_date_save_datagridview_json(DataGridView dgw, string city)
         {
             try
             {
                 JArray products = new JArray();
 
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (DataGridViewRow row in dgw.Rows)
                 {
                     JObject product = JObject.FromObject(new
                     {
@@ -3040,14 +3014,23 @@ namespace ServiceTelecomConnect
                         parts_6 = row.Cells[36].Value,
                         parts_7 = row.Cells[37].Value,
                         decommissionSerialNumber = row.Cells[38].Value,
-                        comment = row.Cells[38].Value
+                        comment = row.Cells[39].Value
                     });
                     products.Add(product);
                 }
 
                 string json = JsonConvert.SerializeObject(products);
 
-                File.WriteAllText("s.json", json);
+                DateTime today = DateTime.Today;
+
+                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
+
+                if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\"))
+                {
+                    Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\");
+                }
+
+                File.WriteAllText(fileNamePath, json);
 
             }
             catch (Exception ex)

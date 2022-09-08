@@ -23,7 +23,7 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region заполнение datagrid
+        #region заполнение datagridview 1
         /// <summary>
         /// заполняем dataGridView1 колонки
         /// </summary>
@@ -823,7 +823,6 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
-
 
         #region показать списания
 

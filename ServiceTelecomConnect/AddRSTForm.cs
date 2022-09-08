@@ -1127,19 +1127,7 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void TextBox_post_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_post_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b'
-                && ch != '-' && ch != '.' && ch != ' ' && ch != '=' && ch != '!' && ch != '*')
-            {
-                e.Handled = true;
-            }
-        }
+        
         void TextBox_antenna_Click(object sender, EventArgs e)
         {
             textBox_antenna.Text = "";

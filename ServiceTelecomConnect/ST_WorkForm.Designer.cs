@@ -31,9 +31,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
             this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -452,7 +452,7 @@
             this.btn_Show_DB_radiostantion_full.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Show_DB_radiostantion_full.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Show_DB_radiostantion_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Show_DB_radiostantion_full.Location = new System.Drawing.Point(326, 252);
+            this.btn_Show_DB_radiostantion_full.Location = new System.Drawing.Point(326, 246);
             this.btn_Show_DB_radiostantion_full.Name = "btn_Show_DB_radiostantion_full";
             this.btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(247, 40);
             this.btn_Show_DB_radiostantion_full.TabIndex = 88;
@@ -465,7 +465,7 @@
             this.btn_Show_DB_radiostantion_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Show_DB_radiostantion_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Show_DB_radiostantion_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Show_DB_radiostantion_last_year.Location = new System.Drawing.Point(64, 252);
+            this.btn_Show_DB_radiostantion_last_year.Location = new System.Drawing.Point(64, 245);
             this.btn_Show_DB_radiostantion_last_year.Name = "btn_Show_DB_radiostantion_last_year";
             this.btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(249, 40);
             this.btn_Show_DB_radiostantion_last_year.TabIndex = 87;
@@ -478,7 +478,7 @@
             this.button_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Loading_file_last_year.Location = new System.Drawing.Point(64, 157);
+            this.button_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
             this.button_Loading_file_last_year.Name = "button_Loading_file_last_year";
             this.button_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
             this.button_Loading_file_last_year.TabIndex = 86;
@@ -491,7 +491,7 @@
             this.button_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Uploading_JSON_file.Location = new System.Drawing.Point(326, 204);
+            this.button_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
             this.button_Uploading_JSON_file.Name = "button_Uploading_JSON_file";
             this.button_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
             this.button_Uploading_JSON_file.TabIndex = 85;
@@ -504,7 +504,7 @@
             this.button_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 110);
+            this.button_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
             this.button_Copying_current_BD_end_of_the_year.Name = "button_Copying_current_BD_end_of_the_year";
             this.button_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
             this.button_Copying_current_BD_end_of_the_year.TabIndex = 84;
@@ -517,7 +517,7 @@
             this.loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_full_BD.Location = new System.Drawing.Point(326, 158);
+            this.loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
             this.loading_file_full_BD.Name = "loading_file_full_BD";
             this.loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
             this.loading_file_full_BD.TabIndex = 83;
@@ -530,7 +530,7 @@
             this.manual_backup_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.manual_backup_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.manual_backup_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.manual_backup_current_DB.Location = new System.Drawing.Point(324, 59);
+            this.manual_backup_current_DB.Location = new System.Drawing.Point(324, 56);
             this.manual_backup_current_DB.Name = "manual_backup_current_DB";
             this.manual_backup_current_DB.Size = new System.Drawing.Size(249, 42);
             this.manual_backup_current_DB.TabIndex = 81;
@@ -543,7 +543,7 @@
             this.clear_BD_current_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.clear_BD_current_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.clear_BD_current_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clear_BD_current_year.Location = new System.Drawing.Point(64, 59);
+            this.clear_BD_current_year.Location = new System.Drawing.Point(64, 56);
             this.clear_BD_current_year.Name = "clear_BD_current_year";
             this.clear_BD_current_year.Size = new System.Drawing.Size(249, 42);
             this.clear_BD_current_year.TabIndex = 80;
@@ -556,9 +556,9 @@
             this.loading_file_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.loading_file_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loading_file_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_current_DB.Location = new System.Drawing.Point(64, 204);
+            this.loading_file_current_DB.Location = new System.Drawing.Point(64, 105);
             this.loading_file_current_DB.Name = "loading_file_current_DB";
-            this.loading_file_current_DB.Size = new System.Drawing.Size(249, 40);
+            this.loading_file_current_DB.Size = new System.Drawing.Size(249, 42);
             this.loading_file_current_DB.TabIndex = 79;
             this.loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
             this.loading_file_current_DB.UseVisualStyleBackColor = false;
@@ -569,9 +569,9 @@
             this.loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_json_file_BD.Location = new System.Drawing.Point(64, 110);
+            this.loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
             this.loading_json_file_BD.Name = "loading_json_file_BD";
-            this.loading_json_file_BD.Size = new System.Drawing.Size(249, 42);
+            this.loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
             this.loading_json_file_BD.TabIndex = 78;
             this.loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
             this.loading_json_file_BD.UseVisualStyleBackColor = false;
@@ -956,29 +956,29 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
@@ -2393,9 +2393,9 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_remont_information_company);
-            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel_date);
