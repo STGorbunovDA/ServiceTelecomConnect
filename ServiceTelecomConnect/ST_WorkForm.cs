@@ -3142,26 +3142,7 @@ namespace ServiceTelecomConnect
                 button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
-                
-                var clearBD = "TRUNCATE TABLE radiostantion_copy";
-
-                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
-                {
-                    DB_2.GetInstance.openConnection();
-                    command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
-                }
-
-                var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
-
-                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
-                {
-                    DB_2.GetInstance.openConnection();
-                    command2.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
-                }
-                MessageBox.Show("База данных успешно скопирована!");
-
+                FunctionPanel.Manual_backup_current_DB();
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
@@ -3215,19 +3196,8 @@ namespace ServiceTelecomConnect
                 button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
-
-                var clearBD = "TRUNCATE TABLE radiostantion";
-
-                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
-                {
-                    DB_2.GetInstance.openConnection();
-                    command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
-                }
-
-                MessageBox.Show("База данных успешно очищенна!");
+                FunctionPanel.Clear_BD_current_year();
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;

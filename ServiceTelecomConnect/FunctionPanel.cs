@@ -139,5 +139,41 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
+        internal static void Manual_backup_current_DB()
+        {
+            var clearBD = "TRUNCATE TABLE radiostantion_copy";
+
+            using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.openConnection();
+                command.ExecuteNonQuery();
+                DB_2.GetInstance.closeConnection();
+            }
+
+            var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
+
+            using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.openConnection();
+                command2.ExecuteNonQuery();
+                DB_2.GetInstance.closeConnection();
+            }
+            MessageBox.Show("База данных успешно скопирована!");
+        }
+
+        internal static void Clear_BD_current_year()
+        {
+            var clearBD = "TRUNCATE TABLE radiostantion";
+
+            using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.openConnection();
+                command.ExecuteNonQuery();
+                DB_2.GetInstance.closeConnection();
+            }
+
+            MessageBox.Show("База данных успешно очищенна!");
+        }
     }
 }
