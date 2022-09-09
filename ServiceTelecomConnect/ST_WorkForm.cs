@@ -252,12 +252,12 @@ namespace ServiceTelecomConnect
 
         async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            
+
 
             await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
             await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
 
-            await Task.Run(() => Get_date_save_datagridview_json(dataGridView2, taskCity));
+            await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
 
             await Task.Run(() => SaveFileDataGridViewPC.autoSaveFilePC(dataGridView2, taskCity));
 
@@ -2767,12 +2767,19 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region загрузка json в datagridview
-
+        #region загрузка и обновление json в radiostantion
         async void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
+                string Mesage;
+                Mesage = "Вы выгрузили резервный файл json?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+
                 clear_BD_current_year.Enabled = false;
                 manual_backup_current_DB.Enabled = false;
                 loading_json_file_BD.Enabled = false;
@@ -2783,7 +2790,7 @@ namespace ServiceTelecomConnect
                 button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
-                await Task.Run(() => Loading_json_file_BD_method(taskCity));
+                await Task.Run(() => FunctionPanel.Loading_json_file_BD(dataGridView2, taskCity));
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
@@ -2795,148 +2802,7 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
-
         }
-        void Loading_json_file_BD_method(string city)
-        {
-            try
-            {
-                Filling_datagridview.CreateColums(dataGridView2);
-
-                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
-
-                if (File.Exists(fileNamePath))
-                {
-                    dataGridView2.Rows.Clear();
-                    string result;
-                    using (var reader = new StreamReader(fileNamePath))
-                    {
-                        result = reader.ReadToEnd();
-                    }
-
-                    JArray fetch = JArray.Parse(result);
-
-                    if (fetch.Count() > 0)
-                    {
-                        for (int i = 0; fetch.Count() > i; i++)
-                        {
-                            int n = dataGridView2.Rows.Add();
-                            dataGridView2.Rows[n].Cells[0].Value = fetch[i]["id"].ToString();
-                            dataGridView2.Rows[n].Cells[1].Value = fetch[i]["poligon"].ToString();
-                            dataGridView2.Rows[n].Cells[2].Value = fetch[i]["company"].ToString();
-                            dataGridView2.Rows[n].Cells[3].Value = fetch[i]["location"].ToString();
-                            dataGridView2.Rows[n].Cells[4].Value = fetch[i]["model"].ToString();
-                            dataGridView2.Rows[n].Cells[5].Value = fetch[i]["serialNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[6].Value = fetch[i]["inventoryNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[7].Value = fetch[i]["networkNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[8].Value = fetch[i]["dateTO"].ToString();
-                            dataGridView2.Rows[n].Cells[9].Value = fetch[i]["numberAct"].ToString();
-                            dataGridView2.Rows[n].Cells[10].Value = fetch[i]["city"].ToString();
-                            dataGridView2.Rows[n].Cells[11].Value = fetch[i]["price"].ToString();
-                            dataGridView2.Rows[n].Cells[12].Value = fetch[i]["representative"].ToString();
-                            dataGridView2.Rows[n].Cells[13].Value = fetch[i]["post"].ToString();
-                            dataGridView2.Rows[n].Cells[14].Value = fetch[i]["numberIdentification"].ToString();
-                            dataGridView2.Rows[n].Cells[15].Value = fetch[i]["dateIssue"].ToString();
-                            dataGridView2.Rows[n].Cells[16].Value = fetch[i]["phoneNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[17].Value = fetch[i]["numberActRemont"].ToString();
-                            dataGridView2.Rows[n].Cells[18].Value = fetch[i]["category"].ToString();
-                            dataGridView2.Rows[n].Cells[19].Value = fetch[i]["priceRemont"].ToString();
-                            dataGridView2.Rows[n].Cells[20].Value = fetch[i]["antenna"].ToString();
-                            dataGridView2.Rows[n].Cells[21].Value = fetch[i]["manipulator"].ToString();
-                            dataGridView2.Rows[n].Cells[22].Value = fetch[i]["AKB"].ToString();
-                            dataGridView2.Rows[n].Cells[23].Value = fetch[i]["batteryСharger"].ToString();
-                            dataGridView2.Rows[n].Cells[24].Value = fetch[i]["completed_works_1"].ToString();
-                            dataGridView2.Rows[n].Cells[25].Value = fetch[i]["completed_works_2"].ToString();
-                            dataGridView2.Rows[n].Cells[26].Value = fetch[i]["completed_works_3"].ToString();
-                            dataGridView2.Rows[n].Cells[27].Value = fetch[i]["completed_works_4"].ToString();
-                            dataGridView2.Rows[n].Cells[28].Value = fetch[i]["completed_works_5"].ToString();
-                            dataGridView2.Rows[n].Cells[29].Value = fetch[i]["completed_works_6"].ToString();
-                            dataGridView2.Rows[n].Cells[30].Value = fetch[i]["completed_works_7"].ToString();
-                            dataGridView2.Rows[n].Cells[31].Value = fetch[i]["parts_1"].ToString();
-                            dataGridView2.Rows[n].Cells[32].Value = fetch[i]["parts_2"].ToString();
-                            dataGridView2.Rows[n].Cells[33].Value = fetch[i]["parts_3"].ToString();
-                            dataGridView2.Rows[n].Cells[34].Value = fetch[i]["parts_4"].ToString();
-                            dataGridView2.Rows[n].Cells[35].Value = fetch[i]["parts_5"].ToString();
-                            dataGridView2.Rows[n].Cells[36].Value = fetch[i]["parts_6"].ToString();
-                            dataGridView2.Rows[n].Cells[37].Value = fetch[i]["parts_7"].ToString();
-                            dataGridView2.Rows[n].Cells[38].Value = fetch[i]["decommissionSerialNumber"].ToString();
-                            dataGridView2.Rows[n].Cells[39].Value = fetch[i]["comment"].ToString();
-                        }
-                    }
-                    for (int i = 0; i < dataGridView2.Rows.Count; i++)
-                    {
-                        var id = dataGridView2.Rows[i].Cells["id"].Value;
-                        var poligon = dataGridView2.Rows[i].Cells["poligon"].Value.ToString();
-                        var company = dataGridView2.Rows[i].Cells["company"].Value.ToString();
-                        var location = dataGridView2.Rows[i].Cells["location"].Value.ToString();
-                        var model = dataGridView2.Rows[i].Cells["model"].Value.ToString();
-                        var serialNumber = dataGridView2.Rows[i].Cells["serialNumber"].Value.ToString();
-                        var inventoryNumber = dataGridView2.Rows[i].Cells["inventoryNumber"].Value.ToString();
-                        var networkNumber = dataGridView2.Rows[i].Cells["networkNumber"].Value.ToString();
-                        var dateTO = dataGridView2.Rows[i].Cells["dateTO"].Value.ToString();
-                        var numberAct = dataGridView2.Rows[i].Cells["numberAct"].Value.ToString();
-                        var cityDGW = dataGridView2.Rows[i].Cells["city"].Value.ToString();
-                        var price = dataGridView2.Rows[i].Cells["price"].Value;
-                        var representative = dataGridView2.Rows[i].Cells["representative"].Value.ToString();
-                        var post = dataGridView2.Rows[i].Cells["post"].Value.ToString();
-                        var numberIdentification = dataGridView2.Rows[i].Cells["numberIdentification"].Value.ToString();
-                        var dateIssue = dataGridView2.Rows[i].Cells["dateIssue"].Value.ToString();
-                        var phoneNumber = dataGridView2.Rows[i].Cells["phoneNumber"].Value.ToString();
-                        var numberActRemont = dataGridView2.Rows[i].Cells["numberActRemont"].Value.ToString();
-                        var category = dataGridView2.Rows[i].Cells["category"].Value.ToString();
-                        var priceRemont = dataGridView2.Rows[i].Cells["priceRemont"].Value;
-                        var antenna = dataGridView2.Rows[i].Cells["antenna"].Value.ToString();
-                        var manipulator = dataGridView2.Rows[i].Cells["antenna"].Value.ToString();
-                        var AKB = dataGridView2.Rows[i].Cells["AKB"].Value.ToString();
-                        var batteryСharger = dataGridView2.Rows[i].Cells["batteryСharger"].Value.ToString();
-                        var completed_works_1 = dataGridView2.Rows[i].Cells["completed_works_1"].Value.ToString();
-                        var completed_works_2 = dataGridView2.Rows[i].Cells["completed_works_2"].Value.ToString();
-                        var completed_works_3 = dataGridView2.Rows[i].Cells["completed_works_3"].Value.ToString();
-                        var completed_works_4 = dataGridView2.Rows[i].Cells["completed_works_4"].Value.ToString();
-                        var completed_works_5 = dataGridView2.Rows[i].Cells["completed_works_5"].Value.ToString();
-                        var completed_works_6 = dataGridView2.Rows[i].Cells["completed_works_6"].Value.ToString();
-                        var completed_works_7 = dataGridView2.Rows[i].Cells["completed_works_7"].Value.ToString();
-                        var parts_1 = dataGridView2.Rows[i].Cells["parts_1"].Value.ToString();
-                        var parts_2 = dataGridView2.Rows[i].Cells["parts_2"].Value.ToString();
-                        var parts_3 = dataGridView2.Rows[i].Cells["parts_3"].Value.ToString();
-                        var parts_4 = dataGridView2.Rows[i].Cells["parts_4"].Value.ToString();
-                        var parts_5 = dataGridView2.Rows[i].Cells["parts_5"].Value.ToString();
-                        var parts_6 = dataGridView2.Rows[i].Cells["parts_6"].Value.ToString();
-                        var parts_7 = dataGridView2.Rows[i].Cells["parts_7"].Value.ToString();
-                        var decommissionSerialNumber = dataGridView2.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
-                        var comment = dataGridView2.Rows[i].Cells["comment"].Value.ToString();
-
-                        string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
-                            $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
-                            $"dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{cityDGW}', price = '{price}', representative = '{representative}', " +
-                            $"post = '{post}', numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', phoneNumber = '{phoneNumber}', " +
-                            $"numberActRemont = '{numberActRemont}', category = '{category}', priceRemont = '{priceRemont}', antenna = '{antenna}', " +
-                            $"manipulator = '{manipulator}', AKB = '{AKB}', batteryСharger = '{batteryСharger}', completed_works_1 = '{completed_works_1}', " +
-                            $"completed_works_2 = '{completed_works_2}', completed_works_3 = '{completed_works_3}', completed_works_4 = '{completed_works_4}', " +
-                            $"completed_works_5 = '{completed_works_5}', completed_works_6 = '{completed_works_6}', completed_works_7 = '{completed_works_7}', " +
-                            $"parts_1 = '{parts_1}', parts_2 = '{parts_2}', parts_3 = '{parts_3}',  parts_4 = '{parts_4}',  parts_5 = '{parts_5}', parts_6 = '{parts_6}',  " +
-                            $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}', comment = '{comment}'  WHERE id = '{id}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
-                        {
-                            DB_2.GetInstance.openConnection();
-                            command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
-
-                        }
-                    }
-                }
-                else { MessageBox.Show("Отсутствует файл JSON"); };
-
-                MessageBox.Show("Радиостанции успешно загруженны из JSON");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         #endregion
 
         #region выгрузка всех данных из datagrid
@@ -2953,7 +2819,7 @@ namespace ServiceTelecomConnect
             button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
-            await Task.Run(() => Get_date_save_datagridview_json(dataGridView1, comboBox_city.Text));
+            await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView1, taskCity));
             clear_BD_current_year.Enabled = true;
             manual_backup_current_DB.Enabled = true;
             loading_json_file_BD.Enabled = true;
@@ -2965,79 +2831,7 @@ namespace ServiceTelecomConnect
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
-        void Get_date_save_datagridview_json(DataGridView dgw, string city)
-        {
-            try
-            {
-                JArray products = new JArray();
 
-                foreach (DataGridViewRow row in dgw.Rows)
-                {
-                    JObject product = JObject.FromObject(new
-                    {
-                        id = row.Cells[0].Value,
-                        poligon = row.Cells[1].Value,
-                        company = row.Cells[2].Value,
-                        location = row.Cells[3].Value,
-                        model = row.Cells[4].Value,
-                        serialNumber = row.Cells[5].Value,
-                        inventoryNumber = row.Cells[6].Value,
-                        networkNumber = row.Cells[7].Value,
-                        dateTO = row.Cells[8].Value,
-                        numberAct = row.Cells[9].Value,
-                        city = row.Cells[10].Value,
-                        price = row.Cells[11].Value,
-                        representative = row.Cells[12].Value,
-                        post = row.Cells[13].Value,
-                        numberIdentification = row.Cells[14].Value,
-                        dateIssue = row.Cells[15].Value,
-                        phoneNumber = row.Cells[16].Value,
-                        numberActRemont = row.Cells[17].Value,
-                        category = row.Cells[18].Value,
-                        priceRemont = row.Cells[19].Value,
-                        antenna = row.Cells[20].Value,
-                        manipulator = row.Cells[21].Value,
-                        AKB = row.Cells[22].Value,
-                        batteryСharger = row.Cells[23].Value,
-                        completed_works_1 = row.Cells[24].Value,
-                        completed_works_2 = row.Cells[25].Value,
-                        completed_works_3 = row.Cells[26].Value,
-                        completed_works_4 = row.Cells[27].Value,
-                        completed_works_5 = row.Cells[28].Value,
-                        completed_works_6 = row.Cells[29].Value,
-                        completed_works_7 = row.Cells[30].Value,
-                        parts_1 = row.Cells[31].Value,
-                        parts_2 = row.Cells[32].Value,
-                        parts_3 = row.Cells[33].Value,
-                        parts_4 = row.Cells[34].Value,
-                        parts_5 = row.Cells[35].Value,
-                        parts_6 = row.Cells[36].Value,
-                        parts_7 = row.Cells[37].Value,
-                        decommissionSerialNumber = row.Cells[38].Value,
-                        comment = row.Cells[39].Value
-                    });
-                    products.Add(product);
-                }
-
-                string json = JsonConvert.SerializeObject(products);
-
-                DateTime today = DateTime.Today;
-
-                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
-
-                if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\"))
-                {
-                    Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\");
-                }
-
-                File.WriteAllText(fileNamePath, json);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString()); ;
-            }
-        }
 
         #endregion
 
@@ -3077,26 +2871,7 @@ namespace ServiceTelecomConnect
                 button_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
-                var clearBD = "TRUNCATE TABLE radiostantion_last_year";
-
-                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
-                {
-                    DB_2.GetInstance.openConnection();
-                    command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
-                }
-
-                var copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
-
-                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
-                {
-                    DB_2.GetInstance.openConnection();
-                    command2.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
-                }
-
-                MessageBox.Show("База данных успешно скопирована!");
-
+                FunctionPanel.Copying_current_BD_end_of_the_year();
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
@@ -3110,7 +2885,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString()); ;
+                MessageBox.Show(ex.ToString());
             }
         }
         #endregion
