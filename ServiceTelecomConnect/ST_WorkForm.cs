@@ -761,6 +761,7 @@ namespace ServiceTelecomConnect
                     addRSTForm.ShowDialog();
 
                     Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    Counters();
 
                     if (dataGridView1.RowCount != 0)
                     {
@@ -2652,6 +2653,7 @@ namespace ServiceTelecomConnect
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
+        
         void Loading_file_full_BD_method()
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -2673,72 +2675,66 @@ namespace ServiceTelecomConnect
 
                         var lineNumber = 0;
 
-                        if (Internet_check.AvailabilityChanged_bool() == true)
+
+                        using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
                         {
-                            using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
+                            if (Internet_check.AvailabilityChanged_bool())
                             {
-                                if (Internet_check.AvailabilityChanged_bool() == true)
+                                connection.Open();
+
+                                using (StreamReader reader = new StreamReader(filename))
                                 {
-                                    connection.Open();
-
-                                    using (StreamReader reader = new StreamReader(filename))
+                                    while (!reader.EndOfStream)
                                     {
-                                        while (!reader.EndOfStream)
+                                        var line = reader.ReadLine();
+
+                                        if (lineNumber != 0)
                                         {
-                                            var line = reader.ReadLine();
+                                            var values = line.Split(';');
 
-                                            if (lineNumber != 0)
+                                            if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(values[4]))
                                             {
-                                                var values = line.Split(';');
+                                                var mySql = $"insert into radiostantion_full (poligon, company, location, model, serialNumber, inventoryNumber, " +
+                                                $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
+                                                $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
+                                                $"completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, " +
+                                                $"parts_4, parts_5, parts_6, parts_7 ) values ('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}', " +
+                                                $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
+                                                $"'{(values[8].Replace(" ", "").Trim())}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
+                                                $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
+                                                $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
 
-                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(values[4]))
+                                                using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                 {
-                                                    var mySql = $"insert into radiostantion_full (poligon, company, location, model, serialNumber, inventoryNumber, " +
-                                                    $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
-                                                    $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
-                                                    $"completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, " +
-                                                    $"parts_4, parts_5, parts_6, parts_7 ) values ('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}', " +
-                                                    $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
-                                                    $"'{(values[8].Replace(" ", "").Trim())}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
-
-                                                    using (MySqlCommand command = new MySqlCommand(mySql, connection))
-                                                    {
-                                                        command.CommandText = mySql;
-                                                        command.CommandType = System.Data.CommandType.Text;
-                                                        command.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    continue;
+                                                    command.CommandText = mySql;
+                                                    command.CommandType = System.Data.CommandType.Text;
+                                                    command.ExecuteNonQuery();
                                                 }
                                             }
-                                            lineNumber++;
+                                            else
+                                            {
+                                                continue;
+                                            }
                                         }
-                                        if (reader.EndOfStream == true)
-                                        {
-                                            MessageBox.Show("Радиостанции успешно добавлены!");
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                                        }
+                                        lineNumber++;
                                     }
-                                    connection.Close();
+                                    if (reader.EndOfStream == true)
+                                    {
+                                        MessageBox.Show("Радиостанции успешно добавлены!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
+                                    }
                                 }
-                                else
-                                {
-                                    MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
-                                }
+                                connection.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("2.Радиостанции не добавленны, нет соединения с интернетом.");
 
-                        }
                     }
                     else
                     {
@@ -3092,7 +3088,7 @@ namespace ServiceTelecomConnect
 
                 label_complete.Visible = true;
                 lbl_full_complete_act.Visible = true;
-                lbl_full_complete_act.Text = $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
+                lbl_full_complete_act.Text += $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
                 try
                 {
                     RegistryKey currentUserKey = Registry.CurrentUser;

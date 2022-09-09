@@ -12,6 +12,7 @@ namespace ServiceTelecomConnect
 {
     class FunctionPanel
     {
+        private delegate DialogResult ShowOpenFileDialogInvoker();
 
         #region загрузка общей БД всех радиостанций
 
@@ -20,7 +21,7 @@ namespace ServiceTelecomConnect
             if (Internet_check.AvailabilityChanged_bool())
             {
                 try
-                {  
+                {
                     if (city != "")
                     {
                         var myCulture = new CultureInfo("ru-RU");
@@ -215,7 +216,7 @@ namespace ServiceTelecomConnect
 
                 MessageBox.Show(ex.ToString());
             }
-            
+
         }
 
         #endregion
@@ -499,5 +500,6 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
     }
 }
