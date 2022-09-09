@@ -3246,7 +3246,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region показать БД прошлго года по участку
+        #region показать БД прошлого года по участку
 
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
@@ -3344,7 +3344,7 @@ namespace ServiceTelecomConnect
 
         #region показать общую БД по всем радиостанциям
 
-        void btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
+        void Btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
             clear_BD_current_year.Enabled = false;
             manual_backup_current_DB.Enabled = false;
@@ -3356,72 +3356,10 @@ namespace ServiceTelecomConnect
             button_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    Close_Functional_loading_panel_Click(sender, e);
-                    panel1.Enabled = false;
-                    panel3.Enabled = false;
-                    if (comboBox_city.Text != "")
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dataGridView1.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion_full";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
-                        {
-                            DB_2.GetInstance.openConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        Filling_datagridview.ReedSingleRow(dataGridView1, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
-                        }
-                    }
-
-                    dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dataGridView1.Columns[0].Width = 45;
-                    dataGridView1.Columns[3].Width = 170;
-                    dataGridView1.Columns[4].Width = 180;
-                    dataGridView1.Columns[5].Width = 150;
-                    dataGridView1.Columns[6].Width = 178;
-                    dataGridView1.Columns[7].Width = 178;
-                    dataGridView1.Columns[8].Width = 100;
-                    dataGridView1.Columns[9].Width = 110;
-                    dataGridView1.Columns[10].Width = 100;
-                    dataGridView1.Columns[11].Width = 100;
-                    dataGridView1.Columns[17].Width = 120;
-                    dataGridView1.Columns[39].Width = 300;
-                }
-                catch (MySqlException)
-                {
-                    string Mesage2;
-                    Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                finally
-                {
-                    DB.GetInstance.closeConnection();
-                }
-            }
+            Close_Functional_loading_panel_Click(sender, e);
+            panel1.Enabled = false;
+            panel3.Enabled = false;
+            FunctionPanel.Show_DB_radiostantion_full(dataGridView1, taskCity);
             clear_BD_current_year.Enabled = true;
             manual_backup_current_DB.Enabled = true;
             loading_json_file_BD.Enabled = true;

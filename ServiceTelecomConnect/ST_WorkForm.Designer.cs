@@ -458,7 +458,7 @@
             this.btn_Show_DB_radiostantion_full.TabIndex = 88;
             this.btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             this.btn_Show_DB_radiostantion_full.UseVisualStyleBackColor = false;
-            this.btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.btn_Show_DB_radiostantion_full_Click);
+            this.btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_full_Click);
             // 
             // btn_Show_DB_radiostantion_last_year
             // 
