@@ -71,9 +71,10 @@ namespace ServiceTelecomConnect
                     var loginUser = loginField.Text;
                     var passUser = md5.hashPassword(passField.Text);
 
-                    if (CheackUser(loginUser, passUser) == false)
+                    if (!CheackUser(loginUser, passUser))
                     {
-                        if (comboBox_post.Text == "Инженер")
+                        if (comboBox_post.Text == "Инженер" || comboBox_post.Text == "Начальник участка" || 
+                            comboBox_post.Text == "Куратор" || comboBox_post.Text == "Руководитель" || comboBox_post.Text == "Дирекция связи")
                         {
                             string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
 
@@ -92,97 +93,6 @@ namespace ServiceTelecomConnect
                                 }
                                 DB.GetInstance.closeConnection();
                             }
-                        }
-
-                        if (comboBox_post.Text == "Начальник участка")
-                        {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
-
-                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.openConnection();
-
-                                if (command.ExecuteNonQuery() == 1) // проверка на случай ошибки соединения с базой данных
-                                {
-                                    MessageBox.Show("Аккаунт успешно создан!");
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Аккаунт не создан!");// на всякий вдруг интернет отключат
-                                }
-                                DB.GetInstance.closeConnection();
-                            }
-
-                        }
-
-                        if (comboBox_post.Text == "Куратор")
-                        {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
-
-                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                            {
-
-                                DB.GetInstance.openConnection();
-
-                                if (command.ExecuteNonQuery() == 1)  // проверка на случай ошибки соединения с базой данных
-                                {
-                                    MessageBox.Show("Аккаунт успешно создан!");
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Аккаунт не создан!");// на всякий вдруг интернет отключат
-                                }
-                                DB.GetInstance.closeConnection();
-                            }
-
-                        }
-
-                        if (comboBox_post.Text == "Руководитель")
-                        {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
-
-                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.openConnection();
-
-                                if (command.ExecuteNonQuery() == 1)  // проверка на случай ошибки соединения с базой данных
-                                {
-                                    MessageBox.Show("Аккаунт успешно создан!");
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Аккаунт не создан!");// на всякий вдруг интернет отключат
-                                }
-                                DB.GetInstance.closeConnection();
-
-                            }
-
-                        }
-
-                        if (comboBox_post.Text == "Дирекция связи")
-                        {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
-
-                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                            {
-
-                                DB.GetInstance.openConnection();
-
-                                if (command.ExecuteNonQuery() == 1)  // проверка на случай ошибки соединения с базой данных
-                                {
-                                    MessageBox.Show("Аккаунт успешно создан!");
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Аккаунт не создан!");// на всякий вдруг интернет отключат
-                                }
-                                DB.GetInstance.closeConnection();
-                            }
-
                         }
 
                         if (comboBox_post.Text == "")

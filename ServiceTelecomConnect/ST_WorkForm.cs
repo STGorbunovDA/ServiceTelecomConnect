@@ -1242,23 +1242,26 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m = new ContextMenu();
                             m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", button_new_add_rst_form_Click_change));
-                            m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", button_new_add_rst_form_click_remont));
-                            m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
-                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
-                            m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
-                            m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                            m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
-                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
-                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            if (textBox_serialNumber.Text != "")
+                            {
+                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", button_new_add_rst_form_click_remont));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
+                                m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
+                                m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                            }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
                                 m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                                 m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                             }
+                            m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                            m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                            m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
+                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -2653,7 +2656,7 @@ namespace ServiceTelecomConnect
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
-        
+
         void Loading_file_full_BD_method()
         {
             if (Internet_check.AvailabilityChanged_bool())
