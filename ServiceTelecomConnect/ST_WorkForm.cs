@@ -1,15 +1,11 @@
 ﻿using Microsoft.Win32;
 using MySql.Data.MySqlClient;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -239,6 +235,20 @@ namespace ServiceTelecomConnect
                     }
                     helloKey.Close();
                 }
+                RegistryKey reg3 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                if (reg3 != null)
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                    lbl_Sign.Text = helloKey.GetValue("Акты_на_подпись").ToString();
+                    if (lbl_Sign.Text != "")
+                    {
+                        label_Sing.Visible = true;
+                        lbl_Sign.Visible = true;
+                    }
+                    helloKey.Close();
+                }
+
 
                 taskCity = comboBox_city.Text;// для отдельных потоков
 
@@ -1250,7 +1260,8 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
-                                m.MenuItems.Add(new MenuItem("Отметить акт", DataGridView1_DefaultCellStyleChanged));
+                                m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
+                                m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
@@ -3073,18 +3084,47 @@ namespace ServiceTelecomConnect
 
         #region подсветка акта цветом и его подсчёт
 
-        void DataGridView1_DefaultCellStyleChanged(object sender, EventArgs e)
+        void DataGridView1_Sign(object sender, EventArgs e)
         {
             if (textBox_numberAct.Text != "")
             {
                 int c = 0;
-                decimal sum = 0;
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(textBox_numberAct.Text))
                     {
                         dataGridView1.Rows[i].Cells["numberAct"].Style.BackColor = Color.Red;
-                        sum += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
+                        c++;
+                    }
+                }
+
+                label_Sing.Visible = true;
+                lbl_Sign.Visible = true;
+                lbl_Sign.Text += $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
+                try
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                    helloKey.SetValue("Акты_на_подпись", $"{lbl_Sign.Text}");
+                    helloKey.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        void DataGridView1_DefaultCellStyleChanged(object sender, EventArgs e)
+        {
+            if (textBox_numberAct.Text != "")
+            {
+                int c = 0;
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(textBox_numberAct.Text))
+                    {
+                        dataGridView1.Rows[i].Cells["numberAct"].Style.BackColor = Color.Red;
                         c++;
                     }
                 }
@@ -3114,6 +3154,13 @@ namespace ServiceTelecomConnect
             txB_lbl_full_complete_act.Visible = true;
         }
 
+        void Lbl_Sign_DoubleClick(object sender, EventArgs e)
+        {
+            lbl_Sign.Visible = false;
+            txB_Sign.Text = lbl_Sign.Text;
+            txB_Sign.Visible = true;
+        }
+
         void Panel3_Click(object sender, EventArgs e)
         {
             if (txB_lbl_full_complete_act.Visible)
@@ -3135,6 +3182,35 @@ namespace ServiceTelecomConnect
                         label_complete.Visible = true;
                         lbl_full_complete_act.Visible = true;
                         txB_lbl_full_complete_act.Visible = false;
+
+                        helloKey2.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            if (txB_Sign.Visible)
+            {
+                try
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                    helloKey.SetValue("Акты_на_подпись", $"{txB_Sign.Text}");
+                    helloKey.Close();
+
+                    RegistryKey reg4 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                    if (reg4 != null)
+                    {
+                        RegistryKey currentUserKey2 = Registry.CurrentUser;
+                        RegistryKey helloKey2 = currentUserKey2.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                        lbl_Sign.Text = helloKey2.GetValue("Акты_на_подпись").ToString();
+
+                        label_Sing.Visible = true;
+                        lbl_Sign.Visible = true;
+                        txB_Sign.Visible = false;
 
                         helloKey2.Close();
                     }
@@ -3171,6 +3247,35 @@ namespace ServiceTelecomConnect
                             label_complete.Visible = true;
                             lbl_full_complete_act.Visible = true;
                             txB_lbl_full_complete_act.Visible = false;
+
+                            helloKey2.Close();
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                if (txB_Sign.Visible)
+                {
+                    try
+                    {
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                        helloKey.SetValue("Акты_на_подпись", $"{txB_Sign.Text}");
+                        helloKey.Close();
+
+                        RegistryKey reg4 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                        if (reg4 != null)
+                        {
+                            RegistryKey currentUserKey2 = Registry.CurrentUser;
+                            RegistryKey helloKey2 = currentUserKey2.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                            lbl_Sign.Text = helloKey2.GetValue("Акты_на_подпись").ToString();
+
+                            label_Sing.Visible = true;
+                            lbl_Sign.Visible = true;
+                            txB_Sign.Visible = false;
 
                             helloKey2.Close();
                         }
@@ -3300,10 +3405,12 @@ namespace ServiceTelecomConnect
             }
         }
 
-        #endregion
 
         #endregion
 
+        #endregion
+
+        
     }
 }
 

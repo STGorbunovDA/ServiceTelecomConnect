@@ -163,6 +163,9 @@
             this.pictureBox1_clear = new System.Windows.Forms.PictureBox();
             this.textBox_numberActRemont = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txB_Sign = new System.Windows.Forms.TextBox();
+            this.lbl_Sign = new System.Windows.Forms.Label();
+            this.label_Sing = new System.Windows.Forms.Label();
             this.txB_lbl_full_complete_act = new System.Windows.Forms.TextBox();
             this.lbl_full_complete_act = new System.Windows.Forms.Label();
             this.label_complete = new System.Windows.Forms.Label();
@@ -1039,7 +1042,7 @@
             this.panel2.Controls.Add(this.textBox_inventoryNumber);
             this.panel2.Controls.Add(this.textBox_company);
             this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(104, 635);
+            this.panel2.Location = new System.Drawing.Point(90, 549);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1078, 71);
             this.panel2.TabIndex = 2;
@@ -1829,6 +1832,9 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel3.Controls.Add(this.txB_Sign);
+            this.panel3.Controls.Add(this.lbl_Sign);
+            this.panel3.Controls.Add(this.label_Sing);
             this.panel3.Controls.Add(this.txB_lbl_full_complete_act);
             this.panel3.Controls.Add(this.lbl_full_complete_act);
             this.panel3.Controls.Add(this.label_complete);
@@ -1850,12 +1856,51 @@
             this.panel3.TabIndex = 29;
             this.panel3.Click += new System.EventHandler(this.Panel3_Click);
             // 
+            // txB_Sign
+            // 
+            this.txB_Sign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_Sign.Location = new System.Drawing.Point(675, 8);
+            this.txB_Sign.Name = "txB_Sign";
+            this.txB_Sign.Size = new System.Drawing.Size(360, 26);
+            this.txB_Sign.TabIndex = 112;
+            this.txB_Sign.Visible = false;
+            // 
+            // lbl_Sign
+            // 
+            this.lbl_Sign.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_Sign.AutoSize = true;
+            this.lbl_Sign.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Sign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_Sign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Sign.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_Sign.Location = new System.Drawing.Point(650, 13);
+            this.lbl_Sign.Name = "lbl_Sign";
+            this.lbl_Sign.Size = new System.Drawing.Size(0, 16);
+            this.lbl_Sign.TabIndex = 111;
+            this.lbl_Sign.Visible = false;
+            this.lbl_Sign.DoubleClick += new System.EventHandler(this.Lbl_Sign_DoubleClick);
+            // 
+            // label_Sing
+            // 
+            this.label_Sing.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_Sing.AutoSize = true;
+            this.label_Sing.BackColor = System.Drawing.Color.Transparent;
+            this.label_Sing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_Sing.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Sing.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_Sing.Location = new System.Drawing.Point(548, 9);
+            this.label_Sing.Name = "label_Sing";
+            this.label_Sing.Size = new System.Drawing.Size(98, 20);
+            this.label_Sing.TabIndex = 110;
+            this.label_Sing.Text = "Подписать:";
+            this.label_Sing.Visible = false;
+            // 
             // txB_lbl_full_complete_act
             // 
             this.txB_lbl_full_complete_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_lbl_full_complete_act.Location = new System.Drawing.Point(645, 31);
+            this.txB_lbl_full_complete_act.Location = new System.Drawing.Point(675, 31);
             this.txB_lbl_full_complete_act.Name = "txB_lbl_full_complete_act";
-            this.txB_lbl_full_complete_act.Size = new System.Drawing.Size(390, 26);
+            this.txB_lbl_full_complete_act.Size = new System.Drawing.Size(360, 26);
             this.txB_lbl_full_complete_act.TabIndex = 109;
             this.txB_lbl_full_complete_act.Visible = false;
             this.txB_lbl_full_complete_act.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxB_lbl_full_complete_act_KeyDown);
@@ -2617,5 +2662,8 @@
         private System.Windows.Forms.Label lbl_full_complete_act;
         private System.Windows.Forms.Label label_complete;
         private System.Windows.Forms.TextBox txB_lbl_full_complete_act;
+        private System.Windows.Forms.Label label_Sing;
+        private System.Windows.Forms.TextBox txB_Sign;
+        private System.Windows.Forms.Label lbl_Sign;
     }
 }

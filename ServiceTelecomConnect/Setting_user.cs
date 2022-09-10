@@ -99,10 +99,6 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                finally
-                {
-                    DB.GetInstance.closeConnection();
-                }
             }
         }
         void Setting_user_Load(object sender, EventArgs e)

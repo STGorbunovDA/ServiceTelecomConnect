@@ -359,10 +359,10 @@ namespace ServiceTelecomConnect
                             range_Consolidated10.Font.Bold = true;
                             range_Consolidated11.NumberFormat = "@";
                             range_Consolidated12.NumberFormat = "@";
-                            range_Consolidated13.Font.Size = 7;
-                            range_Consolidated14.Font.Size = 7;
-                            range_Consolidated15.Font.Size = 7;
-                            range_Consolidated16.Font.Size = 7;
+                            range_Consolidated13.Font.Size = 6;
+                            range_Consolidated14.Font.Size = 6;
+                            range_Consolidated15.Font.Size = 6;
+                            range_Consolidated16.Font.Size = 6;
 
                             Regex reg = new Regex(" ");
                             post = reg.Replace(post, "\n", 1);
