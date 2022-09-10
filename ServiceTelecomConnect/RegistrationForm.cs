@@ -213,7 +213,7 @@ namespace ServiceTelecomConnect
             catch (MySqlException)
             {
                 string Mesage2;
-                Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
+                Mesage2 = "Ошибка регистрации!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                 {

@@ -42,17 +42,6 @@ namespace ServiceTelecomConnect
                 label_TutorialEngineers.Enabled = false;
             }
 
-            if (_user.IsAdmin == "Руководитель")
-            {
-                string Mesage2;
-                Mesage2 = "Вы руководитель, а значит у Вас полный доступ к конфигурации!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Asterisk, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-
             if (_user.IsAdmin == "Admin")
             {
                 pictureBox1_setting.Visible = true;
