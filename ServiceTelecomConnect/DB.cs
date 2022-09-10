@@ -19,6 +19,8 @@ namespace ServiceTelecomConnect
                 return Class;
             }
         }
+        ///"server=31.31.198.62;port=3306;username=u1748936_default;password=55gxqSH5Lv0ZpGRb;database=u1748936_root;charset=utf8"
+        /// "server=31.31.198.62;port=3306;username=u1748936_u17;password=55gxqSH5Lv0ZpGRb;database=u1748936_radiostantion;charset=utf8"ц
 
 
         /// <summary>
