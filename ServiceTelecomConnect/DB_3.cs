@@ -20,10 +20,13 @@ namespace ServiceTelecomConnect
                 return Class;
             }
         }
+        /// "server=31.31.198.62;port=3306;username=u1748936_db_3;password=war74_89;database=u1748936_root;charset=utf8" /// для просмотра
+        /// "server=31.31.198.62;port=3306;username=u1748936_db_3_2;password=war74_89;database=u1748936_radiostantion;charset=utf8" /// для работы
+
         // <summary>
         /// подключении к базе данных
         /// </summary>
-        MySqlConnection connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_3;password=war74_90;database=u1748936_root;charset=utf8");
+        MySqlConnection connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_3_2;password=war74_90;database=u1748936_radiostantion;charset=utf8");
 
         /// <summary>
         /// проверка соединения если закрыто открыть
