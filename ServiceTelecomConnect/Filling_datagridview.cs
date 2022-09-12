@@ -529,11 +529,11 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool())
                         {
-                            DB_3.GetInstance.openConnection();
+                            DB_2.GetInstance.openConnection();
                             command.ExecuteNonQuery();
-                            DB_3.GetInstance.closeConnection();
+                            DB_2.GetInstance.closeConnection();
                         }
                     }
 
@@ -541,11 +541,11 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool() == true)
+                        if (Internet_check.AvailabilityChanged_bool())
                         {
-                            DB_3.GetInstance.openConnection();
+                            DB_2.GetInstance.openConnection();
                             command2.ExecuteNonQuery();
-                            DB_3.GetInstance.closeConnection();
+                            DB_2.GetInstance.closeConnection();
                         }
                     }
                 }

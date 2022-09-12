@@ -112,8 +112,6 @@ namespace ServiceTelecomConnect
 
                         sw.WriteLine();
                     }
-
-                    MessageBox.Show("Резервный excel файл успешно сохранен");
                 }
 
             }

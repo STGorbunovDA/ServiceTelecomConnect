@@ -330,7 +330,6 @@ namespace ServiceTelecomConnect
                 }
 
                 File.WriteAllText(fileNamePath, json);
-
             }
             catch (Exception ex)
             {

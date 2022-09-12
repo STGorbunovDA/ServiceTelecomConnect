@@ -215,12 +215,6 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
                 dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
-                ///Таймер
-                WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (30 * 60 * 1000); // 15 mins
-                timer.Tick += new EventHandler(TimerEventProcessor);
-                timer.Start();
-
                 /// получение актов который не заполенны из реестра, которые указал пользователь
                 RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
                 if (reg2 != null)
@@ -249,8 +243,13 @@ namespace ServiceTelecomConnect
                     helloKey.Close();
                 }
 
-
                 taskCity = comboBox_city.Text;// для отдельных потоков
+
+                ///Таймер
+                WinForms::Timer timer = new WinForms::Timer();
+                timer.Interval = (30 * 60 * 1000); // 15 mins
+                timer.Tick += new EventHandler(TimerEventProcessor);
+                timer.Start();
 
             }
             catch (Exception ex)
@@ -271,10 +270,8 @@ namespace ServiceTelecomConnect
 
             await Task.Run(() => SaveFileDataGridViewPC.autoSaveFilePC(dataGridView2, taskCity));
 
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
-            }
+            new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+
         }
 
         #region Счётчики
@@ -982,8 +979,8 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
-                CellClickDatagridview_printActTO_Remont();
-                PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
+                //CellClickDatagridview_printActTO_Remont();
+                PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                      label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                      label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text,
                      comboBox_model.Text, textBox_serialNumber.Text, textBox_inventoryNumber.Text, textBox_networkNumber.Text, textBox_сompleted_works_1.Text,
@@ -1014,14 +1011,14 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, textBox_city.Text, textBox_search.Text);
+                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, textBox_city.Text, textBox_search.Text);
+            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text);
             Counters();
         }
 
@@ -1035,7 +1032,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, textBox_numberAct.Text);
                 Counters();
             }
         }
@@ -1044,7 +1041,7 @@ namespace ServiceTelecomConnect
         {
             if (textBox_numberAct.Text != "")
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, textBox_numberAct.Text);
                 Counters();
             }
         }
@@ -3410,7 +3407,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        
+
     }
 }
 

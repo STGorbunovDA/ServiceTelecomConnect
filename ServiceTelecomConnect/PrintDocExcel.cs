@@ -1541,7 +1541,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show(ex.ToString());
             }
         }
-        internal static void PrintExcelActRemont(DataGridView dgw, string numberAct, string dateTO,
+        internal static void PrintExcelActRemont(DataGridView dgw, string dateTO,
             string company, string location, string FIO_chief, string post, string representative,
             string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
             string dateIssue, string city, string poligon, string сategory, string model, string serialNumber,
@@ -1582,8 +1582,8 @@ namespace ServiceTelecomConnect
                     Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
                     Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
 
-                    workSheet.Name = $"Акт ремонта №{numberAct.Replace('/', '.')}";
-                    workSheet2.Name = $"ФОУ №{numberAct.Replace('/', '.')}";
+                    workSheet.Name = $"Акт ремонта №{numberActRemont.Replace('/', '.')}";
+                    workSheet2.Name = $"ФОУ №{numberActRemont.Replace('/', '.')}";
 
                     #region Акт ремонта
 
@@ -1898,7 +1898,7 @@ namespace ServiceTelecomConnect
 
 
                     workSheet.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ №";
-                    workSheet.Cells[1, 7] = $"{numberAct}";
+                    workSheet.Cells[1, 7] = $"{numberActRemont}";
                     workSheet.Cells[2, 1] = $"выполненных работ по ремонту систем радиосвязи";
                     workSheet.Cells[4, 1] = $"{city}";
                     workSheet.Cells[5, 1] = $"город";
@@ -2407,6 +2407,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated124 = workSheet2.Rows.get_Range("A62", "E62");
                     Excel.Range range_Consolidated125 = workSheet2.Rows.get_Range("A63", "K63");
                     Excel.Range range_Consolidated126 = workSheet2.Rows.get_Range("I62", "J62");
+                    Excel.Range range_Consolidated127 = workSheet2.Rows.get_Range("K5", "K9");
 
                     range_Consolidated100.Font.Size = 9;
                     range_Consolidated101.Font.Bold = true;
@@ -2442,6 +2443,7 @@ namespace ServiceTelecomConnect
                     range_Consolidated124.Font.Underline = true;
                     range_Consolidated125.Font.Size = 7;
                     range_Consolidated126.Font.Bold = true;
+                    range_Consolidated127.NumberFormat = "@";
 
                     workSheet2.Cells[1, 7] = $"Специализированная форма № ФОУ-18";
                     workSheet2.Cells[2, 6] = $"Утверждена распоряжением ОАО «РЖД» от 29.01.2015 № 190р";
