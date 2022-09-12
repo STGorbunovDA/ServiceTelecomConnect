@@ -343,6 +343,8 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated14 = workSheet.Rows.get_Range("E36", "G37");
                             Excel.Range range_Consolidated15 = workSheet.Rows.get_Range("M29", "O30");
                             Excel.Range range_Consolidated16 = workSheet.Rows.get_Range("M36", "O37");
+                            Excel.Range range_Consolidated17 = workSheet.Rows.get_Range("D8", "D27");
+                            Excel.Range range_Consolidated18 = workSheet.Rows.get_Range("L8", "L27");
 
                             range_Consolidated.Font.Bold = true;
                             range_Consolidated.Font.Size = 10;
@@ -363,6 +365,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated14.Font.Size = 6;
                             range_Consolidated15.Font.Size = 6;
                             range_Consolidated16.Font.Size = 6;
+                            range_Consolidated17.NumberFormat = "@";
 
                             Regex reg = new Regex(" ");
                             post = reg.Replace(post, "\n", 1);
