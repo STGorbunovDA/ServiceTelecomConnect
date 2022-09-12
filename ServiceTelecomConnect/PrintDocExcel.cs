@@ -977,6 +977,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated212.Font.Bold = true;
                             range_Consolidated213.NumberFormat = "@";
                             range_Consolidated243.Font.Size = 10;
+                            range_Consolidated243.NumberFormat = "@";
 
                             workSheet2.Cells[1, 1] = $"Ведомость проверки параметров радиостанций №:";
                             workSheet2.Cells[1, 8] = $"{numberAct}";
