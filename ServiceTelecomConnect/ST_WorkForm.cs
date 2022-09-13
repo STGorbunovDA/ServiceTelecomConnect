@@ -247,7 +247,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (30 * 60 * 1000); // 15 mins
+                timer.Interval = (1 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -262,7 +262,6 @@ namespace ServiceTelecomConnect
         async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
 
-
             await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
             await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
 
@@ -270,8 +269,9 @@ namespace ServiceTelecomConnect
 
             await Task.Run(() => SaveFileDataGridViewPC.autoSaveFilePC(dataGridView2, taskCity));
 
-            new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+            await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
 
+            //new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
 
         #region Счётчики

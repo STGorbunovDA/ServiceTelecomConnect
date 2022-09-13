@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Threading;
@@ -95,7 +96,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
-               // dgw.Columns[40].Visible = false;
+                // dgw.Columns[40].Visible = false;
             }
             catch (Exception ex)
             {
@@ -280,6 +281,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
+                    var searchString = string.Empty;
                     string perem_comboBox = "numberAct";
 
                     dgw.Rows.Clear();
@@ -325,7 +327,17 @@ namespace ServiceTelecomConnect
                         perem_comboBox = "decommissionSerialNumber";
                     }
 
-                    string searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                    var provSeach = textBox_search;
+                    provSeach = provSeach.ToUpper();
+
+                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                    }
+                    else
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                    }
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
@@ -343,6 +355,10 @@ namespace ServiceTelecomConnect
                             }
                         }
                         DB.GetInstance.closeConnection();
+                    }
+                    if(perem_comboBox == "numberActRemont")
+                    {
+                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
                     }
                 }
                 catch (MySqlException ex)
@@ -527,7 +543,7 @@ namespace ServiceTelecomConnect
                 {
                     var clearBD = "TRUNCATE TABLE radiostantion_copy";
 
-                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_3.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                     {
                         if (Internet_check.AvailabilityChanged_bool())
                         {
@@ -539,7 +555,7 @@ namespace ServiceTelecomConnect
 
                     var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
-                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_3.GetInstance.GetConnection()))
+                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                     {
                         if (Internet_check.AvailabilityChanged_bool())
                         {
@@ -681,7 +697,7 @@ namespace ServiceTelecomConnect
 
         #region списание рст
 
-        internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber, 
+        internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber,
             string city, string poligon, string company, string location, string model, string dateTO, string price, string representative, string post,
             string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
             string AKB, string batteryСharger, string comment, string number_printing_doc_datePanel)
@@ -773,7 +789,7 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.openConnection();
                             command.ExecuteNonQuery();
                             DB.GetInstance.closeConnection();
-                            MessageBox.Show("Списание удалено! Заполни инвентарный и сетевой номер заново!");          
+                            MessageBox.Show("Списание удалено! Заполни инвентарный и сетевой номер заново!");
                         }
 
                         CreateColums(dgw2);
@@ -819,7 +835,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                     MessageBox.Show(ex.ToString());
-                } 
+                }
             }
         }
         #endregion
