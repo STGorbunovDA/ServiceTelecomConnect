@@ -684,7 +684,7 @@ namespace ServiceTelecomConnect
         internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber, 
             string city, string poligon, string company, string location, string model, string dateTO, string price, string representative, string post,
             string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
-            string AKB, string batteryСharger, string comment)
+            string AKB, string batteryСharger, string comment, string number_printing_doc_datePanel)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -693,7 +693,7 @@ namespace ServiceTelecomConnect
                     if (serialNumber != "")
                     {
                         var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
-                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
+                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
                             $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";

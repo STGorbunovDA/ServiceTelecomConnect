@@ -991,7 +991,7 @@ namespace ServiceTelecomConnect
                      textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text,
                      textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text,
                      textBox_3_post_remont_company.Text, textBox_3_FIO_remont_company.Text);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 panel1.Enabled = true;
             }
         }
@@ -1405,15 +1405,18 @@ namespace ServiceTelecomConnect
                             remontRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
 
                             remontRSTForm.ShowDialog();
+
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                             Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                            Counters();
                             dataGridView1.ClearSelection();
-
+                            
                             if (dataGridView1.CurrentCell.RowIndex >= 0)
                             {
                                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                             }
                             Refresh_values_TXB_CMB();
+
                         }
                     }
                 }
@@ -1428,7 +1431,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         private void button_new_add_rst_form_Click_change(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
@@ -3340,7 +3343,8 @@ namespace ServiceTelecomConnect
                 Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
                     textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
                     textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
-                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text, txB_comment.Text);
+                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text, 
+                    txB_comment.Text, textBox_number_printing_doc_datePanel.Text);
                 Button_update_Click(sender, e);
                 panel_decommissionSerialNumber.Visible = false;
                 panel_decommissionSerialNumber.Enabled = false;

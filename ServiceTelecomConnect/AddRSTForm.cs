@@ -664,7 +664,7 @@ namespace ServiceTelecomConnect
             e.KeyChar = char.ToUpper(e.KeyChar);
 
             char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-')
+            if ((ch < 'А' || ch > 'Я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != ' ')
             {
                 e.Handled = true;
             }
