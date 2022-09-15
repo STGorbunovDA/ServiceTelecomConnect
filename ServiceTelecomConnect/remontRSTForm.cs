@@ -2253,6 +2253,109 @@ namespace ServiceTelecomConnect
                     }
                 }
 
+                if (comboBox_remont_select.Text == "16")
+                {
+                    if (textBox_model.Text == "Motorola GP-340")
+                    {
+                        textBox_сompleted_works_1.Text = "Замена держателя боковой клавиатуры";
+                        textBox_parts_1.Text = "1380528Z01 Держатель боковой клавиатуры для GP-340";
+
+                        textBox_сompleted_works_2.Text = "Замена клавиши РТТ";
+                        textBox_parts_2.Text = "4080523Z02 Клавиша РТТ";
+
+                        textBox_сompleted_works_3.Text = "Замена клавиатуры РТТ";
+                        textBox_parts_3.Text = "7580532Z01 Клавиатура РТТ для GP-340/640";
+
+                        textBox_сompleted_works_4.Text = "Замена динамика";
+                        textBox_parts_4.Text = "5005589U05 Динамик для GP-300/600";
+
+                        textBox_сompleted_works_5.Text = "Замена транзистора";
+                        textBox_parts_5.Text = "4813976А01 Выходной ВЧ-транзистор Q3501 (GM-300)";
+
+                        button_save_add_rst_remont.Enabled = true;
+                    }
+
+                    else if (textBox_model.Text == "Motorola DP-2400" || textBox_model.Text == "Motorola DP-2400е")
+                    {
+                        textBox_сompleted_works_1.Text = "Замена  ручки регулятора громкости";
+                        textBox_parts_1.Text = "36012016001 Ручка регулятора громкости";
+
+                        textBox_сompleted_works_2.Text = "Замена О кольца";
+                        textBox_parts_2.Text = "32012111001 О кольцо";
+
+                        textBox_сompleted_works_3.Text = "Замена контактов АКБ";
+                        textBox_parts_3.Text = "0915184H01 Контакты АКБ";
+
+                        textBox_сompleted_works_4.Text = "Замена уплотнителя контактов АКБ";
+                        textBox_parts_4.Text = "32012110001 Уплотнитель контактов АКБ";
+
+                        textBox_сompleted_works_5.Text = "Замена динамика";
+                        textBox_parts_5.Text = "50012013001 Динамик";
+
+                        button_save_add_rst_remont.Enabled = true;
+                    }
+
+                    else if (textBox_model.Text == "Icom IC-F3GS")
+                    {
+                        textBox_сompleted_works_1.Text = "Замена заглушки";
+                        textBox_parts_1.Text = "Заглушка МР37";
+
+                        textBox_сompleted_works_2.Text = "Замена уплотнителя";
+                        textBox_parts_2.Text = "2251 MAIN SEAL Уплотнительная резинка";
+
+                        textBox_сompleted_works_3.Text = "Замена ручки";
+                        textBox_parts_3.Text = "KNOB N-276 Ручка регулятора громкости";
+
+                        textBox_сompleted_works_4.Text = "Замена транзистора";
+                        textBox_parts_4.Text = "Транзистор 2SK2973 (MTS101P)";
+
+                        textBox_сompleted_works_5.Text = "Замена фильтра";
+                        textBox_parts_5.Text = "Фильтр S.XTRAL CR-664A 15.300 MHz";
+
+                        button_save_add_rst_remont.Enabled = true;
+                    }
+
+                    else if (textBox_model.Text == "Icom IC-F3GT")
+                    {
+                        textBox_сompleted_works_1.Text = "Замена заглушки";
+                        textBox_parts_1.Text = "Заглушка МР37";
+
+                        textBox_сompleted_works_2.Text = "Замена уплотнителя";
+                        textBox_parts_2.Text = "2251 MAIN SEAL Уплотнительная резинка";
+
+                        textBox_сompleted_works_3.Text = "Замена ручки";
+                        textBox_parts_3.Text = "KNOB N-276 Ручка регулятора громкости";
+
+                        textBox_сompleted_works_4.Text = "Замена транзистора";
+                        textBox_parts_4.Text = "Транзистор 2SK2973 (MTS101P)";
+
+                        textBox_сompleted_works_5.Text = "Замена фильтра";
+                        textBox_parts_5.Text = "Фильтр S.XTRAL CR-664A 15.300 MHz";
+
+                        button_save_add_rst_remont.Enabled = true;
+                    }
+
+                    else if (textBox_model.Text == "Icom IC-F16")
+                    {
+                        textBox_сompleted_works_1.Text = "Замена заглушки";
+                        textBox_parts_1.Text = "Заглушка МР37";
+
+                        textBox_сompleted_works_2.Text = "Замена уплотнителя";
+                        textBox_parts_2.Text = "2251 MAIN SEAL Уплотнительная резинка";
+
+                        textBox_сompleted_works_3.Text = "Замена ручки";
+                        textBox_parts_3.Text = "KNOB N-276 Ручка регулятора громкости";
+
+                        textBox_сompleted_works_4.Text = "Замена транзистора";
+                        textBox_parts_4.Text = "Транзистор 2SK2973 (MTS101P)";
+
+                        textBox_сompleted_works_5.Text = "Замена фильтра";
+                        textBox_parts_5.Text = "Фильтр S.XTRAL CR-664A 15.300 MHz";
+
+                        button_save_add_rst_remont.Enabled = true;
+                    }
+                }
+
             }
 
             if (comboBox_сategory.Text == "5")
