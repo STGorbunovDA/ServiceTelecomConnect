@@ -955,6 +955,10 @@ namespace ServiceTelecomConnect
         {
             Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
             CellClickDatagridview_printActTO_Remont();
+            if (textBox_numberAct.Text != "")
+            {
+                dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
+            }
             PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                 label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                 label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
