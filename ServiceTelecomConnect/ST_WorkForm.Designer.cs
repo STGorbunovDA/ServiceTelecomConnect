@@ -2438,10 +2438,10 @@
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_remont_information_company);
-            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel2);

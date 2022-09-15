@@ -689,7 +689,8 @@
             "13",
             "14",
             "15",
-            "16"});
+            "16",
+            "17"});
             this.comboBox_remont_select.Location = new System.Drawing.Point(450, 56);
             this.comboBox_remont_select.Name = "comboBox_remont_select";
             this.comboBox_remont_select.Size = new System.Drawing.Size(58, 28);

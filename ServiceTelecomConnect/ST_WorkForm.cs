@@ -899,62 +899,19 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region cell_click_datagridview для печати акта ТО и ремонта
-
-        void CellClickDatagridview_printActTO_Remont()
-        {
-            dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-            DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-            textBox_id.Text = row.Cells[0].Value.ToString();
-            comboBox_poligon.Text = row.Cells[1].Value.ToString();
-            textBox_company.Text = row.Cells[2].Value.ToString();
-            textBox_location.Text = row.Cells[3].Value.ToString();
-            comboBox_model.Text = row.Cells[4].Value.ToString();
-            textBox_serialNumber.Text = row.Cells[5].Value.ToString();
-            textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
-            textBox_networkNumber.Text = row.Cells[7].Value.ToString();
-            textBox_dateTO.Text = row.Cells[8].Value.ToString();
-            textBox_numberAct.Text = row.Cells[9].Value.ToString();
-            textBox_city.Text = row.Cells[10].Value.ToString();
-            textBox_price.Text = row.Cells[11].Value.ToString();
-            textBox_representative.Text = row.Cells[12].Value.ToString();
-            textBox_post.Text = row.Cells[13].Value.ToString();
-            textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
-            textBox_dateIssue.Text = row.Cells[15].Value.ToString();
-            textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
-            textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
-            comboBox_сategory.Text = row.Cells[18].Value.ToString();
-            textBox_priceRemont.Text = row.Cells[19].Value.ToString();
-            textBox_antenna.Text = row.Cells[20].Value.ToString();
-            textBox_manipulator.Text = row.Cells[21].Value.ToString();
-            textBox_AKB.Text = row.Cells[22].Value.ToString();
-            textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
-            textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
-            textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
-            textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
-            textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
-            textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
-            textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
-            textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
-            textBox_parts_1.Text = row.Cells[31].Value.ToString();
-            textBox_parts_2.Text = row.Cells[32].Value.ToString();
-            textBox_parts_3.Text = row.Cells[33].Value.ToString();
-            textBox_parts_4.Text = row.Cells[34].Value.ToString();
-            textBox_parts_5.Text = row.Cells[35].Value.ToString();
-            textBox_parts_6.Text = row.Cells[36].Value.ToString();
-            textBox_parts_7.Text = row.Cells[37].Value.ToString();
-            txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
-            txB_comment.Text = row.Cells[39].Value.ToString();
-        }
-
-        #endregion
-
         #region АКТ => excel
 
         void Button_form_act_Click(object sender, EventArgs e)
         {
             Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
-            CellClickDatagridview_printActTO_Remont();
+            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+            dataGridView1.ClearSelection();
+
+            if (dataGridView1.CurrentCell.RowIndex >= 0)
+            {
+                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+            }
+            Refresh_values_TXB_CMB(currRowIndex);
             if (textBox_numberAct.Text != "")
             {
                 dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
@@ -983,7 +940,6 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
-                //CellClickDatagridview_printActTO_Remont();
                 PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
                      label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
                      label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text,
@@ -995,7 +951,6 @@ namespace ServiceTelecomConnect
                      textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text,
                      textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text,
                      textBox_3_post_remont_company.Text, textBox_3_FIO_remont_company.Text);
-                //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 panel1.Enabled = true;
             }
         }
@@ -1362,26 +1317,18 @@ namespace ServiceTelecomConnect
         #region отк. формы добавления ремонтов
         private void button_new_add_rst_form_click_remont(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool() == true)
+            if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
-                    if (textBox_serialNumber.Text == "")
-                    {
-
-                    }
-                    else
+                    if (textBox_serialNumber.Text != "")
                     {
                         using (remontRSTForm remontRSTForm = new remontRSTForm())
                         {
                             remontRSTForm.DoubleBufferedForm(true);
 
                             remontRSTForm.comboBox_сategory.Text = comboBox_сategory.Text;
-                            if (textBox_numberActRemont.Text == "")
-                            {
-                                remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
-                            }
-                            else remontRSTForm.textBox_numberActRemont.Text = textBox_numberActRemont.Text;
+                            
                             remontRSTForm.textBox_priceRemont.Text = textBox_priceRemont.Text;
                             remontRSTForm.textBox_сompleted_works_1.Text = textBox_сompleted_works_1.Text;
                             remontRSTForm.textBox_сompleted_works_2.Text = textBox_сompleted_works_2.Text;
@@ -1408,18 +1355,24 @@ namespace ServiceTelecomConnect
                             remontRSTForm.label_company.Text = textBox_company.Text;
                             remontRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
 
+                            if (textBox_numberActRemont.Text == "")
+                            {
+                                remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
+                            }
+                            else remontRSTForm.textBox_numberActRemont.Text = textBox_numberActRemont.Text;
+
                             remontRSTForm.ShowDialog();
 
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                             Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                             Counters();
                             dataGridView1.ClearSelection();
-                            
+
                             if (dataGridView1.CurrentCell.RowIndex >= 0)
                             {
                                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                             }
-                            Refresh_values_TXB_CMB();
+                            Refresh_values_TXB_CMB(currRowIndex);
 
                         }
                     }
@@ -1502,7 +1455,7 @@ namespace ServiceTelecomConnect
                             {
                                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                             }
-                            Refresh_values_TXB_CMB();
+                            Refresh_values_TXB_CMB(currRowIndex);
                         }
                     }
                 }
@@ -1970,9 +1923,9 @@ namespace ServiceTelecomConnect
         /// <summary>
         /// после добавления ремонта или изменения данных РСТ, присваиваем значения textBox и comBox
         /// </summary>
-        void Refresh_values_TXB_CMB()
+        void Refresh_values_TXB_CMB(int currRowIndex)
         {
-            DataGridViewRow row = dataGridView1.Rows[selectedRow];
+            DataGridViewRow row = dataGridView1.Rows[currRowIndex];
             textBox_id.Text = row.Cells[0].Value.ToString();
             comboBox_poligon.Text = row.Cells[1].Value.ToString();
             textBox_company.Text = row.Cells[2].Value.ToString();
@@ -2086,7 +2039,6 @@ namespace ServiceTelecomConnect
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 try
                 {
-                    dataGridView1.ClearSelection();
                     for (int j = 0; j < dataGridView1.ColumnCount; j++)
                     {
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -2094,7 +2046,9 @@ namespace ServiceTelecomConnect
                             if (dataGridView1.Rows[i].Cells[j].Value.ToString().Equals(searchValue))
                             {
                                 dataGridView1.Rows[i].Cells[j].Selected = true;
-                                dataGridView1.CurrentCell = dataGridView1[0, dataGridView1.Rows[i].Cells[j].RowIndex];
+                                int currRowIndex = dataGridView1.Rows[i].Cells[j].RowIndex;
+                                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                                Refresh_values_TXB_CMB(currRowIndex);
                                 break;
                             }
                         }
