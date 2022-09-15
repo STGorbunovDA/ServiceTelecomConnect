@@ -224,16 +224,16 @@ namespace ServiceTelecomConnect
                             _excelCells35.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells36.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells38.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            _excelCells40.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                            _excelCells41.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                            _excelCells40.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells41.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells43.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            _excelCells45.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                            _excelCells46.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                            _excelCells47.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            _excelCells45.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells46.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells47.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells48.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells50.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells51.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            _excelCells52.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            _excelCells52.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells53.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells55.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells56.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -247,10 +247,10 @@ namespace ServiceTelecomConnect
                             _excelCells65.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells67.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells68.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            _excelCells69.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            _excelCells69.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells70.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells72.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            _excelCells73.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                            _excelCells73.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells74.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells76.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells77.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -327,6 +327,12 @@ namespace ServiceTelecomConnect
                             Excel.Range rowHeight5 = workSheet.get_Range("A41", "O41");
                             rowHeight5.EntireRow.RowHeight = 10; //
 
+                            Excel.Range rowHeight6 = workSheet.get_Range("A29", "A30");
+                            rowHeight6.EntireRow.RowHeight = 25; //
+
+                            Excel.Range rowHeight7 = workSheet.get_Range("A36", "A37");
+                            rowHeight7.EntireRow.RowHeight = 25; //
+
                             Excel.Range range_Consolidated = workSheet.Rows.get_Range("E1", "O1");
                             Excel.Range range_Consolidated2 = workSheet.Rows.get_Range("C3", "M3");
                             Excel.Range range_Consolidated3 = workSheet.Rows.get_Range("A7", "O7");
@@ -361,14 +367,11 @@ namespace ServiceTelecomConnect
                             range_Consolidated10.Font.Bold = true;
                             range_Consolidated11.NumberFormat = "@";
                             range_Consolidated12.NumberFormat = "@";
-                            range_Consolidated13.Font.Size = 6;
-                            range_Consolidated14.Font.Size = 6;
-                            range_Consolidated15.Font.Size = 6;
-                            range_Consolidated16.Font.Size = 6;
+                            range_Consolidated13.Font.Size = 7.5;
+                            range_Consolidated14.Font.Size = 7.5;
+                            range_Consolidated15.Font.Size = 7.5;
+                            range_Consolidated16.Font.Size = 7.5;
                             range_Consolidated17.NumberFormat = "@";
-
-                            Regex reg = new Regex(" ");
-                            post = reg.Replace(post, "\n", 1);
 
                             workSheet.Cells[1, 5] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
                             workSheet.Cells[1, 13] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
@@ -400,44 +403,44 @@ namespace ServiceTelecomConnect
                             workSheet.Cells[7, 15] = $"МАН\n(шт.)";
                             workSheet.Cells[28, 1] = $"Комплектность и работоспособность проверены в присутствии Заказчика. Знаки соответствия нанесены.";
                             workSheet.Cells[28, 9] = $"Комплектность и работоспособность проверены в присутствии Заказчика. Знаки соответствия нанесены.";
-                            workSheet.Cells[29, 1] = $"Принял: Начальник участка\n по ТО и ремонту СРС";
+                            workSheet.Cells[29, 1] = $"\nПринял: Начальник участка по ТО\nи ремонту СРС\n";
                             workSheet.Cells[31, 1] = $"должность";
                             workSheet.Cells[33, 2] = $"{FIO_chief}";
                             workSheet.Cells[34, 1] = $"подпись";
                             workSheet.Cells[34, 2] = $"расшифровка подписи";
-                            workSheet.Cells[36, 1] = $"Сдал: Начальник участка\n по ТО и ремонту СРС";
+                            workSheet.Cells[36, 1] = $"\nСдал: Начальник участка по ТО\nи ремонту СРС\n";
                             workSheet.Cells[38, 1] = $"должность";
                             workSheet.Cells[40, 2] = $"{FIO_chief}";
                             workSheet.Cells[41, 1] = $"подпись";
                             workSheet.Cells[41, 2] = $"расшифровка подписи";
-                            workSheet.Cells[29, 5] = $"Сдал: {post}";
+                            workSheet.Cells[29, 5] = $"\nСдал: {post}\n";
                             workSheet.Cells[31, 5] = $"должность";
                             workSheet.Cells[33, 6] = $"{representative}";
                             workSheet.Cells[34, 5] = $"подпись";
                             workSheet.Cells[34, 6] = $"расшифровка подписи";
-                            workSheet.Cells[36, 5] = $"Принял: {post}";
+                            workSheet.Cells[36, 5] = $"\nПринял: {post}\n";
                             workSheet.Cells[38, 5] = $"должность";
                             workSheet.Cells[40, 6] = $"{representative}";
                             workSheet.Cells[41, 5] = $"подпись";
                             workSheet.Cells[41, 6] = $"расшифровка подписи";
                             workSheet.Cells[42, 4] = $"Ведомость измерения параметров получил";
                             workSheet.Cells[43, 4] = $"Удостоверение \"№\":{numberIdentification}";
-                            workSheet.Cells[29, 9] = $"Принял: Начальник участка\n по ТО и ремонту СРС";
+                            workSheet.Cells[29, 9] = $"\nПринял: Начальник участка по ТО\nи ремонту СРС\n";
                             workSheet.Cells[31, 9] = $"должность";
                             workSheet.Cells[33, 10] = $"{FIO_chief}";
                             workSheet.Cells[34, 9] = $"подпись";
                             workSheet.Cells[34, 10] = $"расшифровка подписи";
-                            workSheet.Cells[36, 9] = $"Сдал: Начальник участка\n по ТО и ремонту СРС";
+                            workSheet.Cells[36, 9] = $"\nСдал: Начальник участка по ТО\nи ремонту СРС\n";
                             workSheet.Cells[38, 9] = $"подпись";
                             workSheet.Cells[40, 10] = $"{FIO_chief}";
                             workSheet.Cells[41, 9] = $"подпись";
                             workSheet.Cells[41, 10] = $"расшифровка подписи";
-                            workSheet.Cells[29, 13] = $"Сдал: {post}";
+                            workSheet.Cells[29, 13] = $"\nСдал: {post}\n";
                             workSheet.Cells[31, 13] = $"должность";
                             workSheet.Cells[33, 14] = $"{representative}";
                             workSheet.Cells[34, 13] = $"подпись";
                             workSheet.Cells[34, 14] = $"расшифровка подписи";
-                            workSheet.Cells[36, 13] = $"Принял: {post}";
+                            workSheet.Cells[36, 13] = $"\nПринял: {post}\n";
                             workSheet.Cells[38, 13] = $"должность";
                             workSheet.Cells[40, 14] = $"{representative}";
                             workSheet.Cells[41, 13] = $"подпись";
@@ -1219,6 +1222,7 @@ namespace ServiceTelecomConnect
                             _excelCells111.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells112.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells113.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells113.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells114.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells115.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                             _excelCells116.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
@@ -1351,6 +1355,9 @@ namespace ServiceTelecomConnect
                             Excel.Range rowHeight108 = workSheet3.get_Range("A17", "I17");
                             rowHeight108.EntireRow.RowHeight = 30;
 
+                            Excel.Range rowHeight109 = workSheet3.get_Range("A11", "I11");
+                            rowHeight109.EntireRow.RowHeight = 35;
+
                             range_Consolidated102.Font.Bold = true;
                             range_Consolidated102.Font.Size = 10;
                             range_Consolidated103.Font.Bold = true;
@@ -1389,10 +1396,7 @@ namespace ServiceTelecomConnect
                             range_Consolidated129.Font.Size = 8;
                             range_Consolidated131.Font.Size = 7;
                             range_Consolidated132.NumberFormat = "@";
-                            range_Consolidated133.Font.Size = 7;
-
-                            Regex reg2 = new Regex("\n");
-                            post = reg2.Replace(post, " ", 1);
+                            range_Consolidated133.Font.Size = 9;
 
                             workSheet3.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ № {numberAct}";
                             workSheet3.Cells[2, 1] = $"ОКАЗАННЫХ УСЛУГ ПО ТЕХНИЧЕСКОМУ ОБСЛУЖИВАНИЮ СИСТЕМ РАДИОСВЯЗИ";
@@ -1405,7 +1409,7 @@ namespace ServiceTelecomConnect
                             workSheet3.Cells[8, 8] = $"фамилия, инициалы";
                             workSheet3.Cells[9, 1] = $"действующий по доверенности № {doverennost} с одной стороны и представитель Заказчика";
                             workSheet3.Cells[10, 1] = $"(эксплуатирующей организации):             {company}             {polinon_full} (полигон {poligon})";
-                            workSheet3.Cells[11, 1] = $"{post}";
+                            workSheet3.Cells[11, 1] = $"\n{post}\n";
                             workSheet3.Cells[11, 7] = $"{representative}";
                             workSheet3.Cells[12, 1] = $"должность";
                             workSheet3.Cells[12, 7] = $"фамилия, инициалы";
@@ -1746,6 +1750,7 @@ namespace ServiceTelecomConnect
                     _excelCells16.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells17.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     _excelCells18.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells18.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells19.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells20.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells21.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -1820,6 +1825,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated14 = workSheet.Rows.get_Range("C17", "D17");
                     Excel.Range range_Consolidated15 = workSheet.Rows.get_Range("C18", "D18");
                     Excel.Range range_Consolidated16 = workSheet.Rows.get_Range("C16", "D16");
+                    Excel.Range range_Consolidated17 = workSheet.Rows.get_Range("A11", "E11");
 
                     range_Consolidated.Font.Bold = true;
                     range_Consolidated.Font.Size = 14;
@@ -1839,6 +1845,7 @@ namespace ServiceTelecomConnect
                     range_Consolidated14.NumberFormat = "@";
                     range_Consolidated15.NumberFormat = "@";
                     range_Consolidated16.NumberFormat = "@";
+                    range_Consolidated17.Font.Size = 9;
 
                     Excel.Range rowHeight = workSheet.get_Range("A5", "I5");
                     rowHeight.EntireRow.RowHeight = 12;
@@ -1896,6 +1903,8 @@ namespace ServiceTelecomConnect
                     Excel.Range rowHeight23 = workSheet.get_Range("A35", "I35");
                     rowHeight23.EntireRow.RowHeight = 12;
 
+                    Excel.Range rowHeight24 = workSheet.get_Range("A11", "E11");
+                    rowHeight24.EntireRow.RowHeight = 35;
 
                     workSheet.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ №";
                     workSheet.Cells[1, 7] = $"{numberActRemont}";
@@ -1912,7 +1921,7 @@ namespace ServiceTelecomConnect
                     workSheet.Cells[10, 1] = $"эксплуатирующей организации:";
                     workSheet.Cells[10, 4] = $"{company}";
                     workSheet.Cells[10, 6] = $"{polinon_full} (полигон {poligon})";
-                    workSheet.Cells[11, 1] = $"{post}";
+                    workSheet.Cells[11, 1] = $"\n{post}\n";
                     workSheet.Cells[11, 6] = $"{representative}";
                     workSheet.Cells[12, 1] = $"должность";
                     workSheet.Cells[12, 6] = $"фамилия, инициалы";
@@ -2430,8 +2439,8 @@ namespace ServiceTelecomConnect
                     range_Consolidated112.Font.Italic = true;
                     range_Consolidated113.Font.Italic = true;
                     range_Consolidated114.Font.Bold = true;
-                    range_Consolidated115.Font.Size = 7;
-                    range_Consolidated116.Font.Size = 7;
+                    range_Consolidated115.Font.Size = 6;
+                    range_Consolidated116.Font.Size = 6;
                     range_Consolidated117.Font.Bold = true;
                     range_Consolidated118.Font.Bold = true;
                     range_Consolidated119.Font.Size = 7;

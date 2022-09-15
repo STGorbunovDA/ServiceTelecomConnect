@@ -100,6 +100,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Ошибка CreateColums");
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -124,6 +125,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Ошибка ReedSingleRow");
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -183,15 +185,10 @@ namespace ServiceTelecomConnect
                     dgw.Columns[39].Width = 300;
 
                 }
-                catch (MySqlException)
+                catch (Exception ex)
                 {
-                    string Mesage2;
-                    Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Ошибка загрузки RefreshDataGrid");
+                    MessageBox.Show(ex.ToString());
                 }
                 finally
                 {
@@ -356,20 +353,14 @@ namespace ServiceTelecomConnect
                         }
                         DB.GetInstance.closeConnection();
                     }
-                    if(perem_comboBox == "numberActRemont")
+                    if (perem_comboBox == "numberActRemont")
                     {
                         dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
                     }
                 }
-                catch (MySqlException ex)
+                catch (Exception ex)
                 {
-                    string Mesage2;
-                    Mesage2 = "Ошибка поиска!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Ошибка Search");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -459,19 +450,10 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
 
                 }
-                catch (MySqlException)
+                catch (Exception ex)
                 {
-                    string Mesage2;
-                    Mesage2 = "Что-то полшло не так, мы обязательно разберёмся";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                finally
-                {
-                    DB.GetInstance.closeConnection();
+                    MessageBox.Show("Ошибка Seach_DataGrid_Replay_RST");
+                    MessageBox.Show(ex.ToString());
                 }
             }
 
@@ -527,7 +509,7 @@ namespace ServiceTelecomConnect
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                    MessageBox.Show("Ошибка! Невозможно найти по данному акту!");
+                    MessageBox.Show("Ошибка Update_datagridview_number_act");
                 }
             }
         }
@@ -567,7 +549,8 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString()); ;
+                    MessageBox.Show("Ошибка Copy_BD_radiostantion_in_radiostantion_copy");
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -610,6 +593,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Ошибка DeleteRowСell");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -650,6 +634,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Ошибка Delete_rst_remont");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -686,6 +671,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Ошибка CheacknumberActRemont_radiostantion");
                     MessageBox.Show(ex.ToString());
                     return true;
                 }
@@ -765,6 +751,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("Ошибка Record_decommissionSerialNumber");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -827,13 +814,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
-
-                    string Mesage2 = "Что-то полшло не так, мы обязательно разберёмся (Удаление из таблиц списаной рст)";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Ошибка Delete_decommissionSerialNumber_radiostantion");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -893,17 +874,8 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
-                    string Mesage2 = "Что-то полшло не так, мы обязательно разберёмся (показать списания рст)";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Ошибка Show_radiostantion_decommission");
                     MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    DB.GetInstance.closeConnection();
                 }
             }
         }
