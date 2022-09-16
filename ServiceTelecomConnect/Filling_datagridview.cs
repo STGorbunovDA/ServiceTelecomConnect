@@ -695,7 +695,7 @@ namespace ServiceTelecomConnect
                     if (serialNumber != "")
                     {
                         var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
-                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberActRemont = 'списание', " +
+                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberActRemont = '', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
                             $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '' WHERE serialNumber = '{serialNumber}'";
@@ -882,6 +882,43 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region Сортировка по ремонтам 
 
+        internal static string SortRemontAct(DataGridView dgw, string city)
+        {
+            var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
+
+            using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            ReedSingleRow(dgw, reader);
+                        }
+                        reader.Close();
+                    }
+                }
+                DB.GetInstance.closeConnection();
+            }
+
+            dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+
+            dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+            DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
+            string remontAct = row.Cells[17].Value.ToString();
+
+            if (remontAct != "" || remontAct != null)
+            {
+                return remontAct;
+            }
+            else return remontAct = "Отсутсвует";
+        }
+
+        #endregion
     }
 }

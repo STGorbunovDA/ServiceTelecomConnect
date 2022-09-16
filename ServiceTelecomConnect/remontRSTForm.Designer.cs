@@ -81,6 +81,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.textBox_model = new System.Windows.Forms.TextBox();
             this.comboBox_remont_select = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.lbl_last_act_remont = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -165,7 +167,7 @@
             // textBox_priceRemont
             // 
             this.textBox_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_priceRemont.Location = new System.Drawing.Point(637, 162);
+            this.textBox_priceRemont.Location = new System.Drawing.Point(646, 155);
             this.textBox_priceRemont.Name = "textBox_priceRemont";
             this.textBox_priceRemont.ReadOnly = true;
             this.textBox_priceRemont.Size = new System.Drawing.Size(86, 26);
@@ -176,7 +178,7 @@
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(519, 166);
+            this.label38.Location = new System.Drawing.Point(528, 159);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(112, 18);
             this.label38.TabIndex = 100;
@@ -194,7 +196,7 @@
             "4",
             "5",
             "6"});
-            this.comboBox_сategory.Location = new System.Drawing.Point(398, 162);
+            this.comboBox_сategory.Location = new System.Drawing.Point(407, 155);
             this.comboBox_сategory.Name = "comboBox_сategory";
             this.comboBox_сategory.Size = new System.Drawing.Size(86, 28);
             this.comboBox_сategory.TabIndex = 99;
@@ -206,7 +208,7 @@
             this.label39.BackColor = System.Drawing.Color.Transparent;
             this.label39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(308, 166);
+            this.label39.Location = new System.Drawing.Point(317, 159);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(84, 18);
             this.label39.TabIndex = 98;
@@ -215,7 +217,7 @@
             // textBox_numberActRemont
             // 
             this.textBox_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_numberActRemont.Location = new System.Drawing.Point(197, 162);
+            this.textBox_numberActRemont.Location = new System.Drawing.Point(206, 155);
             this.textBox_numberActRemont.MaxLength = 31;
             this.textBox_numberActRemont.Name = "textBox_numberActRemont";
             this.textBox_numberActRemont.Size = new System.Drawing.Size(86, 26);
@@ -226,7 +228,7 @@
             this.label40.AutoSize = true;
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label40.Location = new System.Drawing.Point(65, 166);
+            this.label40.Location = new System.Drawing.Point(74, 159);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(126, 18);
             this.label40.TabIndex = 96;
@@ -555,7 +557,7 @@
             this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label25.ForeColor = System.Drawing.Color.Brown;
-            this.label25.Location = new System.Drawing.Point(284, 164);
+            this.label25.Location = new System.Drawing.Point(293, 157);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(18, 24);
             this.label25.TabIndex = 149;
@@ -568,7 +570,7 @@
             this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label17.ForeColor = System.Drawing.Color.Brown;
-            this.label17.Location = new System.Drawing.Point(490, 164);
+            this.label17.Location = new System.Drawing.Point(499, 157);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(18, 24);
             this.label17.TabIndex = 150;
@@ -581,7 +583,7 @@
             this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label18.ForeColor = System.Drawing.Color.Brown;
-            this.label18.Location = new System.Drawing.Point(729, 164);
+            this.label18.Location = new System.Drawing.Point(738, 157);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(18, 24);
             this.label18.TabIndex = 151;
@@ -698,6 +700,28 @@
             this.comboBox_remont_select.Visible = false;
             this.comboBox_remont_select.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.Location = new System.Drawing.Point(117, 186);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 15);
+            this.label23.TabIndex = 162;
+            this.label23.Text = "Крайний акт:";
+            // 
+            // lbl_last_act_remont
+            // 
+            this.lbl_last_act_remont.AutoSize = true;
+            this.lbl_last_act_remont.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_last_act_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_last_act_remont.Location = new System.Drawing.Point(221, 186);
+            this.lbl_last_act_remont.Name = "lbl_last_act_remont";
+            this.lbl_last_act_remont.Size = new System.Drawing.Size(54, 15);
+            this.lbl_last_act_remont.TabIndex = 161;
+            this.lbl_last_act_remont.Text = "Пустой";
+            // 
             // remontRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -705,6 +729,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 741);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.lbl_last_act_remont);
             this.Controls.Add(this.comboBox_remont_select);
             this.Controls.Add(this.textBox_model);
             this.Controls.Add(this.textBox_serialNumber);
@@ -826,5 +852,7 @@
         private System.Windows.Forms.Label label22;
         internal System.Windows.Forms.TextBox textBox_model;
         internal System.Windows.Forms.ComboBox comboBox_remont_select;
+        private System.Windows.Forms.Label label23;
+        internal System.Windows.Forms.Label lbl_last_act_remont;
     }
 }

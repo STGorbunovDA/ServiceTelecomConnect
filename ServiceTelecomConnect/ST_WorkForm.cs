@@ -1360,10 +1360,13 @@ namespace ServiceTelecomConnect
                                 remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
                             }
                             else remontRSTForm.textBox_numberActRemont.Text = textBox_numberActRemont.Text;
+                            
+                            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+
+                            remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, comboBox_city.Text);
 
                             remontRSTForm.ShowDialog();
 
-                            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                             Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                             Counters();
                             dataGridView1.ClearSelection();
@@ -1405,7 +1408,6 @@ namespace ServiceTelecomConnect
                             changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
                             changeRSTForm.textBox_company.Text = textBox_company.Text;
                             changeRSTForm.textBox_location.Text = textBox_location.Text;
-                            //changeRSTForm.comboBox_model.Text = comboBox_model.Text;
                             changeRSTForm.comboBox_model.Items.Add(comboBox_model.Text).ToString();
                             changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
                             changeRSTForm.textBox_inventoryNumber.Text = textBox_inventoryNumber.Text;
