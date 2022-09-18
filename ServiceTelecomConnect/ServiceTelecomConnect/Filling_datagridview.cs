@@ -74,7 +74,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("comment", "Примечание");
                 dgw.Columns.Add("IsNew", String.Empty);
                 dgw.Columns[12].Visible = true;
-                dgw.Columns[13].Visible = false;
+                dgw.Columns[13].Visible = true;
                 dgw.Columns[14].Visible = false;
                 dgw.Columns[15].Visible = false;
                 dgw.Columns[16].Visible = false;
@@ -184,6 +184,9 @@ namespace ServiceTelecomConnect
                     dgw.Columns[11].Width = 100;
                     dgw.Columns[17].Width = 120;
                     dgw.Columns[39].Width = 300;
+
+                    dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }
                 catch (Exception ex)

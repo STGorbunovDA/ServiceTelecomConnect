@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -360,7 +361,6 @@ namespace ServiceTelecomConnect
                                 {
                                     if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
                                     {
-
                                         var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
@@ -371,7 +371,8 @@ namespace ServiceTelecomConnect
                                             $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
                                             $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                             $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment}')";
+                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
+                                        
 
                                         using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                         {
@@ -382,7 +383,7 @@ namespace ServiceTelecomConnect
                                             MessageBox.Show("Радиостанция успешно добавлена!");
                                             textBox_serialNumber.Text = "";
                                             textBox_inventoryNumber.Text = "";
-                                            textBox_networkNumber.Text = "";
+                                            textBox_networkNumber.Text = "";                                           
                                         }
 
                                     }
@@ -1291,7 +1292,15 @@ namespace ServiceTelecomConnect
         }
 
 
+
         #endregion
 
+        private void textBox_post_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return)//todo решить
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

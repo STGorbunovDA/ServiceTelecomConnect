@@ -506,6 +506,7 @@
             this.textBox_post.Name = "textBox_post";
             this.textBox_post.Size = new System.Drawing.Size(235, 146);
             this.textBox_post.TabIndex = 69;
+            this.textBox_post.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_post_KeyDown);
             // 
             // label22
             // 

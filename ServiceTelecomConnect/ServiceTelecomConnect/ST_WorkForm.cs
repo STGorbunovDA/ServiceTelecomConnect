@@ -772,21 +772,29 @@ namespace ServiceTelecomConnect
                             column.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
                     }
-
-                    addRSTForm.ShowDialog();
-
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                    Counters();
-
-                    if (dataGridView1.RowCount != 0)
+                    if (Application.OpenForms["addRSTForm"] == null)
                     {
-                        dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-                        DataGridViewRow row2 = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-                        textBox_numberAct.Text = row2.Cells[9].Value.ToString();
+                        addRSTForm.Show();
                     }
-                    // обновляем по акту
-                    Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
 
+                    foreach (DataGridViewColumn column in dataGridView1.Columns)
+                    {
+                        column.SortMode = DataGridViewColumnSortMode.Automatic;
+                    }
+
+                    #region для одной формы
+                    //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    //Counters();
+
+                    //if (dataGridView1.RowCount != 0)
+                    //{
+                    //    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
+                    //    DataGridViewRow row2 = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
+                    //    textBox_numberAct.Text = row2.Cells[9].Value.ToString();
+                    //}
+                    //// обновляем по акту
+                    //Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
+                    #endregion
                 }
                 catch (Exception ex)
                 {
@@ -1215,7 +1223,7 @@ namespace ServiceTelecomConnect
                         if (e.Button == MouseButtons.Right)
                         {
                             ContextMenu m = new ContextMenu();
-                           
+
                             m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (textBox_serialNumber.Text != "")
                             {
@@ -1279,11 +1287,6 @@ namespace ServiceTelecomConnect
 
         #region обновляем БД после показа отсутсвующих радиостанций после проверки на участке
 
-        /// <summary>
-        /// TODO Костыль из-за ошибки выбора строки после обновления БД
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void Button_update_Click_after_Seach_DataGrid_Replay_RST(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -1337,7 +1340,7 @@ namespace ServiceTelecomConnect
                             remontRSTForm.DoubleBufferedForm(true);
 
                             remontRSTForm.comboBox_сategory.Text = comboBox_сategory.Text;
-                            
+
                             remontRSTForm.textBox_priceRemont.Text = textBox_priceRemont.Text;
                             remontRSTForm.textBox_сompleted_works_1.Text = textBox_сompleted_works_1.Text;
                             remontRSTForm.textBox_сompleted_works_2.Text = textBox_сompleted_works_2.Text;
@@ -1369,7 +1372,7 @@ namespace ServiceTelecomConnect
                                 remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
                             }
                             else remontRSTForm.textBox_numberActRemont.Text = textBox_numberActRemont.Text;
-                            
+
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
                             remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, comboBox_city.Text);
@@ -1456,7 +1459,11 @@ namespace ServiceTelecomConnect
                             }
                             changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
 
+                            
                             changeRSTForm.ShowDialog();
+
+
+                            #region старый метод для одной рст
 
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                             Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
@@ -1467,6 +1474,8 @@ namespace ServiceTelecomConnect
                                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                             }
                             Refresh_values_TXB_CMB(currRowIndex);
+
+                            #endregion
                         }
                     }
                 }
@@ -3312,7 +3321,7 @@ namespace ServiceTelecomConnect
                 Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
                     textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
                     textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
-                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text, 
+                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text,
                     txB_comment.Text, textBox_number_printing_doc_datePanel.Text);
                 Button_update_Click(sender, e);
                 panel_decommissionSerialNumber.Visible = false;
