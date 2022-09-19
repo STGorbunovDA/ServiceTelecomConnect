@@ -13,7 +13,7 @@ namespace ServiceTelecomConnect
         /// <summary>
         /// сохранение БД на H(S)DD
         /// </summary>
-        internal static void userSaveFilePC(DataGridView dgw)
+        internal static void UserSaveFilePC(DataGridView dgw)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace ServiceTelecomConnect
 
         #region Сохранение Бд по счётчику
 
-        internal static void autoSaveFilePC(DataGridView dgw, string city)
+        internal static void AutoSaveFilePC(DataGridView dgw, string city)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace ServiceTelecomConnect
                         $"Номер Акта ремонта\tКатегория\tЦена ремонта\tАнтенна\tМанипулятор\tАКБ\tЗУ\tВыполненные работы_1\t" +
                         $"Выполненные работы_2\tВыполненные работы_3\tВыполненные работы_4\tВыполненные работы_5\t" +
                         $"Выполненные работы_6\tВыполненные работы_7\tДеталь_1\tДеталь_2\tДеталь_3\tДеталь_4\tДеталь_5\t" +
-                        $"Деталь_6\tДеталь_7\t";
+                        $"Деталь_6\tДеталь_7\t№ Акта списания\tПримечания";
 
                     sw.WriteLine(note);
 
@@ -111,7 +111,10 @@ namespace ServiceTelecomConnect
                     {
                         for (int j = 0; j < dgw.ColumnCount; j++)
                         {
-                            sw.Write((dgw.Rows[i].Cells[j].Value + "\t").ToString());
+                            var re = new Regex(Environment.NewLine);
+                            var perem = dgw.Rows[i].Cells[j].Value.ToString();
+                            perem = re.Replace(perem, " ");
+                            sw.Write(perem + "\t");//todo решить
                         }
 
                         sw.WriteLine();

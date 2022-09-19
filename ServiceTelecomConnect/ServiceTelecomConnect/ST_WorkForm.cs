@@ -111,7 +111,7 @@ namespace ServiceTelecomConnect
             try
             {
                 dataGridView1.EnableHeadersVisualStyles = false;
-                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 10f, FontStyle.Bold); //жирный курсив размера 16
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
@@ -275,7 +275,7 @@ namespace ServiceTelecomConnect
 
             await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
 
-            await Task.Run(() => SaveFileDataGridViewPC.autoSaveFilePC(dataGridView2, taskCity));
+            await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity));
 
             await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
 
@@ -977,7 +977,7 @@ namespace ServiceTelecomConnect
 
         void Button_save_in_file_Click(object sender, EventArgs e)
         {
-            SaveFileDataGridViewPC.userSaveFilePC(dataGridView1);
+            SaveFileDataGridViewPC.UserSaveFilePC(dataGridView1);
         }
         #endregion
 
@@ -1246,6 +1246,10 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            if (textBox_numberAct.Text != "")
+                            {
+                                m.MenuItems.Add(new MenuItem("Общее кол-во актов", Show_number_unique_acts));
+                            }
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -3391,7 +3395,18 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region показать кол-во уникальных актов
 
+
+        void Show_number_unique_acts(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        #endregion
+
+        
     }
 }
 

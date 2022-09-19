@@ -74,7 +74,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("comment", "Примечание");
                 dgw.Columns.Add("IsNew", String.Empty);
                 dgw.Columns[12].Visible = true;
-                dgw.Columns[13].Visible = true;
+                dgw.Columns[13].Visible = false;
                 dgw.Columns[14].Visible = false;
                 dgw.Columns[15].Visible = false;
                 dgw.Columns[16].Visible = false;
@@ -174,9 +174,9 @@ namespace ServiceTelecomConnect
 
                     dgw.Columns[0].Width = 45;
                     dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
+                    dgw.Columns[4].Width = 170;
+                    dgw.Columns[5].Width = 170;
+                    dgw.Columns[6].Width = 170;
                     dgw.Columns[7].Width = 178;
                     dgw.Columns[8].Width = 100;
                     dgw.Columns[9].Width = 110;
