@@ -137,20 +137,5 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-
-        #region Сохранение уникальных актов
-
-        internal static void Show_number_unique_acts(DataGridView dgw)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-        }
-
-        #endregion
     }
 }

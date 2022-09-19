@@ -283,7 +283,7 @@ namespace ServiceTelecomConnect
                 try
                 {
                     var searchString = string.Empty;
-                    string perem_comboBox = "numberAct";
+                    string perem_comboBox = "serialNumber";
 
                     dgw.Rows.Clear();
 

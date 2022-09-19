@@ -33,10 +33,10 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    DB.GetInstance.openConnection();
                     string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
+                        DB.GetInstance.openConnection();
                         DataTable model_RSR_table = new DataTable();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
@@ -380,7 +380,7 @@ namespace ServiceTelecomConnect
                                             $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                             $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
                                             $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
-                                        
+
 
                                         using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                         {
@@ -391,7 +391,7 @@ namespace ServiceTelecomConnect
                                             MessageBox.Show("Радиостанция успешно добавлена!");
                                             textBox_serialNumber.Text = "";
                                             textBox_inventoryNumber.Text = "";
-                                            textBox_networkNumber.Text = "";                                           
+                                            textBox_networkNumber.Text = "";
                                         }
 
                                     }
@@ -1136,7 +1136,7 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        
+
         void TextBox_antenna_Click(object sender, EventArgs e)
         {
             textBox_antenna.Text = "";
@@ -1306,7 +1306,7 @@ namespace ServiceTelecomConnect
 
         void AddRSTForm_KeyDown(object sender, KeyEventArgs e)
         {
-               
+
         }
     }
 }

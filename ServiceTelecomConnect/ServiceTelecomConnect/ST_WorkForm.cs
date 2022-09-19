@@ -57,7 +57,7 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
-                comboBox_seach.Text = comboBox_seach.Items[6].ToString();
+                comboBox_seach.Text = comboBox_seach.Items[4].ToString();
 
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
@@ -119,18 +119,21 @@ namespace ServiceTelecomConnect
                 {
                     try
                     {
-                        DB.GetInstance.openConnection();
                         string querystring = $"SELECT city FROM radiostantion GROUP BY city";
-                        MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-                        DataTable city_table = new DataTable();
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.openConnection();
+                            DataTable city_table = new DataTable();
 
-                        adapter.Fill(city_table);
+                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                            {
+                                adapter.Fill(city_table);
 
-                        comboBox_city.DataSource = city_table;
-                        comboBox_city.DisplayMember = "city";
-
-                        DB.GetInstance.closeConnection();
+                                comboBox_city.DataSource = city_table;
+                                comboBox_city.DisplayMember = "city";
+                                DB.GetInstance.closeConnection();
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -258,6 +261,30 @@ namespace ServiceTelecomConnect
 
                 dataGridView1.AllowUserToResizeColumns = false;
                 dataGridView1.AllowUserToResizeRows = false;
+
+                try
+                {
+                    string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city.Text}' ORDER BY numberAct";
+                    using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.openConnection();
+                        DataTable act_table_unique = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(act_table_unique);
+
+                            cmb_number_unique_acts.DataSource = act_table_unique;
+                            cmb_number_unique_acts.DisplayMember = "numberAct";
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
 
             }
             catch (Exception ex)
@@ -1246,10 +1273,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
-                            if (textBox_numberAct.Text != "")
-                            {
-                                m.MenuItems.Add(new MenuItem("Общее кол-во актов", Show_number_unique_acts));
-                            }
+
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -3397,15 +3421,14 @@ namespace ServiceTelecomConnect
 
         #region показать кол-во уникальных актов
 
-
-        void Show_number_unique_acts(object sender, EventArgs e)
+        void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            SaveFileDataGridViewPC.Show_number_unique_acts(dataGridView2);
+
         }
 
         #endregion
 
-        
+
     }
 }
 
