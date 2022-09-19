@@ -185,7 +185,7 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
                     dgw.Columns[39].Width = 300;
 
-                    dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
+                   //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }

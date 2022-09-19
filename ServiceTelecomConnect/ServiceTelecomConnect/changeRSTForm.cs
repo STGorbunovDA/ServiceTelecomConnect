@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -60,6 +61,15 @@ namespace ServiceTelecomConnect
             }
             try
             {
+                foreach (Control control in this.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        var re = new Regex(Environment.NewLine);
+                        control.Text = re.Replace(control.Text, " ");
+                    }
+                }
+
                 var city = textBox_city.Text;
                 var poligon = comboBox_poligon.Text;
                 var company = textBox_company.Text;

@@ -506,7 +506,6 @@
             this.textBox_post.Name = "textBox_post";
             this.textBox_post.Size = new System.Drawing.Size(235, 146);
             this.textBox_post.TabIndex = 69;
-            this.textBox_post.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_post_KeyDown);
             // 
             // label22
             // 
@@ -961,6 +960,7 @@
             this.ShowIcon = false;
             this.Text = "Добавление радиостанции";
             this.Load += new System.EventHandler(this.AddRSTForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddRSTForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AddRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

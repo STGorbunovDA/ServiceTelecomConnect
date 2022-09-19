@@ -61,6 +61,14 @@ namespace ServiceTelecomConnect
         #region добавление РСТ
         void Button_save_add_rst_Click(object sender, EventArgs e)
         {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                }
+            }
             Add_rst_radiostantion();
         }
 
@@ -1293,14 +1301,12 @@ namespace ServiceTelecomConnect
 
 
 
+
         #endregion
 
-        private void textBox_post_KeyDown(object sender, KeyEventArgs e)
+        void AddRSTForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Return)//todo решить
-            {
-                e.Handled = true;
-            }
+               
         }
     }
 }
