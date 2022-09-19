@@ -1,6 +1,6 @@
 ﻿namespace ServiceTelecomConnect
 {
-    partial class remontRSTForm
+    partial class RemontRSTForm
     {
         /// <summary>
         /// Required designer variable.

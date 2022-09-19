@@ -271,17 +271,17 @@
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
     <Compile Include="PrintDocExcel.cs" />
-    <Compile Include="remontRSTForm.cs">
+    <Compile Include="RemontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="remontRSTForm.Designer.cs">
-      <DependentUpon>remontRSTForm.cs</DependentUpon>
+    <Compile Include="RemontRSTForm.Designer.cs">
+      <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="changeRSTForm.cs">
+    <Compile Include="СhangeRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="changeRSTForm.Designer.cs">
-      <DependentUpon>changeRSTForm.cs</DependentUpon>
+    <Compile Include="СhangeRSTForm.Designer.cs">
+      <DependentUpon>СhangeRSTForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AddRSTForm.cs">
       <SubType>Form</SubType>
@@ -346,11 +346,11 @@
       <DependentUpon>TutorialForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintDocWord.cs" />
-    <EmbeddedResource Include="remontRSTForm.resx">
-      <DependentUpon>remontRSTForm.cs</DependentUpon>
+    <EmbeddedResource Include="RemontRSTForm.resx">
+      <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="changeRSTForm.resx">
-      <DependentUpon>changeRSTForm.cs</DependentUpon>
+    <EmbeddedResource Include="СhangeRSTForm.resx">
+      <DependentUpon>СhangeRSTForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddRSTForm.resx">
       <DependentUpon>AddRSTForm.cs</DependentUpon>

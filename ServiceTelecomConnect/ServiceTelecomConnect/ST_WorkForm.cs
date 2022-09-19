@@ -1335,7 +1335,7 @@ namespace ServiceTelecomConnect
                 {
                     if (textBox_serialNumber.Text != "")
                     {
-                        using (remontRSTForm remontRSTForm = new remontRSTForm())
+                        using (RemontRSTForm remontRSTForm = new RemontRSTForm())
                         {
                             remontRSTForm.DoubleBufferedForm(true);
 
@@ -1413,71 +1413,73 @@ namespace ServiceTelecomConnect
                     }
                     else
                     {
-                        using (changeRSTForm changeRSTForm = new changeRSTForm())
+                        СhangeRSTForm changeRSTForm = new СhangeRSTForm();
+                        changeRSTForm.DoubleBufferedForm(true);
+                        changeRSTForm.textBox_city.Text = textBox_city.Text;
+                        changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
+                        changeRSTForm.textBox_company.Text = textBox_company.Text;
+                        changeRSTForm.textBox_location.Text = textBox_location.Text;
+                        changeRSTForm.comboBox_model.Items.Add(comboBox_model.Text).ToString();
+                        changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
+                        changeRSTForm.textBox_inventoryNumber.Text = textBox_inventoryNumber.Text;
+                        changeRSTForm.textBox_networkNumber.Text = textBox_networkNumber.Text;
+                        changeRSTForm.textBox_dateTO.Text = textBox_dateTO.Text.Remove(textBox_dateTO.Text.IndexOf(" "));
+                        changeRSTForm.textBox_numberAct.Text = textBox_numberAct.Text;
+                        changeRSTForm.textBox_representative.Text = textBox_representative.Text;
+                        changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
+                        changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
+                        changeRSTForm.textBox_post.Text = textBox_post.Text;
+                        changeRSTForm.txB_comment.Text = txB_comment.Text;
+
+                        if (textBox_dateIssue.Text == "")
                         {
-                            changeRSTForm.DoubleBufferedForm(true);
-                            changeRSTForm.textBox_city.Text = textBox_city.Text;
-                            changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
-                            changeRSTForm.textBox_company.Text = textBox_company.Text;
-                            changeRSTForm.textBox_location.Text = textBox_location.Text;
-                            changeRSTForm.comboBox_model.Items.Add(comboBox_model.Text).ToString();
-                            changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
-                            changeRSTForm.textBox_inventoryNumber.Text = textBox_inventoryNumber.Text;
-                            changeRSTForm.textBox_networkNumber.Text = textBox_networkNumber.Text;
-                            changeRSTForm.textBox_dateTO.Text = textBox_dateTO.Text.Remove(textBox_dateTO.Text.IndexOf(" "));
-                            changeRSTForm.textBox_numberAct.Text = textBox_numberAct.Text;
-                            changeRSTForm.textBox_representative.Text = textBox_representative.Text;
-                            changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
-                            changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
-                            changeRSTForm.textBox_post.Text = textBox_post.Text;
-                            changeRSTForm.txB_comment.Text = txB_comment.Text;
-
-                            if (textBox_dateIssue.Text == "")
-                            {
-                                textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                            }
-                            changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
-
-                            if (textBox_antenna.Text == "")
-                            {
-                                textBox_antenna.Text = "-";
-                            }
-                            changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
-                            if (textBox_manipulator.Text == "")
-                            {
-                                textBox_manipulator.Text = "-";
-                            }
-                            changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
-                            if (textBox_batteryСharger.Text == "")
-                            {
-                                textBox_batteryСharger.Text = "-";
-                            }
-                            changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
-                            if (textBox_AKB.Text == "")
-                            {
-                                textBox_AKB.Text = "-";
-                            }
-                            changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
-
-                            
-                            changeRSTForm.ShowDialog();
-
-
-                            #region старый метод для одной рст
-
-                            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-                            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                            dataGridView1.ClearSelection();
-
-                            if (dataGridView1.CurrentCell.RowIndex >= 0)
-                            {
-                                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                            }
-                            Refresh_values_TXB_CMB(currRowIndex);
-
-                            #endregion
+                            textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
                         }
+                        changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
+
+                        if (textBox_antenna.Text == "")
+                        {
+                            textBox_antenna.Text = "-";
+                        }
+                        changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
+                        if (textBox_manipulator.Text == "")
+                        {
+                            textBox_manipulator.Text = "-";
+                        }
+                        changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
+                        if (textBox_batteryСharger.Text == "")
+                        {
+                            textBox_batteryСharger.Text = "-";
+                        }
+                        changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
+                        if (textBox_AKB.Text == "")
+                        {
+                            textBox_AKB.Text = "-";
+                        }
+                        changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
+
+                        if (Application.OpenForms["changeRSTForm"] == null)
+                        {
+                            changeRSTForm.Show();
+                        }
+                        //changeRSTForm.ShowDialog();
+
+
+                        #region старый метод для одной рст
+
+                        //int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+                        //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                        //dataGridView1.ClearSelection();
+
+                        //if (dataGridView1.CurrentCell.RowIndex >= 0)
+                        //{
+                        //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                        //}
+                        //Refresh_values_TXB_CMB(currRowIndex);
+
+                        #endregion
                     }
+
                 }
                 catch (Exception ex)
                 {

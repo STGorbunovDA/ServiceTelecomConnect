@@ -6,10 +6,10 @@ using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
-    public partial class remontRSTForm : Form
+    public partial class RemontRSTForm : Form
     {
         private delegate DialogResult ShowOpenFileDialogInvoker(); // делаг для invoke
-        public remontRSTForm()
+        public RemontRSTForm()
         {
             InitializeComponent();
 
