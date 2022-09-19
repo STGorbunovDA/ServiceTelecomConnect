@@ -3400,8 +3400,7 @@ namespace ServiceTelecomConnect
 
         void Show_number_unique_acts(object sender, EventArgs e)
         {
-           
-
+            SaveFileDataGridViewPC.Show_number_unique_acts(dataGridView2);
         }
 
         #endregion
