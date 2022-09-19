@@ -276,7 +276,7 @@ namespace ServiceTelecomConnect
         /// метод поиска по базе данных, подключение к базе, выполнение запроса так-же внутри  вызываем метод ReedSingleRow для вывода данных из базы
         /// </summary>
         /// <param name="dgw"></param>
-        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search)
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique_acts)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -334,6 +334,10 @@ namespace ServiceTelecomConnect
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                    }
+                    else if(perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique_acts + "%'";
                     }
                     else
                     {

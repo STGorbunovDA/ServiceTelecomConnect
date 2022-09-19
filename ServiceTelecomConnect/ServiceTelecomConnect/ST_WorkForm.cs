@@ -260,31 +260,7 @@ namespace ServiceTelecomConnect
                 timer.Start();
 
                 dataGridView1.AllowUserToResizeColumns = false;
-                dataGridView1.AllowUserToResizeRows = false;
-
-                try
-                {
-                    string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city.Text}' ORDER BY numberAct";
-                    using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.openConnection();
-                        DataTable act_table_unique = new DataTable();
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(act_table_unique);
-
-                            cmb_number_unique_acts.DataSource = act_table_unique;
-                            cmb_number_unique_acts.DisplayMember = "numberAct";
-                            DB.GetInstance.closeConnection();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
+                dataGridView1.AllowUserToResizeRows = false;             
 
             }
             catch (Exception ex)
@@ -1013,14 +989,14 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text);
+                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text);
+            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
@@ -3423,7 +3399,40 @@ namespace ServiceTelecomConnect
 
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if(comboBox_seach.SelectedIndex == 6)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
 
+                    string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city.Text}' ORDER BY numberAct";
+                    using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.openConnection();
+                        DataTable act_table_unique = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(act_table_unique);
+
+                            cmb_number_unique_acts.DataSource = act_table_unique;
+                            cmb_number_unique_acts.DisplayMember = "numberAct";
+                            DB.GetInstance.closeConnection();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                cmb_number_unique_acts.Visible = false;
+                textBox_search.Visible = true;
+            }
         }
 
         #endregion
