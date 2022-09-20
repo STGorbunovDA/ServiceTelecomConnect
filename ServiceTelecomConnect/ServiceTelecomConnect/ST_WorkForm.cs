@@ -1225,7 +1225,7 @@ namespace ServiceTelecomConnect
                         if (e.Button == MouseButtons.Right)
                         {
                             ContextMenu m = new ContextMenu();
-
+                            
                             m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (textBox_serialNumber.Text != "")
                             {
@@ -3416,11 +3416,26 @@ namespace ServiceTelecomConnect
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_company_acts(comboBox_city.Text, cmb_number_unique_acts);
+                    Filling_datagridview.Number_unique_company(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Уникальные предприятия не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Предприятия не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else if (comboBox_seach.SelectedIndex == 1)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
+
+                    Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3431,11 +3446,11 @@ namespace ServiceTelecomConnect
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_dateTO_acts(comboBox_city.Text, cmb_number_unique_acts);
+                    Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Даты проверки ТО не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3446,11 +3461,11 @@ namespace ServiceTelecomConnect
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_actsTO(comboBox_city.Text, cmb_number_unique_acts);
+                    Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Уникальные акты ТО не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Акты ТО не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3461,11 +3476,11 @@ namespace ServiceTelecomConnect
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_actsRemont(comboBox_city.Text, cmb_number_unique_acts);
+                    Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Уникальные акты Ремонта не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Акты Ремонта не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3495,7 +3510,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3504,6 +3519,7 @@ namespace ServiceTelecomConnect
                 cmb_number_unique_acts.Visible = false;
                 textBox_search.Visible = true;
             }
+            cmb_number_unique_acts.SelectedIndex = 0;
         }
 
 

@@ -111,10 +111,7 @@ namespace ServiceTelecomConnect
                     {
                         for (int j = 0; j < dgw.ColumnCount; j++)
                         {
-                            var re = new Regex(Environment.NewLine);
-                            var perem = dgw.Rows[i].Cells[j].Value.ToString();
-                            perem = re.Replace(perem, " ");
-                            sw.Write(perem + "\t");//todo решить
+                            sw.Write(dgw.Rows[i].Cells[j].Value.ToString() + "\t");//todo решить
                         }
 
                         sw.WriteLine();
