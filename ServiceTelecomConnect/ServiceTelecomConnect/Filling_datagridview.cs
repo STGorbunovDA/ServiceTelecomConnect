@@ -347,6 +347,10 @@ namespace ServiceTelecomConnect
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
+                    else if (perem_comboBox == "decommissionSerialNumber")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
                     else
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
@@ -1051,6 +1055,24 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "representative";
+                    DB.GetInstance.closeConnection();
+                }
+            }
+        }
+        internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
                     DB.GetInstance.closeConnection();
                 }
             }
