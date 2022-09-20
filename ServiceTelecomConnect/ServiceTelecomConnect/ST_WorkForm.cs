@@ -3469,6 +3469,21 @@ namespace ServiceTelecomConnect
                     MessageBox.Show(ex.ToString());
                 }
             }
+            else if (comboBox_seach.SelectedIndex == 6)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
+
+                    Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
             else
             {
                 cmb_number_unique_acts.Visible = false;
