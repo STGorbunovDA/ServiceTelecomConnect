@@ -3288,6 +3288,10 @@ namespace ServiceTelecomConnect
         {
             panel_decommissionSerialNumber.Visible = false;
             panel_decommissionSerialNumber.Enabled = false;
+            panel1.Enabled = true;
+            panel2.Enabled = true;
+            panel3.Enabled = true;
+            dataGridView1.Enabled = true;
         }
         /// <summary>
         /// Открытие панели заполнения № Акта списания
