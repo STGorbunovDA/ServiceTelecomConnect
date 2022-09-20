@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
@@ -57,7 +56,7 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
-                comboBox_seach.Text = comboBox_seach.Items[3].ToString();
+                comboBox_seach.Text = comboBox_seach.Items[2].ToString();
 
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
@@ -3420,7 +3419,22 @@ namespace ServiceTelecomConnect
                     MessageBox.Show(ex.ToString());
                 }
             }
-            else if (comboBox_seach.SelectedIndex == 5)
+            else if (comboBox_seach.SelectedIndex == 3)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
+
+                    Filling_datagridview.Number_dateTO_acts(comboBox_city.Text, cmb_number_unique_acts);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else if (comboBox_seach.SelectedIndex == 4)
             {
                 try
                 {

@@ -295,10 +295,6 @@ namespace ServiceTelecomConnect
                     {
                         perem_comboBox = "location";
                     }
-                    else if (comboBox_seach == "Модель")
-                    {
-                        perem_comboBox = "model";
-                    }
                     else if (comboBox_seach == "Заводской номер")
                     {
                         perem_comboBox = "serialNumber";
@@ -332,6 +328,10 @@ namespace ServiceTelecomConnect
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
                     }
                     else if(perem_comboBox == "company")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
+                    else if (perem_comboBox == "dateTO")
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
@@ -974,6 +974,29 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.closeConnection();
+                }
+            }
+        }
+        /// <summary>
+        /// Уникальные датаТО в comboBox
+        /// </summary>
+        /// <param name="comboBox_city"></param>
+        /// <param name="cmb_number_unique_acts"></param>
+        internal static void Number_dateTO_acts(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY dateTO";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "dateTO";
                     DB.GetInstance.closeConnection();
                 }
             }
