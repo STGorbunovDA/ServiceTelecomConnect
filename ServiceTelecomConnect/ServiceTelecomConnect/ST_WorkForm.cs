@@ -3288,6 +3288,10 @@ namespace ServiceTelecomConnect
         {
             panel_decommissionSerialNumber.Visible = false;
             panel_decommissionSerialNumber.Enabled = false;
+            panel1.Enabled = true;
+            panel2.Enabled = true;
+            panel3.Enabled = true;
+            dataGridView1.Enabled = true;
         }
         /// <summary>
         /// Открытие панели заполнения № Акта списания
@@ -3328,7 +3332,7 @@ namespace ServiceTelecomConnect
                     textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
                     textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
                     textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text,
-                    txB_comment.Text, textBox_number_printing_doc_datePanel.Text);
+                    txB_comment.Text, textBox_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
                 Button_update_Click(sender, e);
                 panel_decommissionSerialNumber.Visible = false;
                 panel_decommissionSerialNumber.Enabled = false;
@@ -3376,6 +3380,7 @@ namespace ServiceTelecomConnect
                 DateTime dateTime = DateTime.Today;
                 string dateDecommission = dateTime.ToString("dd.MM.yyyy");
                 string city = textBox_city.Text;
+                string comment = txB_comment.Text;
 
                 var items = new Dictionary<string, string>
                 {
@@ -3384,9 +3389,10 @@ namespace ServiceTelecomConnect
                     {"<serialNumber>", textBox_serialNumber.Text },
                     {"<company>", textBox_company.Text },
                     {"<dateDecommission>", dateDecommission },
+                    {"<comment>", comment}
                 };
 
-                PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city);
+                PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city, comment);
             }
         }
 

@@ -846,13 +846,13 @@
             // 
             this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_comment.Location = new System.Drawing.Point(156, 478);
-            this.txB_comment.MaxLength = 49;
+            this.txB_comment.MaxLength = 500;
             this.txB_comment.Multiline = true;
             this.txB_comment.Name = "txB_comment";
             this.txB_comment.Size = new System.Drawing.Size(503, 59);
             this.txB_comment.TabIndex = 109;
             // 
-            // changeRSTForm
+            // СhangeRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -925,7 +925,7 @@
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(865, 600);
             this.MinimumSize = new System.Drawing.Size(865, 600);
-            this.Name = "changeRSTForm";
+            this.Name = "СhangeRSTForm";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);

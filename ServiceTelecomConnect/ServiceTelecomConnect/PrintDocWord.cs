@@ -52,7 +52,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal bool Process(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city)
+        internal bool Process(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city, string comment)
         {
             var WordApp = new Word.Application();
             try
