@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
@@ -188,7 +189,6 @@ namespace ServiceTelecomConnect
                         if (textBox.Text == "")
                         {
                             this.ActiveControl = textBox;
-                            //MessageBox.Show($"Заполни поле {textBox.ToString()}");
                         }
                     }
 
@@ -276,7 +276,7 @@ namespace ServiceTelecomConnect
             await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
 
             await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
-
+            await Task.Delay(5000);
             await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity));
 
             await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
@@ -3314,6 +3314,8 @@ namespace ServiceTelecomConnect
                 dataGridView1.Enabled = false;
                 panel_decommissionSerialNumber.Visible = true;
                 panel_decommissionSerialNumber.Enabled = true;
+                txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
+
             }
 
         }
@@ -3325,8 +3327,11 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
         {
-            if (textBox_decommissionSerialNumber.Text != "")
+            if (textBox_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
             {
+                var re = new Regex(Environment.NewLine);
+                txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
+
                 Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
                     textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
                     textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
@@ -3340,7 +3345,7 @@ namespace ServiceTelecomConnect
                 panel3.Enabled = true;
                 dataGridView1.Enabled = true;
             }
-            else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания!"); }
+            else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
         }
 
         #region Удаление списания
@@ -3441,11 +3446,26 @@ namespace ServiceTelecomConnect
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_acts(comboBox_city.Text, cmb_number_unique_acts);
+                    Filling_datagridview.Number_unique_actsTO(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка! Уникальные акты не добавлены в comboBox!");
+                    MessageBox.Show("Ошибка! Уникальные акты ТО не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else if (comboBox_seach.SelectedIndex == 5)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
+
+                    Filling_datagridview.Number_unique_actsRemont(comboBox_city.Text, cmb_number_unique_acts);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Уникальные акты Ремонта не добавлены в comboBox!");
                     MessageBox.Show(ex.ToString());
                 }
             }
@@ -3456,9 +3476,10 @@ namespace ServiceTelecomConnect
             }
         }
 
+
         #endregion
 
-
+        
     }
 }
 

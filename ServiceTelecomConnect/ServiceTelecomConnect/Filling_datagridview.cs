@@ -339,6 +339,10 @@ namespace ServiceTelecomConnect
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
+                    else if (perem_comboBox == "numberActRemont")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
                     else
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
@@ -936,7 +940,7 @@ namespace ServiceTelecomConnect
         /// </summary>
         /// <param name="comboBox_city"></param>
         /// <param name="cmb_number_unique_acts"></param>
-        internal static void Number_unique_acts(string comboBox_city, ComboBox cmb_number_unique_acts )
+        internal static void Number_unique_actsTO(string comboBox_city, ComboBox cmb_number_unique_acts )
         {
             string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
@@ -997,6 +1001,29 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "dateTO";
+                    DB.GetInstance.closeConnection();
+                }
+            }
+        }
+        /// <summary>
+        /// Уникальные актыРемонта в comboBox
+        /// </summary>
+        /// <param name="comboBox_city"></param>
+        /// <param name="cmb_number_unique_acts"></param>
+        internal static void Number_unique_actsRemont(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
                     DB.GetInstance.closeConnection();
                 }
             }
