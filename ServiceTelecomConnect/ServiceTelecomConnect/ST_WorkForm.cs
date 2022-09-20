@@ -57,7 +57,7 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
-                comboBox_seach.Text = comboBox_seach.Items[4].ToString();
+                comboBox_seach.Text = comboBox_seach.Items[3].ToString();
 
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
@@ -260,7 +260,7 @@ namespace ServiceTelecomConnect
                 timer.Start();
 
                 dataGridView1.AllowUserToResizeColumns = false;
-                dataGridView1.AllowUserToResizeRows = false;             
+                dataGridView1.AllowUserToResizeRows = false;
 
             }
             catch (Exception ex)
@@ -3405,28 +3405,29 @@ namespace ServiceTelecomConnect
 
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if(comboBox_seach.SelectedIndex == 6)
+            if (comboBox_seach.SelectedIndex == 0)
             {
                 try
                 {
                     cmb_number_unique_acts.Visible = true;
                     textBox_search.Visible = false;
 
-                    string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city.Text}' ORDER BY numberAct";
-                    using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.openConnection();
-                        DataTable act_table_unique = new DataTable();
+                    Filling_datagridview.Number_company_acts(comboBox_city.Text, cmb_number_unique_acts);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка! Уникальные предприятия не добавлены в comboBox!");
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else if (comboBox_seach.SelectedIndex == 5)
+            {
+                try
+                {
+                    cmb_number_unique_acts.Visible = true;
+                    textBox_search.Visible = false;
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(act_table_unique);
-
-                            cmb_number_unique_acts.DataSource = act_table_unique;
-                            cmb_number_unique_acts.DisplayMember = "numberAct";
-                            DB.GetInstance.closeConnection();
-                        }
-                    }
+                    Filling_datagridview.Number_unique_acts(comboBox_city.Text, cmb_number_unique_acts);
                 }
                 catch (Exception ex)
                 {

@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
             this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -202,6 +202,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.panel_seach_datagrid = new System.Windows.Forms.Panel();
             this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
+            this.txB_reason_decommission = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.textBox_decommissionSerialNumber = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -212,8 +214,6 @@
             this.btn_decommissionSerialNumber_close = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txB_reason_decommission = new System.Windows.Forms.TextBox();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -964,44 +964,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -1751,7 +1751,6 @@
             this.comboBox_seach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_seach.FormattingEnabled = true;
             this.comboBox_seach.Items.AddRange(new object[] {
-            "Полигон",
             "Предприятие",
             "Станция",
             "Модель",
@@ -2358,6 +2357,28 @@
             this.panel_decommissionSerialNumber.TabIndex = 39;
             this.panel_decommissionSerialNumber.Visible = false;
             // 
+            // txB_reason_decommission
+            // 
+            this.txB_reason_decommission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txB_reason_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_reason_decommission.Location = new System.Drawing.Point(117, 82);
+            this.txB_reason_decommission.Multiline = true;
+            this.txB_reason_decommission.Name = "txB_reason_decommission";
+            this.txB_reason_decommission.Size = new System.Drawing.Size(314, 174);
+            this.txB_reason_decommission.TabIndex = 81;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(25, 88);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 22);
+            this.label2.TabIndex = 80;
+            this.label2.Text = "Причина:";
+            // 
             // textBox_decommissionSerialNumber
             // 
             this.textBox_decommissionSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2464,28 +2485,6 @@
             // 
             this.закрытьToolStripMenuItem.Name = "закрытьToolStripMenuItem";
             this.закрытьToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(25, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 22);
-            this.label2.TabIndex = 80;
-            this.label2.Text = "Причина:";
-            // 
-            // txB_reason_decommission
-            // 
-            this.txB_reason_decommission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txB_reason_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_reason_decommission.Location = new System.Drawing.Point(117, 82);
-            this.txB_reason_decommission.Multiline = true;
-            this.txB_reason_decommission.Name = "txB_reason_decommission";
-            this.txB_reason_decommission.Size = new System.Drawing.Size(314, 174);
-            this.txB_reason_decommission.TabIndex = 81;
             // 
             // ST_WorkForm
             // 

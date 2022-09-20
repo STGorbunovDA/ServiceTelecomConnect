@@ -276,7 +276,7 @@ namespace ServiceTelecomConnect
         /// метод поиска по базе данных, подключение к базе, выполнение запроса так-же внутри  вызываем метод ReedSingleRow для вывода данных из базы
         /// </summary>
         /// <param name="dgw"></param>
-        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique_acts)
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -287,11 +287,7 @@ namespace ServiceTelecomConnect
 
                     dgw.Rows.Clear();
 
-                    if (comboBox_seach == "Полигон")
-                    {
-                        perem_comboBox = "poligon";
-                    }
-                    else if (comboBox_seach == "Предприятие")
+                    if (comboBox_seach == "Предприятие")
                     {
                         perem_comboBox = "company";
                     }
@@ -335,9 +331,13 @@ namespace ServiceTelecomConnect
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
                     }
-                    else if(perem_comboBox == "numberAct")
+                    else if(perem_comboBox == "company")
                     {
-                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique_acts + "%'";
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
+                    else if (perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                     {
@@ -925,6 +925,58 @@ namespace ServiceTelecomConnect
                 return remontAct;
             }
             else return remontAct = "Отсутсвует";
+        }
+
+        #endregion
+
+        #region показать уникальные данные по поиску
+
+        /// <summary>
+        /// Уникальные акты в comboBox
+        /// </summary>
+        /// <param name="comboBox_city"></param>
+        /// <param name="cmb_number_unique_acts"></param>
+        internal static void Number_unique_acts(string comboBox_city, ComboBox cmb_number_unique_acts )
+        {
+            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberAct";
+                    DB.GetInstance.closeConnection();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Уникальные предприятия в comboBox
+        /// </summary>
+        /// <param name="comboBox_city"></param>
+        /// <param name="cmb_number_unique_acts"></param>
+        internal static void Number_company_acts(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.openConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.closeConnection();
+                }
+            }
         }
 
         #endregion
