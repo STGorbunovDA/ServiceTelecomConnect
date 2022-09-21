@@ -75,9 +75,8 @@ namespace ServiceTelecomConnect
                 }
 
             }
-            catch (MySqlException)
+            catch (Exception)
             {
-                DB.GetInstance.closeConnection();
                 MessageBox.Show("Системная ошибка авторизации(EnterButtonLogin_Click)");
             }
 

@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Globalization;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -97,7 +96,6 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception)
                 {
-                    DB.GetInstance.closeConnection();
                     MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
                 }
             }
@@ -208,7 +206,6 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception)
                 {
-                    DB.GetInstance.closeConnection();
                     MessageBox.Show("Ошибка! Не возможно удалить данные (Button_delete_Click)");
                 }
             }
@@ -237,7 +234,6 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception)
                 {
-                    DB.GetInstance.closeConnection();
                     MessageBox.Show("Ошибка! Не возможно изменить данные (Button_change_Click)");
                 }
             }

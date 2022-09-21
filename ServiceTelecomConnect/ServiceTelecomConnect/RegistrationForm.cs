@@ -105,11 +105,9 @@ namespace ServiceTelecomConnect
                         MessageBox.Show("Такой пользователь уже существует!");
                     }
                 }
-
             }
-            catch (MySqlException)
+            catch (Exception)
             {
-                DB.GetInstance.closeConnection();
                 MessageBox.Show("Ошибка регистрации!(EnterButtonLogin_Click)");
             }
         }
