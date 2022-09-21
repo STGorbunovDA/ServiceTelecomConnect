@@ -1218,8 +1218,8 @@ namespace ServiceTelecomConnect
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (textBox_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", button_new_add_rst_form_Click_change));
-                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", button_new_add_rst_form_click_remont));
+                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
@@ -1270,9 +1270,9 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка ContextMenu (DataGridView1_MouseClick)");
             }
         }
         #endregion
@@ -1293,9 +1293,9 @@ namespace ServiceTelecomConnect
                         Counters();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка обновления БД после показа отсутсвующих радиостанций после проверки на участке (Button_update_Click_after_Seach_DataGrid_Replay_RST)");
                 }
             }
         }
@@ -1305,21 +1305,28 @@ namespace ServiceTelecomConnect
         #region Удаление ремонта
         void Delete_rst_remont_click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
-
-            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            try
             {
-                return;
+                string Mesage;
+                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+                Filling_datagridview.Delete_rst_remont(textBox_numberActRemont.Text, textBox_serialNumber.Text);
+                Button_update_Click(sender, e);
             }
-            Filling_datagridview.Delete_rst_remont(textBox_numberActRemont.Text, textBox_serialNumber.Text);
-            Button_update_Click(sender, e);
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка удаления ремонта (Delete_rst_remont_click)");
+            }
         }
 
         #endregion
 
         #region отк. формы добавления ремонтов
-        private void button_new_add_rst_form_click_remont(object sender, EventArgs e)
+        private void Button_new_add_rst_form_click_remont(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -1384,26 +1391,22 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка открытия формы добавления ремонта RemontRSTForm (Button_new_add_rst_form_click_remont)");
                 }
             }
         }
         #endregion
 
         #region отк. формы изменения РСТ
-        private void button_new_add_rst_form_Click_change(object sender, EventArgs e)
+        private void Button_new_add_rst_form_Click_change(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
-                    if (textBox_serialNumber.Text == "")
-                    {
-
-                    }
-                    else
+                    if (textBox_serialNumber.Text != "")
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         changeRSTForm.DoubleBufferedForm(true);
@@ -1471,11 +1474,10 @@ namespace ServiceTelecomConnect
 
                         #endregion
                     }
-
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
                 }
             }
         }
@@ -1934,52 +1936,58 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для выбора значения в Control(TXB)
-        /// <summary>
-        /// после добавления ремонта или изменения данных РСТ, присваиваем значения textBox и comBox
-        /// </summary>
+        
         void Refresh_values_TXB_CMB(int currRowIndex)
         {
-            DataGridViewRow row = dataGridView1.Rows[currRowIndex];
-            textBox_id.Text = row.Cells[0].Value.ToString();
-            comboBox_poligon.Text = row.Cells[1].Value.ToString();
-            textBox_company.Text = row.Cells[2].Value.ToString();
-            textBox_location.Text = row.Cells[3].Value.ToString();
-            comboBox_model.Text = row.Cells[4].Value.ToString();
-            textBox_serialNumber.Text = row.Cells[5].Value.ToString();
-            textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
-            textBox_networkNumber.Text = row.Cells[7].Value.ToString();
-            textBox_dateTO.Text = row.Cells[8].Value.ToString();
-            textBox_numberAct.Text = row.Cells[9].Value.ToString();
-            textBox_city.Text = row.Cells[10].Value.ToString();
-            textBox_price.Text = row.Cells[11].Value.ToString();
-            textBox_representative.Text = row.Cells[12].Value.ToString();
-            textBox_post.Text = row.Cells[13].Value.ToString();
-            textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
-            textBox_dateIssue.Text = row.Cells[15].Value.ToString();
-            textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
-            textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
-            comboBox_сategory.Text = row.Cells[18].Value.ToString();
-            textBox_priceRemont.Text = row.Cells[19].Value.ToString();
-            textBox_antenna.Text = row.Cells[20].Value.ToString();
-            textBox_manipulator.Text = row.Cells[21].Value.ToString();
-            textBox_AKB.Text = row.Cells[22].Value.ToString();
-            textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
-            textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
-            textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
-            textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
-            textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
-            textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
-            textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
-            textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
-            textBox_parts_1.Text = row.Cells[31].Value.ToString();
-            textBox_parts_2.Text = row.Cells[32].Value.ToString();
-            textBox_parts_3.Text = row.Cells[33].Value.ToString();
-            textBox_parts_4.Text = row.Cells[34].Value.ToString();
-            textBox_parts_5.Text = row.Cells[35].Value.ToString();
-            textBox_parts_6.Text = row.Cells[36].Value.ToString();
-            textBox_parts_7.Text = row.Cells[37].Value.ToString();
-            txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
-            txB_comment.Text = row.Cells[39].Value.ToString();
+            try
+            {
+                DataGridViewRow row = dataGridView1.Rows[currRowIndex];
+                textBox_id.Text = row.Cells[0].Value.ToString();
+                comboBox_poligon.Text = row.Cells[1].Value.ToString();
+                textBox_company.Text = row.Cells[2].Value.ToString();
+                textBox_location.Text = row.Cells[3].Value.ToString();
+                comboBox_model.Text = row.Cells[4].Value.ToString();
+                textBox_serialNumber.Text = row.Cells[5].Value.ToString();
+                textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
+                textBox_networkNumber.Text = row.Cells[7].Value.ToString();
+                textBox_dateTO.Text = row.Cells[8].Value.ToString();
+                textBox_numberAct.Text = row.Cells[9].Value.ToString();
+                textBox_city.Text = row.Cells[10].Value.ToString();
+                textBox_price.Text = row.Cells[11].Value.ToString();
+                textBox_representative.Text = row.Cells[12].Value.ToString();
+                textBox_post.Text = row.Cells[13].Value.ToString();
+                textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
+                textBox_dateIssue.Text = row.Cells[15].Value.ToString();
+                textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
+                textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
+                comboBox_сategory.Text = row.Cells[18].Value.ToString();
+                textBox_priceRemont.Text = row.Cells[19].Value.ToString();
+                textBox_antenna.Text = row.Cells[20].Value.ToString();
+                textBox_manipulator.Text = row.Cells[21].Value.ToString();
+                textBox_AKB.Text = row.Cells[22].Value.ToString();
+                textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
+                textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
+                textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
+                textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
+                textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
+                textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
+                textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
+                textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
+                textBox_parts_1.Text = row.Cells[31].Value.ToString();
+                textBox_parts_2.Text = row.Cells[32].Value.ToString();
+                textBox_parts_3.Text = row.Cells[33].Value.ToString();
+                textBox_parts_4.Text = row.Cells[34].Value.ToString();
+                textBox_parts_5.Text = row.Cells[35].Value.ToString();
+                textBox_parts_6.Text = row.Cells[36].Value.ToString();
+                textBox_parts_7.Text = row.Cells[37].Value.ToString();
+                txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
+                txB_comment.Text = row.Cells[39].Value.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка получения данных в Control-ы из Datagrid (Refresh_values_TXB_CMB)");
+            }
+            
         }
         #endregion
 
@@ -2033,11 +2041,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-        /// <summary>
-        /// Закрываем панель инфы о ФИО и номере баланосдержателя
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         void Button_close_panel_info_phone_FIO_Click(object sender, EventArgs e)
         {
             panel_info_phone_FIO.Enabled = false;
@@ -2068,9 +2072,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception exc)
+                catch (Exception)
                 {
-                    MessageBox.Show(exc.Message);
+                    MessageBox.Show("Ошибка поиска по DataGrid (Seach_datagrid)");
                 }
                 textBox_seach_panel_seach_datagrid.Text = "";
                 panel_seach_datagrid.Enabled = false;
@@ -2303,9 +2307,9 @@ namespace ServiceTelecomConnect
                 label_cell_rows.Text = rowIndexes.Count.ToString();
                 label_sum_TO_selection.Text = sum.ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка подсчёта кол-ва строк Datagrid при выборе пользователя(DataGridView1_SelectionChanged)");
             }
 
         }
@@ -2464,13 +2468,12 @@ namespace ServiceTelecomConnect
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    string Mesage = $"Радиостанции не добавленны!";
+                    string Mesage = $"Ошибка загрузки данных для текущей БД! Радиостанции не добавленны!(Loading_file_current_BD)";
 
                     if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     {
-                        MessageBox.Show(ex.ToString());
                         return;
                     }
                 }
@@ -2602,13 +2605,12 @@ namespace ServiceTelecomConnect
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    string Mesage = $"Радиостанции не добавленны!";
+                    string Mesage = $"Ошибка загрузки данных для БД прошлого года! Радиостанции не добавленны!(Loading_file_last_year)";
 
                     if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     {
-                        MessageBox.Show(ex.ToString());
                         return;
                     }
                 }
@@ -2736,7 +2738,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception ex)
                 {
-                    string Mesage = $"Радиостанции не добавленны!";
+                    string Mesage = $"Ошибка загрузки данных дляо бщей БД! Радиостанции не добавленны!(Loading_file_full_BD_method)";
 
                     if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     {
@@ -2819,11 +2821,7 @@ namespace ServiceTelecomConnect
 
         #region копирование текущей таблицы radiostantion в radiostantion_last_year к концу года 
 
-        /// <summary>
-        /// Копирование текущей таблицы radiostantion в radiostantion_last_year
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         void Button_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
         {
             try
@@ -2865,9 +2863,9 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка копирования текущей БД в БД прошлого года (Button_Copying_current_BD_end_of_the_year_Click)");
             }
         }
         #endregion
@@ -2911,19 +2909,15 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString()); ;
+                MessageBox.Show("Ошибка ручного-резервного копирования радиостанций из текущей radiostantion в radiostantion_copy"); ;
             }
         }
         #endregion
 
         #region очистка текущей БД, текущий год (radiostantion)
-        /// <summary>
-        /// очистка БД (radiostantion)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void Clear_BD_current_year_Click(object sender, EventArgs e)
         {
             try
@@ -2966,43 +2960,50 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString()); ;
+                MessageBox.Show("Ошибка очистки текущей БД (Clear_BD_current_year_Click)"); ;
             }
         }
 
         #endregion
 
         #region показать БД прошлого года по участку
-
+        
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
-            clear_BD_current_year.Enabled = false;
-            manual_backup_current_DB.Enabled = false;
-            loading_json_file_BD.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
-            button_Loading_file_last_year.Enabled = false;
-            loading_file_full_BD.Enabled = false;
-            loading_file_current_DB.Enabled = false;
-            button_Uploading_JSON_file.Enabled = false;
-            btn_Show_DB_radiostantion_last_year.Enabled = false;
-            btn_Show_DB_radiostantion_full.Enabled = false;
-            Close_Functional_loading_panel_Click(sender, e);
-            panel1.Enabled = false;
-            panel3.Enabled = false;
-            FunctionPanel.Show_DB_radiostantion_last_year(dataGridView1, taskCity);
-            clear_BD_current_year.Enabled = true;
-            manual_backup_current_DB.Enabled = true;
-            loading_json_file_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
-            button_Loading_file_last_year.Enabled = true;
-            loading_file_full_BD.Enabled = true;
-            loading_file_current_DB.Enabled = true;
-            button_Uploading_JSON_file.Enabled = true;
-            btn_Show_DB_radiostantion_last_year.Enabled = true;
-            btn_Show_DB_radiostantion_full.Enabled = true;
-            Counters();
+            try
+            {
+                clear_BD_current_year.Enabled = false;
+                manual_backup_current_DB.Enabled = false;
+                loading_json_file_BD.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
+                loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
+                Close_Functional_loading_panel_Click(sender, e);
+                panel1.Enabled = false;
+                panel3.Enabled = false;
+                FunctionPanel.Show_DB_radiostantion_last_year(dataGridView1, taskCity);
+                clear_BD_current_year.Enabled = true;
+                manual_backup_current_DB.Enabled = true;
+                loading_json_file_BD.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
+                loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
+                Counters();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки БД прошлого года по участку(Btn_Show_DB_radiostantion_last_year_Click)");
+            }
         }
 
 
@@ -3012,31 +3013,39 @@ namespace ServiceTelecomConnect
 
         void Btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
-            clear_BD_current_year.Enabled = false;
-            manual_backup_current_DB.Enabled = false;
-            loading_json_file_BD.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
-            button_Loading_file_last_year.Enabled = false;
-            loading_file_full_BD.Enabled = false;
-            loading_file_current_DB.Enabled = false;
-            button_Uploading_JSON_file.Enabled = false;
-            btn_Show_DB_radiostantion_last_year.Enabled = false;
-            btn_Show_DB_radiostantion_full.Enabled = false;
-            Close_Functional_loading_panel_Click(sender, e);
-            panel1.Enabled = false;
-            panel3.Enabled = false;
-            FunctionPanel.Show_DB_radiostantion_full(dataGridView1, taskCity);
-            clear_BD_current_year.Enabled = true;
-            manual_backup_current_DB.Enabled = true;
-            loading_json_file_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
-            button_Loading_file_last_year.Enabled = true;
-            loading_file_full_BD.Enabled = true;
-            loading_file_current_DB.Enabled = true;
-            button_Uploading_JSON_file.Enabled = true;
-            btn_Show_DB_radiostantion_last_year.Enabled = true;
-            btn_Show_DB_radiostantion_full.Enabled = true;
-            Counters();
+            try
+            {
+                clear_BD_current_year.Enabled = false;
+                manual_backup_current_DB.Enabled = false;
+                loading_json_file_BD.Enabled = false;
+                button_Copying_current_BD_end_of_the_year.Enabled = false;
+                button_Loading_file_last_year.Enabled = false;
+                loading_file_full_BD.Enabled = false;
+                loading_file_current_DB.Enabled = false;
+                button_Uploading_JSON_file.Enabled = false;
+                btn_Show_DB_radiostantion_last_year.Enabled = false;
+                btn_Show_DB_radiostantion_full.Enabled = false;
+                Close_Functional_loading_panel_Click(sender, e);
+                panel1.Enabled = false;
+                panel3.Enabled = false;
+                FunctionPanel.Show_DB_radiostantion_full(dataGridView1, taskCity);
+                clear_BD_current_year.Enabled = true;
+                manual_backup_current_DB.Enabled = true;
+                loading_json_file_BD.Enabled = true;
+                button_Copying_current_BD_end_of_the_year.Enabled = true;
+                button_Loading_file_last_year.Enabled = true;
+                loading_file_full_BD.Enabled = true;
+                loading_file_current_DB.Enabled = true;
+                button_Uploading_JSON_file.Enabled = true;
+                btn_Show_DB_radiostantion_last_year.Enabled = true;
+                btn_Show_DB_radiostantion_full.Enabled = true;
+                Counters();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки общей БД прошлого года без участка (Btn_Show_DB_radiostantion_full_Click)");
+            }
+            
         }
         #endregion
 
@@ -3267,11 +3276,6 @@ namespace ServiceTelecomConnect
 
         #region списание РСТ
 
-        /// <summary>
-        /// Закрытие панели заполнения № Акта списания
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void Btn_decommissionSerialNumber_close_Click(object sender, EventArgs e)
         {
             panel_decommissionSerialNumber.Visible = false;
@@ -3281,11 +3285,7 @@ namespace ServiceTelecomConnect
             panel3.Enabled = true;
             dataGridView1.Enabled = true;
         }
-        /// <summary>
-        /// Открытие панели заполнения № Акта списания
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
             if (textBox_serialNumber.Text != "")
@@ -3309,57 +3309,77 @@ namespace ServiceTelecomConnect
 
         }
 
-        /// <summary>
-        /// Списание РСТ по номеру акта списания в БД и добавление в таблицу списание
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
         {
-            if (textBox_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
+            try
             {
-                var re = new Regex(Environment.NewLine);
-                txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
+                if (textBox_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
+                {
+                    var re = new Regex(Environment.NewLine);
+                    txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
 
-                Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
-                    textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
-                    textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
-                    textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text,
-                    txB_comment.Text, textBox_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
-                Button_update_Click(sender, e);
-                panel_decommissionSerialNumber.Visible = false;
-                panel_decommissionSerialNumber.Enabled = false;
-                panel1.Enabled = true;
-                panel2.Enabled = true;
-                panel3.Enabled = true;
-                dataGridView1.Enabled = true;
-                textBox_decommissionSerialNumber.Text = "";
+                    Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
+                        textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
+                        textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
+                        textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text,
+                        txB_comment.Text, textBox_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
+                    Button_update_Click(sender, e);
+                    panel_decommissionSerialNumber.Visible = false;
+                    panel_decommissionSerialNumber.Enabled = false;
+                    panel1.Enabled = true;
+                    panel2.Enabled = true;
+                    panel3.Enabled = true;
+                    dataGridView1.Enabled = true;
+                    textBox_decommissionSerialNumber.Text = "";
+                }
+                else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
             }
-            else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка списания РСТ (Btn_record_decommissionSerialNumber_Click)");
+            }
+            
         }
 
         #region Удаление списания
         void Delete_rst_decommission_click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
-
-            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            try
             {
-                return;
+                string Mesage;
+                Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, textBox_city.Text);
+                Button_update_Click(sender, e);
             }
-            Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, textBox_city.Text);
-            Button_update_Click(sender, e);
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка удаления списания РСТ (Delete_rst_decommission_click)");
+            }
+            
         }
         #endregion
 
         #region показать списания
         void Show_radiostantion_decommission_Click(object sender, EventArgs e)
         {
-            panel1.Enabled = false;
-            panel3.Enabled = false;
-            Filling_datagridview.Show_radiostantion_decommission(dataGridView1, textBox_city.Text);
-            Counters();
+            try
+            {
+                panel1.Enabled = false;
+                panel3.Enabled = false;
+                Filling_datagridview.Show_radiostantion_decommission(dataGridView1, textBox_city.Text);
+                Counters();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки БД списания РСТ (Show_radiostantion_decommission_Click)");
+            }
+            
         }
 
         #endregion
@@ -3368,15 +3388,17 @@ namespace ServiceTelecomConnect
 
         void PrintWord_Act_decommission(object sender, EventArgs e)
         {
-            if (txB_decommissionSerialNumber.Text != "")
+            try
             {
-                string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{textBox_company.Text}";
-                DateTime dateTime = DateTime.Today;
-                string dateDecommission = dateTime.ToString("dd.MM.yyyy");
-                string city = textBox_city.Text;
-                string comment = txB_comment.Text;
+                if (txB_decommissionSerialNumber.Text != "")
+                {
+                    string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{textBox_company.Text}";
+                    DateTime dateTime = DateTime.Today;
+                    string dateDecommission = dateTime.ToString("dd.MM.yyyy");
+                    string city = textBox_city.Text;
+                    string comment = txB_comment.Text;
 
-                var items = new Dictionary<string, string>
+                    var items = new Dictionary<string, string>
                 {
                     {"<numberActTZPP>", decommissionSerialNumber_company },
                     {"<model>", comboBox_model.Text },
@@ -3386,8 +3408,14 @@ namespace ServiceTelecomConnect
                     {"<comment>", comment}
                 };
 
-                PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city, comment);
+                    PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city, comment);
+                }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка формирования акта списания (PrintWord_Act_decommission)");
+            }
+            
         }
 
 
@@ -3399,123 +3427,126 @@ namespace ServiceTelecomConnect
 
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (comboBox_seach.SelectedIndex == 0)
+            try
             {
-                try
+                if (comboBox_seach.SelectedIndex == 0)
                 {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_company(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_company(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Предприятия не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 1)
                 {
-                    MessageBox.Show("Ошибка! Предприятия не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 1)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 3)
                 {
-                    MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 3)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Даты проверки ТО не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 4)
                 {
-                    MessageBox.Show("Ошибка! Даты проверки ТО не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 4)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты ТО не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 5)
                 {
-                    MessageBox.Show("Ошибка! Акты ТО не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 5)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты Ремонта не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 6)
                 {
-                    MessageBox.Show("Ошибка! Акты Ремонта не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 6)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else if (comboBox_seach.SelectedIndex == 7)
                 {
-                    MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else if (comboBox_seach.SelectedIndex == 7)
-            {
-                try
-                {
-                    cmb_number_unique_acts.Visible = true;
-                    textBox_search.Visible = false;
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
 
-                    Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
-                    MessageBox.Show(ex.ToString());
+                    cmb_number_unique_acts.Visible = false;
+                    textBox_search.Visible = true;
                 }
+                cmb_number_unique_acts.SelectedIndex = 0;
             }
-            else
+            catch (Exception)
             {
-                cmb_number_unique_acts.Visible = false;
-                textBox_search.Visible = true;
+                MessageBox.Show("Ошибка метода ComboBox_seach_SelectionChangeCommitted");
             }
-            cmb_number_unique_acts.SelectedIndex = 0;
         }
-
-
         #endregion
-
-
     }
 }
 
