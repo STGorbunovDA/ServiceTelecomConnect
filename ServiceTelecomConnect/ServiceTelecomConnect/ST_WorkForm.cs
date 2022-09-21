@@ -276,42 +276,55 @@ namespace ServiceTelecomConnect
 
         async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
+            try
+            {
+                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
+                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
+                await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
 
-            await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
-            await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
-            await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
+                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
+                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
+                await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
 
-            await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
-            await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
-            await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
+                await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
 
-            await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
-
-            //new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+                //new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка TimerEventProcessor!");
+            }  
         }
 
         #region Счётчики
 
         void Counters()
         {
-            decimal sumTO = 0;
-            int colRemont = 0;
-            decimal sumRemont = 0;
-
-            for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+            try
             {
-                if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
-                {
-                    colRemont++;
-                }
-                sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
-                sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
-            }
+                decimal sumTO = 0;
+                int colRemont = 0;
+                decimal sumRemont = 0;
 
-            label_count.Text = dataGridView1.Rows.Count.ToString();
-            label_summ.Text = sumTO.ToString();
-            label_count_remont.Text = colRemont.ToString();
-            label_summ_remont.Text = sumRemont.ToString();
+                for (int i = 0; i < dataGridView1.Rows.Count; ++i)
+                {
+                    if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
+                    {
+                        colRemont++;
+                    }
+                    sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
+                    sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
+                }
+
+                label_count.Text = dataGridView1.Rows.Count.ToString();
+                label_summ.Text = sumTO.ToString();
+                label_count_remont.Text = colRemont.ToString();
+                label_summ_remont.Text = sumRemont.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка Counters!");
+            }   
         }
 
         #endregion
