@@ -274,10 +274,11 @@ namespace ServiceTelecomConnect
 
             await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
             await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
-
             await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
-            await Task.Delay(5000);
-            await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity));
+
+            await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
+            await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
+            await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
 
             await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
 
@@ -3344,6 +3345,7 @@ namespace ServiceTelecomConnect
                 panel2.Enabled = true;
                 panel3.Enabled = true;
                 dataGridView1.Enabled = true;
+                textBox_decommissionSerialNumber.Text = "";
             }
             else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
         }
