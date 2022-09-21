@@ -531,7 +531,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка загрузки города проведния проверки в comboBox из рееестра(Button_add_city_Click)!");
             }
-           
+
         }
         #endregion
 
@@ -589,7 +589,7 @@ namespace ServiceTelecomConnect
                     txB_comment.Text = row.Cells[39].Value.ToString();
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка получения данных в Control-ы(DataGridView1_CellClick)");
             }
@@ -597,7 +597,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Clear contorl-ы
-        
+
         void ClearFields()
         {
             try
@@ -644,7 +644,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Удаление из БД
-        
+
         void Button_delete_Click(object sender, EventArgs e)
         {
             try
@@ -681,7 +681,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region обновление БД
-        
+
         void Button_update_Click(object sender, EventArgs e)
         {
             try
@@ -707,7 +707,7 @@ namespace ServiceTelecomConnect
                     Counters();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка обновления dataGridView1 (Button_update_Click)");
             }
@@ -726,11 +726,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Форма добавления РСТ
-        /// <summary>
-        ///  Вызываем  форму создания новой записи(радиостанции)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -790,9 +786,9 @@ namespace ServiceTelecomConnect
                     //Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
                     #endregion
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка создания формы AddRSTForm(Button_new_add_rst_form_Click)");
                 }
             }
 
@@ -801,12 +797,7 @@ namespace ServiceTelecomConnect
 
         #region проверка ввода текст боксов
 
-        /// <summary>
-        /// для копирования Ctrl + c, Ctrl + v
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void processKbdCtrlShortcuts(object sender, KeyEventArgs e)
+        void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
         {
             try
             {
@@ -837,16 +828,16 @@ namespace ServiceTelecomConnect
                     e.Handled = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода ctrl+c+v (ProcessKbdCtrlShortcuts)");
             }
         }
-        void textBox_GD_city_Click(object sender, EventArgs e)
+        void TextBox_GD_city_Click(object sender, EventArgs e)
         {
             textBox_company.MaxLength = 25;
         }
-        void textBox_GD_city_KeyPress(object sender, KeyPressEventArgs e)
+        void TextBox_GD_city_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
@@ -854,16 +845,16 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void textBox_GD_city_KeyUp(object sender, KeyEventArgs e)
+        void TextBox_GD_city_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
-        void textBox_FIO_chief_Click(object sender, EventArgs e)
+        void TextBox_FIO_chief_Click(object sender, EventArgs e)
         {
             textBox_company.MaxLength = 25;
         }
 
-        void textBox_FIO_chief_KeyPress(object sender, KeyPressEventArgs e)
+        void TextBox_FIO_chief_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
@@ -871,19 +862,19 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void textBox_FIO_chief_KeyUp(object sender, KeyEventArgs e)
+        void TextBox_FIO_chief_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
-        void textBox_doverennost_Click(object sender, EventArgs e)
+        void TextBox_doverennost_Click(object sender, EventArgs e)
         {
             textBox_company.MaxLength = 25;
         }
-        void textBox_doverennost_KeyUp(object sender, KeyEventArgs e)
+        void TextBox_doverennost_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
-        void textBox_doverennost_KeyPress(object sender, KeyPressEventArgs e)
+        void TextBox_doverennost_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ' && ch != '/')
@@ -891,11 +882,11 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void textBox_FIO_Engineer_Click(object sender, EventArgs e)
+        void TextBox_FIO_Engineer_Click(object sender, EventArgs e)
         {
             textBox_company.MaxLength = 25;
         }
-        void textBox_FIO_Engineer_KeyPress(object sender, KeyPressEventArgs e)
+        void TextBox_FIO_Engineer_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
@@ -903,9 +894,9 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void textBox_FIO_Engineer_KeyUp(object sender, KeyEventArgs e)
+        void TextBox_FIO_Engineer_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
         #endregion
 
@@ -913,24 +904,30 @@ namespace ServiceTelecomConnect
 
         void Button_form_act_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
-            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-            dataGridView1.ClearSelection();
-
-            if (dataGridView1.CurrentCell.RowIndex >= 0)
+            try
             {
-                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            }
-            Refresh_values_TXB_CMB(currRowIndex);
-            if (textBox_numberAct.Text != "")
-            {
-                dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
-            }
-            PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
-                label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
-                label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
-            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
+                int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+                dataGridView1.ClearSelection();
 
+                if (dataGridView1.CurrentCell.RowIndex >= 0)
+                {
+                    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                }
+                Refresh_values_TXB_CMB(currRowIndex);
+                if (textBox_numberAct.Text != "")
+                {
+                    dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
+                }
+                PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
+                    label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
+                    label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
+                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка создания Акта ТО (Button_form_act_Click)");
+            }
         }
 
 
@@ -971,7 +968,14 @@ namespace ServiceTelecomConnect
 
         void Button_save_in_file_Click(object sender, EventArgs e)
         {
-            SaveFileDataGridViewPC.UserSaveFilePC(dataGridView1);
+            try
+            {
+                SaveFileDataGridViewPC.UserSaveFilePC(dataGridView1);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения таблицы пользователем(Button_save_in_file_Click)");
+            }
         }
         #endregion
 
@@ -1015,11 +1019,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-        /// <summary>
-        /// Отмена редактирования datagridview
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
@@ -1036,9 +1035,9 @@ namespace ServiceTelecomConnect
             {
                 dataGridView1.Update();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода DataGridView1_UserDeletedRow");
             }
         }
 
@@ -1048,9 +1047,9 @@ namespace ServiceTelecomConnect
             {
                 dataGridView1.Update();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода DataGridView1_UserAddedRow");
             }
         }
 
@@ -1060,9 +1059,9 @@ namespace ServiceTelecomConnect
             {
                 dataGridView1.Update();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода DataGridView1_CellValueChanged");
             }
         }
         #endregion
@@ -1075,13 +1074,12 @@ namespace ServiceTelecomConnect
             if ((ch <= 47 || ch >= 58) && ch != '\b')
             {
                 e.Handled = true;
-
             }
         }
 
         void TextBox_number_printing_doc_datePanel_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void Label_FIO_chief_DoubleClick(object sender, EventArgs e)
@@ -1108,7 +1106,6 @@ namespace ServiceTelecomConnect
         {
             Change_information_ServiceTelecom();
         }
-
         void Change_information_ServiceTelecom()
         {
             try
@@ -1130,9 +1127,9 @@ namespace ServiceTelecomConnect
                 panel_date.Enabled = true;
                 panel_date.Visible = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода Change_information_ServiceTelecom");
             }
 
         }
@@ -1593,7 +1590,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_Full_name_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_BE_remont_KeyPress(object sender, KeyPressEventArgs e)
@@ -1622,12 +1619,12 @@ namespace ServiceTelecomConnect
 
         void TextBox_OKPO_remont_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_BE_remont_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_director_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1650,12 +1647,12 @@ namespace ServiceTelecomConnect
 
         void TextBox_director_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_director_post_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_chairman_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1678,12 +1675,12 @@ namespace ServiceTelecomConnect
 
         void TextBox_chairman_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_chairman_post_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_1_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1706,12 +1703,12 @@ namespace ServiceTelecomConnect
 
         void TextBox_1_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_1_post_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_2_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1725,7 +1722,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_2_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_2_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1739,7 +1736,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_2_post_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_3_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1753,7 +1750,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_3_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
 
         void TextBox_3_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
@@ -1767,7 +1764,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_3_post_remont_company_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
         #endregion
 
@@ -2122,7 +2119,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_seach_panel_seach_datagrid_KeyUp(object sender, KeyEventArgs e)
         {
-            processKbdCtrlShortcuts(sender, e);
+            ProcessKbdCtrlShortcuts(sender, e);
         }
         #endregion
 

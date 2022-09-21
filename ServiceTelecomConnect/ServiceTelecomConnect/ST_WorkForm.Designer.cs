@@ -323,9 +323,9 @@
             this.textBox_FIO_Engineer.Name = "textBox_FIO_Engineer";
             this.textBox_FIO_Engineer.Size = new System.Drawing.Size(345, 29);
             this.textBox_FIO_Engineer.TabIndex = 13;
-            this.textBox_FIO_Engineer.Click += new System.EventHandler(this.textBox_FIO_Engineer_Click);
-            this.textBox_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FIO_Engineer_KeyPress);
-            this.textBox_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_FIO_Engineer_KeyUp);
+            this.textBox_FIO_Engineer.Click += new System.EventHandler(this.TextBox_FIO_Engineer_Click);
+            this.textBox_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_Engineer_KeyPress);
+            this.textBox_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_Engineer_KeyUp);
             this.textBox_FIO_Engineer.MouseEnter += new System.EventHandler(this.TextBox_FIO_Engineer_MouseEnter);
             // 
             // label27
@@ -346,9 +346,9 @@
             this.textBox_GD_city.Name = "textBox_GD_city";
             this.textBox_GD_city.Size = new System.Drawing.Size(345, 29);
             this.textBox_GD_city.TabIndex = 11;
-            this.textBox_GD_city.Click += new System.EventHandler(this.textBox_GD_city_Click);
-            this.textBox_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_GD_city_KeyPress);
-            this.textBox_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_GD_city_KeyUp);
+            this.textBox_GD_city.Click += new System.EventHandler(this.TextBox_GD_city_Click);
+            this.textBox_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_GD_city_KeyPress);
+            this.textBox_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_GD_city_KeyUp);
             this.textBox_GD_city.MouseEnter += new System.EventHandler(this.TextBox_GD_city_MouseEnter);
             // 
             // label_GD
@@ -381,9 +381,9 @@
             this.textBox_FIO_chief.Name = "textBox_FIO_chief";
             this.textBox_FIO_chief.Size = new System.Drawing.Size(345, 29);
             this.textBox_FIO_chief.TabIndex = 9;
-            this.textBox_FIO_chief.Click += new System.EventHandler(this.textBox_FIO_chief_Click);
-            this.textBox_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_FIO_chief_KeyPress);
-            this.textBox_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_FIO_chief_KeyUp);
+            this.textBox_FIO_chief.Click += new System.EventHandler(this.TextBox_FIO_chief_Click);
+            this.textBox_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_chief_KeyPress);
+            this.textBox_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_chief_KeyUp);
             this.textBox_FIO_chief.MouseEnter += new System.EventHandler(this.TextBox_FIO_chief_MouseEnter);
             // 
             // textBox_doverennost
@@ -393,9 +393,9 @@
             this.textBox_doverennost.Name = "textBox_doverennost";
             this.textBox_doverennost.Size = new System.Drawing.Size(345, 29);
             this.textBox_doverennost.TabIndex = 6;
-            this.textBox_doverennost.Click += new System.EventHandler(this.textBox_doverennost_Click);
-            this.textBox_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_doverennost_KeyPress);
-            this.textBox_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_doverennost_KeyUp);
+            this.textBox_doverennost.Click += new System.EventHandler(this.TextBox_doverennost_Click);
+            this.textBox_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_doverennost_KeyPress);
+            this.textBox_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_doverennost_KeyUp);
             this.textBox_doverennost.MouseEnter += new System.EventHandler(this.TextBox_doverennost_MouseEnter);
             // 
             // label25
