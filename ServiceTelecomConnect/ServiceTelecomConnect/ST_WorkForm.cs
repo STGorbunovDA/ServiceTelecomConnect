@@ -99,7 +99,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        
+
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
             try
@@ -137,7 +137,7 @@ namespace ServiceTelecomConnect
                 try
                 {
                     RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
-                    
+
                     if (reg != null)
                     {
                         RegistryKey currentUserKey = Registry.CurrentUser;
@@ -208,9 +208,9 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
                 }
-               
 
-                
+
+
                 Filling_datagridview.CreateColums(dataGridView1);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 Counters();
@@ -254,7 +254,7 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Ошибка загрузки данных из реестра!(Акты_Заполняем_До_full, Акты_на_подпись)");
                 }
-                
+
 
                 taskCity = comboBox_city.Text;// для отдельных потоков
 
@@ -293,7 +293,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка TimerEventProcessor!");
-            }  
+            }
         }
 
         #region Счётчики
@@ -324,7 +324,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка Counters!");
-            }   
+            }
         }
 
         #endregion
@@ -340,11 +340,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region panel date information
-        /// <summary>
-        /// Запись в реестр инфор. о бригаде
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         void Button_record_date_Click(object sender, EventArgs e)
         {
             try
@@ -431,15 +427,13 @@ namespace ServiceTelecomConnect
 
                 Application.Restart();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка записи в реестр данных(Button_record_date_Click)!");
             }
         }
 
-        /// <summary>
-        /// для блокирования Контролов
-        /// </summary>
+
         void Block_ST_Work_Form_control()
         {
             dataGridView1.Enabled = false;
@@ -447,83 +441,73 @@ namespace ServiceTelecomConnect
             panel3.Enabled = false;
         }
 
-        /// <summary>
-        /// Закрыть панель инормации о бригаде
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         void Button_close_panel_date_info_Click(object sender, EventArgs e)
         {
-            try
+
+            #region проверка на пустые поля
+
+            if (textBox_GD_city.Text == "")
             {
-                #region проверка на пустые поля
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле Город проведения проверки!";
 
-                if (textBox_GD_city.Text == "")
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                 {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле Город проведения проверки!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    return;
                 }
-                if (textBox_FIO_chief.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле ФИО Начальника!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_doverennost.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле № и Дату доверенности!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_FIO_Engineer.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле ФИО Инженера!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_polinon_full.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_number_printing_doc_datePanel.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле № печати!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                #endregion
             }
-            catch (Exception ex)
+            if (textBox_FIO_chief.Text == "")
             {
-                MessageBox.Show(ex.ToString());
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле ФИО Начальника!";
+
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    return;
+                }
             }
+            if (textBox_doverennost.Text == "")
+            {
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле № и Дату доверенности!";
+
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            if (textBox_FIO_Engineer.Text == "")
+            {
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле ФИО Инженера!";
+
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            if (textBox_polinon_full.Text == "")
+            {
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
+
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            if (textBox_number_printing_doc_datePanel.Text == "")
+            {
+                string Mesage2;
+                Mesage2 = "Вы не заполнили поле № печати!";
+
+                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                {
+                    return;
+                }
+            }
+            #endregion
 
             panel_date.Enabled = false;
             panel_date.Visible = false;
@@ -3545,7 +3529,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        
+
     }
 }
 
