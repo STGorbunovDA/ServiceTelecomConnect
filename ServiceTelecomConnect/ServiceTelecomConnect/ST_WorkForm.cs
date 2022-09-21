@@ -520,20 +520,23 @@ namespace ServiceTelecomConnect
         #region Сохранение поля город проведения проверки
         void Button_add_city_Click(object sender, EventArgs e)
         {
-            RegistryKey currentUserKey = Registry.CurrentUser;
-            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-            helloKey.SetValue("Город проведения проверки", $"{comboBox_city.Text}");
-            helloKey.Close();
+            try
+            {
+                RegistryKey currentUserKey = Registry.CurrentUser;
+                RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
+                helloKey.SetValue("Город проведения проверки", $"{comboBox_city.Text}");
+                helloKey.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки города проведния проверки в comboBox из рееестра(Button_add_city_Click)!");
+            }
+           
         }
         #endregion
 
         #region получение данных в Control-ы, button right mouse
 
-        /// <summary>
-        /// метод получения данных в Control из dataGridView1 при нажатии на клавишу мыши
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -586,17 +589,15 @@ namespace ServiceTelecomConnect
                     txB_comment.Text = row.Cells[39].Value.ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка получения данных в Control-ы(DataGridView1_CellClick)");
             }
         }
         #endregion
 
         #region Clear contorl-ы
-        /// <summary>
-        /// Очищаем Control-ы
-        /// </summary>
+        
         void ClearFields()
         {
             try
@@ -616,9 +617,9 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка очистки данных TextBox на форме (ClearFields)");
             }
 
         }
@@ -643,14 +644,9 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Удаление из БД
-        /// <summary>
-        ///  метод удаления РСТ из БД
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void Button_delete_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string Mesage;
@@ -675,9 +671,9 @@ namespace ServiceTelecomConnect
                 }
                 Counters();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка удаления радиостанции (Button_delete_Click)");
             }
 
         }
@@ -685,14 +681,9 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region обновление БД
-        /// <summary>
-        /// метод обновления базы данных 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void Button_update_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (dataGridView1.Rows.Count > 0)
@@ -718,10 +709,8 @@ namespace ServiceTelecomConnect
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка обновления dataGridView1 (Button_update_Click)");
             }
-
-
         }
 
         /// <summary>
