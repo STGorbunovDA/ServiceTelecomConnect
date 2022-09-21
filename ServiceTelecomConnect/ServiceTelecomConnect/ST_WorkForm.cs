@@ -13,6 +13,7 @@ using WinForms = System.Windows.Forms;
 
 
 
+
 namespace ServiceTelecomConnect
 {
     #region состояние Rows
@@ -1226,8 +1227,8 @@ namespace ServiceTelecomConnect
                         if (e.Button == MouseButtons.Right)
                         {
                             ContextMenu m = new ContextMenu();
-                            
-                            m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+
+                            var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (textBox_serialNumber.Text != "")
                             {
                                 m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", button_new_add_rst_form_Click_change));

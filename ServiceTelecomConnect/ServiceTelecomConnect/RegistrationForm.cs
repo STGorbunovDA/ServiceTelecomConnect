@@ -97,38 +97,20 @@ namespace ServiceTelecomConnect
 
                         if (comboBox_post.Text == "")
                         {
-                            string Mesage2;
-                            Mesage2 = "Вы не указали должность!";
-
-                            if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                            {
-                                return;
-                            }
-
+                            MessageBox.Show("Вы не указали должность!");
                         }
                     }
                     else
                     {
-                        string Mesage2;
-                        Mesage2 = "Такой пользователь уже существует!";
-
-                        if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        {
-                            return;
-                        }
+                        MessageBox.Show("Такой пользователь уже существует!");
                     }
                 }
 
             }
             catch (MySqlException)
             {
-                string Mesage2;
-                Mesage2 = "Ошибка регистрации!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
+                DB.GetInstance.closeConnection();
+                MessageBox.Show("Ошибка регистрации!(EnterButtonLogin_Click)");
             }
         }
         Boolean CheackUser(string loginUser, string passUser)

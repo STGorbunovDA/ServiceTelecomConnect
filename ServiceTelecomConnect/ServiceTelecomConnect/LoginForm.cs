@@ -58,8 +58,6 @@ namespace ServiceTelecomConnect
                             if (table.Rows.Count == 1)
                             {
                                 var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
-
-                                //MessageBox.Show("Вы успешно авторизировались!");
                                 using (Menu menu = new Menu(user))
                                 {
                                     this.Hide();
@@ -80,13 +78,7 @@ namespace ServiceTelecomConnect
             catch (MySqlException)
             {
                 DB.GetInstance.closeConnection();
-                string Mesage2;
-                Mesage2 = "Системная ошибка авторизации";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
+                MessageBox.Show("Системная ошибка авторизации(EnterButtonLogin_Click)");
             }
 
         }
@@ -107,11 +99,7 @@ namespace ServiceTelecomConnect
             loginField.Text = "";
             passField.Text = "";
         }
-        /// <summary>
-        /// при нажатии на регистрацию вывод формы регистрации
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void RegistrationLoginForm_Click(object sender, EventArgs e)
         {
             using (RegistrationForm registrationForm = new RegistrationForm())
@@ -121,61 +109,39 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
+
         #region Подсветка
-        /// <summary>
-        /// подсвечивании лебла регистрации в белый цвет при наведении мыши
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
         void RegistrationLoginForm_MouseEnter(object sender, EventArgs e)
         {
             registrationLoginForm.ForeColor = Color.White;
         }
-        /// <summary>
-        /// подсвечивании лебла регистрации в черный цвет при убирании мыши
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void RegistrationLoginForm_MouseLeave(object sender, EventArgs e)
         {
             registrationLoginForm.ForeColor = Color.Black;
         }
-        /// <summary>
-        /// Подсвечивание лебла показать пароль в белый
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void OpenPassword_MouseEnter(object sender, EventArgs e)
         {
             openPassword.ForeColor = Color.White;
         }
-        /// <summary>
-        /// Подсвечивания лебла показать пароль в черный
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void OpenPassword_MouseLeave(object sender, EventArgs e)
         {
             openPassword.ForeColor = Color.Black;
         }
-        /// <summary>
-        /// Подсвечивания лебла скрыть пароль в черный
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void HidePassword_MouseEnter(object sender, EventArgs e)
         {
             hidePassword.ForeColor = Color.White;
         }
-        /// <summary>
-        /// Подсвечивания лебла скрыть пароль в белый
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         void HidePassword_MouseLeave(object sender, EventArgs e)
         {
             hidePassword.ForeColor = Color.Black;
         }
+
         void Clear_MouseEnter(object sender, EventArgs e)
         {
             clear.ForeColor = Color.White;
@@ -185,6 +151,7 @@ namespace ServiceTelecomConnect
         {
             clear.ForeColor = Color.Black;
         }
+
         #endregion
 
     }

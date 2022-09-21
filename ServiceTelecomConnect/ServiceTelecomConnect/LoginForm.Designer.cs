@@ -146,6 +146,7 @@
             this.registrationLoginForm.Size = new System.Drawing.Size(143, 16);
             this.registrationLoginForm.TabIndex = 18;
             this.registrationLoginForm.Text = "Еще нет аккаунта?";
+            this.registrationLoginForm.Visible = false;
             this.registrationLoginForm.Click += new System.EventHandler(this.RegistrationLoginForm_Click);
             this.registrationLoginForm.MouseEnter += new System.EventHandler(this.RegistrationLoginForm_MouseEnter);
             this.registrationLoginForm.MouseLeave += new System.EventHandler(this.RegistrationLoginForm_MouseLeave);

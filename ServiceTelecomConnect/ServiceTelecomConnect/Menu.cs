@@ -56,7 +56,7 @@ namespace ServiceTelecomConnect
 
         }
 
-        void label_baza_Click(object sender, EventArgs e)
+        void Label_baza_Click(object sender, EventArgs e)
         {
             using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
             {
@@ -65,16 +65,16 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void label_section_foreman_MouseEnter(object sender, EventArgs e)
+        void Label_section_foreman_MouseEnter(object sender, EventArgs e)
         {
 
             label_section_foreman.ForeColor = Color.White;
         }
-        void label_section_foreman_MouseLeave(object sender, EventArgs e)
+        void Label_section_foreman_MouseLeave(object sender, EventArgs e)
         {
             label_section_foreman.ForeColor = Color.Black;
         }
-        void label_TutorialEngineers_Click(object sender, EventArgs e)
+        void Label_TutorialEngineers_Click(object sender, EventArgs e)
         {
             using (TutorialForm tutorialForm = new TutorialForm())
             {
@@ -83,15 +83,15 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-        void label_TutorialEngineers_MouseEnter(object sender, EventArgs e)
+        void Label_TutorialEngineers_MouseEnter(object sender, EventArgs e)
         {
             label_TutorialEngineers.ForeColor = Color.White;
         }
-        void label_TutorialEngineers_MouseLeave(object sender, EventArgs e)
+        void Label_TutorialEngineers_MouseLeave(object sender, EventArgs e)
         {
             label_TutorialEngineers.ForeColor = Color.Black;
         }
-        void label1_Click(object sender, EventArgs e)
+        void Label1_Click(object sender, EventArgs e)
         {
             using (ComparisonForm comparisonForm = new ComparisonForm())
             {
@@ -100,17 +100,17 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-        void label_сomparison_MouseEnter(object sender, EventArgs e)
+        void Label_сomparison_MouseEnter(object sender, EventArgs e)
         {
             label_сomparison.ForeColor = Color.White;
         }
-        void label_сomparison_MouseLeave(object sender, EventArgs e)
+        void Label_сomparison_MouseLeave(object sender, EventArgs e)
         {
             label_сomparison.ForeColor = Color.Black;
         }
 
         #region открываем форму управления правами доступа user's
-        void pictureBox1_setting_Click(object sender, EventArgs e)
+        void PictureBox1_setting_Click(object sender, EventArgs e)
         {
             using (Setting_user setting_User = new Setting_user())
             {

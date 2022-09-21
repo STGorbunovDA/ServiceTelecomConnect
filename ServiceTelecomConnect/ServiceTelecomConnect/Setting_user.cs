@@ -43,9 +43,9 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns.Add("IsNew", String.Empty);
                 dataGridView1.Columns[4].Visible = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка! Не сформированы столбцы Datagrid(CreateColums)");
             }
         }
 
@@ -55,9 +55,9 @@ namespace ServiceTelecomConnect
             {
                 dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), RowState.ModifieldNew)));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(ReedSingleRow)");
             }
         }
 
@@ -95,9 +95,10 @@ namespace ServiceTelecomConnect
                     dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    DB.GetInstance.closeConnection();
+                    MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
                 }
             }
         }
@@ -108,13 +109,6 @@ namespace ServiceTelecomConnect
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
             }
-        }
-
-        public string DecodeFrom64(string encodedData)
-        {
-            var encodedDataAsBytes = System.Convert.FromBase64String(encodedData);
-            var returnValue = Encoding.ASCII.GetString(encodedDataAsBytes);
-            return returnValue;
         }
 
         void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -133,9 +127,9 @@ namespace ServiceTelecomConnect
                     comboBox_is_admin.Text = row.Cells[3].Value.ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка! (DataGridView1_CellClick)");
             }
         }
 
@@ -155,9 +149,9 @@ namespace ServiceTelecomConnect
                 {
                     RefreshDataGrid(dataGridView1);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
                 }
             }
 
@@ -175,59 +169,47 @@ namespace ServiceTelecomConnect
                     }
                     if (Internet_check.AvailabilityChanged_bool())
                     {
-                        try
+
+                        DB.GetInstance.openConnection();
+
+                        for (int index = 0; index < dataGridView1.Rows.Count; index++)
                         {
-                            DB.GetInstance.openConnection();
+                            var rowState = (RowState)dataGridView1.Rows[index].Cells[4].Value;
 
-                            for (int index = 0; index < dataGridView1.Rows.Count; index++)
+                            if (rowState == RowState.Deleted)
                             {
-                                var rowState = (RowState)dataGridView1.Rows[index].Cells[4].Value;
+                                var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                                var deleteQuery = $"delete from users where id = {id}";
 
-                                if (rowState == RowState.Deleted)
+                                using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                                 {
-                                    var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-                                    var deleteQuery = $"delete from users where id = {id}";
-
-                                    using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                                    {
-                                        command.ExecuteNonQuery();
-                                    }
-                                }
-                                if (rowState == RowState.Modifield)
-                                {
-                                    var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
-                                    var login = dataGridView1.Rows[index].Cells[1].Value.ToString();
-                                    var pass = dataGridView1.Rows[index].Cells[2].Value.ToString();
-                                    var is_admin = dataGridView1.Rows[index].Cells[3].Value.ToString();
-
-
-                                    var changeQuery = $"update users set login = '{login}', pass = '{pass}', is_Admin = '{is_admin}' where id = '{id}'";
-
-                                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                                    {
-                                        command.ExecuteNonQuery();
-                                    }
+                                    command.ExecuteNonQuery();
                                 }
                             }
-                            DB.GetInstance.closeConnection();
-                        }
-                        catch (Exception ex)
-                        {
-                            string Mesage2;
-                            Mesage2 = "Не возможно обновить базу данных!";
-
-                            if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                            if (rowState == RowState.Modifield)
                             {
-                                return;
+                                var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                                var login = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                                var pass = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                                var is_admin = dataGridView1.Rows[index].Cells[3].Value.ToString();
+
+
+                                var changeQuery = $"update users set login = '{login}', pass = '{pass}', is_Admin = '{is_admin}' where id = '{id}'";
+
+                                using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                                {
+                                    command.ExecuteNonQuery();
+                                }
                             }
-                            MessageBox.Show(ex.ToString());
                         }
+                        DB.GetInstance.closeConnection();
                     }
                     RefreshDataGrid(dataGridView1);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    DB.GetInstance.closeConnection();
+                    MessageBox.Show("Ошибка! Не возможно удалить данные (Button_delete_Click)");
                 }
             }
         }
@@ -253,9 +235,10 @@ namespace ServiceTelecomConnect
                     }
                     RefreshDataGrid(dataGridView1);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    DB.GetInstance.closeConnection();
+                    MessageBox.Show("Ошибка! Не возможно изменить данные (Button_change_Click)");
                 }
             }
         }

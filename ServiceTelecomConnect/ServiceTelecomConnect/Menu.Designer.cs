@@ -48,9 +48,9 @@
             this.label_section_foreman.TabIndex = 1;
             this.label_section_foreman.Text = "Начальник участка";
             this.label_section_foreman.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_section_foreman.Click += new System.EventHandler(this.label_baza_Click);
-            this.label_section_foreman.MouseEnter += new System.EventHandler(this.label_section_foreman_MouseEnter);
-            this.label_section_foreman.MouseLeave += new System.EventHandler(this.label_section_foreman_MouseLeave);
+            this.label_section_foreman.Click += new System.EventHandler(this.Label_baza_Click);
+            this.label_section_foreman.MouseEnter += new System.EventHandler(this.Label_section_foreman_MouseEnter);
+            this.label_section_foreman.MouseLeave += new System.EventHandler(this.Label_section_foreman_MouseLeave);
             // 
             // label_TutorialEngineers
             // 
@@ -63,9 +63,9 @@
             this.label_TutorialEngineers.TabIndex = 2;
             this.label_TutorialEngineers.Text = "Инженер";
             this.label_TutorialEngineers.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_TutorialEngineers.Click += new System.EventHandler(this.label_TutorialEngineers_Click);
-            this.label_TutorialEngineers.MouseEnter += new System.EventHandler(this.label_TutorialEngineers_MouseEnter);
-            this.label_TutorialEngineers.MouseLeave += new System.EventHandler(this.label_TutorialEngineers_MouseLeave);
+            this.label_TutorialEngineers.Click += new System.EventHandler(this.Label_TutorialEngineers_Click);
+            this.label_TutorialEngineers.MouseEnter += new System.EventHandler(this.Label_TutorialEngineers_MouseEnter);
+            this.label_TutorialEngineers.MouseLeave += new System.EventHandler(this.Label_TutorialEngineers_MouseLeave);
             // 
             // label_сomparison
             // 
@@ -78,9 +78,9 @@
             this.label_сomparison.TabIndex = 3;
             this.label_сomparison.Text = "Куратор";
             this.label_сomparison.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_сomparison.Click += new System.EventHandler(this.label1_Click);
-            this.label_сomparison.MouseEnter += new System.EventHandler(this.label_сomparison_MouseEnter);
-            this.label_сomparison.MouseLeave += new System.EventHandler(this.label_сomparison_MouseLeave);
+            this.label_сomparison.Click += new System.EventHandler(this.Label1_Click);
+            this.label_сomparison.MouseEnter += new System.EventHandler(this.Label_сomparison_MouseEnter);
+            this.label_сomparison.MouseLeave += new System.EventHandler(this.Label_сomparison_MouseLeave);
             // 
             // panel1
             // 
@@ -107,7 +107,7 @@
             this.pictureBox1_setting.TabIndex = 4;
             this.pictureBox1_setting.TabStop = false;
             this.pictureBox1_setting.Visible = false;
-            this.pictureBox1_setting.Click += new System.EventHandler(this.pictureBox1_setting_Click);
+            this.pictureBox1_setting.Click += new System.EventHandler(this.PictureBox1_setting_Click);
             // 
             // Menu
             // 
