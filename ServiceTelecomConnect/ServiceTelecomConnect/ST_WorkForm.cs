@@ -66,15 +66,12 @@ namespace ServiceTelecomConnect
                 _user = user;
                 IsAdmin();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка загрузки формы ST_WorkForm");
             }
         }
 
-        /// <summary>
-        /// Проверка пользователя кто постучался
-        /// </summary>
         void IsAdmin()
         {
             if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
@@ -102,11 +99,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        /// <summary>
-        /// при загрузке формы вызываем методы заполнения самих столбцов, подключение к базе данных и метода подчёта количества строк
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
             try
@@ -136,84 +129,88 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                    finally
-                    {
-                        DB.GetInstance.closeConnection();
+                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                     }
                 }
-
-                RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
-
-                if (reg != null)
+                try
                 {
-                    RegistryKey currentUserKey = Registry.CurrentUser;
-                    RegistryKey helloKey = currentUserKey.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                    RegistryKey helloKey_record = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
+                    RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
+                    
+                    if (reg != null)
+                    {
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
+                        RegistryKey helloKey_record = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
 
-                    string[] regKey = {$"Город проведения проверки", "Начальник по ТО и Р СРС", "Доверенность",
+                        string[] regKey = {$"Город проведения проверки", "Начальник по ТО и Р СРС", "Доверенность",
                              "Инженер по ТО и Р СРС", "Полигон РЖД full", "Номер печати"};
 
-                    for (int i = 0; i < regKey.Length; i++)
-                    {
-                        bool flag = CheacReggedit.ValueExists(helloKey, regKey[i]);
-                        if (flag == false)
+                        for (int i = 0; i < regKey.Length; i++)
                         {
-                            helloKey_record.SetValue($"{regKey[i]}", $"");
+                            bool flag = CheacReggedit.ValueExists(helloKey, regKey[i]);
+                            if (flag == false)
+                            {
+                                helloKey_record.SetValue($"{regKey[i]}", $"");
+                                Block_ST_Work_Form_control();
+                                panel_date.Visible = true;
+                                panel_date.Enabled = true;
+                            }
+                        }
+
+                        textBox_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        textBox_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
+                        textBox_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
+                        textBox_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
+                        textBox_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
+                        textBox_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
+
+                        comboBox_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        label_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
+                        label_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
+                        label_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
+                        label_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
+
+                        TextBox[] textBoxes = { textBox_GD_city, textBox_FIO_chief, textBox_doverennost, textBox_FIO_Engineer,
+                                            textBox_polinon_full, textBox_number_printing_doc_datePanel};
+                        foreach (TextBox textBox in textBoxes)
+                        {
+                            if (textBox.Text == "")
+                            {
+                                this.ActiveControl = textBox;
+                            }
+                        }
+
+                        helloKey.Close();
+                    }
+                    else
+                    {
+                        if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                        {
+                            label_doverennost.Text = "Доверенность";
+                            label_FIO_chief.Text = "Начальник";
+                            label_FIO_Engineer.Text = "Инженер";
+                            label_FIO_Engineer.Text = "Инженер";
+                            label_polinon_full.Text = "Полигон";
+                            textBox_number_printing_doc_datePanel.Text = "Печать";
+                        }
+                        else
+                        {
                             Block_ST_Work_Form_control();
                             panel_date.Visible = true;
                             panel_date.Enabled = true;
                         }
+
                     }
-
-                    textBox_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                    textBox_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                    textBox_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                    textBox_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                    textBox_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-                    textBox_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
-
-                    comboBox_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                    label_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                    label_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                    label_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                    label_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-
-                    TextBox[] textBoxes = { textBox_GD_city, textBox_FIO_chief, textBox_doverennost, textBox_FIO_Engineer,
-                                            textBox_polinon_full, textBox_number_printing_doc_datePanel};
-                    foreach (TextBox textBox in textBoxes)
-                    {
-                        if (textBox.Text == "")
-                        {
-                            this.ActiveControl = textBox;
-                        }
-                    }
-
-                    helloKey.Close();
                 }
-                else
+                catch (Exception)
                 {
-                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
-                    {
-                        label_doverennost.Text = "Доверенность";
-                        label_FIO_chief.Text = "Начальник";
-                        label_FIO_Engineer.Text = "Инженер";
-                        label_FIO_Engineer.Text = "Инженер";
-                        label_polinon_full.Text = "Полигон";
-                        textBox_number_printing_doc_datePanel.Text = "Печать";
-                    }
-                    else
-                    {
-                        Block_ST_Work_Form_control();
-                        panel_date.Visible = true;
-                        panel_date.Enabled = true;
-                    }
-
+                    MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
                 }
+               
+
+                
                 Filling_datagridview.CreateColums(dataGridView1);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 Counters();
@@ -223,33 +220,41 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
                 dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
-                /// получение актов который не заполенны из реестра, которые указал пользователь
-                RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
-                if (reg2 != null)
+                try
                 {
-                    RegistryKey currentUserKey = Registry.CurrentUser;
-                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
-                    lbl_full_complete_act.Text = helloKey.GetValue("Акты_незаполненные").ToString();
-                    if (lbl_full_complete_act.Text != "")
+                    /// получение актов который не заполенны из реестра, которые указал пользователь
+                    RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                    if (reg2 != null)
                     {
-                        label_complete.Visible = true;
-                        lbl_full_complete_act.Visible = true;
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
+                        lbl_full_complete_act.Text = helloKey.GetValue("Акты_незаполненные").ToString();
+                        if (lbl_full_complete_act.Text != "")
+                        {
+                            label_complete.Visible = true;
+                            lbl_full_complete_act.Visible = true;
+                        }
+                        helloKey.Close();
                     }
-                    helloKey.Close();
+                    RegistryKey reg3 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                    if (reg3 != null)
+                    {
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
+                        lbl_Sign.Text = helloKey.GetValue("Акты_на_подпись").ToString();
+                        if (lbl_Sign.Text != "")
+                        {
+                            label_Sing.Visible = true;
+                            lbl_Sign.Visible = true;
+                        }
+                        helloKey.Close();
+                    }
                 }
-                RegistryKey reg3 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
-                if (reg3 != null)
+                catch (Exception)
                 {
-                    RegistryKey currentUserKey = Registry.CurrentUser;
-                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
-                    lbl_Sign.Text = helloKey.GetValue("Акты_на_подпись").ToString();
-                    if (lbl_Sign.Text != "")
-                    {
-                        label_Sing.Visible = true;
-                        lbl_Sign.Visible = true;
-                    }
-                    helloKey.Close();
+                    MessageBox.Show("Ошибка загрузки данных из реестра!(Акты_Заполняем_До_full, Акты_на_подпись)");
                 }
+                
 
                 taskCity = comboBox_city.Text;// для отдельных потоков
 
@@ -263,10 +268,9 @@ namespace ServiceTelecomConnect
                 dataGridView1.AllowUserToResizeRows = false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString()); ;
-                MessageBox.Show("Ошибка считывания реестра!");
+                MessageBox.Show("Ошибка ST_WorkForm_Load!");
             }
         }
 

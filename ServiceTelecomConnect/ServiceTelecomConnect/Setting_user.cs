@@ -152,7 +152,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
                 }
             }
-
         }
 
         void Button_delete_Click(object sender, EventArgs e)
