@@ -567,7 +567,7 @@ namespace ServiceTelecomConnect
                             Excel.Range _excelCells201 = (Excel.Range)workSheet2.get_Range("H1", "I1").Cells;
                             Excel.Range _excelCells202 = (Excel.Range)workSheet2.get_Range("J1", "K1").Cells;
                             Excel.Range _excelCells203 = (Excel.Range)workSheet2.get_Range("L1", "M1").Cells;
-                            Excel.Range _excelCells204 = (Excel.Range)workSheet2.get_Range("T1", "V1").Cells;
+                            Excel.Range _excelCells204 = (Excel.Range)workSheet2.get_Range("T1", "Y1").Cells;
                             Excel.Range _excelCells205 = (Excel.Range)workSheet2.get_Range("A2", "A19").Cells;
                             Excel.Range _excelCells206 = (Excel.Range)workSheet2.get_Range("B2", "C2").Cells;
                             Excel.Range _excelCells207 = (Excel.Range)workSheet2.get_Range("B3", "B19").Cells;
