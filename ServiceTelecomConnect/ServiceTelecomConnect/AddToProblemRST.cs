@@ -25,7 +25,7 @@ namespace ServiceTelecomConnect
 
         private void button_new_add_problem_rst_form_Click(object sender, EventArgs e)
         {
-            dB.openConnection();
+            dB.OpenConnection();
             try
             {
                 string Mesage;
@@ -127,7 +127,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show(ex.ToString());
 ;            }
 
-            dB.closeConnection();
+            dB.CloseConnection();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)

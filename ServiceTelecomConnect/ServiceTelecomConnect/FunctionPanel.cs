@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                         {
-                            DB_2.GetInstance.openConnection();
+                            DB_2.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -46,7 +46,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
+                            DB_2.GetInstance.CloseConnection();
                         }
                     }
 
@@ -100,7 +100,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                         {
-                            DB_2.GetInstance.openConnection();
+                            DB_2.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -114,7 +114,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
+                            DB_2.GetInstance.CloseConnection();
                         }
                     }
 
@@ -159,18 +159,18 @@ namespace ServiceTelecomConnect
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    DB_2.GetInstance.openConnection();
+                    DB_2.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
+                    DB_2.GetInstance.CloseConnection();
                 }
 
                 var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    DB_2.GetInstance.openConnection();
+                    DB_2.GetInstance.OpenConnection();
                     command2.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
+                    DB_2.GetInstance.CloseConnection();
                 }
                 MessageBox.Show("База данных успешно скопирована!");
             }
@@ -197,9 +197,9 @@ namespace ServiceTelecomConnect
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    DB_2.GetInstance.openConnection();
+                    DB_2.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
+                    DB_2.GetInstance.CloseConnection();
                 }
 
                 MessageBox.Show("База данных успешно очищенна!");
@@ -230,18 +230,18 @@ namespace ServiceTelecomConnect
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    DB_2.GetInstance.openConnection();
+                    DB_2.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
+                    DB_2.GetInstance.CloseConnection();
                 }
 
                 var copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    DB_2.GetInstance.openConnection();
+                    DB_2.GetInstance.OpenConnection();
                     command2.ExecuteNonQuery();
-                    DB_2.GetInstance.closeConnection();
+                    DB_2.GetInstance.CloseConnection();
                 }
 
                 MessageBox.Show("База данных успешно скопирована!");
@@ -472,9 +472,9 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                         {
-                            DB_2.GetInstance.openConnection();
+                            DB_2.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
+                            DB_2.GetInstance.CloseConnection();
 
                         }
                     }

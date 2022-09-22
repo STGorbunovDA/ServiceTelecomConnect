@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
@@ -45,7 +45,7 @@ namespace ServiceTelecomConnect
                         comboBox_model.DisplayMember = "model_radiostation_name";
                     }
                 }
-                DB.GetInstance.closeConnection();
+                DB.GetInstance.CloseConnection();
             }
         }
 
@@ -369,16 +369,16 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
 
                             using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command2.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                             MessageBox.Show("Радиостанция успешно изменена!");
                         }

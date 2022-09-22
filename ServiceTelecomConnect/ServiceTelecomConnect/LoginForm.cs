@@ -48,7 +48,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
@@ -62,13 +62,13 @@ namespace ServiceTelecomConnect
                                 {
                                     this.Hide();
                                     menu.ShowDialog();
-                                    DB.GetInstance.closeConnection();
+                                    DB.GetInstance.CloseConnection();
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("Неверный логин и пароль");
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
                     }

@@ -116,7 +116,7 @@ namespace ServiceTelecomConnect
                         string querystring = $"SELECT city FROM radiostantion GROUP BY city";
                         using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
                             DataTable city_table = new DataTable();
 
                             using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -125,7 +125,7 @@ namespace ServiceTelecomConnect
 
                                 comboBox_city.DataSource = city_table;
                                 comboBox_city.DisplayMember = "city";
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
                     }

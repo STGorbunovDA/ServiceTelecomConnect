@@ -65,9 +65,9 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
 
 

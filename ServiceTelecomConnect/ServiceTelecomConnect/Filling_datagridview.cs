@@ -151,7 +151,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -165,7 +165,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
 
@@ -196,7 +196,7 @@ namespace ServiceTelecomConnect
                 }
                 finally
                 {
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -218,7 +218,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
@@ -232,7 +232,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                         command.ExecuteNonQuery();
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                     }
 
 
@@ -263,7 +263,7 @@ namespace ServiceTelecomConnect
                 }
                 finally
                 {
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -339,7 +339,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
@@ -352,7 +352,7 @@ namespace ServiceTelecomConnect
                                 reader.Close();
                             }
                         }
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                     }
                     if (perem_comboBox == "numberActRemont")
                     {
@@ -386,7 +386,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -400,7 +400,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
 
@@ -415,7 +415,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -429,7 +429,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
 
@@ -477,7 +477,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
@@ -490,7 +490,7 @@ namespace ServiceTelecomConnect
                                 reader.Close();
                             }
                         }
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                     }
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -530,9 +530,9 @@ namespace ServiceTelecomConnect
                     {
                         if (Internet_check.AvailabilityChanged_bool())
                         {
-                            DB_2.GetInstance.openConnection();
+                            DB_2.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
+                            DB_2.GetInstance.CloseConnection();
                         }
                     }
 
@@ -542,9 +542,9 @@ namespace ServiceTelecomConnect
                     {
                         if (Internet_check.AvailabilityChanged_bool())
                         {
-                            DB_2.GetInstance.openConnection();
+                            DB_2.GetInstance.OpenConnection();
                             command2.ExecuteNonQuery();
-                            DB_2.GetInstance.closeConnection();
+                            DB_2.GetInstance.CloseConnection();
                         }
                     }
                 }
@@ -585,9 +585,9 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
                     }
@@ -625,9 +625,9 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
                     }
@@ -703,9 +703,9 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
 
                         if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
@@ -720,9 +720,9 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command2.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
 
@@ -742,9 +742,9 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command3.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
 
@@ -774,9 +774,9 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                             MessageBox.Show("Списание удалено! Заполни инвентарный и сетевой номер заново!");
                         }
 
@@ -785,7 +785,7 @@ namespace ServiceTelecomConnect
                         var queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%' AND serialNumber = '{serialNumber}'";
                         using (MySqlCommand command2 = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command2.ExecuteReader())
                             {
@@ -799,7 +799,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command2.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                         dgw2.Rows[0].Cells[40].Value = RowState.Deleted;
                         var id = Convert.ToInt32(dgw2.Rows[0].Cells[0].Value);
@@ -807,9 +807,9 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
                             command2.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
                 }
@@ -840,7 +840,7 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.openConnection();
+                            DB.GetInstance.OpenConnection();
 
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
@@ -854,7 +854,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                             command.ExecuteNonQuery();
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
 
@@ -891,7 +891,7 @@ namespace ServiceTelecomConnect
 
             using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
 
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -904,7 +904,7 @@ namespace ServiceTelecomConnect
                         reader.Close();
                     }
                 }
-                DB.GetInstance.closeConnection();
+                DB.GetInstance.CloseConnection();
             }
 
             dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
@@ -934,7 +934,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY company";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -943,7 +943,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "company";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -957,7 +957,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY location";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -966,7 +966,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "location";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -981,7 +981,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY dateTO";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -990,7 +990,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "dateTO";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -1005,7 +1005,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -1014,7 +1014,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "numberAct";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -1029,7 +1029,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -1038,7 +1038,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -1052,7 +1052,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY representative";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -1061,7 +1061,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "representative";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -1070,7 +1070,7 @@ namespace ServiceTelecomConnect
             string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                DB.GetInstance.openConnection();
+                DB.GetInstance.OpenConnection();
                 DataTable act_table_unique = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -1079,7 +1079,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
                 }
             }
         }

@@ -101,7 +101,7 @@ namespace ServiceTelecomConnect
 
                 MySqlCommand command = new MySqlCommand(queryString, dB.GetConnection());
 
-                dB.openConnection();
+                dB.OpenConnection();
 
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -211,7 +211,7 @@ namespace ServiceTelecomConnect
 
                 MySqlCommand command = new MySqlCommand(searchString, dB.GetConnection());
 
-                dB.openConnection();
+                dB.OpenConnection();
 
                 MySqlDataReader reader = command.ExecuteReader();
 
@@ -301,7 +301,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                dB.openConnection();
+                dB.OpenConnection();
 
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
@@ -343,7 +343,7 @@ namespace ServiceTelecomConnect
                     }
 
                 }
-                dB.closeConnection();
+                dB.CloseConnection();
 
             }
             catch (MySqlException)

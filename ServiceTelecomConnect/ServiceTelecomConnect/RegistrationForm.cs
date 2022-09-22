@@ -80,7 +80,7 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
 
                                 if (command.ExecuteNonQuery() == 1)
                                 {
@@ -91,7 +91,7 @@ namespace ServiceTelecomConnect
                                 {
                                     MessageBox.Show("Аккаунт не создан! Ошибка соединения");
                                 }
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
 

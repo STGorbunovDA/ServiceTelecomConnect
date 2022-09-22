@@ -36,7 +36,7 @@ namespace ServiceTelecomConnect
                     string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
                         DataTable model_RSR_table = new DataTable();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
@@ -46,7 +46,7 @@ namespace ServiceTelecomConnect
                             comboBox_model.ValueMember = "id";
                             comboBox_model.DisplayMember = "model_radiostation_name";
 
-                            DB.GetInstance.closeConnection();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
                 }
@@ -382,9 +382,9 @@ namespace ServiceTelecomConnect
 
                                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                                     {
-                                        DB.GetInstance.openConnection();
+                                        DB.GetInstance.OpenConnection();
                                         command.ExecuteNonQuery();
-                                        DB.GetInstance.closeConnection();
+                                        DB.GetInstance.CloseConnection();
                                         Add_rst_radiostantion_full();
                                         MessageBox.Show("Радиостанция успешно добавлена!");
                                         textBox_serialNumber.Text = "";
@@ -468,9 +468,9 @@ namespace ServiceTelecomConnect
 
                             using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.openConnection();
+                                DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.closeConnection();
+                                DB.GetInstance.CloseConnection();
                             }
                         }
                     }
@@ -539,7 +539,7 @@ namespace ServiceTelecomConnect
                             {
                                 try
                                 {
-                                    DB.GetInstance.openConnection();
+                                    DB.GetInstance.OpenConnection();
                                     var model = comboBox_model.Text;
                                     var inventoryNumber = textBox_inventoryNumber.Text;
                                     var networkNumber = textBox_networkNumber.Text;
@@ -557,7 +557,7 @@ namespace ServiceTelecomConnect
                                     {
                                         command5.ExecuteNonQuery();
                                     }
-                                    DB.GetInstance.closeConnection();
+                                    DB.GetInstance.CloseConnection();
                                 }
                                 catch (Exception )
                                 {
@@ -1287,14 +1287,14 @@ namespace ServiceTelecomConnect
                 }
                 try
                 {
-                    DB.GetInstance.openConnection();
+                    DB.GetInstance.OpenConnection();
                     var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{comboBox_model.Text}')";
 
                     MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection());
                     command.ExecuteNonQuery();
 
                     MessageBox.Show("Модель радиостанции успешно добавлена!");
-                    DB.GetInstance.closeConnection();
+                    DB.GetInstance.CloseConnection();
 
                     comboBox_model.DropDownStyle = ComboBoxStyle.DropDownList;
                     button_model_radiostation_name.Enabled = false;

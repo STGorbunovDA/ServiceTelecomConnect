@@ -75,7 +75,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
@@ -89,7 +89,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                         command.ExecuteNonQuery();
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                     }
                     dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -167,7 +167,7 @@ namespace ServiceTelecomConnect
                     if (Internet_check.AvailabilityChanged_bool())
                     {
 
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
 
                         for (int index = 0; index < dataGridView1.Rows.Count; index++)
                         {
@@ -199,7 +199,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
                         }
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                     }
                     RefreshDataGrid(dataGridView1);
                 }
@@ -224,9 +224,9 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.openConnection();
+                        DB.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
-                        DB.GetInstance.closeConnection();
+                        DB.GetInstance.CloseConnection();
                         MessageBox.Show("Запись успешно изменена!");
                     }
                     RefreshDataGrid(dataGridView1);
