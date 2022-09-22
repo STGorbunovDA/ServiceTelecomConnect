@@ -50,21 +50,14 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_decommission (CheacSerialNumber_radiostantion_decommission)");
                     return true;
                 }
             }
             return true;
         }
-
-        /// <summary>
-        /// Метод проверки наличия заводского номер в базе данных
-        /// </summary>
-        /// <param name="loginUser"></param>
-        /// <param name="passUser"></param>
-        /// <returns></returns>
         public Boolean CheacSerialNumber_radiostantion(string serialNumber)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -92,9 +85,9 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion (CheacSerialNumber_radiostantion)");
                     return true;
                 }
             }
@@ -126,9 +119,9 @@ namespace ServiceTelecomConnect
                         return true;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка метода нахождения радиостанций в акте не более 20 в таблице radiostantion (CheackNumberAct_radiostantion)");
                     return true;
                 }
             }
@@ -164,15 +157,14 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_full (CheacSerialNumber_radiostantion_full)");
                     return true;
                 }
             }
             return true;
         }
-
         public Boolean CheacSerialNumber_radiostantion_last_year(string serialNumber)
         {
             try
@@ -196,9 +188,9 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_last_year (CheacSerialNumber_radiostantion_last_year)");
                 return true;
             }
         }
