@@ -11,9 +11,7 @@ namespace ServiceTelecomConnect
     class Filling_datagridview
     {
         #region состояние Rows
-        /// <summary>
-        /// для значений к базе данных, по данному статусу будем или удалять или редактировать
-        /// </summary>
+        
         enum RowState
         {
             Existed,
@@ -25,9 +23,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region заполнение datagridview 1
-        /// <summary>
-        /// заполняем dataGridView1 колонки
-        /// </summary>
+        
         internal static void CreateColums(DataGridView dgw)
         {
             try
@@ -99,18 +95,12 @@ namespace ServiceTelecomConnect
                 dgw.Columns[40].Visible = false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка CreateColums");
-                MessageBox.Show(ex.ToString());
             }
         }
 
-        /// <summary>
-        /// Заполняем колонки значениями из базы данных из RefreshDataGrid
-        /// </summary>
-        /// <param name="dgw"></param>
-        /// <param name="record"></param>
         internal static void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
             try
@@ -124,17 +114,12 @@ namespace ServiceTelecomConnect
                          record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
                          record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39), RowState.ModifieldNew)));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Ошибка ReedSingleRow");
-                MessageBox.Show(ex.ToString());
             }
         }
 
-        /// <summary>
-        /// выполняем подключение к базе данных, выполняем команду запроса и передаём данные ReedSingleRow
-        /// </summary>
-        /// <param name="dgw"></param>
         internal static void RefreshDataGrid(DataGridView dgw, string city)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -189,14 +174,9 @@ namespace ServiceTelecomConnect
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                     MessageBox.Show("Ошибка загрузки RefreshDataGrid");
-                    MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    DB.GetInstance.CloseConnection();
                 }
             }
         }
@@ -253,17 +233,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (MySqlException)
                 {
-                    string Mesage2;
-                    Mesage2 = "Системная ошибка загрузки всей таблицы текущих ТО РСТ";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                finally
-                {
-                    DB.GetInstance.CloseConnection();
+                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ");
                 }
             }
         }
@@ -272,10 +242,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region поиск по БД
-        /// <summary>
-        /// метод поиска по базе данных, подключение к базе, выполнение запроса так-же внутри  вызываем метод ReedSingleRow для вывода данных из базы
-        /// </summary>
-        /// <param name="dgw"></param>
+        
         internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -359,10 +326,9 @@ namespace ServiceTelecomConnect
                         dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Search");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -451,10 +417,9 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Seach_DataGrid_Replay_RST");
-                    MessageBox.Show(ex.ToString());
                 }
             }
 
@@ -507,9 +472,8 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show(ex.ToString());
                     MessageBox.Show("Ошибка Update_datagridview_number_act");
                 }
             }
@@ -548,10 +512,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Copy_BD_radiostantion_in_radiostantion_copy");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -560,9 +523,6 @@ namespace ServiceTelecomConnect
 
         #region Удаление
 
-        /// <summary>
-        /// метод удаления значения из базы данных
-        /// </summary>
         internal static void DeleteRowСell(DataGridView dgw)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -592,10 +552,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка DeleteRowСell");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -633,10 +592,9 @@ namespace ServiceTelecomConnect
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Delete_rst_remont");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -670,10 +628,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка CheacknumberActRemont_radiostantion");
-                    MessageBox.Show(ex.ToString());
                     return true;
                 }
             }
@@ -750,10 +707,9 @@ namespace ServiceTelecomConnect
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Record_decommissionSerialNumber");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -813,10 +769,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Delete_decommissionSerialNumber_radiostantion");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -873,10 +828,9 @@ namespace ServiceTelecomConnect
                     dgw.Columns[11].Width = 100;
                     dgw.Columns[17].Width = 120;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка Show_radiostantion_decommission");
-                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -887,205 +841,240 @@ namespace ServiceTelecomConnect
 
         internal static string SortRemontAct(DataGridView dgw, string city)
         {
-            var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
+            string remontAct;
 
-            using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+            try
             {
-                DB.GetInstance.OpenConnection();
+                var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
 
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                 {
-                    if (reader.HasRows)
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            ReedSingleRow(dgw, reader);
+                            while (reader.Read())
+                            {
+                                ReedSingleRow(dgw, reader);
+                            }
+                            reader.Close();
                         }
-                        reader.Close();
                     }
+                    DB.GetInstance.CloseConnection();
                 }
-                DB.GetInstance.CloseConnection();
+
+                dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+
+                dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+                DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
+                remontAct = row.Cells[17].Value.ToString();
+
+                if (remontAct != "" || remontAct != null)
+                {
+                    return remontAct;
+                }
+                else return remontAct = "Отсутсвует";
             }
-
-            dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-
-            dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-            DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
-            string remontAct = row.Cells[17].Value.ToString();
-
-            if (remontAct != "" || remontAct != null)
+            catch (Exception)
             {
-                return remontAct;
+                MessageBox.Show("Ошибка SortRemontAct");
+                return remontAct = "Отсутсвует";
             }
-            else return remontAct = "Отсутсвует";
+            
         }
 
         #endregion
 
         #region показать уникальные данные по поиску
-
-        /// <summary>
-        /// Уникальные предприятия в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
+       
         internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
-            string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY company";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            try
             {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY company";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
-                    adapter.Fill(act_table_unique);
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
 
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "company";
-                    DB.GetInstance.CloseConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "company";
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
             }
-        }
-        /// <summary>
-        /// Уникальные станции в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
-        internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY location";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            catch (Exception)
             {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "location";
-                    DB.GetInstance.CloseConnection();
-                }
+                MessageBox.Show("Ошибка метода Number_unique_company");
             }
-        }
-
-        /// <summary>
-        /// Уникальные датаТО в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
-        internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY dateTO";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "dateTO";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Уникальные акты в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
-        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts )
-        {
-            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "numberAct";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
+            
         }
         
-        /// <summary>
-        /// Уникальные актыРемонта в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
+        internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY location";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "location";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_location");
+            }
+            
+        }
+
+        
+        internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY dateTO";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "dateTO";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_dateTO");
+            }  
+        }
+
+        
+        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts )
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "numberAct";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_numberAct");
+            }   
+        }
+        
+        
         internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
-            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            try
             {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
-                    adapter.Fill(act_table_unique);
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
 
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                    DB.GetInstance.CloseConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_numberActRemont");
+            }     
         }
-        /// <summary>
-        /// Уникальные Представители в comboBox
-        /// </summary>
-        /// <param name="comboBox_city"></param>
-        /// <param name="cmb_number_unique_acts"></param>
+        
         internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
-            string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY representative";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            try
             {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY representative";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
-                    adapter.Fill(act_table_unique);
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
 
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "representative";
-                    DB.GetInstance.CloseConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "representative";
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_representative");
+            }  
         }
         internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
-            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            try
             {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
-                    adapter.Fill(act_table_unique);
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
 
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
-                    DB.GetInstance.CloseConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_decommissionActs");
+            }
+            
         }
-
-        
-
         #endregion
     }
 }
