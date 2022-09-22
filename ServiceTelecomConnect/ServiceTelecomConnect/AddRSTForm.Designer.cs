@@ -960,7 +960,6 @@
             this.ShowIcon = false;
             this.Text = "Добавление радиостанции";
             this.Load += new System.EventHandler(this.AddRSTForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddRSTForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AddRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
