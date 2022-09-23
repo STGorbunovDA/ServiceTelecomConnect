@@ -5,11 +5,7 @@ namespace ServiceTelecomConnect
 {
     internal static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
-        [STAThread]
-       
+        [STAThread] 
         static void Main()
         {
             Application.EnableVisualStyles();
