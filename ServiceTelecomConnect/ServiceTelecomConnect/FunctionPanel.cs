@@ -66,16 +66,9 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
                     dgw.Columns[39].Width = 300;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    string Mesage2;
-                    Mesage2 = "Невозможно загрузить общую базу данных!(SELECT * FROM radiostantion_full)";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Невозможно загрузить общую базу данных!(Show_DB_radiostantion_full)");
                 }
             }
         }
@@ -134,16 +127,9 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
                     dgw.Columns[39].Width = 300;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    string Mesage2;
-                    Mesage2 = "Невозможно загрузить БД прошлого года!(SELECT * FROM radiostantion_last_year WHERE city LIKE N'%{city}%')";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Невозможно загрузить общую базу данных!(Show_DB_radiostantion_last_year)");
                 }
             }
         }
@@ -174,16 +160,9 @@ namespace ServiceTelecomConnect
                 }
                 MessageBox.Show("База данных успешно скопирована!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage2;
-                Mesage2 = "Невозможно скопировать БД!(radiostantion_copy SELECT * FROM radiostantion)";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Невозможно скопировать текущую Бд в резервную radiostantion в radiostantion_copy(Manual_backup_current_DB)");
             }
         }
         #endregion
@@ -204,17 +183,9 @@ namespace ServiceTelecomConnect
 
                 MessageBox.Show("База данных успешно очищенна!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage2;
-                Mesage2 = "Невозможно очисть БД!(TRUNCATE TABLE radiostantion)";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Невозможно очисть БД!(TRUNCATE TABLE radiostantion)");
             }
 
         }
@@ -246,17 +217,9 @@ namespace ServiceTelecomConnect
 
                 MessageBox.Show("База данных успешно скопирована!");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage2;
-                Mesage2 = "Невозможно  БД!(INSERT INTO radiostantion_last_year SELECT * FROM radiostantion)";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Невозможно скопировать текущую БД в БД прошлого года radiostantion в radiostantion_last_year(Copying_current_BD_end_of_the_year)");
             }
         }
 
@@ -331,17 +294,9 @@ namespace ServiceTelecomConnect
 
                 File.WriteAllText(fileNamePath, json);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage2;
-                Mesage2 = $"Невозможно выгрузить JSON! C:\\Documents_ServiceTelekom\\БазаДанныхJson\\{city}\\БазаДанныхJson.json";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-
-                MessageBox.Show(ex.ToString()); ;
+                MessageBox.Show($"Невозможно выгрузить JSON! C:\\Documents_ServiceTelekom\\БазаДанныхJson\\{city}\\БазаДанныхJson.json"); ;
             }
         }
 
@@ -484,17 +439,9 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Радиостанции успешно загруженны из JSON");
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage2;
-                Mesage2 = $"Невозможно загрузить и обновить JSON!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Невозможно загрузить и обновить JSON!(Loading_json_file_BD)");
             }
         }
 
