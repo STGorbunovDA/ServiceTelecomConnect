@@ -8,11 +8,6 @@ namespace ServiceTelecomConnect
 {
     class PrintDocExcel
     {
-        /// <summary>
-        /// АКТ ТО
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         internal static void PrintExcelActTo(DataGridView dgw, string numberAct, string dateTO,
             string company, string location, string FIO_chief, string post, string representative,
             string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
@@ -752,7 +747,6 @@ namespace ServiceTelecomConnect
                             _excelCells268.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
 
                             _excelCells269.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
-                            //_excelCells269.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
 
                             _excelCells200.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                             _excelCells201.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
@@ -1562,8 +1556,6 @@ namespace ServiceTelecomConnect
 
             try
             {
-
-
                 Type officeType = Type.GetTypeFromProgID("Excel.Application");
 
                 if (officeType == null)
@@ -1593,9 +1585,7 @@ namespace ServiceTelecomConnect
 
                     workSheet.Rows.Font.Size = 11;
                     workSheet.Rows.Font.Name = "Times New Roman";
-
                     workSheet.PageSetup.CenterHorizontally = true;
-                    //workSheet.PageSetup.CenterVertically = true;
                     workSheet.PageSetup.TopMargin = 0.0;
                     workSheet.PageSetup.BottomMargin = 0;
                     workSheet.PageSetup.LeftMargin = 0;
@@ -2656,7 +2646,5 @@ namespace ServiceTelecomConnect
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
     }
 }

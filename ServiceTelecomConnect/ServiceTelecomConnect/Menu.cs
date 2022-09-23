@@ -125,7 +125,6 @@ namespace ServiceTelecomConnect
         {
             System.Environment.Exit(1);
         }
-
         void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose();

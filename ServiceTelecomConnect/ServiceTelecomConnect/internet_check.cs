@@ -5,8 +5,7 @@ using System.Windows.Forms;
 namespace ServiceTelecomConnect
 {
     class Internet_check
-    {
-        
+    { 
         public static bool AvailabilityChanged_bool()
         {
             try
