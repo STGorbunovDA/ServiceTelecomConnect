@@ -54,25 +54,12 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    string Mesage;
-                    Mesage = "Файл не сохранён";
-
-                    if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Вы не указали путь сохранения!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage;
-                Mesage = "Файл не сохранён!";
-
-                if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Файл не сохранен!(UserSaveFilePC)");
             }
         }
 
@@ -119,16 +106,9 @@ namespace ServiceTelecomConnect
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                string Mesage;
-                Mesage = "Файл не сохранён!";
-
-                if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Файл не сохранен!(AutoSaveFilePC)");
             }
         }
 
