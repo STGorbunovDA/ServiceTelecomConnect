@@ -3408,7 +3408,7 @@ namespace ServiceTelecomConnect
                     {"<comment>", comment}
                 };
 
-                    PrintDocWord.GetInstance.Process(items, decommissionSerialNumber_company, dateDecommission, city, comment);
+                    PrintDocWord.GetInstance.ProcessPrintWord(items, decommissionSerialNumber_company, dateDecommission, city, comment);
                 }
             }
             catch (Exception)

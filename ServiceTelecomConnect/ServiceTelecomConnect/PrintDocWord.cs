@@ -52,7 +52,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal bool Process(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city, string comment)
+        internal bool ProcessPrintWord(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city, string comment)
         {
             var WordApp = new Word.Application();
             try
@@ -94,10 +94,9 @@ namespace ServiceTelecomConnect
                         WordApp.ActiveDocument.SaveAs($@"C:\Documents_ServiceTelekom\Списания\{city}\" + word_file);
                         WordApp.Visible = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message);
-                        MessageBox.Show("Не удаётся сохранить файл.");
+                        MessageBox.Show("Не удаётся сохранить файл word");
                     }
                 }
                 else
@@ -107,18 +106,17 @@ namespace ServiceTelecomConnect
                         WordApp.ActiveDocument.SaveAs($@"C:\Documents_ServiceTelekom\Списания\{city}\" + file);
                         WordApp.Visible = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.Message);
-                        MessageBox.Show("Не удаётся сохранить файл.");
+                        MessageBox.Show("Не удаётся сохранить файл word");
                     }
                 }
 
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Не удаётся сформировать акт списания(ProcessPrintWord)");
                 WordApp.ActiveDocument.Close();
                 WordApp.Quit();
             }
