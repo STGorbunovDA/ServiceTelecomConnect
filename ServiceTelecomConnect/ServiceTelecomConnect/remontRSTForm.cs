@@ -19,7 +19,7 @@ namespace ServiceTelecomConnect
             Thread.CurrentThread.CurrentCulture = myCulture;
         }
 
-        void Button_save_add_rst_Click(object sender, EventArgs e)
+        void Button_save_add_rst_remont_Click(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -81,10 +81,9 @@ namespace ServiceTelecomConnect
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("Ошибка! Ремонт не добавлен!");
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Ошибка! Ремонт не добавлен!(Button_save_add_rst_Click)");
                 }
             }
         }

@@ -130,7 +130,7 @@
             this.button_save_add_rst_remont.TabIndex = 28;
             this.button_save_add_rst_remont.Text = "Добавить";
             this.button_save_add_rst_remont.UseVisualStyleBackColor = true;
-            this.button_save_add_rst_remont.Click += new System.EventHandler(this.Button_save_add_rst_Click);
+            this.button_save_add_rst_remont.Click += new System.EventHandler(this.Button_save_add_rst_remont_Click);
             // 
             // textBox_сompleted_works_1
             // 
