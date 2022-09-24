@@ -30,27 +30,34 @@ namespace ServiceTelecomConnect
 
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            try
             {
-                DB.GetInstance.OpenConnection();
-                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                if (Internet_check.AvailabilityChanged_bool())
                 {
-                    DataTable model_RSR_table = new DataTable();
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    DB.GetInstance.OpenConnection();
+                    string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        adapter.Fill(model_RSR_table);
-                        comboBox_model.DataSource = model_RSR_table;
-                        comboBox_model.ValueMember = "id";
-                        comboBox_model.DisplayMember = "model_radiostation_name";
+                        DataTable model_RSR_table = new DataTable();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(model_RSR_table);
+                            comboBox_model.DataSource = model_RSR_table;
+                            comboBox_model.ValueMember = "id";
+                            comboBox_model.DisplayMember = "model_radiostation_name";
+                        }
                     }
+                    DB.GetInstance.CloseConnection();
                 }
-                DB.GetInstance.CloseConnection();
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка модель радиостанций из БД не добавлены в comboBox_model(ComboBox_model_Click)");
+            } 
         }
 
         #region изменяем рст
-        void Button_save_add_rst_Click(object sender, EventArgs e)
+        void Button_сhange_rst_Click(object sender, EventArgs e)
         {
             string Mesage;
             Mesage = "Вы действительно хотите изменить радиостанцию?";
@@ -393,19 +400,12 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка! Радиостнация не добавлена!");
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка! Радиостнация не изменена!(Button_сhange_rst_Click)");
             }
 
         }
-        #endregion
-
-        #region изменяем рст в radiostantion_full
-
-
-
         #endregion
 
         #region Очищаем Conrol-ы
@@ -1088,6 +1088,5 @@ namespace ServiceTelecomConnect
 
 
         #endregion
-
     }
 }

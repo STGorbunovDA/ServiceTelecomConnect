@@ -265,7 +265,7 @@
             this.button_save_add_rst.TabIndex = 28;
             this.button_save_add_rst.Text = "Изменить";
             this.button_save_add_rst.UseVisualStyleBackColor = false;
-            this.button_save_add_rst.Click += new System.EventHandler(this.Button_save_add_rst_Click);
+            this.button_save_add_rst.Click += new System.EventHandler(this.Button_сhange_rst_Click);
             // 
             // label8
             // 
