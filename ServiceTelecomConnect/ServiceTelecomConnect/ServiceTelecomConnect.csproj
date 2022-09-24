@@ -332,7 +332,6 @@
     <Compile Include="Setting_user.Designer.cs">
       <DependentUpon>Setting_user.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowOpenFileDialogInvoker.cs" />
     <Compile Include="ST_WorkForm.cs">
       <SubType>Form</SubType>
     </Compile>
