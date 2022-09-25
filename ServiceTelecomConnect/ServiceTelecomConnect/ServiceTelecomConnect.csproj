@@ -277,6 +277,12 @@
     <Compile Include="RemontRSTForm.Designer.cs">
       <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComparisonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComparisonForm.Designer.cs">
+      <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="СhangeRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,12 +302,6 @@
       <DependentUpon>AddToProblemRST.cs</DependentUpon>
     </Compile>
     <Compile Include="cheakUser.cs" />
-    <Compile Include="ComparisonForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ComparisonForm.Designer.cs">
-      <DependentUpon>ComparisonForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="DB.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="LoginForm.cs">
@@ -348,6 +348,9 @@
     <EmbeddedResource Include="RemontRSTForm.resx">
       <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ComparisonForm.resx">
+      <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="СhangeRSTForm.resx">
       <DependentUpon>СhangeRSTForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddToProblemRST.resx">
       <DependentUpon>AddToProblemRST.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ComparisonForm.resx">
-      <DependentUpon>ComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
