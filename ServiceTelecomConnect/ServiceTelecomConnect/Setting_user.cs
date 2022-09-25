@@ -122,7 +122,7 @@ namespace ServiceTelecomConnect
                     textBox_id.Text = row.Cells[0].Value.ToString();
                     textBox_login.Text = row.Cells[1].Value.ToString();
                     textBox_pass.Text = row.Cells[2].Value.ToString();
-                    comboBox_is_admin.Text = row.Cells[3].Value.ToString();
+                    comboBox_is_admin_post.Text = row.Cells[3].Value.ToString();
                 }
             }
             catch (Exception)
@@ -218,7 +218,7 @@ namespace ServiceTelecomConnect
                     var id = textBox_id.Text;
                     var login = textBox_login.Text;
                     var pass = textBox_pass.Text;
-                    var is_admin = comboBox_is_admin.Text;
+                    var is_admin = comboBox_is_admin_post.Text;
 
                     var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
 
@@ -247,6 +247,79 @@ namespace ServiceTelecomConnect
                     control.Text = "";
                 }
             }
+        }
+
+        void Btn_add_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Internet_check.AvailabilityChanged_bool())
+                {
+                    var loginUser = textBox_login.Text;
+                    var passUser = md5.hashPassword(textBox_pass.Text);
+
+                    if (!CheackUser(loginUser, passUser))
+                    {
+                        if (comboBox_is_admin_post.Text == "Инженер" || comboBox_is_admin_post.Text == "Начальник участка" ||
+                            comboBox_is_admin_post.Text == "Куратор" || comboBox_is_admin_post.Text == "Руководитель" || comboBox_is_admin_post.Text == "Дирекция связи")
+                        {
+                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_is_admin_post.Text}')";
+
+                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+
+                                if (command.ExecuteNonQuery() == 1)
+                                {
+                                    MessageBox.Show("Аккаунт успешно создан!");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Аккаунт не создан! Ошибка соединения");
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой пользователь уже существует!");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка регистрации!(Btn_add_Click)");
+            }
+        }
+
+        Boolean CheackUser(string loginUser, string passUser)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                {
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        DataTable table = new DataTable();
+
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count > 0)
+                        {
+                            return true;
+                        }
+
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

@@ -35,15 +35,15 @@
             this.label36 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.PicB_clear = new System.Windows.Forms.PictureBox();
             this.Btn_add = new System.Windows.Forms.Button();
             this.Btn_change = new System.Windows.Forms.Button();
             this.Btn_delete = new System.Windows.Forms.Button();
             this.Btn_update = new System.Windows.Forms.Button();
-            this.comboBox_is_admin = new System.Windows.Forms.ComboBox();
+            this.comboBox_is_admin_post = new System.Windows.Forms.ComboBox();
             this.textBox_pass = new System.Windows.Forms.TextBox();
             this.textBox_login = new System.Windows.Forms.TextBox();
             this.textBox_id = new System.Windows.Forms.TextBox();
-            this.PicB_clear = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -115,7 +115,7 @@
             this.panel2.Controls.Add(this.Btn_change);
             this.panel2.Controls.Add(this.Btn_delete);
             this.panel2.Controls.Add(this.Btn_update);
-            this.panel2.Controls.Add(this.comboBox_is_admin);
+            this.panel2.Controls.Add(this.comboBox_is_admin_post);
             this.panel2.Controls.Add(this.textBox_pass);
             this.panel2.Controls.Add(this.textBox_login);
             this.panel2.Controls.Add(this.textBox_id);
@@ -125,17 +125,29 @@
             this.panel2.Size = new System.Drawing.Size(809, 98);
             this.panel2.TabIndex = 2;
             // 
+            // PicB_clear
+            // 
+            this.PicB_clear.BackColor = System.Drawing.Color.Transparent;
+            this.PicB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
+            this.PicB_clear.Location = new System.Drawing.Point(764, 16);
+            this.PicB_clear.Name = "PicB_clear";
+            this.PicB_clear.Size = new System.Drawing.Size(33, 30);
+            this.PicB_clear.TabIndex = 9;
+            this.PicB_clear.TabStop = false;
+            this.PicB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
+            // 
             // Btn_add
             // 
             this.Btn_add.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_add.Location = new System.Drawing.Point(214, 57);
+            this.Btn_add.Location = new System.Drawing.Point(183, 57);
             this.Btn_add.Name = "Btn_add";
             this.Btn_add.Size = new System.Drawing.Size(83, 29);
             this.Btn_add.TabIndex = 61;
             this.Btn_add.Text = "Добавить";
             this.Btn_add.UseVisualStyleBackColor = false;
+            this.Btn_add.Click += new System.EventHandler(this.Btn_add_Click);
             // 
             // Btn_change
             // 
@@ -155,7 +167,7 @@
             this.Btn_delete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_delete.Location = new System.Drawing.Point(392, 57);
+            this.Btn_delete.Location = new System.Drawing.Point(382, 57);
             this.Btn_delete.Name = "Btn_delete";
             this.Btn_delete.Size = new System.Drawing.Size(83, 29);
             this.Btn_delete.TabIndex = 59;
@@ -168,7 +180,7 @@
             this.Btn_update.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Btn_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_update.Location = new System.Drawing.Point(303, 57);
+            this.Btn_update.Location = new System.Drawing.Point(282, 57);
             this.Btn_update.Name = "Btn_update";
             this.Btn_update.Size = new System.Drawing.Size(83, 29);
             this.Btn_update.TabIndex = 58;
@@ -176,58 +188,48 @@
             this.Btn_update.UseVisualStyleBackColor = false;
             this.Btn_update.Click += new System.EventHandler(this.Button_update_Click);
             // 
-            // comboBox_is_admin
+            // comboBox_is_admin_post
             // 
-            this.comboBox_is_admin.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.comboBox_is_admin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_is_admin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_is_admin.FormattingEnabled = true;
-            this.comboBox_is_admin.Items.AddRange(new object[] {
+            this.comboBox_is_admin_post.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.comboBox_is_admin_post.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_is_admin_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox_is_admin_post.FormattingEnabled = true;
+            this.comboBox_is_admin_post.Items.AddRange(new object[] {
             "Инженер",
             "Начальник участка",
             "Куратор",
             "Руководитель",
             "Admin"});
-            this.comboBox_is_admin.Location = new System.Drawing.Point(558, 18);
-            this.comboBox_is_admin.Name = "comboBox_is_admin";
-            this.comboBox_is_admin.Size = new System.Drawing.Size(188, 28);
-            this.comboBox_is_admin.TabIndex = 57;
+            this.comboBox_is_admin_post.Location = new System.Drawing.Point(570, 18);
+            this.comboBox_is_admin_post.Name = "comboBox_is_admin_post";
+            this.comboBox_is_admin_post.Size = new System.Drawing.Size(188, 28);
+            this.comboBox_is_admin_post.TabIndex = 57;
             // 
             // textBox_pass
             // 
             this.textBox_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_pass.Location = new System.Drawing.Point(224, 20);
+            this.textBox_pass.Location = new System.Drawing.Point(180, 20);
             this.textBox_pass.Name = "textBox_pass";
-            this.textBox_pass.Size = new System.Drawing.Size(328, 26);
+            this.textBox_pass.Size = new System.Drawing.Size(384, 26);
             this.textBox_pass.TabIndex = 21;
             // 
             // textBox_login
             // 
             this.textBox_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_login.Location = new System.Drawing.Point(102, 20);
+            this.textBox_login.Location = new System.Drawing.Point(12, 20);
             this.textBox_login.Name = "textBox_login";
-            this.textBox_login.Size = new System.Drawing.Size(116, 26);
+            this.textBox_login.Size = new System.Drawing.Size(162, 26);
             this.textBox_login.TabIndex = 20;
             // 
             // textBox_id
             // 
             this.textBox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_id.Location = new System.Drawing.Point(46, 20);
+            this.textBox_id.Location = new System.Drawing.Point(5, 69);
             this.textBox_id.Name = "textBox_id";
             this.textBox_id.ReadOnly = true;
             this.textBox_id.Size = new System.Drawing.Size(50, 26);
             this.textBox_id.TabIndex = 19;
-            // 
-            // PicB_clear
-            // 
-            this.PicB_clear.BackColor = System.Drawing.Color.Transparent;
-            this.PicB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
-            this.PicB_clear.Location = new System.Drawing.Point(752, 16);
-            this.PicB_clear.Name = "PicB_clear";
-            this.PicB_clear.Size = new System.Drawing.Size(33, 30);
-            this.PicB_clear.TabIndex = 9;
-            this.PicB_clear.TabStop = false;
-            this.PicB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
+            this.textBox_id.Visible = false;
             // 
             // Setting_user
             // 
@@ -262,7 +264,7 @@
         private System.Windows.Forms.TextBox textBox_id;
         private System.Windows.Forms.TextBox textBox_pass;
         private System.Windows.Forms.TextBox textBox_login;
-        private System.Windows.Forms.ComboBox comboBox_is_admin;
+        private System.Windows.Forms.ComboBox comboBox_is_admin_post;
         private System.Windows.Forms.Button Btn_update;
         private System.Windows.Forms.Button Btn_delete;
         private System.Windows.Forms.Button Btn_change;
