@@ -237,5 +237,16 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
+        void PicB_clear_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in panel2.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+            }
+        }
     }
 }

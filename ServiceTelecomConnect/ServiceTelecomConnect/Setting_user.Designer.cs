@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_add = new System.Windows.Forms.Button();
+            this.Btn_change = new System.Windows.Forms.Button();
+            this.Btn_delete = new System.Windows.Forms.Button();
+            this.Btn_update = new System.Windows.Forms.Button();
             this.comboBox_is_admin = new System.Windows.Forms.ComboBox();
             this.textBox_pass = new System.Windows.Forms.TextBox();
             this.textBox_login = new System.Windows.Forms.TextBox();
             this.textBox_id = new System.Windows.Forms.TextBox();
-            this.button_update = new System.Windows.Forms.Button();
-            this.button_delete = new System.Windows.Forms.Button();
-            this.button_change = new System.Windows.Forms.Button();
-            this.label36 = new System.Windows.Forms.Label();
+            this.PicB_clear = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicB_clear)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,31 +60,42 @@
             this.panel1.Size = new System.Drawing.Size(809, 64);
             this.panel1.TabIndex = 1;
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.Transparent;
+            this.label36.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label36.Location = new System.Drawing.Point(179, 21);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(439, 22);
+            this.label36.TabIndex = 61;
+            this.label36.Text = "Панель управления доступа пользователей";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(5, 70);
             this.dataGridView1.Name = "dataGridView1";
@@ -96,9 +110,11 @@
             // panel2
             // 
             this.panel2.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
-            this.panel2.Controls.Add(this.button_change);
-            this.panel2.Controls.Add(this.button_delete);
-            this.panel2.Controls.Add(this.button_update);
+            this.panel2.Controls.Add(this.PicB_clear);
+            this.panel2.Controls.Add(this.Btn_add);
+            this.panel2.Controls.Add(this.Btn_change);
+            this.panel2.Controls.Add(this.Btn_delete);
+            this.panel2.Controls.Add(this.Btn_update);
             this.panel2.Controls.Add(this.comboBox_is_admin);
             this.panel2.Controls.Add(this.textBox_pass);
             this.panel2.Controls.Add(this.textBox_login);
@@ -108,6 +124,57 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(809, 98);
             this.panel2.TabIndex = 2;
+            // 
+            // Btn_add
+            // 
+            this.Btn_add.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_add.Location = new System.Drawing.Point(214, 57);
+            this.Btn_add.Name = "Btn_add";
+            this.Btn_add.Size = new System.Drawing.Size(83, 29);
+            this.Btn_add.TabIndex = 61;
+            this.Btn_add.Text = "Добавить";
+            this.Btn_add.UseVisualStyleBackColor = false;
+            // 
+            // Btn_change
+            // 
+            this.Btn_change.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_change.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Btn_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_change.Location = new System.Drawing.Point(481, 57);
+            this.Btn_change.Name = "Btn_change";
+            this.Btn_change.Size = new System.Drawing.Size(83, 29);
+            this.Btn_change.TabIndex = 60;
+            this.Btn_change.Text = "Изменить";
+            this.Btn_change.UseVisualStyleBackColor = false;
+            this.Btn_change.Click += new System.EventHandler(this.Button_change_Click);
+            // 
+            // Btn_delete
+            // 
+            this.Btn_delete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Btn_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_delete.Location = new System.Drawing.Point(392, 57);
+            this.Btn_delete.Name = "Btn_delete";
+            this.Btn_delete.Size = new System.Drawing.Size(83, 29);
+            this.Btn_delete.TabIndex = 59;
+            this.Btn_delete.Text = "Удалить";
+            this.Btn_delete.UseVisualStyleBackColor = false;
+            this.Btn_delete.Click += new System.EventHandler(this.Button_delete_Click);
+            // 
+            // Btn_update
+            // 
+            this.Btn_update.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.Btn_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_update.Location = new System.Drawing.Point(303, 57);
+            this.Btn_update.Name = "Btn_update";
+            this.Btn_update.Size = new System.Drawing.Size(83, 29);
+            this.Btn_update.TabIndex = 58;
+            this.Btn_update.Text = "Обновить";
+            this.Btn_update.UseVisualStyleBackColor = false;
+            this.Btn_update.Click += new System.EventHandler(this.Button_update_Click);
             // 
             // comboBox_is_admin
             // 
@@ -151,55 +218,16 @@
             this.textBox_id.Size = new System.Drawing.Size(50, 26);
             this.textBox_id.TabIndex = 19;
             // 
-            // button_update
+            // PicB_clear
             // 
-            this.button_update.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_update.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_update.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_update.Location = new System.Drawing.Point(254, 57);
-            this.button_update.Name = "button_update";
-            this.button_update.Size = new System.Drawing.Size(83, 29);
-            this.button_update.TabIndex = 58;
-            this.button_update.Text = "Обновить";
-            this.button_update.UseVisualStyleBackColor = false;
-            this.button_update.Click += new System.EventHandler(this.Button_update_Click);
-            // 
-            // button_delete
-            // 
-            this.button_delete.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_delete.Location = new System.Drawing.Point(343, 57);
-            this.button_delete.Name = "button_delete";
-            this.button_delete.Size = new System.Drawing.Size(83, 29);
-            this.button_delete.TabIndex = 59;
-            this.button_delete.Text = "Удалить";
-            this.button_delete.UseVisualStyleBackColor = false;
-            this.button_delete.Click += new System.EventHandler(this.Button_delete_Click);
-            // 
-            // button_change
-            // 
-            this.button_change.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_change.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_change.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_change.Location = new System.Drawing.Point(432, 57);
-            this.button_change.Name = "button_change";
-            this.button_change.Size = new System.Drawing.Size(83, 29);
-            this.button_change.TabIndex = 60;
-            this.button_change.Text = "Изменить";
-            this.button_change.UseVisualStyleBackColor = false;
-            this.button_change.Click += new System.EventHandler(this.Button_change_Click);
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.Transparent;
-            this.label36.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(179, 21);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(439, 22);
-            this.label36.TabIndex = 61;
-            this.label36.Text = "Панель управления доступа пользователей";
+            this.PicB_clear.BackColor = System.Drawing.Color.Transparent;
+            this.PicB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
+            this.PicB_clear.Location = new System.Drawing.Point(752, 16);
+            this.PicB_clear.Name = "PicB_clear";
+            this.PicB_clear.Size = new System.Drawing.Size(33, 30);
+            this.PicB_clear.TabIndex = 9;
+            this.PicB_clear.TabStop = false;
+            this.PicB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
             // 
             // Setting_user
             // 
@@ -221,6 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicB_clear)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,9 +263,11 @@
         private System.Windows.Forms.TextBox textBox_pass;
         private System.Windows.Forms.TextBox textBox_login;
         private System.Windows.Forms.ComboBox comboBox_is_admin;
-        private System.Windows.Forms.Button button_update;
-        private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.Button button_change;
+        private System.Windows.Forms.Button Btn_update;
+        private System.Windows.Forms.Button Btn_delete;
+        private System.Windows.Forms.Button Btn_change;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Button Btn_add;
+        private System.Windows.Forms.PictureBox PicB_clear;
     }
 }
