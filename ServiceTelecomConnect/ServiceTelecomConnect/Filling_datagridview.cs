@@ -294,8 +294,12 @@ namespace ServiceTelecomConnect
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
                     }
-                    else if(perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberAct" || 
-                        perem_comboBox == "numberActRemont" || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
+                    else if (perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                    }
+                    else if(perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont" 
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }                              
