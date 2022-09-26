@@ -259,6 +259,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheacForm.cs" />
     <Compile Include="CheacReggedit.cs" />
     <Compile Include="CheacSerialNumber.cs" />
     <Compile Include="DB_2.cs" />

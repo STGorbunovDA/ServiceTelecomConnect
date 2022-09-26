@@ -16,7 +16,21 @@ using WinForms = System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
-  
+    enum RowState_Months
+    {
+        January,
+        February,
+        March,
+        April,
+        May,
+        June,
+        July,
+        August,
+        September,
+        October,
+        November,
+        December
+    }
     public partial class ComparisonForm : Form
     {
         #region global perem
@@ -749,7 +763,7 @@ namespace ServiceTelecomConnect
                             column.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
                     }
-                    if (Application.OpenForms["addRSTForm"] == null)
+                    if (Application.OpenForms["AddRSTForm"] == null)
                     {
                         addRSTForm.Show();
                     }
@@ -1184,78 +1198,65 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                if (e.Button == MouseButtons.Right)
                 {
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        ContextMenu m3 = new ContextMenu();
-                        m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m3.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
-                        m3.Show(dataGridView1, new Point(e.X, e.Y));
-                    }
-                }
-                else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
-                {
-                    if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
-                    {
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            ContextMenu m = new ContextMenu();
+                    contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
 
-                            var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                    {
+                        сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
+                        обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+                    }
+                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
+                    {
+                        if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            добавитьНовуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
+
                             if (textBox_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
-                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
-                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
-                                m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
-                                m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
-                                m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
-                                m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
-                                m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
-                                m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                                изменитьДобавленнуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click_change);
+                                добавитьизменитьРемонтToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_click_remont);
+                                удалитьРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_delete_Click);
+                                удалитьРемонтToolStripMenuItem.Click += new EventHandler(Delete_rst_remont_click);
+                                списатьРСТToolStripMenuItem.Click += new EventHandler(DecommissionSerialNumber);
+                                сформироватьАктТОToolStripMenuItem.Click += new EventHandler(Button_form_act_Click);
+                                сформироватьАктРемонтаToolStripMenuItem.Click += new EventHandler(Button_remont_act_Click);
+                                заполняемАктToolStripMenuItem.Click += new EventHandler(DataGridView1_DefaultCellStyleChanged);
+                                актНаПодписьToolStripMenuItem.Click += new EventHandler(DataGridView1_Sign);
+
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
-                                m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
+                                сформироватьАктСписанияToolStripMenuItem.Click += new EventHandler(PrintWord_Act_decommission);
+                                удалитьСписаниеToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
                             }
-                            m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
-                            m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+                            сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
+                            показатьСовпадениеСПредыдущимГодомToolStripMenuItem.Click += new EventHandler(PictureBox_seach_datadrid_replay_Click);
+                            показатьВсеСписанияToolStripMenuItem.Click += new EventHandler(Show_radiostantion_decommission_Click);
 
 
-                            m.Show(dataGridView1, new Point(e.X, e.Y));
+                        }
+                        else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            добавитьНовуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
+                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+                        }
+                        else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
+                        {
+                            сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
+                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                dataGridView1.ClearSelection();
+                            }
                         }
                     }
-                    else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
-                    {
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            ContextMenu m1 = new ContextMenu();
-                            m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            m1.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
 
-                            m1.Show(dataGridView1, new Point(e.X, e.Y));
-                        }
-                    }
-                    else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
-                    {
-                        if (e.Button == MouseButtons.Right)
-                        {
-                            ContextMenu m2 = new ContextMenu();
-                            m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
-
-                            m2.Show(dataGridView1, new Point(e.X, e.Y));
-                        }
-                        if (e.Button == MouseButtons.Left)
-                        {
-                            dataGridView1.ClearSelection();
-                        }
-                    }
                 }
+                contextMenuStrip1.Refresh();
             }
             catch (Exception)
             {
@@ -1365,15 +1366,22 @@ namespace ServiceTelecomConnect
 
                             remontRSTForm.ShowDialog();
 
-                            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                            Counters();
-                            dataGridView1.ClearSelection();
-
-                            if (dataGridView1.CurrentCell.RowIndex >= 0)
+                            if (Application.OpenForms["RemontRSTForm"] == null)
                             {
-                                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                                remontRSTForm.Show();
                             }
-                            Refresh_values_TXB_CMB(currRowIndex);
+
+                            #region старый метод
+                            //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                            //Counters();
+                            //dataGridView1.ClearSelection();
+
+                            //if (dataGridView1.CurrentCell.RowIndex >= 0)
+                            //{
+                            //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                            //}
+                            //Refresh_values_TXB_CMB(currRowIndex);
+                            #endregion
 
                         }
                     }
@@ -1396,6 +1404,7 @@ namespace ServiceTelecomConnect
                     if (textBox_serialNumber.Text != "")
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
+
                         changeRSTForm.DoubleBufferedForm(true);
                         changeRSTForm.textBox_city.Text = textBox_city.Text;
                         changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
@@ -1440,12 +1449,10 @@ namespace ServiceTelecomConnect
                         }
                         changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
 
-                        if (Application.OpenForms["changeRSTForm"] == null)
+                        if (Application.OpenForms["СhangeRSTForm"] == null)
                         {
                             changeRSTForm.Show();
                         }
-                        //changeRSTForm.ShowDialog();
-
 
                         #region старый метод для одной рст
 
@@ -1923,7 +1930,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для выбора значения в Control(TXB)
-        
+
         void Refresh_values_TXB_CMB(int currRowIndex)
         {
             try
@@ -1974,7 +1981,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка получения данных в Control-ы из Datagrid (Refresh_values_TXB_CMB)");
             }
-            
+
         }
         #endregion
 
@@ -2808,7 +2815,7 @@ namespace ServiceTelecomConnect
 
         #region копирование текущей таблицы radiostantion в radiostantion_last_year к концу года 
 
-       
+
         void Button_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
         {
             try
@@ -2904,7 +2911,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region очистка текущей БД, текущий год (radiostantion)
-        
+
         void Clear_BD_current_year_Click(object sender, EventArgs e)
         {
             try
@@ -2956,7 +2963,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать БД прошлого года по участку
-        
+
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
             try
@@ -3032,7 +3039,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка загрузки общей БД прошлого года без участка (Btn_Show_DB_radiostantion_full_Click)");
             }
-            
+
         }
         #endregion
 
@@ -3272,7 +3279,7 @@ namespace ServiceTelecomConnect
             panel3.Enabled = true;
             dataGridView1.Enabled = true;
         }
-        
+
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
             if (textBox_serialNumber.Text != "")
@@ -3296,7 +3303,7 @@ namespace ServiceTelecomConnect
 
         }
 
-       
+
         void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
         {
             try
@@ -3326,7 +3333,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка списания РСТ (Btn_record_decommissionSerialNumber_Click)");
             }
-            
+
         }
 
         #region Удаление списания
@@ -3348,7 +3355,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка удаления списания РСТ (Delete_rst_decommission_click)");
             }
-            
+
         }
         #endregion
 
@@ -3366,7 +3373,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка загрузки БД списания РСТ (Show_radiostantion_decommission_Click)");
             }
-            
+
         }
 
         #endregion
@@ -3402,7 +3409,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка формирования акта списания (PrintWord_Act_decommission)");
             }
-            
+
         }
 
 
@@ -3533,7 +3540,9 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода ComboBox_seach_SelectionChangeCommitted");
             }
         }
+
         #endregion
+
     }
 }
 
