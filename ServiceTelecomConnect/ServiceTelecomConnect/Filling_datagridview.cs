@@ -657,7 +657,7 @@ namespace ServiceTelecomConnect
                     if (serialNumber != "")
                     {
                         var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
-                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberActRemont = '', " +
+                            $"decommissionSerialNumber = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberAct = '{number_printing_doc_datePanel}/{decommissionSerialNumber}', numberActRemont = '', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
                             $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' WHERE serialNumber = '{serialNumber}'";

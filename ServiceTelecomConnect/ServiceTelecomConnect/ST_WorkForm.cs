@@ -260,7 +260,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (30 * 60 * 1000); // 15 mins
+                timer.Interval = (1 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
