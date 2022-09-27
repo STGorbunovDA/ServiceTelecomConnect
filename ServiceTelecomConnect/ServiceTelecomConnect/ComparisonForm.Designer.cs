@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
             this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -217,26 +217,6 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.радиостанцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьНовуюРадиостанциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.изменитьДобавленнуюРадиостанциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьизменитьРемонтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьРадиостанциюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьРемонтToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.списатьРСТToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.актыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьСписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сформироватьАктТОToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сформироватьАктРемонтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заполняемАктToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.актНаПодписьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сформироватьАктСписанияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.базаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обновитьБазуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранениеБазыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьСовпадениеСПредыдущимГодомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьВсеСписанияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -254,7 +234,6 @@
             this.panel_decommissionSerialNumber.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_date
@@ -989,44 +968,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -2532,148 +2511,6 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(32, 19);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.радиостанцияToolStripMenuItem,
-            this.актыToolStripMenuItem,
-            this.базаToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
-            // 
-            // радиостанцияToolStripMenuItem
-            // 
-            this.радиостанцияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьНовуюРадиостанциюToolStripMenuItem,
-            this.изменитьДобавленнуюРадиостанциюToolStripMenuItem,
-            this.добавитьизменитьРемонтToolStripMenuItem,
-            this.удалитьРадиостанциюToolStripMenuItem,
-            this.удалитьРемонтToolStripMenuItem,
-            this.списатьРСТToolStripMenuItem,
-            this.удалитьСписаниеToolStripMenuItem});
-            this.радиостанцияToolStripMenuItem.Name = "радиостанцияToolStripMenuItem";
-            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.радиостанцияToolStripMenuItem.Text = "Радиостанция";
-            // 
-            // добавитьНовуюРадиостанциюToolStripMenuItem
-            // 
-            this.добавитьНовуюРадиостанциюToolStripMenuItem.Name = "добавитьНовуюРадиостанциюToolStripMenuItem";
-            this.добавитьНовуюРадиостанциюToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.добавитьНовуюРадиостанциюToolStripMenuItem.Text = "Добавить новую радиостанцию";
-            // 
-            // изменитьДобавленнуюРадиостанциюToolStripMenuItem
-            // 
-            this.изменитьДобавленнуюРадиостанциюToolStripMenuItem.Name = "изменитьДобавленнуюРадиостанциюToolStripMenuItem";
-            this.изменитьДобавленнуюРадиостанциюToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.изменитьДобавленнуюРадиостанциюToolStripMenuItem.Text = "Изменить добавленную радиостанцию";
-            // 
-            // добавитьизменитьРемонтToolStripMenuItem
-            // 
-            this.добавитьизменитьРемонтToolStripMenuItem.Name = "добавитьизменитьРемонтToolStripMenuItem";
-            this.добавитьизменитьРемонтToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.добавитьизменитьРемонтToolStripMenuItem.Text = "Добавить/изменить ремонт";
-            // 
-            // удалитьРадиостанциюToolStripMenuItem
-            // 
-            this.удалитьРадиостанциюToolStripMenuItem.Name = "удалитьРадиостанциюToolStripMenuItem";
-            this.удалитьРадиостанциюToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.удалитьРадиостанциюToolStripMenuItem.Text = "Удалить радиостанцию";
-            // 
-            // удалитьРемонтToolStripMenuItem
-            // 
-            this.удалитьРемонтToolStripMenuItem.Name = "удалитьРемонтToolStripMenuItem";
-            this.удалитьРемонтToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.удалитьРемонтToolStripMenuItem.Text = "Удалить ремонт";
-            // 
-            // списатьРСТToolStripMenuItem
-            // 
-            this.списатьРСТToolStripMenuItem.Name = "списатьРСТToolStripMenuItem";
-            this.списатьРСТToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.списатьРСТToolStripMenuItem.Text = "Списать РСТ";
-            // 
-            // актыToolStripMenuItem
-            // 
-            this.актыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сформироватьАктТОToolStripMenuItem,
-            this.сформироватьАктРемонтаToolStripMenuItem,
-            this.заполняемАктToolStripMenuItem,
-            this.актНаПодписьToolStripMenuItem,
-            this.сформироватьАктСписанияToolStripMenuItem});
-            this.актыToolStripMenuItem.Name = "актыToolStripMenuItem";
-            this.актыToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.актыToolStripMenuItem.Text = "Акты";
-            // 
-            // удалитьСписаниеToolStripMenuItem
-            // 
-            this.удалитьСписаниеToolStripMenuItem.Name = "удалитьСписаниеToolStripMenuItem";
-            this.удалитьСписаниеToolStripMenuItem.Size = new System.Drawing.Size(290, 22);
-            this.удалитьСписаниеToolStripMenuItem.Text = "Удалить списание";
-            // 
-            // сформироватьАктТОToolStripMenuItem
-            // 
-            this.сформироватьАктТОToolStripMenuItem.Name = "сформироватьАктТОToolStripMenuItem";
-            this.сформироватьАктТОToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.сформироватьАктТОToolStripMenuItem.Text = "Сформировать акт ТО";
-            // 
-            // сформироватьАктРемонтаToolStripMenuItem
-            // 
-            this.сформироватьАктРемонтаToolStripMenuItem.Name = "сформироватьАктРемонтаToolStripMenuItem";
-            this.сформироватьАктРемонтаToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.сформироватьАктРемонтаToolStripMenuItem.Text = "Сформировать акт Ремонта";
-            // 
-            // заполняемАктToolStripMenuItem
-            // 
-            this.заполняемАктToolStripMenuItem.Name = "заполняемАктToolStripMenuItem";
-            this.заполняемАктToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.заполняемАктToolStripMenuItem.Text = "Заполняем акт";
-            // 
-            // актНаПодписьToolStripMenuItem
-            // 
-            this.актНаПодписьToolStripMenuItem.Name = "актНаПодписьToolStripMenuItem";
-            this.актНаПодписьToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.актНаПодписьToolStripMenuItem.Text = "Акт на подпись";
-            // 
-            // сформироватьАктСписанияToolStripMenuItem
-            // 
-            this.сформироватьАктСписанияToolStripMenuItem.Name = "сформироватьАктСписанияToolStripMenuItem";
-            this.сформироватьАктСписанияToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.сформироватьАктСписанияToolStripMenuItem.Text = "Сформировать акт списания";
-            // 
-            // базаToolStripMenuItem
-            // 
-            this.базаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обновитьБазуToolStripMenuItem,
-            this.сохранениеБазыToolStripMenuItem,
-            this.показатьСовпадениеСПредыдущимГодомToolStripMenuItem,
-            this.показатьВсеСписанияToolStripMenuItem});
-            this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
-            this.базаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.базаToolStripMenuItem.Text = "База";
-            // 
-            // обновитьБазуToolStripMenuItem
-            // 
-            this.обновитьБазуToolStripMenuItem.Name = "обновитьБазуToolStripMenuItem";
-            this.обновитьБазуToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
-            this.обновитьБазуToolStripMenuItem.Text = "Обновить базу";
-            // 
-            // сохранениеБазыToolStripMenuItem
-            // 
-            this.сохранениеБазыToolStripMenuItem.Name = "сохранениеБазыToolStripMenuItem";
-            this.сохранениеБазыToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
-            this.сохранениеБазыToolStripMenuItem.Text = "Сохранение базы";
-            // 
-            // показатьСовпадениеСПредыдущимГодомToolStripMenuItem
-            // 
-            this.показатьСовпадениеСПредыдущимГодомToolStripMenuItem.Name = "показатьСовпадениеСПредыдущимГодомToolStripMenuItem";
-            this.показатьСовпадениеСПредыдущимГодомToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
-            this.показатьСовпадениеСПредыдущимГодомToolStripMenuItem.Text = "Показать совпадение с предыдущим годом";
-            // 
-            // показатьВсеСписанияToolStripMenuItem
-            // 
-            this.показатьВсеСписанияToolStripMenuItem.Name = "показатьВсеСписанияToolStripMenuItem";
-            this.показатьВсеСписанияToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
-            this.показатьВсеСписанияToolStripMenuItem.Text = "Показать все списания";
-            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2733,7 +2570,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2920,25 +2756,5 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem радиостанцияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem добавитьНовуюРадиостанциюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изменитьДобавленнуюРадиостанциюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem добавитьизменитьРемонтToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьРадиостанциюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьРемонтToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem списатьРСТToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem актыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьСписаниеToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сформироватьАктТОToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сформироватьАктРемонтаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заполняемАктToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem актНаПодписьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сформироватьАктСписанияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem базаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem обновитьБазуToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранениеБазыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem показатьСовпадениеСПредыдущимГодомToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem показатьВсеСписанияToolStripMenuItem;
     }
 }

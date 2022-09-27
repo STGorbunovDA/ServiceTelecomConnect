@@ -1198,65 +1198,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (e.Button == MouseButtons.Right)
-                {
-                    contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
-
-                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
-                    {
-                        сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
-                        обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
-                    }
-                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
-                    {
-                        if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
-                        {
-                            добавитьНовуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
-
-                            if (textBox_serialNumber.Text != "")
-                            {
-                                изменитьДобавленнуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click_change);
-                                добавитьизменитьРемонтToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_click_remont);
-                                удалитьРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_delete_Click);
-                                удалитьРемонтToolStripMenuItem.Click += new EventHandler(Delete_rst_remont_click);
-                                списатьРСТToolStripMenuItem.Click += new EventHandler(DecommissionSerialNumber);
-                                сформироватьАктТОToolStripMenuItem.Click += new EventHandler(Button_form_act_Click);
-                                сформироватьАктРемонтаToolStripMenuItem.Click += new EventHandler(Button_remont_act_Click);
-                                заполняемАктToolStripMenuItem.Click += new EventHandler(DataGridView1_DefaultCellStyleChanged);
-                                актНаПодписьToolStripMenuItem.Click += new EventHandler(DataGridView1_Sign);
-
-                            }
-                            if (txB_decommissionSerialNumber.Text != "")
-                            {
-                                сформироватьАктСписанияToolStripMenuItem.Click += new EventHandler(PrintWord_Act_decommission);
-                                удалитьСписаниеToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
-                            }
-                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
-                            сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
-                            показатьСовпадениеСПредыдущимГодомToolStripMenuItem.Click += new EventHandler(PictureBox_seach_datadrid_replay_Click);
-                            показатьВсеСписанияToolStripMenuItem.Click += new EventHandler(Show_radiostantion_decommission_Click);
-
-
-                        }
-                        else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
-                        {
-                            добавитьНовуюРадиостанциюToolStripMenuItem.Click += new EventHandler(Button_new_add_rst_form_Click);
-                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
-                        }
-                        else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
-                        {
-                            сохранениеБазыToolStripMenuItem.Click += new EventHandler(Button_save_in_file_Click);
-                            обновитьБазуToolStripMenuItem.Click += new EventHandler(Button_update_Click);
-
-                            if (e.Button == MouseButtons.Left)
-                            {
-                                dataGridView1.ClearSelection();
-                            }
-                        }
-                    }
-
-                }
-                contextMenuStrip1.Refresh();
+                
             }
             catch (Exception)
             {
