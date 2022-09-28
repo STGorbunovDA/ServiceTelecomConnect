@@ -268,6 +268,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddExecutionСurator.cs" />
     <Compile Include="CheacForm.cs" />
     <Compile Include="CheacReggedit.cs" />
     <Compile Include="CheacSerialNumber.cs" />
