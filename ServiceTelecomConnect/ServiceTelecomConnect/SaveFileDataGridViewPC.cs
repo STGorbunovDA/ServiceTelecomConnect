@@ -100,7 +100,6 @@ namespace ServiceTelecomConnect
                         {
                             sw.Write(dgw.Rows[i].Cells[j].Value.ToString() + "\t");//todo решить
                         }
-
                         sw.WriteLine();
                     }
                 }

@@ -66,6 +66,7 @@ namespace ServiceTelecomConnect
                 this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
                 _user = user;
                 IsAdmin();
+
             }
             catch (Exception)
             {
@@ -967,7 +968,7 @@ namespace ServiceTelecomConnect
 
         #region Сохранение БД на PC
 
-        void Button_save_in_file_Click(object sender, EventArgs e)
+        void Button_save_in_file_Click(object sender, EventArgs e )
         {
             try
             {
@@ -1193,12 +1194,74 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        private void contextMenuStrip1_ItemClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("1111"); // Как вот тут вывести имя
+        }
+
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
-                
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
+
+                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                    {
+                        saveBaseToolStripMenuItem.Click -= Button_save_in_file_Click;
+                        updateBaseToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+                    }
+                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
+                    {
+                        if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            addNewRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click;
+
+                            if (textBox_serialNumber.Text != "")
+                            {
+                                changeRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click_change;
+                                addСhangeRemontToolStripMenuItem.Click += Button_new_add_rst_form_click_remont;
+                                delRadiostationToolStripMenuItem.Click += Button_delete_Click;
+                                delRemontToolStripMenuItem.Click += Delete_rst_remont_click;
+                                decommissionRadiostationToolStripMenuItem.Click += DecommissionSerialNumber;
+                                createActTOToolStripMenuItem.Click += Button_form_act_Click;
+                                createActRemontToolStripMenuItem.Click += Button_remont_act_Click;
+                                fillingActTOToolStripMenuItem.Click += DataGridView1_DefaultCellStyleChanged;
+                                actTOSignatureToolStripMenuItem.Click += DataGridView1_Sign;
+
+                            }
+                            if (txB_decommissionSerialNumber.Text != "")
+                            {
+                                createActDecommissionToolStripMenuItem.Click += PrintWord_Act_decommission;
+                                delDecommissionToolStripMenuItem.Click += Button_new_add_rst_form_Click;
+                            }
+                            updateBaseToolStripMenuItem.Click += Button_update_Click;
+                            saveBaseToolStripMenuItem.Click += new EventHandler(contextMenuStrip1_ItemClick);
+                            showMatchPreviouYearToolStripMenuItem.Click += PictureBox_seach_datadrid_replay_Click;
+                            showFullDecommissionToolStripMenuItem.Click += Show_radiostantion_decommission_Click;
+
+
+                        }
+                        else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            addNewRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click;
+                            updateBaseToolStripMenuItem.Click += Button_update_Click;
+                        }
+                        else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
+                        {
+                            saveBaseToolStripMenuItem.Click -= Button_save_in_file_Click;
+                            updateBaseToolStripMenuItem.Click += Button_update_Click;
+
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                dataGridView1.ClearSelection();
+                            }
+                        }
+                    }
+
+                }
             }
             catch (Exception)
             {
@@ -3485,6 +3548,10 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
 

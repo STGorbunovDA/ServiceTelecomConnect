@@ -218,6 +218,25 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.радиостанцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addСhangeRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.decommissionRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.актToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createActTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createActRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillingActTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actTOSignatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.createActDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.базаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showMatchPreviouYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showFullDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -235,6 +254,7 @@
             this.panel_decommissionSerialNumber.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_date
@@ -2514,8 +2534,146 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.радиостанцияToolStripMenuItem,
+            this.актToolStripMenuItem,
+            this.базаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
+            // 
+            // радиостанцияToolStripMenuItem
+            // 
+            this.радиостанцияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewRadiostationToolStripMenuItem,
+            this.changeRadiostationToolStripMenuItem,
+            this.addСhangeRemontToolStripMenuItem,
+            this.delRadiostationToolStripMenuItem,
+            this.delRemontToolStripMenuItem,
+            this.decommissionRadiostationToolStripMenuItem,
+            this.delDecommissionToolStripMenuItem});
+            this.радиостанцияToolStripMenuItem.Name = "радиостанцияToolStripMenuItem";
+            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.радиостанцияToolStripMenuItem.Text = "Радиостанция";
+            // 
+            // addNewRadiostationToolStripMenuItem
+            // 
+            this.addNewRadiostationToolStripMenuItem.Name = "addNewRadiostationToolStripMenuItem";
+            this.addNewRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.addNewRadiostationToolStripMenuItem.Text = "Добавить Новую Радиостанцию";
+            // 
+            // changeRadiostationToolStripMenuItem
+            // 
+            this.changeRadiostationToolStripMenuItem.Name = "changeRadiostationToolStripMenuItem";
+            this.changeRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.changeRadiostationToolStripMenuItem.Text = "Изменить Радиостанцию";
+            // 
+            // addСhangeRemontToolStripMenuItem
+            // 
+            this.addСhangeRemontToolStripMenuItem.Name = "addСhangeRemontToolStripMenuItem";
+            this.addСhangeRemontToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.addСhangeRemontToolStripMenuItem.Text = "Добавить/Изменить Ремонт";
+            // 
+            // delRadiostationToolStripMenuItem
+            // 
+            this.delRadiostationToolStripMenuItem.Name = "delRadiostationToolStripMenuItem";
+            this.delRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delRadiostationToolStripMenuItem.Text = "Удалить Радиостанцию";
+            // 
+            // delRemontToolStripMenuItem
+            // 
+            this.delRemontToolStripMenuItem.Name = "delRemontToolStripMenuItem";
+            this.delRemontToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delRemontToolStripMenuItem.Text = "Удалить Ремонт";
+            // 
+            // decommissionRadiostationToolStripMenuItem
+            // 
+            this.decommissionRadiostationToolStripMenuItem.Name = "decommissionRadiostationToolStripMenuItem";
+            this.decommissionRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.decommissionRadiostationToolStripMenuItem.Text = "Списать Радиостанцию";
+            // 
+            // delDecommissionToolStripMenuItem
+            // 
+            this.delDecommissionToolStripMenuItem.Name = "delDecommissionToolStripMenuItem";
+            this.delDecommissionToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delDecommissionToolStripMenuItem.Text = "Удалить Списание";
+            // 
+            // актToolStripMenuItem
+            // 
+            this.актToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createActTOToolStripMenuItem,
+            this.createActRemontToolStripMenuItem,
+            this.fillingActTOToolStripMenuItem,
+            this.actTOSignatureToolStripMenuItem,
+            this.createActDecommissionToolStripMenuItem});
+            this.актToolStripMenuItem.Name = "актToolStripMenuItem";
+            this.актToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.актToolStripMenuItem.Text = "Акт";
+            // 
+            // createActTOToolStripMenuItem
+            // 
+            this.createActTOToolStripMenuItem.Name = "createActTOToolStripMenuItem";
+            this.createActTOToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActTOToolStripMenuItem.Text = "Сформировать Акт ТО";
+            // 
+            // createActRemontToolStripMenuItem
+            // 
+            this.createActRemontToolStripMenuItem.Name = "createActRemontToolStripMenuItem";
+            this.createActRemontToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActRemontToolStripMenuItem.Text = "Сформировать Акт Ремонта";
+            // 
+            // fillingActTOToolStripMenuItem
+            // 
+            this.fillingActTOToolStripMenuItem.Name = "fillingActTOToolStripMenuItem";
+            this.fillingActTOToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.fillingActTOToolStripMenuItem.Text = "Заполняем Акт";
+            // 
+            // actTOSignatureToolStripMenuItem
+            // 
+            this.actTOSignatureToolStripMenuItem.Name = "actTOSignatureToolStripMenuItem";
+            this.actTOSignatureToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.actTOSignatureToolStripMenuItem.Text = "Акт на подпись";
+            // 
+            // createActDecommissionToolStripMenuItem
+            // 
+            this.createActDecommissionToolStripMenuItem.Name = "createActDecommissionToolStripMenuItem";
+            this.createActDecommissionToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActDecommissionToolStripMenuItem.Text = "Сформировать Акт Списания";
+            // 
+            // базаToolStripMenuItem
+            // 
+            this.базаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateBaseToolStripMenuItem,
+            this.showMatchPreviouYearToolStripMenuItem,
+            this.showFullDecommissionToolStripMenuItem,
+            this.saveBaseToolStripMenuItem});
+            this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
+            this.базаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.базаToolStripMenuItem.Text = "База";
+            // 
+            // updateBaseToolStripMenuItem
+            // 
+            this.updateBaseToolStripMenuItem.Name = "updateBaseToolStripMenuItem";
+            this.updateBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.updateBaseToolStripMenuItem.Text = "Обновить Базу";
+            // 
+            // showMatchPreviouYearToolStripMenuItem
+            // 
+            this.showMatchPreviouYearToolStripMenuItem.Name = "showMatchPreviouYearToolStripMenuItem";
+            this.showMatchPreviouYearToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.showMatchPreviouYearToolStripMenuItem.Text = "Показать совпадение с предыдущим годом";
+            // 
+            // showFullDecommissionToolStripMenuItem
+            // 
+            this.showFullDecommissionToolStripMenuItem.Name = "showFullDecommissionToolStripMenuItem";
+            this.showFullDecommissionToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.showFullDecommissionToolStripMenuItem.Text = "Показать все списания";
+            // 
+            // saveBaseToolStripMenuItem
+            // 
+            this.saveBaseToolStripMenuItem.Name = "saveBaseToolStripMenuItem";
+            this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
             // 
             // ComparisonForm
             // 
@@ -2576,6 +2734,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2763,5 +2922,24 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem радиостанцияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewRadiostationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeRadiostationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addСhangeRemontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem delRadiostationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem delRemontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem decommissionRadiostationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem актToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem базаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem delDecommissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createActTOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createActRemontToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fillingActTOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem actTOSignatureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem createActDecommissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateBaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showMatchPreviouYearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showFullDecommissionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
     }
 }
