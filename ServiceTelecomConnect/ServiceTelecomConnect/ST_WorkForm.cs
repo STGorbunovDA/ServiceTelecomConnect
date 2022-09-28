@@ -213,6 +213,7 @@ namespace ServiceTelecomConnect
 
 
                 Filling_datagridview.CreateColums(dataGridView1);
+                Filling_datagridview.CreateColums(dataGridView2);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
                 Counters();
 
@@ -261,7 +262,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (1 * 60 * 1000); // 15 mins
+                timer.Interval = (30 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -277,11 +278,11 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Filling_datagridview.CreateColums(dataGridView2);
-            Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity);
+            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
 
             //await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
             new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
 

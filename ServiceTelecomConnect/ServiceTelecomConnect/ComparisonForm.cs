@@ -968,7 +968,7 @@ namespace ServiceTelecomConnect
 
         #region Сохранение БД на PC
 
-        void Button_save_in_file_Click(object sender, EventArgs e )
+        void Button_save_in_file_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1194,73 +1194,82 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        private void contextMenuStrip1_ItemClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("1111"); // Как вот тут вывести имя
-        }
-
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
-                if (e.Button == MouseButtons.Right)
+                if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
                 {
-                    contextMenuStrip1.Show(Cursor.Position.X, Cursor.Position.Y);
-
-                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                    if (e.Button == MouseButtons.Right)
                     {
-                        saveBaseToolStripMenuItem.Click -= Button_save_in_file_Click;
-                        updateBaseToolStripMenuItem.Click += new EventHandler(Button_update_Click);
+                        ContextMenu m3 = new ContextMenu();
+                        m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                        m3.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                        m3.Show(dataGridView1, new Point(e.X, e.Y));
                     }
-                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
+                }
+                else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
+                {
+                    if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
-                        if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        if (e.Button == MouseButtons.Right)
                         {
-                            addNewRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click;
+                            ContextMenu m = new ContextMenu();
 
+                            var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (textBox_serialNumber.Text != "")
                             {
-                                changeRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click_change;
-                                addСhangeRemontToolStripMenuItem.Click += Button_new_add_rst_form_click_remont;
-                                delRadiostationToolStripMenuItem.Click += Button_delete_Click;
-                                delRemontToolStripMenuItem.Click += Delete_rst_remont_click;
-                                decommissionRadiostationToolStripMenuItem.Click += DecommissionSerialNumber;
-                                createActTOToolStripMenuItem.Click += Button_form_act_Click;
-                                createActRemontToolStripMenuItem.Click += Button_remont_act_Click;
-                                fillingActTOToolStripMenuItem.Click += DataGridView1_DefaultCellStyleChanged;
-                                actTOSignatureToolStripMenuItem.Click += DataGridView1_Sign;
-
+                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
+                                m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
+                                m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
+                                m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
-                                createActDecommissionToolStripMenuItem.Click += PrintWord_Act_decommission;
-                                delDecommissionToolStripMenuItem.Click += Button_new_add_rst_form_Click;
+                                m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                                m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                             }
-                            updateBaseToolStripMenuItem.Click += Button_update_Click;
-                            saveBaseToolStripMenuItem.Click += new EventHandler(contextMenuStrip1_ItemClick);
-                            showMatchPreviouYearToolStripMenuItem.Click += PictureBox_seach_datadrid_replay_Click;
-                            showFullDecommissionToolStripMenuItem.Click += Show_radiostantion_decommission_Click;
+                            m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                            m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                            m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
+                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
 
 
-                        }
-                        else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
-                        {
-                            addNewRadiostationToolStripMenuItem.Click += Button_new_add_rst_form_Click;
-                            updateBaseToolStripMenuItem.Click += Button_update_Click;
-                        }
-                        else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
-                        {
-                            saveBaseToolStripMenuItem.Click -= Button_save_in_file_Click;
-                            updateBaseToolStripMenuItem.Click += Button_update_Click;
-
-                            if (e.Button == MouseButtons.Left)
-                            {
-                                dataGridView1.ClearSelection();
-                            }
+                            m.Show(dataGridView1, new Point(e.X, e.Y));
                         }
                     }
+                    else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
+                    {
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            ContextMenu m1 = new ContextMenu();
+                            m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                            m1.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
 
+                            m1.Show(dataGridView1, new Point(e.X, e.Y));
+                        }
+                    }
+                    else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
+                    {
+                        if (e.Button == MouseButtons.Right)
+                        {
+                            ContextMenu m2 = new ContextMenu();
+                            m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+
+                            m2.Show(dataGridView1, new Point(e.X, e.Y));
+                        }
+                        if (e.Button == MouseButtons.Left)
+                        {
+                            dataGridView1.ClearSelection();
+                        }
+                    }
                 }
             }
             catch (Exception)
@@ -3546,12 +3555,10 @@ namespace ServiceTelecomConnect
             }
         }
 
+
+
         #endregion
 
-        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
     }
 }
 
