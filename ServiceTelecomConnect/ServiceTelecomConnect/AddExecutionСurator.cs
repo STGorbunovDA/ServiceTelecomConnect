@@ -148,6 +148,206 @@ namespace ServiceTelecomConnect
                                     $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
                                     $"'{december.Trim()}')";
                             }
+                            if (months == "Май")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "Май";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Июнь")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "Июнь";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Июль")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "Июль";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Август")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "Август";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Сентябрь")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "Сентябрь";
+                                var october = "";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Октябрь")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "Октябрь";
+                                var november = "";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Ноябрь")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "Ноябрь";
+                                var december = "";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
+                            if (months == "Декабрь")
+                            {
+                                var january = "";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "Декабрь";
+
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
                             using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
