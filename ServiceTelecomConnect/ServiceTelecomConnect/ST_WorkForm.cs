@@ -646,7 +646,6 @@ namespace ServiceTelecomConnect
         {
             try
             {
-
                 if (dataGridView1.SelectedRows.Count > 1)
                 {
                     string Mesage;
@@ -668,11 +667,20 @@ namespace ServiceTelecomConnect
                     }
                 }
                 ContextMenu m = new ContextMenu();
-                m.MenuItems.Add(new MenuItem("Январь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1)));
+                m.MenuItems.Add(new MenuItem("Январь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Январь")));
+                m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Февраль")));
+                m.MenuItems.Add(new MenuItem("Март", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Март")));
+                m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Апрель")));
+                m.MenuItems.Add(new MenuItem("Май", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Май")));
+                m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Июнь")));
+                m.MenuItems.Add(new MenuItem("Июль", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Июль")));
+                m.MenuItems.Add(new MenuItem("Август", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Август")));
+                m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Сентябрь")));
+                m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Октябрь")));
+                m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Ноябрь")));
+                m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1, "Декабрь")));
+
                 m.Show(dataGridView1, new Point(dataGridView1.Location.X+700, dataGridView1.Location.Y));
-
-                //Filling_datagridview.AddExecutionRowСell(dataGridView1);
-
 
             }
             catch (Exception)

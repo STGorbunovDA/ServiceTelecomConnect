@@ -109,7 +109,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
-                dgw.Columns[40].Visible = false;
+                dgw.Columns[40].Visible = true;
 
             }
             catch (Exception)
@@ -625,17 +625,51 @@ namespace ServiceTelecomConnect
 
         #region добавление в выполнение
 
-        internal static void AddExecutionRowСell(DataGridView dgw)
+        internal static void AddExecutionRowСell(DataGridView dgw, string months)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
                 try
                 {
-                    MessageBox.Show("Test");
-                    //foreach (DataGridViewRow row in dgw.SelectedRows)
-                    //{
-                    //    dgw.Rows[row.Index].Cells[40].Value = RowState_Months.January;
-                    //}
+                    //MessageBox.Show(months);
+                    foreach (DataGridViewRow row in dgw.SelectedRows)
+                    {
+                        dgw.Rows[row.Index].Cells[40].Value = months;
+                    }
+                    for (int index = 0; index < dgw.Rows.Count; index++)
+                    {
+                        var rowState = (String)dgw.Rows[index].Cells[40].Value;//проверить индекс
+
+                        if (rowState == months)
+                        {
+                            var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                            var poligon = dgw.Rows[index].Cells[1].Value.ToString();
+                            var company = dgw.Rows[index].Cells[2].Value.ToString();
+                            var location = dgw.Rows[index].Cells[3].Value.ToString();
+                            var model = dgw.Rows[index].Cells[4].Value.ToString();
+                            var serialNumber = dgw.Rows[index].Cells[5].Value.ToString();
+                            var inventoryNumber = dgw.Rows[index].Cells[6].Value.ToString();
+                            var networkNumber = dgw.Rows[index].Cells[7].Value.ToString();
+                            var dateTO = dgw.Rows[index].Cells[8].Value.ToString();
+                            var numberAct = dgw.Rows[index].Cells[9].Value.ToString();
+                            var city = dgw.Rows[index].Cells[10].Value.ToString();
+                            var price = (Decimal)dgw.Rows[index].Cells[11].Value;
+                            var numberActRemont = dgw.Rows[index].Cells[17].Value.ToString();
+                            var category = dgw.Rows[index].Cells[18].Value.ToString();
+                            var priceRemont = (Decimal)dgw.Rows[index].Cells[19].Value;       
+                            var decommissionSerialNumber = dgw.Rows[index].Cells[38].Value.ToString();
+                            var comment = dgw.Rows[index].Cells[39].Value.ToString();
+
+                            var AddExecutionQuery = $"DELETE FROM radiostantion WHERE id = {id}";
+
+                            using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                command.ExecuteNonQuery();
+                                DB.GetInstance.CloseConnection();
+                            }
+                        }
+                    }
                 }
                 catch (Exception)
                 {
