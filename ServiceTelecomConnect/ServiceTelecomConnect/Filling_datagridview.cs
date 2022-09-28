@@ -12,7 +12,7 @@ namespace ServiceTelecomConnect
     {
 
         #region состояние Rows
-        
+
         enum RowState
         {
             Existed,
@@ -21,10 +21,26 @@ namespace ServiceTelecomConnect
             ModifieldNew,
             Deleted
         }
+
+        enum RowState_Months
+        {
+            January,
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December
+        }
         #endregion
 
         #region заполнение datagridview 1
-        
+
         internal static void CreateColums(DataGridView dgw)
         {
             try
@@ -171,11 +187,11 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
                     dgw.Columns[39].Width = 300;
 
-                   //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
+                    //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     MessageBox.Show("Ошибка загрузки RefreshDataGrid");
                 }
@@ -323,7 +339,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region поиск по БД
-        
+
         internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
         {
             if (Internet_check.AvailabilityChanged_bool())
@@ -379,11 +395,11 @@ namespace ServiceTelecomConnect
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
-                    else if(perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont" 
+                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }                              
+                    }
                     else
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
@@ -600,6 +616,30 @@ namespace ServiceTelecomConnect
                 catch (Exception)
                 {
                     MessageBox.Show("Ошибка Copy_BD_radiostantion_in_radiostantion_copy");
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region добавление в выполнение
+
+        internal static void AddExecutionRowСell(DataGridView dgw)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    MessageBox.Show("Test");
+                    //foreach (DataGridViewRow row in dgw.SelectedRows)
+                    //{
+                    //    dgw.Rows[row.Index].Cells[40].Value = RowState_Months.January;
+                    //}
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка AddExecutionRowСell");
                 }
             }
         }

@@ -646,6 +646,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
+
                 if (dataGridView1.SelectedRows.Count > 1)
                 {
                     string Mesage;
@@ -666,6 +667,13 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Январь", (s, ee) => Filling_datagridview.AddExecutionRowСell(dataGridView1)));
+                m.Show(dataGridView1, new Point(dataGridView1.Location.X+700, dataGridView1.Location.Y));
+
+                //Filling_datagridview.AddExecutionRowСell(dataGridView1);
+
+
             }
             catch (Exception)
             {
