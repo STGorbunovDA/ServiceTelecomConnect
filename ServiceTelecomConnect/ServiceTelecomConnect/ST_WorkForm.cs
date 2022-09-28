@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
@@ -260,7 +261,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (30 * 60 * 1000); // 15 mins
+                timer.Interval = (1 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -274,26 +275,21 @@ namespace ServiceTelecomConnect
             }
         }
 
-        async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            try
-            {
-                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
-                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
-                await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
+            Filling_datagridview.CreateColums(dataGridView2);
+            Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity);
 
-                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
-                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
-                await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
+            //await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
+            new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
 
-                await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
+            //await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
+            //await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
+            //await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
 
-                //new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка TimerEventProcessor!");
-            }
+            //await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
         }
 
         #region Счётчики
@@ -1936,7 +1932,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для выбора значения в Control(TXB)
-        
+
         void Refresh_values_TXB_CMB(int currRowIndex)
         {
             try
@@ -1987,7 +1983,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка получения данных в Control-ы из Datagrid (Refresh_values_TXB_CMB)");
             }
-            
+
         }
         #endregion
 
@@ -2821,7 +2817,7 @@ namespace ServiceTelecomConnect
 
         #region копирование текущей таблицы radiostantion в radiostantion_last_year к концу года 
 
-       
+
         void Button_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
         {
             try
@@ -2917,7 +2913,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region очистка текущей БД, текущий год (radiostantion)
-        
+
         void Clear_BD_current_year_Click(object sender, EventArgs e)
         {
             try
@@ -2969,7 +2965,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать БД прошлого года по участку
-        
+
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
             try
@@ -3045,7 +3041,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка загрузки общей БД прошлого года без участка (Btn_Show_DB_radiostantion_full_Click)");
             }
-            
+
         }
         #endregion
 
@@ -3285,7 +3281,7 @@ namespace ServiceTelecomConnect
             panel3.Enabled = true;
             dataGridView1.Enabled = true;
         }
-        
+
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
             if (textBox_serialNumber.Text != "")
@@ -3309,7 +3305,7 @@ namespace ServiceTelecomConnect
 
         }
 
-       
+
         void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
         {
             try
@@ -3339,7 +3335,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка списания РСТ (Btn_record_decommissionSerialNumber_Click)");
             }
-            
+
         }
 
         #region Удаление списания
@@ -3361,7 +3357,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка удаления списания РСТ (Delete_rst_decommission_click)");
             }
-            
+
         }
         #endregion
 
@@ -3379,7 +3375,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка загрузки БД списания РСТ (Show_radiostantion_decommission_Click)");
             }
-            
+
         }
 
         #endregion
@@ -3415,7 +3411,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка формирования акта списания (PrintWord_Act_decommission)");
             }
-            
+
         }
 
 
