@@ -632,17 +632,18 @@ namespace ServiceTelecomConnect
                 try
                 {
                     //MessageBox.Show(months);
+                    var AddExecutionQuery = "";
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
                         dgw.Rows[row.Index].Cells[40].Value = months;
                     }
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = (String)dgw.Rows[index].Cells[40].Value;//проверить индекс
+                        var rowState = dgw.Rows[index].Cells[40].Value.ToString();//проверить индекс
 
                         if (rowState == months)
                         {
-                            var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                            //var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                             var poligon = dgw.Rows[index].Cells[1].Value.ToString();
                             var company = dgw.Rows[index].Cells[2].Value.ToString();
                             var location = dgw.Rows[index].Cells[3].Value.ToString();
@@ -653,15 +654,38 @@ namespace ServiceTelecomConnect
                             var dateTO = dgw.Rows[index].Cells[8].Value.ToString();
                             var numberAct = dgw.Rows[index].Cells[9].Value.ToString();
                             var city = dgw.Rows[index].Cells[10].Value.ToString();
-                            var price = (Decimal)dgw.Rows[index].Cells[11].Value;
+                            var price = dgw.Rows[index].Cells[11].Value.ToString();
                             var numberActRemont = dgw.Rows[index].Cells[17].Value.ToString();
                             var category = dgw.Rows[index].Cells[18].Value.ToString();
-                            var priceRemont = (Decimal)dgw.Rows[index].Cells[19].Value;       
+                            var priceRemont = dgw.Rows[index].Cells[19].Value.ToString();
                             var decommissionSerialNumber = dgw.Rows[index].Cells[38].Value.ToString();
                             var comment = dgw.Rows[index].Cells[39].Value.ToString();
+                            
+                            if (months == "Январь")
+                            {
+                                var january = "Январь";
+                                var february = "";
+                                var march = "";
+                                var april = "";
+                                var may = "";
+                                var june = "";
+                                var july = "";
+                                var august = "";
+                                var september = "";
+                                var october = "";
+                                var november = "";
+                                var december = "";
 
-                            var AddExecutionQuery = $"DELETE FROM radiostantion WHERE id = {id}";
-
+                                AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                                    $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, january, february, march, april, may," +
+                                    $"june, july, august, september, october, november, december) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                    $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
+                                    $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
+                                    $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{january.Trim()}', '{february.Trim()}', '{march.Trim()}', '{april.Trim()}'," +
+                                    $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
+                                    $"'{december.Trim()}')";
+                            }
                             using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
@@ -671,8 +695,9 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.ToString());
                     MessageBox.Show("Ошибка AddExecutionRowСell");
                 }
             }
@@ -1041,13 +1066,13 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка SortRemontAct");
                 return remontAct = "Отсутсвует";
             }
-            
+
         }
 
         #endregion
 
         #region показать уникальные данные по поиску
-       
+
         internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1072,9 +1097,9 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода Number_unique_company");
             }
-            
+
         }
-        
+
         internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1099,10 +1124,10 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода Number_unique_location");
             }
-            
+
         }
 
-        
+
         internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1126,11 +1151,11 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_dateTO");
-            }  
+            }
         }
 
-        
-        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts )
+
+        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
             {
@@ -1153,10 +1178,10 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_numberAct");
-            }   
+            }
         }
-        
-        
+
+
         internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1180,9 +1205,9 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_numberActRemont");
-            }     
+            }
         }
-        
+
         internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1206,7 +1231,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_representative");
-            }  
+            }
         }
         internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
@@ -1232,7 +1257,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода Number_unique_decommissionActs");
             }
-            
+
         }
         #endregion
     }
