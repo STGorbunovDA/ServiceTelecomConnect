@@ -99,43 +99,19 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.txB_comment = new System.Windows.Forms.TextBox();
             this.txB_decommissionSerialNumber = new System.Windows.Forms.TextBox();
-            this.txb_flag_all_BD = new System.Windows.Forms.TextBox();
-            this.textBox_parts_7 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_6 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_5 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_4 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_3 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_2 = new System.Windows.Forms.TextBox();
-            this.textBox_parts_1 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_7 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_6 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_5 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_4 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_3 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_2 = new System.Windows.Forms.TextBox();
-            this.textBox_сompleted_works_1 = new System.Windows.Forms.TextBox();
-            this.textBox_batteryСharger = new System.Windows.Forms.TextBox();
-            this.textBox_AKB = new System.Windows.Forms.TextBox();
-            this.textBox_manipulator = new System.Windows.Forms.TextBox();
-            this.textBox_antenna = new System.Windows.Forms.TextBox();
-            this.textBox_city = new System.Windows.Forms.TextBox();
-            this.textBox_post = new System.Windows.Forms.TextBox();
-            this.textBox_numberIdentification = new System.Windows.Forms.TextBox();
-            this.textBox_dateIssue = new System.Windows.Forms.TextBox();
-            this.textBox_phoneNumber = new System.Windows.Forms.TextBox();
-            this.textBox_priceRemont = new System.Windows.Forms.TextBox();
-            this.comboBox_сategory = new System.Windows.Forms.ComboBox();
-            this.textBox_representative = new System.Windows.Forms.TextBox();
-            this.comboBox_model = new System.Windows.Forms.ComboBox();
-            this.comboBox_poligon = new System.Windows.Forms.ComboBox();
-            this.textBox_price = new System.Windows.Forms.TextBox();
-            this.textBox_id = new System.Windows.Forms.TextBox();
-            this.textBox_location = new System.Windows.Forms.TextBox();
-            this.textBox_dateTO = new System.Windows.Forms.TextBox();
-            this.textBox_networkNumber = new System.Windows.Forms.TextBox();
-            this.textBox_inventoryNumber = new System.Windows.Forms.TextBox();
-            this.textBox_company = new System.Windows.Forms.TextBox();
-            this.textBox_serialNumber = new System.Windows.Forms.TextBox();
+            this.txB_city = new System.Windows.Forms.TextBox();
+            this.txB_priceRemont = new System.Windows.Forms.TextBox();
+            this.cmB_сategory = new System.Windows.Forms.ComboBox();
+            this.cmB_model = new System.Windows.Forms.ComboBox();
+            this.txB_poligon = new System.Windows.Forms.ComboBox();
+            this.txB_price = new System.Windows.Forms.TextBox();
+            this.txB_id = new System.Windows.Forms.TextBox();
+            this.txB_location = new System.Windows.Forms.TextBox();
+            this.txB_dateTO = new System.Windows.Forms.TextBox();
+            this.txB_networkNumber = new System.Windows.Forms.TextBox();
+            this.txB_inventoryNumber = new System.Windows.Forms.TextBox();
+            this.txB_company = new System.Windows.Forms.TextBox();
+            this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
@@ -160,11 +136,11 @@
             this.comboBox_seach = new System.Windows.Forms.ComboBox();
             this.label_doverennost = new System.Windows.Forms.Label();
             this.label_FIO_chief = new System.Windows.Forms.Label();
-            this.textBox_numberAct = new System.Windows.Forms.TextBox();
+            this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox2_update = new System.Windows.Forms.PictureBox();
             this.pictureBox1_clear = new System.Windows.Forms.PictureBox();
-            this.textBox_numberActRemont = new System.Windows.Forms.TextBox();
+            this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txB_Sign = new System.Windows.Forms.TextBox();
             this.lbl_Sign = new System.Windows.Forms.Label();
@@ -237,6 +213,18 @@
             this.showMatchPreviouYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFullDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txB_january = new System.Windows.Forms.TextBox();
+            this.txB_february = new System.Windows.Forms.TextBox();
+            this.txB_march = new System.Windows.Forms.TextBox();
+            this.txB_april = new System.Windows.Forms.TextBox();
+            this.txB_may = new System.Windows.Forms.TextBox();
+            this.txB_june = new System.Windows.Forms.TextBox();
+            this.txB_july = new System.Windows.Forms.TextBox();
+            this.txB_august = new System.Windows.Forms.TextBox();
+            this.txB_september = new System.Windows.Forms.TextBox();
+            this.txB_october = new System.Windows.Forms.TextBox();
+            this.txB_november = new System.Windows.Forms.TextBox();
+            this.txB_december = new System.Windows.Forms.TextBox();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -1043,55 +1031,43 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txB_december);
+            this.panel2.Controls.Add(this.txB_november);
+            this.panel2.Controls.Add(this.txB_october);
+            this.panel2.Controls.Add(this.txB_september);
+            this.panel2.Controls.Add(this.txB_august);
+            this.panel2.Controls.Add(this.txB_july);
+            this.panel2.Controls.Add(this.txB_june);
+            this.panel2.Controls.Add(this.txB_may);
+            this.panel2.Controls.Add(this.txB_april);
+            this.panel2.Controls.Add(this.txB_march);
+            this.panel2.Controls.Add(this.txB_february);
+            this.panel2.Controls.Add(this.txB_january);
             this.panel2.Controls.Add(this.txB_comment);
             this.panel2.Controls.Add(this.txB_decommissionSerialNumber);
-            this.panel2.Controls.Add(this.txb_flag_all_BD);
-            this.panel2.Controls.Add(this.textBox_parts_7);
-            this.panel2.Controls.Add(this.textBox_parts_6);
-            this.panel2.Controls.Add(this.textBox_parts_5);
-            this.panel2.Controls.Add(this.textBox_parts_4);
-            this.panel2.Controls.Add(this.textBox_parts_3);
-            this.panel2.Controls.Add(this.textBox_parts_2);
-            this.panel2.Controls.Add(this.textBox_parts_1);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_7);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_6);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_5);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_4);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_3);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_2);
-            this.panel2.Controls.Add(this.textBox_сompleted_works_1);
-            this.panel2.Controls.Add(this.textBox_batteryСharger);
-            this.panel2.Controls.Add(this.textBox_AKB);
-            this.panel2.Controls.Add(this.textBox_manipulator);
-            this.panel2.Controls.Add(this.textBox_antenna);
-            this.panel2.Controls.Add(this.textBox_city);
-            this.panel2.Controls.Add(this.textBox_post);
-            this.panel2.Controls.Add(this.textBox_numberIdentification);
-            this.panel2.Controls.Add(this.textBox_dateIssue);
-            this.panel2.Controls.Add(this.textBox_phoneNumber);
-            this.panel2.Controls.Add(this.textBox_priceRemont);
-            this.panel2.Controls.Add(this.comboBox_сategory);
-            this.panel2.Controls.Add(this.textBox_representative);
-            this.panel2.Controls.Add(this.comboBox_model);
-            this.panel2.Controls.Add(this.comboBox_poligon);
-            this.panel2.Controls.Add(this.textBox_price);
-            this.panel2.Controls.Add(this.textBox_id);
-            this.panel2.Controls.Add(this.textBox_location);
-            this.panel2.Controls.Add(this.textBox_dateTO);
-            this.panel2.Controls.Add(this.textBox_networkNumber);
-            this.panel2.Controls.Add(this.textBox_inventoryNumber);
-            this.panel2.Controls.Add(this.textBox_company);
+            this.panel2.Controls.Add(this.txB_city);
+            this.panel2.Controls.Add(this.txB_priceRemont);
+            this.panel2.Controls.Add(this.cmB_сategory);
+            this.panel2.Controls.Add(this.cmB_model);
+            this.panel2.Controls.Add(this.txB_poligon);
+            this.panel2.Controls.Add(this.txB_price);
+            this.panel2.Controls.Add(this.txB_id);
+            this.panel2.Controls.Add(this.txB_location);
+            this.panel2.Controls.Add(this.txB_dateTO);
+            this.panel2.Controls.Add(this.txB_networkNumber);
+            this.panel2.Controls.Add(this.txB_inventoryNumber);
+            this.panel2.Controls.Add(this.txB_company);
             this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(93, 626);
+            this.panel2.Location = new System.Drawing.Point(93, 668);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1078, 71);
+            this.panel2.Size = new System.Drawing.Size(1133, 47);
             this.panel2.TabIndex = 2;
             this.panel2.Visible = false;
             // 
             // txB_comment
             // 
             this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_comment.Location = new System.Drawing.Point(673, 42);
+            this.txB_comment.Location = new System.Drawing.Point(543, 6);
             this.txB_comment.Name = "txB_comment";
             this.txB_comment.Size = new System.Drawing.Size(35, 26);
             this.txB_comment.TabIndex = 108;
@@ -1100,266 +1076,51 @@
             // txB_decommissionSerialNumber
             // 
             this.txB_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_decommissionSerialNumber.Location = new System.Drawing.Point(630, 42);
+            this.txB_decommissionSerialNumber.Location = new System.Drawing.Point(500, 6);
             this.txB_decommissionSerialNumber.Name = "txB_decommissionSerialNumber";
             this.txB_decommissionSerialNumber.Size = new System.Drawing.Size(33, 26);
             this.txB_decommissionSerialNumber.TabIndex = 107;
             // 
-            // txb_flag_all_BD
+            // txB_city
             // 
-            this.txb_flag_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txb_flag_all_BD.Location = new System.Drawing.Point(1022, 42);
-            this.txb_flag_all_BD.Name = "txb_flag_all_BD";
-            this.txb_flag_all_BD.Size = new System.Drawing.Size(49, 26);
-            this.txb_flag_all_BD.TabIndex = 106;
-            this.txb_flag_all_BD.Visible = false;
+            this.txB_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_city.Location = new System.Drawing.Point(334, 3);
+            this.txB_city.Name = "txB_city";
+            this.txB_city.Size = new System.Drawing.Size(36, 26);
+            this.txB_city.TabIndex = 87;
             // 
-            // textBox_parts_7
+            // txB_priceRemont
             // 
-            this.textBox_parts_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_7.Location = new System.Drawing.Point(591, 42);
-            this.textBox_parts_7.Name = "textBox_parts_7";
-            this.textBox_parts_7.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_7.TabIndex = 105;
-            this.textBox_parts_7.Visible = false;
+            this.txB_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_priceRemont.Location = new System.Drawing.Point(459, 5);
+            this.txB_priceRemont.Name = "txB_priceRemont";
+            this.txB_priceRemont.ReadOnly = true;
+            this.txB_priceRemont.Size = new System.Drawing.Size(35, 26);
+            this.txB_priceRemont.TabIndex = 76;
             // 
-            // textBox_parts_6
+            // cmB_сategory
             // 
-            this.textBox_parts_6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_6.Location = new System.Drawing.Point(550, 42);
-            this.textBox_parts_6.Name = "textBox_parts_6";
-            this.textBox_parts_6.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_6.TabIndex = 104;
-            this.textBox_parts_6.Visible = false;
-            // 
-            // textBox_parts_5
-            // 
-            this.textBox_parts_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_5.Location = new System.Drawing.Point(509, 42);
-            this.textBox_parts_5.Name = "textBox_parts_5";
-            this.textBox_parts_5.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_5.TabIndex = 103;
-            this.textBox_parts_5.Visible = false;
-            // 
-            // textBox_parts_4
-            // 
-            this.textBox_parts_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_4.Location = new System.Drawing.Point(468, 42);
-            this.textBox_parts_4.Name = "textBox_parts_4";
-            this.textBox_parts_4.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_4.TabIndex = 102;
-            this.textBox_parts_4.Visible = false;
-            // 
-            // textBox_parts_3
-            // 
-            this.textBox_parts_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_3.Location = new System.Drawing.Point(427, 42);
-            this.textBox_parts_3.Name = "textBox_parts_3";
-            this.textBox_parts_3.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_3.TabIndex = 101;
-            this.textBox_parts_3.Visible = false;
-            // 
-            // textBox_parts_2
-            // 
-            this.textBox_parts_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_2.Location = new System.Drawing.Point(386, 42);
-            this.textBox_parts_2.Name = "textBox_parts_2";
-            this.textBox_parts_2.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_2.TabIndex = 100;
-            this.textBox_parts_2.Visible = false;
-            // 
-            // textBox_parts_1
-            // 
-            this.textBox_parts_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_parts_1.Location = new System.Drawing.Point(345, 42);
-            this.textBox_parts_1.Name = "textBox_parts_1";
-            this.textBox_parts_1.Size = new System.Drawing.Size(35, 26);
-            this.textBox_parts_1.TabIndex = 99;
-            this.textBox_parts_1.Visible = false;
-            // 
-            // textBox_сompleted_works_7
-            // 
-            this.textBox_сompleted_works_7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_7.Location = new System.Drawing.Point(251, 42);
-            this.textBox_сompleted_works_7.Name = "textBox_сompleted_works_7";
-            this.textBox_сompleted_works_7.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_7.TabIndex = 98;
-            this.textBox_сompleted_works_7.Visible = false;
-            // 
-            // textBox_сompleted_works_6
-            // 
-            this.textBox_сompleted_works_6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_6.Location = new System.Drawing.Point(210, 42);
-            this.textBox_сompleted_works_6.Name = "textBox_сompleted_works_6";
-            this.textBox_сompleted_works_6.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_6.TabIndex = 97;
-            this.textBox_сompleted_works_6.Visible = false;
-            // 
-            // textBox_сompleted_works_5
-            // 
-            this.textBox_сompleted_works_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_5.Location = new System.Drawing.Point(169, 42);
-            this.textBox_сompleted_works_5.Name = "textBox_сompleted_works_5";
-            this.textBox_сompleted_works_5.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_5.TabIndex = 96;
-            this.textBox_сompleted_works_5.Visible = false;
-            // 
-            // textBox_сompleted_works_4
-            // 
-            this.textBox_сompleted_works_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_4.Location = new System.Drawing.Point(128, 42);
-            this.textBox_сompleted_works_4.Name = "textBox_сompleted_works_4";
-            this.textBox_сompleted_works_4.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_4.TabIndex = 95;
-            this.textBox_сompleted_works_4.Visible = false;
-            // 
-            // textBox_сompleted_works_3
-            // 
-            this.textBox_сompleted_works_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_3.Location = new System.Drawing.Point(87, 42);
-            this.textBox_сompleted_works_3.Name = "textBox_сompleted_works_3";
-            this.textBox_сompleted_works_3.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_3.TabIndex = 94;
-            this.textBox_сompleted_works_3.Visible = false;
-            // 
-            // textBox_сompleted_works_2
-            // 
-            this.textBox_сompleted_works_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_2.Location = new System.Drawing.Point(46, 42);
-            this.textBox_сompleted_works_2.Name = "textBox_сompleted_works_2";
-            this.textBox_сompleted_works_2.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_2.TabIndex = 93;
-            this.textBox_сompleted_works_2.Visible = false;
-            // 
-            // textBox_сompleted_works_1
-            // 
-            this.textBox_сompleted_works_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_сompleted_works_1.Location = new System.Drawing.Point(5, 42);
-            this.textBox_сompleted_works_1.Name = "textBox_сompleted_works_1";
-            this.textBox_сompleted_works_1.Size = new System.Drawing.Size(35, 26);
-            this.textBox_сompleted_works_1.TabIndex = 92;
-            this.textBox_сompleted_works_1.Visible = false;
-            // 
-            // textBox_batteryСharger
-            // 
-            this.textBox_batteryСharger.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_batteryСharger.Location = new System.Drawing.Point(1036, 3);
-            this.textBox_batteryСharger.Name = "textBox_batteryСharger";
-            this.textBox_batteryСharger.Size = new System.Drawing.Size(35, 26);
-            this.textBox_batteryСharger.TabIndex = 91;
-            this.textBox_batteryСharger.Visible = false;
-            // 
-            // textBox_AKB
-            // 
-            this.textBox_AKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_AKB.Location = new System.Drawing.Point(995, 3);
-            this.textBox_AKB.Name = "textBox_AKB";
-            this.textBox_AKB.Size = new System.Drawing.Size(35, 26);
-            this.textBox_AKB.TabIndex = 90;
-            this.textBox_AKB.Visible = false;
-            // 
-            // textBox_manipulator
-            // 
-            this.textBox_manipulator.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_manipulator.Location = new System.Drawing.Point(954, 3);
-            this.textBox_manipulator.Name = "textBox_manipulator";
-            this.textBox_manipulator.Size = new System.Drawing.Size(35, 26);
-            this.textBox_manipulator.TabIndex = 89;
-            this.textBox_manipulator.Visible = false;
-            // 
-            // textBox_antenna
-            // 
-            this.textBox_antenna.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_antenna.Location = new System.Drawing.Point(913, 3);
-            this.textBox_antenna.Name = "textBox_antenna";
-            this.textBox_antenna.Size = new System.Drawing.Size(35, 26);
-            this.textBox_antenna.TabIndex = 88;
-            this.textBox_antenna.Visible = false;
-            // 
-            // textBox_city
-            // 
-            this.textBox_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_city.Location = new System.Drawing.Point(418, 3);
-            this.textBox_city.Name = "textBox_city";
-            this.textBox_city.Size = new System.Drawing.Size(36, 26);
-            this.textBox_city.TabIndex = 87;
-            // 
-            // textBox_post
-            // 
-            this.textBox_post.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_post.Location = new System.Drawing.Point(544, 3);
-            this.textBox_post.Name = "textBox_post";
-            this.textBox_post.Size = new System.Drawing.Size(35, 26);
-            this.textBox_post.TabIndex = 84;
-            this.textBox_post.Visible = false;
-            // 
-            // textBox_numberIdentification
-            // 
-            this.textBox_numberIdentification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_numberIdentification.Location = new System.Drawing.Point(585, 3);
-            this.textBox_numberIdentification.Name = "textBox_numberIdentification";
-            this.textBox_numberIdentification.Size = new System.Drawing.Size(35, 26);
-            this.textBox_numberIdentification.TabIndex = 83;
-            this.textBox_numberIdentification.Visible = false;
-            // 
-            // textBox_dateIssue
-            // 
-            this.textBox_dateIssue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_dateIssue.Location = new System.Drawing.Point(626, 3);
-            this.textBox_dateIssue.Name = "textBox_dateIssue";
-            this.textBox_dateIssue.Size = new System.Drawing.Size(35, 26);
-            this.textBox_dateIssue.TabIndex = 82;
-            this.textBox_dateIssue.Visible = false;
-            // 
-            // textBox_phoneNumber
-            // 
-            this.textBox_phoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_phoneNumber.Location = new System.Drawing.Point(667, 3);
-            this.textBox_phoneNumber.Name = "textBox_phoneNumber";
-            this.textBox_phoneNumber.Size = new System.Drawing.Size(35, 26);
-            this.textBox_phoneNumber.TabIndex = 81;
-            this.textBox_phoneNumber.Visible = false;
-            // 
-            // textBox_priceRemont
-            // 
-            this.textBox_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_priceRemont.Location = new System.Drawing.Point(790, 3);
-            this.textBox_priceRemont.Name = "textBox_priceRemont";
-            this.textBox_priceRemont.ReadOnly = true;
-            this.textBox_priceRemont.Size = new System.Drawing.Size(35, 26);
-            this.textBox_priceRemont.TabIndex = 76;
-            // 
-            // comboBox_сategory
-            // 
-            this.comboBox_сategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_сategory.Enabled = false;
-            this.comboBox_сategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_сategory.FormattingEnabled = true;
-            this.comboBox_сategory.Items.AddRange(new object[] {
+            this.cmB_сategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_сategory.Enabled = false;
+            this.cmB_сategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_сategory.FormattingEnabled = true;
+            this.cmB_сategory.Items.AddRange(new object[] {
             "",
             "3",
             "4",
             "5",
             "6"});
-            this.comboBox_сategory.Location = new System.Drawing.Point(749, 1);
-            this.comboBox_сategory.Name = "comboBox_сategory";
-            this.comboBox_сategory.Size = new System.Drawing.Size(35, 28);
-            this.comboBox_сategory.TabIndex = 74;
+            this.cmB_сategory.Location = new System.Drawing.Point(418, 3);
+            this.cmB_сategory.Name = "cmB_сategory";
+            this.cmB_сategory.Size = new System.Drawing.Size(35, 28);
+            this.cmB_сategory.TabIndex = 74;
             // 
-            // textBox_representative
+            // cmB_model
             // 
-            this.textBox_representative.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_representative.Location = new System.Drawing.Point(502, 3);
-            this.textBox_representative.Name = "textBox_representative";
-            this.textBox_representative.Size = new System.Drawing.Size(36, 26);
-            this.textBox_representative.TabIndex = 69;
-            // 
-            // comboBox_model
-            // 
-            this.comboBox_model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_model.FormattingEnabled = true;
-            this.comboBox_model.Items.AddRange(new object[] {
+            this.cmB_model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_model.FormattingEnabled = true;
+            this.cmB_model.Items.AddRange(new object[] {
             "Icom IC-F3GT",
             "Icom IC-F11",
             "Icom IC-F16",
@@ -1386,93 +1147,93 @@
             "Vertex - 261",
             "РНД-500",
             "РА-160"});
-            this.comboBox_model.Location = new System.Drawing.Point(168, 1);
-            this.comboBox_model.Name = "comboBox_model";
-            this.comboBox_model.Size = new System.Drawing.Size(33, 28);
-            this.comboBox_model.TabIndex = 57;
+            this.cmB_model.Location = new System.Drawing.Point(168, 1);
+            this.cmB_model.Name = "cmB_model";
+            this.cmB_model.Size = new System.Drawing.Size(33, 28);
+            this.cmB_model.TabIndex = 57;
             // 
-            // comboBox_poligon
+            // txB_poligon
             // 
-            this.comboBox_poligon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_poligon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_poligon.FormattingEnabled = true;
-            this.comboBox_poligon.Items.AddRange(new object[] {
+            this.txB_poligon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txB_poligon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_poligon.FormattingEnabled = true;
+            this.txB_poligon.Items.AddRange(new object[] {
             "РЦС-1",
             "РЦС-2",
             "РЦС-3",
             "РЦС-4",
             "РЦС-5",
             "РЦС-6"});
-            this.comboBox_poligon.Location = new System.Drawing.Point(44, 1);
-            this.comboBox_poligon.Name = "comboBox_poligon";
-            this.comboBox_poligon.Size = new System.Drawing.Size(35, 28);
-            this.comboBox_poligon.TabIndex = 56;
+            this.txB_poligon.Location = new System.Drawing.Point(44, 1);
+            this.txB_poligon.Name = "txB_poligon";
+            this.txB_poligon.Size = new System.Drawing.Size(35, 28);
+            this.txB_poligon.TabIndex = 56;
             // 
-            // textBox_price
+            // txB_price
             // 
-            this.textBox_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_price.Location = new System.Drawing.Point(460, 3);
-            this.textBox_price.Name = "textBox_price";
-            this.textBox_price.Size = new System.Drawing.Size(36, 26);
-            this.textBox_price.TabIndex = 25;
+            this.txB_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_price.Location = new System.Drawing.Point(376, 3);
+            this.txB_price.Name = "txB_price";
+            this.txB_price.Size = new System.Drawing.Size(36, 26);
+            this.txB_price.TabIndex = 25;
             // 
-            // textBox_id
+            // txB_id
             // 
-            this.textBox_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_id.Location = new System.Drawing.Point(5, 3);
-            this.textBox_id.Name = "textBox_id";
-            this.textBox_id.Size = new System.Drawing.Size(33, 26);
-            this.textBox_id.TabIndex = 18;
+            this.txB_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_id.Location = new System.Drawing.Point(5, 3);
+            this.txB_id.Name = "txB_id";
+            this.txB_id.Size = new System.Drawing.Size(33, 26);
+            this.txB_id.TabIndex = 18;
             // 
-            // textBox_location
+            // txB_location
             // 
-            this.textBox_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_location.Location = new System.Drawing.Point(126, 3);
-            this.textBox_location.Name = "textBox_location";
-            this.textBox_location.Size = new System.Drawing.Size(35, 26);
-            this.textBox_location.TabIndex = 15;
+            this.txB_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_location.Location = new System.Drawing.Point(126, 3);
+            this.txB_location.Name = "txB_location";
+            this.txB_location.Size = new System.Drawing.Size(35, 26);
+            this.txB_location.TabIndex = 15;
             // 
-            // textBox_dateTO
+            // txB_dateTO
             // 
-            this.textBox_dateTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_dateTO.Location = new System.Drawing.Point(334, 3);
-            this.textBox_dateTO.Name = "textBox_dateTO";
-            this.textBox_dateTO.Size = new System.Drawing.Size(36, 26);
-            this.textBox_dateTO.TabIndex = 14;
+            this.txB_dateTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_dateTO.Location = new System.Drawing.Point(292, 3);
+            this.txB_dateTO.Name = "txB_dateTO";
+            this.txB_dateTO.Size = new System.Drawing.Size(36, 26);
+            this.txB_dateTO.TabIndex = 14;
             // 
-            // textBox_networkNumber
+            // txB_networkNumber
             // 
-            this.textBox_networkNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_networkNumber.Location = new System.Drawing.Point(292, 3);
-            this.textBox_networkNumber.Name = "textBox_networkNumber";
-            this.textBox_networkNumber.Size = new System.Drawing.Size(36, 26);
-            this.textBox_networkNumber.TabIndex = 13;
+            this.txB_networkNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_networkNumber.Location = new System.Drawing.Point(250, 3);
+            this.txB_networkNumber.Name = "txB_networkNumber";
+            this.txB_networkNumber.Size = new System.Drawing.Size(36, 26);
+            this.txB_networkNumber.TabIndex = 13;
             // 
-            // textBox_inventoryNumber
+            // txB_inventoryNumber
             // 
-            this.textBox_inventoryNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_inventoryNumber.Location = new System.Drawing.Point(249, 3);
-            this.textBox_inventoryNumber.Name = "textBox_inventoryNumber";
-            this.textBox_inventoryNumber.Size = new System.Drawing.Size(36, 26);
-            this.textBox_inventoryNumber.TabIndex = 12;
+            this.txB_inventoryNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_inventoryNumber.Location = new System.Drawing.Point(207, 3);
+            this.txB_inventoryNumber.Name = "txB_inventoryNumber";
+            this.txB_inventoryNumber.Size = new System.Drawing.Size(36, 26);
+            this.txB_inventoryNumber.TabIndex = 12;
             // 
-            // textBox_company
+            // txB_company
             // 
-            this.textBox_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_company.Location = new System.Drawing.Point(85, 3);
-            this.textBox_company.Name = "textBox_company";
-            this.textBox_company.Size = new System.Drawing.Size(35, 26);
-            this.textBox_company.TabIndex = 10;
+            this.txB_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_company.Location = new System.Drawing.Point(85, 3);
+            this.txB_company.Name = "txB_company";
+            this.txB_company.Size = new System.Drawing.Size(35, 26);
+            this.txB_company.TabIndex = 10;
             // 
-            // textBox_serialNumber
+            // txB_serialNumber
             // 
-            this.textBox_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_serialNumber.Location = new System.Drawing.Point(12, 108);
-            this.textBox_serialNumber.Name = "textBox_serialNumber";
-            this.textBox_serialNumber.ReadOnly = true;
-            this.textBox_serialNumber.Size = new System.Drawing.Size(235, 26);
-            this.textBox_serialNumber.TabIndex = 11;
-            this.textBox_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_serialNumber.Location = new System.Drawing.Point(12, 108);
+            this.txB_serialNumber.Name = "txB_serialNumber";
+            this.txB_serialNumber.ReadOnly = true;
+            this.txB_serialNumber.Size = new System.Drawing.Size(235, 26);
+            this.txB_serialNumber.TabIndex = 11;
+            this.txB_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // toolTip1
             // 
@@ -1499,7 +1260,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.button_form_act);
-            this.panel1.Controls.Add(this.textBox_serialNumber);
+            this.panel1.Controls.Add(this.txB_serialNumber);
             this.panel1.Controls.Add(this.button_new_add_rst_form);
             this.panel1.Controls.Add(this.label29);
             this.panel1.Controls.Add(this.label28);
@@ -1511,11 +1272,11 @@
             this.panel1.Controls.Add(this.comboBox_seach);
             this.panel1.Controls.Add(this.label_doverennost);
             this.panel1.Controls.Add(this.label_FIO_chief);
-            this.panel1.Controls.Add(this.textBox_numberAct);
+            this.panel1.Controls.Add(this.txB_numberAct);
             this.panel1.Controls.Add(this.textBox_search);
             this.panel1.Controls.Add(this.pictureBox2_update);
             this.panel1.Controls.Add(this.pictureBox1_clear);
-            this.panel1.Controls.Add(this.textBox_numberActRemont);
+            this.panel1.Controls.Add(this.txB_numberActRemont);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1427, 145);
@@ -1820,17 +1581,17 @@
             this.label_FIO_chief.MouseEnter += new System.EventHandler(this.Label_FIO_chief_MouseEnter);
             this.label_FIO_chief.MouseLeave += new System.EventHandler(this.Label_FIO_chief_MouseLeave);
             // 
-            // textBox_numberAct
+            // txB_numberAct
             // 
-            this.textBox_numberAct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txB_numberAct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_numberAct.Location = new System.Drawing.Point(1177, 52);
-            this.textBox_numberAct.Name = "textBox_numberAct";
-            this.textBox_numberAct.Size = new System.Drawing.Size(96, 29);
-            this.textBox_numberAct.TabIndex = 27;
-            this.textBox_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
-            this.textBox_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
+            this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_numberAct.Location = new System.Drawing.Point(1177, 52);
+            this.txB_numberAct.Name = "txB_numberAct";
+            this.txB_numberAct.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberAct.TabIndex = 27;
+            this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
+            this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
             // 
             // textBox_search
             // 
@@ -1872,16 +1633,16 @@
             this.pictureBox1_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
             this.pictureBox1_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
             // 
-            // textBox_numberActRemont
+            // txB_numberActRemont
             // 
-            this.textBox_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txB_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_numberActRemont.Location = new System.Drawing.Point(1177, 87);
-            this.textBox_numberActRemont.Name = "textBox_numberActRemont";
-            this.textBox_numberActRemont.ReadOnly = true;
-            this.textBox_numberActRemont.Size = new System.Drawing.Size(96, 29);
-            this.textBox_numberActRemont.TabIndex = 72;
+            this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_numberActRemont.Location = new System.Drawing.Point(1177, 87);
+            this.txB_numberActRemont.Name = "txB_numberActRemont";
+            this.txB_numberActRemont.ReadOnly = true;
+            this.txB_numberActRemont.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberActRemont.TabIndex = 72;
             // 
             // panel3
             // 
@@ -2539,7 +2300,7 @@
             this.актToolStripMenuItem,
             this.базаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 70);
             // 
             // радиостанцияToolStripMenuItem
             // 
@@ -2552,7 +2313,7 @@
             this.decommissionRadiostationToolStripMenuItem,
             this.delDecommissionToolStripMenuItem});
             this.радиостанцияToolStripMenuItem.Name = "радиостанцияToolStripMenuItem";
-            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.радиостанцияToolStripMenuItem.Text = "Радиостанция";
             // 
             // addNewRadiostationToolStripMenuItem
@@ -2606,7 +2367,7 @@
             this.actTOSignatureToolStripMenuItem,
             this.createActDecommissionToolStripMenuItem});
             this.актToolStripMenuItem.Name = "актToolStripMenuItem";
-            this.актToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.актToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.актToolStripMenuItem.Text = "Акт";
             // 
             // createActTOToolStripMenuItem
@@ -2647,7 +2408,7 @@
             this.showFullDecommissionToolStripMenuItem,
             this.saveBaseToolStripMenuItem});
             this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
-            this.базаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.базаToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.базаToolStripMenuItem.Text = "База";
             // 
             // updateBaseToolStripMenuItem
@@ -2673,6 +2434,114 @@
             this.saveBaseToolStripMenuItem.Name = "saveBaseToolStripMenuItem";
             this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
             this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
+            // 
+            // txB_january
+            // 
+            this.txB_january.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_january.Location = new System.Drawing.Point(584, 6);
+            this.txB_january.Name = "txB_january";
+            this.txB_january.Size = new System.Drawing.Size(35, 26);
+            this.txB_january.TabIndex = 109;
+            this.txB_january.Visible = false;
+            // 
+            // txB_february
+            // 
+            this.txB_february.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_february.Location = new System.Drawing.Point(625, 6);
+            this.txB_february.Name = "txB_february";
+            this.txB_february.Size = new System.Drawing.Size(35, 26);
+            this.txB_february.TabIndex = 110;
+            this.txB_february.Visible = false;
+            // 
+            // txB_march
+            // 
+            this.txB_march.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_march.Location = new System.Drawing.Point(666, 6);
+            this.txB_march.Name = "txB_march";
+            this.txB_march.Size = new System.Drawing.Size(35, 26);
+            this.txB_march.TabIndex = 111;
+            this.txB_march.Visible = false;
+            // 
+            // txB_april
+            // 
+            this.txB_april.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_april.Location = new System.Drawing.Point(707, 6);
+            this.txB_april.Name = "txB_april";
+            this.txB_april.Size = new System.Drawing.Size(35, 26);
+            this.txB_april.TabIndex = 112;
+            this.txB_april.Visible = false;
+            // 
+            // txB_may
+            // 
+            this.txB_may.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_may.Location = new System.Drawing.Point(748, 6);
+            this.txB_may.Name = "txB_may";
+            this.txB_may.Size = new System.Drawing.Size(35, 26);
+            this.txB_may.TabIndex = 113;
+            this.txB_may.Visible = false;
+            // 
+            // txB_june
+            // 
+            this.txB_june.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_june.Location = new System.Drawing.Point(788, 6);
+            this.txB_june.Name = "txB_june";
+            this.txB_june.Size = new System.Drawing.Size(35, 26);
+            this.txB_june.TabIndex = 114;
+            this.txB_june.Visible = false;
+            // 
+            // txB_july
+            // 
+            this.txB_july.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_july.Location = new System.Drawing.Point(829, 7);
+            this.txB_july.Name = "txB_july";
+            this.txB_july.Size = new System.Drawing.Size(35, 26);
+            this.txB_july.TabIndex = 115;
+            this.txB_july.Visible = false;
+            // 
+            // txB_august
+            // 
+            this.txB_august.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_august.Location = new System.Drawing.Point(869, 7);
+            this.txB_august.Name = "txB_august";
+            this.txB_august.Size = new System.Drawing.Size(35, 26);
+            this.txB_august.TabIndex = 116;
+            this.txB_august.Visible = false;
+            // 
+            // txB_september
+            // 
+            this.txB_september.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_september.Location = new System.Drawing.Point(910, 7);
+            this.txB_september.Name = "txB_september";
+            this.txB_september.Size = new System.Drawing.Size(35, 26);
+            this.txB_september.TabIndex = 117;
+            this.txB_september.Visible = false;
+            // 
+            // txB_october
+            // 
+            this.txB_october.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_october.Location = new System.Drawing.Point(951, 8);
+            this.txB_october.Name = "txB_october";
+            this.txB_october.Size = new System.Drawing.Size(35, 26);
+            this.txB_october.TabIndex = 118;
+            this.txB_october.Visible = false;
+            // 
+            // txB_november
+            // 
+            this.txB_november.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_november.Location = new System.Drawing.Point(992, 8);
+            this.txB_november.Name = "txB_november";
+            this.txB_november.Size = new System.Drawing.Size(35, 26);
+            this.txB_november.TabIndex = 119;
+            this.txB_november.Visible = false;
+            // 
+            // txB_december
+            // 
+            this.txB_december.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_december.Location = new System.Drawing.Point(1033, 9);
+            this.txB_december.Name = "txB_december";
+            this.txB_december.Size = new System.Drawing.Size(35, 26);
+            this.txB_december.TabIndex = 120;
+            this.txB_december.Visible = false;
             // 
             // ComparisonForm
             // 
@@ -2748,7 +2617,7 @@
         private System.Windows.Forms.Label label_count;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label_summ;
-        private System.Windows.Forms.TextBox textBox_numberAct;
+        private System.Windows.Forms.TextBox txB_numberAct;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label_summ_remont;
         private System.Windows.Forms.Label label22;
@@ -2779,44 +2648,21 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox_batteryСharger;
-        private System.Windows.Forms.TextBox textBox_AKB;
-        private System.Windows.Forms.TextBox textBox_manipulator;
-        private System.Windows.Forms.TextBox textBox_antenna;
-        private System.Windows.Forms.TextBox textBox_city;
-        private System.Windows.Forms.TextBox textBox_post;
-        private System.Windows.Forms.TextBox textBox_numberIdentification;
-        private System.Windows.Forms.TextBox textBox_dateIssue;
-        private System.Windows.Forms.TextBox textBox_phoneNumber;
-        private System.Windows.Forms.TextBox textBox_priceRemont;
-        private System.Windows.Forms.ComboBox comboBox_сategory;
-        private System.Windows.Forms.TextBox textBox_numberActRemont;
-        private System.Windows.Forms.TextBox textBox_representative;
-        private System.Windows.Forms.ComboBox comboBox_model;
-        private System.Windows.Forms.ComboBox comboBox_poligon;
-        private System.Windows.Forms.TextBox textBox_price;
-        private System.Windows.Forms.TextBox textBox_id;
-        private System.Windows.Forms.TextBox textBox_location;
-        private System.Windows.Forms.TextBox textBox_dateTO;
-        private System.Windows.Forms.TextBox textBox_networkNumber;
-        private System.Windows.Forms.TextBox textBox_inventoryNumber;
-        private System.Windows.Forms.TextBox textBox_serialNumber;
-        private System.Windows.Forms.TextBox textBox_company;
+        private System.Windows.Forms.TextBox txB_city;
+        private System.Windows.Forms.TextBox txB_priceRemont;
+        private System.Windows.Forms.ComboBox cmB_сategory;
+        private System.Windows.Forms.TextBox txB_numberActRemont;
+        private System.Windows.Forms.ComboBox cmB_model;
+        private System.Windows.Forms.ComboBox txB_poligon;
+        private System.Windows.Forms.TextBox txB_price;
+        private System.Windows.Forms.TextBox txB_id;
+        private System.Windows.Forms.TextBox txB_location;
+        private System.Windows.Forms.TextBox txB_dateTO;
+        private System.Windows.Forms.TextBox txB_networkNumber;
+        private System.Windows.Forms.TextBox txB_inventoryNumber;
+        private System.Windows.Forms.TextBox txB_serialNumber;
+        private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox_parts_7;
-        private System.Windows.Forms.TextBox textBox_parts_6;
-        private System.Windows.Forms.TextBox textBox_parts_5;
-        private System.Windows.Forms.TextBox textBox_parts_4;
-        private System.Windows.Forms.TextBox textBox_parts_3;
-        private System.Windows.Forms.TextBox textBox_parts_2;
-        private System.Windows.Forms.TextBox textBox_parts_1;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_7;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_6;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_5;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_4;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_3;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_2;
-        private System.Windows.Forms.TextBox textBox_сompleted_works_1;
         private System.Windows.Forms.Button button_remont_act;
         private System.Windows.Forms.Label label_act_remont;
         private System.Windows.Forms.Panel panel_remont_information_company;
@@ -2882,7 +2728,6 @@
         private System.Windows.Forms.Label label_sum_TO_selection;
         internal System.Windows.Forms.ComboBox comboBox_city;
         private System.Windows.Forms.Button button_all_BD;
-        private System.Windows.Forms.TextBox txb_flag_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.TextBox txB_decommissionSerialNumber;
@@ -2940,5 +2785,17 @@
         private System.Windows.Forms.ToolStripMenuItem showMatchPreviouYearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showFullDecommissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
+        private System.Windows.Forms.TextBox txB_december;
+        private System.Windows.Forms.TextBox txB_november;
+        private System.Windows.Forms.TextBox txB_october;
+        private System.Windows.Forms.TextBox txB_september;
+        private System.Windows.Forms.TextBox txB_august;
+        private System.Windows.Forms.TextBox txB_july;
+        private System.Windows.Forms.TextBox txB_june;
+        private System.Windows.Forms.TextBox txB_may;
+        private System.Windows.Forms.TextBox txB_april;
+        private System.Windows.Forms.TextBox txB_march;
+        private System.Windows.Forms.TextBox txB_february;
+        private System.Windows.Forms.TextBox txB_january;
     }
 }
