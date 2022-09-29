@@ -225,6 +225,7 @@
             this.txB_october = new System.Windows.Forms.TextBox();
             this.txB_november = new System.Windows.Forms.TextBox();
             this.txB_december = new System.Windows.Forms.TextBox();
+            this.txb_flag_all_BD = new System.Windows.Forms.TextBox();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -1031,6 +1032,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txb_flag_all_BD);
             this.panel2.Controls.Add(this.txB_december);
             this.panel2.Controls.Add(this.txB_november);
             this.panel2.Controls.Add(this.txB_october);
@@ -2543,6 +2545,15 @@
             this.txB_december.TabIndex = 120;
             this.txB_december.Visible = false;
             // 
+            // txb_flag_all_BD
+            // 
+            this.txb_flag_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txb_flag_all_BD.Location = new System.Drawing.Point(1074, 8);
+            this.txb_flag_all_BD.Name = "txb_flag_all_BD";
+            this.txb_flag_all_BD.Size = new System.Drawing.Size(35, 26);
+            this.txb_flag_all_BD.TabIndex = 121;
+            this.txb_flag_all_BD.Visible = false;
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2797,5 +2808,6 @@
         private System.Windows.Forms.TextBox txB_march;
         private System.Windows.Forms.TextBox txB_february;
         private System.Windows.Forms.TextBox txB_january;
+        private System.Windows.Forms.TextBox txb_flag_all_BD;
     }
 }
