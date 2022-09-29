@@ -517,6 +517,58 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void Full_BD_Curator(DataGridView dgw)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT * FROM radiostantion_сomparison_copy";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                    {
+                        DB_4.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB_4.GetInstance.CloseConnection();
+                    }
+
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 180;
+                    dgw.Columns[5].Width = 150;
+                    dgw.Columns[6].Width = 178;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+                }
+                catch (MySqlException)
+                {
+                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ");
+                }
+            }
+        }
 
         #endregion
 
@@ -838,7 +890,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
 
 
         #endregion

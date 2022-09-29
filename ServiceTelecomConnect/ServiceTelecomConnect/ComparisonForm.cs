@@ -270,9 +270,8 @@ namespace ServiceTelecomConnect
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Full_BD(dataGridView1);
+            Filling_datagridview.Full_BD_Curator(dataGridView1);
             Counters();
-            txb_flag_all_BD.Text = "Вся БД";
         }
 
         #endregion
