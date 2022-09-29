@@ -577,18 +577,31 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (dataGridView1.SelectedRows.Count > 1)
                 {
-                    return;
+                    string Mesage;
+                    Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
                 }
-                Filling_datagridview.DeleteRowСell(dataGridView1);
+                else
+                {
+                    string Mesage;
+                    Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                Filling_datagridview.DeleteRowСellCurator(dataGridView1);
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
                 txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
@@ -1115,6 +1128,7 @@ namespace ServiceTelecomConnect
                 panel3.Enabled = false;
                 Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
                 Counters();
+                txb_flag_all_BD.Text = "";
             }
         }
 
@@ -1123,6 +1137,18 @@ namespace ServiceTelecomConnect
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (txB_serialNumber.Text != "")
+                {
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                    m.Show(dataGridView1, new Point(e.X, e.Y));
+                }
+            }
+                
+                
+
             //try
             //{
             //    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")

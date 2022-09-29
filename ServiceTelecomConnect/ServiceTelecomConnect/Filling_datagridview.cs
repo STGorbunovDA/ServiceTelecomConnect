@@ -931,6 +931,41 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void DeleteRowСellCurator(DataGridView dgw)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    foreach (DataGridViewRow row in dgw.SelectedRows)
+                    {
+                        dgw.Rows[row.Index].Cells[29].Value = RowState.Deleted;
+                    }
+
+                    for (int index = 0; index < dgw.Rows.Count; index++)
+                    {
+                        var rowState = (RowState)dgw.Rows[index].Cells[29].Value;//проверить индекс
+
+                        if (rowState == RowState.Deleted)
+                        {
+                            var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                            var deleteQuery = $"DELETE FROM radiostantion_сomparison WHERE id = {id}";
+
+                            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB_4.GetInstance.GetConnection()))
+                            {
+                                DB_4.GetInstance.OpenConnection();
+                                command.ExecuteNonQuery();
+                                DB_4.GetInstance.CloseConnection();
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка DeleteRowСellCurator");
+                }
+            }
+        }
         #endregion
 
         #region Удаление ремонта
