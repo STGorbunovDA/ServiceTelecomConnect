@@ -1,9 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
@@ -360,11 +356,11 @@ namespace ServiceTelecomConnect
                                     $"'{may.Trim()}', '{june.Trim()}', '{july.Trim()}', '{august.Trim()}', '{september.Trim()}', '{october.Trim()}', '{november.Trim()}'," +
                                     $"'{december.Trim()}')";
                             }
-                            using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB.GetInstance.GetConnection()))
+                            using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
                             {
-                                DB.GetInstance.OpenConnection();
+                                DB_4.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
+                                DB_4.GetInstance.CloseConnection();
                             }
                         }
                     }

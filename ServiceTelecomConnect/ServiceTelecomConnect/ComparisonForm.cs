@@ -16,21 +16,6 @@ using WinForms = System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
-    enum RowState_Months
-    {
-        January,
-        February,
-        March,
-        April,
-        May,
-        June,
-        July,
-        August,
-        September,
-        October,
-        November,
-        December
-    }
     public partial class ComparisonForm : Form
     {
         #region global perem
@@ -52,7 +37,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        public ComparisonForm(cheakUser user)
+        public ComparisonForm()
         {
             try
             {
@@ -64,43 +49,12 @@ namespace ServiceTelecomConnect
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
                 this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
-                _user = user;
-                IsAdmin();
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Ошибка загрузки формы ST_WorkForm");
             }
         }
-
-        void IsAdmin()
-        {
-            if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
-            {
-                //panel1.Enabled = false;
-                panel3.Enabled = false;
-                Functional_loading_panel.Enabled = false;
-                panel_date.Enabled = false;
-                panel_remont_information_company.Enabled = false;
-
-                foreach (Control element in panel1.Controls)
-                {
-                    element.Enabled = false;
-                }
-
-                button_form_act.Enabled = true;
-                comboBox_city.Enabled = true;
-                button_seach_BD_city.Enabled = true;
-                button_add_city.Enabled = true;
-                button_all_BD.Enabled = true;
-                pictureBox2_update.Enabled = true;
-                comboBox_seach.Enabled = true;
-                textBox_search.Enabled = true;
-                button_search.Enabled = true;
-            }
-        }
-
 
         private void ComparisonForm_Load(object sender, EventArgs e)
         {
@@ -115,10 +69,10 @@ namespace ServiceTelecomConnect
                 {
                     try
                     {
-                        string querystring = $"SELECT city FROM radiostantion GROUP BY city";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        string querystring = $"SELECT city FROM radiostantion_сomparison GROUP BY city";
+                        using (MySqlCommand command = new MySqlCommand(querystring, DB_4.GetInstance.GetConnection()))
                         {
-                            DB.GetInstance.OpenConnection();
+                            DB_4.GetInstance.OpenConnection();
                             DataTable city_table = new DataTable();
 
                             using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -127,7 +81,7 @@ namespace ServiceTelecomConnect
 
                                 comboBox_city.DataSource = city_table;
                                 comboBox_city.DisplayMember = "city";
-                                DB.GetInstance.CloseConnection();
+                                DB_4.GetInstance.CloseConnection();
                             }
                         }
                     }
@@ -188,30 +142,15 @@ namespace ServiceTelecomConnect
                     }
                     else
                     {
-                        if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
-                        {
-                            label_doverennost.Text = "Доверенность";
-                            label_FIO_chief.Text = "Начальник";
-                            label_FIO_Engineer.Text = "Инженер";
-                            label_FIO_Engineer.Text = "Инженер";
-                            label_polinon_full.Text = "Полигон";
-                            textBox_number_printing_doc_datePanel.Text = "Печать";
-                        }
-                        else
-                        {
-                            Block_ST_Work_Form_control();
-                            panel_date.Visible = true;
-                            panel_date.Enabled = true;
-                        }
-
+                        Block_ST_Work_Form_control();
+                        panel_date.Visible = true;
+                        panel_date.Enabled = true;
                     }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
                 }
-
-
 
                 Filling_datagridview.CreateColums(dataGridView1);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);

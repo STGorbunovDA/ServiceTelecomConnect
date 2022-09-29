@@ -93,7 +93,7 @@ namespace ServiceTelecomConnect
         }
         void Label1_Click(object sender, EventArgs e)
         {
-            using (ComparisonForm comparisonForm = new ComparisonForm(_user))
+            using (ComparisonForm comparisonForm = new ComparisonForm())
             {
                 this.Hide();
                 comparisonForm.ShowDialog();
