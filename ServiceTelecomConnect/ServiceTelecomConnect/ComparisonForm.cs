@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
@@ -153,6 +154,7 @@ namespace ServiceTelecomConnect
                 }
 
                 Filling_datagridview.CreateColumsСurator(dataGridView1);
+                Filling_datagridview.CreateColumsСurator(dataGridView2);
                 Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
                 Counters();
 
@@ -215,21 +217,16 @@ namespace ServiceTelecomConnect
             }
         }
 
-        async void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             try
             {
-                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView2));
-                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView2, taskCity));
-                await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
+                Filling_datagridview.RefreshDataGridСuratorTimerEventProcessor(dataGridView2, taskCity);
 
-                await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
-                await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
-                await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
+                new Thread(() => { FunctionPanel.Get_date_save_datagridview_сurator_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
 
-                await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
-
-                //new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+                new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+                new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
             }
             catch (Exception)
             {
