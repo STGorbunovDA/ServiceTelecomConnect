@@ -47,6 +47,18 @@ namespace ServiceTelecomConnect
                             var priceRemont = dgw.Rows[index].Cells[19].Value.ToString();
                             var decommissionSerialNumber = dgw.Rows[index].Cells[38].Value.ToString();
                             var comment = dgw.Rows[index].Cells[39].Value.ToString();
+                            if(inventoryNumber == "списание" || networkNumber == "списание" || string.IsNullOrEmpty(decommissionSerialNumber) 
+                                || string.IsNullOrEmpty(inventoryNumber) || string.IsNullOrEmpty(networkNumber) || inventoryNumber == "НЕТ" 
+                                || networkNumber == "НЕТ")
+                            {
+                                string Mesage;
+                                Mesage = $"У радиостанции {serialNumber} предприятия {company} нет подтверждения ОЦОР или она списанна. Вы действительно хотите её добавить в выполнение?";
+
+                                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                                {
+                                    continue;
+                                }
+                            }
 
                             if (months == "Январь")
                             {
