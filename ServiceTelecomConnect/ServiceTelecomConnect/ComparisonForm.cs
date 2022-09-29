@@ -225,8 +225,8 @@ namespace ServiceTelecomConnect
 
                 new Thread(() => { FunctionPanel.Get_date_save_datagridview_сurator_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
 
-                new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
-                new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+                new Thread(() => { SaveFileDataGridViewPC.AutoSaveFileCurator(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+                new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy(); }) { IsBackground = true }.Start();
             }
             catch (Exception)
             {

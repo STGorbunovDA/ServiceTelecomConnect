@@ -75,7 +75,7 @@ namespace ServiceTelecomConnect
 
         void IsAdmin()
         {
-            if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+            if (_user.IsAdmin == "Дирекция связи" )
             {
                 //panel1.Enabled = false;
                 panel3.Enabled = false;
@@ -88,7 +88,6 @@ namespace ServiceTelecomConnect
                     element.Enabled = false;
                 }
 
-                button_form_act.Enabled = true;
                 comboBox_city.Enabled = true;
                 button_seach_BD_city.Enabled = true;
                 button_add_city.Enabled = true;
@@ -97,6 +96,33 @@ namespace ServiceTelecomConnect
                 comboBox_seach.Enabled = true;
                 textBox_search.Enabled = true;
                 button_search.Enabled = true;
+                cmb_number_unique_acts.Enabled = true;
+                button_search.Enabled = true;
+            }
+            else if(_user.IsAdmin == "Инженер")
+            {
+                //panel1.Enabled = false;
+                panel3.Enabled = false;
+                Functional_loading_panel.Enabled = false;
+                panel_date.Enabled = false;
+                panel_remont_information_company.Enabled = false;
+
+                foreach (Control element in panel1.Controls)
+                {
+                    element.Enabled = false;
+                }
+
+                comboBox_city.Enabled = true;
+                button_seach_BD_city.Enabled = true;
+                button_add_city.Enabled = true;
+                button_all_BD.Enabled = true;
+                pictureBox2_update.Enabled = true;
+                comboBox_seach.Enabled = true;
+                textBox_search.Enabled = true;
+                button_search.Enabled = true;
+                cmb_number_unique_acts.Enabled = true;
+                button_search.Enabled = true;
+                button_form_act.Enabled = true;
             }
         }
 

@@ -802,6 +802,45 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy()
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
+
+                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                    {
+                        if (Internet_check.AvailabilityChanged_bool())
+                        {
+                            DB_2.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB_2.GetInstance.CloseConnection();
+                        }
+                    }
+
+                    var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
+
+                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
+                    {
+                        if (Internet_check.AvailabilityChanged_bool())
+                        {
+                            DB_2.GetInstance.OpenConnection();
+                            command2.ExecuteNonQuery();
+                            DB_2.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy");
+                }
+            }
+        }
+
+
+
         #endregion
 
         #region Удаление

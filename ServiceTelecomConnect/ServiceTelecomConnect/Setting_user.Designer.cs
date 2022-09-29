@@ -199,6 +199,7 @@
             "Начальник участка",
             "Куратор",
             "Руководитель",
+            "Дирекция связи",
             "Admin"});
             this.comboBox_is_admin_post.Location = new System.Drawing.Point(570, 18);
             this.comboBox_is_admin_post.Name = "comboBox_is_admin_post";
