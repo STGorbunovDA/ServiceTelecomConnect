@@ -22,24 +22,9 @@ namespace ServiceTelecomConnect
             Deleted
         }
 
-        enum RowState_Months
-        {
-            January,
-            February,
-            March,
-            April,
-            May,
-            June,
-            July,
-            August,
-            September,
-            October,
-            November,
-            December
-        }
         #endregion
 
-        #region заполнение datagridview 1
+        #region заполнение datagridview 
 
         internal static void CreateColums(DataGridView dgw)
         {
@@ -188,7 +173,8 @@ namespace ServiceTelecomConnect
                     dgw.Columns[39].Width = 300;
 
                     //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
-                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+                    if (dgw.Rows.Count > 1)
+                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }
                 catch (Exception)
@@ -277,6 +263,126 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка ReedSingleRow");
             }
         }
+
+        internal static void CreateColumsСurator(DataGridView dgw)
+        {
+            try
+            {
+                dgw.Columns.Add("id", "№");
+                dgw.Columns.Add("poligon", "Полигон");
+                dgw.Columns.Add("company", "Предприятие");
+                dgw.Columns.Add("location", "Место нахождения");
+                dgw.Columns.Add("model", "Модель радиостанции");
+                dgw.Columns.Add("serialNumber", "Заводской номер");
+                dgw.Columns.Add("inventoryNumber", "Инвентарный номер");
+                dgw.Columns.Add("networkNumber", "Сетевой номер");
+                dgw.Columns.Add("dateTO", "Дата ТО");
+                dgw.Columns.Add("numberAct", "№ акта ТО");
+                dgw.Columns.Add("city", "Город");
+                dgw.Columns.Add("price", "Цена ТО");
+                dgw.Columns.Add("numberActRemont", "№ акта ремонта");
+                dgw.Columns.Add("category", "Категория");
+                dgw.Columns.Add("priceRemont", "Цена ремонта");
+                dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
+                dgw.Columns.Add("comment", "Примечание");
+                dgw.Columns.Add("january", "Январь");
+                dgw.Columns.Add("february", "Февраль");
+                dgw.Columns.Add("march", "Март");
+                dgw.Columns.Add("april", "Апрель");
+                dgw.Columns.Add("may", "Май");
+                dgw.Columns.Add("june", "Июнь");
+                dgw.Columns.Add("july", "Июль");
+                dgw.Columns.Add("august", "Август");
+                dgw.Columns.Add("september", "Сентябрь");
+                dgw.Columns.Add("october", "Октябрь");
+                dgw.Columns.Add("november", "Ноябрь");
+                dgw.Columns.Add("december", "Декабрь");
+                dgw.Columns.Add("IsNew", String.Empty);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка CreateColums");
+            }
+        }
+
+        internal static void ReedSingleRowСurator(DataGridView dgw, IDataRecord record)
+        {
+            try
+            {
+                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
+                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetString(19),
+                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
+                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28),  RowState.ModifieldNew)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка ReedSingleRow");
+            }
+        }
+
+        internal static void RefreshDataGridСurator(DataGridView dgw, string city)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (city != "")
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+                        string queryString = $"SELECT * FROM radiostantion_сomparison WHERE city LIKE N'%{city.Trim()}%'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                        {
+                            DB_4.GetInstance.OpenConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRowСurator(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB_4.GetInstance.CloseConnection();
+                        }
+                    }
+
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 170;
+                    dgw.Columns[5].Width = 170;
+                    dgw.Columns[6].Width = 170;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+                    dgw.Columns[39].Width = 300;
+                    if(dgw.Rows.Count > 1)
+                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGrid");
+                }
+            }
+        }
+
+
         #endregion
 
         #region загрузка всей таблицы ТО в текущем году

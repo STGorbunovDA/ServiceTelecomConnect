@@ -152,8 +152,8 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
                 }
 
-                Filling_datagridview.CreateColums(dataGridView1);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.CreateColumsСurator(dataGridView1);
+                Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
                 Counters();
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
