@@ -672,19 +672,7 @@
             this.panel_remont_information_company.Size = new System.Drawing.Size(813, 458);
             this.panel_remont_information_company.TabIndex = 29;
             this.panel_remont_information_company.Visible = false;
-            // 
-            // button_Continue_remont_act_excel
-            // 
-            this.button_Continue_remont_act_excel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Continue_remont_act_excel.Enabled = false;
-            this.button_Continue_remont_act_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Continue_remont_act_excel.Location = new System.Drawing.Point(616, 413);
-            this.button_Continue_remont_act_excel.Name = "button_Continue_remont_act_excel";
-            this.button_Continue_remont_act_excel.Size = new System.Drawing.Size(163, 29);
-            this.button_Continue_remont_act_excel.TabIndex = 36;
-            this.button_Continue_remont_act_excel.Text = "Продолжить печать";
-            this.button_Continue_remont_act_excel.UseVisualStyleBackColor = false;
-            this.button_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_excel_Click);
+            
             // 
             // textBox_BE_remont
             // 
@@ -1412,33 +1400,7 @@
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(138, 18);
             this.label30.TabIndex = 21;
-            this.label30.Text = "Доверенность:";
-            // 
-            // button_form_act
-            // 
-            this.button_form_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_form_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_form_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_form_act.Location = new System.Drawing.Point(1279, 50);
-            this.button_form_act.Name = "button_form_act";
-            this.button_form_act.Size = new System.Drawing.Size(137, 31);
-            this.button_form_act.TabIndex = 8;
-            this.button_form_act.Text = "сформировать";
-            this.button_form_act.UseVisualStyleBackColor = false;
-            this.button_form_act.Click += new System.EventHandler(this.Button_form_act_Click);
-            // 
-            // button_new_add_rst_form
-            // 
-            this.button_new_add_rst_form.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_new_add_rst_form.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_new_add_rst_form.Location = new System.Drawing.Point(12, 69);
-            this.button_new_add_rst_form.Name = "button_new_add_rst_form";
-            this.button_new_add_rst_form.Size = new System.Drawing.Size(236, 33);
-            this.button_new_add_rst_form.TabIndex = 6;
-            this.button_new_add_rst_form.Text = "Добавить новую радиостанцию";
-            this.button_new_add_rst_form.UseVisualStyleBackColor = false;
-            this.button_new_add_rst_form.Click += new System.EventHandler(this.Button_new_add_rst_form_Click);
+            this.label30.Text = "Доверенность:"; 
             // 
             // label29
             // 

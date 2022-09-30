@@ -666,6 +666,101 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
+        internal static void SearchCurator(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    var searchString = string.Empty;
+                    string perem_comboBox = "serialNumber";
+
+                    dgw.Rows.Clear();
+
+                    if (comboBox_seach == "Предприятие")
+                    {
+                        perem_comboBox = "company";
+                    }
+                    else if (comboBox_seach == "Станция")
+                    {
+                        perem_comboBox = "location";
+                    }
+                    else if (comboBox_seach == "Заводской номер")
+                    {
+                        perem_comboBox = "serialNumber";
+                    }
+                    else if (comboBox_seach == "Дата ТО")
+                    {
+                        perem_comboBox = "dateTO";
+                    }
+                    else if (comboBox_seach == "Номер акта ТО")
+                    {
+                        perem_comboBox = "numberAct";
+                    }
+                    else if (comboBox_seach == "Номер акта Ремонта")
+                    {
+                        perem_comboBox = "numberActRemont";
+                    }
+                    else if (comboBox_seach == "Представитель ПП")
+                    {
+                        perem_comboBox = "representative";
+                    }
+                    else if (comboBox_seach == "Номер Акта списания")
+                    {
+                        perem_comboBox = "decommissionSerialNumber";
+                    }
+
+                    var provSeach = textBox_search;
+                    provSeach = provSeach.ToUpper();
+
+                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                    }
+                    else if (perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                    }
+                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
+                    else
+                    {
+                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                    }
+
+                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        DB.GetInstance.CloseConnection();
+                    }
+                    if (perem_comboBox == "numberActRemont")
+                    {
+                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка Search");
+                }
+            }
+        }
+
         #endregion
 
         #region поиск отсутсвующих рст исходя из предыдущего года
@@ -1323,6 +1418,33 @@ namespace ServiceTelecomConnect
 
         }
 
+        internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY company";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "company";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+
+        }
+
         internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1350,7 +1472,6 @@ namespace ServiceTelecomConnect
 
         }
 
-
         internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1377,7 +1498,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-
         internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
@@ -1403,7 +1523,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода Number_unique_numberAct");
             }
         }
-
 
         internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
@@ -1456,6 +1575,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода Number_unique_representative");
             }
         }
+
         internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try

@@ -45,6 +45,16 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
+                comboBox_seach.Items.Clear();
+
+                comboBox_seach.Items.Add("Предприятие");
+                comboBox_seach.Items.Add("Станция");
+                comboBox_seach.Items.Add("Заводской номер");
+                comboBox_seach.Items.Add("Дата ТО");
+                comboBox_seach.Items.Add("Номер акта ТО");
+                comboBox_seach.Items.Add("Номер акта Ремонта");
+                comboBox_seach.Items.Add("Номер Акта списания");
+
                 comboBox_seach.Text = comboBox_seach.Items[2].ToString();
 
                 dataGridView1.DoubleBuffered(true);
@@ -784,6 +794,134 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка сохранения таблицы пользователем(Button_save_in_file_Click)");
             }
         }
+        #endregion
+
+        #region показать кол-во уникальных актов
+
+        void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                if (comboBox_seach.SelectedIndex == 0)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_company_curator(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Предприятия не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 1)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 3)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Даты проверки ТО не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 4)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты ТО не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 5)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты Ремонта не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 6)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 7)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else
+                {
+                    cmb_number_unique_acts.Visible = false;
+                    textBox_search.Visible = true;
+                }
+                cmb_number_unique_acts.SelectedIndex = 0;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода ComboBox_seach_SelectionChangeCommitted");
+            }
+        }
+
+
+
         #endregion
 
         #region Взаимодействие на форме Key-Press-ы, Button_click
@@ -3249,133 +3387,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region показать кол-во уникальных актов
-
-        void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            try
-            {
-                if (comboBox_seach.SelectedIndex == 0)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_company(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Предприятия не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 1)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 3)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Даты проверки ТО не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 4)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Акты ТО не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 5)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Акты Ремонта не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 6)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 7)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else
-                {
-                    cmb_number_unique_acts.Visible = false;
-                    textBox_search.Visible = true;
-                }
-                cmb_number_unique_acts.SelectedIndex = 0;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода ComboBox_seach_SelectionChangeCommitted");
-            }
-        }
-
-
-
-        #endregion
+     
 
     }
 }
