@@ -1115,6 +1115,8 @@ namespace ServiceTelecomConnect
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
+                    //m.MenuItems.Add(new MenuItem("Изменить месяц плана радиостанцит", Button_delete_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }
@@ -1333,8 +1335,24 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region отк. формы изменения РСТ
-        private void Button_new_add_rst_form_Click_change(object sender, EventArgs e)
+        private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
         {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (txB_serialNumber.Text != "")
+                    {
+                        //
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change_curator)");
+                }
+            }
+
+
             //if (Internet_check.AvailabilityChanged_bool())
             //{
             //    try
@@ -1343,75 +1361,75 @@ namespace ServiceTelecomConnect
             //        {
             //            СhangeRSTForm changeRSTForm = new СhangeRSTForm();
 
-            //            changeRSTForm.DoubleBufferedForm(true);
-            //            changeRSTForm.textBox_city.Text = txB_city.Text;
-            //            changeRSTForm.comboBox_poligon.Text = txB_poligon.Text;
-            //            changeRSTForm.textBox_company.Text = txB_company.Text;
-            //            changeRSTForm.textBox_location.Text = txB_location.Text;
-            //            changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
-            //            changeRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
-            //            changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
-            //            changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
-            //            changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
-            //            changeRSTForm.textBox_numberAct.Text = txB_numberAct.Text;
-            //            changeRSTForm.textBox_representative.Text = textBox_representative.Text;
-            //            changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
-            //            changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
-            //            changeRSTForm.textBox_post.Text = textBox_post.Text;
-            //            changeRSTForm.txB_comment.Text = txB_comment.Text;
+                //            changeRSTForm.DoubleBufferedForm(true);
+                //            changeRSTForm.textBox_city.Text = txB_city.Text;
+                //            changeRSTForm.comboBox_poligon.Text = txB_poligon.Text;
+                //            changeRSTForm.textBox_company.Text = txB_company.Text;
+                //            changeRSTForm.textBox_location.Text = txB_location.Text;
+                //            changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
+                //            changeRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
+                //            changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
+                //            changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
+                //            changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                //            changeRSTForm.textBox_numberAct.Text = txB_numberAct.Text;
+                //            changeRSTForm.textBox_representative.Text = textBox_representative.Text;
+                //            changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
+                //            changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
+                //            changeRSTForm.textBox_post.Text = textBox_post.Text;
+                //            changeRSTForm.txB_comment.Text = txB_comment.Text;
 
-            //            if (textBox_dateIssue.Text == "")
-            //            {
-            //                textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            //            }
-            //            changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
+                //            if (textBox_dateIssue.Text == "")
+                //            {
+                //                textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                //            }
+                //            changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
 
-            //            if (textBox_antenna.Text == "")
-            //            {
-            //                textBox_antenna.Text = "-";
-            //            }
-            //            changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
-            //            if (textBox_manipulator.Text == "")
-            //            {
-            //                textBox_manipulator.Text = "-";
-            //            }
-            //            changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
-            //            if (textBox_batteryСharger.Text == "")
-            //            {
-            //                textBox_batteryСharger.Text = "-";
-            //            }
-            //            changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
-            //            if (textBox_AKB.Text == "")
-            //            {
-            //                textBox_AKB.Text = "-";
-            //            }
-            //            changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
+                //            if (textBox_antenna.Text == "")
+                //            {
+                //                textBox_antenna.Text = "-";
+                //            }
+                //            changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
+                //            if (textBox_manipulator.Text == "")
+                //            {
+                //                textBox_manipulator.Text = "-";
+                //            }
+                //            changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
+                //            if (textBox_batteryСharger.Text == "")
+                //            {
+                //                textBox_batteryСharger.Text = "-";
+                //            }
+                //            changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
+                //            if (textBox_AKB.Text == "")
+                //            {
+                //                textBox_AKB.Text = "-";
+                //            }
+                //            changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
 
-            //            if (Application.OpenForms["СhangeRSTForm"] == null)
-            //            {
-            //                changeRSTForm.Show();
-            //            }
+                //            if (Application.OpenForms["СhangeRSTForm"] == null)
+                //            {
+                //                changeRSTForm.Show();
+                //            }
 
-            //            #region старый метод для одной рст
+                //            #region старый метод для одной рст
 
-            //            //int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-            //            //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-            //            //dataGridView1.ClearSelection();
+                //            //int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+                //            //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                //            //dataGridView1.ClearSelection();
 
-            //            //if (dataGridView1.CurrentCell.RowIndex >= 0)
-            //            //{
-            //            //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            //            //}
-            //            //Refresh_values_TXB_CMB(currRowIndex);
+                //            //if (dataGridView1.CurrentCell.RowIndex >= 0)
+                //            //{
+                //            //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+                //            //}
+                //            //Refresh_values_TXB_CMB(currRowIndex);
 
-            //            #endregion
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
-            //    }
-            //}
+                //            #endregion
+                //        }
+                //    }
+                //    catch (Exception)
+                //    {
+                //        MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
+                //    }
+                //}
         }
         #endregion
 
