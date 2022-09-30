@@ -511,7 +511,7 @@ namespace ServiceTelecomConnect
                     txB_numberActRemont.Text = row.Cells[12].Value.ToString();
                     cmB_сategory.Text = row.Cells[13].Value.ToString();
                     txB_priceRemont.Text = row.Cells[14].Value.ToString();
-                    txB_decommissionSerialNumber.Text = row.Cells[15].Value.ToString();
+                    txB_decommission.Text = row.Cells[15].Value.ToString();
                     txB_comment.Text = row.Cells[16].Value.ToString();
                     txB_january.Text = row.Cells[17].Value.ToString();
                     txB_february.Text = row.Cells[18].Value.ToString();
@@ -1240,6 +1240,38 @@ namespace ServiceTelecomConnect
                     if (txB_serialNumber.Text != "")
                     {
                         СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
+                        сhangeRSTFormCurator.DoubleBufferedForm(true);
+                        сhangeRSTFormCurator.txB_city.Text = txB_city.Text;
+                        сhangeRSTFormCurator.cmB_poligon.Text = txB_poligon.Text;
+                        сhangeRSTFormCurator.txB_company.Text = txB_company.Text;
+                        сhangeRSTFormCurator.txB_location.Text = txB_location.Text;
+                        сhangeRSTFormCurator.cmB_model.Items.Add(cmB_model.Text).ToString();
+                        сhangeRSTFormCurator.txB_serialNumber.Text = txB_serialNumber.Text;
+                        сhangeRSTFormCurator.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
+                        сhangeRSTFormCurator.txB_networkNumber.Text = txB_networkNumber.Text;
+                        сhangeRSTFormCurator.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                        сhangeRSTFormCurator.txB_numberAct.Text = txB_numberAct.Text;
+                        сhangeRSTFormCurator.txB_numberActRemont.Text = txB_numberActRemont.Text;
+                        сhangeRSTFormCurator.cmB_сategory.Text = cmB_сategory.Text;
+                        сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
+                        сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
+                        сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
+                        сhangeRSTFormCurator.txB_january.Text = txB_january.Text;
+                        сhangeRSTFormCurator.txB_february.Text = txB_february.Text;
+                        сhangeRSTFormCurator.txB_march.Text = txB_march.Text;
+                        сhangeRSTFormCurator.txB_april.Text = txB_april.Text;
+                        сhangeRSTFormCurator.txB_may.Text = txB_may.Text;
+                        сhangeRSTFormCurator.txB_june.Text = txB_june.Text;
+                        сhangeRSTFormCurator.txB_july.Text = txB_july.Text;
+                        сhangeRSTFormCurator.txB_august.Text = txB_august.Text;
+                        сhangeRSTFormCurator.txB_september.Text = txB_september.Text;
+                        сhangeRSTFormCurator.txB_october.Text = txB_october.Text;
+                        сhangeRSTFormCurator.txB_december.Text = txB_december.Text;
+
+                        if (Application.OpenForms["СhangeRSTFormCurator"] == null)
+                        {
+                            сhangeRSTFormCurator.Show();
+                        }
                     }
                 }
                 catch (Exception)
@@ -1247,85 +1279,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change_curator)");
                 }
             }
-
-
-            //if (Internet_check.AvailabilityChanged_bool())
-            //{
-            //    try
-            //    {
-            //        if (txB_serialNumber.Text != "")
-            //        {
-            //            СhangeRSTForm changeRSTForm = new СhangeRSTForm();
-
-                //            changeRSTForm.DoubleBufferedForm(true);
-                //            changeRSTForm.textBox_city.Text = txB_city.Text;
-                //            changeRSTForm.comboBox_poligon.Text = txB_poligon.Text;
-                //            changeRSTForm.textBox_company.Text = txB_company.Text;
-                //            changeRSTForm.textBox_location.Text = txB_location.Text;
-                //            changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
-                //            changeRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
-                //            changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
-                //            changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
-                //            changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
-                //            changeRSTForm.textBox_numberAct.Text = txB_numberAct.Text;
-                //            changeRSTForm.textBox_representative.Text = textBox_representative.Text;
-                //            changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
-                //            changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
-                //            changeRSTForm.textBox_post.Text = textBox_post.Text;
-                //            changeRSTForm.txB_comment.Text = txB_comment.Text;
-
-                //            if (textBox_dateIssue.Text == "")
-                //            {
-                //                textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                //            }
-                //            changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
-
-                //            if (textBox_antenna.Text == "")
-                //            {
-                //                textBox_antenna.Text = "-";
-                //            }
-                //            changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
-                //            if (textBox_manipulator.Text == "")
-                //            {
-                //                textBox_manipulator.Text = "-";
-                //            }
-                //            changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
-                //            if (textBox_batteryСharger.Text == "")
-                //            {
-                //                textBox_batteryСharger.Text = "-";
-                //            }
-                //            changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
-                //            if (textBox_AKB.Text == "")
-                //            {
-                //                textBox_AKB.Text = "-";
-                //            }
-                //            changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
-
-                //            if (Application.OpenForms["СhangeRSTForm"] == null)
-                //            {
-                //                changeRSTForm.Show();
-                //            }
-
-                //            #region старый метод для одной рст
-
-                //            //int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-                //            //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                //            //dataGridView1.ClearSelection();
-
-                //            //if (dataGridView1.CurrentCell.RowIndex >= 0)
-                //            //{
-                //            //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                //            //}
-                //            //Refresh_values_TXB_CMB(currRowIndex);
-
-                //            #endregion
-                //        }
-                //    }
-                //    catch (Exception)
-                //    {
-                //        MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
-                //    }
-                //}
         }
         #endregion
 
@@ -3193,7 +3146,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text);
+                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommission.Text, txB_serialNumber.Text, txB_city.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3229,9 +3182,9 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (txB_decommissionSerialNumber.Text != "")
+                if (txB_decommission.Text != "")
                 {
-                    string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{txB_company.Text}";
+                    string decommissionSerialNumber_company = $"{txB_decommission.Text}-{txB_company.Text}";
                     DateTime dateTime = DateTime.Today;
                     string dateDecommission = dateTime.ToString("dd.MM.yyyy");
                     string city = txB_city.Text;

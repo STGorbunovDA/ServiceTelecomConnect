@@ -71,13 +71,10 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.txB_category = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txB_priceRemont = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txB_decommission = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.txB_january = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -102,6 +99,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.txB_november = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
+            this.cmB_сategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -559,7 +557,7 @@
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(463, 82);
+            this.label20.Location = new System.Drawing.Point(463, 84);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(139, 20);
             this.label20.TabIndex = 111;
@@ -568,7 +566,7 @@
             // txB_numberActRemont
             // 
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberActRemont.Location = new System.Drawing.Point(615, 79);
+            this.txB_numberActRemont.Location = new System.Drawing.Point(615, 81);
             this.txB_numberActRemont.MaxLength = 31;
             this.txB_numberActRemont.Name = "txB_numberActRemont";
             this.txB_numberActRemont.Size = new System.Drawing.Size(232, 26);
@@ -579,27 +577,18 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(463, 115);
+            this.label21.Location = new System.Drawing.Point(463, 121);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(93, 20);
             this.label21.TabIndex = 113;
             this.label21.Text = "Категория:";
-            // 
-            // txB_category
-            // 
-            this.txB_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_category.Location = new System.Drawing.Point(615, 111);
-            this.txB_category.MaxLength = 31;
-            this.txB_category.Name = "txB_category";
-            this.txB_category.Size = new System.Drawing.Size(232, 26);
-            this.txB_category.TabIndex = 114;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(463, 145);
+            this.label22.Location = new System.Drawing.Point(463, 152);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(122, 20);
             this.label22.TabIndex = 115;
@@ -608,58 +597,39 @@
             // txB_priceRemont
             // 
             this.txB_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_priceRemont.Location = new System.Drawing.Point(615, 143);
+            this.txB_priceRemont.Location = new System.Drawing.Point(615, 150);
             this.txB_priceRemont.MaxLength = 31;
             this.txB_priceRemont.Name = "txB_priceRemont";
+            this.txB_priceRemont.ReadOnly = true;
             this.txB_priceRemont.Size = new System.Drawing.Size(232, 26);
             this.txB_priceRemont.TabIndex = 116;
             // 
-            // textBox1
+            // txB_decommission
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(615, 175);
-            this.textBox1.MaxLength = 31;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 26);
-            this.textBox1.TabIndex = 118;
+            this.txB_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_decommission.Location = new System.Drawing.Point(615, 181);
+            this.txB_decommission.MaxLength = 31;
+            this.txB_decommission.Name = "txB_decommission";
+            this.txB_decommission.Size = new System.Drawing.Size(232, 26);
+            this.txB_decommission.TabIndex = 118;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(463, 178);
+            this.label23.Location = new System.Drawing.Point(463, 184);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(139, 20);
+            this.label23.Size = new System.Drawing.Size(146, 20);
             this.label23.TabIndex = 117;
-            this.label23.Text = "№ Акта Ремонта:";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(463, 211);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(146, 20);
-            this.label24.TabIndex = 119;
-            this.label24.Text = "№ Акта Списания:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(615, 207);
-            this.textBox2.MaxLength = 31;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(232, 26);
-            this.textBox2.TabIndex = 120;
+            this.label23.Text = "№ Акта Списания:";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(447, 248);
+            this.label25.Location = new System.Drawing.Point(448, 236);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(70, 20);
             this.label25.TabIndex = 121;
@@ -668,7 +638,7 @@
             // txB_january
             // 
             this.txB_january.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_january.Location = new System.Drawing.Point(542, 245);
+            this.txB_january.Location = new System.Drawing.Point(543, 233);
             this.txB_january.MaxLength = 31;
             this.txB_january.Name = "txB_january";
             this.txB_january.Size = new System.Drawing.Size(105, 26);
@@ -679,7 +649,7 @@
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(653, 248);
+            this.label26.Location = new System.Drawing.Point(654, 236);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(83, 20);
             this.label26.TabIndex = 123;
@@ -688,7 +658,7 @@
             // txB_february
             // 
             this.txB_february.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_february.Location = new System.Drawing.Point(741, 245);
+            this.txB_february.Location = new System.Drawing.Point(742, 233);
             this.txB_february.MaxLength = 31;
             this.txB_february.Name = "txB_february";
             this.txB_february.Size = new System.Drawing.Size(105, 26);
@@ -697,7 +667,7 @@
             // txB_april
             // 
             this.txB_april.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_april.Location = new System.Drawing.Point(741, 277);
+            this.txB_april.Location = new System.Drawing.Point(742, 265);
             this.txB_april.MaxLength = 31;
             this.txB_april.Name = "txB_april";
             this.txB_april.Size = new System.Drawing.Size(105, 26);
@@ -708,7 +678,7 @@
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.Color.Transparent;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(653, 280);
+            this.label27.Location = new System.Drawing.Point(654, 268);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(70, 20);
             this.label27.TabIndex = 127;
@@ -717,7 +687,7 @@
             // txB_march
             // 
             this.txB_march.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_march.Location = new System.Drawing.Point(542, 277);
+            this.txB_march.Location = new System.Drawing.Point(543, 265);
             this.txB_march.MaxLength = 31;
             this.txB_march.Name = "txB_march";
             this.txB_march.Size = new System.Drawing.Size(105, 26);
@@ -728,7 +698,7 @@
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(447, 280);
+            this.label28.Location = new System.Drawing.Point(448, 268);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(53, 20);
             this.label28.TabIndex = 125;
@@ -737,7 +707,7 @@
             // txB_june
             // 
             this.txB_june.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_june.Location = new System.Drawing.Point(741, 311);
+            this.txB_june.Location = new System.Drawing.Point(742, 299);
             this.txB_june.MaxLength = 31;
             this.txB_june.Name = "txB_june";
             this.txB_june.Size = new System.Drawing.Size(105, 26);
@@ -748,7 +718,7 @@
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(653, 314);
+            this.label29.Location = new System.Drawing.Point(654, 302);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(54, 20);
             this.label29.TabIndex = 131;
@@ -757,7 +727,7 @@
             // txB_may
             // 
             this.txB_may.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_may.Location = new System.Drawing.Point(542, 311);
+            this.txB_may.Location = new System.Drawing.Point(543, 299);
             this.txB_may.MaxLength = 31;
             this.txB_may.Name = "txB_may";
             this.txB_may.Size = new System.Drawing.Size(105, 26);
@@ -768,7 +738,7 @@
             this.label32.AutoSize = true;
             this.label32.BackColor = System.Drawing.Color.Transparent;
             this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(447, 313);
+            this.label32.Location = new System.Drawing.Point(448, 301);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(44, 20);
             this.label32.TabIndex = 129;
@@ -777,7 +747,7 @@
             // txB_august
             // 
             this.txB_august.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_august.Location = new System.Drawing.Point(741, 344);
+            this.txB_august.Location = new System.Drawing.Point(742, 332);
             this.txB_august.MaxLength = 31;
             this.txB_august.Name = "txB_august";
             this.txB_august.Size = new System.Drawing.Size(105, 26);
@@ -788,7 +758,7 @@
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.Color.Transparent;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(653, 347);
+            this.label33.Location = new System.Drawing.Point(654, 335);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(64, 20);
             this.label33.TabIndex = 135;
@@ -797,7 +767,7 @@
             // txB_july
             // 
             this.txB_july.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_july.Location = new System.Drawing.Point(542, 344);
+            this.txB_july.Location = new System.Drawing.Point(543, 332);
             this.txB_july.MaxLength = 31;
             this.txB_july.Name = "txB_july";
             this.txB_july.Size = new System.Drawing.Size(105, 26);
@@ -808,7 +778,7 @@
             this.label34.AutoSize = true;
             this.label34.BackColor = System.Drawing.Color.Transparent;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(447, 346);
+            this.label34.Location = new System.Drawing.Point(448, 334);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(55, 20);
             this.label34.TabIndex = 133;
@@ -817,7 +787,7 @@
             // txB_october
             // 
             this.txB_october.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_october.Location = new System.Drawing.Point(741, 378);
+            this.txB_october.Location = new System.Drawing.Point(742, 366);
             this.txB_october.MaxLength = 31;
             this.txB_october.Name = "txB_october";
             this.txB_october.Size = new System.Drawing.Size(105, 26);
@@ -828,7 +798,7 @@
             this.label35.AutoSize = true;
             this.label35.BackColor = System.Drawing.Color.Transparent;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(653, 381);
+            this.label35.Location = new System.Drawing.Point(654, 369);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(78, 20);
             this.label35.TabIndex = 139;
@@ -837,7 +807,7 @@
             // txB_september
             // 
             this.txB_september.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_september.Location = new System.Drawing.Point(542, 378);
+            this.txB_september.Location = new System.Drawing.Point(543, 366);
             this.txB_september.MaxLength = 31;
             this.txB_september.Name = "txB_september";
             this.txB_september.Size = new System.Drawing.Size(105, 26);
@@ -848,7 +818,7 @@
             this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(447, 383);
+            this.label37.Location = new System.Drawing.Point(448, 371);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(87, 20);
             this.label37.TabIndex = 137;
@@ -857,7 +827,7 @@
             // txB_december
             // 
             this.txB_december.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_december.Location = new System.Drawing.Point(741, 412);
+            this.txB_december.Location = new System.Drawing.Point(742, 400);
             this.txB_december.MaxLength = 31;
             this.txB_december.Name = "txB_december";
             this.txB_december.Size = new System.Drawing.Size(105, 26);
@@ -868,7 +838,7 @@
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(653, 415);
+            this.label38.Location = new System.Drawing.Point(654, 403);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(78, 20);
             this.label38.TabIndex = 143;
@@ -877,7 +847,7 @@
             // txB_november
             // 
             this.txB_november.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_november.Location = new System.Drawing.Point(542, 412);
+            this.txB_november.Location = new System.Drawing.Point(543, 400);
             this.txB_november.MaxLength = 31;
             this.txB_november.Name = "txB_november";
             this.txB_november.Size = new System.Drawing.Size(105, 26);
@@ -888,11 +858,28 @@
             this.label39.AutoSize = true;
             this.label39.BackColor = System.Drawing.Color.Transparent;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(447, 417);
+            this.label39.Location = new System.Drawing.Point(448, 405);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(70, 20);
             this.label39.TabIndex = 141;
             this.label39.Text = "Ноябрь:";
+            // 
+            // cmB_сategory
+            // 
+            this.cmB_сategory.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_сategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_сategory.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmB_сategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_сategory.FormattingEnabled = true;
+            this.cmB_сategory.Items.AddRange(new object[] {
+            "3",
+            "4",
+            "5",
+            "6"});
+            this.cmB_сategory.Location = new System.Drawing.Point(615, 115);
+            this.cmB_сategory.Name = "cmB_сategory";
+            this.cmB_сategory.Size = new System.Drawing.Size(232, 28);
+            this.cmB_сategory.TabIndex = 145;
             // 
             // СhangeRSTFormCurator
             // 
@@ -901,6 +888,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 561);
+            this.Controls.Add(this.cmB_сategory);
             this.Controls.Add(this.txB_december);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.txB_november);
@@ -925,13 +913,10 @@
             this.Controls.Add(this.label26);
             this.Controls.Add(this.txB_january);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txB_decommission);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txB_priceRemont);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.txB_category);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txB_numberActRemont);
             this.Controls.Add(this.label20);
@@ -1030,13 +1015,10 @@
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.TextBox txB_numberActRemont;
         private System.Windows.Forms.Label label21;
-        internal System.Windows.Forms.TextBox txB_category;
         private System.Windows.Forms.Label label22;
         internal System.Windows.Forms.TextBox txB_priceRemont;
-        internal System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.TextBox txB_decommission;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        internal System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label25;
         internal System.Windows.Forms.TextBox txB_january;
         private System.Windows.Forms.Label label26;
@@ -1061,5 +1043,6 @@
         private System.Windows.Forms.Label label38;
         internal System.Windows.Forms.TextBox txB_november;
         private System.Windows.Forms.Label label39;
+        internal System.Windows.Forms.ComboBox cmB_сategory;
     }
 }
