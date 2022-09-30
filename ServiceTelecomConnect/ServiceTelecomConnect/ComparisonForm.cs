@@ -631,7 +631,7 @@ namespace ServiceTelecomConnect
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
                     Counters();
                     dataGridView1.ClearSelection();
 
@@ -644,7 +644,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (dataGridView1.Rows.Count == 0)
                 {
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
                     Counters();
                 }
             }
