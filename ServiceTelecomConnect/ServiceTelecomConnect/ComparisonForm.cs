@@ -934,7 +934,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -943,7 +943,7 @@ namespace ServiceTelecomConnect
         {
             if (txB_numberAct.Text != "")
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }

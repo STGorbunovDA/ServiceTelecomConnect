@@ -904,6 +904,56 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void Update_datagridview_number_act_curator(DataGridView dgw, string city, string numberAct)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    dgw.Rows.Clear();
+                    dgw.AllowUserToAddRows = false;
+
+                    string searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}'";
+
+                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowСurator(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 180;
+                    dgw.Columns[5].Width = 150;
+                    dgw.Columns[6].Width = 178;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка Update_datagridview_number_act");
+                }
+            }
+        }
+
         #endregion
 
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
