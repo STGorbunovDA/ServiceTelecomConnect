@@ -796,7 +796,7 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region показать кол-во уникальных актов
+        #region показать кол-во уникальных записей БД в Combobox
 
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -824,7 +824,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_location_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -839,7 +839,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_dateTO_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -854,7 +854,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberAct_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -869,7 +869,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberActRemont_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -884,22 +884,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Ошибка! Представители предприятий не добавлены в comboBox!");
-                        MessageBox.Show(ex.ToString());
-                    }
-                }
-                else if (comboBox_seach.SelectedIndex == 7)
-                {
-                    try
-                    {
-                        cmb_number_unique_acts.Visible = true;
-                        textBox_search.Visible = false;
-
-                        Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_decommissionActs_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -920,29 +905,28 @@ namespace ServiceTelecomConnect
             }
         }
 
-
-
         #endregion
 
-        #region Взаимодействие на форме Key-Press-ы, Button_click
+        #region Взаимодействие на search, cформировать на форме panel1
+
         void TextBox_search_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                Filling_datagridview.SearchCurator(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            Filling_datagridview.SearchCurator(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
         void Button_seach_BD_city_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+            Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
             Counters();
         }
 
@@ -3018,7 +3002,7 @@ namespace ServiceTelecomConnect
         #region close form
         void ST_WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Environment.Exit(1);
+            System.Environment.Exit(0);
         }
 
         private void ST_WorkForm_FormClosing(object sender, FormClosingEventArgs e)
