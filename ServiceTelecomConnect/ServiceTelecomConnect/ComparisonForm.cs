@@ -1106,22 +1106,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region поиск отсутсвующих рст исходя из предыдущего года
-
-        void PictureBox_seach_datadrid_replay_Click(object sender, EventArgs e)
-        {
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                panel1.Enabled = false;
-                panel3.Enabled = false;
-                Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
-                Counters();
-                txb_flag_all_BD.Text = "";
-            }
-        }
-
-        #endregion
-
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -2223,13 +2207,6 @@ namespace ServiceTelecomConnect
             toolTip1.SetToolTip(button_information_remont_company_regedit, $"Запись данных ПП в реестр");
         }
 
-        void PictureBox_seach_datadrid_replay_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox_seach_datadrid_replay, $"Отбразить отсутствующие РСТ исходя из выполнения предыдущего года");
-        }
 
         #endregion
 

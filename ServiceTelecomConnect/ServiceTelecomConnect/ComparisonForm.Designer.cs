@@ -130,7 +130,6 @@
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.button_all_BD = new System.Windows.Forms.Button();
             this.comboBox_city = new System.Windows.Forms.ComboBox();
-            this.pictureBox_seach_datadrid_replay = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label_polinon_full = new System.Windows.Forms.Label();
             this.button_remont_act = new System.Windows.Forms.Button();
@@ -230,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_seach_datadrid_replay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
             this.panel3.SuspendLayout();
@@ -1339,7 +1337,7 @@
             // txB_serialNumber
             // 
             this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_serialNumber.Location = new System.Drawing.Point(12, 108);
+            this.txB_serialNumber.Location = new System.Drawing.Point(12, 70);
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.ReadOnly = true;
             this.txB_serialNumber.Size = new System.Drawing.Size(235, 26);
@@ -1363,7 +1361,6 @@
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
             this.panel1.Controls.Add(this.button_all_BD);
             this.panel1.Controls.Add(this.comboBox_city);
-            this.panel1.Controls.Add(this.pictureBox_seach_datadrid_replay);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label_polinon_full);
             this.panel1.Controls.Add(this.button_remont_act);
@@ -1412,7 +1409,7 @@
             this.button_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.button_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_all_BD.Location = new System.Drawing.Point(254, 107);
+            this.button_all_BD.Location = new System.Drawing.Point(254, 69);
             this.button_all_BD.Name = "button_all_BD";
             this.button_all_BD.Size = new System.Drawing.Size(64, 29);
             this.button_all_BD.TabIndex = 78;
@@ -1432,18 +1429,6 @@
             this.comboBox_city.Size = new System.Drawing.Size(236, 28);
             this.comboBox_city.TabIndex = 77;
             this.comboBox_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
-            // 
-            // pictureBox_seach_datadrid_replay
-            // 
-            this.pictureBox_seach_datadrid_replay.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_seach_datadrid_replay.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.data_analysis_icon_icons_com_52842;
-            this.pictureBox_seach_datadrid_replay.Location = new System.Drawing.Point(269, 69);
-            this.pictureBox_seach_datadrid_replay.Name = "pictureBox_seach_datadrid_replay";
-            this.pictureBox_seach_datadrid_replay.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox_seach_datadrid_replay.TabIndex = 76;
-            this.pictureBox_seach_datadrid_replay.TabStop = false;
-            this.pictureBox_seach_datadrid_replay.Click += new System.EventHandler(this.PictureBox_seach_datadrid_replay_Click);
-            this.pictureBox_seach_datadrid_replay.MouseEnter += new System.EventHandler(this.PictureBox_seach_datadrid_replay_MouseEnter);
             // 
             // label16
             // 
@@ -2560,7 +2545,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_seach_datadrid_replay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -2673,7 +2657,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label_polinon_full;
-        private System.Windows.Forms.PictureBox pictureBox_seach_datadrid_replay;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label_cell_rows;
         private System.Windows.Forms.Label label26;
