@@ -1230,110 +1230,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region Удаление ремонта
-        void Delete_rst_remont_click(object sender, EventArgs e)
-        {
-            try
-            {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-                Filling_datagridview.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text);
-                Button_update_Click(sender, e);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка удаления ремонта (Delete_rst_remont_click)");
-            }
-        }
-
-        #endregion
-
-        #region отк. формы добавления ремонтов
-        private void Button_new_add_rst_form_click_remont(object sender, EventArgs e)
-        {
-            //if (Internet_check.AvailabilityChanged_bool())
-            //{
-            //    try
-            //    {
-            //        if (txB_serialNumber.Text != "")
-            //        {
-            //            using (RemontRSTForm remontRSTForm = new RemontRSTForm())
-            //            {
-            //                remontRSTForm.DoubleBufferedForm(true);
-
-            //                remontRSTForm.comboBox_сategory.Text = cmB_сategory.Text;
-
-            //                remontRSTForm.textBox_priceRemont.Text = txB_priceRemont.Text;
-            //                remontRSTForm.textBox_сompleted_works_1.Text = textBox_сompleted_works_1.Text;
-            //                remontRSTForm.textBox_сompleted_works_2.Text = textBox_сompleted_works_2.Text;
-            //                remontRSTForm.textBox_сompleted_works_3.Text = textBox_сompleted_works_3.Text;
-            //                remontRSTForm.textBox_сompleted_works_4.Text = textBox_сompleted_works_4.Text;
-            //                remontRSTForm.textBox_сompleted_works_5.Text = textBox_сompleted_works_5.Text;
-            //                remontRSTForm.textBox_сompleted_works_6.Text = textBox_сompleted_works_6.Text;
-            //                remontRSTForm.textBox_сompleted_works_7.Text = textBox_сompleted_works_7.Text;
-            //                remontRSTForm.textBox_parts_1.Text = textBox_parts_1.Text;
-            //                remontRSTForm.textBox_parts_2.Text = textBox_parts_2.Text;
-            //                remontRSTForm.textBox_parts_3.Text = textBox_parts_3.Text;
-            //                remontRSTForm.textBox_parts_4.Text = textBox_parts_4.Text;
-            //                remontRSTForm.textBox_parts_5.Text = textBox_parts_5.Text;
-            //                remontRSTForm.textBox_parts_6.Text = textBox_parts_6.Text;
-            //                remontRSTForm.textBox_parts_7.Text = textBox_parts_7.Text;
-
-            //                if (txB_dateTO.Text != "")
-            //                {
-            //                    txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            //                }
-
-            //                remontRSTForm.textBox_data_remont.Text = txB_dateTO.Text;
-            //                remontRSTForm.textBox_model.Text = cmB_model.Text;
-            //                remontRSTForm.label_company.Text = txB_company.Text;
-            //                remontRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
-
-            //                if (txB_numberActRemont.Text == "")
-            //                {
-            //                    remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
-            //                }
-            //                else remontRSTForm.textBox_numberActRemont.Text = txB_numberActRemont.Text;
-
-            //                int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-
-            //                remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, comboBox_city.Text);
-
-            //                remontRSTForm.ShowDialog();
-
-            //                if (Application.OpenForms["RemontRSTForm"] == null)
-            //                {
-            //                    remontRSTForm.Show();
-            //                }
-
-            //                #region старый метод
-            //                //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-            //                //Counters();
-            //                //dataGridView1.ClearSelection();
-
-            //                //if (dataGridView1.CurrentCell.RowIndex >= 0)
-            //                //{
-            //                //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            //                //}
-            //                //Refresh_values_TXB_CMB(currRowIndex);
-            //                #endregion
-
-            //            }
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        MessageBox.Show("Ошибка открытия формы добавления ремонта RemontRSTForm (Button_new_add_rst_form_click_remont)");
-            //    }
-            //}
-        }
-        #endregion
-
         #region отк. формы изменения РСТ
         private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
         {
@@ -1343,7 +1239,7 @@ namespace ServiceTelecomConnect
                 {
                     if (txB_serialNumber.Text != "")
                     {
-                        //
+                        СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
                     }
                 }
                 catch (Exception)

@@ -294,6 +294,12 @@
     <Compile Include="ComparisonForm.Designer.cs">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="СhangeRSTFormCurator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="СhangeRSTFormCurator.Designer.cs">
+      <DependentUpon>СhangeRSTFormCurator.cs</DependentUpon>
+    </Compile>
     <Compile Include="СhangeRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="СhangeRSTFormCurator.resx">
+      <DependentUpon>СhangeRSTFormCurator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="СhangeRSTForm.resx">
       <DependentUpon>СhangeRSTForm.cs</DependentUpon>
