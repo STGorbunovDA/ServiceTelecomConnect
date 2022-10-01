@@ -100,6 +100,8 @@
             this.txB_november = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.cmB_сategory = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -146,6 +148,7 @@
             this.txB_dateTO.Location = new System.Drawing.Point(185, 346);
             this.txB_dateTO.MaxLength = 19;
             this.txB_dateTO.Name = "txB_dateTO";
+            this.txB_dateTO.ReadOnly = true;
             this.txB_dateTO.Size = new System.Drawing.Size(232, 26);
             this.txB_dateTO.TabIndex = 26;
             this.txB_dateTO.Click += new System.EventHandler(this.TextBox_dateTO_Click);
@@ -416,7 +419,7 @@
             this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label15.ForeColor = System.Drawing.Color.Brown;
-            this.label15.Location = new System.Drawing.Point(423, 253);
+            this.label15.Location = new System.Drawing.Point(424, 251);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(18, 24);
             this.label15.TabIndex = 60;
@@ -596,6 +599,7 @@
             // 
             // txB_priceRemont
             // 
+            this.txB_priceRemont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txB_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_priceRemont.Location = new System.Drawing.Point(615, 150);
             this.txB_priceRemont.MaxLength = 31;
@@ -880,6 +884,33 @@
             this.cmB_сategory.Name = "cmB_сategory";
             this.cmB_сategory.Size = new System.Drawing.Size(232, 28);
             this.cmB_сategory.TabIndex = 145;
+            this.cmB_сategory.SelectionChangeCommitted += new System.EventHandler(this.CmB_сategory_SelectionChangeCommitted);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label24.ForeColor = System.Drawing.Color.Brown;
+            this.label24.Location = new System.Drawing.Point(424, 282);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(18, 24);
+            this.label24.TabIndex = 146;
+            this.label24.Text = "*";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.Transparent;
+            this.label40.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label40.ForeColor = System.Drawing.Color.Brown;
+            this.label40.Location = new System.Drawing.Point(423, 314);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(18, 24);
+            this.label40.TabIndex = 147;
+            this.label40.Text = "*";
             // 
             // СhangeRSTFormCurator
             // 
@@ -888,6 +919,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 561);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.cmB_сategory);
             this.Controls.Add(this.txB_december);
             this.Controls.Add(this.label38);
@@ -1044,5 +1077,7 @@
         internal System.Windows.Forms.TextBox txB_november;
         private System.Windows.Forms.Label label39;
         internal System.Windows.Forms.ComboBox cmB_сategory;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label40;
     }
 }

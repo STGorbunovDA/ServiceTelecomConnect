@@ -146,7 +146,6 @@ namespace ServiceTelecomConnect
                     textBox_priceRemont.Text = "895.86";
                 }
             }
-
             if (comboBox_сategory.Text == "4")
             {
                 if (textBox_model.Text == "Icom IC-F3GT"
@@ -181,7 +180,6 @@ namespace ServiceTelecomConnect
                     textBox_priceRemont.Text = "2559.75";
                 }
             }
-
             if (comboBox_сategory.Text == "6")
             {
                 if (textBox_model.Text == "Icom IC-F3GT"
