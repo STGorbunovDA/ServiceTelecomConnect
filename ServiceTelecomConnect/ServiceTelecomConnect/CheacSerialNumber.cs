@@ -93,6 +93,41 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
+        public Boolean CheacSerialNumber_radiostantionCurator(string serialNumber)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    string querystring = $"SELECT * FROM radiostantion_сomparison WHERE serialNumber = '{serialNumber}'";
+
+                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                    DataTable table = new DataTable();
+
+                    adapter.Fill(table);
+
+                    if (table.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion (CheacSerialNumber_radiostantion)");
+                    return true;
+                }
+            }
+            return true;
+        }
         public Boolean CheackNumberAct_radiostantion(string numberAct)
         {
             if (Internet_check.AvailabilityChanged_bool())

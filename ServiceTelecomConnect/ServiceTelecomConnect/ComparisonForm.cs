@@ -1163,6 +1163,41 @@ namespace ServiceTelecomConnect
         void AddExecution(object sender, EventArgs e)
         {
 
+            if (dataGridView1.SelectedRows.Count > 1)
+            {
+                string Mesage;
+                Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                string Mesage;
+                Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            ContextMenu m = new ContextMenu();
+            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Январь")));
+            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Февраль")));
+            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Март")));
+            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Апрель")));
+            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Май")));
+            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июнь")));
+            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июль")));
+            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Август")));
+            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Сентябрь")));
+            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Октябрь")));
+            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
+            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
+
+            m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
         }
 
         #endregion
