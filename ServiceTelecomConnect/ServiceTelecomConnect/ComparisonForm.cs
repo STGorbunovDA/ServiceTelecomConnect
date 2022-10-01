@@ -1160,7 +1160,7 @@ namespace ServiceTelecomConnect
 
         #region изменения РСТ в выполнение по плану
 
-        void AddExecution(object sender, EventArgs e)
+        void AddExecutionCurator(object sender, EventArgs e)
         {
 
             if (dataGridView1.SelectedRows.Count > 1)
@@ -1184,20 +1184,21 @@ namespace ServiceTelecomConnect
                 }
             }
             ContextMenu m = new ContextMenu();
-            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Январь")));
-            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Февраль")));
-            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Март")));
-            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Апрель")));
-            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Май")));
-            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июнь")));
-            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июль")));
-            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Август")));
-            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Сентябрь")));
-            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Октябрь")));
-            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
-            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
+            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Февраль", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Март", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Апрель", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Май", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июнь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июль", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Август", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Сентябрь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", comboBox_city.Text)));
 
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
+
         }
 
         #endregion
@@ -1213,7 +1214,7 @@ namespace ServiceTelecomConnect
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
-                    m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecution));
+                    m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
                     //m.MenuItems.Add(new MenuItem("Изменить месяц плана радиостанцит", Button_delete_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }

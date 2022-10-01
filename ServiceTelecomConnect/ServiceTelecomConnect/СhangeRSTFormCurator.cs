@@ -357,8 +357,8 @@ namespace ServiceTelecomConnect
                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
                             $"city = '{city}', price = '{Convert.ToDecimal(price)}', numberActRemont = '{numberActRemont}', " +
                             $"category  = '{сategory}', priceRemont = '{Convert.ToDecimal(priceRemont)}', decommissionSerialNumber = '{decommission}', " +
-                            $"february = '{february}', march = '{march}', april = '{april}', may = '{may}', june = '{june}', " +
-                            $"january = '{january}', july = '{july}', august = '{august}', september = '{september}', october = '{october}', " +
+                            $"january = '{january}', february = '{february}', march = '{march}', april = '{april}', may = '{may}', june = '{june}', " +
+                            $"july = '{july}', august = '{august}', september = '{september}', october = '{october}', " +
                             $"november = '{november}', december = '{december}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
