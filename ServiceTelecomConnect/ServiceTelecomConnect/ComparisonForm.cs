@@ -1106,6 +1106,58 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
+        #region отк. формы изменения РСТ
+        private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
+        {
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    if (txB_serialNumber.Text != "")
+                    {
+                        СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
+                        сhangeRSTFormCurator.DoubleBufferedForm(true);
+                        сhangeRSTFormCurator.txB_city.Text = txB_city.Text;
+                        сhangeRSTFormCurator.cmB_poligon.Text = txB_poligon.Text;
+                        сhangeRSTFormCurator.txB_company.Text = txB_company.Text;
+                        сhangeRSTFormCurator.txB_location.Text = txB_location.Text;
+                        сhangeRSTFormCurator.cmB_model.Items.Add(cmB_model.Text).ToString();
+                        сhangeRSTFormCurator.txB_serialNumber.Text = txB_serialNumber.Text;
+                        сhangeRSTFormCurator.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
+                        сhangeRSTFormCurator.txB_networkNumber.Text = txB_networkNumber.Text;
+                        сhangeRSTFormCurator.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                        сhangeRSTFormCurator.txB_numberAct.Text = txB_numberAct.Text;
+                        сhangeRSTFormCurator.txB_numberActRemont.Text = txB_numberActRemont.Text;
+                        сhangeRSTFormCurator.cmB_сategory.Text = cmB_сategory.Text;
+                        сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
+                        сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
+                        сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
+                        сhangeRSTFormCurator.txB_january.Text = txB_january.Text;
+                        сhangeRSTFormCurator.txB_february.Text = txB_february.Text;
+                        сhangeRSTFormCurator.txB_march.Text = txB_march.Text;
+                        сhangeRSTFormCurator.txB_april.Text = txB_april.Text;
+                        сhangeRSTFormCurator.txB_may.Text = txB_may.Text;
+                        сhangeRSTFormCurator.txB_june.Text = txB_june.Text;
+                        сhangeRSTFormCurator.txB_july.Text = txB_july.Text;
+                        сhangeRSTFormCurator.txB_august.Text = txB_august.Text;
+                        сhangeRSTFormCurator.txB_september.Text = txB_september.Text;
+                        сhangeRSTFormCurator.txB_october.Text = txB_october.Text;
+                        сhangeRSTFormCurator.txB_december.Text = txB_december.Text;
+
+                        if (Application.OpenForms["СhangeRSTFormCurator"] == null)
+                        {
+                            сhangeRSTFormCurator.Show();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change_curator)");
+                }
+            }
+        }
+        #endregion
+
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1227,510 +1279,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        #endregion
-
-        #region отк. формы изменения РСТ
-        private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
-        {
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                try
-                {
-                    if (txB_serialNumber.Text != "")
-                    {
-                        СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
-                        сhangeRSTFormCurator.DoubleBufferedForm(true);
-                        сhangeRSTFormCurator.txB_city.Text = txB_city.Text;
-                        сhangeRSTFormCurator.cmB_poligon.Text = txB_poligon.Text;
-                        сhangeRSTFormCurator.txB_company.Text = txB_company.Text;
-                        сhangeRSTFormCurator.txB_location.Text = txB_location.Text;
-                        сhangeRSTFormCurator.cmB_model.Items.Add(cmB_model.Text).ToString();
-                        сhangeRSTFormCurator.txB_serialNumber.Text = txB_serialNumber.Text;
-                        сhangeRSTFormCurator.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
-                        сhangeRSTFormCurator.txB_networkNumber.Text = txB_networkNumber.Text;
-                        сhangeRSTFormCurator.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
-                        сhangeRSTFormCurator.txB_numberAct.Text = txB_numberAct.Text;
-                        сhangeRSTFormCurator.txB_numberActRemont.Text = txB_numberActRemont.Text;
-                        сhangeRSTFormCurator.cmB_сategory.Text = cmB_сategory.Text;
-                        сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
-                        сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
-                        сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
-                        сhangeRSTFormCurator.txB_january.Text = txB_january.Text;
-                        сhangeRSTFormCurator.txB_february.Text = txB_february.Text;
-                        сhangeRSTFormCurator.txB_march.Text = txB_march.Text;
-                        сhangeRSTFormCurator.txB_april.Text = txB_april.Text;
-                        сhangeRSTFormCurator.txB_may.Text = txB_may.Text;
-                        сhangeRSTFormCurator.txB_june.Text = txB_june.Text;
-                        сhangeRSTFormCurator.txB_july.Text = txB_july.Text;
-                        сhangeRSTFormCurator.txB_august.Text = txB_august.Text;
-                        сhangeRSTFormCurator.txB_september.Text = txB_september.Text;
-                        сhangeRSTFormCurator.txB_october.Text = txB_october.Text;
-                        сhangeRSTFormCurator.txB_december.Text = txB_december.Text;
-
-                        if (Application.OpenForms["СhangeRSTFormCurator"] == null)
-                        {
-                            сhangeRSTFormCurator.Show();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change_curator)");
-                }
-            }
-        }
-        #endregion
-
-        #region panel_remont_info 
-
-        /// <summary>
-        /// откр. панели и считывание данных из реестра для ремонта
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Button_remont_act_Click(object sender, EventArgs e)
-        {
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                if (txB_numberActRemont.Text == "")
-                {
-                    string Mesage;
-                    Mesage = "На данной радиостанции нет ремонта!";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        dataGridView1.Enabled = false;
-                        panel1.Enabled = false;
-                        panel_remont_information_company.Enabled = true;
-                        panel_remont_information_company.Visible = true;
-                        label_company_remont.Text = txB_company.Text;
-                        RegistryKey reg = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
-                        if (reg != null)
-                        {
-                            RegistryKey currentUserKey = Registry.CurrentUser;
-                            RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
-
-                            textBox_Full_name_company.Text = helloKey.GetValue("Полное наименование предприятия").ToString();
-                            textBox_OKPO_remont.Text = helloKey.GetValue("ОКПО").ToString();
-                            textBox_BE_remont.Text = helloKey.GetValue("БЕ").ToString();
-                            textBox_director_FIO_remont_company.Text = helloKey.GetValue("Руководитель ФИО").ToString();
-                            textBox_director_post_remont_company.Text = helloKey.GetValue("Руководитель Должность").ToString();
-                            textBox_chairman_FIO_remont_company.Text = helloKey.GetValue("Председатель ФИО").ToString();
-                            textBox_chairman_post_remont_company.Text = helloKey.GetValue("Председатель Должность").ToString();
-                            textBox_1_FIO_remont_company.Text = helloKey.GetValue("1 член комиссии ФИО").ToString();
-                            textBox_1_post_remont_company.Text = helloKey.GetValue("1 член комиссии Должность").ToString();
-                            textBox_2_FIO_remont_company.Text = helloKey.GetValue("2 член комиссии ФИО").ToString();
-                            textBox_2_post_remont_company.Text = helloKey.GetValue("2 член комиссии Должность").ToString();
-                            textBox_3_FIO_remont_company.Text = helloKey.GetValue("3 член комиссии ФИО").ToString();
-                            textBox_3_post_remont_company.Text = helloKey.GetValue("3 член комиссии Должность").ToString();
-
-                            if (textBox_Full_name_company.Text != "" && textBox_OKPO_remont.Text != "" && textBox_BE_remont.Text != ""
-                                && textBox_director_FIO_remont_company.Text != "" && textBox_director_post_remont_company.Text != ""
-                                && textBox_chairman_FIO_remont_company.Text != "" && textBox_chairman_post_remont_company.Text != ""
-                                && textBox_1_FIO_remont_company.Text != "" && textBox_1_post_remont_company.Text != ""
-                                && textBox_2_FIO_remont_company.Text != "" && textBox_2_post_remont_company.Text != "")
-                            {
-                                button_Continue_remont_act_excel.Enabled = true;
-                            }
-                            helloKey.Close();
-                        }
-                        else
-                        {
-                            button_Continue_remont_act_excel.Enabled = false;
-                            textBox_Full_name_company.Text = "";
-                            textBox_OKPO_remont.Text = "";
-                            textBox_BE_remont.Text = "";
-                            textBox_director_FIO_remont_company.Text = "";
-                            textBox_director_post_remont_company.Text = $"Начальник {txB_company.Text}";
-                            textBox_chairman_FIO_remont_company.Text = "";
-                            textBox_chairman_post_remont_company.Text = "";
-                            textBox_1_FIO_remont_company.Text = "";
-                            textBox_1_post_remont_company.Text = "";
-                            textBox_2_FIO_remont_company.Text = "";
-                            textBox_2_post_remont_company.Text = "";
-                            textBox_3_FIO_remont_company.Text = "";
-                            textBox_3_post_remont_company.Text = "";
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString()); ;
-                        MessageBox.Show("Ошибка считывания реестра!");
-                    }
-                }
-            }
-
-        }
-
-        void Button_close_remont_panel_Click(object sender, EventArgs e)
-        {
-            panel_remont_information_company.Visible = false;
-            panel_remont_information_company.Enabled = false;
-            dataGridView1.Enabled = true;
-            panel1.Enabled = true;
-        }
-
-        #region проверка текста panel_remont_info
-        void TextBox_Full_name_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b'
-                && ch != '-' && ch != '.' && ch != ' ' && ch != '=' && ch != '!' && ch != '*')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_Full_name_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_BE_remont_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
-            {
-
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_OKPO_remont_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
-            {
-
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_OKPO_remont_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_BE_remont_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_director_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_director_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_director_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_director_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_chairman_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_chairman_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_chairman_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_chairman_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_1_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_1_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_1_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_1_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_2_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_2_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_2_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_2_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_3_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_3_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_3_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_3_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        #endregion
-
-        /// <summary>
-        /// считыванеи данных из реестра в panel_info_remont
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Button_information_remont_company_regedit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                #region проверка пустых строк
-                if (textBox_Full_name_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"Полное наименование предприятия\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_OKPO_remont.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"ОКПО\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_BE_remont.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"БЕ\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_director_FIO_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"Руководитель ФИО\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_director_post_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"Руководитель Должность\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_chairman_FIO_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"Председатель ФИО\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_chairman_post_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"Председатель Должность\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_1_FIO_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"1 член комиссии ФИО\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_1_post_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"1 член комиссии Должность\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (textBox_2_FIO_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"2 член комиссии ФИО\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-
-                if (textBox_2_post_remont_company.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле \"2 член комиссии Должность\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                #endregion
-
-                RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
-                helloKey.SetValue("Полное наименование предприятия", $"{textBox_Full_name_company.Text}");
-                helloKey.SetValue("ОКПО", $"{textBox_OKPO_remont.Text}");
-                helloKey.SetValue("БЕ", $"{textBox_BE_remont.Text}");
-                helloKey.SetValue("Руководитель ФИО", $"{textBox_director_FIO_remont_company.Text}");
-                helloKey.SetValue("Руководитель Должность", $"{textBox_director_post_remont_company.Text}");
-                helloKey.SetValue("Председатель ФИО", $"{textBox_chairman_FIO_remont_company.Text}");
-                helloKey.SetValue("Председатель Должность", $"{textBox_chairman_post_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии ФИО", $"{textBox_1_FIO_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии Должность", $"{textBox_1_post_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии ФИО", $"{textBox_2_FIO_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии Должность", $"{textBox_2_post_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии ФИО", $"{textBox_3_FIO_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии Должность", $"{textBox_3_post_remont_company.Text}");
-
-                helloKey.Close();
-
-                if (textBox_Full_name_company.Text != "" && textBox_OKPO_remont.Text != "" && textBox_BE_remont.Text != ""
-                            && textBox_director_FIO_remont_company.Text != "" && textBox_director_post_remont_company.Text != ""
-                            && textBox_chairman_FIO_remont_company.Text != "" && textBox_chairman_post_remont_company.Text != ""
-                            && textBox_1_FIO_remont_company.Text != "" && textBox_1_post_remont_company.Text != ""
-                            && textBox_2_FIO_remont_company.Text != "" && textBox_2_post_remont_company.Text != "")
-                {
-                    button_Continue_remont_act_excel.Enabled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString()); ;
-                MessageBox.Show("Ошибка записи в реестр!");
-            }
-        }
-
 
         #endregion
 
@@ -2065,15 +1613,6 @@ namespace ServiceTelecomConnect
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
             toolTip1.SetToolTip(textBox_polinon_full, $"Горьковская ЖД");
         }
-
-        void Button_information_remont_company_regedit_MouseLeave(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_information_remont_company_regedit, $"Запись данных ПП в реестр");
-        }
-
 
         #endregion
 

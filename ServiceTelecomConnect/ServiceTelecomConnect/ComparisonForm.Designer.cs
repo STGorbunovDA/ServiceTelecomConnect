@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -149,42 +149,12 @@
             this.loading_json_file_BD = new System.Windows.Forms.Button();
             this.close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
-            this.panel_remont_information_company = new System.Windows.Forms.Panel();
-            this.button_Continue_remont_act_excel = new System.Windows.Forms.Button();
-            this.textBox_BE_remont = new System.Windows.Forms.TextBox();
-            this.button_close_remont_panel = new System.Windows.Forms.Button();
-            this.label_company_remont = new System.Windows.Forms.Label();
-            this.textBox_3_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_3_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_2_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_2_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_1_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_1_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox_chairman_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_chairman_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox_OKPO_remont = new System.Windows.Forms.TextBox();
-            this.textBox_director_post_remont_company = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox_Full_name_company = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox_director_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button_information_remont_company_regedit = new System.Windows.Forms.Button();
-            this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.button_all_BD = new System.Windows.Forms.Button();
             this.comboBox_city = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label_polinon_full = new System.Windows.Forms.Label();
-            this.button_remont_act = new System.Windows.Forms.Button();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -235,7 +205,6 @@
             this.panel_.SuspendLayout();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
-            this.panel_remont_information_company.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
@@ -258,44 +227,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -1523,340 +1492,6 @@
             this.label36.TabIndex = 6;
             this.label36.Text = "Функциональная панель";
             // 
-            // panel_remont_information_company
-            // 
-            this.panel_remont_information_company.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_remont_information_company.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_remont_information_company.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_remont_information_company.Controls.Add(this.button_Continue_remont_act_excel);
-            this.panel_remont_information_company.Controls.Add(this.textBox_BE_remont);
-            this.panel_remont_information_company.Controls.Add(this.button_close_remont_panel);
-            this.panel_remont_information_company.Controls.Add(this.label_company_remont);
-            this.panel_remont_information_company.Controls.Add(this.textBox_3_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_3_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_2_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_2_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_1_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_1_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.label15);
-            this.panel_remont_information_company.Controls.Add(this.label14);
-            this.panel_remont_information_company.Controls.Add(this.label12);
-            this.panel_remont_information_company.Controls.Add(this.textBox_chairman_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_chairman_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.label11);
-            this.panel_remont_information_company.Controls.Add(this.label10);
-            this.panel_remont_information_company.Controls.Add(this.label8);
-            this.panel_remont_information_company.Controls.Add(this.textBox_OKPO_remont);
-            this.panel_remont_information_company.Controls.Add(this.textBox_director_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.label6);
-            this.panel_remont_information_company.Controls.Add(this.label5);
-            this.panel_remont_information_company.Controls.Add(this.textBox_Full_name_company);
-            this.panel_remont_information_company.Controls.Add(this.label3);
-            this.panel_remont_information_company.Controls.Add(this.textBox_director_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.label4);
-            this.panel_remont_information_company.Controls.Add(this.button_information_remont_company_regedit);
-            this.panel_remont_information_company.Controls.Add(this.label_information_remont_pp);
-            this.panel_remont_information_company.Location = new System.Drawing.Point(327, 171);
-            this.panel_remont_information_company.Name = "panel_remont_information_company";
-            this.panel_remont_information_company.Size = new System.Drawing.Size(813, 458);
-            this.panel_remont_information_company.TabIndex = 29;
-            this.panel_remont_information_company.Visible = false;
-            // 
-            // button_Continue_remont_act_excel
-            // 
-            this.button_Continue_remont_act_excel.Location = new System.Drawing.Point(0, 0);
-            this.button_Continue_remont_act_excel.Name = "button_Continue_remont_act_excel";
-            this.button_Continue_remont_act_excel.Size = new System.Drawing.Size(75, 23);
-            this.button_Continue_remont_act_excel.TabIndex = 0;
-            // 
-            // textBox_BE_remont
-            // 
-            this.textBox_BE_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_BE_remont.Location = new System.Drawing.Point(278, 120);
-            this.textBox_BE_remont.Name = "textBox_BE_remont";
-            this.textBox_BE_remont.Size = new System.Drawing.Size(112, 29);
-            this.textBox_BE_remont.TabIndex = 35;
-            this.textBox_BE_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_BE_remont_KeyPress);
-            this.textBox_BE_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_BE_remont_KeyUp);
-            // 
-            // button_close_remont_panel
-            // 
-            this.button_close_remont_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_remont_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_remont_panel.Location = new System.Drawing.Point(767, 4);
-            this.button_close_remont_panel.Name = "button_close_remont_panel";
-            this.button_close_remont_panel.Size = new System.Drawing.Size(30, 29);
-            this.button_close_remont_panel.TabIndex = 34;
-            this.button_close_remont_panel.Text = "X";
-            this.button_close_remont_panel.UseVisualStyleBackColor = false;
-            this.button_close_remont_panel.Click += new System.EventHandler(this.Button_close_remont_panel_Click);
-            // 
-            // label_company_remont
-            // 
-            this.label_company_remont.AutoSize = true;
-            this.label_company_remont.BackColor = System.Drawing.Color.Transparent;
-            this.label_company_remont.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_company_remont.Location = new System.Drawing.Point(492, 10);
-            this.label_company_remont.Name = "label_company_remont";
-            this.label_company_remont.Size = new System.Drawing.Size(75, 23);
-            this.label_company_remont.TabIndex = 33;
-            this.label_company_remont.Text = "ДЦС-1";
-            // 
-            // textBox_3_post_remont_company
-            // 
-            this.textBox_3_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_3_post_remont_company.Location = new System.Drawing.Point(407, 378);
-            this.textBox_3_post_remont_company.Name = "textBox_3_post_remont_company";
-            this.textBox_3_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_3_post_remont_company.TabIndex = 32;
-            this.textBox_3_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_post_remont_company_KeyPress);
-            this.textBox_3_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_post_remont_company_KeyUp);
-            // 
-            // textBox_3_FIO_remont_company
-            // 
-            this.textBox_3_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_3_FIO_remont_company.Location = new System.Drawing.Point(167, 378);
-            this.textBox_3_FIO_remont_company.Name = "textBox_3_FIO_remont_company";
-            this.textBox_3_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_3_FIO_remont_company.TabIndex = 31;
-            this.textBox_3_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_FIO_remont_company_KeyPress);
-            this.textBox_3_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_FIO_remont_company_KeyUp);
-            // 
-            // textBox_2_post_remont_company
-            // 
-            this.textBox_2_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_2_post_remont_company.Location = new System.Drawing.Point(407, 338);
-            this.textBox_2_post_remont_company.Name = "textBox_2_post_remont_company";
-            this.textBox_2_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_2_post_remont_company.TabIndex = 30;
-            this.textBox_2_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_post_remont_company_KeyPress);
-            this.textBox_2_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_post_remont_company_KeyUp);
-            // 
-            // textBox_2_FIO_remont_company
-            // 
-            this.textBox_2_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_2_FIO_remont_company.Location = new System.Drawing.Point(167, 338);
-            this.textBox_2_FIO_remont_company.Name = "textBox_2_FIO_remont_company";
-            this.textBox_2_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_2_FIO_remont_company.TabIndex = 29;
-            this.textBox_2_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_FIO_remont_company_KeyPress);
-            this.textBox_2_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_FIO_remont_company_KeyUp);
-            // 
-            // textBox_1_post_remont_company
-            // 
-            this.textBox_1_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_1_post_remont_company.Location = new System.Drawing.Point(407, 295);
-            this.textBox_1_post_remont_company.Name = "textBox_1_post_remont_company";
-            this.textBox_1_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_1_post_remont_company.TabIndex = 28;
-            this.textBox_1_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_post_remont_company_KeyPress);
-            this.textBox_1_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_post_remont_company_KeyUp);
-            // 
-            // textBox_1_FIO_remont_company
-            // 
-            this.textBox_1_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_1_FIO_remont_company.Location = new System.Drawing.Point(167, 295);
-            this.textBox_1_FIO_remont_company.Name = "textBox_1_FIO_remont_company";
-            this.textBox_1_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_1_FIO_remont_company.TabIndex = 27;
-            this.textBox_1_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_FIO_remont_company_KeyPress);
-            this.textBox_1_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_FIO_remont_company_KeyUp);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(22, 384);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(142, 22);
-            this.label15.TabIndex = 26;
-            this.label15.Text = "3 член Ком.:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(22, 344);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 22);
-            this.label14.TabIndex = 25;
-            this.label14.Text = "2 член Ком.:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(22, 301);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(142, 22);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "1 член Ком.:";
-            // 
-            // textBox_chairman_post_remont_company
-            // 
-            this.textBox_chairman_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_chairman_post_remont_company.Location = new System.Drawing.Point(407, 249);
-            this.textBox_chairman_post_remont_company.Name = "textBox_chairman_post_remont_company";
-            this.textBox_chairman_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_chairman_post_remont_company.TabIndex = 23;
-            this.textBox_chairman_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_post_remont_company_KeyPress);
-            this.textBox_chairman_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_post_remont_company_KeyUp);
-            // 
-            // textBox_chairman_FIO_remont_company
-            // 
-            this.textBox_chairman_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_chairman_FIO_remont_company.Location = new System.Drawing.Point(167, 249);
-            this.textBox_chairman_FIO_remont_company.Name = "textBox_chairman_FIO_remont_company";
-            this.textBox_chairman_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_chairman_FIO_remont_company.TabIndex = 22;
-            this.textBox_chairman_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_FIO_remont_company_KeyPress);
-            this.textBox_chairman_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_FIO_remont_company_KeyUp);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(12, 255);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(153, 22);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Председатель:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(233, 124);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 22);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "БЕ:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(42, 124);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 22);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "ОКПО:";
-            // 
-            // textBox_OKPO_remont
-            // 
-            this.textBox_OKPO_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_OKPO_remont.Location = new System.Drawing.Point(113, 120);
-            this.textBox_OKPO_remont.Name = "textBox_OKPO_remont";
-            this.textBox_OKPO_remont.Size = new System.Drawing.Size(112, 29);
-            this.textBox_OKPO_remont.TabIndex = 17;
-            this.textBox_OKPO_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_OKPO_remont_KeyPress);
-            this.textBox_OKPO_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_OKPO_remont_KeyUp);
-            // 
-            // textBox_director_post_remont_company
-            // 
-            this.textBox_director_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_director_post_remont_company.Location = new System.Drawing.Point(407, 203);
-            this.textBox_director_post_remont_company.Name = "textBox_director_post_remont_company";
-            this.textBox_director_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_director_post_remont_company.TabIndex = 16;
-            this.textBox_director_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_post_remont_company_KeyPress);
-            this.textBox_director_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_post_remont_company_KeyUp);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(542, 177);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 22);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Должность";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(12, 209);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 22);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Руководитель:";
-            // 
-            // textBox_Full_name_company
-            // 
-            this.textBox_Full_name_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Full_name_company.Location = new System.Drawing.Point(407, 73);
-            this.textBox_Full_name_company.Multiline = true;
-            this.textBox_Full_name_company.Name = "textBox_Full_name_company";
-            this.textBox_Full_name_company.Size = new System.Drawing.Size(372, 76);
-            this.textBox_Full_name_company.TabIndex = 13;
-            this.textBox_Full_name_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Full_name_company_KeyPress);
-            this.textBox_Full_name_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_Full_name_company_KeyUp);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(44, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(362, 22);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Полное наименование предприятия:";
-            // 
-            // textBox_director_FIO_remont_company
-            // 
-            this.textBox_director_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_director_FIO_remont_company.Location = new System.Drawing.Point(167, 203);
-            this.textBox_director_FIO_remont_company.Name = "textBox_director_FIO_remont_company";
-            this.textBox_director_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_director_FIO_remont_company.TabIndex = 11;
-            this.textBox_director_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_FIO_remont_company_KeyPress);
-            this.textBox_director_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_FIO_remont_company_KeyUp);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(257, 178);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 22);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "ФИО";
-            // 
-            // button_information_remont_company_regedit
-            // 
-            this.button_information_remont_company_regedit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_information_remont_company_regedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_information_remont_company_regedit.Location = new System.Drawing.Point(406, 413);
-            this.button_information_remont_company_regedit.Name = "button_information_remont_company_regedit";
-            this.button_information_remont_company_regedit.Size = new System.Drawing.Size(160, 29);
-            this.button_information_remont_company_regedit.TabIndex = 8;
-            this.button_information_remont_company_regedit.Text = "Записать данные";
-            this.button_information_remont_company_regedit.UseVisualStyleBackColor = false;
-            this.button_information_remont_company_regedit.Click += new System.EventHandler(this.Button_information_remont_company_regedit_Click);
-            this.button_information_remont_company_regedit.MouseLeave += new System.EventHandler(this.Button_information_remont_company_regedit_MouseLeave);
-            // 
-            // label_information_remont_pp
-            // 
-            this.label_information_remont_pp.AutoSize = true;
-            this.label_information_remont_pp.BackColor = System.Drawing.Color.Transparent;
-            this.label_information_remont_pp.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_information_remont_pp.Location = new System.Drawing.Point(242, 10);
-            this.label_information_remont_pp.Name = "label_information_remont_pp";
-            this.label_information_remont_pp.Size = new System.Drawing.Size(244, 23);
-            this.label_information_remont_pp.TabIndex = 6;
-            this.label_information_remont_pp.Text = "Данные для ремонта";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1867,7 +1502,6 @@
             this.panel1.Controls.Add(this.comboBox_city);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label_polinon_full);
-            this.panel1.Controls.Add(this.button_remont_act);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label30);
@@ -1958,20 +1592,6 @@
             this.label_polinon_full.DoubleClick += new System.EventHandler(this.Label_polinon_full_DoubleClick);
             this.label_polinon_full.MouseEnter += new System.EventHandler(this.Label_polinon_full_MouseEnter);
             this.label_polinon_full.MouseLeave += new System.EventHandler(this.Label_polinon_full_MouseLeave);
-            // 
-            // button_remont_act
-            // 
-            this.button_remont_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_remont_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_remont_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_remont_act.Location = new System.Drawing.Point(1279, 87);
-            this.button_remont_act.Name = "button_remont_act";
-            this.button_remont_act.Size = new System.Drawing.Size(137, 29);
-            this.button_remont_act.TabIndex = 73;
-            this.button_remont_act.Text = "сформировать";
-            this.button_remont_act.UseVisualStyleBackColor = false;
-            this.button_remont_act.Click += new System.EventHandler(this.Button_remont_act_Click);
             // 
             // label_act_remont
             // 
@@ -2517,7 +2137,6 @@
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_date);
             this.Controls.Add(this.Functional_loading_panel);
-            this.Controls.Add(this.panel_remont_information_company);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
@@ -2553,8 +2172,6 @@
             this.panel_date.PerformLayout();
             this.Functional_loading_panel.ResumeLayout(false);
             this.Functional_loading_panel.PerformLayout();
-            this.panel_remont_information_company.ResumeLayout(false);
-            this.panel_remont_information_company.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
@@ -2619,37 +2236,7 @@
         private System.Windows.Forms.TextBox txB_serialNumber;
         private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button_remont_act;
         private System.Windows.Forms.Label label_act_remont;
-        private System.Windows.Forms.Panel panel_remont_information_company;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_Full_name_company;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_director_FIO_remont_company;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button_information_remont_company_regedit;
-        private System.Windows.Forms.Label label_information_remont_pp;
-        private System.Windows.Forms.TextBox textBox_director_post_remont_company;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox_OKPO_remont;
-        private System.Windows.Forms.TextBox textBox_3_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_3_FIO_remont_company;
-        private System.Windows.Forms.TextBox textBox_2_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_2_FIO_remont_company;
-        private System.Windows.Forms.TextBox textBox_1_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_1_FIO_remont_company;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox_chairman_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_chairman_FIO_remont_company;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label_company_remont;
-        private System.Windows.Forms.Button button_close_remont_panel;
-        private System.Windows.Forms.TextBox textBox_BE_remont;
-        private System.Windows.Forms.Button button_Continue_remont_act_excel;
         private System.Windows.Forms.Button button_close_panel_date_info;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TextBox textBox_polinon_full;
