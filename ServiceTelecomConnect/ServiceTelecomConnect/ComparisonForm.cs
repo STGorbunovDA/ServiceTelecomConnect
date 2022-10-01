@@ -54,6 +54,7 @@ namespace ServiceTelecomConnect
                 comboBox_seach.Items.Add("Номер акта ТО");
                 comboBox_seach.Items.Add("Номер акта Ремонта");
                 comboBox_seach.Items.Add("Номер Акта списания");
+                comboBox_seach.Items.Add("Выполнение плана");
 
                 comboBox_seach.Text = comboBox_seach.Items[2].ToString();
 
@@ -889,6 +890,21 @@ namespace ServiceTelecomConnect
                     catch (Exception ex)
                     {
                         MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (comboBox_seach.SelectedIndex == 7)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        Filling_datagridview.Number_unique_AddExecution_curator(cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка добавления в comboBox выполнение плана (Number_unique_AddExecution_curator)");
                         MessageBox.Show(ex.ToString());
                     }
                 }

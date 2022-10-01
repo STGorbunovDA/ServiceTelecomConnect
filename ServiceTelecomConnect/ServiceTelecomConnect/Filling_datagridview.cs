@@ -1780,6 +1780,33 @@ namespace ServiceTelecomConnect
             }
 
         }
+
+        internal static void Number_unique_AddExecution_curator(ComboBox cmb_number_unique_acts)
+        {
+            try
+            {
+                //cmb_number_unique_acts.Items.Clear();
+                cmb_number_unique_acts.Items.Add("Январь");
+                cmb_number_unique_acts.Items.Add("Февраль");
+                cmb_number_unique_acts.Items.Add("Март");
+                cmb_number_unique_acts.Items.Add("Апрель");
+                cmb_number_unique_acts.Items.Add("Май");
+                cmb_number_unique_acts.Items.Add("Июнь");
+                cmb_number_unique_acts.Items.Add("Июль");
+                cmb_number_unique_acts.Items.Add("Август");
+                cmb_number_unique_acts.Items.Add("Сентябрь");
+                cmb_number_unique_acts.Items.Add("Октябрь");
+                cmb_number_unique_acts.Items.Add("Ноябрь");
+                cmb_number_unique_acts.Items.Add("Декабрь");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_decommissionActs_curator");
+            }
+
+        }
+
+
         #endregion
     }
 }
