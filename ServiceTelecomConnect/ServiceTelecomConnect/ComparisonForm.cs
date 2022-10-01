@@ -1206,11 +1206,10 @@ namespace ServiceTelecomConnect
                 if (txB_serialNumber.Text != "")
                 {
                     ContextMenu m = new ContextMenu();
-                    m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
-                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
+                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
+                    m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_Click));
-                    //m.MenuItems.Add(new MenuItem("Изменить месяц плана радиостанцит", Button_delete_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }

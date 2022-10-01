@@ -84,7 +84,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void AddExecutionRowСellCurator(DataGridView dgw, string months, string cmB_city)
+        internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, string cmB_city)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
@@ -94,13 +94,13 @@ namespace ServiceTelecomConnect
                     var AddExecutionQuery = "";
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[18].Value = months;
+                        dgw.Rows[row.Index].Cells[18].Value = month;
                     }
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
                         var rowState = dgw.Rows[index].Cells[18].Value.ToString();//проверить индекс
 
-                        if (rowState == months)
+                        if (rowState == month)
                         {
                             //var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                             var poligon = dgw.Rows[index].Cells[1].Value.ToString();
@@ -133,7 +133,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            AddExecutionQuery = $"UPDATE radiostantion_сomparison SET months = '{months}' WHERE serialNumber = '{serialNumber}'";
+                            AddExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}'";
 
                             using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
                             {
