@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -81,24 +81,6 @@
             this.showMatchPreviouYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFullDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
-            this.txB_reason_decommission = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox_decommissionSerialNumber = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btn_record_decommissionSerialNumber = new System.Windows.Forms.Button();
-            this.btn_decommissionSerialNumber_close = new System.Windows.Forms.Button();
-            this.label33 = new System.Windows.Forms.Label();
-            this.panel_info_phone_FIO = new System.Windows.Forms.Panel();
-            this.panel_textbox_FIO_phoneNumber = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.button_close_panel_info_phone_FIO = new System.Windows.Forms.Button();
-            this.panel_textbox_FIO_representative = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.panel_seach_datagrid = new System.Windows.Forms.Panel();
             this.panel_ = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -109,22 +91,6 @@
             this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
             this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.panel_date = new System.Windows.Forms.Panel();
-            this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox_polinon_full = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button_close_panel_date_info = new System.Windows.Forms.Button();
-            this.textBox_FIO_Engineer = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.textBox_GD_city = new System.Windows.Forms.TextBox();
-            this.label_GD = new System.Windows.Forms.Label();
-            this.button_record_date = new System.Windows.Forms.Button();
-            this.textBox_FIO_chief = new System.Windows.Forms.TextBox();
-            this.textBox_doverennost = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label_dov = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.Functional_loading_panel = new System.Windows.Forms.Panel();
             this.btn_Show_DB_radiostantion_full = new System.Windows.Forms.Button();
             this.btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.Button();
@@ -187,17 +153,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel_decommissionSerialNumber.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel_info_phone_FIO.SuspendLayout();
             this.panel_seach_datagrid.SuspendLayout();
             this.panel_.SuspendLayout();
-            this.panel_date.SuspendLayout();
-            this.Functional_loading_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -216,53 +176,51 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.DefaultCellStyleChanged += new System.EventHandler(this.DataGridView1_DefaultCellStyleChanged);
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
@@ -661,220 +619,6 @@
             this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
             this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
             // 
-            // panel_decommissionSerialNumber
-            // 
-            this.panel_decommissionSerialNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_decommissionSerialNumber.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_decommissionSerialNumber.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_decommissionSerialNumber.Controls.Add(this.txB_reason_decommission);
-            this.panel_decommissionSerialNumber.Controls.Add(this.label2);
-            this.panel_decommissionSerialNumber.Controls.Add(this.textBox_decommissionSerialNumber);
-            this.panel_decommissionSerialNumber.Controls.Add(this.panel5);
-            this.panel_decommissionSerialNumber.Controls.Add(this.btn_record_decommissionSerialNumber);
-            this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
-            this.panel_decommissionSerialNumber.Controls.Add(this.label33);
-            this.panel_decommissionSerialNumber.Enabled = false;
-            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(490, 349);
-            this.panel_decommissionSerialNumber.Name = "panel_decommissionSerialNumber";
-            this.panel_decommissionSerialNumber.Size = new System.Drawing.Size(447, 313);
-            this.panel_decommissionSerialNumber.TabIndex = 39;
-            this.panel_decommissionSerialNumber.Visible = false;
-            // 
-            // txB_reason_decommission
-            // 
-            this.txB_reason_decommission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txB_reason_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_reason_decommission.Location = new System.Drawing.Point(117, 82);
-            this.txB_reason_decommission.Multiline = true;
-            this.txB_reason_decommission.Name = "txB_reason_decommission";
-            this.txB_reason_decommission.Size = new System.Drawing.Size(314, 174);
-            this.txB_reason_decommission.TabIndex = 81;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(25, 88);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 22);
-            this.label2.TabIndex = 80;
-            this.label2.Text = "Причина:";
-            // 
-            // textBox_decommissionSerialNumber
-            // 
-            this.textBox_decommissionSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_decommissionSerialNumber.Location = new System.Drawing.Point(204, 45);
-            this.textBox_decommissionSerialNumber.Name = "textBox_decommissionSerialNumber";
-            this.textBox_decommissionSerialNumber.Size = new System.Drawing.Size(227, 29);
-            this.textBox_decommissionSerialNumber.TabIndex = 79;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel5.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel5.Controls.Add(this.button3);
-            this.panel5.Controls.Add(this.button4);
-            this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Controls.Add(this.label18);
-            this.panel5.Enabled = false;
-            this.panel5.Location = new System.Drawing.Point(359, 416);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(528, 141);
-            this.panel5.TabIndex = 38;
-            this.panel5.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(394, 88);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 29);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "Поиск";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(495, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 29);
-            this.button4.TabIndex = 34;
-            this.button4.Text = "X";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(119, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(372, 29);
-            this.textBox2.TabIndex = 37;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(25, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 23);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Поиск:";
-            // 
-            // btn_record_decommissionSerialNumber
-            // 
-            this.btn_record_decommissionSerialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_record_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_record_decommissionSerialNumber.Location = new System.Drawing.Point(335, 262);
-            this.btn_record_decommissionSerialNumber.Name = "btn_record_decommissionSerialNumber";
-            this.btn_record_decommissionSerialNumber.Size = new System.Drawing.Size(96, 29);
-            this.btn_record_decommissionSerialNumber.TabIndex = 36;
-            this.btn_record_decommissionSerialNumber.Text = "Записать";
-            this.btn_record_decommissionSerialNumber.UseVisualStyleBackColor = false;
-            this.btn_record_decommissionSerialNumber.Click += new System.EventHandler(this.Btn_record_decommissionSerialNumber_Click);
-            // 
-            // btn_decommissionSerialNumber_close
-            // 
-            this.btn_decommissionSerialNumber_close.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_decommissionSerialNumber_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_decommissionSerialNumber_close.Location = new System.Drawing.Point(401, 10);
-            this.btn_decommissionSerialNumber_close.Name = "btn_decommissionSerialNumber_close";
-            this.btn_decommissionSerialNumber_close.Size = new System.Drawing.Size(30, 29);
-            this.btn_decommissionSerialNumber_close.TabIndex = 34;
-            this.btn_decommissionSerialNumber_close.Text = "X";
-            this.btn_decommissionSerialNumber_close.UseVisualStyleBackColor = false;
-            this.btn_decommissionSerialNumber_close.Click += new System.EventHandler(this.Btn_decommissionSerialNumber_close_Click);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(25, 50);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(186, 22);
-            this.label33.TabIndex = 6;
-            this.label33.Text = "№ Акта списания:";
-            // 
-            // panel_info_phone_FIO
-            // 
-            this.panel_info_phone_FIO.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_info_phone_FIO.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_info_phone_FIO.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_info_phone_FIO.Controls.Add(this.panel_textbox_FIO_phoneNumber);
-            this.panel_info_phone_FIO.Controls.Add(this.label31);
-            this.panel_info_phone_FIO.Controls.Add(this.button_close_panel_info_phone_FIO);
-            this.panel_info_phone_FIO.Controls.Add(this.panel_textbox_FIO_representative);
-            this.panel_info_phone_FIO.Controls.Add(this.label21);
-            this.panel_info_phone_FIO.Enabled = false;
-            this.panel_info_phone_FIO.Location = new System.Drawing.Point(487, 380);
-            this.panel_info_phone_FIO.Name = "panel_info_phone_FIO";
-            this.panel_info_phone_FIO.Size = new System.Drawing.Size(471, 141);
-            this.panel_info_phone_FIO.TabIndex = 38;
-            this.panel_info_phone_FIO.Visible = false;
-            // 
-            // panel_textbox_FIO_phoneNumber
-            // 
-            this.panel_textbox_FIO_phoneNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_textbox_FIO_phoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel_textbox_FIO_phoneNumber.Location = new System.Drawing.Point(164, 81);
-            this.panel_textbox_FIO_phoneNumber.Name = "panel_textbox_FIO_phoneNumber";
-            this.panel_textbox_FIO_phoneNumber.ReadOnly = true;
-            this.panel_textbox_FIO_phoneNumber.Size = new System.Drawing.Size(232, 29);
-            this.panel_textbox_FIO_phoneNumber.TabIndex = 39;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label31.Location = new System.Drawing.Point(48, 87);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(114, 23);
-            this.label31.TabIndex = 38;
-            this.label31.Text = "Телефон:";
-            // 
-            // button_close_panel_info_phone_FIO
-            // 
-            this.button_close_panel_info_phone_FIO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_info_phone_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_info_phone_FIO.Location = new System.Drawing.Point(433, 5);
-            this.button_close_panel_info_phone_FIO.Name = "button_close_panel_info_phone_FIO";
-            this.button_close_panel_info_phone_FIO.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_info_phone_FIO.TabIndex = 34;
-            this.button_close_panel_info_phone_FIO.Text = "X";
-            this.button_close_panel_info_phone_FIO.UseVisualStyleBackColor = false;
-            this.button_close_panel_info_phone_FIO.Click += new System.EventHandler(this.Button_close_panel_info_phone_FIO_Click);
-            // 
-            // panel_textbox_FIO_representative
-            // 
-            this.panel_textbox_FIO_representative.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_textbox_FIO_representative.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel_textbox_FIO_representative.Location = new System.Drawing.Point(164, 38);
-            this.panel_textbox_FIO_representative.Name = "panel_textbox_FIO_representative";
-            this.panel_textbox_FIO_representative.ReadOnly = true;
-            this.panel_textbox_FIO_representative.Size = new System.Drawing.Size(232, 29);
-            this.panel_textbox_FIO_representative.TabIndex = 37;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.Color.Transparent;
-            this.label21.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(48, 42);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(62, 23);
-            this.label21.TabIndex = 6;
-            this.label21.Text = "ФИО:";
-            // 
             // panel_seach_datagrid
             // 
             this.panel_seach_datagrid.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -995,370 +739,89 @@
             this.label37.TabIndex = 6;
             this.label37.Text = "Поиск:";
             // 
-            // panel_date
-            // 
-            this.panel_date.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_date.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_date.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_date.Controls.Add(this.textBox_number_printing_doc_datePanel);
-            this.panel_date.Controls.Add(this.label26);
-            this.panel_date.Controls.Add(this.textBox_polinon_full);
-            this.panel_date.Controls.Add(this.label7);
-            this.panel_date.Controls.Add(this.button_close_panel_date_info);
-            this.panel_date.Controls.Add(this.textBox_FIO_Engineer);
-            this.panel_date.Controls.Add(this.label27);
-            this.panel_date.Controls.Add(this.textBox_GD_city);
-            this.panel_date.Controls.Add(this.label_GD);
-            this.panel_date.Controls.Add(this.button_record_date);
-            this.panel_date.Controls.Add(this.textBox_FIO_chief);
-            this.panel_date.Controls.Add(this.textBox_doverennost);
-            this.panel_date.Controls.Add(this.label25);
-            this.panel_date.Controls.Add(this.label_dov);
-            this.panel_date.Controls.Add(this.label23);
-            this.panel_date.Enabled = false;
-            this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.panel_date.Location = new System.Drawing.Point(400, 240);
-            this.panel_date.Name = "panel_date";
-            this.panel_date.Size = new System.Drawing.Size(642, 403);
-            this.panel_date.TabIndex = 28;
-            this.panel_date.TabStop = true;
-            this.panel_date.Visible = false;
-            // 
-            // textBox_number_printing_doc_datePanel
-            // 
-            this.textBox_number_printing_doc_datePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_number_printing_doc_datePanel.Location = new System.Drawing.Point(280, 315);
-            this.textBox_number_printing_doc_datePanel.Name = "textBox_number_printing_doc_datePanel";
-            this.textBox_number_printing_doc_datePanel.Size = new System.Drawing.Size(345, 29);
-            this.textBox_number_printing_doc_datePanel.TabIndex = 77;
-            this.textBox_number_printing_doc_datePanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_number_printing_doc_datePanel_KeyPress);
-            this.textBox_number_printing_doc_datePanel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_number_printing_doc_datePanel_KeyUp);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(176, 324);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(98, 18);
-            this.label26.TabIndex = 76;
-            this.label26.Text = "№ Печати:";
-            // 
-            // textBox_polinon_full
-            // 
-            this.textBox_polinon_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_polinon_full.Location = new System.Drawing.Point(280, 266);
-            this.textBox_polinon_full.Name = "textBox_polinon_full";
-            this.textBox_polinon_full.Size = new System.Drawing.Size(345, 29);
-            this.textBox_polinon_full.TabIndex = 39;
-            this.textBox_polinon_full.MouseEnter += new System.EventHandler(this.TextBox_polinon_full_MouseEnter);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(188, 275);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 18);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Полигон:";
-            // 
-            // button_close_panel_date_info
-            // 
-            this.button_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_date_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_date_info.Location = new System.Drawing.Point(609, 3);
-            this.button_close_panel_date_info.Name = "button_close_panel_date_info";
-            this.button_close_panel_date_info.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_date_info.TabIndex = 37;
-            this.button_close_panel_date_info.Text = "X";
-            this.button_close_panel_date_info.UseVisualStyleBackColor = false;
-            this.button_close_panel_date_info.Click += new System.EventHandler(this.Button_close_panel_date_info_Click);
-            // 
-            // textBox_FIO_Engineer
-            // 
-            this.textBox_FIO_Engineer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FIO_Engineer.Location = new System.Drawing.Point(280, 220);
-            this.textBox_FIO_Engineer.Name = "textBox_FIO_Engineer";
-            this.textBox_FIO_Engineer.Size = new System.Drawing.Size(345, 29);
-            this.textBox_FIO_Engineer.TabIndex = 13;
-            this.textBox_FIO_Engineer.Click += new System.EventHandler(this.TextBox_FIO_Engineer_Click);
-            this.textBox_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_Engineer_KeyPress);
-            this.textBox_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_Engineer_KeyUp);
-            this.textBox_FIO_Engineer.MouseEnter += new System.EventHandler(this.TextBox_FIO_Engineer_MouseEnter);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(136, 229);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(138, 18);
-            this.label27.TabIndex = 12;
-            this.label27.Text = "ФИО Инженера:";
-            // 
-            // textBox_GD_city
-            // 
-            this.textBox_GD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_GD_city.Location = new System.Drawing.Point(280, 73);
-            this.textBox_GD_city.Name = "textBox_GD_city";
-            this.textBox_GD_city.Size = new System.Drawing.Size(345, 29);
-            this.textBox_GD_city.TabIndex = 11;
-            this.textBox_GD_city.Click += new System.EventHandler(this.TextBox_GD_city_Click);
-            this.textBox_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_GD_city_KeyPress);
-            this.textBox_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_GD_city_KeyUp);
-            this.textBox_GD_city.MouseEnter += new System.EventHandler(this.TextBox_GD_city_MouseEnter);
-            // 
-            // label_GD
-            // 
-            this.label_GD.AutoSize = true;
-            this.label_GD.BackColor = System.Drawing.Color.Transparent;
-            this.label_GD.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_GD.Location = new System.Drawing.Point(6, 82);
-            this.label_GD.Name = "label_GD";
-            this.label_GD.Size = new System.Drawing.Size(268, 18);
-            this.label_GD.TabIndex = 10;
-            this.label_GD.Text = "Город проведения проверки:";
-            // 
-            // button_record_date
-            // 
-            this.button_record_date.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_record_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_record_date.Location = new System.Drawing.Point(280, 360);
-            this.button_record_date.Name = "button_record_date";
-            this.button_record_date.Size = new System.Drawing.Size(346, 29);
-            this.button_record_date.TabIndex = 8;
-            this.button_record_date.Text = "Записать данные";
-            this.button_record_date.UseVisualStyleBackColor = false;
-            this.button_record_date.Click += new System.EventHandler(this.Button_record_date_Click);
-            // 
-            // textBox_FIO_chief
-            // 
-            this.textBox_FIO_chief.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FIO_chief.Location = new System.Drawing.Point(280, 121);
-            this.textBox_FIO_chief.Name = "textBox_FIO_chief";
-            this.textBox_FIO_chief.Size = new System.Drawing.Size(345, 29);
-            this.textBox_FIO_chief.TabIndex = 9;
-            this.textBox_FIO_chief.Click += new System.EventHandler(this.TextBox_FIO_chief_Click);
-            this.textBox_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_chief_KeyPress);
-            this.textBox_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_chief_KeyUp);
-            this.textBox_FIO_chief.MouseEnter += new System.EventHandler(this.TextBox_FIO_chief_MouseEnter);
-            // 
-            // textBox_doverennost
-            // 
-            this.textBox_doverennost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_doverennost.Location = new System.Drawing.Point(280, 170);
-            this.textBox_doverennost.Name = "textBox_doverennost";
-            this.textBox_doverennost.Size = new System.Drawing.Size(345, 29);
-            this.textBox_doverennost.TabIndex = 6;
-            this.textBox_doverennost.Click += new System.EventHandler(this.TextBox_doverennost_Click);
-            this.textBox_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_doverennost_KeyPress);
-            this.textBox_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_doverennost_KeyUp);
-            this.textBox_doverennost.MouseEnter += new System.EventHandler(this.TextBox_doverennost_MouseEnter);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(116, 130);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(158, 18);
-            this.label25.TabIndex = 8;
-            this.label25.Text = "ФИО Начальника:";
-            // 
-            // label_dov
-            // 
-            this.label_dov.AutoSize = true;
-            this.label_dov.BackColor = System.Drawing.Color.Transparent;
-            this.label_dov.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_dov.Location = new System.Drawing.Point(46, 179);
-            this.label_dov.Name = "label_dov";
-            this.label_dov.Size = new System.Drawing.Size(228, 18);
-            this.label_dov.TabIndex = 7;
-            this.label_dov.Text = "№ и Дату доверенности:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(233, 22);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(164, 22);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "Введите данные";
-            // 
             // Functional_loading_panel
             // 
-            this.Functional_loading_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Functional_loading_panel.BackColor = System.Drawing.Color.SkyBlue;
-            this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_full);
-            this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_last_year);
-            this.Functional_loading_panel.Controls.Add(this.button_Loading_file_last_year);
-            this.Functional_loading_panel.Controls.Add(this.button_Uploading_JSON_file);
-            this.Functional_loading_panel.Controls.Add(this.button_Copying_current_BD_end_of_the_year);
-            this.Functional_loading_panel.Controls.Add(this.loading_file_full_BD);
-            this.Functional_loading_panel.Controls.Add(this.manual_backup_current_DB);
-            this.Functional_loading_panel.Controls.Add(this.clear_BD_current_year);
-            this.Functional_loading_panel.Controls.Add(this.loading_file_current_DB);
-            this.Functional_loading_panel.Controls.Add(this.loading_json_file_BD);
-            this.Functional_loading_panel.Controls.Add(this.close_Functional_loading_panel);
-            this.Functional_loading_panel.Controls.Add(this.label36);
-            this.Functional_loading_panel.Enabled = false;
-            this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.Functional_loading_panel.Location = new System.Drawing.Point(400, 240);
+            this.Functional_loading_panel.Location = new System.Drawing.Point(0, 0);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
-            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 392);
-            this.Functional_loading_panel.TabIndex = 80;
-            this.Functional_loading_panel.TabStop = true;
-            this.Functional_loading_panel.Visible = false;
+            this.Functional_loading_panel.Size = new System.Drawing.Size(200, 100);
+            this.Functional_loading_panel.TabIndex = 83;
             // 
             // btn_Show_DB_radiostantion_full
             // 
-            this.btn_Show_DB_radiostantion_full.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Show_DB_radiostantion_full.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_Show_DB_radiostantion_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Show_DB_radiostantion_full.Location = new System.Drawing.Point(326, 246);
+            this.btn_Show_DB_radiostantion_full.Location = new System.Drawing.Point(0, 0);
             this.btn_Show_DB_radiostantion_full.Name = "btn_Show_DB_radiostantion_full";
-            this.btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(247, 40);
-            this.btn_Show_DB_radiostantion_full.TabIndex = 88;
-            this.btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
-            this.btn_Show_DB_radiostantion_full.UseVisualStyleBackColor = false;
-            this.btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_full_Click);
+            this.btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(75, 23);
+            this.btn_Show_DB_radiostantion_full.TabIndex = 0;
             // 
             // btn_Show_DB_radiostantion_last_year
             // 
-            this.btn_Show_DB_radiostantion_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Show_DB_radiostantion_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_Show_DB_radiostantion_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Show_DB_radiostantion_last_year.Location = new System.Drawing.Point(64, 245);
+            this.btn_Show_DB_radiostantion_last_year.Location = new System.Drawing.Point(0, 0);
             this.btn_Show_DB_radiostantion_last_year.Name = "btn_Show_DB_radiostantion_last_year";
-            this.btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(249, 40);
-            this.btn_Show_DB_radiostantion_last_year.TabIndex = 87;
-            this.btn_Show_DB_radiostantion_last_year.Text = "Показать БД прошлого года по текущему участку";
-            this.btn_Show_DB_radiostantion_last_year.UseVisualStyleBackColor = false;
-            this.btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_last_year_Click);
+            this.btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(75, 23);
+            this.btn_Show_DB_radiostantion_last_year.TabIndex = 0;
             // 
             // button_Loading_file_last_year
             // 
-            this.button_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
+            this.button_Loading_file_last_year.Location = new System.Drawing.Point(0, 0);
             this.button_Loading_file_last_year.Name = "button_Loading_file_last_year";
-            this.button_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
-            this.button_Loading_file_last_year.TabIndex = 86;
-            this.button_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
-            this.button_Loading_file_last_year.UseVisualStyleBackColor = false;
-            this.button_Loading_file_last_year.Click += new System.EventHandler(this.Button_Loading_file_last_year_Click);
+            this.button_Loading_file_last_year.Size = new System.Drawing.Size(75, 23);
+            this.button_Loading_file_last_year.TabIndex = 0;
             // 
             // button_Uploading_JSON_file
             // 
-            this.button_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
+            this.button_Uploading_JSON_file.Location = new System.Drawing.Point(0, 0);
             this.button_Uploading_JSON_file.Name = "button_Uploading_JSON_file";
-            this.button_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
-            this.button_Uploading_JSON_file.TabIndex = 85;
-            this.button_Uploading_JSON_file.Text = "Выгрузка файла JSON";
-            this.button_Uploading_JSON_file.UseVisualStyleBackColor = false;
-            this.button_Uploading_JSON_file.Click += new System.EventHandler(this.Button_Uploading_JSON_file_Click);
+            this.button_Uploading_JSON_file.Size = new System.Drawing.Size(75, 23);
+            this.button_Uploading_JSON_file.TabIndex = 0;
             // 
             // button_Copying_current_BD_end_of_the_year
             // 
-            this.button_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
+            this.button_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(0, 0);
             this.button_Copying_current_BD_end_of_the_year.Name = "button_Copying_current_BD_end_of_the_year";
-            this.button_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
-            this.button_Copying_current_BD_end_of_the_year.TabIndex = 84;
-            this.button_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
-            this.button_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
-            this.button_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.Button_Copying_current_BD_end_of_the_year_Click);
+            this.button_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(75, 23);
+            this.button_Copying_current_BD_end_of_the_year.TabIndex = 0;
             // 
             // loading_file_full_BD
             // 
-            this.loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
+            this.loading_file_full_BD.Location = new System.Drawing.Point(0, 0);
             this.loading_file_full_BD.Name = "loading_file_full_BD";
-            this.loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
-            this.loading_file_full_BD.TabIndex = 83;
-            this.loading_file_full_BD.Text = "Загрузка из файла для общей БД";
-            this.loading_file_full_BD.UseVisualStyleBackColor = false;
-            this.loading_file_full_BD.Click += new System.EventHandler(this.Loading_file_full_BD_Click);
+            this.loading_file_full_BD.Size = new System.Drawing.Size(75, 23);
+            this.loading_file_full_BD.TabIndex = 0;
             // 
             // manual_backup_current_DB
             // 
-            this.manual_backup_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.manual_backup_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.manual_backup_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.manual_backup_current_DB.Location = new System.Drawing.Point(324, 56);
+            this.manual_backup_current_DB.Location = new System.Drawing.Point(0, 0);
             this.manual_backup_current_DB.Name = "manual_backup_current_DB";
-            this.manual_backup_current_DB.Size = new System.Drawing.Size(249, 42);
-            this.manual_backup_current_DB.TabIndex = 81;
-            this.manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
-            this.manual_backup_current_DB.UseVisualStyleBackColor = false;
-            this.manual_backup_current_DB.Click += new System.EventHandler(this.Manual_backup_current_DB_Click);
+            this.manual_backup_current_DB.Size = new System.Drawing.Size(75, 23);
+            this.manual_backup_current_DB.TabIndex = 0;
             // 
             // clear_BD_current_year
             // 
-            this.clear_BD_current_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clear_BD_current_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.clear_BD_current_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clear_BD_current_year.Location = new System.Drawing.Point(64, 56);
+            this.clear_BD_current_year.Location = new System.Drawing.Point(0, 0);
             this.clear_BD_current_year.Name = "clear_BD_current_year";
-            this.clear_BD_current_year.Size = new System.Drawing.Size(249, 42);
-            this.clear_BD_current_year.TabIndex = 80;
-            this.clear_BD_current_year.Text = "Полная очистка БД текущего года";
-            this.clear_BD_current_year.UseVisualStyleBackColor = false;
-            this.clear_BD_current_year.Click += new System.EventHandler(this.Clear_BD_current_year_Click);
+            this.clear_BD_current_year.Size = new System.Drawing.Size(75, 23);
+            this.clear_BD_current_year.TabIndex = 0;
             // 
             // loading_file_current_DB
             // 
-            this.loading_file_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_file_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_file_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_current_DB.Location = new System.Drawing.Point(64, 105);
+            this.loading_file_current_DB.Location = new System.Drawing.Point(0, 0);
             this.loading_file_current_DB.Name = "loading_file_current_DB";
-            this.loading_file_current_DB.Size = new System.Drawing.Size(249, 42);
-            this.loading_file_current_DB.TabIndex = 79;
-            this.loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
-            this.loading_file_current_DB.UseVisualStyleBackColor = false;
-            this.loading_file_current_DB.Click += new System.EventHandler(this.Loading_file_current_BD_Click);
+            this.loading_file_current_DB.Size = new System.Drawing.Size(75, 23);
+            this.loading_file_current_DB.TabIndex = 0;
             // 
             // loading_json_file_BD
             // 
-            this.loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
+            this.loading_json_file_BD.Location = new System.Drawing.Point(0, 0);
             this.loading_json_file_BD.Name = "loading_json_file_BD";
-            this.loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
-            this.loading_json_file_BD.TabIndex = 78;
-            this.loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
-            this.loading_json_file_BD.UseVisualStyleBackColor = false;
-            this.loading_json_file_BD.Click += new System.EventHandler(this.Loading_json_file_BD_Click);
+            this.loading_json_file_BD.Size = new System.Drawing.Size(75, 23);
+            this.loading_json_file_BD.TabIndex = 0;
             // 
             // close_Functional_loading_panel
             // 
-            this.close_Functional_loading_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.close_Functional_loading_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.close_Functional_loading_panel.Location = new System.Drawing.Point(609, 3);
+            this.close_Functional_loading_panel.Location = new System.Drawing.Point(0, 0);
             this.close_Functional_loading_panel.Name = "close_Functional_loading_panel";
-            this.close_Functional_loading_panel.Size = new System.Drawing.Size(30, 29);
-            this.close_Functional_loading_panel.TabIndex = 37;
-            this.close_Functional_loading_panel.Text = "X";
-            this.close_Functional_loading_panel.UseVisualStyleBackColor = false;
-            this.close_Functional_loading_panel.Click += new System.EventHandler(this.Close_Functional_loading_panel_Click);
+            this.close_Functional_loading_panel.Size = new System.Drawing.Size(75, 23);
+            this.close_Functional_loading_panel.TabIndex = 0;
             // 
             // label36
             // 
@@ -1718,32 +1181,10 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
-            this.panel3.Controls.Add(this.txB_Sign);
-            this.panel3.Controls.Add(this.lbl_Sign);
-            this.panel3.Controls.Add(this.label_Sing);
-            this.panel3.Controls.Add(this.txB_lbl_full_complete_act);
-            this.panel3.Controls.Add(this.lbl_full_complete_act);
-            this.panel3.Controls.Add(this.label_complete);
-            this.panel3.Controls.Add(this.label32);
-            this.panel3.Controls.Add(this.label_sum_TO_selection);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.label_cell_rows);
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.label22);
-            this.panel3.Controls.Add(this.label_summ_remont);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label_count_remont);
-            this.panel3.Controls.Add(this.label_count);
-            this.panel3.Controls.Add(this.label_summ);
-            this.panel3.Location = new System.Drawing.Point(1, 668);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1426, 63);
-            this.panel3.TabIndex = 29;
-            this.panel3.Click += new System.EventHandler(this.Panel3_Click);
+            this.panel3.Size = new System.Drawing.Size(200, 100);
+            this.panel3.TabIndex = 84;
             // 
             // txB_Sign
             // 
@@ -1756,18 +1197,10 @@
             // 
             // lbl_Sign
             // 
-            this.lbl_Sign.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_Sign.AutoSize = true;
-            this.lbl_Sign.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_Sign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_Sign.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Sign.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_Sign.Location = new System.Drawing.Point(650, 13);
+            this.lbl_Sign.Location = new System.Drawing.Point(0, 0);
             this.lbl_Sign.Name = "lbl_Sign";
-            this.lbl_Sign.Size = new System.Drawing.Size(0, 16);
-            this.lbl_Sign.TabIndex = 111;
-            this.lbl_Sign.Visible = false;
-            this.lbl_Sign.DoubleClick += new System.EventHandler(this.Lbl_Sign_DoubleClick);
+            this.lbl_Sign.Size = new System.Drawing.Size(100, 23);
+            this.lbl_Sign.TabIndex = 0;
             // 
             // label_Sing
             // 
@@ -1786,28 +1219,17 @@
             // 
             // txB_lbl_full_complete_act
             // 
-            this.txB_lbl_full_complete_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_lbl_full_complete_act.Location = new System.Drawing.Point(675, 31);
+            this.txB_lbl_full_complete_act.Location = new System.Drawing.Point(0, 0);
             this.txB_lbl_full_complete_act.Name = "txB_lbl_full_complete_act";
-            this.txB_lbl_full_complete_act.Size = new System.Drawing.Size(360, 26);
-            this.txB_lbl_full_complete_act.TabIndex = 109;
-            this.txB_lbl_full_complete_act.Visible = false;
-            this.txB_lbl_full_complete_act.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxB_lbl_full_complete_act_KeyDown);
+            this.txB_lbl_full_complete_act.Size = new System.Drawing.Size(100, 20);
+            this.txB_lbl_full_complete_act.TabIndex = 0;
             // 
             // lbl_full_complete_act
             // 
-            this.lbl_full_complete_act.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_full_complete_act.AutoSize = true;
-            this.lbl_full_complete_act.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_full_complete_act.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_full_complete_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_full_complete_act.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_full_complete_act.Location = new System.Drawing.Point(650, 37);
+            this.lbl_full_complete_act.Location = new System.Drawing.Point(0, 0);
             this.lbl_full_complete_act.Name = "lbl_full_complete_act";
-            this.lbl_full_complete_act.Size = new System.Drawing.Size(0, 16);
-            this.lbl_full_complete_act.TabIndex = 32;
-            this.lbl_full_complete_act.Visible = false;
-            this.lbl_full_complete_act.DoubleClick += new System.EventHandler(this.Lbl_full_complete_act_DoubleClick);
+            this.lbl_full_complete_act.Size = new System.Drawing.Size(100, 23);
+            this.lbl_full_complete_act.TabIndex = 0;
             // 
             // label_complete
             // 
@@ -2001,11 +1423,8 @@
             this.ClientSize = new System.Drawing.Size(1424, 729);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
-            this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -2028,26 +1447,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel_decommissionSerialNumber.ResumeLayout(false);
-            this.panel_decommissionSerialNumber.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel_info_phone_FIO.ResumeLayout(false);
-            this.panel_info_phone_FIO.PerformLayout();
             this.panel_seach_datagrid.ResumeLayout(false);
             this.panel_seach_datagrid.PerformLayout();
             this.panel_.ResumeLayout(false);
             this.panel_.PerformLayout();
-            this.panel_date.ResumeLayout(false);
-            this.panel_date.PerformLayout();
-            this.Functional_loading_panel.ResumeLayout(false);
-            this.Functional_loading_panel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2066,17 +1473,8 @@
         private System.Windows.Forms.Label label_summ_remont;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label_count_remont;
-        private System.Windows.Forms.Panel panel_date;
-        private System.Windows.Forms.Label label_dov;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox_FIO_chief;
-        private System.Windows.Forms.TextBox textBox_doverennost;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button button_record_date;
         private System.Windows.Forms.Label label_FIO_chief;
         private System.Windows.Forms.Label label_doverennost;
-        private System.Windows.Forms.Label label_GD;
-        private System.Windows.Forms.TextBox textBox_GD_city;
         private System.Windows.Forms.ComboBox comboBox_seach;
         private System.Windows.Forms.Button button_search;
         private System.Windows.Forms.Button button_seach_BD_city;
@@ -2084,8 +1482,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label_FIO_Engineer;
-        private System.Windows.Forms.TextBox textBox_FIO_Engineer;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
@@ -2107,16 +1503,11 @@
         private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label_act_remont;
-        private System.Windows.Forms.Button button_close_panel_date_info;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox textBox_polinon_full;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label_polinon_full;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label_cell_rows;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox_number_printing_doc_datePanel;
         private System.Windows.Forms.Panel Functional_loading_panel;
         private System.Windows.Forms.Button clear_BD_current_year;
         private System.Windows.Forms.Button loading_file_current_DB;
@@ -2130,12 +1521,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button_Uploading_JSON_file;
         private System.Windows.Forms.Button button_Loading_file_last_year;
-        private System.Windows.Forms.Panel panel_info_phone_FIO;
-        private System.Windows.Forms.TextBox panel_textbox_FIO_phoneNumber;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button button_close_panel_info_phone_FIO;
-        private System.Windows.Forms.TextBox panel_textbox_FIO_representative;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label_sum_TO_selection;
         internal System.Windows.Forms.ComboBox comboBox_city;
@@ -2153,16 +1538,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel_seach_datagrid;
-        private System.Windows.Forms.Panel panel_decommissionSerialNumber;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button btn_record_decommissionSerialNumber;
-        private System.Windows.Forms.Button btn_decommissionSerialNumber_close;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox_decommissionSerialNumber;
         private System.Windows.Forms.TextBox txB_comment;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.Label lbl_full_complete_act;
@@ -2172,8 +1547,6 @@
         private System.Windows.Forms.TextBox txB_Sign;
         private System.Windows.Forms.Label lbl_Sign;
         private System.Windows.Forms.ComboBox cmb_number_unique_acts;
-        private System.Windows.Forms.TextBox txB_reason_decommission;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;

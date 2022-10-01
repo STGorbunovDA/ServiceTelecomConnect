@@ -102,67 +102,6 @@ namespace ServiceTelecomConnect
                         MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                     }
                 }
-                try
-                {
-                    RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
-
-                    if (reg != null)
-                    {
-                        RegistryKey currentUserKey = Registry.CurrentUser;
-                        RegistryKey helloKey = currentUserKey.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                        RegistryKey helloKey_record = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-
-                        string[] regKey = {$"Город проведения проверки", "Начальник по ТО и Р СРС", "Доверенность",
-                             "Инженер по ТО и Р СРС", "Полигон РЖД full", "Номер печати"};
-
-                        for (int i = 0; i < regKey.Length; i++)
-                        {
-                            bool flag = CheacReggedit.ValueExists(helloKey, regKey[i]);
-                            if (flag == false)
-                            {
-                                helloKey_record.SetValue($"{regKey[i]}", $"");
-                                Block_ST_Work_Form_control();
-                                panel_date.Visible = true;
-                                panel_date.Enabled = true;
-                            }
-                        }
-
-                        textBox_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        textBox_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        textBox_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        textBox_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        textBox_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-                        textBox_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
-
-                        comboBox_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        label_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        label_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        label_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        label_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-
-                        TextBox[] textBoxes = { textBox_GD_city, textBox_FIO_chief, textBox_doverennost, textBox_FIO_Engineer,
-                                            textBox_polinon_full, textBox_number_printing_doc_datePanel};
-                        foreach (TextBox textBox in textBoxes)
-                        {
-                            if (textBox.Text == "")
-                            {
-                                this.ActiveControl = textBox;
-                            }
-                        }
-
-                        helloKey.Close();
-                    }
-                    else
-                    {
-                        Block_ST_Work_Form_control();
-                        panel_date.Visible = true;
-                        panel_date.Enabled = true;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
-                }
 
                 Filling_datagridview.CreateColumsСurator(dataGridView1);
                 Filling_datagridview.CreateColumsСurator(dataGridView2);
@@ -1262,6 +1201,7 @@ namespace ServiceTelecomConnect
                 panel_seach_datagrid.Visible = true;
                 this.ActiveControl = textBox_seach_panel_seach_datagrid;
             }
+        }
 
         void Button_close_panel_info_phone_FIO_Click(object sender, EventArgs e)
         {
@@ -1520,6 +1460,7 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
 
         #region close form
         void ST_WorkForm_FormClosed(object sender, FormClosedEventArgs e)
