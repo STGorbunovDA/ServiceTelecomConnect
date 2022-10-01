@@ -91,7 +91,6 @@
             this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
             this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.Functional_loading_panel = new System.Windows.Forms.Panel();
             this.btn_Show_DB_radiostantion_full = new System.Windows.Forms.Button();
             this.btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.Button();
             this.button_Loading_file_last_year = new System.Windows.Forms.Button();
@@ -108,28 +107,19 @@
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.button_all_BD = new System.Windows.Forms.Button();
             this.comboBox_city = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label_polinon_full = new System.Windows.Forms.Label();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label_FIO_Engineer = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.button_add_city = new System.Windows.Forms.Button();
             this.button_seach_BD_city = new System.Windows.Forms.Button();
             this.button_search = new System.Windows.Forms.Button();
             this.comboBox_seach = new System.Windows.Forms.ComboBox();
-            this.label_doverennost = new System.Windows.Forms.Label();
-            this.label_FIO_chief = new System.Windows.Forms.Label();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.pictureBox2_update = new System.Windows.Forms.PictureBox();
             this.pictureBox1_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.txB_Sign = new System.Windows.Forms.TextBox();
             this.lbl_Sign = new System.Windows.Forms.Label();
             this.label_Sing = new System.Windows.Forms.Label();
@@ -137,17 +127,24 @@
             this.lbl_full_complete_act = new System.Windows.Forms.Label();
             this.label_complete = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label_sum_TO_selection = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label_cell_rows = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label_summ_remont = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label_count_remont = new System.Windows.Forms.Label();
-            this.label_count = new System.Windows.Forms.Label();
             this.label_summ = new System.Windows.Forms.Label();
+            this.label_count = new System.Windows.Forms.Label();
+            this.label_count_remont = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label_summ_remont = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label_cell_rows = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label_sum_TO_selection = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -158,6 +155,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -200,7 +198,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 134);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -216,11 +214,12 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
+            this.dataGridView1.Size = new System.Drawing.Size(1427, 530);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
@@ -739,13 +738,6 @@
             this.label37.TabIndex = 6;
             this.label37.Text = "Поиск:";
             // 
-            // Functional_loading_panel
-            // 
-            this.Functional_loading_panel.Location = new System.Drawing.Point(0, 0);
-            this.Functional_loading_panel.Name = "Functional_loading_panel";
-            this.Functional_loading_panel.Size = new System.Drawing.Size(200, 100);
-            this.Functional_loading_panel.TabIndex = 83;
-            // 
             // btn_Show_DB_radiostantion_full
             // 
             this.btn_Show_DB_radiostantion_full.Location = new System.Drawing.Point(0, 0);
@@ -842,22 +834,14 @@
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
             this.panel1.Controls.Add(this.button_all_BD);
             this.panel1.Controls.Add(this.comboBox_city);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.label_polinon_full);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.txB_serialNumber);
-            this.panel1.Controls.Add(this.label29);
-            this.panel1.Controls.Add(this.label28);
-            this.panel1.Controls.Add(this.label_FIO_Engineer);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.button_add_city);
             this.panel1.Controls.Add(this.button_seach_BD_city);
             this.panel1.Controls.Add(this.button_search);
             this.panel1.Controls.Add(this.comboBox_seach);
-            this.panel1.Controls.Add(this.label_doverennost);
-            this.panel1.Controls.Add(this.label_FIO_chief);
             this.panel1.Controls.Add(this.txB_numberAct);
             this.panel1.Controls.Add(this.textBox_search);
             this.panel1.Controls.Add(this.pictureBox2_update);
@@ -865,7 +849,7 @@
             this.panel1.Controls.Add(this.txB_numberActRemont);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1427, 145);
+            this.panel1.Size = new System.Drawing.Size(1427, 128);
             this.panel1.TabIndex = 0;
             // 
             // cmb_number_unique_acts
@@ -910,31 +894,6 @@
             this.comboBox_city.TabIndex = 77;
             this.comboBox_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(366, 110);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 18);
-            this.label16.TabIndex = 75;
-            this.label16.Text = "Полигон:";
-            // 
-            // label_polinon_full
-            // 
-            this.label_polinon_full.AutoSize = true;
-            this.label_polinon_full.BackColor = System.Drawing.Color.Transparent;
-            this.label_polinon_full.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_polinon_full.Location = new System.Drawing.Point(510, 110);
-            this.label_polinon_full.Name = "label_polinon_full";
-            this.label_polinon_full.Size = new System.Drawing.Size(128, 18);
-            this.label_polinon_full.TabIndex = 74;
-            this.label_polinon_full.Text = "121e12e12e12";
-            this.label_polinon_full.DoubleClick += new System.EventHandler(this.Label_polinon_full_DoubleClick);
-            this.label_polinon_full.MouseEnter += new System.EventHandler(this.Label_polinon_full_MouseEnter);
-            this.label_polinon_full.MouseLeave += new System.EventHandler(this.Label_polinon_full_MouseLeave);
-            // 
             // label_act_remont
             // 
             this.label_act_remont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -942,7 +901,7 @@
             this.label_act_remont.AutoSize = true;
             this.label_act_remont.BackColor = System.Drawing.Color.Transparent;
             this.label_act_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_act_remont.Location = new System.Drawing.Point(1061, 93);
+            this.label_act_remont.Location = new System.Drawing.Point(1204, 87);
             this.label_act_remont.Name = "label_act_remont";
             this.label_act_remont.Size = new System.Drawing.Size(110, 16);
             this.label_act_remont.TabIndex = 30;
@@ -955,22 +914,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1099, 61);
+            this.label1.Location = new System.Drawing.Point(1242, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 29;
             this.label1.Text = "Акт ТО №:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(363, 23);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(138, 18);
-            this.label30.TabIndex = 21;
-            this.label30.Text = "Доверенность:";
             // 
             // txB_serialNumber
             // 
@@ -981,42 +929,6 @@
             this.txB_serialNumber.Size = new System.Drawing.Size(235, 26);
             this.txB_serialNumber.TabIndex = 11;
             this.txB_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(366, 82);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(88, 18);
-            this.label29.TabIndex = 20;
-            this.label29.Text = "Инженер:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(364, 52);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(108, 18);
-            this.label28.TabIndex = 19;
-            this.label28.Text = "Начальник:";
-            // 
-            // label_FIO_Engineer
-            // 
-            this.label_FIO_Engineer.AutoSize = true;
-            this.label_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
-            this.label_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_FIO_Engineer.Location = new System.Drawing.Point(510, 82);
-            this.label_FIO_Engineer.Name = "label_FIO_Engineer";
-            this.label_FIO_Engineer.Size = new System.Drawing.Size(128, 18);
-            this.label_FIO_Engineer.TabIndex = 18;
-            this.label_FIO_Engineer.Text = "121e12e12e12";
-            this.label_FIO_Engineer.DoubleClick += new System.EventHandler(this.Label_FIO_Engineer_DoubleClick);
-            this.label_FIO_Engineer.MouseEnter += new System.EventHandler(this.Label_FIO_Engineer_MouseEnter);
-            this.label_FIO_Engineer.MouseLeave += new System.EventHandler(this.Label_FIO_Engineer_MouseLeave);
             // 
             // label24
             // 
@@ -1088,40 +1000,12 @@
             this.comboBox_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
             this.comboBox_seach.MouseEnter += new System.EventHandler(this.ComboBox_seach_MouseEnter);
             // 
-            // label_doverennost
-            // 
-            this.label_doverennost.AutoSize = true;
-            this.label_doverennost.BackColor = System.Drawing.Color.Transparent;
-            this.label_doverennost.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_doverennost.Location = new System.Drawing.Point(509, 23);
-            this.label_doverennost.Name = "label_doverennost";
-            this.label_doverennost.Size = new System.Drawing.Size(118, 18);
-            this.label_doverennost.TabIndex = 7;
-            this.label_doverennost.Text = "12e12e12e12";
-            this.label_doverennost.DoubleClick += new System.EventHandler(this.Label_doverennost_DoubleClick);
-            this.label_doverennost.MouseEnter += new System.EventHandler(this.Label_doverennost_MouseEnter);
-            this.label_doverennost.MouseLeave += new System.EventHandler(this.Label_doverennost_MouseLeave);
-            // 
-            // label_FIO_chief
-            // 
-            this.label_FIO_chief.AutoSize = true;
-            this.label_FIO_chief.BackColor = System.Drawing.Color.Transparent;
-            this.label_FIO_chief.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_FIO_chief.Location = new System.Drawing.Point(509, 52);
-            this.label_FIO_chief.Name = "label_FIO_chief";
-            this.label_FIO_chief.Size = new System.Drawing.Size(78, 18);
-            this.label_FIO_chief.TabIndex = 6;
-            this.label_FIO_chief.Text = "1212121";
-            this.label_FIO_chief.DoubleClick += new System.EventHandler(this.Label_FIO_chief_DoubleClick);
-            this.label_FIO_chief.MouseEnter += new System.EventHandler(this.Label_FIO_chief_MouseEnter);
-            this.label_FIO_chief.MouseLeave += new System.EventHandler(this.Label_FIO_chief_MouseLeave);
-            // 
             // txB_numberAct
             // 
             this.txB_numberAct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberAct.Location = new System.Drawing.Point(1177, 52);
+            this.txB_numberAct.Location = new System.Drawing.Point(1320, 46);
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(96, 29);
             this.txB_numberAct.TabIndex = 27;
@@ -1146,9 +1030,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2_update.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
-            this.pictureBox2_update.Location = new System.Drawing.Point(952, 59);
+            this.pictureBox2_update.Location = new System.Drawing.Point(1086, 56);
             this.pictureBox2_update.Name = "pictureBox2_update";
-            this.pictureBox2_update.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2_update.Size = new System.Drawing.Size(50, 47);
             this.pictureBox2_update.TabIndex = 2;
             this.pictureBox2_update.TabStop = false;
             this.pictureBox2_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
@@ -1160,9 +1044,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1_clear.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
-            this.pictureBox1_clear.Location = new System.Drawing.Point(1008, 59);
+            this.pictureBox1_clear.Location = new System.Drawing.Point(1142, 56);
             this.pictureBox1_clear.Name = "pictureBox1_clear";
-            this.pictureBox1_clear.Size = new System.Drawing.Size(47, 50);
+            this.pictureBox1_clear.Size = new System.Drawing.Size(47, 47);
             this.pictureBox1_clear.TabIndex = 1;
             this.pictureBox1_clear.TabStop = false;
             this.pictureBox1_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
@@ -1173,18 +1057,11 @@
             this.txB_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberActRemont.Location = new System.Drawing.Point(1177, 87);
+            this.txB_numberActRemont.Location = new System.Drawing.Point(1320, 81);
             this.txB_numberActRemont.Name = "txB_numberActRemont";
             this.txB_numberActRemont.ReadOnly = true;
             this.txB_numberActRemont.Size = new System.Drawing.Size(96, 29);
             this.txB_numberActRemont.TabIndex = 72;
-            // 
-            // panel3
-            // 
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 100);
-            this.panel3.TabIndex = 84;
             // 
             // txB_Sign
             // 
@@ -1260,20 +1137,6 @@
             this.label32.TabIndex = 29;
             this.label32.Text = "Сумма ТО выбор:";
             // 
-            // label_sum_TO_selection
-            // 
-            this.label_sum_TO_selection.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label_sum_TO_selection.AutoSize = true;
-            this.label_sum_TO_selection.BackColor = System.Drawing.Color.Transparent;
-            this.label_sum_TO_selection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_sum_TO_selection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_sum_TO_selection.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_sum_TO_selection.Location = new System.Drawing.Point(1319, 40);
-            this.label_sum_TO_selection.Name = "label_sum_TO_selection";
-            this.label_sum_TO_selection.Size = new System.Drawing.Size(99, 16);
-            this.label_sum_TO_selection.TabIndex = 30;
-            this.label_sum_TO_selection.Text = "999999999.99";
-            // 
             // label20
             // 
             this.label20.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -1287,20 +1150,6 @@
             this.label20.Size = new System.Drawing.Size(127, 20);
             this.label20.TabIndex = 28;
             this.label20.Text = "Выбрано строк:";
-            // 
-            // label_cell_rows
-            // 
-            this.label_cell_rows.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label_cell_rows.AutoSize = true;
-            this.label_cell_rows.BackColor = System.Drawing.Color.Transparent;
-            this.label_cell_rows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_cell_rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_cell_rows.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_cell_rows.Location = new System.Drawing.Point(1309, 14);
-            this.label_cell_rows.Name = "label_cell_rows";
-            this.label_cell_rows.Size = new System.Drawing.Size(39, 16);
-            this.label_cell_rows.TabIndex = 27;
-            this.label_cell_rows.Text = "7500";
             // 
             // label9
             // 
@@ -1344,20 +1193,6 @@
             this.label22.TabIndex = 22;
             this.label22.Text = "Общее кол-во ремонтов:";
             // 
-            // label_summ_remont
-            // 
-            this.label_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_summ_remont.AutoSize = true;
-            this.label_summ_remont.BackColor = System.Drawing.Color.Transparent;
-            this.label_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_summ_remont.Location = new System.Drawing.Point(425, 37);
-            this.label_summ_remont.Name = "label_summ_remont";
-            this.label_summ_remont.Size = new System.Drawing.Size(107, 16);
-            this.label_summ_remont.TabIndex = 25;
-            this.label_summ_remont.Text = "9999999999.99";
-            // 
             // label19
             // 
             this.label19.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1371,34 +1206,6 @@
             this.label19.Size = new System.Drawing.Size(141, 20);
             this.label19.TabIndex = 24;
             this.label19.Text = "Сумма Ремонтов:";
-            // 
-            // label_count_remont
-            // 
-            this.label_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_count_remont.AutoSize = true;
-            this.label_count_remont.BackColor = System.Drawing.Color.Transparent;
-            this.label_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_count_remont.Location = new System.Drawing.Point(485, 13);
-            this.label_count_remont.Name = "label_count_remont";
-            this.label_count_remont.Size = new System.Drawing.Size(47, 16);
-            this.label_count_remont.TabIndex = 23;
-            this.label_count_remont.Text = "55555";
-            // 
-            // label_count
-            // 
-            this.label_count.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_count.AutoSize = true;
-            this.label_count.BackColor = System.Drawing.Color.Transparent;
-            this.label_count.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_count.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_count.Location = new System.Drawing.Point(191, 14);
-            this.label_count.Name = "label_count";
-            this.label_count.Size = new System.Drawing.Size(39, 16);
-            this.label_count.TabIndex = 18;
-            this.label_count.Text = "7500";
             // 
             // label_summ
             // 
@@ -1414,6 +1221,182 @@
             this.label_summ.TabIndex = 20;
             this.label_summ.Text = "999999999.99";
             // 
+            // label_count
+            // 
+            this.label_count.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_count.AutoSize = true;
+            this.label_count.BackColor = System.Drawing.Color.Transparent;
+            this.label_count.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_count.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_count.Location = new System.Drawing.Point(191, 14);
+            this.label_count.Name = "label_count";
+            this.label_count.Size = new System.Drawing.Size(39, 16);
+            this.label_count.TabIndex = 18;
+            this.label_count.Text = "7500";
+            // 
+            // label_count_remont
+            // 
+            this.label_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_count_remont.AutoSize = true;
+            this.label_count_remont.BackColor = System.Drawing.Color.Transparent;
+            this.label_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_count_remont.Location = new System.Drawing.Point(485, 13);
+            this.label_count_remont.Name = "label_count_remont";
+            this.label_count_remont.Size = new System.Drawing.Size(47, 16);
+            this.label_count_remont.TabIndex = 23;
+            this.label_count_remont.Text = "55555";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label16.Location = new System.Drawing.Point(281, 34);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(141, 20);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Сумма Ремонтов:";
+            // 
+            // label_summ_remont
+            // 
+            this.label_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_summ_remont.AutoSize = true;
+            this.label_summ_remont.BackColor = System.Drawing.Color.Transparent;
+            this.label_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_summ_remont.Location = new System.Drawing.Point(425, 37);
+            this.label_summ_remont.Name = "label_summ_remont";
+            this.label_summ_remont.Size = new System.Drawing.Size(107, 16);
+            this.label_summ_remont.TabIndex = 25;
+            this.label_summ_remont.Text = "9999999999.99";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label14.Location = new System.Drawing.Point(282, 10);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(197, 20);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Общее кол-во ремонтов:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label12.Location = new System.Drawing.Point(43, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(87, 20);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Сумма ТО:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label11.Location = new System.Drawing.Point(41, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(144, 20);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Общее кол-во ТО:";
+            // 
+            // label_cell_rows
+            // 
+            this.label_cell_rows.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label_cell_rows.AutoSize = true;
+            this.label_cell_rows.BackColor = System.Drawing.Color.Transparent;
+            this.label_cell_rows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_cell_rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_cell_rows.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_cell_rows.Location = new System.Drawing.Point(1309, 14);
+            this.label_cell_rows.Name = "label_cell_rows";
+            this.label_cell_rows.Size = new System.Drawing.Size(39, 16);
+            this.label_cell_rows.TabIndex = 27;
+            this.label_cell_rows.Text = "7500";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label8.Location = new System.Drawing.Point(1176, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(127, 20);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Выбрано строк:";
+            // 
+            // label_sum_TO_selection
+            // 
+            this.label_sum_TO_selection.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label_sum_TO_selection.AutoSize = true;
+            this.label_sum_TO_selection.BackColor = System.Drawing.Color.Transparent;
+            this.label_sum_TO_selection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label_sum_TO_selection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_sum_TO_selection.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label_sum_TO_selection.Location = new System.Drawing.Point(1319, 40);
+            this.label_sum_TO_selection.Name = "label_sum_TO_selection";
+            this.label_sum_TO_selection.Size = new System.Drawing.Size(99, 16);
+            this.label_sum_TO_selection.TabIndex = 30;
+            this.label_sum_TO_selection.Text = "999999999.99";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label6.Location = new System.Drawing.Point(1176, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 20);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Сумма ТО выбор:";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.label_sum_TO_selection);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label_cell_rows);
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.label14);
+            this.panel3.Controls.Add(this.label_summ_remont);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.label_count_remont);
+            this.panel3.Controls.Add(this.label_count);
+            this.panel3.Controls.Add(this.label_summ);
+            this.panel3.Location = new System.Drawing.Point(1, 668);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1426, 63);
+            this.panel3.TabIndex = 80;
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1421,13 +1404,12 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1455,6 +1437,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1465,26 +1449,16 @@
         private System.Windows.Forms.PictureBox pictureBox2_update;
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label_count;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label_summ;
         private System.Windows.Forms.TextBox txB_numberAct;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label_summ_remont;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label_count_remont;
-        private System.Windows.Forms.Label label_FIO_chief;
-        private System.Windows.Forms.Label label_doverennost;
         private System.Windows.Forms.ComboBox comboBox_seach;
         private System.Windows.Forms.Button button_search;
         private System.Windows.Forms.Button button_seach_BD_city;
         private System.Windows.Forms.Button button_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label_FIO_Engineer;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txB_city;
@@ -1501,14 +1475,9 @@
         private System.Windows.Forms.TextBox txB_inventoryNumber;
         private System.Windows.Forms.TextBox txB_serialNumber;
         private System.Windows.Forms.TextBox txB_company;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label_act_remont;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label_polinon_full;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label_cell_rows;
-        private System.Windows.Forms.Panel Functional_loading_panel;
         private System.Windows.Forms.Button clear_BD_current_year;
         private System.Windows.Forms.Button loading_file_current_DB;
         private System.Windows.Forms.Button loading_json_file_BD;
@@ -1522,7 +1491,6 @@
         private System.Windows.Forms.Button button_Uploading_JSON_file;
         private System.Windows.Forms.Button button_Loading_file_last_year;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label_sum_TO_selection;
         internal System.Windows.Forms.ComboBox comboBox_city;
         private System.Windows.Forms.Button button_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
@@ -1572,5 +1540,18 @@
         private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
         private System.Windows.Forms.TextBox txB_month;
         private System.Windows.Forms.TextBox txb_flag_all_BD;
+        private System.Windows.Forms.Label label_summ;
+        private System.Windows.Forms.Label label_count;
+        private System.Windows.Forms.Label label_count_remont;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label_summ_remont;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label_cell_rows;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label_sum_TO_selection;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel3;
     }
 }
