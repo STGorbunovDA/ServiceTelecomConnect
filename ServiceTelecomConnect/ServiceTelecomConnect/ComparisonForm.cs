@@ -1158,6 +1158,16 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
+        #region изменения РСТ в выполнение по плану
+
+        void AddExecution(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1168,6 +1178,7 @@ namespace ServiceTelecomConnect
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
+                    m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecution));
                     //m.MenuItems.Add(new MenuItem("Изменить месяц плана радиостанцит", Button_delete_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
