@@ -31,27 +31,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txb_flag_all_BD = new System.Windows.Forms.TextBox();
-            this.txB_december = new System.Windows.Forms.TextBox();
-            this.txB_november = new System.Windows.Forms.TextBox();
-            this.txB_october = new System.Windows.Forms.TextBox();
-            this.txB_september = new System.Windows.Forms.TextBox();
-            this.txB_august = new System.Windows.Forms.TextBox();
-            this.txB_july = new System.Windows.Forms.TextBox();
-            this.txB_june = new System.Windows.Forms.TextBox();
-            this.txB_may = new System.Windows.Forms.TextBox();
-            this.txB_april = new System.Windows.Forms.TextBox();
-            this.txB_march = new System.Windows.Forms.TextBox();
-            this.txB_february = new System.Windows.Forms.TextBox();
-            this.txB_january = new System.Windows.Forms.TextBox();
+            this.txB_month = new System.Windows.Forms.TextBox();
             this.txB_comment = new System.Windows.Forms.TextBox();
             this.txB_decommission = new System.Windows.Forms.TextBox();
             this.txB_city = new System.Windows.Forms.TextBox();
@@ -227,44 +216,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -282,18 +271,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.txb_flag_all_BD);
-            this.panel2.Controls.Add(this.txB_december);
-            this.panel2.Controls.Add(this.txB_november);
-            this.panel2.Controls.Add(this.txB_october);
-            this.panel2.Controls.Add(this.txB_september);
-            this.panel2.Controls.Add(this.txB_august);
-            this.panel2.Controls.Add(this.txB_july);
-            this.panel2.Controls.Add(this.txB_june);
-            this.panel2.Controls.Add(this.txB_may);
-            this.panel2.Controls.Add(this.txB_april);
-            this.panel2.Controls.Add(this.txB_march);
-            this.panel2.Controls.Add(this.txB_february);
-            this.panel2.Controls.Add(this.txB_january);
+            this.panel2.Controls.Add(this.txB_month);
             this.panel2.Controls.Add(this.txB_comment);
             this.panel2.Controls.Add(this.txB_decommission);
             this.panel2.Controls.Add(this.txB_city);
@@ -318,119 +296,20 @@
             // txb_flag_all_BD
             // 
             this.txb_flag_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txb_flag_all_BD.Location = new System.Drawing.Point(1074, 8);
+            this.txb_flag_all_BD.Location = new System.Drawing.Point(625, 6);
             this.txb_flag_all_BD.Name = "txb_flag_all_BD";
             this.txb_flag_all_BD.Size = new System.Drawing.Size(35, 26);
             this.txb_flag_all_BD.TabIndex = 121;
             this.txb_flag_all_BD.Visible = false;
             // 
-            // txB_december
+            // txB_month
             // 
-            this.txB_december.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_december.Location = new System.Drawing.Point(1033, 9);
-            this.txB_december.Name = "txB_december";
-            this.txB_december.Size = new System.Drawing.Size(35, 26);
-            this.txB_december.TabIndex = 120;
-            this.txB_december.Visible = false;
-            // 
-            // txB_november
-            // 
-            this.txB_november.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_november.Location = new System.Drawing.Point(992, 8);
-            this.txB_november.Name = "txB_november";
-            this.txB_november.Size = new System.Drawing.Size(35, 26);
-            this.txB_november.TabIndex = 119;
-            this.txB_november.Visible = false;
-            // 
-            // txB_october
-            // 
-            this.txB_october.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_october.Location = new System.Drawing.Point(951, 8);
-            this.txB_october.Name = "txB_october";
-            this.txB_october.Size = new System.Drawing.Size(35, 26);
-            this.txB_october.TabIndex = 118;
-            this.txB_october.Visible = false;
-            // 
-            // txB_september
-            // 
-            this.txB_september.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_september.Location = new System.Drawing.Point(910, 7);
-            this.txB_september.Name = "txB_september";
-            this.txB_september.Size = new System.Drawing.Size(35, 26);
-            this.txB_september.TabIndex = 117;
-            this.txB_september.Visible = false;
-            // 
-            // txB_august
-            // 
-            this.txB_august.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_august.Location = new System.Drawing.Point(869, 7);
-            this.txB_august.Name = "txB_august";
-            this.txB_august.Size = new System.Drawing.Size(35, 26);
-            this.txB_august.TabIndex = 116;
-            this.txB_august.Visible = false;
-            // 
-            // txB_july
-            // 
-            this.txB_july.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_july.Location = new System.Drawing.Point(829, 7);
-            this.txB_july.Name = "txB_july";
-            this.txB_july.Size = new System.Drawing.Size(35, 26);
-            this.txB_july.TabIndex = 115;
-            this.txB_july.Visible = false;
-            // 
-            // txB_june
-            // 
-            this.txB_june.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_june.Location = new System.Drawing.Point(788, 6);
-            this.txB_june.Name = "txB_june";
-            this.txB_june.Size = new System.Drawing.Size(35, 26);
-            this.txB_june.TabIndex = 114;
-            this.txB_june.Visible = false;
-            // 
-            // txB_may
-            // 
-            this.txB_may.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_may.Location = new System.Drawing.Point(748, 6);
-            this.txB_may.Name = "txB_may";
-            this.txB_may.Size = new System.Drawing.Size(35, 26);
-            this.txB_may.TabIndex = 113;
-            this.txB_may.Visible = false;
-            // 
-            // txB_april
-            // 
-            this.txB_april.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_april.Location = new System.Drawing.Point(707, 6);
-            this.txB_april.Name = "txB_april";
-            this.txB_april.Size = new System.Drawing.Size(35, 26);
-            this.txB_april.TabIndex = 112;
-            this.txB_april.Visible = false;
-            // 
-            // txB_march
-            // 
-            this.txB_march.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_march.Location = new System.Drawing.Point(666, 6);
-            this.txB_march.Name = "txB_march";
-            this.txB_march.Size = new System.Drawing.Size(35, 26);
-            this.txB_march.TabIndex = 111;
-            this.txB_march.Visible = false;
-            // 
-            // txB_february
-            // 
-            this.txB_february.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_february.Location = new System.Drawing.Point(625, 6);
-            this.txB_february.Name = "txB_february";
-            this.txB_february.Size = new System.Drawing.Size(35, 26);
-            this.txB_february.TabIndex = 110;
-            this.txB_february.Visible = false;
-            // 
-            // txB_january
-            // 
-            this.txB_january.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_january.Location = new System.Drawing.Point(584, 6);
-            this.txB_january.Name = "txB_january";
-            this.txB_january.Size = new System.Drawing.Size(35, 26);
-            this.txB_january.TabIndex = 109;
-            this.txB_january.Visible = false;
+            this.txB_month.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_month.Location = new System.Drawing.Point(584, 6);
+            this.txB_month.Name = "txB_month";
+            this.txB_month.Size = new System.Drawing.Size(35, 26);
+            this.txB_month.TabIndex = 109;
+            this.txB_month.Visible = false;
             // 
             // txB_comment
             // 
@@ -2318,18 +2197,7 @@
         private System.Windows.Forms.ToolStripMenuItem showMatchPreviouYearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showFullDecommissionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
-        private System.Windows.Forms.TextBox txB_december;
-        private System.Windows.Forms.TextBox txB_november;
-        private System.Windows.Forms.TextBox txB_october;
-        private System.Windows.Forms.TextBox txB_september;
-        private System.Windows.Forms.TextBox txB_august;
-        private System.Windows.Forms.TextBox txB_july;
-        private System.Windows.Forms.TextBox txB_june;
-        private System.Windows.Forms.TextBox txB_may;
-        private System.Windows.Forms.TextBox txB_april;
-        private System.Windows.Forms.TextBox txB_march;
-        private System.Windows.Forms.TextBox txB_february;
-        private System.Windows.Forms.TextBox txB_january;
+        private System.Windows.Forms.TextBox txB_month;
         private System.Windows.Forms.TextBox txb_flag_all_BD;
     }
 }

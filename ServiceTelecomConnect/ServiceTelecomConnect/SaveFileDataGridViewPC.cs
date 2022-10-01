@@ -63,7 +63,51 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void UserSaveFileCuratorPC(DataGridView dgw)
+        {
+            try
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
 
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.Unicode))
+                    {
+                        string note = string.Empty;
+
+                        note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
+                            $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
+                            $"Номер Акта ремонта\tКатегория\tЦена ремонта\t№ Акта списания\tПримечания\tМесяц выполнения";
+
+                        sw.WriteLine(note);
+
+                        for (int i = 0; i < dgw.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dgw.ColumnCount; j++)
+                            {
+                                var re = new Regex(Environment.NewLine);
+                                var perem = dgw.Rows[i].Cells[j].Value.ToString();
+                                perem = re.Replace(perem, " ");
+                                sw.Write(perem + "\t");//todo решить
+                            }
+
+                            sw.WriteLine();
+                        }
+
+                        MessageBox.Show("Файл успешно сохранен");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Вы не указали путь сохранения!");
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Файл не сохранен!(UserSaveFilePC)");
+            }
+        }
         #endregion
 
         #region Сохранение Бд по Таймеру 
@@ -142,11 +186,7 @@ namespace ServiceTelecomConnect
 
                     note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
                         $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
-                        $"Представитель предприятия\tДолжность\tНомер удостоверения\tДата выдачи\tНомер телефона\t" +
-                        $"Номер Акта ремонта\tКатегория\tЦена ремонта\tАнтенна\tМанипулятор\tАКБ\tЗУ\tВыполненные работы_1\t" +
-                        $"Выполненные работы_2\tВыполненные работы_3\tВыполненные работы_4\tВыполненные работы_5\t" +
-                        $"Выполненные работы_6\tВыполненные работы_7\tДеталь_1\tДеталь_2\tДеталь_3\tДеталь_4\tДеталь_5\t" +
-                        $"Деталь_6\tДеталь_7\t№ Акта списания\tПримечания";
+                        $"Номер Акта ремонта\tКатегория\tЦена ремонта\t№ Акта списания\tПримечания\tМесяц выполнения";
 
                     sw.WriteLine(note);
 
@@ -159,7 +199,6 @@ namespace ServiceTelecomConnect
                         sw.WriteLine();
                     }
                 }
-
             }
             catch (Exception)
             {

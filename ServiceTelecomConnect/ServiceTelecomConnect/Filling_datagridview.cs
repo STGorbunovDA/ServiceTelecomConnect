@@ -285,18 +285,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("priceRemont", "Цена ремонта");
                 dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
                 dgw.Columns.Add("comment", "Примечание");
-                dgw.Columns.Add("january", "Январь");
-                dgw.Columns.Add("february", "Февраль");
-                dgw.Columns.Add("march", "Март");
-                dgw.Columns.Add("april", "Апрель");
-                dgw.Columns.Add("may", "Май");
-                dgw.Columns.Add("june", "Июнь");
-                dgw.Columns.Add("july", "Июль");
-                dgw.Columns.Add("august", "Август");
-                dgw.Columns.Add("september", "Сентябрь");
-                dgw.Columns.Add("october", "Октябрь");
-                dgw.Columns.Add("november", "Ноябрь");
-                dgw.Columns.Add("december", "Декабрь");
+                dgw.Columns.Add("month", "Месяц выполнения");
                 dgw.Columns.Add("IsNew", String.Empty);
             }
             catch (Exception)
@@ -312,9 +301,7 @@ namespace ServiceTelecomConnect
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
                          record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetString(19),
-                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
-                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28),  RowState.ModifieldNew)));
+                         record.GetString(15), record.GetString(16), record.GetString(17), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -388,9 +375,7 @@ namespace ServiceTelecomConnect
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
                          record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetString(19),
-                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
-                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), RowState.ModifieldNew)));
+                         record.GetString(15), record.GetString(16), record.GetString(17), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -422,7 +407,7 @@ namespace ServiceTelecomConnect
                                 {
                                     while (reader.Read())
                                     {
-                                        ReedSingleRowСurator(dgw, reader);
+                                        ReedSingleRowСuratorTimerEventProcessor(dgw, reader);
                                     }
                                     reader.Close();
                                 }
@@ -526,7 +511,7 @@ namespace ServiceTelecomConnect
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    string queryString = $"SELECT * FROM radiostantion_сomparison_copy";
+                    string queryString = $"SELECT * FROM radiostantion_сomparison";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
                     {
@@ -538,7 +523,7 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                 {
-                                    ReedSingleRow(dgw, reader);
+                                    ReedSingleRowСurator(dgw, reader);
                                 }
                                 reader.Close();
                             }
@@ -706,6 +691,10 @@ namespace ServiceTelecomConnect
                     {
                         perem_comboBox = "decommissionSerialNumber";
                     }
+                    else if (comboBox_seach == "Месяц")
+                    {
+                        perem_comboBox = "month";
+                    }
 
                     var provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
@@ -719,7 +708,7 @@ namespace ServiceTelecomConnect
                         searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month")
                     {
                         searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
@@ -1080,12 +1069,12 @@ namespace ServiceTelecomConnect
                 {
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[29].Value = RowState.Deleted;
+                        dgw.Rows[row.Index].Cells[18].Value = RowState.Deleted;
                     }
 
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = (RowState)dgw.Rows[index].Cells[29].Value;//проверить индекс
+                        var rowState = (RowState)dgw.Rows[index].Cells[18].Value;//проверить индекс
 
                         if (rowState == RowState.Deleted)
                         {
@@ -1781,27 +1770,29 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_AddExecution_curator(ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
         {
             try
             {
-                //cmb_number_unique_acts.Items.Clear();
-                cmb_number_unique_acts.Items.Add("Январь");
-                cmb_number_unique_acts.Items.Add("Февраль");
-                cmb_number_unique_acts.Items.Add("Март");
-                cmb_number_unique_acts.Items.Add("Апрель");
-                cmb_number_unique_acts.Items.Add("Май");
-                cmb_number_unique_acts.Items.Add("Июнь");
-                cmb_number_unique_acts.Items.Add("Июль");
-                cmb_number_unique_acts.Items.Add("Август");
-                cmb_number_unique_acts.Items.Add("Сентябрь");
-                cmb_number_unique_acts.Items.Add("Октябрь");
-                cmb_number_unique_acts.Items.Add("Ноябрь");
-                cmb_number_unique_acts.Items.Add("Декабрь");
+                string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY month";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "month";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка метода Number_unique_decommissionActs_curator");
+                MessageBox.Show("Ошибка метода Number_unique_month_curator");
             }
 
         }

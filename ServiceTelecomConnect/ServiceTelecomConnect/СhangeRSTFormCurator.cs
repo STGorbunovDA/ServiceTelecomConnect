@@ -93,19 +93,7 @@ namespace ServiceTelecomConnect
                 var сategory = cmB_сategory.Text;
                 var priceRemont = txB_priceRemont.Text;
                 var decommission = txB_decommission.Text;
-                var january = txB_january.Text;
-                var february = txB_february.Text;
-                var march = txB_march.Text;
-                var april = txB_april.Text;
-                var may = txB_may.Text;
-                var june = txB_june.Text;
-                var july = txB_july.Text;
-                var august = txB_august.Text;
-                var september = txB_september.Text;
-                var october = txB_october.Text;
-                var november = txB_november.Text;
-                var december = txB_december.Text;
-                var comment = txB_comment.Text;
+                var month = cmB_month.Text;
 
                 try
                 {
@@ -357,9 +345,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
                             $"city = '{city}', price = '{Convert.ToDecimal(price)}', numberActRemont = '{numberActRemont}', " +
                             $"category  = '{сategory}', priceRemont = '{Convert.ToDecimal(priceRemont)}', decommissionSerialNumber = '{decommission}', " +
-                            $"january = '{january}', february = '{february}', march = '{march}', april = '{april}', may = '{may}', june = '{june}', " +
-                            $"july = '{july}', august = '{august}', september = '{september}', october = '{october}', " +
-                            $"november = '{november}', december = '{december}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
+                            $"month = '{month}' WHERE serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
@@ -414,19 +400,7 @@ namespace ServiceTelecomConnect
             cmB_сategory.Text = "";
             txB_priceRemont.Text = "";
             txB_decommission.Text = "";
-            txB_january.Text = "";
-            txB_february.Text = "";
-            txB_march.Text = "";
-            txB_april.Text = "";
-            txB_may.Text = "";
-            txB_june.Text = "";
-            txB_july.Text = "";
-            txB_august.Text = "";
-            txB_september.Text = "";
-            txB_october.Text = "";
-            txB_november.Text = "";
-            txB_december.Text = "";
-            txB_comment.Text = "";
+            cmB_month.Text = "";
         }
         #endregion
 

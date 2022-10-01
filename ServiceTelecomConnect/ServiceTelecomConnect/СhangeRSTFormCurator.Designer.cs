@@ -76,32 +76,10 @@
             this.txB_decommission = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.txB_january = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txB_february = new System.Windows.Forms.TextBox();
-            this.txB_april = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txB_march = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txB_june = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txB_may = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txB_august = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txB_july = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.txB_october = new System.Windows.Forms.TextBox();
-            this.label35 = new System.Windows.Forms.Label();
-            this.txB_september = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.txB_december = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txB_november = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
             this.cmB_сategory = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.cmB_month = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -268,7 +246,7 @@
             this.button_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_save_add_rst.Enabled = false;
             this.button_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_save_add_rst.Location = new System.Drawing.Point(696, 507);
+            this.button_save_add_rst.Location = new System.Drawing.Point(728, 450);
             this.button_save_add_rst.Name = "button_save_add_rst";
             this.button_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.button_save_add_rst.TabIndex = 28;
@@ -539,7 +517,7 @@
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(21, 497);
+            this.label36.Location = new System.Drawing.Point(463, 318);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(108, 20);
             this.label36.TabIndex = 110;
@@ -548,11 +526,11 @@
             // txB_comment
             // 
             this.txB_comment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_comment.Location = new System.Drawing.Point(156, 465);
+            this.txB_comment.Location = new System.Drawing.Point(615, 254);
             this.txB_comment.MaxLength = 500;
             this.txB_comment.Multiline = true;
             this.txB_comment.Name = "txB_comment";
-            this.txB_comment.Size = new System.Drawing.Size(503, 72);
+            this.txB_comment.Size = new System.Drawing.Size(232, 190);
             this.txB_comment.TabIndex = 109;
             // 
             // label20
@@ -633,240 +611,11 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(448, 236);
+            this.label25.Location = new System.Drawing.Point(463, 216);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(70, 20);
+            this.label25.Size = new System.Drawing.Size(61, 20);
             this.label25.TabIndex = 121;
-            this.label25.Text = "Январь:";
-            // 
-            // txB_january
-            // 
-            this.txB_january.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_january.Location = new System.Drawing.Point(543, 233);
-            this.txB_january.MaxLength = 31;
-            this.txB_january.Name = "txB_january";
-            this.txB_january.Size = new System.Drawing.Size(105, 26);
-            this.txB_january.TabIndex = 122;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(654, 236);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(83, 20);
-            this.label26.TabIndex = 123;
-            this.label26.Text = "Февраль:";
-            // 
-            // txB_february
-            // 
-            this.txB_february.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_february.Location = new System.Drawing.Point(742, 233);
-            this.txB_february.MaxLength = 31;
-            this.txB_february.Name = "txB_february";
-            this.txB_february.Size = new System.Drawing.Size(105, 26);
-            this.txB_february.TabIndex = 124;
-            // 
-            // txB_april
-            // 
-            this.txB_april.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_april.Location = new System.Drawing.Point(742, 265);
-            this.txB_april.MaxLength = 31;
-            this.txB_april.Name = "txB_april";
-            this.txB_april.Size = new System.Drawing.Size(105, 26);
-            this.txB_april.TabIndex = 128;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(654, 268);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(70, 20);
-            this.label27.TabIndex = 127;
-            this.label27.Text = "Апрель:";
-            // 
-            // txB_march
-            // 
-            this.txB_march.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_march.Location = new System.Drawing.Point(543, 265);
-            this.txB_march.MaxLength = 31;
-            this.txB_march.Name = "txB_march";
-            this.txB_march.Size = new System.Drawing.Size(105, 26);
-            this.txB_march.TabIndex = 126;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(448, 268);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(53, 20);
-            this.label28.TabIndex = 125;
-            this.label28.Text = "Март:";
-            // 
-            // txB_june
-            // 
-            this.txB_june.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_june.Location = new System.Drawing.Point(742, 299);
-            this.txB_june.MaxLength = 31;
-            this.txB_june.Name = "txB_june";
-            this.txB_june.Size = new System.Drawing.Size(105, 26);
-            this.txB_june.TabIndex = 132;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(654, 302);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(54, 20);
-            this.label29.TabIndex = 131;
-            this.label29.Text = "Июнь:";
-            // 
-            // txB_may
-            // 
-            this.txB_may.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_may.Location = new System.Drawing.Point(543, 299);
-            this.txB_may.MaxLength = 31;
-            this.txB_may.Name = "txB_may";
-            this.txB_may.Size = new System.Drawing.Size(105, 26);
-            this.txB_may.TabIndex = 130;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(448, 301);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(44, 20);
-            this.label32.TabIndex = 129;
-            this.label32.Text = "Май:";
-            // 
-            // txB_august
-            // 
-            this.txB_august.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_august.Location = new System.Drawing.Point(742, 332);
-            this.txB_august.MaxLength = 31;
-            this.txB_august.Name = "txB_august";
-            this.txB_august.Size = new System.Drawing.Size(105, 26);
-            this.txB_august.TabIndex = 136;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(654, 335);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(64, 20);
-            this.label33.TabIndex = 135;
-            this.label33.Text = "Август:";
-            // 
-            // txB_july
-            // 
-            this.txB_july.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_july.Location = new System.Drawing.Point(543, 332);
-            this.txB_july.MaxLength = 31;
-            this.txB_july.Name = "txB_july";
-            this.txB_july.Size = new System.Drawing.Size(105, 26);
-            this.txB_july.TabIndex = 134;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(448, 334);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(55, 20);
-            this.label34.TabIndex = 133;
-            this.label34.Text = "Июль:";
-            // 
-            // txB_october
-            // 
-            this.txB_october.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_october.Location = new System.Drawing.Point(742, 366);
-            this.txB_october.MaxLength = 31;
-            this.txB_october.Name = "txB_october";
-            this.txB_october.Size = new System.Drawing.Size(105, 26);
-            this.txB_october.TabIndex = 140;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.Location = new System.Drawing.Point(654, 369);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(78, 20);
-            this.label35.TabIndex = 139;
-            this.label35.Text = "Октябрь:";
-            // 
-            // txB_september
-            // 
-            this.txB_september.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_september.Location = new System.Drawing.Point(543, 366);
-            this.txB_september.MaxLength = 31;
-            this.txB_september.Name = "txB_september";
-            this.txB_september.Size = new System.Drawing.Size(105, 26);
-            this.txB_september.TabIndex = 138;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.Transparent;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(448, 371);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(87, 20);
-            this.label37.TabIndex = 137;
-            this.label37.Text = "Сентябрь:";
-            // 
-            // txB_december
-            // 
-            this.txB_december.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_december.Location = new System.Drawing.Point(742, 400);
-            this.txB_december.MaxLength = 31;
-            this.txB_december.Name = "txB_december";
-            this.txB_december.Size = new System.Drawing.Size(105, 26);
-            this.txB_december.TabIndex = 144;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Transparent;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(654, 403);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(78, 20);
-            this.label38.TabIndex = 143;
-            this.label38.Text = "Декабрь:";
-            // 
-            // txB_november
-            // 
-            this.txB_november.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_november.Location = new System.Drawing.Point(543, 400);
-            this.txB_november.MaxLength = 31;
-            this.txB_november.Name = "txB_november";
-            this.txB_november.Size = new System.Drawing.Size(105, 26);
-            this.txB_november.TabIndex = 142;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.Transparent;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(448, 405);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(70, 20);
-            this.label39.TabIndex = 141;
-            this.label39.Text = "Ноябрь:";
+            this.label25.Text = "Месяц:";
             // 
             // cmB_сategory
             // 
@@ -912,39 +661,42 @@
             this.label40.TabIndex = 147;
             this.label40.Text = "*";
             // 
+            // cmB_month
+            // 
+            this.cmB_month.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_month.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmB_month.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_month.FormattingEnabled = true;
+            this.cmB_month.Items.AddRange(new object[] {
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь"});
+            this.cmB_month.Location = new System.Drawing.Point(615, 213);
+            this.cmB_month.Name = "cmB_month";
+            this.cmB_month.Size = new System.Drawing.Size(232, 28);
+            this.cmB_month.TabIndex = 148;
+            // 
             // СhangeRSTFormCurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(859, 561);
+            this.ClientSize = new System.Drawing.Size(859, 491);
+            this.Controls.Add(this.cmB_month);
             this.Controls.Add(this.label40);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.cmB_сategory);
-            this.Controls.Add(this.txB_december);
-            this.Controls.Add(this.label38);
-            this.Controls.Add(this.txB_november);
-            this.Controls.Add(this.label39);
-            this.Controls.Add(this.txB_october);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.txB_september);
-            this.Controls.Add(this.label37);
-            this.Controls.Add(this.txB_august);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.txB_july);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.txB_june);
-            this.Controls.Add(this.label29);
-            this.Controls.Add(this.txB_may);
-            this.Controls.Add(this.label32);
-            this.Controls.Add(this.txB_april);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.txB_march);
-            this.Controls.Add(this.label28);
-            this.Controls.Add(this.txB_february);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.txB_january);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.txB_decommission);
             this.Controls.Add(this.label23);
@@ -992,8 +744,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.KeyPreview = true;
-            this.MaximumSize = new System.Drawing.Size(875, 600);
-            this.MinimumSize = new System.Drawing.Size(875, 600);
+            this.MaximumSize = new System.Drawing.Size(875, 530);
+            this.MinimumSize = new System.Drawing.Size(875, 530);
             this.Name = "СhangeRSTFormCurator";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
@@ -1053,31 +805,9 @@
         internal System.Windows.Forms.TextBox txB_decommission;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
-        internal System.Windows.Forms.TextBox txB_january;
-        private System.Windows.Forms.Label label26;
-        internal System.Windows.Forms.TextBox txB_february;
-        internal System.Windows.Forms.TextBox txB_april;
-        private System.Windows.Forms.Label label27;
-        internal System.Windows.Forms.TextBox txB_march;
-        private System.Windows.Forms.Label label28;
-        internal System.Windows.Forms.TextBox txB_june;
-        private System.Windows.Forms.Label label29;
-        internal System.Windows.Forms.TextBox txB_may;
-        private System.Windows.Forms.Label label32;
-        internal System.Windows.Forms.TextBox txB_august;
-        private System.Windows.Forms.Label label33;
-        internal System.Windows.Forms.TextBox txB_july;
-        private System.Windows.Forms.Label label34;
-        internal System.Windows.Forms.TextBox txB_october;
-        private System.Windows.Forms.Label label35;
-        internal System.Windows.Forms.TextBox txB_september;
-        private System.Windows.Forms.Label label37;
-        internal System.Windows.Forms.TextBox txB_december;
-        private System.Windows.Forms.Label label38;
-        internal System.Windows.Forms.TextBox txB_november;
-        private System.Windows.Forms.Label label39;
         internal System.Windows.Forms.ComboBox cmB_сategory;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label40;
+        internal System.Windows.Forms.ComboBox cmB_month;
     }
 }

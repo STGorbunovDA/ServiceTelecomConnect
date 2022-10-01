@@ -54,7 +54,7 @@ namespace ServiceTelecomConnect
                 comboBox_seach.Items.Add("Номер акта ТО");
                 comboBox_seach.Items.Add("Номер акта Ремонта");
                 comboBox_seach.Items.Add("Номер Акта списания");
-                comboBox_seach.Items.Add("Выполнение плана");
+                comboBox_seach.Items.Add("Месяц");
 
                 comboBox_seach.Text = comboBox_seach.Items[2].ToString();
 
@@ -514,18 +514,7 @@ namespace ServiceTelecomConnect
                     txB_priceRemont.Text = row.Cells[14].Value.ToString();
                     txB_decommission.Text = row.Cells[15].Value.ToString();
                     txB_comment.Text = row.Cells[16].Value.ToString();
-                    txB_january.Text = row.Cells[17].Value.ToString();
-                    txB_february.Text = row.Cells[18].Value.ToString();
-                    txB_march.Text = row.Cells[19].Value.ToString();
-                    txB_april.Text = row.Cells[20].Value.ToString();
-                    txB_may.Text = row.Cells[21].Value.ToString();
-                    txB_june.Text = row.Cells[22].Value.ToString();
-                    txB_july.Text = row.Cells[23].Value.ToString();
-                    txB_august.Text = row.Cells[24].Value.ToString();
-                    txB_september.Text = row.Cells[25].Value.ToString();
-                    txB_october.Text = row.Cells[26].Value.ToString();
-                    txB_november.Text = row.Cells[27].Value.ToString();
-                    txB_december.Text = row.Cells[28].Value.ToString();                 
+                    txB_month.Text = row.Cells[17].Value.ToString();                
                 }
             }
             catch (Exception)
@@ -788,7 +777,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                SaveFileDataGridViewPC.UserSaveFilePC(dataGridView1);
+                SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1);
             }
             catch (Exception)
             {
@@ -900,7 +889,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_AddExecution_curator(cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_month_curator(comboBox_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -1148,18 +1137,7 @@ namespace ServiceTelecomConnect
                         сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
                         сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
                         сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
-                        сhangeRSTFormCurator.txB_january.Text = txB_january.Text;
-                        сhangeRSTFormCurator.txB_february.Text = txB_february.Text;
-                        сhangeRSTFormCurator.txB_march.Text = txB_march.Text;
-                        сhangeRSTFormCurator.txB_april.Text = txB_april.Text;
-                        сhangeRSTFormCurator.txB_may.Text = txB_may.Text;
-                        сhangeRSTFormCurator.txB_june.Text = txB_june.Text;
-                        сhangeRSTFormCurator.txB_july.Text = txB_july.Text;
-                        сhangeRSTFormCurator.txB_august.Text = txB_august.Text;
-                        сhangeRSTFormCurator.txB_september.Text = txB_september.Text;
-                        сhangeRSTFormCurator.txB_october.Text = txB_october.Text;
-                        сhangeRSTFormCurator.txB_december.Text = txB_december.Text;
-
+                        сhangeRSTFormCurator.cmB_month.Text = txB_month.Text;
                         if (Application.OpenForms["СhangeRSTFormCurator"] == null)
                         {
                             сhangeRSTFormCurator.Show();
@@ -1231,6 +1209,7 @@ namespace ServiceTelecomConnect
                     m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
+                    m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_Click));
                     //m.MenuItems.Add(new MenuItem("Изменить месяц плана радиостанцит", Button_delete_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
