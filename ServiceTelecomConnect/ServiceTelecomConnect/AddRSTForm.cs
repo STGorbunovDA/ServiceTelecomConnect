@@ -19,12 +19,12 @@ namespace ServiceTelecomConnect
             var myCulture = new CultureInfo("ru-RU");
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = myCulture;
-            textBox_dateTO.ReadOnly = true;
-            textBox_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            txB_dateTO.ReadOnly = true;
+            txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
-            textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            button_save_add_rst.Enabled = false;
-            comboBox_poligon.Text = comboBox_poligon.Items[0].ToString();
+            txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            btn_save_add_rst.Enabled = false;
+            cmB_poligon.Text = cmB_poligon.Items[0].ToString();
         }
 
         void AddRSTForm_Load(object sender, EventArgs e)
@@ -42,9 +42,9 @@ namespace ServiceTelecomConnect
                         {
                             adapter.Fill(model_RSR_table);
 
-                            comboBox_model.DataSource = model_RSR_table;
-                            comboBox_model.ValueMember = "id";
-                            comboBox_model.DisplayMember = "model_radiostation_name";
+                            cmB_model.DataSource = model_RSR_table;
+                            cmB_model.ValueMember = "id";
+                            cmB_model.DisplayMember = "model_radiostation_name";
 
                             DB.GetInstance.CloseConnection();
                         }
@@ -84,26 +84,26 @@ namespace ServiceTelecomConnect
                 }
                 try
                 {
-                    var city = textBox_city.Text;
-                    var poligon = comboBox_poligon.Text;
-                    var company = textBox_company.Text;
-                    var location = textBox_location.Text;
-                    var model = comboBox_model.Text;
-                    var serialNumber = textBox_serialNumber.Text;
-                    var inventoryNumber = textBox_inventoryNumber.Text;
-                    var networkNumber = textBox_networkNumber.Text;
-                    var numberAct = textBox_numberAct.Text;
-                    var dateTO = textBox_dateTO.Text;
-                    var price = textBox_price.Text;
-                    var representative = textBox_representative.Text;
-                    var post = textBox_post.Text;
-                    var numberIdentification = textBox_numberIdentification.Text;
-                    var dateIssue = textBox_dateIssue.Text;
-                    var phoneNumber = textBox_phoneNumber.Text;
-                    var antenna = textBox_antenna.Text;
-                    var manipulator = textBox_manipulator.Text;
-                    var AKB = textBox_AKB.Text;
-                    var batteryСharger = textBox_batteryСharger.Text;
+                    var city = txB_city.Text;
+                    var poligon = cmB_poligon.Text;
+                    var company = txB_company.Text;
+                    var location = txB_location.Text;
+                    var model = cmB_model.Text;
+                    var serialNumber = txB_serialNumber.Text;
+                    var inventoryNumber = txB_inventoryNumber.Text;
+                    var networkNumber = txB_networkNumber.Text;
+                    var numberAct = txB_numberAct.Text;
+                    var dateTO = txB_dateTO.Text;
+                    var price = txB_price.Text;
+                    var representative = txB_representative.Text;
+                    var post = txB_post.Text;
+                    var numberIdentification = txB_numberIdentification.Text;
+                    var dateIssue = txB_dateIssue.Text;
+                    var phoneNumber = txB_phoneNumber.Text;
+                    var antenna = txB_antenna.Text;
+                    var manipulator = txB_manipulator.Text;
+                    var AKB = txB_AKB.Text;
+                    var batteryСharger = txB_batteryСharger.Text;
                     var comment = txB_comment.Text;
                     if (dateIssue.Length > 0)
                     {
@@ -116,13 +116,13 @@ namespace ServiceTelecomConnect
                         && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
                         {
                             #region проверка на ввод зав. номера рст
-                            if (comboBox_model.Text == "Icom IC-F3GT" || comboBox_model.Text == "Icom IC-F16" || comboBox_model.Text == "Icom IC-F11"
-                                || comboBox_model.Text == "РН311М")
+                            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F16" || cmB_model.Text == "Icom IC-F11"
+                                || cmB_model.Text == "РН311М")
                             {
                                 if (!serialNumber.StartsWith("0"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"0\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"0\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -131,12 +131,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Icom IC-F3GS")
+                            if (cmB_model.Text == "Icom IC-F3GS")
                             {
                                 if (!serialNumber.StartsWith("54"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"54\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"54\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -145,12 +145,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola P040" || comboBox_model.Text == "Motorola P080")
+                            if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080")
                             {
                                 if (!serialNumber.StartsWith("442"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"442\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"442\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -159,12 +159,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola DP-1400")
+                            if (cmB_model.Text == "Motorola DP-1400")
                             {
                                 if (!serialNumber.StartsWith("752"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"752\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"752\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -173,12 +173,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola DP-2400" || comboBox_model.Text == "Motorola DP-2400е")
+                            if (cmB_model.Text == "Motorola DP-2400" || cmB_model.Text == "Motorola DP-2400е")
                             {
                                 if (!serialNumber.StartsWith("446"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"446\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"446\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -187,12 +187,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola DP-4400")
+                            if (cmB_model.Text == "Motorola DP-4400")
                             {
                                 if (!serialNumber.StartsWith("807"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"807\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"807\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -201,12 +201,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola GP-300")
+                            if (cmB_model.Text == "Motorola GP-300")
                             {
                                 if (!serialNumber.StartsWith("174"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"174\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"174\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -215,12 +215,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola GP-320")
+                            if (cmB_model.Text == "Motorola GP-320")
                             {
                                 if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Motorola GP-320
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -229,12 +229,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola GP-340")
+                            if (cmB_model.Text == "Motorola GP-340")
                             {
                                 if (!serialNumber.StartsWith("672"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"672\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"672\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -243,12 +243,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Motorola GP-360")
+                            if (cmB_model.Text == "Motorola GP-360")
                             {
                                 if (!serialNumber.StartsWith("749"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"749\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"749\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -257,12 +257,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Элодия-351М")
+                            if (cmB_model.Text == "Элодия-351М")
                             {
                                 if (!serialNumber.StartsWith("1"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"1\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"1\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -272,12 +272,12 @@ namespace ServiceTelecomConnect
                             }
 
 
-                            if (comboBox_model.Text == "Comrade R5")
+                            if (cmB_model.Text == "Comrade R5")
                             {
                                 if (!serialNumber.StartsWith("2010R"))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"2010R\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"2010R\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -286,12 +286,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Комбат T-44")
+                            if (cmB_model.Text == "Комбат T-44")
                             {
                                 if (!serialNumber.StartsWith("T44.19.10."))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"T44.19.10.\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"T44.19.10.\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -302,7 +302,7 @@ namespace ServiceTelecomConnect
                                 if (!serialNumber.Contains("."))
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"В заводском номере радиостанции {comboBox_model.Text} отстутсвет \".(точка)\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"В заводском номере радиостанции {cmB_model.Text} отстутсвет \".(точка)\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -310,12 +310,12 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-                            if (comboBox_model.Text == "Kenwood ТК-2107")
+                            if (cmB_model.Text == "Kenwood ТК-2107")
                             {
                                 if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Kenwood ТК-2107
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -324,12 +324,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "Vertex - 261")
+                            if (cmB_model.Text == "Vertex - 261")
                             {
                                 if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Vertex - 261
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -338,12 +338,12 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            if (comboBox_model.Text == "РА-160")
+                            if (cmB_model.Text == "РА-160")
                             {
                                 if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Kenwood РА-160
                                 {
                                     string MesageRSTProv;
-                                    MesageRSTProv = $"Заводской номер радиостанции {comboBox_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
+                                    MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
 
                                     if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                                     {
@@ -387,9 +387,9 @@ namespace ServiceTelecomConnect
                                         DB.GetInstance.CloseConnection();
                                         Add_rst_radiostantion_full();
                                         MessageBox.Show("Радиостанция успешно добавлена!");
-                                        textBox_serialNumber.Text = "";
-                                        textBox_inventoryNumber.Text = "";
-                                        textBox_networkNumber.Text = "";
+                                        txB_serialNumber.Text = "";
+                                        txB_inventoryNumber.Text = "";
+                                        txB_networkNumber.Text = "";
                                     }
 
                                 }
@@ -423,26 +423,26 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    var city = textBox_city.Text;
-                    var poligon = comboBox_poligon.Text;
-                    var company = textBox_company.Text;
-                    var location = textBox_location.Text;
-                    var model = comboBox_model.Text;
-                    var serialNumber = textBox_serialNumber.Text;
-                    var inventoryNumber = textBox_inventoryNumber.Text;
-                    var networkNumber = textBox_networkNumber.Text;
-                    var numberAct = textBox_numberAct.Text;
-                    var dateTO = textBox_dateTO.Text;
-                    var price = textBox_price.Text;
-                    var representative = textBox_representative.Text;
-                    var post = textBox_post.Text;
-                    var numberIdentification = textBox_numberIdentification.Text;
-                    var dateIssue = textBox_dateIssue.Text;
-                    var phoneNumber = textBox_phoneNumber.Text;
-                    var antenna = textBox_antenna.Text;
-                    var manipulator = textBox_manipulator.Text;
-                    var AKB = textBox_AKB.Text;
-                    var batteryСharger = textBox_batteryСharger.Text;
+                    var city = txB_city.Text;
+                    var poligon = cmB_poligon.Text;
+                    var company = txB_company.Text;
+                    var location = txB_location.Text;
+                    var model = cmB_model.Text;
+                    var serialNumber = txB_serialNumber.Text;
+                    var inventoryNumber = txB_inventoryNumber.Text;
+                    var networkNumber = txB_networkNumber.Text;
+                    var numberAct = txB_numberAct.Text;
+                    var dateTO = txB_dateTO.Text;
+                    var price = txB_price.Text;
+                    var representative = txB_representative.Text;
+                    var post = txB_post.Text;
+                    var numberIdentification = txB_numberIdentification.Text;
+                    var dateIssue = txB_dateIssue.Text;
+                    var phoneNumber = txB_phoneNumber.Text;
+                    var antenna = txB_antenna.Text;
+                    var manipulator = txB_manipulator.Text;
+                    var AKB = txB_AKB.Text;
+                    var batteryСharger = txB_batteryСharger.Text;
                     var comment = txB_comment.Text;
 
                     DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
@@ -495,26 +495,26 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            comboBox_poligon.Text = "";
-            textBox_company.Text = "";
-            comboBox_model.Text = "";
-            textBox_serialNumber.Text = "";
-            textBox_inventoryNumber.Text = "";
-            textBox_networkNumber.Text = "";
-            textBox_location.Text = "";
-            textBox_dateTO.Text = "";
-            textBox_city.Text = "";
-            textBox_price.Text = "";
-            textBox_numberAct.Text = "";
-            textBox_representative.Text = "";
-            textBox_post.Text = "";
-            textBox_numberIdentification.Text = "";
-            textBox_dateIssue.Text = "";
-            textBox_phoneNumber.Text = "";
-            textBox_antenna.Text = "-";
-            textBox_manipulator.Text = "-";
-            textBox_AKB.Text = "-";
-            textBox_batteryСharger.Text = "-";
+            cmB_poligon.Text = "";
+            txB_company.Text = "";
+            cmB_model.Text = "";
+            txB_serialNumber.Text = "";
+            txB_inventoryNumber.Text = "";
+            txB_networkNumber.Text = "";
+            txB_location.Text = "";
+            txB_dateTO.Text = "";
+            txB_city.Text = "";
+            txB_price.Text = "";
+            txB_numberAct.Text = "";
+            txB_representative.Text = "";
+            txB_post.Text = "";
+            txB_numberIdentification.Text = "";
+            txB_dateIssue.Text = "";
+            txB_phoneNumber.Text = "";
+            txB_antenna.Text = "-";
+            txB_manipulator.Text = "-";
+            txB_AKB.Text = "-";
+            txB_batteryСharger.Text = "-";
         }
         #endregion
 
@@ -540,16 +540,16 @@ namespace ServiceTelecomConnect
                                 try
                                 {
                                     DB.GetInstance.OpenConnection();
-                                    var model = comboBox_model.Text;
-                                    var inventoryNumber = textBox_inventoryNumber.Text;
-                                    var networkNumber = textBox_networkNumber.Text;
-                                    var dateTO = textBox_dateTO.Text;
-                                    var numberAct = textBox_numberAct.Text;
-                                    var representative = textBox_representative.Text;
-                                    var numberIdentification = textBox_numberIdentification.Text;
-                                    var phoneNumber = textBox_phoneNumber.Text;
-                                    var post = textBox_post.Text;
-                                    var dateIssue = textBox_dateIssue.Text;
+                                    var model = cmB_model.Text;
+                                    var inventoryNumber = txB_inventoryNumber.Text;
+                                    var networkNumber = txB_networkNumber.Text;
+                                    var dateTO = txB_dateTO.Text;
+                                    var numberAct = txB_numberAct.Text;
+                                    var representative = txB_representative.Text;
+                                    var numberIdentification = txB_numberIdentification.Text;
+                                    var phoneNumber = txB_phoneNumber.Text;
+                                    var post = txB_post.Text;
+                                    var dateIssue = txB_dateIssue.Text;
 
                                     var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
 
@@ -591,7 +591,7 @@ namespace ServiceTelecomConnect
 
         void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            textBox_dateTO.Text = e.End.ToString("dd.MM.yyyy");
+            txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
 
@@ -602,7 +602,7 @@ namespace ServiceTelecomConnect
 
         void MonthCalendar2_DateSelected(object sender, DateRangeEventArgs e)
         {
-            textBox_dateIssue.Text = e.End.ToString("dd.MM.yyyy");
+            txB_dateIssue.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar2.Visible = false;
         }
 
@@ -625,7 +625,7 @@ namespace ServiceTelecomConnect
         {
             char ch = e.KeyChar;
             char decimalSeparatorChar = Convert.ToChar(Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
-            if (ch == decimalSeparatorChar && textBox_price.Text.IndexOf(decimalSeparatorChar) != -1)
+            if (ch == decimalSeparatorChar && txB_price.Text.IndexOf(decimalSeparatorChar) != -1)
             {
                 e.Handled = true;
                 return;
@@ -638,18 +638,18 @@ namespace ServiceTelecomConnect
         }
         void ComboBox_model_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_model.Text == "Icom IC-F3GT" || comboBox_model.Text == "Icom IC-F11" || comboBox_model.Text == "Icom IC-F16" ||
-                comboBox_model.Text == "Icom IC-F3GS" || comboBox_model.Text == "Motorola P040" || comboBox_model.Text == "Motorola P080" ||
-                comboBox_model.Text == "Motorola GP-300" || comboBox_model.Text == "Motorola GP-320" || comboBox_model.Text == "Motorola GP-340" ||
-                comboBox_model.Text == "Motorola GP-360" || comboBox_model.Text == "Альтавия-301М" || comboBox_model.Text == "Comrade R5" ||
-                comboBox_model.Text == "Гранит Р33П-1" || comboBox_model.Text == "Гранит Р-43" || comboBox_model.Text == "Радий-301" ||
-                comboBox_model.Text == "Kenwood ТК-2107" || comboBox_model.Text == "Vertex - 261" || comboBox_model.Text == "РА-160")
+            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
+                cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+                cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+                cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
             {
-                textBox_price.Text = "1411.18";
+                txB_price.Text = "1411.18";
             }
             else
             {
-                textBox_price.Text = "1919.57";
+                txB_price.Text = "1919.57";
             }
         }
         void TextBox_company_KeyUp(object sender, KeyEventArgs e)
@@ -680,17 +680,17 @@ namespace ServiceTelecomConnect
         }
         void TextBox_location_Click(object sender, EventArgs e)
         {
-            if (textBox_location.Text == "")
+            if (txB_location.Text == "")
             {
-                textBox_location.Text = $"ст. {textBox_city.Text}";
-                textBox_location.SelectionStart = textBox_location.Text.Length;
-                textBox_location.SelectionLength = 0;
+                txB_location.Text = $"ст. {txB_city.Text}";
+                txB_location.SelectionStart = txB_location.Text.Length;
+                txB_location.SelectionLength = 0;
 
             }
         }
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            comboBox_model.MaxLength = 99;
+            cmB_model.MaxLength = 99;
         }
         void TextBox_city_KeyUp(object sender, KeyEventArgs e)
         {
@@ -710,172 +710,172 @@ namespace ServiceTelecomConnect
         }
         void TextBox_serialNumber_Click(object sender, EventArgs e)
         {
-            if (comboBox_model.Text == "Icom IC-F3GT" || comboBox_model.Text == "Icom IC-F11")
+            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11")
             {
-                textBox_serialNumber.MaxLength = 7;
+                txB_serialNumber.MaxLength = 7;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "0";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "0";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Icom IC-F16" || comboBox_model.Text == "Icom IC-F3GS" || comboBox_model.Text == "Гранит Р33П-1" ||
-                comboBox_model.Text == "Гранит Р-43" || comboBox_model.Text == "Радий-301")
+            if (cmB_model.Text == "Icom IC-F16" || cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Гранит Р33П-1" ||
+                cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301")
             {
-                textBox_serialNumber.MaxLength = 7;
+                txB_serialNumber.MaxLength = 7;
             }
 
-            if (comboBox_model.Text == "Motorola P040" || comboBox_model.Text == "Motorola P080")
+            if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "442";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "442";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola DP-1400")
+            if (cmB_model.Text == "Motorola DP-1400")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "752";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "752";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola DP-2400" || comboBox_model.Text == "Motorola DP-2400е")
+            if (cmB_model.Text == "Motorola DP-2400" || cmB_model.Text == "Motorola DP-2400е")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "446";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "446";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola DP-4400")
+            if (cmB_model.Text == "Motorola DP-4400")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "807";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "807";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola GP-300")
+            if (cmB_model.Text == "Motorola GP-300")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "174";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "174";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola GP-320" || comboBox_model.Text == "Kenwood ТК-2107" || comboBox_model.Text == "Vertex - 261"
-                || comboBox_model.Text == "РА-160") //TODO Проверить условия а имеено зав номер GP320 Вертех Кенвуд РА
+            if (cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261"
+                || cmB_model.Text == "РА-160") //TODO Проверить условия а имеено зав номер GP320 Вертех Кенвуд РА
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "что-то";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "что-то";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola GP-340")
+            if (cmB_model.Text == "Motorola GP-340")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "672";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "672";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Motorola GP-360")
+            if (cmB_model.Text == "Motorola GP-360")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "749";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "749";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Альтавия-301М" || comboBox_model.Text == "Элодия-351М")
+            if (cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Элодия-351М")
             {
-                textBox_serialNumber.MaxLength = 9;
+                txB_serialNumber.MaxLength = 9;
             }
 
-            if (comboBox_model.Text == "РН311М")
+            if (cmB_model.Text == "РН311М")
             {
-                textBox_serialNumber.MaxLength = 10;
+                txB_serialNumber.MaxLength = 10;
 
             }
 
-            if (comboBox_model.Text == "Comrade R5")
+            if (cmB_model.Text == "Comrade R5")
             {
-                textBox_serialNumber.MaxLength = 12;
+                txB_serialNumber.MaxLength = 12;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "2010R";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "2010R";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "Комбат T-44")
+            if (cmB_model.Text == "Комбат T-44")
             {
-                textBox_serialNumber.MaxLength = 14;
+                txB_serialNumber.MaxLength = 14;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "T44.19.10.";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "T44.19.10.";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
             }
 
-            if (comboBox_model.Text == "РНД-500")
+            if (cmB_model.Text == "РНД-500")
             {
-                textBox_serialNumber.MaxLength = 4;
-                textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                textBox_serialNumber.SelectionLength = 0;
+                txB_serialNumber.MaxLength = 4;
+                txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                txB_serialNumber.SelectionLength = 0;
             }
 
-            if (comboBox_model.Text == "РНД-512")
+            if (cmB_model.Text == "РНД-512")
             {
-                textBox_serialNumber.MaxLength = 11;
+                txB_serialNumber.MaxLength = 11;
 
-                if (textBox_serialNumber.Text == "")
+                if (txB_serialNumber.Text == "")
                 {
-                    textBox_serialNumber.Text = "0";
-                    textBox_serialNumber.SelectionStart = textBox_serialNumber.Text.Length;
-                    textBox_serialNumber.SelectionLength = 0;
+                    txB_serialNumber.Text = "0";
+                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
+                    txB_serialNumber.SelectionLength = 0;
                 }
 
             }
@@ -887,9 +887,9 @@ namespace ServiceTelecomConnect
             {
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
                 {
-                    if (textBox_serialNumber.Text != "")
+                    if (txB_serialNumber.Text != "")
                     {
-                        var serialNumber = textBox_serialNumber.Text;
+                        var serialNumber = txB_serialNumber.Text;
 
                         string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
 
@@ -903,19 +903,19 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count > 0)
                         {
-                            comboBox_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                            textBox_company.Text = table.Rows[0].ItemArray[2].ToString();
-                            textBox_location.Text = table.Rows[0].ItemArray[3].ToString();
-                            comboBox_model.Text = table.Rows[0].ItemArray[4].ToString();
-                            textBox_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                            textBox_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                            textBox_numberAct.Text = table.Rows[0].ItemArray[9].ToString();
-                            textBox_city.Text = table.Rows[0].ItemArray[10].ToString();
-                            textBox_representative.Text = table.Rows[0].ItemArray[12].ToString();
-                            textBox_post.Text = table.Rows[0].ItemArray[13].ToString();
-                            textBox_numberIdentification.Text = table.Rows[0].ItemArray[14].ToString();
-                            textBox_dateIssue.Text = table.Rows[0].ItemArray[15].ToString();
-                            textBox_phoneNumber.Text = table.Rows[0].ItemArray[16].ToString();
+                            cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
+                            txB_company.Text = table.Rows[0].ItemArray[2].ToString();
+                            txB_location.Text = table.Rows[0].ItemArray[3].ToString();
+                            cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
+                            txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
+                            txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
+                            txB_numberAct.Text = table.Rows[0].ItemArray[9].ToString();
+                            txB_city.Text = table.Rows[0].ItemArray[10].ToString();
+                            txB_representative.Text = table.Rows[0].ItemArray[12].ToString();
+                            txB_post.Text = table.Rows[0].ItemArray[13].ToString();
+                            txB_numberIdentification.Text = table.Rows[0].ItemArray[14].ToString();
+                            txB_dateIssue.Text = table.Rows[0].ItemArray[15].ToString();
+                            txB_phoneNumber.Text = table.Rows[0].ItemArray[16].ToString();
                         }
                     }
                 }
@@ -929,9 +929,9 @@ namespace ServiceTelecomConnect
             {
                 if (e.KeyCode == Keys.Return)
                 {
-                    if (textBox_serialNumber.Text != "")
+                    if (txB_serialNumber.Text != "")
                     {
-                        var serialNumber = textBox_serialNumber.Text;
+                        var serialNumber = txB_serialNumber.Text;
 
                         string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
 
@@ -945,18 +945,18 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count > 0)
                         {
-                            comboBox_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                            textBox_company.Text = table.Rows[0].ItemArray[2].ToString();
-                            textBox_location.Text = table.Rows[0].ItemArray[3].ToString();
-                            comboBox_model.Text = table.Rows[0].ItemArray[4].ToString();
-                            textBox_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                            textBox_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                            textBox_city.Text = table.Rows[0].ItemArray[10].ToString();
+                            cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
+                            txB_company.Text = table.Rows[0].ItemArray[2].ToString();
+                            txB_location.Text = table.Rows[0].ItemArray[3].ToString();
+                            cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
+                            txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
+                            txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
+                            txB_city.Text = table.Rows[0].ItemArray[10].ToString();
                         }
                         else
                         {
-                            textBox_inventoryNumber.Text = "";
-                            textBox_networkNumber.Text = "";
+                            txB_inventoryNumber.Text = "";
+                            txB_networkNumber.Text = "";
                         }
                     }
                 }
@@ -970,10 +970,10 @@ namespace ServiceTelecomConnect
         void TextBox_serialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             #region проверка ввода
-            if (comboBox_model.Text == "Icom IC-F3GT" || comboBox_model.Text == "Icom IC-F11" || comboBox_model.Text == "Icom IC-F16"
-                || comboBox_model.Text == "Icom IC-F3GS" || comboBox_model.Text == "Альтавия-301М" || comboBox_model.Text == "Элодия-351М"
-                || comboBox_model.Text == "Гранит Р33П-1" || comboBox_model.Text == "Гранит Р-43" || comboBox_model.Text == "Радий-301"
-                || comboBox_model.Text == "РНД-500")
+            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16"
+                || cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Элодия-351М"
+                || cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301"
+                || cmB_model.Text == "РНД-500")
             {
                 if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
                 {
@@ -985,10 +985,10 @@ namespace ServiceTelecomConnect
                 }
             }
 
-            if (comboBox_model.Text == "Motorola P040" || comboBox_model.Text == "Motorola P080" || comboBox_model.Text == "Motorola DP-1400" ||
-                comboBox_model.Text == "Motorola DP-2400" || comboBox_model.Text == "Motorola DP-2400е" || comboBox_model.Text == "Motorola DP-4400" ||
-                comboBox_model.Text == "Motorola GP-300" || comboBox_model.Text == "Motorola GP-320" || comboBox_model.Text == "Motorola GP-340" ||
-                comboBox_model.Text == "Motorola GP-360" || comboBox_model.Text == "Comrade R5")
+            if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" || cmB_model.Text == "Motorola DP-1400" ||
+                cmB_model.Text == "Motorola DP-2400" || cmB_model.Text == "Motorola DP-2400е" || cmB_model.Text == "Motorola DP-4400" ||
+                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Comrade R5")
             {
                 if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
                 {
@@ -1001,7 +1001,7 @@ namespace ServiceTelecomConnect
 
             }
 
-            if (comboBox_model.Text == "РН311М" || comboBox_model.Text == "РНД-512")
+            if (cmB_model.Text == "РН311М" || cmB_model.Text == "РНД-512")
             {
                 if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == ' ')
                 {
@@ -1013,7 +1013,7 @@ namespace ServiceTelecomConnect
                 }
             }
 
-            if (comboBox_model.Text == "Комбат T-44")
+            if (cmB_model.Text == "Комбат T-44")
             {
                 if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == 84)
                 {
@@ -1102,11 +1102,11 @@ namespace ServiceTelecomConnect
         }
         void TextBox_numberIdentification_Click(object sender, EventArgs e)
         {
-            if (textBox_numberIdentification.Text == "")
+            if (txB_numberIdentification.Text == "")
             {
-                textBox_numberIdentification.Text = "V ";
-                textBox_numberIdentification.SelectionStart = textBox_numberIdentification.Text.Length;
-                textBox_numberIdentification.SelectionLength = 0;
+                txB_numberIdentification.Text = "V ";
+                txB_numberIdentification.SelectionStart = txB_numberIdentification.Text.Length;
+                txB_numberIdentification.SelectionLength = 0;
             }
         }
         void TextBox_numberIdentification_KeyPress(object sender, KeyPressEventArgs e)
@@ -1127,11 +1127,11 @@ namespace ServiceTelecomConnect
         void TextBox_phoneNumber_Click(object sender, EventArgs e)
         {
 
-            if (textBox_phoneNumber.Text == "")
+            if (txB_phoneNumber.Text == "")
             {
-                textBox_phoneNumber.Text = "+7-";
-                textBox_phoneNumber.SelectionStart = textBox_phoneNumber.Text.Length;
-                textBox_phoneNumber.SelectionLength = 0;
+                txB_phoneNumber.Text = "+7-";
+                txB_phoneNumber.SelectionStart = txB_phoneNumber.Text.Length;
+                txB_phoneNumber.SelectionLength = 0;
             }
         }
         void TextBox_phoneNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -1148,7 +1148,7 @@ namespace ServiceTelecomConnect
 
         void TextBox_antenna_Click(object sender, EventArgs e)
         {
-            textBox_antenna.Text = "";
+            txB_antenna.Text = "";
         }
         void TextBox_antenna_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1164,14 +1164,14 @@ namespace ServiceTelecomConnect
         }
         void TextBox_antenna_Leave(object sender, EventArgs e)
         {
-            if (textBox_antenna.Text == "")
+            if (txB_antenna.Text == "")
             {
-                textBox_antenna.Text = "-";
+                txB_antenna.Text = "-";
             }
         }
         void TextBox_manipulator_Click(object sender, EventArgs e)
         {
-            textBox_manipulator.Text = "";
+            txB_manipulator.Text = "";
         }
         void TextBox_manipulator_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1187,25 +1187,25 @@ namespace ServiceTelecomConnect
         }
         void TextBox_manipulator_Leave(object sender, EventArgs e)
         {
-            if (textBox_manipulator.Text == "")
+            if (txB_manipulator.Text == "")
             {
-                textBox_manipulator.Text = "-";
+                txB_manipulator.Text = "-";
             }
         }
         void TextBox_AKB_Click(object sender, EventArgs e)
         {
-            textBox_AKB.Text = "";
+            txB_AKB.Text = "";
         }
         void TextBox_AKB_Leave(object sender, EventArgs e)
         {
-            if (textBox_AKB.Text == "")
+            if (txB_AKB.Text == "")
             {
-                textBox_AKB.Text = "-";
+                txB_AKB.Text = "-";
             }
         }
         void TextBox_batteryСharger_Click(object sender, EventArgs e)
         {
-            textBox_batteryСharger.Text = "";
+            txB_batteryСharger.Text = "";
         }
         void TextBox_batteryСharger_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1221,27 +1221,27 @@ namespace ServiceTelecomConnect
         }
         void TextBox_batteryСharger_Leave(object sender, EventArgs e)
         {
-            if (textBox_batteryСharger.Text == "")
+            if (txB_batteryСharger.Text == "")
             {
-                textBox_batteryСharger.Text = "-";
+                txB_batteryСharger.Text = "-";
             }
         }
         void TextBox_TextChanged()
         {
-            if (comboBox_poligon.Text.Length > 0 && textBox_company.Text.Length > 0
-                && textBox_location.Text.Length > 0
-                && comboBox_model.Text.Length > 0 && textBox_serialNumber.Text.Length > 0
-                && textBox_inventoryNumber.Text.Length > 0 && textBox_networkNumber.Text.Length > 0
-                && textBox_dateTO.Text.Length > 0 && textBox_price.Text.Length > 0
-                && textBox_numberAct.Text.Length > 0 && textBox_representative.Text.Length > 0
-                && textBox_numberIdentification.Text.Length > 0 && textBox_phoneNumber.Text.Length > 0
-                && textBox_post.Text.Length > 0 && textBox_dateIssue.Text.Length > 0)
+            if (cmB_poligon.Text.Length > 0 && txB_company.Text.Length > 0
+                && txB_location.Text.Length > 0
+                && cmB_model.Text.Length > 0 && txB_serialNumber.Text.Length > 0
+                && txB_inventoryNumber.Text.Length > 0 && txB_networkNumber.Text.Length > 0
+                && txB_dateTO.Text.Length > 0 && txB_price.Text.Length > 0
+                && txB_numberAct.Text.Length > 0 && txB_representative.Text.Length > 0
+                && txB_numberIdentification.Text.Length > 0 && txB_phoneNumber.Text.Length > 0
+                && txB_post.Text.Length > 0 && txB_dateIssue.Text.Length > 0)
             {
-                button_save_add_rst.Enabled = true;
+                btn_save_add_rst.Enabled = true;
             }
             else
             {
-                button_save_add_rst.Enabled = false;
+                btn_save_add_rst.Enabled = false;
             }
         }
         void AddRSTForm_KeyUp(object sender, KeyEventArgs e)
@@ -1253,22 +1253,22 @@ namespace ServiceTelecomConnect
         #region очистка дат
         void PictureBox5_Click(object sender, EventArgs e)
         {
-            textBox_dateTO.Text = "";
+            txB_dateTO.Text = "";
         }
 
         void PictureBox6_Click(object sender, EventArgs e)
         {
-            textBox_dateIssue.Text = "";
+            txB_dateIssue.Text = "";
         }
         #endregion
 
         #region возможность редактирования comBox_model
         void Button_Enable_editor_comBox_model_Click(object sender, EventArgs e)
         {
-            if (comboBox_model.Text != "" && comboBox_model.DropDownStyle != ComboBoxStyle.DropDown)
+            if (cmB_model.Text != "" && cmB_model.DropDownStyle != ComboBoxStyle.DropDown)
             {
-                comboBox_model.DropDownStyle = ComboBoxStyle.DropDown;
-                button_model_radiostation_name.Enabled = true;
+                cmB_model.DropDownStyle = ComboBoxStyle.DropDown;
+                btn_model_radiostation_name.Enabled = true;
             }
         }
         #endregion
@@ -1288,7 +1288,7 @@ namespace ServiceTelecomConnect
                 try
                 {
                     DB.GetInstance.OpenConnection();
-                    var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{comboBox_model.Text}')";
+                    var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
 
                     MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection());
                     command.ExecuteNonQuery();
@@ -1296,8 +1296,8 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Модель радиостанции успешно добавлена!");
                     DB.GetInstance.CloseConnection();
 
-                    comboBox_model.DropDownStyle = ComboBoxStyle.DropDownList;
-                    button_model_radiostation_name.Enabled = false;
+                    cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
+                    btn_model_radiostation_name.Enabled = false;
                 }
                 catch (Exception)
                 {

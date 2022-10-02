@@ -824,28 +824,28 @@ namespace ServiceTelecomConnect
                 {
                     AddRSTForm addRSTForm = new AddRSTForm();
                     addRSTForm.DoubleBufferedForm(true);
-                    addRSTForm.textBox_numberAct.Text = txB_number_printing_doc_datePanel.Text + "/";
+                    addRSTForm.txB_numberAct.Text = txB_number_printing_doc_datePanel.Text + "/";
                     if (txB_city.Text == "")
                     {
-                        addRSTForm.textBox_city.Text = cmB_city.Text;
+                        addRSTForm.txB_city.Text = cmB_city.Text;
                     }
-                    else addRSTForm.textBox_city.Text = txB_city.Text;
-                    addRSTForm.comboBox_poligon.Text = cmB_poligon.Text;
-                    addRSTForm.textBox_company.Text = txB_company.Text;
-                    addRSTForm.textBox_location.Text = txB_location.Text;
-                    addRSTForm.comboBox_model.Text = cmB_model.Text;
-                    addRSTForm.comboBox_model.Text = cmB_model.Text;
-                    addRSTForm.textBox_representative.Text = txB_representative.Text;
-                    addRSTForm.textBox_numberIdentification.Text = txB_numberIdentification.Text;
-                    addRSTForm.textBox_phoneNumber.Text = txB_phoneNumber.Text;
-                    addRSTForm.textBox_post.Text = txB_post.Text;
-                    addRSTForm.textBox_dateIssue.Text = txB_dateIssue.Text;
+                    else addRSTForm.txB_city.Text = txB_city.Text;
+                    addRSTForm.cmB_poligon.Text = cmB_poligon.Text;
+                    addRSTForm.txB_company.Text = txB_company.Text;
+                    addRSTForm.txB_location.Text = txB_location.Text;
+                    addRSTForm.cmB_model.Text = cmB_model.Text;
+                    addRSTForm.cmB_model.Text = cmB_model.Text;
+                    addRSTForm.txB_representative.Text = txB_representative.Text;
+                    addRSTForm.txB_numberIdentification.Text = txB_numberIdentification.Text;
+                    addRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
+                    addRSTForm.txB_post.Text = txB_post.Text;
+                    addRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
                     if (dataGridView1.RowCount != 0)
                     {
                         this.dataGridView1.Sort(this.dataGridView1.Columns["numberAct"], ListSortDirection.Ascending);
                         dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
                         DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-                        addRSTForm.lbl_last_act.Text = row.Cells[9].Value.ToString();
+                        addRSTForm.lbL_last_act.Text = row.Cells[9].Value.ToString();
                         foreach (DataGridViewColumn column in dataGridView1.Columns)
                         {
                             column.SortMode = DataGridViewColumnSortMode.NotSortable;
