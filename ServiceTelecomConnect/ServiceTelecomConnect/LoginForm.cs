@@ -20,18 +20,18 @@ namespace ServiceTelecomConnect
             {
                 if (x.EndsWith("/Admin"))
                 {
-                    loginField.Text = "Admin";
-                    passField.Text = "1818";
+                    txB_loginField.Text = "Admin";
+                    txB_passField.Text = "1818";
                 }
             });
         }
         void LoginForm_Load(object sender, EventArgs e)
         {
-            passField.PasswordChar = '*';
-            hidePassword.Visible = false;
-            loginField.MaxLength = 100;
-            passField.MaxLength = 32;
-            if (loginField.Text == "Admin" || passField.Text == "1818")
+            txB_passField.PasswordChar = '*';
+            lbL_hidePassword.Visible = false;
+            txB_loginField.MaxLength = 100;
+            txB_passField.MaxLength = 32;
+            if (txB_loginField.Text == "Admin" || txB_passField.Text == "1818")
                 EnterButtonLogin_Click(sender, e);
 
         }
@@ -41,8 +41,8 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.AvailabilityChanged_bool())
                 {
-                    var loginUser = loginField.Text;
-                    var passUser = md5.hashPassword(passField.Text);
+                    var loginUser = txB_loginField.Text;
+                    var passUser = md5.hashPassword(txB_passField.Text);
 
                     string querystring = $"SELECT id, login, pass, is_admin	FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
 
@@ -83,20 +83,20 @@ namespace ServiceTelecomConnect
         }
         void OpenPassword_Click(object sender, EventArgs e)
         {
-            passField.UseSystemPasswordChar = true;
-            hidePassword.Visible = true;
-            openPassword.Visible = false;
+            txB_passField.UseSystemPasswordChar = true;
+            lbL_hidePassword.Visible = true;
+            lbL_openPassword.Visible = false;
         }
         void HidePassword_Click(object sender, EventArgs e)
         {
-            passField.UseSystemPasswordChar = false;
-            hidePassword.Visible = false;
-            openPassword.Visible = true;
+            txB_passField.UseSystemPasswordChar = false;
+            lbL_hidePassword.Visible = false;
+            lbL_openPassword.Visible = true;
         }
         void Clear_Click(object sender, EventArgs e)
         {
-            loginField.Text = "";
-            passField.Text = "";
+            txB_loginField.Text = "";
+            txB_passField.Text = "";
         }
         
         void RegistrationLoginForm_Click(object sender, EventArgs e)
@@ -113,42 +113,42 @@ namespace ServiceTelecomConnect
        
         void RegistrationLoginForm_MouseEnter(object sender, EventArgs e)
         {
-            registrationLoginForm.ForeColor = Color.White;
+            lbL_registrationLoginForm.ForeColor = Color.White;
         }
         
         void RegistrationLoginForm_MouseLeave(object sender, EventArgs e)
         {
-            registrationLoginForm.ForeColor = Color.Black;
+            lbL_registrationLoginForm.ForeColor = Color.Black;
         }
         
         void OpenPassword_MouseEnter(object sender, EventArgs e)
         {
-            openPassword.ForeColor = Color.White;
+            lbL_openPassword.ForeColor = Color.White;
         }
         
         void OpenPassword_MouseLeave(object sender, EventArgs e)
         {
-            openPassword.ForeColor = Color.Black;
+            lbL_openPassword.ForeColor = Color.Black;
         }
         
         void HidePassword_MouseEnter(object sender, EventArgs e)
         {
-            hidePassword.ForeColor = Color.White;
+            lbL_hidePassword.ForeColor = Color.White;
         }
         
         void HidePassword_MouseLeave(object sender, EventArgs e)
         {
-            hidePassword.ForeColor = Color.Black;
+            lbL_hidePassword.ForeColor = Color.Black;
         }
 
         void Clear_MouseEnter(object sender, EventArgs e)
         {
-            clear.ForeColor = Color.White;
+            lbL_clear.ForeColor = Color.White;
         }
 
         void clear_MouseLeave(object sender, EventArgs e)
         {
-            clear.ForeColor = Color.Black;
+            lbL_clear.ForeColor = Color.Black;
         }
 
         #endregion

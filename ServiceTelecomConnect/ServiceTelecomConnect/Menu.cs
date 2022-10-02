@@ -14,44 +14,44 @@ namespace ServiceTelecomConnect
             _user = user;
             IsAdmin();
 
-            label_TutorialEngineers.ForeColor = Color.FromArgb(56, 56, 56);
-            label_section_foreman.ForeColor = Color.FromArgb(56, 56, 56);
-            label_сomparison.ForeColor = Color.FromArgb(56, 56, 56);
+            lbL_TutorialEngineers.ForeColor = Color.FromArgb(56, 56, 56);
+            lbL_section_foreman.ForeColor = Color.FromArgb(56, 56, 56);
+            lbL_сomparison.ForeColor = Color.FromArgb(56, 56, 56);
         }
         void IsAdmin()
         {
             if (_user.IsAdmin == "Дирекция связи")
             {
-                label_сomparison.Enabled = false;
-                label_TutorialEngineers.Enabled = false;
-                label_section_foreman.Enabled = true;
+                lbL_сomparison.Enabled = false;
+                lbL_TutorialEngineers.Enabled = false;
+                lbL_section_foreman.Enabled = true;
             }
 
             if (_user.IsAdmin == "Инженер")
             {
                 //label_section_foreman.Enabled = false;
-                label_сomparison.Enabled = false;
+                lbL_сomparison.Enabled = false;
             }
             if (_user.IsAdmin == "Начальник участка")
             {
-                label_сomparison.Enabled = false;
+                lbL_сomparison.Enabled = false;
             }
 
             if (_user.IsAdmin == "Куратор")
             {
-                label_TutorialEngineers.Enabled = false;
+                lbL_TutorialEngineers.Enabled = false;
             }
 
             if (_user.IsAdmin == "Admin")
             {
-                pictureBox1_setting.Visible = true;
+                picB_setting.Visible = true;
             }
 
             if (!(_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Инженер" || _user.IsAdmin == "Дирекция связи"))
             {
-                label_TutorialEngineers.Enabled = false;
-                label_section_foreman.Enabled = false;
-                label_сomparison.Enabled = false;
+                lbL_TutorialEngineers.Enabled = false;
+                lbL_section_foreman.Enabled = false;
+                lbL_сomparison.Enabled = false;
             }
 
         }
@@ -68,11 +68,11 @@ namespace ServiceTelecomConnect
         void Label_section_foreman_MouseEnter(object sender, EventArgs e)
         {
 
-            label_section_foreman.ForeColor = Color.White;
+            lbL_section_foreman.ForeColor = Color.White;
         }
         void Label_section_foreman_MouseLeave(object sender, EventArgs e)
         {
-            label_section_foreman.ForeColor = Color.Black;
+            lbL_section_foreman.ForeColor = Color.Black;
         }
         void Label_TutorialEngineers_Click(object sender, EventArgs e)
         {
@@ -85,11 +85,11 @@ namespace ServiceTelecomConnect
         }
         void Label_TutorialEngineers_MouseEnter(object sender, EventArgs e)
         {
-            label_TutorialEngineers.ForeColor = Color.White;
+            lbL_TutorialEngineers.ForeColor = Color.White;
         }
         void Label_TutorialEngineers_MouseLeave(object sender, EventArgs e)
         {
-            label_TutorialEngineers.ForeColor = Color.Black;
+            lbL_TutorialEngineers.ForeColor = Color.Black;
         }
         void Label1_Click(object sender, EventArgs e)
         {
@@ -102,11 +102,11 @@ namespace ServiceTelecomConnect
         }
         void Label_сomparison_MouseEnter(object sender, EventArgs e)
         {
-            label_сomparison.ForeColor = Color.White;
+            lbL_сomparison.ForeColor = Color.White;
         }
         void Label_сomparison_MouseLeave(object sender, EventArgs e)
         {
-            label_сomparison.ForeColor = Color.Black;
+            lbL_сomparison.ForeColor = Color.Black;
         }
 
         #region открываем форму управления правами доступа user's

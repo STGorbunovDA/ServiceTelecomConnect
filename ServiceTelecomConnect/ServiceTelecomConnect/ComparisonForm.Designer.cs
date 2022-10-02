@@ -87,8 +87,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.button_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
-            this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.btn_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.btn_close_panel_seach_datagrid = new System.Windows.Forms.Button();
             this.txB_seach_panel_datagrid_curator = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.btn_Show_DB_radiostantion_full = new System.Windows.Forms.Button();
@@ -105,20 +105,20 @@
             this.label36 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
-            this.button_all_BD = new System.Windows.Forms.Button();
-            this.comboBox_city = new System.Windows.Forms.ComboBox();
+            this.btn_all_BD = new System.Windows.Forms.Button();
+            this.cmb_city = new System.Windows.Forms.ComboBox();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button_add_city = new System.Windows.Forms.Button();
-            this.button_seach_BD_city = new System.Windows.Forms.Button();
-            this.button_search = new System.Windows.Forms.Button();
-            this.comboBox_seach = new System.Windows.Forms.ComboBox();
+            this.btn_add_city = new System.Windows.Forms.Button();
+            this.btn_seach_BD_city = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
+            this.cmB_seach = new System.Windows.Forms.ComboBox();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
-            this.pictureBox2_update = new System.Windows.Forms.PictureBox();
-            this.pictureBox1_clear = new System.Windows.Forms.PictureBox();
+            this.picB_update = new System.Windows.Forms.PictureBox();
+            this.picB_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.txB_Sign = new System.Windows.Forms.TextBox();
             this.lbl_Sign = new System.Windows.Forms.Label();
@@ -132,17 +132,17 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label_summ = new System.Windows.Forms.Label();
-            this.label_count = new System.Windows.Forms.Label();
-            this.label_count_remont = new System.Windows.Forms.Label();
+            this.lbL_summ = new System.Windows.Forms.Label();
+            this.lbL_count = new System.Windows.Forms.Label();
+            this.lbL_count_remont = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label_summ_remont = new System.Windows.Forms.Label();
+            this.lbL_summ_remont = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label_cell_rows = new System.Windows.Forms.Label();
+            this.lbL_cell_rows = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label_sum_TO_selection = new System.Windows.Forms.Label();
+            this.lbL_sum_TO_selection = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -153,8 +153,8 @@
             this.panel_seach_datagrid_curator.SuspendLayout();
             this.panel_.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_update)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -624,8 +624,8 @@
             this.panel_seach_datagrid_curator.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_seach_datagrid_curator.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.panel_seach_datagrid_curator.Controls.Add(this.panel_);
-            this.panel_seach_datagrid_curator.Controls.Add(this.button_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid_curator.Controls.Add(this.button_close_panel_seach_datagrid);
+            this.panel_seach_datagrid_curator.Controls.Add(this.btn_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid_curator.Controls.Add(this.btn_close_panel_seach_datagrid);
             this.panel_seach_datagrid_curator.Controls.Add(this.txB_seach_panel_datagrid_curator);
             this.panel_seach_datagrid_curator.Controls.Add(this.label37);
             this.panel_seach_datagrid_curator.Enabled = false;
@@ -692,29 +692,29 @@
             this.label17.TabIndex = 6;
             this.label17.Text = "Поиск:";
             // 
-            // button_seach_panel_seach_datagrid
+            // btn_seach_panel_seach_datagrid
             // 
-            this.button_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
-            this.button_seach_panel_seach_datagrid.Name = "button_seach_panel_seach_datagrid";
-            this.button_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
-            this.button_seach_panel_seach_datagrid.TabIndex = 36;
-            this.button_seach_panel_seach_datagrid.Text = "Поиск";
-            this.button_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
+            this.btn_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
+            this.btn_seach_panel_seach_datagrid.Name = "btn_seach_panel_seach_datagrid";
+            this.btn_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
+            this.btn_seach_panel_seach_datagrid.TabIndex = 36;
+            this.btn_seach_panel_seach_datagrid.Text = "Поиск";
+            this.btn_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.btn_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
             // 
-            // button_close_panel_seach_datagrid
+            // btn_close_panel_seach_datagrid
             // 
-            this.button_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
-            this.button_close_panel_seach_datagrid.Name = "button_close_panel_seach_datagrid";
-            this.button_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_seach_datagrid.TabIndex = 34;
-            this.button_close_panel_seach_datagrid.Text = "X";
-            this.button_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
+            this.btn_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
+            this.btn_close_panel_seach_datagrid.Name = "btn_close_panel_seach_datagrid";
+            this.btn_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_seach_datagrid.TabIndex = 34;
+            this.btn_close_panel_seach_datagrid.Text = "X";
+            this.btn_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.btn_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
             // 
             // txB_seach_panel_datagrid_curator
             // 
@@ -832,20 +832,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
-            this.panel1.Controls.Add(this.button_all_BD);
-            this.panel1.Controls.Add(this.comboBox_city);
+            this.panel1.Controls.Add(this.btn_all_BD);
+            this.panel1.Controls.Add(this.cmb_city);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txB_serialNumber);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.button_add_city);
-            this.panel1.Controls.Add(this.button_seach_BD_city);
-            this.panel1.Controls.Add(this.button_search);
-            this.panel1.Controls.Add(this.comboBox_seach);
+            this.panel1.Controls.Add(this.btn_add_city);
+            this.panel1.Controls.Add(this.btn_seach_BD_city);
+            this.panel1.Controls.Add(this.btn_search);
+            this.panel1.Controls.Add(this.cmB_seach);
             this.panel1.Controls.Add(this.txB_numberAct);
             this.panel1.Controls.Add(this.textBox_search);
-            this.panel1.Controls.Add(this.pictureBox2_update);
-            this.panel1.Controls.Add(this.pictureBox1_clear);
+            this.panel1.Controls.Add(this.picB_update);
+            this.panel1.Controls.Add(this.picB_clear);
             this.panel1.Controls.Add(this.txB_numberActRemont);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -868,31 +868,31 @@
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
             // 
-            // button_all_BD
+            // btn_all_BD
             // 
-            this.button_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_all_BD.Location = new System.Drawing.Point(254, 69);
-            this.button_all_BD.Name = "button_all_BD";
-            this.button_all_BD.Size = new System.Drawing.Size(64, 29);
-            this.button_all_BD.TabIndex = 78;
-            this.button_all_BD.Text = "FULL BD";
-            this.button_all_BD.UseVisualStyleBackColor = false;
-            this.button_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
+            this.btn_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_all_BD.Location = new System.Drawing.Point(254, 69);
+            this.btn_all_BD.Name = "btn_all_BD";
+            this.btn_all_BD.Size = new System.Drawing.Size(64, 29);
+            this.btn_all_BD.TabIndex = 78;
+            this.btn_all_BD.Text = "FULL BD";
+            this.btn_all_BD.UseVisualStyleBackColor = false;
+            this.btn_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
             // 
-            // comboBox_city
+            // cmb_city
             // 
-            this.comboBox_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.comboBox_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_city.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.comboBox_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_city.FormattingEnabled = true;
-            this.comboBox_city.Location = new System.Drawing.Point(12, 34);
-            this.comboBox_city.Name = "comboBox_city";
-            this.comboBox_city.Size = new System.Drawing.Size(236, 28);
-            this.comboBox_city.TabIndex = 77;
-            this.comboBox_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
+            this.cmb_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_city.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmb_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_city.FormattingEnabled = true;
+            this.cmb_city.Location = new System.Drawing.Point(12, 34);
+            this.cmb_city.Name = "cmb_city";
+            this.cmb_city.Size = new System.Drawing.Size(236, 28);
+            this.cmb_city.TabIndex = 77;
+            this.cmb_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
             // 
             // label_act_remont
             // 
@@ -941,64 +941,64 @@
             this.label24.TabIndex = 16;
             this.label24.Text = "Загрузка Базы данных по городу:";
             // 
-            // button_add_city
+            // btn_add_city
             // 
-            this.button_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_add_city.Location = new System.Drawing.Point(289, 34);
-            this.button_add_city.Name = "button_add_city";
-            this.button_add_city.Size = new System.Drawing.Size(29, 29);
-            this.button_add_city.TabIndex = 15;
-            this.button_add_city.Text = "+";
-            this.button_add_city.UseVisualStyleBackColor = false;
-            this.button_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
-            this.button_add_city.MouseEnter += new System.EventHandler(this.Button_add_city_click_MouseEnter);
+            this.btn_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_add_city.Location = new System.Drawing.Point(289, 34);
+            this.btn_add_city.Name = "btn_add_city";
+            this.btn_add_city.Size = new System.Drawing.Size(29, 29);
+            this.btn_add_city.TabIndex = 15;
+            this.btn_add_city.Text = "+";
+            this.btn_add_city.UseVisualStyleBackColor = false;
+            this.btn_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
+            this.btn_add_city.MouseEnter += new System.EventHandler(this.Button_add_city_click_MouseEnter);
             // 
-            // button_seach_BD_city
+            // btn_seach_BD_city
             // 
-            this.button_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seach_BD_city.Location = new System.Drawing.Point(254, 34);
-            this.button_seach_BD_city.Name = "button_seach_BD_city";
-            this.button_seach_BD_city.Size = new System.Drawing.Size(29, 29);
-            this.button_seach_BD_city.TabIndex = 14;
-            this.button_seach_BD_city.Text = "...";
-            this.button_seach_BD_city.UseVisualStyleBackColor = false;
-            this.button_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
-            this.button_seach_BD_city.MouseEnter += new System.EventHandler(this.Button_seach_BD_city_Click_MouseEnter);
+            this.btn_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_seach_BD_city.Location = new System.Drawing.Point(254, 34);
+            this.btn_seach_BD_city.Name = "btn_seach_BD_city";
+            this.btn_seach_BD_city.Size = new System.Drawing.Size(29, 29);
+            this.btn_seach_BD_city.TabIndex = 14;
+            this.btn_seach_BD_city.Text = "...";
+            this.btn_seach_BD_city.UseVisualStyleBackColor = false;
+            this.btn_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
+            this.btn_seach_BD_city.MouseEnter += new System.EventHandler(this.Button_seach_BD_city_Click_MouseEnter);
             // 
-            // button_search
+            // btn_search
             // 
-            this.button_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_search.Location = new System.Drawing.Point(1387, 11);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(29, 29);
-            this.button_search.TabIndex = 13;
-            this.button_search.Text = "...";
-            this.button_search.UseVisualStyleBackColor = false;
-            this.button_search.Click += new System.EventHandler(this.Button_search_Click);
-            this.button_search.MouseEnter += new System.EventHandler(this.Button_search_click_MouseEnter);
+            this.btn_search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_search.Location = new System.Drawing.Point(1387, 11);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(29, 29);
+            this.btn_search.TabIndex = 13;
+            this.btn_search.Text = "...";
+            this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.Button_search_Click);
+            this.btn_search.MouseEnter += new System.EventHandler(this.Button_search_click_MouseEnter);
             // 
-            // comboBox_seach
+            // cmB_seach
             // 
-            this.comboBox_seach.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmB_seach.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_seach.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.comboBox_seach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_seach.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox_seach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox_seach.FormattingEnabled = true;
-            this.comboBox_seach.Location = new System.Drawing.Point(952, 11);
-            this.comboBox_seach.Name = "comboBox_seach";
-            this.comboBox_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox_seach.Size = new System.Drawing.Size(219, 28);
-            this.comboBox_seach.TabIndex = 8;
-            this.comboBox_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
-            this.comboBox_seach.MouseEnter += new System.EventHandler(this.ComboBox_seach_MouseEnter);
+            this.cmB_seach.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_seach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_seach.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmB_seach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_seach.FormattingEnabled = true;
+            this.cmB_seach.Location = new System.Drawing.Point(952, 11);
+            this.cmB_seach.Name = "cmB_seach";
+            this.cmB_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmB_seach.Size = new System.Drawing.Size(219, 28);
+            this.cmB_seach.TabIndex = 8;
+            this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
+            this.cmB_seach.MouseEnter += new System.EventHandler(this.ComboBox_seach_MouseEnter);
             // 
             // txB_numberAct
             // 
@@ -1024,33 +1024,33 @@
             this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
             this.textBox_search.MouseEnter += new System.EventHandler(this.TextBox_search_MouseEnter);
             // 
-            // pictureBox2_update
+            // picB_update
             // 
-            this.pictureBox2_update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picB_update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2_update.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
-            this.pictureBox2_update.Location = new System.Drawing.Point(1086, 56);
-            this.pictureBox2_update.Name = "pictureBox2_update";
-            this.pictureBox2_update.Size = new System.Drawing.Size(50, 47);
-            this.pictureBox2_update.TabIndex = 2;
-            this.pictureBox2_update.TabStop = false;
-            this.pictureBox2_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
-            this.pictureBox2_update.MouseEnter += new System.EventHandler(this.PictureBox2_update_MouseEnter);
+            this.picB_update.BackColor = System.Drawing.Color.Transparent;
+            this.picB_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
+            this.picB_update.Location = new System.Drawing.Point(1086, 56);
+            this.picB_update.Name = "picB_update";
+            this.picB_update.Size = new System.Drawing.Size(50, 47);
+            this.picB_update.TabIndex = 2;
+            this.picB_update.TabStop = false;
+            this.picB_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
+            this.picB_update.MouseEnter += new System.EventHandler(this.PictureBox2_update_MouseEnter);
             // 
-            // pictureBox1_clear
+            // picB_clear
             // 
-            this.pictureBox1_clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picB_clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1_clear.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
-            this.pictureBox1_clear.Location = new System.Drawing.Point(1142, 56);
-            this.pictureBox1_clear.Name = "pictureBox1_clear";
-            this.pictureBox1_clear.Size = new System.Drawing.Size(47, 47);
-            this.pictureBox1_clear.TabIndex = 1;
-            this.pictureBox1_clear.TabStop = false;
-            this.pictureBox1_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
-            this.pictureBox1_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
+            this.picB_clear.BackColor = System.Drawing.Color.Transparent;
+            this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
+            this.picB_clear.Location = new System.Drawing.Point(1142, 56);
+            this.picB_clear.Name = "picB_clear";
+            this.picB_clear.Size = new System.Drawing.Size(47, 47);
+            this.picB_clear.TabIndex = 1;
+            this.picB_clear.TabStop = false;
+            this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
+            this.picB_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
             // 
             // txB_numberActRemont
             // 
@@ -1207,47 +1207,47 @@
             this.label19.TabIndex = 24;
             this.label19.Text = "Сумма Ремонтов:";
             // 
-            // label_summ
+            // lbL_summ
             // 
-            this.label_summ.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_summ.AutoSize = true;
-            this.label_summ.BackColor = System.Drawing.Color.Transparent;
-            this.label_summ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_summ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_summ.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_summ.Location = new System.Drawing.Point(136, 36);
-            this.label_summ.Name = "label_summ";
-            this.label_summ.Size = new System.Drawing.Size(99, 16);
-            this.label_summ.TabIndex = 20;
-            this.label_summ.Text = "999999999.99";
+            this.lbL_summ.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_summ.AutoSize = true;
+            this.lbL_summ.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_summ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_summ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_summ.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_summ.Location = new System.Drawing.Point(136, 36);
+            this.lbL_summ.Name = "lbL_summ";
+            this.lbL_summ.Size = new System.Drawing.Size(99, 16);
+            this.lbL_summ.TabIndex = 20;
+            this.lbL_summ.Text = "999999999.99";
             // 
-            // label_count
+            // lbL_count
             // 
-            this.label_count.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_count.AutoSize = true;
-            this.label_count.BackColor = System.Drawing.Color.Transparent;
-            this.label_count.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_count.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_count.Location = new System.Drawing.Point(191, 14);
-            this.label_count.Name = "label_count";
-            this.label_count.Size = new System.Drawing.Size(39, 16);
-            this.label_count.TabIndex = 18;
-            this.label_count.Text = "7500";
+            this.lbL_count.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_count.AutoSize = true;
+            this.lbL_count.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_count.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_count.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_count.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_count.Location = new System.Drawing.Point(191, 14);
+            this.lbL_count.Name = "lbL_count";
+            this.lbL_count.Size = new System.Drawing.Size(39, 16);
+            this.lbL_count.TabIndex = 18;
+            this.lbL_count.Text = "7500";
             // 
-            // label_count_remont
+            // lbL_count_remont
             // 
-            this.label_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_count_remont.AutoSize = true;
-            this.label_count_remont.BackColor = System.Drawing.Color.Transparent;
-            this.label_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_count_remont.Location = new System.Drawing.Point(485, 13);
-            this.label_count_remont.Name = "label_count_remont";
-            this.label_count_remont.Size = new System.Drawing.Size(47, 16);
-            this.label_count_remont.TabIndex = 23;
-            this.label_count_remont.Text = "55555";
+            this.lbL_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_count_remont.AutoSize = true;
+            this.lbL_count_remont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_count_remont.Location = new System.Drawing.Point(485, 13);
+            this.lbL_count_remont.Name = "lbL_count_remont";
+            this.lbL_count_remont.Size = new System.Drawing.Size(47, 16);
+            this.lbL_count_remont.TabIndex = 23;
+            this.lbL_count_remont.Text = "55555";
             // 
             // label16
             // 
@@ -1263,19 +1263,19 @@
             this.label16.TabIndex = 24;
             this.label16.Text = "Сумма Ремонтов:";
             // 
-            // label_summ_remont
+            // lbL_summ_remont
             // 
-            this.label_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_summ_remont.AutoSize = true;
-            this.label_summ_remont.BackColor = System.Drawing.Color.Transparent;
-            this.label_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_summ_remont.Location = new System.Drawing.Point(425, 37);
-            this.label_summ_remont.Name = "label_summ_remont";
-            this.label_summ_remont.Size = new System.Drawing.Size(107, 16);
-            this.label_summ_remont.TabIndex = 25;
-            this.label_summ_remont.Text = "9999999999.99";
+            this.lbL_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_summ_remont.AutoSize = true;
+            this.lbL_summ_remont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_summ_remont.Location = new System.Drawing.Point(425, 37);
+            this.lbL_summ_remont.Name = "lbL_summ_remont";
+            this.lbL_summ_remont.Size = new System.Drawing.Size(107, 16);
+            this.lbL_summ_remont.TabIndex = 25;
+            this.lbL_summ_remont.Text = "9999999999.99";
             // 
             // label14
             // 
@@ -1319,19 +1319,19 @@
             this.label11.TabIndex = 16;
             this.label11.Text = "Общее кол-во ТО:";
             // 
-            // label_cell_rows
+            // lbL_cell_rows
             // 
-            this.label_cell_rows.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label_cell_rows.AutoSize = true;
-            this.label_cell_rows.BackColor = System.Drawing.Color.Transparent;
-            this.label_cell_rows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_cell_rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_cell_rows.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_cell_rows.Location = new System.Drawing.Point(1309, 14);
-            this.label_cell_rows.Name = "label_cell_rows";
-            this.label_cell_rows.Size = new System.Drawing.Size(39, 16);
-            this.label_cell_rows.TabIndex = 27;
-            this.label_cell_rows.Text = "7500";
+            this.lbL_cell_rows.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbL_cell_rows.AutoSize = true;
+            this.lbL_cell_rows.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_cell_rows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_cell_rows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_cell_rows.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_cell_rows.Location = new System.Drawing.Point(1309, 14);
+            this.lbL_cell_rows.Name = "lbL_cell_rows";
+            this.lbL_cell_rows.Size = new System.Drawing.Size(39, 16);
+            this.lbL_cell_rows.TabIndex = 27;
+            this.lbL_cell_rows.Text = "7500";
             // 
             // label8
             // 
@@ -1347,19 +1347,19 @@
             this.label8.TabIndex = 28;
             this.label8.Text = "Выбрано строк:";
             // 
-            // label_sum_TO_selection
+            // lbL_sum_TO_selection
             // 
-            this.label_sum_TO_selection.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label_sum_TO_selection.AutoSize = true;
-            this.label_sum_TO_selection.BackColor = System.Drawing.Color.Transparent;
-            this.label_sum_TO_selection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label_sum_TO_selection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_sum_TO_selection.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label_sum_TO_selection.Location = new System.Drawing.Point(1319, 40);
-            this.label_sum_TO_selection.Name = "label_sum_TO_selection";
-            this.label_sum_TO_selection.Size = new System.Drawing.Size(99, 16);
-            this.label_sum_TO_selection.TabIndex = 30;
-            this.label_sum_TO_selection.Text = "999999999.99";
+            this.lbL_sum_TO_selection.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbL_sum_TO_selection.AutoSize = true;
+            this.lbL_sum_TO_selection.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_sum_TO_selection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_sum_TO_selection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_sum_TO_selection.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_sum_TO_selection.Location = new System.Drawing.Point(1319, 40);
+            this.lbL_sum_TO_selection.Name = "lbL_sum_TO_selection";
+            this.lbL_sum_TO_selection.Size = new System.Drawing.Size(99, 16);
+            this.lbL_sum_TO_selection.TabIndex = 30;
+            this.lbL_sum_TO_selection.Text = "999999999.99";
             // 
             // label6
             // 
@@ -1381,17 +1381,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.label_sum_TO_selection);
+            this.panel3.Controls.Add(this.lbL_sum_TO_selection);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label_cell_rows);
+            this.panel3.Controls.Add(this.lbL_cell_rows);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.label_summ_remont);
+            this.panel3.Controls.Add(this.lbL_summ_remont);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.label_count_remont);
-            this.panel3.Controls.Add(this.label_count);
-            this.panel3.Controls.Add(this.label_summ);
+            this.panel3.Controls.Add(this.lbL_count_remont);
+            this.panel3.Controls.Add(this.lbL_count);
+            this.panel3.Controls.Add(this.lbL_summ);
             this.panel3.Location = new System.Drawing.Point(1, 668);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1426, 63);
@@ -1435,8 +1435,8 @@
             this.panel_.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_update)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -1445,18 +1445,18 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1_clear;
-        private System.Windows.Forms.PictureBox pictureBox2_update;
+        private System.Windows.Forms.PictureBox picB_clear;
+        private System.Windows.Forms.PictureBox picB_update;
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txB_numberAct;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox comboBox_seach;
-        private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.Button button_seach_BD_city;
-        private System.Windows.Forms.Button button_add_city;
+        private System.Windows.Forms.ComboBox cmB_seach;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.Button btn_seach_BD_city;
+        private System.Windows.Forms.Button btn_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label1;
@@ -1491,15 +1491,15 @@
         private System.Windows.Forms.Button button_Uploading_JSON_file;
         private System.Windows.Forms.Button button_Loading_file_last_year;
         private System.Windows.Forms.Label label32;
-        internal System.Windows.Forms.ComboBox comboBox_city;
-        private System.Windows.Forms.Button button_all_BD;
+        internal System.Windows.Forms.ComboBox cmb_city;
+        private System.Windows.Forms.Button btn_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.TextBox txB_decommission;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TextBox txB_seach_panel_datagrid_curator;
-        private System.Windows.Forms.Button button_close_panel_seach_datagrid;
-        private System.Windows.Forms.Button button_seach_panel_seach_datagrid;
+        private System.Windows.Forms.Button btn_close_panel_seach_datagrid;
+        private System.Windows.Forms.Button btn_seach_panel_seach_datagrid;
         private System.Windows.Forms.Panel panel_;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -1540,17 +1540,17 @@
         private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
         private System.Windows.Forms.TextBox txB_month;
         private System.Windows.Forms.TextBox txb_flag_all_BD;
-        private System.Windows.Forms.Label label_summ;
-        private System.Windows.Forms.Label label_count;
-        private System.Windows.Forms.Label label_count_remont;
+        private System.Windows.Forms.Label lbL_summ;
+        private System.Windows.Forms.Label lbL_count;
+        private System.Windows.Forms.Label lbL_count_remont;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label_summ_remont;
+        private System.Windows.Forms.Label lbL_summ_remont;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label_cell_rows;
+        private System.Windows.Forms.Label lbL_cell_rows;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label_sum_TO_selection;
+        private System.Windows.Forms.Label lbL_sum_TO_selection;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
     }

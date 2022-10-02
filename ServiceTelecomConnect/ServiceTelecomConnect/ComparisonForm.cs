@@ -40,18 +40,18 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
-                comboBox_seach.Items.Clear();
+                cmB_seach.Items.Clear();
 
-                comboBox_seach.Items.Add("Предприятие");
-                comboBox_seach.Items.Add("Станция");
-                comboBox_seach.Items.Add("Заводской номер");
-                comboBox_seach.Items.Add("Дата ТО");
-                comboBox_seach.Items.Add("Номер акта ТО");
-                comboBox_seach.Items.Add("Номер акта Ремонта");
-                comboBox_seach.Items.Add("Номер Акта списания");
-                comboBox_seach.Items.Add("Месяц");
+                cmB_seach.Items.Add("Предприятие");
+                cmB_seach.Items.Add("Станция");
+                cmB_seach.Items.Add("Заводской номер");
+                cmB_seach.Items.Add("Дата ТО");
+                cmB_seach.Items.Add("Номер акта ТО");
+                cmB_seach.Items.Add("Номер акта Ремонта");
+                cmB_seach.Items.Add("Номер Акта списания");
+                cmB_seach.Items.Add("Месяц");
 
-                comboBox_seach.Text = comboBox_seach.Items[2].ToString();
+                cmB_seach.Text = cmB_seach.Items[2].ToString();
 
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
@@ -86,8 +86,8 @@ namespace ServiceTelecomConnect
                             {
                                 adapter.Fill(city_table);
 
-                                comboBox_city.DataSource = city_table;
-                                comboBox_city.DisplayMember = "city";
+                                cmb_city.DataSource = city_table;
+                                cmb_city.DisplayMember = "city";
                                 DB_4.GetInstance.CloseConnection();
                             }
                         }
@@ -100,7 +100,7 @@ namespace ServiceTelecomConnect
 
                 Filling_datagridview.CreateColumsСurator(dataGridView1);
                 Filling_datagridview.CreateColumsСurator(dataGridView2);
-                Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.RefreshDataGridСurator(dataGridView1, cmb_city.Text);
                 Counters();
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
@@ -108,7 +108,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
                 dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
-                taskCity = comboBox_city.Text;// для отдельных потоков
+                taskCity = cmb_city.Text;// для отдельных потоков
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
@@ -163,10 +163,10 @@ namespace ServiceTelecomConnect
                     sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
                 }
 
-                label_count.Text = dataGridView1.Rows.Count.ToString();
-                label_summ.Text = sumTO.ToString();
-                label_count_remont.Text = colRemont.ToString();
-                label_summ_remont.Text = sumRemont.ToString();
+                lbL_count.Text = dataGridView1.Rows.Count.ToString();
+                lbL_summ.Text = sumTO.ToString();
+                lbL_count_remont.Text = colRemont.ToString();
+                lbL_summ_remont.Text = sumRemont.ToString();
             }
             catch (Exception)
             {
@@ -193,7 +193,7 @@ namespace ServiceTelecomConnect
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                helloKey.SetValue("Город проведения проверки", $"{comboBox_city.Text}");
+                helloKey.SetValue("Город проведения проверки", $"{cmb_city.Text}");
                 helloKey.Close();
             }
             catch (Exception)
@@ -321,7 +321,7 @@ namespace ServiceTelecomConnect
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.RefreshDataGridСurator(dataGridView1, cmb_city.Text);
                 txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
@@ -351,7 +351,7 @@ namespace ServiceTelecomConnect
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
-                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, cmb_city.Text);
                     Counters();
                     dataGridView1.ClearSelection();
 
@@ -364,7 +364,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (dataGridView1.Rows.Count == 0)
                 {
-                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGridСurator(dataGridView1, cmb_city.Text);
                     Counters();
                 }
             }
@@ -447,14 +447,14 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (comboBox_seach.SelectedIndex == 0)
+                if (cmB_seach.SelectedIndex == 0)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_company_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_company_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -462,14 +462,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 1)
+                else if (cmB_seach.SelectedIndex == 1)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_location_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_location_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -477,14 +477,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 3)
+                else if (cmB_seach.SelectedIndex == 3)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_dateTO_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_dateTO_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -492,14 +492,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 4)
+                else if (cmB_seach.SelectedIndex == 4)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberAct_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberAct_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -507,14 +507,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 5)
+                else if (cmB_seach.SelectedIndex == 5)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberActRemont_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberActRemont_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -522,14 +522,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 6)
+                else if (cmB_seach.SelectedIndex == 6)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_decommissionActs_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_decommissionActs_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -537,14 +537,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 7)
+                else if (cmB_seach.SelectedIndex == 7)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_month_curator(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_month_curator(cmb_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -573,20 +573,20 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.SearchCurator(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                Filling_datagridview.SearchCurator(dataGridView1, cmB_seach.Text, cmb_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.SearchCurator(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            Filling_datagridview.SearchCurator(dataGridView1, cmB_seach.Text, cmb_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
         void Button_seach_BD_city_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.RefreshDataGridСurator(dataGridView1, comboBox_city.Text);
+            Filling_datagridview.RefreshDataGridСurator(dataGridView1, cmb_city.Text);
             Counters();
         }
 
@@ -594,7 +594,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, cmb_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -603,7 +603,7 @@ namespace ServiceTelecomConnect
         {
             if (txB_numberAct.Text != "")
             {
-                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, comboBox_city.Text, txB_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act_curator(dataGridView1, cmb_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -721,18 +721,18 @@ namespace ServiceTelecomConnect
                 }
             }
             ContextMenu m = new ContextMenu();
-            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Февраль", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Март", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Апрель", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Май", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июнь", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июль", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Август", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Сентябрь", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", comboBox_city.Text)));
-            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", comboBox_city.Text)));
+            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Февраль", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Март", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Апрель", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Май", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июнь", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июль", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Август", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Сентябрь", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmb_city.Text)));
+            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmb_city.Text)));
 
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
@@ -916,14 +916,14 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(comboBox_city, $"Выберите названиe города");
+            toolTip1.SetToolTip(cmb_city, $"Выберите названиe города");
         }
         void Button_seach_BD_city_Click_MouseEnter(object sender, EventArgs e)
         {
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_seach_BD_city, $"Выполнить");
+            toolTip1.SetToolTip(btn_seach_BD_city, $"Выполнить");
         }
 
         void Button_add_city_click_MouseEnter(object sender, EventArgs e)
@@ -931,7 +931,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_add_city, $"Добавить в реестр\nназвание города");
+            toolTip1.SetToolTip(btn_add_city, $"Добавить в реестр\nназвание города");
         }
 
         void TextBox_search_MouseEnter(object sender, EventArgs e)
@@ -947,7 +947,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(comboBox_seach, $"Поиск по:");
+            toolTip1.SetToolTip(cmB_seach, $"Поиск по:");
         }
 
         void Button_search_click_MouseEnter(object sender, EventArgs e)
@@ -955,7 +955,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_search, $"Выполнить");
+            toolTip1.SetToolTip(btn_search, $"Выполнить");
         }
 
         void PictureBox2_update_MouseEnter(object sender, EventArgs e)
@@ -963,7 +963,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox2_update, $"Обновить БД");
+            toolTip1.SetToolTip(picB_update, $"Обновить БД");
         }
 
         void PictureBox1_clear_MouseEnter(object sender, EventArgs e)
@@ -971,7 +971,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox1_clear, $"Очистить Control-ы");
+            toolTip1.SetToolTip(picB_clear, $"Очистить Control-ы");
         }
 
         void PictureBox_clear_BD_MouseEnter(object sender, EventArgs e)
@@ -1010,8 +1010,8 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                label_cell_rows.Text = rowIndexes.Count.ToString();
-                label_sum_TO_selection.Text = sum.ToString();
+                lbL_cell_rows.Text = rowIndexes.Count.ToString();
+                lbL_sum_TO_selection.Text = sum.ToString();
             }
             catch (Exception)
             {

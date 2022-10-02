@@ -15,52 +15,52 @@ namespace ServiceTelecomConnect
         }
         void Clear_MouseEnter(object sender, EventArgs e)
         {
-            clear.ForeColor = Color.White;
+            lbL_clear.ForeColor = Color.White;
         }
         void Clear_MouseLeave(object sender, EventArgs e)
         {
-            clear.ForeColor = Color.Black;
+            lbL_clear.ForeColor = Color.Black;
         }
         void Clear_Click(object sender, EventArgs e)
         {
-            loginField.Text = "";
-            passField.Text = "";
-            comboBox_post.Text = "";
+            txB_loginField.Text = "";
+            txB_passField.Text = "";
+            cmB_post.Text = "";
         }
         void RegistrationForm_Load(object sender, EventArgs e)
         {
-            passField.PasswordChar = '*';
-            hidePassword.Visible = false;
-            loginField.MaxLength = 100;
-            passField.MaxLength = 32;
+            txB_passField.PasswordChar = '*';
+            lbL_hidePassword.Visible = false;
+            txB_loginField.MaxLength = 100;
+            txB_passField.MaxLength = 32;
         }
         void OpenPassword_MouseEnter(object sender, EventArgs e)
         {
-            openPassword.ForeColor = Color.White;
+            lbL_openPassword.ForeColor = Color.White;
         }
         void OpenPassword_MouseLeave(object sender, EventArgs e)
         {
-            openPassword.ForeColor = Color.Black;
+            lbL_openPassword.ForeColor = Color.Black;
         }
         void HidePassword_MouseEnter(object sender, EventArgs e)
         {
-            hidePassword.ForeColor = Color.White;
+            lbL_hidePassword.ForeColor = Color.White;
         }
         void HidePassword_MouseLeave(object sender, EventArgs e)
         {
-            hidePassword.ForeColor = Color.Black;
+            lbL_hidePassword.ForeColor = Color.Black;
         }
         void OpenPassword_Click(object sender, EventArgs e)
         {
-            passField.UseSystemPasswordChar = true;
-            hidePassword.Visible = true;
-            openPassword.Visible = false;
+            txB_passField.UseSystemPasswordChar = true;
+            lbL_hidePassword.Visible = true;
+            lbL_openPassword.Visible = false;
         }
         void HidePassword_Click(object sender, EventArgs e)
         {
-            passField.UseSystemPasswordChar = false;
-            hidePassword.Visible = false;
-            openPassword.Visible = true;
+            txB_passField.UseSystemPasswordChar = false;
+            lbL_hidePassword.Visible = false;
+            lbL_openPassword.Visible = true;
         }
         void EnterButtonLogin_Click(object sender, EventArgs e)
         {
@@ -68,15 +68,15 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.AvailabilityChanged_bool())
                 {
-                    var loginUser = loginField.Text;
-                    var passUser = md5.hashPassword(passField.Text);
+                    var loginUser = txB_loginField.Text;
+                    var passUser = md5.hashPassword(txB_passField.Text);
 
                     if (!CheackUser(loginUser, passUser))
                     {
-                        if (comboBox_post.Text == "Инженер" || comboBox_post.Text == "Начальник участка" || 
-                            comboBox_post.Text == "Куратор" || comboBox_post.Text == "Руководитель" || comboBox_post.Text == "Дирекция связи")
+                        if (cmB_post.Text == "Инженер" || cmB_post.Text == "Начальник участка" || 
+                            cmB_post.Text == "Куратор" || cmB_post.Text == "Руководитель" || cmB_post.Text == "Дирекция связи")
                         {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_post.Text}')";
+                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_post.Text}')";
 
                             using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                             {
@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
                             }
                         }
 
-                        if (comboBox_post.Text == "")
+                        if (cmB_post.Text == "")
                         {
                             MessageBox.Show("Вы не указали должность!");
                         }
