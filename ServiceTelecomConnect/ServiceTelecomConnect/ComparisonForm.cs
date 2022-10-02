@@ -700,7 +700,6 @@ namespace ServiceTelecomConnect
 
         void AddExecutionCurator(object sender, EventArgs e)
         {
-
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage;
@@ -801,17 +800,17 @@ namespace ServiceTelecomConnect
             // открывем панель поиска по гриду по зав номеру РСТ
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
-                panel_seach_datagrid.Enabled = true;
-                panel_seach_datagrid.Visible = true;
-                this.ActiveControl = textBox_seach_panel_seach_datagrid;
+                panel_seach_datagrid_curator.Enabled = true;
+                panel_seach_datagrid_curator.Visible = true;
+                this.ActiveControl = txB_seach_panel_datagrid_curator;
             }
         }
 
-        void Seach_datagrid()
+        void Seach_datagrid_curator()
         {
-            if (textBox_seach_panel_seach_datagrid.Text != "")
+            if (txB_seach_panel_datagrid_curator.Text != "")
             {
-                string searchValue = textBox_seach_panel_seach_datagrid.Text;
+                string searchValue = txB_seach_panel_datagrid_curator.Text;
 
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 try
@@ -835,9 +834,9 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Ошибка поиска по DataGrid (Seach_datagrid)");
                 }
-                textBox_seach_panel_seach_datagrid.Text = "";
-                panel_seach_datagrid.Enabled = false;
-                panel_seach_datagrid.Visible = false;
+                txB_seach_panel_datagrid_curator.Text = "";
+                panel_seach_datagrid_curator.Enabled = false;
+                panel_seach_datagrid_curator.Visible = false;
             }
             else
             {
@@ -854,18 +853,18 @@ namespace ServiceTelecomConnect
         }
         void Button_close_panel_seach_datagrid_Click(object sender, EventArgs e)
         {
-            panel_seach_datagrid.Enabled = false;
-            panel_seach_datagrid.Visible = false;
+            panel_seach_datagrid_curator.Enabled = false;
+            panel_seach_datagrid_curator.Visible = false;
         }
         void Button_seach_panel_seach_datagrid_Click(object sender, EventArgs e)
         {
-            Seach_datagrid();
+            Seach_datagrid_curator();
         }
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
             {
-                Seach_datagrid();
+                Seach_datagrid_curator();
             }
         }
 
@@ -994,8 +993,6 @@ namespace ServiceTelecomConnect
 
         #region при выборе строк ползьзователем и их подсчёт
 
-
-
         void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -1024,7 +1021,6 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
-
 
         #region close form
 

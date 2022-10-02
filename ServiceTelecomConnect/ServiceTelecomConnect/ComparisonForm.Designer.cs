@@ -81,7 +81,7 @@
             this.showMatchPreviouYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showFullDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel_seach_datagrid = new System.Windows.Forms.Panel();
+            this.panel_seach_datagrid_curator = new System.Windows.Forms.Panel();
             this.panel_ = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -89,7 +89,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.button_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
             this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
-            this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
+            this.txB_seach_panel_datagrid_curator = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.btn_Show_DB_radiostantion_full = new System.Windows.Forms.Button();
             this.btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.Button();
@@ -150,7 +150,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel_seach_datagrid.SuspendLayout();
+            this.panel_seach_datagrid_curator.SuspendLayout();
             this.panel_.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
@@ -618,22 +618,22 @@
             this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
             this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
             // 
-            // panel_seach_datagrid
+            // panel_seach_datagrid_curator
             // 
-            this.panel_seach_datagrid.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel_seach_datagrid.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel_seach_datagrid.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_seach_datagrid.Controls.Add(this.panel_);
-            this.panel_seach_datagrid.Controls.Add(this.button_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.button_close_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.textBox_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.label37);
-            this.panel_seach_datagrid.Enabled = false;
-            this.panel_seach_datagrid.Location = new System.Drawing.Point(460, 380);
-            this.panel_seach_datagrid.Name = "panel_seach_datagrid";
-            this.panel_seach_datagrid.Size = new System.Drawing.Size(528, 141);
-            this.panel_seach_datagrid.TabIndex = 37;
-            this.panel_seach_datagrid.Visible = false;
+            this.panel_seach_datagrid_curator.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_seach_datagrid_curator.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_seach_datagrid_curator.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_seach_datagrid_curator.Controls.Add(this.panel_);
+            this.panel_seach_datagrid_curator.Controls.Add(this.button_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid_curator.Controls.Add(this.button_close_panel_seach_datagrid);
+            this.panel_seach_datagrid_curator.Controls.Add(this.txB_seach_panel_datagrid_curator);
+            this.panel_seach_datagrid_curator.Controls.Add(this.label37);
+            this.panel_seach_datagrid_curator.Enabled = false;
+            this.panel_seach_datagrid_curator.Location = new System.Drawing.Point(460, 380);
+            this.panel_seach_datagrid_curator.Name = "panel_seach_datagrid_curator";
+            this.panel_seach_datagrid_curator.Size = new System.Drawing.Size(528, 141);
+            this.panel_seach_datagrid_curator.TabIndex = 37;
+            this.panel_seach_datagrid_curator.Visible = false;
             // 
             // panel_
             // 
@@ -716,16 +716,16 @@
             this.button_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
             this.button_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
             // 
-            // textBox_seach_panel_seach_datagrid
+            // txB_seach_panel_datagrid_curator
             // 
-            this.textBox_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_seach_panel_seach_datagrid.Location = new System.Drawing.Point(119, 49);
-            this.textBox_seach_panel_seach_datagrid.Name = "textBox_seach_panel_seach_datagrid";
-            this.textBox_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
-            this.textBox_seach_panel_seach_datagrid.TabIndex = 37;
-            this.textBox_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
-            this.textBox_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
-            this.textBox_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
+            this.txB_seach_panel_datagrid_curator.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_seach_panel_datagrid_curator.Location = new System.Drawing.Point(119, 49);
+            this.txB_seach_panel_datagrid_curator.Name = "txB_seach_panel_datagrid_curator";
+            this.txB_seach_panel_datagrid_curator.Size = new System.Drawing.Size(372, 29);
+            this.txB_seach_panel_datagrid_curator.TabIndex = 37;
+            this.txB_seach_panel_datagrid_curator.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
+            this.txB_seach_panel_datagrid_curator.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
+            this.txB_seach_panel_datagrid_curator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
             // 
             // label37
             // 
@@ -1408,7 +1408,7 @@
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_seach_datagrid);
+            this.Controls.Add(this.panel_seach_datagrid_curator);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -1429,8 +1429,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel_seach_datagrid.ResumeLayout(false);
-            this.panel_seach_datagrid.PerformLayout();
+            this.panel_seach_datagrid_curator.ResumeLayout(false);
+            this.panel_seach_datagrid_curator.PerformLayout();
             this.panel_.ResumeLayout(false);
             this.panel_.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1497,7 +1497,7 @@
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.TextBox txB_decommission;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox_seach_panel_seach_datagrid;
+        private System.Windows.Forms.TextBox txB_seach_panel_datagrid_curator;
         private System.Windows.Forms.Button button_close_panel_seach_datagrid;
         private System.Windows.Forms.Button button_seach_panel_seach_datagrid;
         private System.Windows.Forms.Panel panel_;
@@ -1505,7 +1505,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel_seach_datagrid;
+        private System.Windows.Forms.Panel panel_seach_datagrid_curator;
         private System.Windows.Forms.TextBox txB_comment;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.Label lbl_full_complete_act;
