@@ -89,15 +89,15 @@ namespace ServiceTelecomConnect
                 }
 
                 cmB_city.Enabled = true;
-                button_seach_BD_city.Enabled = true;
-                button_add_city.Enabled = true;
-                button_all_BD.Enabled = true;
-                pictureBox2_update.Enabled = true;
+                btn_seach_BD_city.Enabled = true;
+                btn_add_city.Enabled = true;
+                btn_all_BD.Enabled = true;
+                picB_update.Enabled = true;
                 cmB_seach.Enabled = true;
                 textBox_search.Enabled = true;
-                button_search.Enabled = true;
+                btn_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
-                button_search.Enabled = true;
+                btn_search.Enabled = true;
             }
             else if(_user.IsAdmin == "Инженер")
             {
@@ -113,16 +113,16 @@ namespace ServiceTelecomConnect
                 }
 
                 cmB_city.Enabled = true;
-                button_seach_BD_city.Enabled = true;
-                button_add_city.Enabled = true;
-                button_all_BD.Enabled = true;
-                pictureBox2_update.Enabled = true;
+                btn_seach_BD_city.Enabled = true;
+                btn_add_city.Enabled = true;
+                btn_all_BD.Enabled = true;
+                picB_update.Enabled = true;
                 cmB_seach.Enabled = true;
                 textBox_search.Enabled = true;
-                button_search.Enabled = true;
+                btn_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
-                button_search.Enabled = true;
-                button_form_act.Enabled = true;
+                btn_search.Enabled = true;
+                btn_form_act.Enabled = true;
             }
         }
 
@@ -186,12 +186,12 @@ namespace ServiceTelecomConnect
                             }
                         }
 
-                        textBox_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        textBox_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        textBox_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        textBox_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        textBox_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-                        textBox_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
+                        txB_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        txB_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
+                        txB_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
+                        txB_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
+                        txB_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
+                        txB_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
 
                         cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
                         lbL_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
@@ -199,8 +199,8 @@ namespace ServiceTelecomConnect
                         lbL_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
                         lbL_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
 
-                        TextBox[] textBoxes = { textBox_GD_city, textBox_FIO_chief, textBox_doverennost, textBox_FIO_Engineer,
-                                            textBox_polinon_full, textBox_number_printing_doc_datePanel};
+                        TextBox[] textBoxes = { txB_GD_city, txB_FIO_chief, txB_doverennost, txB_FIO_Engineer,
+                                            txB_polinon_full, txB_number_printing_doc_datePanel};
                         foreach (TextBox textBox in textBoxes)
                         {
                             if (textBox.Text == "")
@@ -220,7 +220,7 @@ namespace ServiceTelecomConnect
                             lbL_FIO_Engineer.Text = "Инженер";
                             lbL_FIO_Engineer.Text = "Инженер";
                             lbL_polinon_full.Text = "Полигон";
-                            textBox_number_printing_doc_datePanel.Text = "Печать";
+                            txB_number_printing_doc_datePanel.Text = "Печать";
                         }
                         else
                         {
@@ -369,7 +369,7 @@ namespace ServiceTelecomConnect
             try
             {
                 #region проверка на пустые поля
-                if (textBox_doverennost.Text == "")
+                if (txB_doverennost.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле доверенность!";
@@ -379,7 +379,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_FIO_chief.Text == "")
+                if (txB_FIO_chief.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле ФИО Начальника!";
@@ -389,7 +389,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_FIO_Engineer.Text == "")
+                if (txB_FIO_Engineer.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле ФИО Инженера!";
@@ -399,7 +399,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_GD_city.Text == "")
+                if (txB_GD_city.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле Город проведения проверки!";
@@ -409,7 +409,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_polinon_full.Text == "")
+                if (txB_polinon_full.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
@@ -419,7 +419,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_number_printing_doc_datePanel.Text == "")
+                if (txB_number_printing_doc_datePanel.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле № печати!";
@@ -433,12 +433,12 @@ namespace ServiceTelecomConnect
 
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                helloKey.SetValue("Доверенность", $"{textBox_doverennost.Text}");
-                helloKey.SetValue("Начальник по ТО и Р СРС", $"{textBox_FIO_chief.Text}");
-                helloKey.SetValue("Инженер по ТО и Р СРС", $"{textBox_FIO_Engineer.Text}");
-                helloKey.SetValue("Город проведения проверки", $"{textBox_GD_city.Text}");
-                helloKey.SetValue("Полигон РЖД full", $"{textBox_polinon_full.Text}");
-                helloKey.SetValue("Номер печати", $"{textBox_number_printing_doc_datePanel.Text}");
+                helloKey.SetValue("Доверенность", $"{txB_doverennost.Text}");
+                helloKey.SetValue("Начальник по ТО и Р СРС", $"{txB_FIO_chief.Text}");
+                helloKey.SetValue("Инженер по ТО и Р СРС", $"{txB_FIO_Engineer.Text}");
+                helloKey.SetValue("Город проведения проверки", $"{txB_GD_city.Text}");
+                helloKey.SetValue("Полигон РЖД full", $"{txB_polinon_full.Text}");
+                helloKey.SetValue("Номер печати", $"{txB_number_printing_doc_datePanel.Text}");
                 helloKey.Close();
 
                 panel_date.Visible = false;
@@ -470,7 +470,7 @@ namespace ServiceTelecomConnect
 
             #region проверка на пустые поля
 
-            if (textBox_GD_city.Text == "")
+            if (txB_GD_city.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле Город проведения проверки!";
@@ -480,7 +480,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            if (textBox_FIO_chief.Text == "")
+            if (txB_FIO_chief.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле ФИО Начальника!";
@@ -490,7 +490,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            if (textBox_doverennost.Text == "")
+            if (txB_doverennost.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле № и Дату доверенности!";
@@ -500,7 +500,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            if (textBox_FIO_Engineer.Text == "")
+            if (txB_FIO_Engineer.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле ФИО Инженера!";
@@ -510,7 +510,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            if (textBox_polinon_full.Text == "")
+            if (txB_polinon_full.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
@@ -520,7 +520,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            if (textBox_number_printing_doc_datePanel.Text == "")
+            if (txB_number_printing_doc_datePanel.Text == "")
             {
                 string Mesage2;
                 Mesage2 = "Вы не заполнили поле № печати!";
@@ -575,7 +575,7 @@ namespace ServiceTelecomConnect
                     txB_company.Text = row.Cells[2].Value.ToString();
                     txB_location.Text = row.Cells[3].Value.ToString();
                     cmB_model.Text = row.Cells[4].Value.ToString();
-                    textBox_serialNumber.Text = row.Cells[5].Value.ToString();
+                    txB_serialNumber.Text = row.Cells[5].Value.ToString();
                     txB_inventoryNumber.Text = row.Cells[6].Value.ToString();
                     txB_networkNumber.Text = row.Cells[7].Value.ToString();
                     txB_dateTO.Text = row.Cells[8].Value.ToString();
@@ -685,7 +685,7 @@ namespace ServiceTelecomConnect
                 else
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -737,7 +737,7 @@ namespace ServiceTelecomConnect
                 else
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите удалить радиостанцию: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                    Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -824,7 +824,7 @@ namespace ServiceTelecomConnect
                 {
                     AddRSTForm addRSTForm = new AddRSTForm();
                     addRSTForm.DoubleBufferedForm(true);
-                    addRSTForm.textBox_numberAct.Text = textBox_number_printing_doc_datePanel.Text + "/";
+                    addRSTForm.textBox_numberAct.Text = txB_number_printing_doc_datePanel.Text + "/";
                     if (txB_city.Text == "")
                     {
                         addRSTForm.textBox_city.Text = cmB_city.Text;
@@ -1027,11 +1027,11 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void Button_Continue_remont_act_excel_Click(object sender, EventArgs e)
         {
-            if (textBox_Full_name_company.Text != "" && textBox_OKPO_remont.Text != "" && textBox_BE_remont.Text != ""
-                                && textBox_director_FIO_remont_company.Text != "" && textBox_director_post_remont_company.Text != ""
-                                && textBox_chairman_FIO_remont_company.Text != "" && textBox_chairman_post_remont_company.Text != ""
-                                && textBox_1_FIO_remont_company.Text != "" && textBox_1_post_remont_company.Text != ""
-                                && textBox_2_FIO_remont_company.Text != "" && textBox_2_post_remont_company.Text != "")
+            if (txB_Full_name_company.Text != "" && txB_OKPO_remont.Text != "" && txB_BE_remont.Text != ""
+                                && txB_director_FIO_remont_company.Text != "" && txB_director_post_remont_company.Text != ""
+                                && txB_chairman_FIO_remont_company.Text != "" && txB_chairman_post_remont_company.Text != ""
+                                && txB_1_FIO_remont_company.Text != "" && txB_1_post_remont_company.Text != ""
+                                && txB_2_FIO_remont_company.Text != "" && txB_2_post_remont_company.Text != "")
             {
 
                 panel_remont_information_company.Visible = false;
@@ -1039,14 +1039,14 @@ namespace ServiceTelecomConnect
                 PrintDocExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                      lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
-                     cmB_model.Text, textBox_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
+                     cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
                      txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
                      txB_сompleted_works_4.Text, txB_parts_4.Text, txB_сompleted_works_5.Text, txB_parts_5.Text, txB_сompleted_works_6.Text,
-                     txB_parts_6.Text, txB_сompleted_works_7.Text, txB_parts_7.Text, textBox_OKPO_remont.Text, textBox_BE_remont.Text,
-                     textBox_Full_name_company.Text, textBox_director_FIO_remont_company.Text, txB_numberActRemont.Text,
-                     textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text,
-                     textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text,
-                     textBox_3_post_remont_company.Text, textBox_3_FIO_remont_company.Text);
+                     txB_parts_6.Text, txB_сompleted_works_7.Text, txB_parts_7.Text, txB_OKPO_remont.Text, txB_BE_remont.Text,
+                     txB_Full_name_company.Text, txB_director_FIO_remont_company.Text, txB_numberActRemont.Text,
+                     txB_chairman_post_remont_company.Text, txB_chairman_FIO_remont_company.Text, txB_1_post_remont_company.Text,
+                     txB_1_FIO_remont_company.Text, txB_2_post_remont_company.Text, txB_2_FIO_remont_company.Text,
+                     txB_3_post_remont_company.Text, txB_3_FIO_remont_company.Text);
                 panel1.Enabled = true;
             }
         }
@@ -1207,11 +1207,11 @@ namespace ServiceTelecomConnect
                     return;
                 }
 
-                textBox_GD_city.Text = cmB_city.Text;
-                textBox_FIO_chief.Text = lbL_FIO_chief.Text;
-                textBox_doverennost.Text = lbL_doverennost.Text;
-                textBox_FIO_Engineer.Text = lbL_FIO_Engineer.Text;
-                textBox_polinon_full.Text = lbL_polinon_full.Text;
+                txB_GD_city.Text = cmB_city.Text;
+                txB_FIO_chief.Text = lbL_FIO_chief.Text;
+                txB_doverennost.Text = lbL_doverennost.Text;
+                txB_FIO_Engineer.Text = lbL_FIO_Engineer.Text;
+                txB_polinon_full.Text = lbL_polinon_full.Text;
                 Block_ST_Work_Form_control();
                 panel_date.Enabled = true;
                 panel_date.Visible = true;
@@ -1302,7 +1302,7 @@ namespace ServiceTelecomConnect
                             ContextMenu m = new ContextMenu();
 
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            if (textBox_serialNumber.Text != "")
+                            if (txB_serialNumber.Text != "")
                             {
                                 m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -1357,7 +1357,7 @@ namespace ServiceTelecomConnect
                             ContextMenu m = new ContextMenu();
 
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            if (textBox_serialNumber.Text != "")
+                            if (txB_serialNumber.Text != "")
                             {
                                 m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -1444,13 +1444,13 @@ namespace ServiceTelecomConnect
             try
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
-                Filling_datagridview.Delete_rst_remont(txB_numberActRemont.Text, textBox_serialNumber.Text);
+                Filling_datagridview.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -1468,7 +1468,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (textBox_serialNumber.Text != "")
+                    if (txB_serialNumber.Text != "")
                     {
                         using (RemontRSTForm remontRSTForm = new RemontRSTForm())
                         {
@@ -1500,11 +1500,11 @@ namespace ServiceTelecomConnect
                             remontRSTForm.textBox_data_remont.Text = txB_dateTO.Text;
                             remontRSTForm.textBox_model.Text = cmB_model.Text;
                             remontRSTForm.label_company.Text = txB_company.Text;
-                            remontRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
+                            remontRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
 
                             if (txB_numberActRemont.Text == "")
                             {
-                                remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
+                                remontRSTForm.textBox_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
                             }
                             else remontRSTForm.textBox_numberActRemont.Text = txB_numberActRemont.Text;
 
@@ -1542,7 +1542,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (textBox_serialNumber.Text != "")
+                    if (txB_serialNumber.Text != "")
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         changeRSTForm.DoubleBufferedForm(true);
@@ -1551,7 +1551,7 @@ namespace ServiceTelecomConnect
                         changeRSTForm.textBox_company.Text = txB_company.Text;
                         changeRSTForm.textBox_location.Text = txB_location.Text;
                         changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
-                        changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
+                        changeRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
                         changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
                         changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
                         changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
@@ -1655,46 +1655,46 @@ namespace ServiceTelecomConnect
                             RegistryKey currentUserKey = Registry.CurrentUser;
                             RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
 
-                            textBox_Full_name_company.Text = helloKey.GetValue("Полное наименование предприятия").ToString();
-                            textBox_OKPO_remont.Text = helloKey.GetValue("ОКПО").ToString();
-                            textBox_BE_remont.Text = helloKey.GetValue("БЕ").ToString();
-                            textBox_director_FIO_remont_company.Text = helloKey.GetValue("Руководитель ФИО").ToString();
-                            textBox_director_post_remont_company.Text = helloKey.GetValue("Руководитель Должность").ToString();
-                            textBox_chairman_FIO_remont_company.Text = helloKey.GetValue("Председатель ФИО").ToString();
-                            textBox_chairman_post_remont_company.Text = helloKey.GetValue("Председатель Должность").ToString();
-                            textBox_1_FIO_remont_company.Text = helloKey.GetValue("1 член комиссии ФИО").ToString();
-                            textBox_1_post_remont_company.Text = helloKey.GetValue("1 член комиссии Должность").ToString();
-                            textBox_2_FIO_remont_company.Text = helloKey.GetValue("2 член комиссии ФИО").ToString();
-                            textBox_2_post_remont_company.Text = helloKey.GetValue("2 член комиссии Должность").ToString();
-                            textBox_3_FIO_remont_company.Text = helloKey.GetValue("3 член комиссии ФИО").ToString();
-                            textBox_3_post_remont_company.Text = helloKey.GetValue("3 член комиссии Должность").ToString();
+                            txB_Full_name_company.Text = helloKey.GetValue("Полное наименование предприятия").ToString();
+                            txB_OKPO_remont.Text = helloKey.GetValue("ОКПО").ToString();
+                            txB_BE_remont.Text = helloKey.GetValue("БЕ").ToString();
+                            txB_director_FIO_remont_company.Text = helloKey.GetValue("Руководитель ФИО").ToString();
+                            txB_director_post_remont_company.Text = helloKey.GetValue("Руководитель Должность").ToString();
+                            txB_chairman_FIO_remont_company.Text = helloKey.GetValue("Председатель ФИО").ToString();
+                            txB_chairman_post_remont_company.Text = helloKey.GetValue("Председатель Должность").ToString();
+                            txB_1_FIO_remont_company.Text = helloKey.GetValue("1 член комиссии ФИО").ToString();
+                            txB_1_post_remont_company.Text = helloKey.GetValue("1 член комиссии Должность").ToString();
+                            txB_2_FIO_remont_company.Text = helloKey.GetValue("2 член комиссии ФИО").ToString();
+                            txB_2_post_remont_company.Text = helloKey.GetValue("2 член комиссии Должность").ToString();
+                            txB_3_FIO_remont_company.Text = helloKey.GetValue("3 член комиссии ФИО").ToString();
+                            txB_3_post_remont_company.Text = helloKey.GetValue("3 член комиссии Должность").ToString();
 
-                            if (textBox_Full_name_company.Text != "" && textBox_OKPO_remont.Text != "" && textBox_BE_remont.Text != ""
-                                && textBox_director_FIO_remont_company.Text != "" && textBox_director_post_remont_company.Text != ""
-                                && textBox_chairman_FIO_remont_company.Text != "" && textBox_chairman_post_remont_company.Text != ""
-                                && textBox_1_FIO_remont_company.Text != "" && textBox_1_post_remont_company.Text != ""
-                                && textBox_2_FIO_remont_company.Text != "" && textBox_2_post_remont_company.Text != "")
+                            if (txB_Full_name_company.Text != "" && txB_OKPO_remont.Text != "" && txB_BE_remont.Text != ""
+                                && txB_director_FIO_remont_company.Text != "" && txB_director_post_remont_company.Text != ""
+                                && txB_chairman_FIO_remont_company.Text != "" && txB_chairman_post_remont_company.Text != ""
+                                && txB_1_FIO_remont_company.Text != "" && txB_1_post_remont_company.Text != ""
+                                && txB_2_FIO_remont_company.Text != "" && txB_2_post_remont_company.Text != "")
                             {
-                                button_Continue_remont_act_excel.Enabled = true;
+                                btn_Continue_remont_act_excel.Enabled = true;
                             }
                             helloKey.Close();
                         }
                         else
                         {
-                            button_Continue_remont_act_excel.Enabled = false;
-                            textBox_Full_name_company.Text = "";
-                            textBox_OKPO_remont.Text = "";
-                            textBox_BE_remont.Text = "";
-                            textBox_director_FIO_remont_company.Text = "";
-                            textBox_director_post_remont_company.Text = $"Начальник {txB_company.Text}";
-                            textBox_chairman_FIO_remont_company.Text = "";
-                            textBox_chairman_post_remont_company.Text = "";
-                            textBox_1_FIO_remont_company.Text = "";
-                            textBox_1_post_remont_company.Text = "";
-                            textBox_2_FIO_remont_company.Text = "";
-                            textBox_2_post_remont_company.Text = "";
-                            textBox_3_FIO_remont_company.Text = "";
-                            textBox_3_post_remont_company.Text = "";
+                            btn_Continue_remont_act_excel.Enabled = false;
+                            txB_Full_name_company.Text = "";
+                            txB_OKPO_remont.Text = "";
+                            txB_BE_remont.Text = "";
+                            txB_director_FIO_remont_company.Text = "";
+                            txB_director_post_remont_company.Text = $"Начальник {txB_company.Text}";
+                            txB_chairman_FIO_remont_company.Text = "";
+                            txB_chairman_post_remont_company.Text = "";
+                            txB_1_FIO_remont_company.Text = "";
+                            txB_1_post_remont_company.Text = "";
+                            txB_2_FIO_remont_company.Text = "";
+                            txB_2_post_remont_company.Text = "";
+                            txB_3_FIO_remont_company.Text = "";
+                            txB_3_post_remont_company.Text = "";
                         }
                     }
                     catch (Exception ex)
@@ -1916,7 +1916,7 @@ namespace ServiceTelecomConnect
             try
             {
                 #region проверка пустых строк
-                if (textBox_Full_name_company.Text == "")
+                if (txB_Full_name_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"Полное наименование предприятия\"!";
@@ -1926,7 +1926,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_OKPO_remont.Text == "")
+                if (txB_OKPO_remont.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"ОКПО\"!";
@@ -1936,7 +1936,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_BE_remont.Text == "")
+                if (txB_BE_remont.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"БЕ\"!";
@@ -1946,7 +1946,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_director_FIO_remont_company.Text == "")
+                if (txB_director_FIO_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"Руководитель ФИО\"!";
@@ -1957,7 +1957,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_director_post_remont_company.Text == "")
+                if (txB_director_post_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"Руководитель Должность\"!";
@@ -1968,7 +1968,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_chairman_FIO_remont_company.Text == "")
+                if (txB_chairman_FIO_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"Председатель ФИО\"!";
@@ -1979,7 +1979,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_chairman_post_remont_company.Text == "")
+                if (txB_chairman_post_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"Председатель Должность\"!";
@@ -1990,7 +1990,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_1_FIO_remont_company.Text == "")
+                if (txB_1_FIO_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"1 член комиссии ФИО\"!";
@@ -2001,7 +2001,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_1_post_remont_company.Text == "")
+                if (txB_1_post_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"1 член комиссии Должность\"!";
@@ -2011,7 +2011,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-                if (textBox_2_FIO_remont_company.Text == "")
+                if (txB_2_FIO_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"2 член комиссии ФИО\"!";
@@ -2022,7 +2022,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (textBox_2_post_remont_company.Text == "")
+                if (txB_2_post_remont_company.Text == "")
                 {
                     string Mesage2;
                     Mesage2 = "Вы не заполнили поле \"2 член комиссии Должность\"!";
@@ -2036,29 +2036,29 @@ namespace ServiceTelecomConnect
 
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
-                helloKey.SetValue("Полное наименование предприятия", $"{textBox_Full_name_company.Text}");
-                helloKey.SetValue("ОКПО", $"{textBox_OKPO_remont.Text}");
-                helloKey.SetValue("БЕ", $"{textBox_BE_remont.Text}");
-                helloKey.SetValue("Руководитель ФИО", $"{textBox_director_FIO_remont_company.Text}");
-                helloKey.SetValue("Руководитель Должность", $"{textBox_director_post_remont_company.Text}");
-                helloKey.SetValue("Председатель ФИО", $"{textBox_chairman_FIO_remont_company.Text}");
-                helloKey.SetValue("Председатель Должность", $"{textBox_chairman_post_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии ФИО", $"{textBox_1_FIO_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии Должность", $"{textBox_1_post_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии ФИО", $"{textBox_2_FIO_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии Должность", $"{textBox_2_post_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии ФИО", $"{textBox_3_FIO_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии Должность", $"{textBox_3_post_remont_company.Text}");
+                helloKey.SetValue("Полное наименование предприятия", $"{txB_Full_name_company.Text}");
+                helloKey.SetValue("ОКПО", $"{txB_OKPO_remont.Text}");
+                helloKey.SetValue("БЕ", $"{txB_BE_remont.Text}");
+                helloKey.SetValue("Руководитель ФИО", $"{txB_director_FIO_remont_company.Text}");
+                helloKey.SetValue("Руководитель Должность", $"{txB_director_post_remont_company.Text}");
+                helloKey.SetValue("Председатель ФИО", $"{txB_chairman_FIO_remont_company.Text}");
+                helloKey.SetValue("Председатель Должность", $"{txB_chairman_post_remont_company.Text}");
+                helloKey.SetValue("1 член комиссии ФИО", $"{txB_1_FIO_remont_company.Text}");
+                helloKey.SetValue("1 член комиссии Должность", $"{txB_1_post_remont_company.Text}");
+                helloKey.SetValue("2 член комиссии ФИО", $"{txB_2_FIO_remont_company.Text}");
+                helloKey.SetValue("2 член комиссии Должность", $"{txB_2_post_remont_company.Text}");
+                helloKey.SetValue("3 член комиссии ФИО", $"{txB_3_FIO_remont_company.Text}");
+                helloKey.SetValue("3 член комиссии Должность", $"{txB_3_post_remont_company.Text}");
 
                 helloKey.Close();
 
-                if (textBox_Full_name_company.Text != "" && textBox_OKPO_remont.Text != "" && textBox_BE_remont.Text != ""
-                            && textBox_director_FIO_remont_company.Text != "" && textBox_director_post_remont_company.Text != ""
-                            && textBox_chairman_FIO_remont_company.Text != "" && textBox_chairman_post_remont_company.Text != ""
-                            && textBox_1_FIO_remont_company.Text != "" && textBox_1_post_remont_company.Text != ""
-                            && textBox_2_FIO_remont_company.Text != "" && textBox_2_post_remont_company.Text != "")
+                if (txB_Full_name_company.Text != "" && txB_OKPO_remont.Text != "" && txB_BE_remont.Text != ""
+                            && txB_director_FIO_remont_company.Text != "" && txB_director_post_remont_company.Text != ""
+                            && txB_chairman_FIO_remont_company.Text != "" && txB_chairman_post_remont_company.Text != ""
+                            && txB_1_FIO_remont_company.Text != "" && txB_1_post_remont_company.Text != ""
+                            && txB_2_FIO_remont_company.Text != "" && txB_2_post_remont_company.Text != "")
                 {
-                    button_Continue_remont_act_excel.Enabled = true;
+                    btn_Continue_remont_act_excel.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -2083,7 +2083,7 @@ namespace ServiceTelecomConnect
                 txB_company.Text = row.Cells[2].Value.ToString();
                 txB_location.Text = row.Cells[3].Value.ToString();
                 cmB_model.Text = row.Cells[4].Value.ToString();
-                textBox_serialNumber.Text = row.Cells[5].Value.ToString();
+                txB_serialNumber.Text = row.Cells[5].Value.ToString();
                 txB_inventoryNumber.Text = row.Cells[6].Value.ToString();
                 txB_networkNumber.Text = row.Cells[7].Value.ToString();
                 txB_dateTO.Text = row.Cells[8].Value.ToString();
@@ -2136,7 +2136,7 @@ namespace ServiceTelecomConnect
                 {
                     panel_seach_datagrid.Enabled = true;
                     panel_seach_datagrid.Visible = true;
-                    this.ActiveControl = textBox_seach_panel_seach_datagrid;
+                    this.ActiveControl = txB_seach_panel_seach_datagrid;
                 }
 
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
@@ -2145,8 +2145,8 @@ namespace ServiceTelecomConnect
                     {
                         panel_info_phone_FIO.Enabled = true;
                         panel_info_phone_FIO.Visible = true;
-                        panel_textbox_FIO_representative.Text = txB_representative.Text;
-                        panel_textbox_FIO_phoneNumber.Text = txB_phoneNumber.Text;
+                        panel_txB_FIO_representative.Text = txB_representative.Text;
+                        panel_txB_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
             }
@@ -2157,7 +2157,7 @@ namespace ServiceTelecomConnect
                 {
                     panel_seach_datagrid.Enabled = true;
                     panel_seach_datagrid.Visible = true;
-                    this.ActiveControl = textBox_seach_panel_seach_datagrid;
+                    this.ActiveControl = txB_seach_panel_seach_datagrid;
                 }
                 // открываем функциональную панель
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
@@ -2171,8 +2171,8 @@ namespace ServiceTelecomConnect
                     {
                         panel_info_phone_FIO.Enabled = true;
                         panel_info_phone_FIO.Visible = true;
-                        panel_textbox_FIO_representative.Text = txB_representative.Text;
-                        panel_textbox_FIO_phoneNumber.Text = txB_phoneNumber.Text;
+                        panel_txB_FIO_representative.Text = txB_representative.Text;
+                        panel_txB_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
             }
@@ -2186,9 +2186,9 @@ namespace ServiceTelecomConnect
 
         void Seach_datagrid()
         {
-            if (textBox_seach_panel_seach_datagrid.Text != "")
+            if (txB_seach_panel_seach_datagrid.Text != "")
             {
-                string searchValue = textBox_seach_panel_seach_datagrid.Text;
+                string searchValue = txB_seach_panel_seach_datagrid.Text;
 
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 try
@@ -2212,7 +2212,7 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Ошибка поиска по DataGrid (Seach_datagrid)");
                 }
-                textBox_seach_panel_seach_datagrid.Text = "";
+                txB_seach_panel_seach_datagrid.Text = "";
                 panel_seach_datagrid.Enabled = false;
                 panel_seach_datagrid.Visible = false;
             }
@@ -2292,7 +2292,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_seach_BD_city, $"Выполнить");
+            toolTip1.SetToolTip(btn_seach_BD_city, $"Выполнить");
         }
 
         void Button_add_city_click_MouseEnter(object sender, EventArgs e)
@@ -2300,7 +2300,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_add_city, $"Добавить в реестр\nназвание города");
+            toolTip1.SetToolTip(btn_add_city, $"Добавить в реестр\nназвание города");
         }
 
         void TextBox_search_MouseEnter(object sender, EventArgs e)
@@ -2324,7 +2324,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_search, $"Выполнить");
+            toolTip1.SetToolTip(btn_search, $"Выполнить");
         }
 
         void PictureBox2_update_MouseEnter(object sender, EventArgs e)
@@ -2332,7 +2332,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox2_update, $"Обновить БД");
+            toolTip1.SetToolTip(picB_update, $"Обновить БД");
         }
 
         void PictureBox1_clear_MouseEnter(object sender, EventArgs e)
@@ -2340,7 +2340,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox1_clear, $"Очистить Control-ы");
+            toolTip1.SetToolTip(picB_clear, $"Очистить Control-ы");
         }
 
         void PictureBox_clear_BD_MouseEnter(object sender, EventArgs e)
@@ -2369,14 +2369,14 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_GD_city, $"Например: Москва");
+            toolTip1.SetToolTip(txB_GD_city, $"Например: Москва");
         }
         void TextBox_FIO_chief_MouseEnter(object sender, EventArgs e)
         {
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_FIO_chief, $"Например: Иванов И.А.");
+            toolTip1.SetToolTip(txB_FIO_chief, $"Например: Иванов И.А.");
         }
 
         void TextBox_doverennost_MouseEnter(object sender, EventArgs e)
@@ -2384,7 +2384,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_doverennost, $"Например: 11/23 от 10.01.2023 года");
+            toolTip1.SetToolTip(txB_doverennost, $"Например: 11/23 от 10.01.2023 года");
         }
 
         void TextBox_FIO_Engineer_MouseEnter(object sender, EventArgs e)
@@ -2392,7 +2392,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_FIO_Engineer, $"Например: Иванов И.А.");
+            toolTip1.SetToolTip(txB_FIO_Engineer, $"Например: Иванов И.А.");
         }
 
         void TextBox_polinon_full_MouseEnter(object sender, EventArgs e)
@@ -2400,7 +2400,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_polinon_full, $"Горьковская ЖД");
+            toolTip1.SetToolTip(txB_polinon_full, $"Горьковская ЖД");
         }
 
         void Button_information_remont_company_regedit_MouseLeave(object sender, EventArgs e)
@@ -2408,7 +2408,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(button_information_remont_company_regedit, $"Запись данных ПП в реестр");
+            toolTip1.SetToolTip(btn_information_remont_company_regedit, $"Запись данных ПП в реестр");
         }
 
         void PictureBox_seach_datadrid_replay_MouseEnter(object sender, EventArgs e)
@@ -2416,7 +2416,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox_seach_datadrid_replay, $"Отбразить отсутствующие РСТ исходя из выполнения предыдущего года");
+            toolTip1.SetToolTip(picB_seach_datadrid_replay, $"Отбразить отсутствующие РСТ исходя из выполнения предыдущего года");
         }
 
         #endregion
@@ -2479,25 +2479,25 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.AvailabilityChanged_bool() == true)
             {
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 await Task.Run(() => Loading_file_current_BD());
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
@@ -2618,25 +2618,25 @@ namespace ServiceTelecomConnect
 
         async void Button_Loading_file_last_year_Click(object sender, EventArgs e)
         {
-            clear_BD_current_year.Enabled = false;
-            manual_backup_current_DB.Enabled = false;
-            loading_json_file_BD.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
-            button_Loading_file_last_year.Enabled = false;
-            loading_file_full_BD.Enabled = false;
-            loading_file_current_DB.Enabled = false;
-            button_Uploading_JSON_file.Enabled = false;
+            btn_clear_BD_current_year.Enabled = false;
+            btn_manual_backup_current_DB.Enabled = false;
+            btn_loading_json_file_BD.Enabled = false;
+            btn_Copying_current_BD_end_of_the_year.Enabled = false;
+            btn_Loading_file_last_year.Enabled = false;
+            btn_loading_file_full_BD.Enabled = false;
+            btn_loading_file_current_DB.Enabled = false;
+            btn_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => Loading_file_last_year());
-            clear_BD_current_year.Enabled = true;
-            manual_backup_current_DB.Enabled = true;
-            loading_json_file_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
-            button_Loading_file_last_year.Enabled = true;
-            loading_file_full_BD.Enabled = true;
-            loading_file_current_DB.Enabled = true;
-            button_Uploading_JSON_file.Enabled = true;
+            btn_clear_BD_current_year.Enabled = true;
+            btn_manual_backup_current_DB.Enabled = true;
+            btn_loading_json_file_BD.Enabled = true;
+            btn_Copying_current_BD_end_of_the_year.Enabled = true;
+            btn_Loading_file_last_year.Enabled = true;
+            btn_loading_file_full_BD.Enabled = true;
+            btn_loading_file_current_DB.Enabled = true;
+            btn_Uploading_JSON_file.Enabled = true;
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
@@ -2755,25 +2755,25 @@ namespace ServiceTelecomConnect
 
         async void Loading_file_full_BD_Click(object sender, EventArgs e)
         {
-            clear_BD_current_year.Enabled = false;
-            manual_backup_current_DB.Enabled = false;
-            loading_json_file_BD.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
-            button_Loading_file_last_year.Enabled = false;
-            loading_file_full_BD.Enabled = false;
-            loading_file_current_DB.Enabled = false;
-            button_Uploading_JSON_file.Enabled = false;
+            btn_clear_BD_current_year.Enabled = false;
+            btn_manual_backup_current_DB.Enabled = false;
+            btn_loading_json_file_BD.Enabled = false;
+            btn_Copying_current_BD_end_of_the_year.Enabled = false;
+            btn_Loading_file_last_year.Enabled = false;
+            btn_loading_file_full_BD.Enabled = false;
+            btn_loading_file_current_DB.Enabled = false;
+            btn_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => Loading_file_full_BD_method());
-            clear_BD_current_year.Enabled = true;
-            manual_backup_current_DB.Enabled = true;
-            loading_json_file_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
-            button_Loading_file_last_year.Enabled = true;
-            loading_file_full_BD.Enabled = true;
-            loading_file_current_DB.Enabled = true;
-            button_Uploading_JSON_file.Enabled = true;
+            btn_clear_BD_current_year.Enabled = true;
+            btn_manual_backup_current_DB.Enabled = true;
+            btn_loading_json_file_BD.Enabled = true;
+            btn_Copying_current_BD_end_of_the_year.Enabled = true;
+            btn_Loading_file_last_year.Enabled = true;
+            btn_loading_file_full_BD.Enabled = true;
+            btn_loading_file_current_DB.Enabled = true;
+            btn_Uploading_JSON_file.Enabled = true;
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
@@ -2900,25 +2900,25 @@ namespace ServiceTelecomConnect
                     return;
                 }
 
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 await Task.Run(() => FunctionPanel.Loading_json_file_BD(dataGridView2, taskCity));
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
@@ -2929,25 +2929,25 @@ namespace ServiceTelecomConnect
 
         async void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
-            clear_BD_current_year.Enabled = false;
-            manual_backup_current_DB.Enabled = false;
-            loading_json_file_BD.Enabled = false;
-            button_Copying_current_BD_end_of_the_year.Enabled = false;
-            button_Loading_file_last_year.Enabled = false;
-            loading_file_full_BD.Enabled = false;
-            loading_file_current_DB.Enabled = false;
-            button_Uploading_JSON_file.Enabled = false;
+            btn_clear_BD_current_year.Enabled = false;
+            btn_manual_backup_current_DB.Enabled = false;
+            btn_loading_json_file_BD.Enabled = false;
+            btn_Copying_current_BD_end_of_the_year.Enabled = false;
+            btn_Loading_file_last_year.Enabled = false;
+            btn_loading_file_full_BD.Enabled = false;
+            btn_loading_file_current_DB.Enabled = false;
+            btn_Uploading_JSON_file.Enabled = false;
             btn_Show_DB_radiostantion_last_year.Enabled = false;
             btn_Show_DB_radiostantion_full.Enabled = false;
             await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView1, taskCity));
-            clear_BD_current_year.Enabled = true;
-            manual_backup_current_DB.Enabled = true;
-            loading_json_file_BD.Enabled = true;
-            button_Copying_current_BD_end_of_the_year.Enabled = true;
-            button_Loading_file_last_year.Enabled = true;
-            loading_file_full_BD.Enabled = true;
-            loading_file_current_DB.Enabled = true;
-            button_Uploading_JSON_file.Enabled = true;
+            btn_clear_BD_current_year.Enabled = true;
+            btn_manual_backup_current_DB.Enabled = true;
+            btn_loading_json_file_BD.Enabled = true;
+            btn_Copying_current_BD_end_of_the_year.Enabled = true;
+            btn_Loading_file_last_year.Enabled = true;
+            btn_loading_file_full_BD.Enabled = true;
+            btn_loading_file_current_DB.Enabled = true;
+            btn_Uploading_JSON_file.Enabled = true;
             btn_Show_DB_radiostantion_last_year.Enabled = true;
             btn_Show_DB_radiostantion_full.Enabled = true;
         }
@@ -2977,25 +2977,25 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Copying_current_BD_end_of_the_year();
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
@@ -3023,25 +3023,25 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Manual_backup_current_DB();
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
@@ -3073,26 +3073,26 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Clear_BD_current_year();
                 Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
             }
@@ -3110,28 +3110,28 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 Close_Functional_loading_panel_Click(sender, e);
                 panel1.Enabled = false;
                 panel3.Enabled = false;
                 FunctionPanel.Show_DB_radiostantion_last_year(dataGridView1, taskCity);
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
                 Counters();
@@ -3151,28 +3151,28 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                clear_BD_current_year.Enabled = false;
-                manual_backup_current_DB.Enabled = false;
-                loading_json_file_BD.Enabled = false;
-                button_Copying_current_BD_end_of_the_year.Enabled = false;
-                button_Loading_file_last_year.Enabled = false;
-                loading_file_full_BD.Enabled = false;
-                loading_file_current_DB.Enabled = false;
-                button_Uploading_JSON_file.Enabled = false;
+                btn_clear_BD_current_year.Enabled = false;
+                btn_manual_backup_current_DB.Enabled = false;
+                btn_loading_json_file_BD.Enabled = false;
+                btn_Copying_current_BD_end_of_the_year.Enabled = false;
+                btn_Loading_file_last_year.Enabled = false;
+                btn_loading_file_full_BD.Enabled = false;
+                btn_loading_file_current_DB.Enabled = false;
+                btn_Uploading_JSON_file.Enabled = false;
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 Close_Functional_loading_panel_Click(sender, e);
                 panel1.Enabled = false;
                 panel3.Enabled = false;
                 FunctionPanel.Show_DB_radiostantion_full(dataGridView1, taskCity);
-                clear_BD_current_year.Enabled = true;
-                manual_backup_current_DB.Enabled = true;
-                loading_json_file_BD.Enabled = true;
-                button_Copying_current_BD_end_of_the_year.Enabled = true;
-                button_Loading_file_last_year.Enabled = true;
-                loading_file_full_BD.Enabled = true;
-                loading_file_current_DB.Enabled = true;
-                button_Uploading_JSON_file.Enabled = true;
+                btn_clear_BD_current_year.Enabled = true;
+                btn_manual_backup_current_DB.Enabled = true;
+                btn_loading_json_file_BD.Enabled = true;
+                btn_Copying_current_BD_end_of_the_year.Enabled = true;
+                btn_Loading_file_last_year.Enabled = true;
+                btn_loading_file_full_BD.Enabled = true;
+                btn_loading_file_current_DB.Enabled = true;
+                btn_Uploading_JSON_file.Enabled = true;
                 btn_Show_DB_radiostantion_last_year.Enabled = true;
                 btn_Show_DB_radiostantion_full.Enabled = true;
                 Counters();
@@ -3424,10 +3424,10 @@ namespace ServiceTelecomConnect
 
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
-            if (textBox_serialNumber.Text != "")
+            if (txB_serialNumber.Text != "")
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {textBox_serialNumber.Text} от предприятия {txB_company.Text}";
+                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -3450,16 +3450,16 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (textBox_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
+                if (txB1_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
                 {
                     var re = new Regex(Environment.NewLine);
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
 
-                    Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
+                    Filling_datagridview.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
                         txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
                         txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
                         txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
-                        txB_comment.Text, textBox_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
+                        txB_comment.Text, txB_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
                     Button_update_Click(sender, e);
                     panel_decommissionSerialNumber.Visible = false;
                     panel_decommissionSerialNumber.Enabled = false;
@@ -3467,7 +3467,7 @@ namespace ServiceTelecomConnect
                     panel2.Enabled = true;
                     panel3.Enabled = true;
                     dataGridView1.Enabled = true;
-                    textBox_decommissionSerialNumber.Text = "";
+                    txB1_decommissionSerialNumber.Text = "";
                 }
                 else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
             }
@@ -3484,13 +3484,13 @@ namespace ServiceTelecomConnect
             try
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
-                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, txB_city.Text);
+                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3538,7 +3538,7 @@ namespace ServiceTelecomConnect
                 {
                     {"<numberActTZPP>", decommissionSerialNumber_company },
                     {"<model>", cmB_model.Text },
-                    {"<serialNumber>", textBox_serialNumber.Text },
+                    {"<serialNumber>", txB_serialNumber.Text },
                     {"<company>", txB_company.Text },
                     {"<dateDecommission>", dateDecommission },
                     {"<comment>", comment}

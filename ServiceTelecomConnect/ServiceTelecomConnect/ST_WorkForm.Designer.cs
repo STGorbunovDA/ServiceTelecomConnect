@@ -37,63 +37,63 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
-            this.textBox_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
+            this.txB_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox_polinon_full = new System.Windows.Forms.TextBox();
+            this.txB_polinon_full = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button_close_panel_date_info = new System.Windows.Forms.Button();
-            this.textBox_FIO_Engineer = new System.Windows.Forms.TextBox();
+            this.btn_close_panel_date_info = new System.Windows.Forms.Button();
+            this.txB_FIO_Engineer = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.textBox_GD_city = new System.Windows.Forms.TextBox();
+            this.txB_GD_city = new System.Windows.Forms.TextBox();
             this.label_GD = new System.Windows.Forms.Label();
-            this.button_record_date = new System.Windows.Forms.Button();
-            this.textBox_FIO_chief = new System.Windows.Forms.TextBox();
-            this.textBox_doverennost = new System.Windows.Forms.TextBox();
+            this.btn_record_date = new System.Windows.Forms.Button();
+            this.txB_FIO_chief = new System.Windows.Forms.TextBox();
+            this.txB_doverennost = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label_dov = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.Functional_loading_panel = new System.Windows.Forms.Panel();
             this.btn_Show_DB_radiostantion_full = new System.Windows.Forms.Button();
             this.btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.Button();
-            this.button_Loading_file_last_year = new System.Windows.Forms.Button();
-            this.button_Uploading_JSON_file = new System.Windows.Forms.Button();
-            this.button_Copying_current_BD_end_of_the_year = new System.Windows.Forms.Button();
-            this.loading_file_full_BD = new System.Windows.Forms.Button();
-            this.manual_backup_current_DB = new System.Windows.Forms.Button();
-            this.clear_BD_current_year = new System.Windows.Forms.Button();
-            this.loading_file_current_DB = new System.Windows.Forms.Button();
-            this.loading_json_file_BD = new System.Windows.Forms.Button();
-            this.close_Functional_loading_panel = new System.Windows.Forms.Button();
+            this.btn_Loading_file_last_year = new System.Windows.Forms.Button();
+            this.btn_Uploading_JSON_file = new System.Windows.Forms.Button();
+            this.btn_Copying_current_BD_end_of_the_year = new System.Windows.Forms.Button();
+            this.btn_loading_file_full_BD = new System.Windows.Forms.Button();
+            this.btn_manual_backup_current_DB = new System.Windows.Forms.Button();
+            this.btn_clear_BD_current_year = new System.Windows.Forms.Button();
+            this.btn_loading_file_current_DB = new System.Windows.Forms.Button();
+            this.btn_loading_json_file_BD = new System.Windows.Forms.Button();
+            this.btn_close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.panel_remont_information_company = new System.Windows.Forms.Panel();
-            this.button_Continue_remont_act_excel = new System.Windows.Forms.Button();
-            this.textBox_BE_remont = new System.Windows.Forms.TextBox();
-            this.button_close_remont_panel = new System.Windows.Forms.Button();
+            this.btn_Continue_remont_act_excel = new System.Windows.Forms.Button();
+            this.txB_BE_remont = new System.Windows.Forms.TextBox();
+            this.btn_close_remont_panel = new System.Windows.Forms.Button();
             this.label_company_remont = new System.Windows.Forms.Label();
-            this.textBox_3_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_3_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_2_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_2_FIO_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_1_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_1_FIO_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_3_post_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_3_FIO_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_2_post_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_2_FIO_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_1_post_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_1_FIO_remont_company = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox_chairman_post_remont_company = new System.Windows.Forms.TextBox();
-            this.textBox_chairman_FIO_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_chairman_post_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_chairman_FIO_remont_company = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox_OKPO_remont = new System.Windows.Forms.TextBox();
-            this.textBox_director_post_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_OKPO_remont = new System.Windows.Forms.TextBox();
+            this.txB_director_post_remont_company = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox_Full_name_company = new System.Windows.Forms.TextBox();
+            this.txB_Full_name_company = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_director_FIO_remont_company = new System.Windows.Forms.TextBox();
+            this.txB_director_FIO_remont_company = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button_information_remont_company_regedit = new System.Windows.Forms.Button();
+            this.btn_information_remont_company_regedit = new System.Windows.Forms.Button();
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -135,35 +135,35 @@
             this.txB_networkNumber = new System.Windows.Forms.TextBox();
             this.txB_inventoryNumber = new System.Windows.Forms.TextBox();
             this.txB_company = new System.Windows.Forms.TextBox();
-            this.textBox_serialNumber = new System.Windows.Forms.TextBox();
+            this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
-            this.button_all_BD = new System.Windows.Forms.Button();
+            this.btn_all_BD = new System.Windows.Forms.Button();
             this.cmB_city = new System.Windows.Forms.ComboBox();
-            this.pictureBox_seach_datadrid_replay = new System.Windows.Forms.PictureBox();
+            this.picB_seach_datadrid_replay = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.lbL_polinon_full = new System.Windows.Forms.Label();
-            this.button_remont_act = new System.Windows.Forms.Button();
+            this.btn_remont_act = new System.Windows.Forms.Button();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.button_form_act = new System.Windows.Forms.Button();
-            this.button_new_add_rst_form = new System.Windows.Forms.Button();
+            this.btn_form_act = new System.Windows.Forms.Button();
+            this.btn_new_add_rst_form = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.lbL_FIO_Engineer = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.button_add_city = new System.Windows.Forms.Button();
-            this.button_seach_BD_city = new System.Windows.Forms.Button();
-            this.button_search = new System.Windows.Forms.Button();
+            this.btn_add_city = new System.Windows.Forms.Button();
+            this.btn_seach_BD_city = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
             this.cmB_seach = new System.Windows.Forms.ComboBox();
             this.lbL_doverennost = new System.Windows.Forms.Label();
             this.lbL_FIO_chief = new System.Windows.Forms.Label();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
-            this.pictureBox2_update = new System.Windows.Forms.PictureBox();
-            this.pictureBox1_clear = new System.Windows.Forms.PictureBox();
+            this.picB_update = new System.Windows.Forms.PictureBox();
+            this.picB_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txB_Sign = new System.Windows.Forms.TextBox();
@@ -186,15 +186,15 @@
             this.lbL_summ = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel_info_phone_FIO = new System.Windows.Forms.Panel();
-            this.panel_textbox_FIO_phoneNumber = new System.Windows.Forms.TextBox();
+            this.panel_txB_FIO_phoneNumber = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.button_close_panel_info_phone_FIO = new System.Windows.Forms.Button();
-            this.panel_textbox_FIO_representative = new System.Windows.Forms.TextBox();
+            this.btn_close_panel_info_phone_FIO = new System.Windows.Forms.Button();
+            this.panel_txB_FIO_representative = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
-            this.button_close_panel_seach_datagrid = new System.Windows.Forms.Button();
-            this.button_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.txB_seach_panel_seach_datagrid = new System.Windows.Forms.TextBox();
+            this.btn_close_panel_seach_datagrid = new System.Windows.Forms.Button();
+            this.btn_seach_panel_seach_datagrid = new System.Windows.Forms.Button();
             this.panel_ = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -204,12 +204,7 @@
             this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
             this.txB_reason_decommission = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_decommissionSerialNumber = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.txB1_decommissionSerialNumber = new System.Windows.Forms.TextBox();
             this.btn_record_decommissionSerialNumber = new System.Windows.Forms.Button();
             this.btn_decommissionSerialNumber_close = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
@@ -221,16 +216,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_seach_datadrid_replay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_seach_datadrid_replay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_update)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel_info_phone_FIO.SuspendLayout();
             this.panel_.SuspendLayout();
             this.panel_seach_datagrid.SuspendLayout();
             this.panel_decommissionSerialNumber.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,39 +233,39 @@
             this.panel_date.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_date.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_date.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_date.Controls.Add(this.textBox_number_printing_doc_datePanel);
+            this.panel_date.Controls.Add(this.txB_number_printing_doc_datePanel);
             this.panel_date.Controls.Add(this.label26);
-            this.panel_date.Controls.Add(this.textBox_polinon_full);
+            this.panel_date.Controls.Add(this.txB_polinon_full);
             this.panel_date.Controls.Add(this.label7);
-            this.panel_date.Controls.Add(this.button_close_panel_date_info);
-            this.panel_date.Controls.Add(this.textBox_FIO_Engineer);
+            this.panel_date.Controls.Add(this.btn_close_panel_date_info);
+            this.panel_date.Controls.Add(this.txB_FIO_Engineer);
             this.panel_date.Controls.Add(this.label27);
-            this.panel_date.Controls.Add(this.textBox_GD_city);
+            this.panel_date.Controls.Add(this.txB_GD_city);
             this.panel_date.Controls.Add(this.label_GD);
-            this.panel_date.Controls.Add(this.button_record_date);
-            this.panel_date.Controls.Add(this.textBox_FIO_chief);
-            this.panel_date.Controls.Add(this.textBox_doverennost);
+            this.panel_date.Controls.Add(this.btn_record_date);
+            this.panel_date.Controls.Add(this.txB_FIO_chief);
+            this.panel_date.Controls.Add(this.txB_doverennost);
             this.panel_date.Controls.Add(this.label25);
             this.panel_date.Controls.Add(this.label_dov);
             this.panel_date.Controls.Add(this.label23);
             this.panel_date.Enabled = false;
             this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.panel_date.Location = new System.Drawing.Point(400, 240);
+            this.panel_date.Location = new System.Drawing.Point(400, 200);
             this.panel_date.Name = "panel_date";
             this.panel_date.Size = new System.Drawing.Size(642, 403);
             this.panel_date.TabIndex = 28;
             this.panel_date.TabStop = true;
             this.panel_date.Visible = false;
             // 
-            // textBox_number_printing_doc_datePanel
+            // txB_number_printing_doc_datePanel
             // 
-            this.textBox_number_printing_doc_datePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_number_printing_doc_datePanel.Location = new System.Drawing.Point(280, 315);
-            this.textBox_number_printing_doc_datePanel.Name = "textBox_number_printing_doc_datePanel";
-            this.textBox_number_printing_doc_datePanel.Size = new System.Drawing.Size(345, 29);
-            this.textBox_number_printing_doc_datePanel.TabIndex = 77;
-            this.textBox_number_printing_doc_datePanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_number_printing_doc_datePanel_KeyPress);
-            this.textBox_number_printing_doc_datePanel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_number_printing_doc_datePanel_KeyUp);
+            this.txB_number_printing_doc_datePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_number_printing_doc_datePanel.Location = new System.Drawing.Point(280, 315);
+            this.txB_number_printing_doc_datePanel.Name = "txB_number_printing_doc_datePanel";
+            this.txB_number_printing_doc_datePanel.Size = new System.Drawing.Size(345, 29);
+            this.txB_number_printing_doc_datePanel.TabIndex = 77;
+            this.txB_number_printing_doc_datePanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_number_printing_doc_datePanel_KeyPress);
+            this.txB_number_printing_doc_datePanel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_number_printing_doc_datePanel_KeyUp);
             // 
             // label26
             // 
@@ -284,14 +278,14 @@
             this.label26.TabIndex = 76;
             this.label26.Text = "№ Печати:";
             // 
-            // textBox_polinon_full
+            // txB_polinon_full
             // 
-            this.textBox_polinon_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_polinon_full.Location = new System.Drawing.Point(280, 266);
-            this.textBox_polinon_full.Name = "textBox_polinon_full";
-            this.textBox_polinon_full.Size = new System.Drawing.Size(345, 29);
-            this.textBox_polinon_full.TabIndex = 39;
-            this.textBox_polinon_full.MouseEnter += new System.EventHandler(this.TextBox_polinon_full_MouseEnter);
+            this.txB_polinon_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_polinon_full.Location = new System.Drawing.Point(280, 266);
+            this.txB_polinon_full.Name = "txB_polinon_full";
+            this.txB_polinon_full.Size = new System.Drawing.Size(345, 29);
+            this.txB_polinon_full.TabIndex = 39;
+            this.txB_polinon_full.MouseEnter += new System.EventHandler(this.TextBox_polinon_full_MouseEnter);
             // 
             // label7
             // 
@@ -304,29 +298,29 @@
             this.label7.TabIndex = 38;
             this.label7.Text = "Полигон:";
             // 
-            // button_close_panel_date_info
+            // btn_close_panel_date_info
             // 
-            this.button_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_date_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_date_info.Location = new System.Drawing.Point(609, 3);
-            this.button_close_panel_date_info.Name = "button_close_panel_date_info";
-            this.button_close_panel_date_info.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_date_info.TabIndex = 37;
-            this.button_close_panel_date_info.Text = "X";
-            this.button_close_panel_date_info.UseVisualStyleBackColor = false;
-            this.button_close_panel_date_info.Click += new System.EventHandler(this.Button_close_panel_date_info_Click);
+            this.btn_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_date_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_date_info.Location = new System.Drawing.Point(609, 3);
+            this.btn_close_panel_date_info.Name = "btn_close_panel_date_info";
+            this.btn_close_panel_date_info.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_date_info.TabIndex = 37;
+            this.btn_close_panel_date_info.Text = "X";
+            this.btn_close_panel_date_info.UseVisualStyleBackColor = false;
+            this.btn_close_panel_date_info.Click += new System.EventHandler(this.Button_close_panel_date_info_Click);
             // 
-            // textBox_FIO_Engineer
+            // txB_FIO_Engineer
             // 
-            this.textBox_FIO_Engineer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FIO_Engineer.Location = new System.Drawing.Point(280, 220);
-            this.textBox_FIO_Engineer.Name = "textBox_FIO_Engineer";
-            this.textBox_FIO_Engineer.Size = new System.Drawing.Size(345, 29);
-            this.textBox_FIO_Engineer.TabIndex = 13;
-            this.textBox_FIO_Engineer.Click += new System.EventHandler(this.TextBox_FIO_Engineer_Click);
-            this.textBox_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_Engineer_KeyPress);
-            this.textBox_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_Engineer_KeyUp);
-            this.textBox_FIO_Engineer.MouseEnter += new System.EventHandler(this.TextBox_FIO_Engineer_MouseEnter);
+            this.txB_FIO_Engineer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_FIO_Engineer.Location = new System.Drawing.Point(280, 220);
+            this.txB_FIO_Engineer.Name = "txB_FIO_Engineer";
+            this.txB_FIO_Engineer.Size = new System.Drawing.Size(345, 29);
+            this.txB_FIO_Engineer.TabIndex = 13;
+            this.txB_FIO_Engineer.Click += new System.EventHandler(this.TextBox_FIO_Engineer_Click);
+            this.txB_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_Engineer_KeyPress);
+            this.txB_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_Engineer_KeyUp);
+            this.txB_FIO_Engineer.MouseEnter += new System.EventHandler(this.TextBox_FIO_Engineer_MouseEnter);
             // 
             // label27
             // 
@@ -339,17 +333,17 @@
             this.label27.TabIndex = 12;
             this.label27.Text = "ФИО Инженера:";
             // 
-            // textBox_GD_city
+            // txB_GD_city
             // 
-            this.textBox_GD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_GD_city.Location = new System.Drawing.Point(280, 73);
-            this.textBox_GD_city.Name = "textBox_GD_city";
-            this.textBox_GD_city.Size = new System.Drawing.Size(345, 29);
-            this.textBox_GD_city.TabIndex = 11;
-            this.textBox_GD_city.Click += new System.EventHandler(this.TextBox_GD_city_Click);
-            this.textBox_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_GD_city_KeyPress);
-            this.textBox_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_GD_city_KeyUp);
-            this.textBox_GD_city.MouseEnter += new System.EventHandler(this.TextBox_GD_city_MouseEnter);
+            this.txB_GD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_GD_city.Location = new System.Drawing.Point(280, 73);
+            this.txB_GD_city.Name = "txB_GD_city";
+            this.txB_GD_city.Size = new System.Drawing.Size(345, 29);
+            this.txB_GD_city.TabIndex = 11;
+            this.txB_GD_city.Click += new System.EventHandler(this.TextBox_GD_city_Click);
+            this.txB_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_GD_city_KeyPress);
+            this.txB_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_GD_city_KeyUp);
+            this.txB_GD_city.MouseEnter += new System.EventHandler(this.TextBox_GD_city_MouseEnter);
             // 
             // label_GD
             // 
@@ -362,41 +356,41 @@
             this.label_GD.TabIndex = 10;
             this.label_GD.Text = "Город проведения проверки:";
             // 
-            // button_record_date
+            // btn_record_date
             // 
-            this.button_record_date.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_record_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_record_date.Location = new System.Drawing.Point(280, 360);
-            this.button_record_date.Name = "button_record_date";
-            this.button_record_date.Size = new System.Drawing.Size(346, 29);
-            this.button_record_date.TabIndex = 8;
-            this.button_record_date.Text = "Записать данные";
-            this.button_record_date.UseVisualStyleBackColor = false;
-            this.button_record_date.Click += new System.EventHandler(this.Button_record_date_Click);
+            this.btn_record_date.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_record_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_record_date.Location = new System.Drawing.Point(280, 360);
+            this.btn_record_date.Name = "btn_record_date";
+            this.btn_record_date.Size = new System.Drawing.Size(346, 29);
+            this.btn_record_date.TabIndex = 8;
+            this.btn_record_date.Text = "Записать данные";
+            this.btn_record_date.UseVisualStyleBackColor = false;
+            this.btn_record_date.Click += new System.EventHandler(this.Button_record_date_Click);
             // 
-            // textBox_FIO_chief
+            // txB_FIO_chief
             // 
-            this.textBox_FIO_chief.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_FIO_chief.Location = new System.Drawing.Point(280, 121);
-            this.textBox_FIO_chief.Name = "textBox_FIO_chief";
-            this.textBox_FIO_chief.Size = new System.Drawing.Size(345, 29);
-            this.textBox_FIO_chief.TabIndex = 9;
-            this.textBox_FIO_chief.Click += new System.EventHandler(this.TextBox_FIO_chief_Click);
-            this.textBox_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_chief_KeyPress);
-            this.textBox_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_chief_KeyUp);
-            this.textBox_FIO_chief.MouseEnter += new System.EventHandler(this.TextBox_FIO_chief_MouseEnter);
+            this.txB_FIO_chief.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_FIO_chief.Location = new System.Drawing.Point(280, 121);
+            this.txB_FIO_chief.Name = "txB_FIO_chief";
+            this.txB_FIO_chief.Size = new System.Drawing.Size(345, 29);
+            this.txB_FIO_chief.TabIndex = 9;
+            this.txB_FIO_chief.Click += new System.EventHandler(this.TextBox_FIO_chief_Click);
+            this.txB_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_chief_KeyPress);
+            this.txB_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_chief_KeyUp);
+            this.txB_FIO_chief.MouseEnter += new System.EventHandler(this.TextBox_FIO_chief_MouseEnter);
             // 
-            // textBox_doverennost
+            // txB_doverennost
             // 
-            this.textBox_doverennost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_doverennost.Location = new System.Drawing.Point(280, 170);
-            this.textBox_doverennost.Name = "textBox_doverennost";
-            this.textBox_doverennost.Size = new System.Drawing.Size(345, 29);
-            this.textBox_doverennost.TabIndex = 6;
-            this.textBox_doverennost.Click += new System.EventHandler(this.TextBox_doverennost_Click);
-            this.textBox_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_doverennost_KeyPress);
-            this.textBox_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_doverennost_KeyUp);
-            this.textBox_doverennost.MouseEnter += new System.EventHandler(this.TextBox_doverennost_MouseEnter);
+            this.txB_doverennost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_doverennost.Location = new System.Drawing.Point(280, 170);
+            this.txB_doverennost.Name = "txB_doverennost";
+            this.txB_doverennost.Size = new System.Drawing.Size(345, 29);
+            this.txB_doverennost.TabIndex = 6;
+            this.txB_doverennost.Click += new System.EventHandler(this.TextBox_doverennost_Click);
+            this.txB_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_doverennost_KeyPress);
+            this.txB_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_doverennost_KeyUp);
+            this.txB_doverennost.MouseEnter += new System.EventHandler(this.TextBox_doverennost_MouseEnter);
             // 
             // label25
             // 
@@ -438,21 +432,21 @@
             this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_full);
             this.Functional_loading_panel.Controls.Add(this.btn_Show_DB_radiostantion_last_year);
-            this.Functional_loading_panel.Controls.Add(this.button_Loading_file_last_year);
-            this.Functional_loading_panel.Controls.Add(this.button_Uploading_JSON_file);
-            this.Functional_loading_panel.Controls.Add(this.button_Copying_current_BD_end_of_the_year);
-            this.Functional_loading_panel.Controls.Add(this.loading_file_full_BD);
-            this.Functional_loading_panel.Controls.Add(this.manual_backup_current_DB);
-            this.Functional_loading_panel.Controls.Add(this.clear_BD_current_year);
-            this.Functional_loading_panel.Controls.Add(this.loading_file_current_DB);
-            this.Functional_loading_panel.Controls.Add(this.loading_json_file_BD);
-            this.Functional_loading_panel.Controls.Add(this.close_Functional_loading_panel);
+            this.Functional_loading_panel.Controls.Add(this.btn_Loading_file_last_year);
+            this.Functional_loading_panel.Controls.Add(this.btn_Uploading_JSON_file);
+            this.Functional_loading_panel.Controls.Add(this.btn_Copying_current_BD_end_of_the_year);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_file_full_BD);
+            this.Functional_loading_panel.Controls.Add(this.btn_manual_backup_current_DB);
+            this.Functional_loading_panel.Controls.Add(this.btn_clear_BD_current_year);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_file_current_DB);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_json_file_BD);
+            this.Functional_loading_panel.Controls.Add(this.btn_close_Functional_loading_panel);
             this.Functional_loading_panel.Controls.Add(this.label36);
             this.Functional_loading_panel.Enabled = false;
             this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.Functional_loading_panel.Location = new System.Drawing.Point(400, 240);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
-            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 392);
+            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 330);
             this.Functional_loading_panel.TabIndex = 80;
             this.Functional_loading_panel.TabStop = true;
             this.Functional_loading_panel.Visible = false;
@@ -483,121 +477,121 @@
             this.btn_Show_DB_radiostantion_last_year.UseVisualStyleBackColor = false;
             this.btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_last_year_Click);
             // 
-            // button_Loading_file_last_year
+            // btn_Loading_file_last_year
             // 
-            this.button_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
-            this.button_Loading_file_last_year.Name = "button_Loading_file_last_year";
-            this.button_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
-            this.button_Loading_file_last_year.TabIndex = 86;
-            this.button_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
-            this.button_Loading_file_last_year.UseVisualStyleBackColor = false;
-            this.button_Loading_file_last_year.Click += new System.EventHandler(this.Button_Loading_file_last_year_Click);
+            this.btn_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
+            this.btn_Loading_file_last_year.Name = "btn_Loading_file_last_year";
+            this.btn_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
+            this.btn_Loading_file_last_year.TabIndex = 86;
+            this.btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
+            this.btn_Loading_file_last_year.UseVisualStyleBackColor = false;
+            this.btn_Loading_file_last_year.Click += new System.EventHandler(this.Button_Loading_file_last_year_Click);
             // 
-            // button_Uploading_JSON_file
+            // btn_Uploading_JSON_file
             // 
-            this.button_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
-            this.button_Uploading_JSON_file.Name = "button_Uploading_JSON_file";
-            this.button_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
-            this.button_Uploading_JSON_file.TabIndex = 85;
-            this.button_Uploading_JSON_file.Text = "Выгрузка файла JSON";
-            this.button_Uploading_JSON_file.UseVisualStyleBackColor = false;
-            this.button_Uploading_JSON_file.Click += new System.EventHandler(this.Button_Uploading_JSON_file_Click);
+            this.btn_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
+            this.btn_Uploading_JSON_file.Name = "btn_Uploading_JSON_file";
+            this.btn_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
+            this.btn_Uploading_JSON_file.TabIndex = 85;
+            this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
+            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.Button_Uploading_JSON_file_Click);
             // 
-            // button_Copying_current_BD_end_of_the_year
+            // btn_Copying_current_BD_end_of_the_year
             // 
-            this.button_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
-            this.button_Copying_current_BD_end_of_the_year.Name = "button_Copying_current_BD_end_of_the_year";
-            this.button_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
-            this.button_Copying_current_BD_end_of_the_year.TabIndex = 84;
-            this.button_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
-            this.button_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
-            this.button_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.Button_Copying_current_BD_end_of_the_year_Click);
+            this.btn_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
+            this.btn_Copying_current_BD_end_of_the_year.Name = "btn_Copying_current_BD_end_of_the_year";
+            this.btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
+            this.btn_Copying_current_BD_end_of_the_year.TabIndex = 84;
+            this.btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
+            this.btn_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
+            this.btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.Button_Copying_current_BD_end_of_the_year_Click);
             // 
-            // loading_file_full_BD
+            // btn_loading_file_full_BD
             // 
-            this.loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
-            this.loading_file_full_BD.Name = "loading_file_full_BD";
-            this.loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
-            this.loading_file_full_BD.TabIndex = 83;
-            this.loading_file_full_BD.Text = "Загрузка из файла для общей БД";
-            this.loading_file_full_BD.UseVisualStyleBackColor = false;
-            this.loading_file_full_BD.Click += new System.EventHandler(this.Loading_file_full_BD_Click);
+            this.btn_loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
+            this.btn_loading_file_full_BD.Name = "btn_loading_file_full_BD";
+            this.btn_loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
+            this.btn_loading_file_full_BD.TabIndex = 83;
+            this.btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
+            this.btn_loading_file_full_BD.UseVisualStyleBackColor = false;
+            this.btn_loading_file_full_BD.Click += new System.EventHandler(this.Loading_file_full_BD_Click);
             // 
-            // manual_backup_current_DB
+            // btn_manual_backup_current_DB
             // 
-            this.manual_backup_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.manual_backup_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.manual_backup_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.manual_backup_current_DB.Location = new System.Drawing.Point(324, 56);
-            this.manual_backup_current_DB.Name = "manual_backup_current_DB";
-            this.manual_backup_current_DB.Size = new System.Drawing.Size(249, 42);
-            this.manual_backup_current_DB.TabIndex = 81;
-            this.manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
-            this.manual_backup_current_DB.UseVisualStyleBackColor = false;
-            this.manual_backup_current_DB.Click += new System.EventHandler(this.Manual_backup_current_DB_Click);
+            this.btn_manual_backup_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_manual_backup_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_manual_backup_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_manual_backup_current_DB.Location = new System.Drawing.Point(324, 56);
+            this.btn_manual_backup_current_DB.Name = "btn_manual_backup_current_DB";
+            this.btn_manual_backup_current_DB.Size = new System.Drawing.Size(249, 42);
+            this.btn_manual_backup_current_DB.TabIndex = 81;
+            this.btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            this.btn_manual_backup_current_DB.UseVisualStyleBackColor = false;
+            this.btn_manual_backup_current_DB.Click += new System.EventHandler(this.Manual_backup_current_DB_Click);
             // 
-            // clear_BD_current_year
+            // btn_clear_BD_current_year
             // 
-            this.clear_BD_current_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.clear_BD_current_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.clear_BD_current_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.clear_BD_current_year.Location = new System.Drawing.Point(64, 56);
-            this.clear_BD_current_year.Name = "clear_BD_current_year";
-            this.clear_BD_current_year.Size = new System.Drawing.Size(249, 42);
-            this.clear_BD_current_year.TabIndex = 80;
-            this.clear_BD_current_year.Text = "Полная очистка БД текущего года";
-            this.clear_BD_current_year.UseVisualStyleBackColor = false;
-            this.clear_BD_current_year.Click += new System.EventHandler(this.Clear_BD_current_year_Click);
+            this.btn_clear_BD_current_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_clear_BD_current_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_clear_BD_current_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_clear_BD_current_year.Location = new System.Drawing.Point(64, 56);
+            this.btn_clear_BD_current_year.Name = "btn_clear_BD_current_year";
+            this.btn_clear_BD_current_year.Size = new System.Drawing.Size(249, 42);
+            this.btn_clear_BD_current_year.TabIndex = 80;
+            this.btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
+            this.btn_clear_BD_current_year.UseVisualStyleBackColor = false;
+            this.btn_clear_BD_current_year.Click += new System.EventHandler(this.Clear_BD_current_year_Click);
             // 
-            // loading_file_current_DB
+            // btn_loading_file_current_DB
             // 
-            this.loading_file_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_file_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_file_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_file_current_DB.Location = new System.Drawing.Point(64, 105);
-            this.loading_file_current_DB.Name = "loading_file_current_DB";
-            this.loading_file_current_DB.Size = new System.Drawing.Size(249, 42);
-            this.loading_file_current_DB.TabIndex = 79;
-            this.loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
-            this.loading_file_current_DB.UseVisualStyleBackColor = false;
-            this.loading_file_current_DB.Click += new System.EventHandler(this.Loading_file_current_BD_Click);
+            this.btn_loading_file_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_file_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_file_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_file_current_DB.Location = new System.Drawing.Point(64, 105);
+            this.btn_loading_file_current_DB.Name = "btn_loading_file_current_DB";
+            this.btn_loading_file_current_DB.Size = new System.Drawing.Size(249, 42);
+            this.btn_loading_file_current_DB.TabIndex = 79;
+            this.btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            this.btn_loading_file_current_DB.UseVisualStyleBackColor = false;
+            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.Loading_file_current_BD_Click);
             // 
-            // loading_json_file_BD
+            // btn_loading_json_file_BD
             // 
-            this.loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
-            this.loading_json_file_BD.Name = "loading_json_file_BD";
-            this.loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
-            this.loading_json_file_BD.TabIndex = 78;
-            this.loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
-            this.loading_json_file_BD.UseVisualStyleBackColor = false;
-            this.loading_json_file_BD.Click += new System.EventHandler(this.Loading_json_file_BD_Click);
+            this.btn_loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
+            this.btn_loading_json_file_BD.Name = "btn_loading_json_file_BD";
+            this.btn_loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
+            this.btn_loading_json_file_BD.TabIndex = 78;
+            this.btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            this.btn_loading_json_file_BD.UseVisualStyleBackColor = false;
+            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.Loading_json_file_BD_Click);
             // 
-            // close_Functional_loading_panel
+            // btn_close_Functional_loading_panel
             // 
-            this.close_Functional_loading_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.close_Functional_loading_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.close_Functional_loading_panel.Location = new System.Drawing.Point(609, 3);
-            this.close_Functional_loading_panel.Name = "close_Functional_loading_panel";
-            this.close_Functional_loading_panel.Size = new System.Drawing.Size(30, 29);
-            this.close_Functional_loading_panel.TabIndex = 37;
-            this.close_Functional_loading_panel.Text = "X";
-            this.close_Functional_loading_panel.UseVisualStyleBackColor = false;
-            this.close_Functional_loading_panel.Click += new System.EventHandler(this.Close_Functional_loading_panel_Click);
+            this.btn_close_Functional_loading_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_Functional_loading_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_Functional_loading_panel.Location = new System.Drawing.Point(609, 3);
+            this.btn_close_Functional_loading_panel.Name = "btn_close_Functional_loading_panel";
+            this.btn_close_Functional_loading_panel.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_Functional_loading_panel.TabIndex = 37;
+            this.btn_close_Functional_loading_panel.Text = "X";
+            this.btn_close_Functional_loading_panel.UseVisualStyleBackColor = false;
+            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.Close_Functional_loading_panel_Click);
             // 
             // label36
             // 
@@ -627,33 +621,33 @@
             this.panel_remont_information_company.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_remont_information_company.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_remont_information_company.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_remont_information_company.Controls.Add(this.button_Continue_remont_act_excel);
-            this.panel_remont_information_company.Controls.Add(this.textBox_BE_remont);
-            this.panel_remont_information_company.Controls.Add(this.button_close_remont_panel);
+            this.panel_remont_information_company.Controls.Add(this.btn_Continue_remont_act_excel);
+            this.panel_remont_information_company.Controls.Add(this.txB_BE_remont);
+            this.panel_remont_information_company.Controls.Add(this.btn_close_remont_panel);
             this.panel_remont_information_company.Controls.Add(this.label_company_remont);
-            this.panel_remont_information_company.Controls.Add(this.textBox_3_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_3_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_2_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_2_FIO_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_1_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_1_FIO_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_3_post_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_3_FIO_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_2_post_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_2_FIO_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_1_post_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_1_FIO_remont_company);
             this.panel_remont_information_company.Controls.Add(this.label15);
             this.panel_remont_information_company.Controls.Add(this.label14);
             this.panel_remont_information_company.Controls.Add(this.label12);
-            this.panel_remont_information_company.Controls.Add(this.textBox_chairman_post_remont_company);
-            this.panel_remont_information_company.Controls.Add(this.textBox_chairman_FIO_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_chairman_post_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_chairman_FIO_remont_company);
             this.panel_remont_information_company.Controls.Add(this.label11);
             this.panel_remont_information_company.Controls.Add(this.label10);
             this.panel_remont_information_company.Controls.Add(this.label8);
-            this.panel_remont_information_company.Controls.Add(this.textBox_OKPO_remont);
-            this.panel_remont_information_company.Controls.Add(this.textBox_director_post_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_OKPO_remont);
+            this.panel_remont_information_company.Controls.Add(this.txB_director_post_remont_company);
             this.panel_remont_information_company.Controls.Add(this.label6);
             this.panel_remont_information_company.Controls.Add(this.label5);
-            this.panel_remont_information_company.Controls.Add(this.textBox_Full_name_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_Full_name_company);
             this.panel_remont_information_company.Controls.Add(this.label3);
-            this.panel_remont_information_company.Controls.Add(this.textBox_director_FIO_remont_company);
+            this.panel_remont_information_company.Controls.Add(this.txB_director_FIO_remont_company);
             this.panel_remont_information_company.Controls.Add(this.label4);
-            this.panel_remont_information_company.Controls.Add(this.button_information_remont_company_regedit);
+            this.panel_remont_information_company.Controls.Add(this.btn_information_remont_company_regedit);
             this.panel_remont_information_company.Controls.Add(this.label_information_remont_pp);
             this.panel_remont_information_company.Location = new System.Drawing.Point(327, 171);
             this.panel_remont_information_company.Name = "panel_remont_information_company";
@@ -661,40 +655,40 @@
             this.panel_remont_information_company.TabIndex = 29;
             this.panel_remont_information_company.Visible = false;
             // 
-            // button_Continue_remont_act_excel
+            // btn_Continue_remont_act_excel
             // 
-            this.button_Continue_remont_act_excel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_Continue_remont_act_excel.Enabled = false;
-            this.button_Continue_remont_act_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Continue_remont_act_excel.Location = new System.Drawing.Point(616, 413);
-            this.button_Continue_remont_act_excel.Name = "button_Continue_remont_act_excel";
-            this.button_Continue_remont_act_excel.Size = new System.Drawing.Size(163, 29);
-            this.button_Continue_remont_act_excel.TabIndex = 36;
-            this.button_Continue_remont_act_excel.Text = "Продолжить печать";
-            this.button_Continue_remont_act_excel.UseVisualStyleBackColor = false;
-            this.button_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_excel_Click);
+            this.btn_Continue_remont_act_excel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Continue_remont_act_excel.Enabled = false;
+            this.btn_Continue_remont_act_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Continue_remont_act_excel.Location = new System.Drawing.Point(616, 413);
+            this.btn_Continue_remont_act_excel.Name = "btn_Continue_remont_act_excel";
+            this.btn_Continue_remont_act_excel.Size = new System.Drawing.Size(163, 29);
+            this.btn_Continue_remont_act_excel.TabIndex = 36;
+            this.btn_Continue_remont_act_excel.Text = "Продолжить печать";
+            this.btn_Continue_remont_act_excel.UseVisualStyleBackColor = false;
+            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_excel_Click);
             // 
-            // textBox_BE_remont
+            // txB_BE_remont
             // 
-            this.textBox_BE_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_BE_remont.Location = new System.Drawing.Point(278, 120);
-            this.textBox_BE_remont.Name = "textBox_BE_remont";
-            this.textBox_BE_remont.Size = new System.Drawing.Size(112, 29);
-            this.textBox_BE_remont.TabIndex = 35;
-            this.textBox_BE_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_BE_remont_KeyPress);
-            this.textBox_BE_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_BE_remont_KeyUp);
+            this.txB_BE_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_BE_remont.Location = new System.Drawing.Point(278, 120);
+            this.txB_BE_remont.Name = "txB_BE_remont";
+            this.txB_BE_remont.Size = new System.Drawing.Size(112, 29);
+            this.txB_BE_remont.TabIndex = 35;
+            this.txB_BE_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_BE_remont_KeyPress);
+            this.txB_BE_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_BE_remont_KeyUp);
             // 
-            // button_close_remont_panel
+            // btn_close_remont_panel
             // 
-            this.button_close_remont_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_remont_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_remont_panel.Location = new System.Drawing.Point(767, 4);
-            this.button_close_remont_panel.Name = "button_close_remont_panel";
-            this.button_close_remont_panel.Size = new System.Drawing.Size(30, 29);
-            this.button_close_remont_panel.TabIndex = 34;
-            this.button_close_remont_panel.Text = "X";
-            this.button_close_remont_panel.UseVisualStyleBackColor = false;
-            this.button_close_remont_panel.Click += new System.EventHandler(this.Button_close_remont_panel_Click);
+            this.btn_close_remont_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_remont_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_remont_panel.Location = new System.Drawing.Point(767, 4);
+            this.btn_close_remont_panel.Name = "btn_close_remont_panel";
+            this.btn_close_remont_panel.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_remont_panel.TabIndex = 34;
+            this.btn_close_remont_panel.Text = "X";
+            this.btn_close_remont_panel.UseVisualStyleBackColor = false;
+            this.btn_close_remont_panel.Click += new System.EventHandler(this.Button_close_remont_panel_Click);
             // 
             // label_company_remont
             // 
@@ -707,65 +701,65 @@
             this.label_company_remont.TabIndex = 33;
             this.label_company_remont.Text = "ДЦС-1";
             // 
-            // textBox_3_post_remont_company
+            // txB_3_post_remont_company
             // 
-            this.textBox_3_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_3_post_remont_company.Location = new System.Drawing.Point(407, 378);
-            this.textBox_3_post_remont_company.Name = "textBox_3_post_remont_company";
-            this.textBox_3_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_3_post_remont_company.TabIndex = 32;
-            this.textBox_3_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_post_remont_company_KeyPress);
-            this.textBox_3_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_post_remont_company_KeyUp);
+            this.txB_3_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_3_post_remont_company.Location = new System.Drawing.Point(407, 378);
+            this.txB_3_post_remont_company.Name = "txB_3_post_remont_company";
+            this.txB_3_post_remont_company.Size = new System.Drawing.Size(372, 29);
+            this.txB_3_post_remont_company.TabIndex = 32;
+            this.txB_3_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_post_remont_company_KeyPress);
+            this.txB_3_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_post_remont_company_KeyUp);
             // 
-            // textBox_3_FIO_remont_company
+            // txB_3_FIO_remont_company
             // 
-            this.textBox_3_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_3_FIO_remont_company.Location = new System.Drawing.Point(167, 378);
-            this.textBox_3_FIO_remont_company.Name = "textBox_3_FIO_remont_company";
-            this.textBox_3_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_3_FIO_remont_company.TabIndex = 31;
-            this.textBox_3_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_FIO_remont_company_KeyPress);
-            this.textBox_3_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_FIO_remont_company_KeyUp);
+            this.txB_3_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_3_FIO_remont_company.Location = new System.Drawing.Point(167, 378);
+            this.txB_3_FIO_remont_company.Name = "txB_3_FIO_remont_company";
+            this.txB_3_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
+            this.txB_3_FIO_remont_company.TabIndex = 31;
+            this.txB_3_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_3_FIO_remont_company_KeyPress);
+            this.txB_3_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_3_FIO_remont_company_KeyUp);
             // 
-            // textBox_2_post_remont_company
+            // txB_2_post_remont_company
             // 
-            this.textBox_2_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_2_post_remont_company.Location = new System.Drawing.Point(407, 338);
-            this.textBox_2_post_remont_company.Name = "textBox_2_post_remont_company";
-            this.textBox_2_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_2_post_remont_company.TabIndex = 30;
-            this.textBox_2_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_post_remont_company_KeyPress);
-            this.textBox_2_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_post_remont_company_KeyUp);
+            this.txB_2_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_2_post_remont_company.Location = new System.Drawing.Point(407, 338);
+            this.txB_2_post_remont_company.Name = "txB_2_post_remont_company";
+            this.txB_2_post_remont_company.Size = new System.Drawing.Size(372, 29);
+            this.txB_2_post_remont_company.TabIndex = 30;
+            this.txB_2_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_post_remont_company_KeyPress);
+            this.txB_2_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_post_remont_company_KeyUp);
             // 
-            // textBox_2_FIO_remont_company
+            // txB_2_FIO_remont_company
             // 
-            this.textBox_2_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_2_FIO_remont_company.Location = new System.Drawing.Point(167, 338);
-            this.textBox_2_FIO_remont_company.Name = "textBox_2_FIO_remont_company";
-            this.textBox_2_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_2_FIO_remont_company.TabIndex = 29;
-            this.textBox_2_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_FIO_remont_company_KeyPress);
-            this.textBox_2_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_FIO_remont_company_KeyUp);
+            this.txB_2_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_2_FIO_remont_company.Location = new System.Drawing.Point(167, 338);
+            this.txB_2_FIO_remont_company.Name = "txB_2_FIO_remont_company";
+            this.txB_2_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
+            this.txB_2_FIO_remont_company.TabIndex = 29;
+            this.txB_2_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_2_FIO_remont_company_KeyPress);
+            this.txB_2_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_2_FIO_remont_company_KeyUp);
             // 
-            // textBox_1_post_remont_company
+            // txB_1_post_remont_company
             // 
-            this.textBox_1_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_1_post_remont_company.Location = new System.Drawing.Point(407, 295);
-            this.textBox_1_post_remont_company.Name = "textBox_1_post_remont_company";
-            this.textBox_1_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_1_post_remont_company.TabIndex = 28;
-            this.textBox_1_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_post_remont_company_KeyPress);
-            this.textBox_1_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_post_remont_company_KeyUp);
+            this.txB_1_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_1_post_remont_company.Location = new System.Drawing.Point(407, 295);
+            this.txB_1_post_remont_company.Name = "txB_1_post_remont_company";
+            this.txB_1_post_remont_company.Size = new System.Drawing.Size(372, 29);
+            this.txB_1_post_remont_company.TabIndex = 28;
+            this.txB_1_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_post_remont_company_KeyPress);
+            this.txB_1_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_post_remont_company_KeyUp);
             // 
-            // textBox_1_FIO_remont_company
+            // txB_1_FIO_remont_company
             // 
-            this.textBox_1_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_1_FIO_remont_company.Location = new System.Drawing.Point(167, 295);
-            this.textBox_1_FIO_remont_company.Name = "textBox_1_FIO_remont_company";
-            this.textBox_1_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_1_FIO_remont_company.TabIndex = 27;
-            this.textBox_1_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_FIO_remont_company_KeyPress);
-            this.textBox_1_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_FIO_remont_company_KeyUp);
+            this.txB_1_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_1_FIO_remont_company.Location = new System.Drawing.Point(167, 295);
+            this.txB_1_FIO_remont_company.Name = "txB_1_FIO_remont_company";
+            this.txB_1_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
+            this.txB_1_FIO_remont_company.TabIndex = 27;
+            this.txB_1_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_1_FIO_remont_company_KeyPress);
+            this.txB_1_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_1_FIO_remont_company_KeyUp);
             // 
             // label15
             // 
@@ -800,25 +794,25 @@
             this.label12.TabIndex = 24;
             this.label12.Text = "1 член Ком.:";
             // 
-            // textBox_chairman_post_remont_company
+            // txB_chairman_post_remont_company
             // 
-            this.textBox_chairman_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_chairman_post_remont_company.Location = new System.Drawing.Point(407, 249);
-            this.textBox_chairman_post_remont_company.Name = "textBox_chairman_post_remont_company";
-            this.textBox_chairman_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_chairman_post_remont_company.TabIndex = 23;
-            this.textBox_chairman_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_post_remont_company_KeyPress);
-            this.textBox_chairman_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_post_remont_company_KeyUp);
+            this.txB_chairman_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_chairman_post_remont_company.Location = new System.Drawing.Point(407, 249);
+            this.txB_chairman_post_remont_company.Name = "txB_chairman_post_remont_company";
+            this.txB_chairman_post_remont_company.Size = new System.Drawing.Size(372, 29);
+            this.txB_chairman_post_remont_company.TabIndex = 23;
+            this.txB_chairman_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_post_remont_company_KeyPress);
+            this.txB_chairman_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_post_remont_company_KeyUp);
             // 
-            // textBox_chairman_FIO_remont_company
+            // txB_chairman_FIO_remont_company
             // 
-            this.textBox_chairman_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_chairman_FIO_remont_company.Location = new System.Drawing.Point(167, 249);
-            this.textBox_chairman_FIO_remont_company.Name = "textBox_chairman_FIO_remont_company";
-            this.textBox_chairman_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_chairman_FIO_remont_company.TabIndex = 22;
-            this.textBox_chairman_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_FIO_remont_company_KeyPress);
-            this.textBox_chairman_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_FIO_remont_company_KeyUp);
+            this.txB_chairman_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_chairman_FIO_remont_company.Location = new System.Drawing.Point(167, 249);
+            this.txB_chairman_FIO_remont_company.Name = "txB_chairman_FIO_remont_company";
+            this.txB_chairman_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
+            this.txB_chairman_FIO_remont_company.TabIndex = 22;
+            this.txB_chairman_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_chairman_FIO_remont_company_KeyPress);
+            this.txB_chairman_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_chairman_FIO_remont_company_KeyUp);
             // 
             // label11
             // 
@@ -853,25 +847,25 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "ОКПО:";
             // 
-            // textBox_OKPO_remont
+            // txB_OKPO_remont
             // 
-            this.textBox_OKPO_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_OKPO_remont.Location = new System.Drawing.Point(113, 120);
-            this.textBox_OKPO_remont.Name = "textBox_OKPO_remont";
-            this.textBox_OKPO_remont.Size = new System.Drawing.Size(112, 29);
-            this.textBox_OKPO_remont.TabIndex = 17;
-            this.textBox_OKPO_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_OKPO_remont_KeyPress);
-            this.textBox_OKPO_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_OKPO_remont_KeyUp);
+            this.txB_OKPO_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_OKPO_remont.Location = new System.Drawing.Point(113, 120);
+            this.txB_OKPO_remont.Name = "txB_OKPO_remont";
+            this.txB_OKPO_remont.Size = new System.Drawing.Size(112, 29);
+            this.txB_OKPO_remont.TabIndex = 17;
+            this.txB_OKPO_remont.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_OKPO_remont_KeyPress);
+            this.txB_OKPO_remont.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_OKPO_remont_KeyUp);
             // 
-            // textBox_director_post_remont_company
+            // txB_director_post_remont_company
             // 
-            this.textBox_director_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_director_post_remont_company.Location = new System.Drawing.Point(407, 203);
-            this.textBox_director_post_remont_company.Name = "textBox_director_post_remont_company";
-            this.textBox_director_post_remont_company.Size = new System.Drawing.Size(372, 29);
-            this.textBox_director_post_remont_company.TabIndex = 16;
-            this.textBox_director_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_post_remont_company_KeyPress);
-            this.textBox_director_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_post_remont_company_KeyUp);
+            this.txB_director_post_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_director_post_remont_company.Location = new System.Drawing.Point(407, 203);
+            this.txB_director_post_remont_company.Name = "txB_director_post_remont_company";
+            this.txB_director_post_remont_company.Size = new System.Drawing.Size(372, 29);
+            this.txB_director_post_remont_company.TabIndex = 16;
+            this.txB_director_post_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_post_remont_company_KeyPress);
+            this.txB_director_post_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_post_remont_company_KeyUp);
             // 
             // label6
             // 
@@ -895,16 +889,16 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Руководитель:";
             // 
-            // textBox_Full_name_company
+            // txB_Full_name_company
             // 
-            this.textBox_Full_name_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Full_name_company.Location = new System.Drawing.Point(407, 73);
-            this.textBox_Full_name_company.Multiline = true;
-            this.textBox_Full_name_company.Name = "textBox_Full_name_company";
-            this.textBox_Full_name_company.Size = new System.Drawing.Size(372, 76);
-            this.textBox_Full_name_company.TabIndex = 13;
-            this.textBox_Full_name_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Full_name_company_KeyPress);
-            this.textBox_Full_name_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_Full_name_company_KeyUp);
+            this.txB_Full_name_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_Full_name_company.Location = new System.Drawing.Point(407, 73);
+            this.txB_Full_name_company.Multiline = true;
+            this.txB_Full_name_company.Name = "txB_Full_name_company";
+            this.txB_Full_name_company.Size = new System.Drawing.Size(372, 76);
+            this.txB_Full_name_company.TabIndex = 13;
+            this.txB_Full_name_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_Full_name_company_KeyPress);
+            this.txB_Full_name_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_Full_name_company_KeyUp);
             // 
             // label3
             // 
@@ -917,15 +911,15 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Полное наименование предприятия:";
             // 
-            // textBox_director_FIO_remont_company
+            // txB_director_FIO_remont_company
             // 
-            this.textBox_director_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_director_FIO_remont_company.Location = new System.Drawing.Point(167, 203);
-            this.textBox_director_FIO_remont_company.Name = "textBox_director_FIO_remont_company";
-            this.textBox_director_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
-            this.textBox_director_FIO_remont_company.TabIndex = 11;
-            this.textBox_director_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_FIO_remont_company_KeyPress);
-            this.textBox_director_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_FIO_remont_company_KeyUp);
+            this.txB_director_FIO_remont_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_director_FIO_remont_company.Location = new System.Drawing.Point(167, 203);
+            this.txB_director_FIO_remont_company.Name = "txB_director_FIO_remont_company";
+            this.txB_director_FIO_remont_company.Size = new System.Drawing.Size(224, 29);
+            this.txB_director_FIO_remont_company.TabIndex = 11;
+            this.txB_director_FIO_remont_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_director_FIO_remont_company_KeyPress);
+            this.txB_director_FIO_remont_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_director_FIO_remont_company_KeyUp);
             // 
             // label4
             // 
@@ -938,18 +932,18 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "ФИО";
             // 
-            // button_information_remont_company_regedit
+            // btn_information_remont_company_regedit
             // 
-            this.button_information_remont_company_regedit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_information_remont_company_regedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_information_remont_company_regedit.Location = new System.Drawing.Point(406, 413);
-            this.button_information_remont_company_regedit.Name = "button_information_remont_company_regedit";
-            this.button_information_remont_company_regedit.Size = new System.Drawing.Size(160, 29);
-            this.button_information_remont_company_regedit.TabIndex = 8;
-            this.button_information_remont_company_regedit.Text = "Записать данные";
-            this.button_information_remont_company_regedit.UseVisualStyleBackColor = false;
-            this.button_information_remont_company_regedit.Click += new System.EventHandler(this.Button_information_remont_company_regedit_Click);
-            this.button_information_remont_company_regedit.MouseLeave += new System.EventHandler(this.Button_information_remont_company_regedit_MouseLeave);
+            this.btn_information_remont_company_regedit.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_information_remont_company_regedit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_information_remont_company_regedit.Location = new System.Drawing.Point(406, 413);
+            this.btn_information_remont_company_regedit.Name = "btn_information_remont_company_regedit";
+            this.btn_information_remont_company_regedit.Size = new System.Drawing.Size(160, 29);
+            this.btn_information_remont_company_regedit.TabIndex = 8;
+            this.btn_information_remont_company_regedit.Text = "Записать данные";
+            this.btn_information_remont_company_regedit.UseVisualStyleBackColor = false;
+            this.btn_information_remont_company_regedit.Click += new System.EventHandler(this.Button_information_remont_company_regedit_Click);
+            this.btn_information_remont_company_regedit.MouseLeave += new System.EventHandler(this.Button_information_remont_company_regedit_MouseLeave);
             // 
             // label_information_remont_pp
             // 
@@ -1441,15 +1435,15 @@
             this.txB_company.Size = new System.Drawing.Size(35, 26);
             this.txB_company.TabIndex = 10;
             // 
-            // textBox_serialNumber
+            // txB_serialNumber
             // 
-            this.textBox_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_serialNumber.Location = new System.Drawing.Point(12, 108);
-            this.textBox_serialNumber.Name = "textBox_serialNumber";
-            this.textBox_serialNumber.ReadOnly = true;
-            this.textBox_serialNumber.Size = new System.Drawing.Size(235, 26);
-            this.textBox_serialNumber.TabIndex = 11;
-            this.textBox_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_serialNumber.Location = new System.Drawing.Point(12, 108);
+            this.txB_serialNumber.Name = "txB_serialNumber";
+            this.txB_serialNumber.ReadOnly = true;
+            this.txB_serialNumber.Size = new System.Drawing.Size(235, 26);
+            this.txB_serialNumber.TabIndex = 11;
+            this.txB_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // toolTip1
             // 
@@ -1466,32 +1460,32 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
-            this.panel1.Controls.Add(this.button_all_BD);
+            this.panel1.Controls.Add(this.btn_all_BD);
             this.panel1.Controls.Add(this.cmB_city);
-            this.panel1.Controls.Add(this.pictureBox_seach_datadrid_replay);
+            this.panel1.Controls.Add(this.picB_seach_datadrid_replay);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.lbL_polinon_full);
-            this.panel1.Controls.Add(this.button_remont_act);
+            this.panel1.Controls.Add(this.btn_remont_act);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label30);
-            this.panel1.Controls.Add(this.button_form_act);
-            this.panel1.Controls.Add(this.textBox_serialNumber);
-            this.panel1.Controls.Add(this.button_new_add_rst_form);
+            this.panel1.Controls.Add(this.btn_form_act);
+            this.panel1.Controls.Add(this.txB_serialNumber);
+            this.panel1.Controls.Add(this.btn_new_add_rst_form);
             this.panel1.Controls.Add(this.label29);
             this.panel1.Controls.Add(this.label28);
             this.panel1.Controls.Add(this.lbL_FIO_Engineer);
             this.panel1.Controls.Add(this.label24);
-            this.panel1.Controls.Add(this.button_add_city);
-            this.panel1.Controls.Add(this.button_seach_BD_city);
-            this.panel1.Controls.Add(this.button_search);
+            this.panel1.Controls.Add(this.btn_add_city);
+            this.panel1.Controls.Add(this.btn_seach_BD_city);
+            this.panel1.Controls.Add(this.btn_search);
             this.panel1.Controls.Add(this.cmB_seach);
             this.panel1.Controls.Add(this.lbL_doverennost);
             this.panel1.Controls.Add(this.lbL_FIO_chief);
             this.panel1.Controls.Add(this.txB_numberAct);
             this.panel1.Controls.Add(this.textBox_search);
-            this.panel1.Controls.Add(this.pictureBox2_update);
-            this.panel1.Controls.Add(this.pictureBox1_clear);
+            this.panel1.Controls.Add(this.picB_update);
+            this.panel1.Controls.Add(this.picB_clear);
             this.panel1.Controls.Add(this.txB_numberActRemont);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -1514,18 +1508,18 @@
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
             // 
-            // button_all_BD
+            // btn_all_BD
             // 
-            this.button_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_all_BD.Location = new System.Drawing.Point(254, 107);
-            this.button_all_BD.Name = "button_all_BD";
-            this.button_all_BD.Size = new System.Drawing.Size(64, 29);
-            this.button_all_BD.TabIndex = 78;
-            this.button_all_BD.Text = "FULL BD";
-            this.button_all_BD.UseVisualStyleBackColor = false;
-            this.button_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
+            this.btn_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_all_BD.Location = new System.Drawing.Point(254, 107);
+            this.btn_all_BD.Name = "btn_all_BD";
+            this.btn_all_BD.Size = new System.Drawing.Size(64, 29);
+            this.btn_all_BD.TabIndex = 78;
+            this.btn_all_BD.Text = "FULL BD";
+            this.btn_all_BD.UseVisualStyleBackColor = false;
+            this.btn_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
             // 
             // cmB_city
             // 
@@ -1540,17 +1534,17 @@
             this.cmB_city.TabIndex = 77;
             this.cmB_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
             // 
-            // pictureBox_seach_datadrid_replay
+            // picB_seach_datadrid_replay
             // 
-            this.pictureBox_seach_datadrid_replay.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_seach_datadrid_replay.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.data_analysis_icon_icons_com_52842;
-            this.pictureBox_seach_datadrid_replay.Location = new System.Drawing.Point(269, 69);
-            this.pictureBox_seach_datadrid_replay.Name = "pictureBox_seach_datadrid_replay";
-            this.pictureBox_seach_datadrid_replay.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox_seach_datadrid_replay.TabIndex = 76;
-            this.pictureBox_seach_datadrid_replay.TabStop = false;
-            this.pictureBox_seach_datadrid_replay.Click += new System.EventHandler(this.PictureBox_seach_datadrid_replay_Click);
-            this.pictureBox_seach_datadrid_replay.MouseEnter += new System.EventHandler(this.PictureBox_seach_datadrid_replay_MouseEnter);
+            this.picB_seach_datadrid_replay.BackColor = System.Drawing.Color.Transparent;
+            this.picB_seach_datadrid_replay.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.data_analysis_icon_icons_com_52842;
+            this.picB_seach_datadrid_replay.Location = new System.Drawing.Point(269, 69);
+            this.picB_seach_datadrid_replay.Name = "picB_seach_datadrid_replay";
+            this.picB_seach_datadrid_replay.Size = new System.Drawing.Size(32, 32);
+            this.picB_seach_datadrid_replay.TabIndex = 76;
+            this.picB_seach_datadrid_replay.TabStop = false;
+            this.picB_seach_datadrid_replay.Click += new System.EventHandler(this.PictureBox_seach_datadrid_replay_Click);
+            this.picB_seach_datadrid_replay.MouseEnter += new System.EventHandler(this.PictureBox_seach_datadrid_replay_MouseEnter);
             // 
             // label16
             // 
@@ -1577,19 +1571,19 @@
             this.lbL_polinon_full.MouseEnter += new System.EventHandler(this.Label_polinon_full_MouseEnter);
             this.lbL_polinon_full.MouseLeave += new System.EventHandler(this.Label_polinon_full_MouseLeave);
             // 
-            // button_remont_act
+            // btn_remont_act
             // 
-            this.button_remont_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_remont_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_remont_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_remont_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_remont_act.Location = new System.Drawing.Point(1279, 87);
-            this.button_remont_act.Name = "button_remont_act";
-            this.button_remont_act.Size = new System.Drawing.Size(137, 29);
-            this.button_remont_act.TabIndex = 73;
-            this.button_remont_act.Text = "сформировать";
-            this.button_remont_act.UseVisualStyleBackColor = false;
-            this.button_remont_act.Click += new System.EventHandler(this.Button_remont_act_Click);
+            this.btn_remont_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_remont_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_remont_act.Location = new System.Drawing.Point(1279, 87);
+            this.btn_remont_act.Name = "btn_remont_act";
+            this.btn_remont_act.Size = new System.Drawing.Size(137, 29);
+            this.btn_remont_act.TabIndex = 73;
+            this.btn_remont_act.Text = "сформировать";
+            this.btn_remont_act.UseVisualStyleBackColor = false;
+            this.btn_remont_act.Click += new System.EventHandler(this.Button_remont_act_Click);
             // 
             // label_act_remont
             // 
@@ -1628,31 +1622,31 @@
             this.label30.TabIndex = 21;
             this.label30.Text = "Доверенность:";
             // 
-            // button_form_act
+            // btn_form_act
             // 
-            this.button_form_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_form_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_form_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_form_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_form_act.Location = new System.Drawing.Point(1279, 50);
-            this.button_form_act.Name = "button_form_act";
-            this.button_form_act.Size = new System.Drawing.Size(137, 31);
-            this.button_form_act.TabIndex = 8;
-            this.button_form_act.Text = "сформировать";
-            this.button_form_act.UseVisualStyleBackColor = false;
-            this.button_form_act.Click += new System.EventHandler(this.Button_form_act_Click);
+            this.btn_form_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_form_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_form_act.Location = new System.Drawing.Point(1279, 50);
+            this.btn_form_act.Name = "btn_form_act";
+            this.btn_form_act.Size = new System.Drawing.Size(137, 31);
+            this.btn_form_act.TabIndex = 8;
+            this.btn_form_act.Text = "сформировать";
+            this.btn_form_act.UseVisualStyleBackColor = false;
+            this.btn_form_act.Click += new System.EventHandler(this.Button_form_act_Click);
             // 
-            // button_new_add_rst_form
+            // btn_new_add_rst_form
             // 
-            this.button_new_add_rst_form.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_new_add_rst_form.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_new_add_rst_form.Location = new System.Drawing.Point(12, 69);
-            this.button_new_add_rst_form.Name = "button_new_add_rst_form";
-            this.button_new_add_rst_form.Size = new System.Drawing.Size(236, 33);
-            this.button_new_add_rst_form.TabIndex = 6;
-            this.button_new_add_rst_form.Text = "Добавить новую радиостанцию";
-            this.button_new_add_rst_form.UseVisualStyleBackColor = false;
-            this.button_new_add_rst_form.Click += new System.EventHandler(this.Button_new_add_rst_form_Click);
+            this.btn_new_add_rst_form.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_new_add_rst_form.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_new_add_rst_form.Location = new System.Drawing.Point(12, 69);
+            this.btn_new_add_rst_form.Name = "btn_new_add_rst_form";
+            this.btn_new_add_rst_form.Size = new System.Drawing.Size(236, 33);
+            this.btn_new_add_rst_form.TabIndex = 6;
+            this.btn_new_add_rst_form.Text = "Добавить новую радиостанцию";
+            this.btn_new_add_rst_form.UseVisualStyleBackColor = false;
+            this.btn_new_add_rst_form.Click += new System.EventHandler(this.Button_new_add_rst_form_Click);
             // 
             // label29
             // 
@@ -1701,47 +1695,47 @@
             this.label24.TabIndex = 16;
             this.label24.Text = "Загрузка Базы данных по городу:";
             // 
-            // button_add_city
+            // btn_add_city
             // 
-            this.button_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_add_city.Location = new System.Drawing.Point(289, 34);
-            this.button_add_city.Name = "button_add_city";
-            this.button_add_city.Size = new System.Drawing.Size(29, 29);
-            this.button_add_city.TabIndex = 15;
-            this.button_add_city.Text = "+";
-            this.button_add_city.UseVisualStyleBackColor = false;
-            this.button_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
-            this.button_add_city.MouseEnter += new System.EventHandler(this.Button_add_city_click_MouseEnter);
+            this.btn_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_add_city.Location = new System.Drawing.Point(289, 34);
+            this.btn_add_city.Name = "btn_add_city";
+            this.btn_add_city.Size = new System.Drawing.Size(29, 29);
+            this.btn_add_city.TabIndex = 15;
+            this.btn_add_city.Text = "+";
+            this.btn_add_city.UseVisualStyleBackColor = false;
+            this.btn_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
+            this.btn_add_city.MouseEnter += new System.EventHandler(this.Button_add_city_click_MouseEnter);
             // 
-            // button_seach_BD_city
+            // btn_seach_BD_city
             // 
-            this.button_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seach_BD_city.Location = new System.Drawing.Point(254, 34);
-            this.button_seach_BD_city.Name = "button_seach_BD_city";
-            this.button_seach_BD_city.Size = new System.Drawing.Size(29, 29);
-            this.button_seach_BD_city.TabIndex = 14;
-            this.button_seach_BD_city.Text = "...";
-            this.button_seach_BD_city.UseVisualStyleBackColor = false;
-            this.button_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
-            this.button_seach_BD_city.MouseEnter += new System.EventHandler(this.Button_seach_BD_city_Click_MouseEnter);
+            this.btn_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_seach_BD_city.Location = new System.Drawing.Point(254, 34);
+            this.btn_seach_BD_city.Name = "btn_seach_BD_city";
+            this.btn_seach_BD_city.Size = new System.Drawing.Size(29, 29);
+            this.btn_seach_BD_city.TabIndex = 14;
+            this.btn_seach_BD_city.Text = "...";
+            this.btn_seach_BD_city.UseVisualStyleBackColor = false;
+            this.btn_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
+            this.btn_seach_BD_city.MouseEnter += new System.EventHandler(this.Button_seach_BD_city_Click_MouseEnter);
             // 
-            // button_search
+            // btn_search
             // 
-            this.button_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_search.Location = new System.Drawing.Point(1387, 11);
-            this.button_search.Name = "button_search";
-            this.button_search.Size = new System.Drawing.Size(29, 29);
-            this.button_search.TabIndex = 13;
-            this.button_search.Text = "...";
-            this.button_search.UseVisualStyleBackColor = false;
-            this.button_search.Click += new System.EventHandler(this.Button_search_Click);
-            this.button_search.MouseEnter += new System.EventHandler(this.Button_search_click_MouseEnter);
+            this.btn_search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_search.Location = new System.Drawing.Point(1387, 11);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(29, 29);
+            this.btn_search.TabIndex = 13;
+            this.btn_search.Text = "...";
+            this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.Button_search_Click);
+            this.btn_search.MouseEnter += new System.EventHandler(this.Button_search_click_MouseEnter);
             // 
             // cmB_seach
             // 
@@ -1821,33 +1815,33 @@
             this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
             this.textBox_search.MouseEnter += new System.EventHandler(this.TextBox_search_MouseEnter);
             // 
-            // pictureBox2_update
+            // picB_update
             // 
-            this.pictureBox2_update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picB_update.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2_update.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
-            this.pictureBox2_update.Location = new System.Drawing.Point(952, 59);
-            this.pictureBox2_update.Name = "pictureBox2_update";
-            this.pictureBox2_update.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2_update.TabIndex = 2;
-            this.pictureBox2_update.TabStop = false;
-            this.pictureBox2_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
-            this.pictureBox2_update.MouseEnter += new System.EventHandler(this.PictureBox2_update_MouseEnter);
+            this.picB_update.BackColor = System.Drawing.Color.Transparent;
+            this.picB_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
+            this.picB_update.Location = new System.Drawing.Point(952, 59);
+            this.picB_update.Name = "picB_update";
+            this.picB_update.Size = new System.Drawing.Size(50, 50);
+            this.picB_update.TabIndex = 2;
+            this.picB_update.TabStop = false;
+            this.picB_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
+            this.picB_update.MouseEnter += new System.EventHandler(this.PictureBox2_update_MouseEnter);
             // 
-            // pictureBox1_clear
+            // picB_clear
             // 
-            this.pictureBox1_clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.picB_clear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1_clear.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
-            this.pictureBox1_clear.Location = new System.Drawing.Point(1008, 59);
-            this.pictureBox1_clear.Name = "pictureBox1_clear";
-            this.pictureBox1_clear.Size = new System.Drawing.Size(47, 50);
-            this.pictureBox1_clear.TabIndex = 1;
-            this.pictureBox1_clear.TabStop = false;
-            this.pictureBox1_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
-            this.pictureBox1_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
+            this.picB_clear.BackColor = System.Drawing.Color.Transparent;
+            this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
+            this.picB_clear.Location = new System.Drawing.Point(1008, 59);
+            this.picB_clear.Name = "picB_clear";
+            this.picB_clear.Size = new System.Drawing.Size(47, 50);
+            this.picB_clear.TabIndex = 1;
+            this.picB_clear.TabStop = false;
+            this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
+            this.picB_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
             // 
             // txB_numberActRemont
             // 
@@ -2153,10 +2147,10 @@
             this.panel_info_phone_FIO.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_info_phone_FIO.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_info_phone_FIO.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_info_phone_FIO.Controls.Add(this.panel_textbox_FIO_phoneNumber);
+            this.panel_info_phone_FIO.Controls.Add(this.panel_txB_FIO_phoneNumber);
             this.panel_info_phone_FIO.Controls.Add(this.label31);
-            this.panel_info_phone_FIO.Controls.Add(this.button_close_panel_info_phone_FIO);
-            this.panel_info_phone_FIO.Controls.Add(this.panel_textbox_FIO_representative);
+            this.panel_info_phone_FIO.Controls.Add(this.btn_close_panel_info_phone_FIO);
+            this.panel_info_phone_FIO.Controls.Add(this.panel_txB_FIO_representative);
             this.panel_info_phone_FIO.Controls.Add(this.label21);
             this.panel_info_phone_FIO.Enabled = false;
             this.panel_info_phone_FIO.Location = new System.Drawing.Point(487, 380);
@@ -2165,15 +2159,15 @@
             this.panel_info_phone_FIO.TabIndex = 38;
             this.panel_info_phone_FIO.Visible = false;
             // 
-            // panel_textbox_FIO_phoneNumber
+            // panel_txB_FIO_phoneNumber
             // 
-            this.panel_textbox_FIO_phoneNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_textbox_FIO_phoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel_textbox_FIO_phoneNumber.Location = new System.Drawing.Point(164, 81);
-            this.panel_textbox_FIO_phoneNumber.Name = "panel_textbox_FIO_phoneNumber";
-            this.panel_textbox_FIO_phoneNumber.ReadOnly = true;
-            this.panel_textbox_FIO_phoneNumber.Size = new System.Drawing.Size(232, 29);
-            this.panel_textbox_FIO_phoneNumber.TabIndex = 39;
+            this.panel_txB_FIO_phoneNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel_txB_FIO_phoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.panel_txB_FIO_phoneNumber.Location = new System.Drawing.Point(164, 81);
+            this.panel_txB_FIO_phoneNumber.Name = "panel_txB_FIO_phoneNumber";
+            this.panel_txB_FIO_phoneNumber.ReadOnly = true;
+            this.panel_txB_FIO_phoneNumber.Size = new System.Drawing.Size(232, 29);
+            this.panel_txB_FIO_phoneNumber.TabIndex = 39;
             // 
             // label31
             // 
@@ -2186,27 +2180,27 @@
             this.label31.TabIndex = 38;
             this.label31.Text = "Телефон:";
             // 
-            // button_close_panel_info_phone_FIO
+            // btn_close_panel_info_phone_FIO
             // 
-            this.button_close_panel_info_phone_FIO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_info_phone_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_info_phone_FIO.Location = new System.Drawing.Point(433, 5);
-            this.button_close_panel_info_phone_FIO.Name = "button_close_panel_info_phone_FIO";
-            this.button_close_panel_info_phone_FIO.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_info_phone_FIO.TabIndex = 34;
-            this.button_close_panel_info_phone_FIO.Text = "X";
-            this.button_close_panel_info_phone_FIO.UseVisualStyleBackColor = false;
-            this.button_close_panel_info_phone_FIO.Click += new System.EventHandler(this.Button_close_panel_info_phone_FIO_Click);
+            this.btn_close_panel_info_phone_FIO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_info_phone_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_info_phone_FIO.Location = new System.Drawing.Point(433, 5);
+            this.btn_close_panel_info_phone_FIO.Name = "btn_close_panel_info_phone_FIO";
+            this.btn_close_panel_info_phone_FIO.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_info_phone_FIO.TabIndex = 34;
+            this.btn_close_panel_info_phone_FIO.Text = "X";
+            this.btn_close_panel_info_phone_FIO.UseVisualStyleBackColor = false;
+            this.btn_close_panel_info_phone_FIO.Click += new System.EventHandler(this.Button_close_panel_info_phone_FIO_Click);
             // 
-            // panel_textbox_FIO_representative
+            // panel_txB_FIO_representative
             // 
-            this.panel_textbox_FIO_representative.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel_textbox_FIO_representative.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.panel_textbox_FIO_representative.Location = new System.Drawing.Point(164, 38);
-            this.panel_textbox_FIO_representative.Name = "panel_textbox_FIO_representative";
-            this.panel_textbox_FIO_representative.ReadOnly = true;
-            this.panel_textbox_FIO_representative.Size = new System.Drawing.Size(232, 29);
-            this.panel_textbox_FIO_representative.TabIndex = 37;
+            this.panel_txB_FIO_representative.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel_txB_FIO_representative.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.panel_txB_FIO_representative.Location = new System.Drawing.Point(164, 38);
+            this.panel_txB_FIO_representative.Name = "panel_txB_FIO_representative";
+            this.panel_txB_FIO_representative.ReadOnly = true;
+            this.panel_txB_FIO_representative.Size = new System.Drawing.Size(232, 29);
+            this.panel_txB_FIO_representative.TabIndex = 37;
             // 
             // label21
             // 
@@ -2230,40 +2224,40 @@
             this.label37.TabIndex = 6;
             this.label37.Text = "Поиск:";
             // 
-            // textBox_seach_panel_seach_datagrid
+            // txB_seach_panel_seach_datagrid
             // 
-            this.textBox_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_seach_panel_seach_datagrid.Location = new System.Drawing.Point(119, 49);
-            this.textBox_seach_panel_seach_datagrid.Name = "textBox_seach_panel_seach_datagrid";
-            this.textBox_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
-            this.textBox_seach_panel_seach_datagrid.TabIndex = 37;
-            this.textBox_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
-            this.textBox_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
-            this.textBox_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
+            this.txB_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_seach_panel_seach_datagrid.Location = new System.Drawing.Point(119, 49);
+            this.txB_seach_panel_seach_datagrid.Name = "txB_seach_panel_seach_datagrid";
+            this.txB_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
+            this.txB_seach_panel_seach_datagrid.TabIndex = 37;
+            this.txB_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
+            this.txB_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
+            this.txB_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
             // 
-            // button_close_panel_seach_datagrid
+            // btn_close_panel_seach_datagrid
             // 
-            this.button_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
-            this.button_close_panel_seach_datagrid.Name = "button_close_panel_seach_datagrid";
-            this.button_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
-            this.button_close_panel_seach_datagrid.TabIndex = 34;
-            this.button_close_panel_seach_datagrid.Text = "X";
-            this.button_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
+            this.btn_close_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_seach_datagrid.Location = new System.Drawing.Point(495, 2);
+            this.btn_close_panel_seach_datagrid.Name = "btn_close_panel_seach_datagrid";
+            this.btn_close_panel_seach_datagrid.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_seach_datagrid.TabIndex = 34;
+            this.btn_close_panel_seach_datagrid.Text = "X";
+            this.btn_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.btn_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
             // 
-            // button_seach_panel_seach_datagrid
+            // btn_seach_panel_seach_datagrid
             // 
-            this.button_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
-            this.button_seach_panel_seach_datagrid.Name = "button_seach_panel_seach_datagrid";
-            this.button_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
-            this.button_seach_panel_seach_datagrid.TabIndex = 36;
-            this.button_seach_panel_seach_datagrid.Text = "Поиск";
-            this.button_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.button_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
+            this.btn_seach_panel_seach_datagrid.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_seach_panel_seach_datagrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_seach_panel_seach_datagrid.Location = new System.Drawing.Point(394, 88);
+            this.btn_seach_panel_seach_datagrid.Name = "btn_seach_panel_seach_datagrid";
+            this.btn_seach_panel_seach_datagrid.Size = new System.Drawing.Size(98, 29);
+            this.btn_seach_panel_seach_datagrid.TabIndex = 36;
+            this.btn_seach_panel_seach_datagrid.Text = "Поиск";
+            this.btn_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
+            this.btn_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
             // 
             // panel_
             // 
@@ -2328,12 +2322,12 @@
             this.panel_seach_datagrid.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_seach_datagrid.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.panel_seach_datagrid.Controls.Add(this.panel_);
-            this.panel_seach_datagrid.Controls.Add(this.button_seach_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.button_close_panel_seach_datagrid);
-            this.panel_seach_datagrid.Controls.Add(this.textBox_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.btn_seach_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.btn_close_panel_seach_datagrid);
+            this.panel_seach_datagrid.Controls.Add(this.txB_seach_panel_seach_datagrid);
             this.panel_seach_datagrid.Controls.Add(this.label37);
             this.panel_seach_datagrid.Enabled = false;
-            this.panel_seach_datagrid.Location = new System.Drawing.Point(460, 380);
+            this.panel_seach_datagrid.Location = new System.Drawing.Point(460, 340);
             this.panel_seach_datagrid.Name = "panel_seach_datagrid";
             this.panel_seach_datagrid.Size = new System.Drawing.Size(528, 141);
             this.panel_seach_datagrid.TabIndex = 37;
@@ -2346,8 +2340,7 @@
             this.panel_decommissionSerialNumber.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.panel_decommissionSerialNumber.Controls.Add(this.txB_reason_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.label2);
-            this.panel_decommissionSerialNumber.Controls.Add(this.textBox_decommissionSerialNumber);
-            this.panel_decommissionSerialNumber.Controls.Add(this.panel5);
+            this.panel_decommissionSerialNumber.Controls.Add(this.txB1_decommissionSerialNumber);
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_record_decommissionSerialNumber);
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
             this.panel_decommissionSerialNumber.Controls.Add(this.label33);
@@ -2380,72 +2373,15 @@
             this.label2.TabIndex = 80;
             this.label2.Text = "Причина:";
             // 
-            // textBox_decommissionSerialNumber
+            // txB1_decommissionSerialNumber
             // 
-            this.textBox_decommissionSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txB1_decommissionSerialNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_decommissionSerialNumber.Location = new System.Drawing.Point(204, 45);
-            this.textBox_decommissionSerialNumber.Name = "textBox_decommissionSerialNumber";
-            this.textBox_decommissionSerialNumber.Size = new System.Drawing.Size(227, 29);
-            this.textBox_decommissionSerialNumber.TabIndex = 79;
-            // 
-            // panel5
-            // 
-            this.panel5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panel5.BackColor = System.Drawing.Color.SkyBlue;
-            this.panel5.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel5.Controls.Add(this.button3);
-            this.panel5.Controls.Add(this.button4);
-            this.panel5.Controls.Add(this.textBox2);
-            this.panel5.Controls.Add(this.label18);
-            this.panel5.Enabled = false;
-            this.panel5.Location = new System.Drawing.Point(359, 416);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(528, 141);
-            this.panel5.TabIndex = 38;
-            this.panel5.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(394, 88);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 29);
-            this.button3.TabIndex = 36;
-            this.button3.Text = "Поиск";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(495, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 29);
-            this.button4.TabIndex = 34;
-            this.button4.Text = "X";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(119, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(372, 29);
-            this.textBox2.TabIndex = 37;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.Location = new System.Drawing.Point(25, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 23);
-            this.label18.TabIndex = 6;
-            this.label18.Text = "Поиск:";
+            this.txB1_decommissionSerialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB1_decommissionSerialNumber.Location = new System.Drawing.Point(204, 45);
+            this.txB1_decommissionSerialNumber.Name = "txB1_decommissionSerialNumber";
+            this.txB1_decommissionSerialNumber.Size = new System.Drawing.Size(227, 29);
+            this.txB1_decommissionSerialNumber.TabIndex = 79;
             // 
             // btn_record_decommissionSerialNumber
             // 
@@ -2508,13 +2444,13 @@
             this.ClientSize = new System.Drawing.Size(1424, 729);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
-            this.Controls.Add(this.panel_info_phone_FIO);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.panel_date);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel_info_phone_FIO);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_remont_information_company);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
@@ -2541,9 +2477,9 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_seach_datadrid_replay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2_update)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1_clear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_seach_datadrid_replay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_update)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -2555,8 +2491,6 @@
             this.panel_seach_datagrid.PerformLayout();
             this.panel_decommissionSerialNumber.ResumeLayout(false);
             this.panel_decommissionSerialNumber.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
 
@@ -2564,10 +2498,10 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox1_clear;
-        private System.Windows.Forms.PictureBox pictureBox2_update;
+        private System.Windows.Forms.PictureBox picB_clear;
+        private System.Windows.Forms.PictureBox picB_update;
         private System.Windows.Forms.TextBox textBox_search;
-        private System.Windows.Forms.Button button_new_add_rst_form;
+        private System.Windows.Forms.Button btn_new_add_rst_form;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbL_count;
         private System.Windows.Forms.Label label13;
@@ -2577,26 +2511,26 @@
         private System.Windows.Forms.Label lbL_summ_remont;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lbL_count_remont;
-        private System.Windows.Forms.Button button_form_act;
+        private System.Windows.Forms.Button btn_form_act;
         private System.Windows.Forms.Panel panel_date;
         private System.Windows.Forms.Label label_dov;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox_FIO_chief;
-        private System.Windows.Forms.TextBox textBox_doverennost;
+        private System.Windows.Forms.TextBox txB_FIO_chief;
+        private System.Windows.Forms.TextBox txB_doverennost;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button button_record_date;
+        private System.Windows.Forms.Button btn_record_date;
         private System.Windows.Forms.Label lbL_FIO_chief;
         private System.Windows.Forms.Label lbL_doverennost;
         private System.Windows.Forms.Label label_GD;
-        private System.Windows.Forms.TextBox textBox_GD_city;
+        private System.Windows.Forms.TextBox txB_GD_city;
         private System.Windows.Forms.ComboBox cmB_seach;
-        private System.Windows.Forms.Button button_search;
-        private System.Windows.Forms.Button button_seach_BD_city;
-        private System.Windows.Forms.Button button_add_city;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.Button btn_seach_BD_city;
+        private System.Windows.Forms.Button btn_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lbL_FIO_Engineer;
-        private System.Windows.Forms.TextBox textBox_FIO_Engineer;
+        private System.Windows.Forms.TextBox txB_FIO_Engineer;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
@@ -2624,7 +2558,7 @@
         private System.Windows.Forms.TextBox txB_dateTO;
         private System.Windows.Forms.TextBox txB_networkNumber;
         private System.Windows.Forms.TextBox txB_inventoryNumber;
-        private System.Windows.Forms.TextBox textBox_serialNumber;
+        private System.Windows.Forms.TextBox txB_serialNumber;
         private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txB_parts_7;
@@ -2641,79 +2575,79 @@
         private System.Windows.Forms.TextBox txB_сompleted_works_3;
         private System.Windows.Forms.TextBox txB_сompleted_works_2;
         private System.Windows.Forms.TextBox txB_сompleted_works_1;
-        private System.Windows.Forms.Button button_remont_act;
+        private System.Windows.Forms.Button btn_remont_act;
         private System.Windows.Forms.Label label_act_remont;
         private System.Windows.Forms.Panel panel_remont_information_company;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox_Full_name_company;
+        private System.Windows.Forms.TextBox txB_Full_name_company;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox_director_FIO_remont_company;
+        private System.Windows.Forms.TextBox txB_director_FIO_remont_company;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button_information_remont_company_regedit;
+        private System.Windows.Forms.Button btn_information_remont_company_regedit;
         private System.Windows.Forms.Label label_information_remont_pp;
-        private System.Windows.Forms.TextBox textBox_director_post_remont_company;
+        private System.Windows.Forms.TextBox txB_director_post_remont_company;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox_OKPO_remont;
-        private System.Windows.Forms.TextBox textBox_3_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_3_FIO_remont_company;
-        private System.Windows.Forms.TextBox textBox_2_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_2_FIO_remont_company;
-        private System.Windows.Forms.TextBox textBox_1_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_1_FIO_remont_company;
+        private System.Windows.Forms.TextBox txB_OKPO_remont;
+        private System.Windows.Forms.TextBox txB_3_post_remont_company;
+        private System.Windows.Forms.TextBox txB_3_FIO_remont_company;
+        private System.Windows.Forms.TextBox txB_2_post_remont_company;
+        private System.Windows.Forms.TextBox txB_2_FIO_remont_company;
+        private System.Windows.Forms.TextBox txB_1_post_remont_company;
+        private System.Windows.Forms.TextBox txB_1_FIO_remont_company;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox_chairman_post_remont_company;
-        private System.Windows.Forms.TextBox textBox_chairman_FIO_remont_company;
+        private System.Windows.Forms.TextBox txB_chairman_post_remont_company;
+        private System.Windows.Forms.TextBox txB_chairman_FIO_remont_company;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label_company_remont;
-        private System.Windows.Forms.Button button_close_remont_panel;
-        private System.Windows.Forms.TextBox textBox_BE_remont;
-        private System.Windows.Forms.Button button_Continue_remont_act_excel;
-        private System.Windows.Forms.Button button_close_panel_date_info;
+        private System.Windows.Forms.Button btn_close_remont_panel;
+        private System.Windows.Forms.TextBox txB_BE_remont;
+        private System.Windows.Forms.Button btn_Continue_remont_act_excel;
+        private System.Windows.Forms.Button btn_close_panel_date_info;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox textBox_polinon_full;
+        private System.Windows.Forms.TextBox txB_polinon_full;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lbL_polinon_full;
-        private System.Windows.Forms.PictureBox pictureBox_seach_datadrid_replay;
+        private System.Windows.Forms.PictureBox picB_seach_datadrid_replay;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbL_cell_rows;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox_number_printing_doc_datePanel;
+        private System.Windows.Forms.TextBox txB_number_printing_doc_datePanel;
         private System.Windows.Forms.Panel Functional_loading_panel;
-        private System.Windows.Forms.Button clear_BD_current_year;
-        private System.Windows.Forms.Button loading_file_current_DB;
-        private System.Windows.Forms.Button loading_json_file_BD;
-        private System.Windows.Forms.Button close_Functional_loading_panel;
+        private System.Windows.Forms.Button btn_clear_BD_current_year;
+        private System.Windows.Forms.Button btn_loading_file_current_DB;
+        private System.Windows.Forms.Button btn_loading_json_file_BD;
+        private System.Windows.Forms.Button btn_close_Functional_loading_panel;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Button manual_backup_current_DB;
+        private System.Windows.Forms.Button btn_manual_backup_current_DB;
         private System.Windows.Forms.Button loading_file_last_year;
-        private System.Windows.Forms.Button loading_file_full_BD;
-        private System.Windows.Forms.Button button_Copying_current_BD_end_of_the_year;
+        private System.Windows.Forms.Button btn_loading_file_full_BD;
+        private System.Windows.Forms.Button btn_Copying_current_BD_end_of_the_year;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button_Uploading_JSON_file;
-        private System.Windows.Forms.Button button_Loading_file_last_year;
+        private System.Windows.Forms.Button btn_Uploading_JSON_file;
+        private System.Windows.Forms.Button btn_Loading_file_last_year;
         private System.Windows.Forms.Panel panel_info_phone_FIO;
-        private System.Windows.Forms.TextBox panel_textbox_FIO_phoneNumber;
+        private System.Windows.Forms.TextBox panel_txB_FIO_phoneNumber;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button button_close_panel_info_phone_FIO;
-        private System.Windows.Forms.TextBox panel_textbox_FIO_representative;
+        private System.Windows.Forms.Button btn_close_panel_info_phone_FIO;
+        private System.Windows.Forms.TextBox panel_txB_FIO_representative;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label lbL_sum_TO_selection;
         internal System.Windows.Forms.ComboBox cmB_city;
-        private System.Windows.Forms.Button button_all_BD;
+        private System.Windows.Forms.Button btn_all_BD;
         private System.Windows.Forms.TextBox txb_flag_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.TextBox txB_decommissionSerialNumber;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox_seach_panel_seach_datagrid;
-        private System.Windows.Forms.Button button_close_panel_seach_datagrid;
-        private System.Windows.Forms.Button button_seach_panel_seach_datagrid;
+        private System.Windows.Forms.TextBox txB_seach_panel_seach_datagrid;
+        private System.Windows.Forms.Button btn_close_panel_seach_datagrid;
+        private System.Windows.Forms.Button btn_seach_panel_seach_datagrid;
         private System.Windows.Forms.Panel panel_;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -2721,15 +2655,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel_seach_datagrid;
         private System.Windows.Forms.Panel panel_decommissionSerialNumber;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btn_record_decommissionSerialNumber;
         private System.Windows.Forms.Button btn_decommissionSerialNumber_close;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox textBox_decommissionSerialNumber;
+        private System.Windows.Forms.TextBox txB1_decommissionSerialNumber;
         private System.Windows.Forms.TextBox txB_comment;
         private System.Windows.Forms.ToolStripMenuItem закрытьToolStripMenuItem;
         private System.Windows.Forms.Label lbl_full_complete_act;
