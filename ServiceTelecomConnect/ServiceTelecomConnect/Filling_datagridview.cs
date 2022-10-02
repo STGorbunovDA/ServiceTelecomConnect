@@ -290,7 +290,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка CreateColums");
+                MessageBox.Show("Ошибка CreateColumsСurator");
             }
         }
 
@@ -305,7 +305,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка ReedSingleRow");
+                MessageBox.Show("Ошибка ReedSingleRowСurator");
             }
         }
 
@@ -549,7 +549,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ");
+                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ(Full_BD_Curator)");
                 }
             }
         }

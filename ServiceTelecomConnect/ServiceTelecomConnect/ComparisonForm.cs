@@ -108,48 +108,12 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
                 dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
-                try
-                {
-                    /// получение актов который не заполенны из реестра, которые указал пользователь
-                    RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
-                    if (reg2 != null)
-                    {
-                        RegistryKey currentUserKey = Registry.CurrentUser;
-                        RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
-                        lbl_full_complete_act.Text = helloKey.GetValue("Акты_незаполненные").ToString();
-                        if (lbl_full_complete_act.Text != "")
-                        {
-                            label_complete.Visible = true;
-                            lbl_full_complete_act.Visible = true;
-                        }
-                        helloKey.Close();
-                    }
-                    RegistryKey reg3 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
-                    if (reg3 != null)
-                    {
-                        RegistryKey currentUserKey = Registry.CurrentUser;
-                        RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
-                        lbl_Sign.Text = helloKey.GetValue("Акты_на_подпись").ToString();
-                        if (lbl_Sign.Text != "")
-                        {
-                            label_Sing.Visible = true;
-                            lbl_Sign.Visible = true;
-                        }
-                        helloKey.Close();
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки данных из реестра!(Акты_Заполняем_До_full, Акты_на_подпись)");
-                }
-
-
                 taskCity = comboBox_city.Text;// для отдельных потоков
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
                 timer.Interval = (30 * 60 * 1000); // 15 mins
-                timer.Tick += new EventHandler(TimerEventProcessor);
+                timer.Tick += new EventHandler(TimerEventProcessorCurator);
                 timer.Start();
 
                 dataGridView1.AllowUserToResizeColumns = false;
@@ -158,11 +122,11 @@ namespace ServiceTelecomConnect
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка ST_WorkForm_Load!");
+                MessageBox.Show("Ошибка ComparisonForm_Load!");
             }
         }
 
-        void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        void TimerEventProcessorCurator(Object myObject, EventArgs myEventArgs)
         {
             try
             {
