@@ -741,7 +741,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ошибка Search");
+                    MessageBox.Show("Ошибка SearchCurator");
                 }
             }
         }
@@ -938,7 +938,7 @@ namespace ServiceTelecomConnect
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ошибка Update_datagridview_number_act");
+                    MessageBox.Show("Ошибка Update_datagridview_number_act_curator");
                 }
             }
         }

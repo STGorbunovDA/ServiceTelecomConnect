@@ -842,6 +842,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region при выборе модели заполняем цену относительно модели
         private void CmB_сategory_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmB_сategory.Text == "3")
@@ -913,5 +914,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+        #endregion
     }
 }
