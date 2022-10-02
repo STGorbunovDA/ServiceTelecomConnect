@@ -59,7 +59,7 @@ namespace ServiceTelecomConnect
                 InitializeComponent();
 
                 StartPosition = FormStartPosition.CenterScreen;
-                comboBox_seach.Text = comboBox_seach.Items[2].ToString();
+                cmB_seach.Text = cmB_seach.Items[2].ToString();
 
                 dataGridView1.DoubleBuffered(true);
                 this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
@@ -88,12 +88,12 @@ namespace ServiceTelecomConnect
                     element.Enabled = false;
                 }
 
-                comboBox_city.Enabled = true;
+                cmB_city.Enabled = true;
                 button_seach_BD_city.Enabled = true;
                 button_add_city.Enabled = true;
                 button_all_BD.Enabled = true;
                 pictureBox2_update.Enabled = true;
-                comboBox_seach.Enabled = true;
+                cmB_seach.Enabled = true;
                 textBox_search.Enabled = true;
                 button_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
@@ -112,12 +112,12 @@ namespace ServiceTelecomConnect
                     element.Enabled = false;
                 }
 
-                comboBox_city.Enabled = true;
+                cmB_city.Enabled = true;
                 button_seach_BD_city.Enabled = true;
                 button_add_city.Enabled = true;
                 button_all_BD.Enabled = true;
                 pictureBox2_update.Enabled = true;
-                comboBox_seach.Enabled = true;
+                cmB_seach.Enabled = true;
                 textBox_search.Enabled = true;
                 button_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
@@ -150,8 +150,8 @@ namespace ServiceTelecomConnect
                             {
                                 adapter.Fill(city_table);
 
-                                comboBox_city.DataSource = city_table;
-                                comboBox_city.DisplayMember = "city";
+                                cmB_city.DataSource = city_table;
+                                cmB_city.DisplayMember = "city";
                                 DB.GetInstance.CloseConnection();
                             }
                         }
@@ -193,11 +193,11 @@ namespace ServiceTelecomConnect
                         textBox_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
                         textBox_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
 
-                        comboBox_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        label_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        label_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        label_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        label_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
+                        cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        lbL_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
+                        lbL_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
+                        lbL_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
+                        lbL_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
 
                         TextBox[] textBoxes = { textBox_GD_city, textBox_FIO_chief, textBox_doverennost, textBox_FIO_Engineer,
                                             textBox_polinon_full, textBox_number_printing_doc_datePanel};
@@ -215,11 +215,11 @@ namespace ServiceTelecomConnect
                     {
                         if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
                         {
-                            label_doverennost.Text = "Доверенность";
-                            label_FIO_chief.Text = "Начальник";
-                            label_FIO_Engineer.Text = "Инженер";
-                            label_FIO_Engineer.Text = "Инженер";
-                            label_polinon_full.Text = "Полигон";
+                            lbL_doverennost.Text = "Доверенность";
+                            lbL_FIO_chief.Text = "Начальник";
+                            lbL_FIO_Engineer.Text = "Инженер";
+                            lbL_FIO_Engineer.Text = "Инженер";
+                            lbL_polinon_full.Text = "Полигон";
                             textBox_number_printing_doc_datePanel.Text = "Печать";
                         }
                         else
@@ -240,7 +240,7 @@ namespace ServiceTelecomConnect
 
                 Filling_datagridview.CreateColums(dataGridView1);
                 Filling_datagridview.CreateColums(dataGridView2);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                 Counters();
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
@@ -284,7 +284,7 @@ namespace ServiceTelecomConnect
                 }
 
 
-                taskCity = comboBox_city.Text;// для отдельных потоков
+                taskCity = cmB_city.Text;// для отдельных потоков
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
@@ -339,10 +339,10 @@ namespace ServiceTelecomConnect
                     sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
                 }
 
-                label_count.Text = dataGridView1.Rows.Count.ToString();
-                label_summ.Text = sumTO.ToString();
-                label_count_remont.Text = colRemont.ToString();
-                label_summ_remont.Text = sumRemont.ToString();
+                lbL_count.Text = dataGridView1.Rows.Count.ToString();
+                lbL_summ.Text = sumTO.ToString();
+                lbL_count_remont.Text = colRemont.ToString();
+                lbL_summ_remont.Text = sumRemont.ToString();
             }
             catch (Exception)
             {
@@ -547,7 +547,7 @@ namespace ServiceTelecomConnect
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                helloKey.SetValue("Город проведения проверки", $"{comboBox_city.Text}");
+                helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
                 helloKey.Close();
             }
             catch (Exception)
@@ -570,44 +570,44 @@ namespace ServiceTelecomConnect
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = dataGridView1.Rows[selectedRow];
-                    textBox_id.Text = row.Cells[0].Value.ToString();
-                    comboBox_poligon.Text = row.Cells[1].Value.ToString();
-                    textBox_company.Text = row.Cells[2].Value.ToString();
-                    textBox_location.Text = row.Cells[3].Value.ToString();
-                    comboBox_model.Text = row.Cells[4].Value.ToString();
+                    txB_id.Text = row.Cells[0].Value.ToString();
+                    cmB_poligon.Text = row.Cells[1].Value.ToString();
+                    txB_company.Text = row.Cells[2].Value.ToString();
+                    txB_location.Text = row.Cells[3].Value.ToString();
+                    cmB_model.Text = row.Cells[4].Value.ToString();
                     textBox_serialNumber.Text = row.Cells[5].Value.ToString();
-                    textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
-                    textBox_networkNumber.Text = row.Cells[7].Value.ToString();
-                    textBox_dateTO.Text = row.Cells[8].Value.ToString();
-                    textBox_numberAct.Text = row.Cells[9].Value.ToString();
-                    textBox_city.Text = row.Cells[10].Value.ToString();
-                    textBox_price.Text = row.Cells[11].Value.ToString();
-                    textBox_representative.Text = row.Cells[12].Value.ToString();
-                    textBox_post.Text = row.Cells[13].Value.ToString();
-                    textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
-                    textBox_dateIssue.Text = row.Cells[15].Value.ToString();
-                    textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
-                    textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
-                    comboBox_сategory.Text = row.Cells[18].Value.ToString();
-                    textBox_priceRemont.Text = row.Cells[19].Value.ToString();
-                    textBox_antenna.Text = row.Cells[20].Value.ToString();
-                    textBox_manipulator.Text = row.Cells[21].Value.ToString();
-                    textBox_AKB.Text = row.Cells[22].Value.ToString();
-                    textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
-                    textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
-                    textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
-                    textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
-                    textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
-                    textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
-                    textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
-                    textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
-                    textBox_parts_1.Text = row.Cells[31].Value.ToString();
-                    textBox_parts_2.Text = row.Cells[32].Value.ToString();
-                    textBox_parts_3.Text = row.Cells[33].Value.ToString();
-                    textBox_parts_4.Text = row.Cells[34].Value.ToString();
-                    textBox_parts_5.Text = row.Cells[35].Value.ToString();
-                    textBox_parts_6.Text = row.Cells[36].Value.ToString();
-                    textBox_parts_7.Text = row.Cells[37].Value.ToString();
+                    txB_inventoryNumber.Text = row.Cells[6].Value.ToString();
+                    txB_networkNumber.Text = row.Cells[7].Value.ToString();
+                    txB_dateTO.Text = row.Cells[8].Value.ToString();
+                    txB_numberAct.Text = row.Cells[9].Value.ToString();
+                    txB_city.Text = row.Cells[10].Value.ToString();
+                    txB_price.Text = row.Cells[11].Value.ToString();
+                    txB_representative.Text = row.Cells[12].Value.ToString();
+                    txB_post.Text = row.Cells[13].Value.ToString();
+                    txB_numberIdentification.Text = row.Cells[14].Value.ToString();
+                    txB_dateIssue.Text = row.Cells[15].Value.ToString();
+                    txB_phoneNumber.Text = row.Cells[16].Value.ToString();
+                    txB_numberActRemont.Text = row.Cells[17].Value.ToString();
+                    cmB_сategory.Text = row.Cells[18].Value.ToString();
+                    txB_priceRemont.Text = row.Cells[19].Value.ToString();
+                    txB_antenna.Text = row.Cells[20].Value.ToString();
+                    txB_manipulator.Text = row.Cells[21].Value.ToString();
+                    txB_AKB.Text = row.Cells[22].Value.ToString();
+                    txB_batteryСharger.Text = row.Cells[23].Value.ToString();
+                    txB_сompleted_works_1.Text = row.Cells[24].Value.ToString();
+                    txB_сompleted_works_2.Text = row.Cells[25].Value.ToString();
+                    txB_сompleted_works_3.Text = row.Cells[26].Value.ToString();
+                    txB_сompleted_works_4.Text = row.Cells[27].Value.ToString();
+                    txB_сompleted_works_5.Text = row.Cells[28].Value.ToString();
+                    txB_сompleted_works_6.Text = row.Cells[29].Value.ToString();
+                    txB_сompleted_works_7.Text = row.Cells[30].Value.ToString();
+                    txB_parts_1.Text = row.Cells[31].Value.ToString();
+                    txB_parts_2.Text = row.Cells[32].Value.ToString();
+                    txB_parts_3.Text = row.Cells[33].Value.ToString();
+                    txB_parts_4.Text = row.Cells[34].Value.ToString();
+                    txB_parts_5.Text = row.Cells[35].Value.ToString();
+                    txB_parts_6.Text = row.Cells[36].Value.ToString();
+                    txB_parts_7.Text = row.Cells[37].Value.ToString();
                     txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
                     txB_comment.Text = row.Cells[39].Value.ToString();
                 }
@@ -675,7 +675,7 @@ namespace ServiceTelecomConnect
                 if (dataGridView1.SelectedRows.Count > 1)
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {textBox_company.Text}?";
+                    Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -685,7 +685,7 @@ namespace ServiceTelecomConnect
                 else
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -727,7 +727,7 @@ namespace ServiceTelecomConnect
                 if (dataGridView1.SelectedRows.Count > 1)
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {textBox_company.Text}?";
+                    Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -737,7 +737,7 @@ namespace ServiceTelecomConnect
                 else
                 {
                     string Mesage;
-                    Mesage = $"Вы действительно хотите удалить радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+                    Mesage = $"Вы действительно хотите удалить радиостанцию: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
@@ -749,8 +749,8 @@ namespace ServiceTelecomConnect
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                textBox_numberAct.Text = "";
+                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
 
@@ -779,7 +779,7 @@ namespace ServiceTelecomConnect
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                     Counters();
                     dataGridView1.ClearSelection();
 
@@ -792,7 +792,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (dataGridView1.Rows.Count == 0)
                 {
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                    Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                     Counters();
                 }
             }
@@ -825,21 +825,21 @@ namespace ServiceTelecomConnect
                     AddRSTForm addRSTForm = new AddRSTForm();
                     addRSTForm.DoubleBufferedForm(true);
                     addRSTForm.textBox_numberAct.Text = textBox_number_printing_doc_datePanel.Text + "/";
-                    if (textBox_city.Text == "")
+                    if (txB_city.Text == "")
                     {
-                        addRSTForm.textBox_city.Text = comboBox_city.Text;
+                        addRSTForm.textBox_city.Text = cmB_city.Text;
                     }
-                    else addRSTForm.textBox_city.Text = textBox_city.Text;
-                    addRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
-                    addRSTForm.textBox_company.Text = textBox_company.Text;
-                    addRSTForm.textBox_location.Text = textBox_location.Text;
-                    addRSTForm.comboBox_model.Text = comboBox_model.Text;
-                    addRSTForm.comboBox_model.Text = comboBox_model.Text;
-                    addRSTForm.textBox_representative.Text = textBox_representative.Text;
-                    addRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
-                    addRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
-                    addRSTForm.textBox_post.Text = textBox_post.Text;
-                    addRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
+                    else addRSTForm.textBox_city.Text = txB_city.Text;
+                    addRSTForm.comboBox_poligon.Text = cmB_poligon.Text;
+                    addRSTForm.textBox_company.Text = txB_company.Text;
+                    addRSTForm.textBox_location.Text = txB_location.Text;
+                    addRSTForm.comboBox_model.Text = cmB_model.Text;
+                    addRSTForm.comboBox_model.Text = cmB_model.Text;
+                    addRSTForm.textBox_representative.Text = txB_representative.Text;
+                    addRSTForm.textBox_numberIdentification.Text = txB_numberIdentification.Text;
+                    addRSTForm.textBox_phoneNumber.Text = txB_phoneNumber.Text;
+                    addRSTForm.textBox_post.Text = txB_post.Text;
+                    addRSTForm.textBox_dateIssue.Text = txB_dateIssue.Text;
                     if (dataGridView1.RowCount != 0)
                     {
                         this.dataGridView1.Sort(this.dataGridView1.Columns["numberAct"], ListSortDirection.Ascending);
@@ -924,7 +924,7 @@ namespace ServiceTelecomConnect
         }
         void TextBox_GD_city_Click(object sender, EventArgs e)
         {
-            textBox_company.MaxLength = 25;
+            txB_company.MaxLength = 25;
         }
         void TextBox_GD_city_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -940,7 +940,7 @@ namespace ServiceTelecomConnect
         }
         void TextBox_FIO_chief_Click(object sender, EventArgs e)
         {
-            textBox_company.MaxLength = 25;
+            txB_company.MaxLength = 25;
         }
 
         void TextBox_FIO_chief_KeyPress(object sender, KeyPressEventArgs e)
@@ -957,7 +957,7 @@ namespace ServiceTelecomConnect
         }
         void TextBox_doverennost_Click(object sender, EventArgs e)
         {
-            textBox_company.MaxLength = 25;
+            txB_company.MaxLength = 25;
         }
         void TextBox_doverennost_KeyUp(object sender, KeyEventArgs e)
         {
@@ -973,7 +973,7 @@ namespace ServiceTelecomConnect
         }
         void TextBox_FIO_Engineer_Click(object sender, EventArgs e)
         {
-            textBox_company.MaxLength = 25;
+            txB_company.MaxLength = 25;
         }
         void TextBox_FIO_Engineer_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -995,7 +995,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.ClearSelection();
 
@@ -1004,14 +1004,14 @@ namespace ServiceTelecomConnect
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                 }
                 Refresh_values_TXB_CMB(currRowIndex);
-                if (textBox_numberAct.Text != "")
+                if (txB_numberAct.Text != "")
                 {
                     dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
                 }
-                PrintDocExcel.PrintExcelActTo(dataGridView1, textBox_numberAct.Text, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
-                    label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
-                    label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                PrintDocExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                    lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+                    lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
+                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
             }
             catch (Exception)
             {
@@ -1036,14 +1036,14 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
-                PrintDocExcel.PrintExcelActRemont(dataGridView1, textBox_dateTO.Text, textBox_company.Text, textBox_location.Text,
-                     label_FIO_chief.Text, textBox_post.Text, textBox_representative.Text, textBox_numberIdentification.Text, label_FIO_Engineer.Text,
-                     label_doverennost.Text, label_polinon_full.Text, textBox_dateIssue.Text, textBox_city.Text, comboBox_poligon.Text, comboBox_сategory.Text,
-                     comboBox_model.Text, textBox_serialNumber.Text, textBox_inventoryNumber.Text, textBox_networkNumber.Text, textBox_сompleted_works_1.Text,
-                     textBox_parts_1.Text, textBox_сompleted_works_2.Text, textBox_parts_2.Text, textBox_сompleted_works_3.Text, textBox_parts_3.Text,
-                     textBox_сompleted_works_4.Text, textBox_parts_4.Text, textBox_сompleted_works_5.Text, textBox_parts_5.Text, textBox_сompleted_works_6.Text,
-                     textBox_parts_6.Text, textBox_сompleted_works_7.Text, textBox_parts_7.Text, textBox_OKPO_remont.Text, textBox_BE_remont.Text,
-                     textBox_Full_name_company.Text, textBox_director_FIO_remont_company.Text, textBox_numberActRemont.Text,
+                PrintDocExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+                     lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
+                     cmB_model.Text, textBox_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
+                     txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
+                     txB_сompleted_works_4.Text, txB_parts_4.Text, txB_сompleted_works_5.Text, txB_parts_5.Text, txB_сompleted_works_6.Text,
+                     txB_parts_6.Text, txB_сompleted_works_7.Text, txB_parts_7.Text, textBox_OKPO_remont.Text, textBox_BE_remont.Text,
+                     textBox_Full_name_company.Text, textBox_director_FIO_remont_company.Text, txB_numberActRemont.Text,
                      textBox_chairman_post_remont_company.Text, textBox_chairman_FIO_remont_company.Text, textBox_1_post_remont_company.Text,
                      textBox_1_FIO_remont_company.Text, textBox_2_post_remont_company.Text, textBox_2_FIO_remont_company.Text,
                      textBox_3_post_remont_company.Text, textBox_3_FIO_remont_company.Text);
@@ -1073,20 +1073,20 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                Filling_datagridview.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Search(dataGridView1, comboBox_seach.Text, comboBox_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            Filling_datagridview.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
         void Button_seach_BD_city_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+            Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
             Counters();
         }
 
@@ -1094,16 +1094,16 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, textBox_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
 
         void TextBox_numberAct_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (textBox_numberAct.Text != "")
+            if (txB_numberAct.Text != "")
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, comboBox_city.Text, textBox_numberAct.Text);
+                Filling_datagridview.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -1207,11 +1207,11 @@ namespace ServiceTelecomConnect
                     return;
                 }
 
-                textBox_GD_city.Text = comboBox_city.Text;
-                textBox_FIO_chief.Text = label_FIO_chief.Text;
-                textBox_doverennost.Text = label_doverennost.Text;
-                textBox_FIO_Engineer.Text = label_FIO_Engineer.Text;
-                textBox_polinon_full.Text = label_polinon_full.Text;
+                textBox_GD_city.Text = cmB_city.Text;
+                textBox_FIO_chief.Text = lbL_FIO_chief.Text;
+                textBox_doverennost.Text = lbL_doverennost.Text;
+                textBox_FIO_Engineer.Text = lbL_FIO_Engineer.Text;
+                textBox_polinon_full.Text = lbL_polinon_full.Text;
                 Block_ST_Work_Form_control();
                 panel_date.Enabled = true;
                 panel_date.Visible = true;
@@ -1227,42 +1227,42 @@ namespace ServiceTelecomConnect
         #region подсветка label_indo
         void Label_FIO_chief_MouseEnter(object sender, EventArgs e)
         {
-            label_FIO_chief.ForeColor = Color.White;
+            lbL_FIO_chief.ForeColor = Color.White;
         }
 
         void Label_FIO_chief_MouseLeave(object sender, EventArgs e)
         {
-            label_FIO_chief.ForeColor = Color.Black;
+            lbL_FIO_chief.ForeColor = Color.Black;
         }
 
         void Label_FIO_Engineer_MouseEnter(object sender, EventArgs e)
         {
-            label_FIO_Engineer.ForeColor = Color.White;
+            lbL_FIO_Engineer.ForeColor = Color.White;
         }
 
         void Label_FIO_Engineer_MouseLeave(object sender, EventArgs e)
         {
-            label_FIO_Engineer.ForeColor = Color.Black;
+            lbL_FIO_Engineer.ForeColor = Color.Black;
         }
 
         void Label_doverennost_MouseEnter(object sender, EventArgs e)
         {
-            label_doverennost.ForeColor = Color.White;
+            lbL_doverennost.ForeColor = Color.White;
         }
 
         void Label_doverennost_MouseLeave(object sender, EventArgs e)
         {
-            label_doverennost.ForeColor = Color.Black;
+            lbL_doverennost.ForeColor = Color.Black;
         }
 
         void Label_polinon_full_MouseEnter(object sender, EventArgs e)
         {
-            label_polinon_full.ForeColor = Color.White;
+            lbL_polinon_full.ForeColor = Color.White;
         }
 
         void Label_polinon_full_MouseLeave(object sender, EventArgs e)
         {
-            label_polinon_full.ForeColor = Color.Black;
+            lbL_polinon_full.ForeColor = Color.Black;
         }
         #endregion
 
@@ -1274,7 +1274,7 @@ namespace ServiceTelecomConnect
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
-                Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, textBox_city.Text);
+                Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
                 Counters();
             }
         }
@@ -1425,7 +1425,7 @@ namespace ServiceTelecomConnect
                     {
                         panel1.Enabled = true;
                         panel3.Enabled = true;
-                        Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                        Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                         Counters();
                     }
                 }
@@ -1444,13 +1444,13 @@ namespace ServiceTelecomConnect
             try
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+                Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
-                Filling_datagridview.Delete_rst_remont(textBox_numberActRemont.Text, textBox_serialNumber.Text);
+                Filling_datagridview.Delete_rst_remont(txB_numberActRemont.Text, textBox_serialNumber.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -1474,47 +1474,47 @@ namespace ServiceTelecomConnect
                         {
                             remontRSTForm.DoubleBufferedForm(true);
 
-                            remontRSTForm.comboBox_сategory.Text = comboBox_сategory.Text;
+                            remontRSTForm.comboBox_сategory.Text = cmB_сategory.Text;
 
-                            remontRSTForm.textBox_priceRemont.Text = textBox_priceRemont.Text;
-                            remontRSTForm.textBox_сompleted_works_1.Text = textBox_сompleted_works_1.Text;
-                            remontRSTForm.textBox_сompleted_works_2.Text = textBox_сompleted_works_2.Text;
-                            remontRSTForm.textBox_сompleted_works_3.Text = textBox_сompleted_works_3.Text;
-                            remontRSTForm.textBox_сompleted_works_4.Text = textBox_сompleted_works_4.Text;
-                            remontRSTForm.textBox_сompleted_works_5.Text = textBox_сompleted_works_5.Text;
-                            remontRSTForm.textBox_сompleted_works_6.Text = textBox_сompleted_works_6.Text;
-                            remontRSTForm.textBox_сompleted_works_7.Text = textBox_сompleted_works_7.Text;
-                            remontRSTForm.textBox_parts_1.Text = textBox_parts_1.Text;
-                            remontRSTForm.textBox_parts_2.Text = textBox_parts_2.Text;
-                            remontRSTForm.textBox_parts_3.Text = textBox_parts_3.Text;
-                            remontRSTForm.textBox_parts_4.Text = textBox_parts_4.Text;
-                            remontRSTForm.textBox_parts_5.Text = textBox_parts_5.Text;
-                            remontRSTForm.textBox_parts_6.Text = textBox_parts_6.Text;
-                            remontRSTForm.textBox_parts_7.Text = textBox_parts_7.Text;
+                            remontRSTForm.textBox_priceRemont.Text = txB_priceRemont.Text;
+                            remontRSTForm.textBox_сompleted_works_1.Text = txB_сompleted_works_1.Text;
+                            remontRSTForm.textBox_сompleted_works_2.Text = txB_сompleted_works_2.Text;
+                            remontRSTForm.textBox_сompleted_works_3.Text = txB_сompleted_works_3.Text;
+                            remontRSTForm.textBox_сompleted_works_4.Text = txB_сompleted_works_4.Text;
+                            remontRSTForm.textBox_сompleted_works_5.Text = txB_сompleted_works_5.Text;
+                            remontRSTForm.textBox_сompleted_works_6.Text = txB_сompleted_works_6.Text;
+                            remontRSTForm.textBox_сompleted_works_7.Text = txB_сompleted_works_7.Text;
+                            remontRSTForm.textBox_parts_1.Text = txB_parts_1.Text;
+                            remontRSTForm.textBox_parts_2.Text = txB_parts_2.Text;
+                            remontRSTForm.textBox_parts_3.Text = txB_parts_3.Text;
+                            remontRSTForm.textBox_parts_4.Text = txB_parts_4.Text;
+                            remontRSTForm.textBox_parts_5.Text = txB_parts_5.Text;
+                            remontRSTForm.textBox_parts_6.Text = txB_parts_6.Text;
+                            remontRSTForm.textBox_parts_7.Text = txB_parts_7.Text;
 
-                            if (textBox_dateTO.Text != "")
+                            if (txB_dateTO.Text != "")
                             {
-                                textBox_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                                txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                             }
 
-                            remontRSTForm.textBox_data_remont.Text = textBox_dateTO.Text;
-                            remontRSTForm.textBox_model.Text = comboBox_model.Text;
-                            remontRSTForm.label_company.Text = textBox_company.Text;
+                            remontRSTForm.textBox_data_remont.Text = txB_dateTO.Text;
+                            remontRSTForm.textBox_model.Text = cmB_model.Text;
+                            remontRSTForm.label_company.Text = txB_company.Text;
                             remontRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
 
-                            if (textBox_numberActRemont.Text == "")
+                            if (txB_numberActRemont.Text == "")
                             {
                                 remontRSTForm.textBox_numberActRemont.Text = textBox_number_printing_doc_datePanel.Text + "/";
                             }
-                            else remontRSTForm.textBox_numberActRemont.Text = textBox_numberActRemont.Text;
+                            else remontRSTForm.textBox_numberActRemont.Text = txB_numberActRemont.Text;
 
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                            remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, comboBox_city.Text);
+                            remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, cmB_city.Text);
 
                             remontRSTForm.ShowDialog();
 
-                            Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                            Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                             Counters();
                             dataGridView1.ClearSelection();
 
@@ -1546,48 +1546,48 @@ namespace ServiceTelecomConnect
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         changeRSTForm.DoubleBufferedForm(true);
-                        changeRSTForm.textBox_city.Text = textBox_city.Text;
-                        changeRSTForm.comboBox_poligon.Text = comboBox_poligon.Text;
-                        changeRSTForm.textBox_company.Text = textBox_company.Text;
-                        changeRSTForm.textBox_location.Text = textBox_location.Text;
-                        changeRSTForm.comboBox_model.Items.Add(comboBox_model.Text).ToString();
+                        changeRSTForm.textBox_city.Text = txB_city.Text;
+                        changeRSTForm.comboBox_poligon.Text = cmB_poligon.Text;
+                        changeRSTForm.textBox_company.Text = txB_company.Text;
+                        changeRSTForm.textBox_location.Text = txB_location.Text;
+                        changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
                         changeRSTForm.textBox_serialNumber.Text = textBox_serialNumber.Text;
-                        changeRSTForm.textBox_inventoryNumber.Text = textBox_inventoryNumber.Text;
-                        changeRSTForm.textBox_networkNumber.Text = textBox_networkNumber.Text;
-                        changeRSTForm.textBox_dateTO.Text = textBox_dateTO.Text.Remove(textBox_dateTO.Text.IndexOf(" "));
-                        changeRSTForm.textBox_numberAct.Text = textBox_numberAct.Text;
-                        changeRSTForm.textBox_representative.Text = textBox_representative.Text;
-                        changeRSTForm.textBox_numberIdentification.Text = textBox_numberIdentification.Text;
-                        changeRSTForm.textBox_phoneNumber.Text = textBox_phoneNumber.Text;
-                        changeRSTForm.textBox_post.Text = textBox_post.Text;
+                        changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
+                        changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
+                        changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                        changeRSTForm.textBox_numberAct.Text = txB_numberAct.Text;
+                        changeRSTForm.textBox_representative.Text = txB_representative.Text;
+                        changeRSTForm.textBox_numberIdentification.Text = txB_numberIdentification.Text;
+                        changeRSTForm.textBox_phoneNumber.Text = txB_phoneNumber.Text;
+                        changeRSTForm.textBox_post.Text = txB_post.Text;
                         changeRSTForm.txB_comment.Text = txB_comment.Text;
 
-                        if (textBox_dateIssue.Text == "")
+                        if (txB_dateIssue.Text == "")
                         {
-                            textBox_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                            txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
                         }
-                        changeRSTForm.textBox_dateIssue.Text = textBox_dateIssue.Text;
+                        changeRSTForm.textBox_dateIssue.Text = txB_dateIssue.Text;
 
-                        if (textBox_antenna.Text == "")
+                        if (txB_antenna.Text == "")
                         {
-                            textBox_antenna.Text = "-";
+                            txB_antenna.Text = "-";
                         }
-                        changeRSTForm.textBox_antenna.Text = textBox_antenna.Text;
-                        if (textBox_manipulator.Text == "")
+                        changeRSTForm.textBox_antenna.Text = txB_antenna.Text;
+                        if (txB_manipulator.Text == "")
                         {
-                            textBox_manipulator.Text = "-";
+                            txB_manipulator.Text = "-";
                         }
-                        changeRSTForm.textBox_manipulator.Text = textBox_manipulator.Text;
-                        if (textBox_batteryСharger.Text == "")
+                        changeRSTForm.textBox_manipulator.Text = txB_manipulator.Text;
+                        if (txB_batteryСharger.Text == "")
                         {
-                            textBox_batteryСharger.Text = "-";
+                            txB_batteryСharger.Text = "-";
                         }
-                        changeRSTForm.textBox_batteryСharger.Text = textBox_batteryСharger.Text;
-                        if (textBox_AKB.Text == "")
+                        changeRSTForm.textBox_batteryСharger.Text = txB_batteryСharger.Text;
+                        if (txB_AKB.Text == "")
                         {
-                            textBox_AKB.Text = "-";
+                            txB_AKB.Text = "-";
                         }
-                        changeRSTForm.textBox_AKB.Text = textBox_AKB.Text;
+                        changeRSTForm.textBox_AKB.Text = txB_AKB.Text;
 
                         if (Application.OpenForms["changeRSTForm"] == null)
                         {
@@ -1630,7 +1630,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.AvailabilityChanged_bool())
             {
-                if (textBox_numberActRemont.Text == "")
+                if (txB_numberActRemont.Text == "")
                 {
                     string Mesage;
                     Mesage = "На данной радиостанции нет ремонта!";
@@ -1648,12 +1648,12 @@ namespace ServiceTelecomConnect
                         panel1.Enabled = false;
                         panel_remont_information_company.Enabled = true;
                         panel_remont_information_company.Visible = true;
-                        label_company_remont.Text = textBox_company.Text;
-                        RegistryKey reg = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{textBox_company.Text}");
+                        label_company_remont.Text = txB_company.Text;
+                        RegistryKey reg = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
                         if (reg != null)
                         {
                             RegistryKey currentUserKey = Registry.CurrentUser;
-                            RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{textBox_company.Text}");
+                            RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
 
                             textBox_Full_name_company.Text = helloKey.GetValue("Полное наименование предприятия").ToString();
                             textBox_OKPO_remont.Text = helloKey.GetValue("ОКПО").ToString();
@@ -1686,7 +1686,7 @@ namespace ServiceTelecomConnect
                             textBox_OKPO_remont.Text = "";
                             textBox_BE_remont.Text = "";
                             textBox_director_FIO_remont_company.Text = "";
-                            textBox_director_post_remont_company.Text = $"Начальник {textBox_company.Text}";
+                            textBox_director_post_remont_company.Text = $"Начальник {txB_company.Text}";
                             textBox_chairman_FIO_remont_company.Text = "";
                             textBox_chairman_post_remont_company.Text = "";
                             textBox_1_FIO_remont_company.Text = "";
@@ -2035,7 +2035,7 @@ namespace ServiceTelecomConnect
                 #endregion
 
                 RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{textBox_company.Text}");
+                RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
                 helloKey.SetValue("Полное наименование предприятия", $"{textBox_Full_name_company.Text}");
                 helloKey.SetValue("ОКПО", $"{textBox_OKPO_remont.Text}");
                 helloKey.SetValue("БЕ", $"{textBox_BE_remont.Text}");
@@ -2078,44 +2078,44 @@ namespace ServiceTelecomConnect
             try
             {
                 DataGridViewRow row = dataGridView1.Rows[currRowIndex];
-                textBox_id.Text = row.Cells[0].Value.ToString();
-                comboBox_poligon.Text = row.Cells[1].Value.ToString();
-                textBox_company.Text = row.Cells[2].Value.ToString();
-                textBox_location.Text = row.Cells[3].Value.ToString();
-                comboBox_model.Text = row.Cells[4].Value.ToString();
+                txB_id.Text = row.Cells[0].Value.ToString();
+                cmB_poligon.Text = row.Cells[1].Value.ToString();
+                txB_company.Text = row.Cells[2].Value.ToString();
+                txB_location.Text = row.Cells[3].Value.ToString();
+                cmB_model.Text = row.Cells[4].Value.ToString();
                 textBox_serialNumber.Text = row.Cells[5].Value.ToString();
-                textBox_inventoryNumber.Text = row.Cells[6].Value.ToString();
-                textBox_networkNumber.Text = row.Cells[7].Value.ToString();
-                textBox_dateTO.Text = row.Cells[8].Value.ToString();
-                textBox_numberAct.Text = row.Cells[9].Value.ToString();
-                textBox_city.Text = row.Cells[10].Value.ToString();
-                textBox_price.Text = row.Cells[11].Value.ToString();
-                textBox_representative.Text = row.Cells[12].Value.ToString();
-                textBox_post.Text = row.Cells[13].Value.ToString();
-                textBox_numberIdentification.Text = row.Cells[14].Value.ToString();
-                textBox_dateIssue.Text = row.Cells[15].Value.ToString();
-                textBox_phoneNumber.Text = row.Cells[16].Value.ToString();
-                textBox_numberActRemont.Text = row.Cells[17].Value.ToString();
-                comboBox_сategory.Text = row.Cells[18].Value.ToString();
-                textBox_priceRemont.Text = row.Cells[19].Value.ToString();
-                textBox_antenna.Text = row.Cells[20].Value.ToString();
-                textBox_manipulator.Text = row.Cells[21].Value.ToString();
-                textBox_AKB.Text = row.Cells[22].Value.ToString();
-                textBox_batteryСharger.Text = row.Cells[23].Value.ToString();
-                textBox_сompleted_works_1.Text = row.Cells[24].Value.ToString();
-                textBox_сompleted_works_2.Text = row.Cells[25].Value.ToString();
-                textBox_сompleted_works_3.Text = row.Cells[26].Value.ToString();
-                textBox_сompleted_works_4.Text = row.Cells[27].Value.ToString();
-                textBox_сompleted_works_5.Text = row.Cells[28].Value.ToString();
-                textBox_сompleted_works_6.Text = row.Cells[29].Value.ToString();
-                textBox_сompleted_works_7.Text = row.Cells[30].Value.ToString();
-                textBox_parts_1.Text = row.Cells[31].Value.ToString();
-                textBox_parts_2.Text = row.Cells[32].Value.ToString();
-                textBox_parts_3.Text = row.Cells[33].Value.ToString();
-                textBox_parts_4.Text = row.Cells[34].Value.ToString();
-                textBox_parts_5.Text = row.Cells[35].Value.ToString();
-                textBox_parts_6.Text = row.Cells[36].Value.ToString();
-                textBox_parts_7.Text = row.Cells[37].Value.ToString();
+                txB_inventoryNumber.Text = row.Cells[6].Value.ToString();
+                txB_networkNumber.Text = row.Cells[7].Value.ToString();
+                txB_dateTO.Text = row.Cells[8].Value.ToString();
+                txB_numberAct.Text = row.Cells[9].Value.ToString();
+                txB_city.Text = row.Cells[10].Value.ToString();
+                txB_price.Text = row.Cells[11].Value.ToString();
+                txB_representative.Text = row.Cells[12].Value.ToString();
+                txB_post.Text = row.Cells[13].Value.ToString();
+                txB_numberIdentification.Text = row.Cells[14].Value.ToString();
+                txB_dateIssue.Text = row.Cells[15].Value.ToString();
+                txB_phoneNumber.Text = row.Cells[16].Value.ToString();
+                txB_numberActRemont.Text = row.Cells[17].Value.ToString();
+                cmB_сategory.Text = row.Cells[18].Value.ToString();
+                txB_priceRemont.Text = row.Cells[19].Value.ToString();
+                txB_antenna.Text = row.Cells[20].Value.ToString();
+                txB_manipulator.Text = row.Cells[21].Value.ToString();
+                txB_AKB.Text = row.Cells[22].Value.ToString();
+                txB_batteryСharger.Text = row.Cells[23].Value.ToString();
+                txB_сompleted_works_1.Text = row.Cells[24].Value.ToString();
+                txB_сompleted_works_2.Text = row.Cells[25].Value.ToString();
+                txB_сompleted_works_3.Text = row.Cells[26].Value.ToString();
+                txB_сompleted_works_4.Text = row.Cells[27].Value.ToString();
+                txB_сompleted_works_5.Text = row.Cells[28].Value.ToString();
+                txB_сompleted_works_6.Text = row.Cells[29].Value.ToString();
+                txB_сompleted_works_7.Text = row.Cells[30].Value.ToString();
+                txB_parts_1.Text = row.Cells[31].Value.ToString();
+                txB_parts_2.Text = row.Cells[32].Value.ToString();
+                txB_parts_3.Text = row.Cells[33].Value.ToString();
+                txB_parts_4.Text = row.Cells[34].Value.ToString();
+                txB_parts_5.Text = row.Cells[35].Value.ToString();
+                txB_parts_6.Text = row.Cells[36].Value.ToString();
+                txB_parts_7.Text = row.Cells[37].Value.ToString();
                 txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
                 txB_comment.Text = row.Cells[39].Value.ToString();
             }
@@ -2141,12 +2141,12 @@ namespace ServiceTelecomConnect
 
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
                 {
-                    if (textBox_representative.Text != "")
+                    if (txB_representative.Text != "")
                     {
                         panel_info_phone_FIO.Enabled = true;
                         panel_info_phone_FIO.Visible = true;
-                        panel_textbox_FIO_representative.Text = textBox_representative.Text;
-                        panel_textbox_FIO_phoneNumber.Text = textBox_phoneNumber.Text;
+                        panel_textbox_FIO_representative.Text = txB_representative.Text;
+                        panel_textbox_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
             }
@@ -2167,12 +2167,12 @@ namespace ServiceTelecomConnect
                 // открываем панель инфы о ФИО и номере баланосдержателя
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
                 {
-                    if (textBox_representative.Text != "")
+                    if (txB_representative.Text != "")
                     {
                         panel_info_phone_FIO.Enabled = true;
                         panel_info_phone_FIO.Visible = true;
-                        panel_textbox_FIO_representative.Text = textBox_representative.Text;
-                        panel_textbox_FIO_phoneNumber.Text = textBox_phoneNumber.Text;
+                        panel_textbox_FIO_representative.Text = txB_representative.Text;
+                        panel_textbox_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
             }
@@ -2285,7 +2285,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(comboBox_city, $"Выберите названиe города");
+            toolTip1.SetToolTip(cmB_city, $"Выберите названиe города");
         }
         void Button_seach_BD_city_Click_MouseEnter(object sender, EventArgs e)
         {
@@ -2316,7 +2316,7 @@ namespace ServiceTelecomConnect
             toolTip1.OwnerDraw = true;
             toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(comboBox_seach, $"Поиск по:");
+            toolTip1.SetToolTip(cmB_seach, $"Поиск по:");
         }
 
         void Button_search_click_MouseEnter(object sender, EventArgs e)
@@ -2440,8 +2440,8 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                label_cell_rows.Text = rowIndexes.Count.ToString();
-                label_sum_TO_selection.Text = sum.ToString();
+                lbL_cell_rows.Text = rowIndexes.Count.ToString();
+                lbL_sum_TO_selection.Text = sum.ToString();
             }
             catch (Exception)
             {
@@ -3084,7 +3084,7 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Clear_BD_current_year();
-                Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
+                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
                 clear_BD_current_year.Enabled = true;
                 manual_backup_current_DB.Enabled = true;
                 loading_json_file_BD.Enabled = true;
@@ -3203,12 +3203,12 @@ namespace ServiceTelecomConnect
 
         void DataGridView1_Sign(object sender, EventArgs e)
         {
-            if (textBox_numberAct.Text != "")
+            if (txB_numberAct.Text != "")
             {
                 int c = 0;
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(textBox_numberAct.Text))
+                    if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(txB_numberAct.Text))
                     {
                         dataGridView1.Rows[i].Cells["numberAct"].Style.BackColor = Color.Red;
                         c++;
@@ -3217,7 +3217,7 @@ namespace ServiceTelecomConnect
 
                 label_Sing.Visible = true;
                 lbl_Sign.Visible = true;
-                lbl_Sign.Text += $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
+                lbl_Sign.Text += $"{txB_numberAct.Text} - {txB_company.Text} - {c} шт.,";
                 try
                 {
                     RegistryKey currentUserKey = Registry.CurrentUser;
@@ -3234,12 +3234,12 @@ namespace ServiceTelecomConnect
 
         void DataGridView1_DefaultCellStyleChanged(object sender, EventArgs e)
         {
-            if (textBox_numberAct.Text != "")
+            if (txB_numberAct.Text != "")
             {
                 int c = 0;
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(textBox_numberAct.Text))
+                    if (dataGridView1.Rows[i].Cells["numberAct"].Value.ToString().Equals(txB_numberAct.Text))
                     {
                         dataGridView1.Rows[i].Cells["numberAct"].Style.BackColor = Color.Red;
                         c++;
@@ -3248,7 +3248,7 @@ namespace ServiceTelecomConnect
 
                 label_complete.Visible = true;
                 lbl_full_complete_act.Visible = true;
-                lbl_full_complete_act.Text += $"{textBox_numberAct.Text} - {textBox_company.Text} - {c} шт.,";
+                lbl_full_complete_act.Text += $"{txB_numberAct.Text} - {txB_company.Text} - {c} шт.,";
                 try
                 {
                     RegistryKey currentUserKey = Registry.CurrentUser;
@@ -3427,7 +3427,7 @@ namespace ServiceTelecomConnect
             if (textBox_serialNumber.Text != "")
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {textBox_serialNumber.Text} от предприятия {textBox_company.Text}";
+                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {textBox_serialNumber.Text} от предприятия {txB_company.Text}";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -3456,9 +3456,9 @@ namespace ServiceTelecomConnect
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
 
                     Filling_datagridview.Record_decommissionSerialNumber(textBox_serialNumber.Text, textBox_decommissionSerialNumber.Text,
-                        textBox_city.Text, comboBox_poligon.Text, textBox_company.Text, textBox_location.Text, comboBox_model.Text, textBox_dateTO.Text,
-                        textBox_price.Text, textBox_representative.Text, textBox_post.Text, textBox_numberIdentification.Text, textBox_dateIssue.Text,
-                        textBox_phoneNumber.Text, textBox_antenna.Text, textBox_manipulator.Text, textBox_AKB.Text, textBox_batteryСharger.Text,
+                        txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
+                        txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
+                        txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
                         txB_comment.Text, textBox_number_printing_doc_datePanel.Text, txB_reason_decommission.Text);
                     Button_update_Click(sender, e);
                     panel_decommissionSerialNumber.Visible = false;
@@ -3484,13 +3484,13 @@ namespace ServiceTelecomConnect
             try
             {
                 string Mesage;
-                Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {textBox_company.Text}?";
+                Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {textBox_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
-                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, textBox_city.Text);
+                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, textBox_serialNumber.Text, txB_city.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3508,7 +3508,7 @@ namespace ServiceTelecomConnect
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
-                Filling_datagridview.Show_radiostantion_decommission(dataGridView1, textBox_city.Text);
+                Filling_datagridview.Show_radiostantion_decommission(dataGridView1, txB_city.Text);
                 Counters();
             }
             catch (Exception)
@@ -3528,18 +3528,18 @@ namespace ServiceTelecomConnect
             {
                 if (txB_decommissionSerialNumber.Text != "")
                 {
-                    string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{textBox_company.Text}";
+                    string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{txB_company.Text}";
                     DateTime dateTime = DateTime.Today;
                     string dateDecommission = dateTime.ToString("dd.MM.yyyy");
-                    string city = textBox_city.Text;
+                    string city = txB_city.Text;
                     string comment = txB_comment.Text;
 
                     var items = new Dictionary<string, string>
                 {
                     {"<numberActTZPP>", decommissionSerialNumber_company },
-                    {"<model>", comboBox_model.Text },
+                    {"<model>", cmB_model.Text },
                     {"<serialNumber>", textBox_serialNumber.Text },
-                    {"<company>", textBox_company.Text },
+                    {"<company>", txB_company.Text },
                     {"<dateDecommission>", dateDecommission },
                     {"<comment>", comment}
                 };
@@ -3565,14 +3565,14 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (comboBox_seach.SelectedIndex == 0)
+                if (cmB_seach.SelectedIndex == 0)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_company(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_company(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3580,14 +3580,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 1)
+                else if (cmB_seach.SelectedIndex == 1)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_location(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_location(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3595,14 +3595,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 3)
+                else if (cmB_seach.SelectedIndex == 3)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_dateTO(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3610,14 +3610,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 4)
+                else if (cmB_seach.SelectedIndex == 4)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberAct(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3625,14 +3625,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 5)
+                else if (cmB_seach.SelectedIndex == 5)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberActRemont(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3640,14 +3640,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 6)
+                else if (cmB_seach.SelectedIndex == 6)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_representative(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3655,14 +3655,14 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
-                else if (comboBox_seach.SelectedIndex == 7)
+                else if (cmB_seach.SelectedIndex == 7)
                 {
                     try
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_decommissionActs(comboBox_city.Text, cmb_number_unique_acts);
+                        Filling_datagridview.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
