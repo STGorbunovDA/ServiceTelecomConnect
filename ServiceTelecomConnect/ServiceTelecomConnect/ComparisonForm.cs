@@ -1132,17 +1132,19 @@ namespace ServiceTelecomConnect
 
 
         #region close form
-        void ST_WorkForm_FormClosed(object sender, FormClosedEventArgs e)
+
+        void ComparisonForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             System.Environment.Exit(0);
         }
 
-        private void ST_WorkForm_FormClosing(object sender, FormClosingEventArgs e)
+        void ComparisonForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose();
         }
-        #endregion
 
+
+        #endregion
     }
 }
 
