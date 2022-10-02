@@ -105,7 +105,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception)
             {
-                MessageBox.Show("Файл не сохранен!(UserSaveFilePC)");
+                MessageBox.Show("Файл не сохранен!(UserSaveFileCuratorPC)");
             }
         }
         #endregion

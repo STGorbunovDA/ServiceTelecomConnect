@@ -548,7 +548,7 @@ namespace ServiceTelecomConnect
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Ошибка добавления в comboBox выполнение плана (Number_unique_AddExecution_curator)");
+                        MessageBox.Show("Ошибка! месяца выполнений плана не добавлены в comboBox!");
                         MessageBox.Show(ex.ToString());
                     }
                 }

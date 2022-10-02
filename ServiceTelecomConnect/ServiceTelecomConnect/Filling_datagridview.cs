@@ -1582,7 +1582,7 @@ namespace ServiceTelecomConnect
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка метода radiostantion_сomparison");
+                MessageBox.Show("Ошибка метода Number_unique_dateTO_curator");
             }
         }
 
