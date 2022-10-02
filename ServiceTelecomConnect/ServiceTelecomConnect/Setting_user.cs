@@ -119,10 +119,10 @@ namespace ServiceTelecomConnect
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewRow row = dataGridView1.Rows[selectedRow];
-                    textBox_id.Text = row.Cells[0].Value.ToString();
-                    textBox_login.Text = row.Cells[1].Value.ToString();
-                    textBox_pass.Text = row.Cells[2].Value.ToString();
-                    comboBox_is_admin_post.Text = row.Cells[3].Value.ToString();
+                    txB_id.Text = row.Cells[0].Value.ToString();
+                    txB_login.Text = row.Cells[1].Value.ToString();
+                    txB_pass.Text = row.Cells[2].Value.ToString();
+                    cmB_is_admin_post.Text = row.Cells[3].Value.ToString();
                 }
             }
             catch (Exception)
@@ -215,10 +215,10 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    var id = textBox_id.Text;
-                    var login = textBox_login.Text;
-                    var pass = textBox_pass.Text;
-                    var is_admin = comboBox_is_admin_post.Text;
+                    var id = txB_id.Text;
+                    var login = txB_login.Text;
+                    var pass = txB_pass.Text;
+                    var is_admin = cmB_is_admin_post.Text;
 
                     var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
 
@@ -255,15 +255,15 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.AvailabilityChanged_bool())
                 {
-                    var loginUser = textBox_login.Text;
-                    var passUser = md5.hashPassword(textBox_pass.Text);
+                    var loginUser = txB_login.Text;
+                    var passUser = md5.hashPassword(txB_pass.Text);
 
                     if (!CheackUser(loginUser, passUser))
                     {
-                        if (comboBox_is_admin_post.Text == "Инженер" || comboBox_is_admin_post.Text == "Начальник участка" ||
-                            comboBox_is_admin_post.Text == "Куратор" || comboBox_is_admin_post.Text == "Руководитель" || comboBox_is_admin_post.Text == "Дирекция связи")
+                        if (cmB_is_admin_post.Text == "Инженер" || cmB_is_admin_post.Text == "Начальник участка" ||
+                            cmB_is_admin_post.Text == "Куратор" || cmB_is_admin_post.Text == "Руководитель" || cmB_is_admin_post.Text == "Дирекция связи")
                         {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{comboBox_is_admin_post.Text}')";
+                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_is_admin_post.Text}')";
 
                             using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                             {

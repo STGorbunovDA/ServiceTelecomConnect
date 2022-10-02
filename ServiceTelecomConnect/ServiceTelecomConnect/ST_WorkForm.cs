@@ -1474,43 +1474,43 @@ namespace ServiceTelecomConnect
                         {
                             remontRSTForm.DoubleBufferedForm(true);
 
-                            remontRSTForm.comboBox_сategory.Text = cmB_сategory.Text;
+                            remontRSTForm.cmB_сategory.Text = cmB_сategory.Text;
 
-                            remontRSTForm.textBox_priceRemont.Text = txB_priceRemont.Text;
-                            remontRSTForm.textBox_сompleted_works_1.Text = txB_сompleted_works_1.Text;
-                            remontRSTForm.textBox_сompleted_works_2.Text = txB_сompleted_works_2.Text;
-                            remontRSTForm.textBox_сompleted_works_3.Text = txB_сompleted_works_3.Text;
-                            remontRSTForm.textBox_сompleted_works_4.Text = txB_сompleted_works_4.Text;
-                            remontRSTForm.textBox_сompleted_works_5.Text = txB_сompleted_works_5.Text;
-                            remontRSTForm.textBox_сompleted_works_6.Text = txB_сompleted_works_6.Text;
-                            remontRSTForm.textBox_сompleted_works_7.Text = txB_сompleted_works_7.Text;
-                            remontRSTForm.textBox_parts_1.Text = txB_parts_1.Text;
-                            remontRSTForm.textBox_parts_2.Text = txB_parts_2.Text;
-                            remontRSTForm.textBox_parts_3.Text = txB_parts_3.Text;
-                            remontRSTForm.textBox_parts_4.Text = txB_parts_4.Text;
-                            remontRSTForm.textBox_parts_5.Text = txB_parts_5.Text;
-                            remontRSTForm.textBox_parts_6.Text = txB_parts_6.Text;
-                            remontRSTForm.textBox_parts_7.Text = txB_parts_7.Text;
+                            remontRSTForm.txB_priceRemont.Text = txB_priceRemont.Text;
+                            remontRSTForm.txB_сompleted_works_1.Text = txB_сompleted_works_1.Text;
+                            remontRSTForm.txB_сompleted_works_2.Text = txB_сompleted_works_2.Text;
+                            remontRSTForm.txB_сompleted_works_3.Text = txB_сompleted_works_3.Text;
+                            remontRSTForm.txB_сompleted_works_4.Text = txB_сompleted_works_4.Text;
+                            remontRSTForm.txB_сompleted_works_5.Text = txB_сompleted_works_5.Text;
+                            remontRSTForm.txB_сompleted_works_6.Text = txB_сompleted_works_6.Text;
+                            remontRSTForm.txB_сompleted_works_7.Text = txB_сompleted_works_7.Text;
+                            remontRSTForm.txB_parts_1.Text = txB_parts_1.Text;
+                            remontRSTForm.txB_parts_2.Text = txB_parts_2.Text;
+                            remontRSTForm.txB_parts_3.Text = txB_parts_3.Text;
+                            remontRSTForm.txB_parts_4.Text = txB_parts_4.Text;
+                            remontRSTForm.txB_parts_5.Text = txB_parts_5.Text;
+                            remontRSTForm.txB_parts_6.Text = txB_parts_6.Text;
+                            remontRSTForm.txB_parts_7.Text = txB_parts_7.Text;
 
                             if (txB_dateTO.Text != "")
                             {
                                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                             }
 
-                            remontRSTForm.textBox_data_remont.Text = txB_dateTO.Text;
-                            remontRSTForm.textBox_model.Text = cmB_model.Text;
+                            remontRSTForm.txB_data_remont.Text = txB_dateTO.Text;
+                            remontRSTForm.txB_model.Text = cmB_model.Text;
                             remontRSTForm.label_company.Text = txB_company.Text;
-                            remontRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
+                            remontRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
 
                             if (txB_numberActRemont.Text == "")
                             {
-                                remontRSTForm.textBox_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
+                                remontRSTForm.txB_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
                             }
-                            else remontRSTForm.textBox_numberActRemont.Text = txB_numberActRemont.Text;
+                            else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
 
                             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                            remontRSTForm.lbl_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, cmB_city.Text);
+                            remontRSTForm.lbL_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, cmB_city.Text);
 
                             remontRSTForm.ShowDialog();
 
@@ -1546,48 +1546,48 @@ namespace ServiceTelecomConnect
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         changeRSTForm.DoubleBufferedForm(true);
-                        changeRSTForm.textBox_city.Text = txB_city.Text;
-                        changeRSTForm.comboBox_poligon.Text = cmB_poligon.Text;
-                        changeRSTForm.textBox_company.Text = txB_company.Text;
-                        changeRSTForm.textBox_location.Text = txB_location.Text;
-                        changeRSTForm.comboBox_model.Items.Add(cmB_model.Text).ToString();
-                        changeRSTForm.textBox_serialNumber.Text = txB_serialNumber.Text;
-                        changeRSTForm.textBox_inventoryNumber.Text = txB_inventoryNumber.Text;
-                        changeRSTForm.textBox_networkNumber.Text = txB_networkNumber.Text;
-                        changeRSTForm.textBox_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
-                        changeRSTForm.textBox_numberAct.Text = txB_numberAct.Text;
-                        changeRSTForm.textBox_representative.Text = txB_representative.Text;
-                        changeRSTForm.textBox_numberIdentification.Text = txB_numberIdentification.Text;
-                        changeRSTForm.textBox_phoneNumber.Text = txB_phoneNumber.Text;
-                        changeRSTForm.textBox_post.Text = txB_post.Text;
+                        changeRSTForm.txB_city.Text = txB_city.Text;
+                        changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
+                        changeRSTForm.txB_company.Text = txB_company.Text;
+                        changeRSTForm.txB_location.Text = txB_location.Text;
+                        changeRSTForm.cmB_model.Items.Add(cmB_model.Text).ToString();
+                        changeRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
+                        changeRSTForm.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
+                        changeRSTForm.txB_networkNumber.Text = txB_networkNumber.Text;
+                        changeRSTForm.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                        changeRSTForm.txB_numberAct.Text = txB_numberAct.Text;
+                        changeRSTForm.txB_representative.Text = txB_representative.Text;
+                        changeRSTForm.txB_numberIdentification.Text = txB_numberIdentification.Text;
+                        changeRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
+                        changeRSTForm.txB_post.Text = txB_post.Text;
                         changeRSTForm.txB_comment.Text = txB_comment.Text;
 
                         if (txB_dateIssue.Text == "")
                         {
                             txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
                         }
-                        changeRSTForm.textBox_dateIssue.Text = txB_dateIssue.Text;
+                        changeRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
 
                         if (txB_antenna.Text == "")
                         {
                             txB_antenna.Text = "-";
                         }
-                        changeRSTForm.textBox_antenna.Text = txB_antenna.Text;
+                        changeRSTForm.txB_antenna.Text = txB_antenna.Text;
                         if (txB_manipulator.Text == "")
                         {
                             txB_manipulator.Text = "-";
                         }
-                        changeRSTForm.textBox_manipulator.Text = txB_manipulator.Text;
+                        changeRSTForm.txB_manipulator.Text = txB_manipulator.Text;
                         if (txB_batteryСharger.Text == "")
                         {
                             txB_batteryСharger.Text = "-";
                         }
-                        changeRSTForm.textBox_batteryСharger.Text = txB_batteryСharger.Text;
+                        changeRSTForm.txB_batteryСharger.Text = txB_batteryСharger.Text;
                         if (txB_AKB.Text == "")
                         {
                             txB_AKB.Text = "-";
                         }
-                        changeRSTForm.textBox_AKB.Text = txB_AKB.Text;
+                        changeRSTForm.txB_AKB.Text = txB_AKB.Text;
 
                         if (Application.OpenForms["changeRSTForm"] == null)
                         {
