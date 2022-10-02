@@ -5,10 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
 
@@ -33,8 +30,6 @@ namespace ServiceTelecomConnect
         /// переменная для индекса dataGridView1 
         /// </summary>
         int selectedRow;
-
-        private readonly cheakUser _user;
 
         #endregion
 
@@ -99,7 +94,7 @@ namespace ServiceTelecomConnect
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!ComparisonForm_Load");
                     }
                 }
 
@@ -761,7 +756,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-
         #region отк. формы изменения РСТ
         private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
         {
@@ -847,7 +841,6 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
-
 
         #region ContextMenu datagrid
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
@@ -992,6 +985,15 @@ namespace ServiceTelecomConnect
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
+
+        void ComparisonForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                toolTip1.Active = toolTip1.Active ? false : true;
+            }
+        }
+
         #endregion
 
         #region toolTip для Control-ов формы
@@ -1088,13 +1090,7 @@ namespace ServiceTelecomConnect
             toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
         }
 
-        void ST_WorkForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                toolTip1.Active = toolTip1.Active ? false : true;
-            }
-        }
+        
         #endregion
 
         #region при выборе строк ползьзователем и их подсчёт
@@ -1145,6 +1141,8 @@ namespace ServiceTelecomConnect
 
 
         #endregion
+
+        
     }
 }
 
