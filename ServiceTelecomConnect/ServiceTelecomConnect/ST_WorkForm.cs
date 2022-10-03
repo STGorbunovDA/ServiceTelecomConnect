@@ -1444,60 +1444,47 @@ namespace ServiceTelecomConnect
                 {
                     if (txB_serialNumber.Text != "")
                     {
-                        using (RemontRSTForm remontRSTForm = new RemontRSTForm())
+                        RemontRSTForm remontRSTForm = new RemontRSTForm();
+
+                        remontRSTForm.DoubleBufferedForm(true);
+
+                        remontRSTForm.cmB_сategory.Text = cmB_сategory.Text;
+
+                        remontRSTForm.txB_priceRemont.Text = txB_priceRemont.Text;
+                        remontRSTForm.txB_сompleted_works_1.Text = txB_сompleted_works_1.Text;
+                        remontRSTForm.txB_сompleted_works_2.Text = txB_сompleted_works_2.Text;
+                        remontRSTForm.txB_сompleted_works_3.Text = txB_сompleted_works_3.Text;
+                        remontRSTForm.txB_сompleted_works_4.Text = txB_сompleted_works_4.Text;
+                        remontRSTForm.txB_сompleted_works_5.Text = txB_сompleted_works_5.Text;
+                        remontRSTForm.txB_сompleted_works_6.Text = txB_сompleted_works_6.Text;
+                        remontRSTForm.txB_сompleted_works_7.Text = txB_сompleted_works_7.Text;
+                        remontRSTForm.txB_parts_1.Text = txB_parts_1.Text;
+                        remontRSTForm.txB_parts_2.Text = txB_parts_2.Text;
+                        remontRSTForm.txB_parts_3.Text = txB_parts_3.Text;
+                        remontRSTForm.txB_parts_4.Text = txB_parts_4.Text;
+                        remontRSTForm.txB_parts_5.Text = txB_parts_5.Text;
+                        remontRSTForm.txB_parts_6.Text = txB_parts_6.Text;
+                        remontRSTForm.txB_parts_7.Text = txB_parts_7.Text;
+
+                        if (txB_dateTO.Text != "")
                         {
-                            remontRSTForm.DoubleBufferedForm(true);
+                            txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                        }
 
-                            remontRSTForm.cmB_сategory.Text = cmB_сategory.Text;
+                        remontRSTForm.txB_data_remont.Text = txB_dateTO.Text;
+                        remontRSTForm.txB_model.Text = cmB_model.Text;
+                        remontRSTForm.label_company.Text = txB_company.Text;
+                        remontRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
 
-                            remontRSTForm.txB_priceRemont.Text = txB_priceRemont.Text;
-                            remontRSTForm.txB_сompleted_works_1.Text = txB_сompleted_works_1.Text;
-                            remontRSTForm.txB_сompleted_works_2.Text = txB_сompleted_works_2.Text;
-                            remontRSTForm.txB_сompleted_works_3.Text = txB_сompleted_works_3.Text;
-                            remontRSTForm.txB_сompleted_works_4.Text = txB_сompleted_works_4.Text;
-                            remontRSTForm.txB_сompleted_works_5.Text = txB_сompleted_works_5.Text;
-                            remontRSTForm.txB_сompleted_works_6.Text = txB_сompleted_works_6.Text;
-                            remontRSTForm.txB_сompleted_works_7.Text = txB_сompleted_works_7.Text;
-                            remontRSTForm.txB_parts_1.Text = txB_parts_1.Text;
-                            remontRSTForm.txB_parts_2.Text = txB_parts_2.Text;
-                            remontRSTForm.txB_parts_3.Text = txB_parts_3.Text;
-                            remontRSTForm.txB_parts_4.Text = txB_parts_4.Text;
-                            remontRSTForm.txB_parts_5.Text = txB_parts_5.Text;
-                            remontRSTForm.txB_parts_6.Text = txB_parts_6.Text;
-                            remontRSTForm.txB_parts_7.Text = txB_parts_7.Text;
+                        if (txB_numberActRemont.Text == "")
+                        {
+                            remontRSTForm.txB_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
+                        }
+                        else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
 
-                            if (txB_dateTO.Text != "")
-                            {
-                                txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                            }
-
-                            remontRSTForm.txB_data_remont.Text = txB_dateTO.Text;
-                            remontRSTForm.txB_model.Text = cmB_model.Text;
-                            remontRSTForm.label_company.Text = txB_company.Text;
-                            remontRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
-
-                            if (txB_numberActRemont.Text == "")
-                            {
-                                remontRSTForm.txB_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
-                            }
-                            else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
-
-                            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-
-                            remontRSTForm.lbL_last_act_remont.Text = Filling_datagridview.SortRemontAct(dataGridView1, cmB_city.Text);
-
-                            remontRSTForm.ShowDialog();
-
-                            Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
-                            Counters();
-                            dataGridView1.ClearSelection();
-
-                            if (dataGridView1.CurrentCell.RowIndex >= 0)
-                            {
-                                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                            }
-                            Refresh_values_TXB_CMB(currRowIndex);
-
+                        if (Application.OpenForms["RemontRSTForm"] == null)
+                        {
+                            remontRSTForm.Show();
                         }
                     }
                 }
@@ -1563,7 +1550,7 @@ namespace ServiceTelecomConnect
                         }
                         changeRSTForm.txB_AKB.Text = txB_AKB.Text;
 
-                        if (Application.OpenForms["changeRSTForm"] == null)
+                        if (Application.OpenForms["СhangeRSTForm"] == null)
                         {
                             changeRSTForm.Show();
                         }
