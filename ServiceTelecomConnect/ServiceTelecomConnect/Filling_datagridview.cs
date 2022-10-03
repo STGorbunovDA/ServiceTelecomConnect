@@ -1025,7 +1025,7 @@ namespace ServiceTelecomConnect
 
         #region Удаление
 
-        internal static void DeleteRowСell(DataGridView dgw)
+        internal static void DeleteRowCurator(DataGridView dgw)
         {
             if (Internet_check.AvailabilityChanged_bool())
             {

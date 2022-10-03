@@ -75,7 +75,7 @@ namespace ServiceTelecomConnect
 
         void IsAdmin()
         {
-            if (_user.IsAdmin == "Дирекция связи" )
+            if (_user.IsAdmin == "Дирекция связи")
             {
                 //panel1.Enabled = false;
                 panel3.Enabled = false;
@@ -99,7 +99,7 @@ namespace ServiceTelecomConnect
                 cmb_number_unique_acts.Enabled = true;
                 btn_search.Enabled = true;
             }
-            else if(_user.IsAdmin == "Инженер")
+            else if (_user.IsAdmin == "Инженер")
             {
                 //panel1.Enabled = false;
                 panel3.Enabled = false;
@@ -304,7 +304,7 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);           
+            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
             new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
@@ -697,7 +697,7 @@ namespace ServiceTelecomConnect
                 m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
                 m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
 
-                m.Show(dataGridView1, new Point(dataGridView1.Location.X+700, dataGridView1.Location.Y));
+                m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
             }
             catch (Exception)
@@ -736,7 +736,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                Filling_datagridview.DeleteRowСell(dataGridView1);
+                Filling_datagridview.DeleteRowCurator(dataGridView1);
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
@@ -842,7 +842,7 @@ namespace ServiceTelecomConnect
                             column.SortMode = DataGridViewColumnSortMode.NotSortable;
                         }
                     }
-                    if (Application.OpenForms["addRSTForm"] == null)
+                    if (Application.OpenForms["AddRSTForm"] == null)
                     {
                         addRSTForm.Show();
                     }
@@ -851,20 +851,6 @@ namespace ServiceTelecomConnect
                     {
                         column.SortMode = DataGridViewColumnSortMode.Automatic;
                     }
-
-                    #region для одной формы
-                    //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                    //Counters();
-
-                    //if (dataGridView1.RowCount != 0)
-                    //{
-                    //    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-                    //    DataGridViewRow row2 = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-                    //    textBox_numberAct.Text = row2.Cells[9].Value.ToString();
-                    //}
-                    //// обновляем по акту
-                    //Filling_datagridview.Update_datagridview_number_act(dataGridView1, textBox_city.Text, textBox_numberAct.Text);
-                    #endregion
                 }
                 catch (Exception)
                 {
@@ -1261,13 +1247,10 @@ namespace ServiceTelecomConnect
 
         void PictureBox_seach_datadrid_replay_Click(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
-            {
-                panel1.Enabled = false;
-                panel3.Enabled = false;
-                Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
-                Counters();
-            }
+            panel1.Enabled = false;
+            panel3.Enabled = false;
+            Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
+            Counters();
         }
 
         #endregion
@@ -1286,7 +1269,7 @@ namespace ServiceTelecomConnect
                         m3.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m3.Show(dataGridView1, new Point(e.X, e.Y));
                     }
-                    else if(_user.IsAdmin == "Куратор")
+                    else if (_user.IsAdmin == "Куратор")
                     {
                         if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                         {
@@ -1341,7 +1324,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin" )
+                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
                     {
                         if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                         {
@@ -1395,7 +1378,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                } 
+                }
             }
             catch (Exception)
             {
@@ -1412,7 +1395,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0)
+                    if (dataGridView1.Rows.Count >= 0)
                     {
                         panel1.Enabled = true;
                         panel3.Enabled = true;
