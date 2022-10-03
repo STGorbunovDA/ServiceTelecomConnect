@@ -1328,7 +1328,7 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%'";
+                        string queryString = $"SELECT * FROM radiostantion_decommission";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {

@@ -1065,6 +1065,32 @@ namespace ServiceTelecomConnect
         {
             Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
             Counters();
+
+            if (Internet_check.AvailabilityChanged_bool())
+            {
+                try
+                {
+                    string querystring = $"SELECT city FROM radiostantion GROUP BY city";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable city_table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(city_table);
+
+                            cmB_city.DataSource = city_table;
+                            cmB_city.DisplayMember = "city";
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                }
+            }
         }
 
         void TextBox_numberAct_KeyPress(object sender, KeyPressEventArgs e)
@@ -3654,6 +3680,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+       
     }
 }
 
