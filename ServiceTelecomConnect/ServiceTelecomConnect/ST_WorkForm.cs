@@ -1554,22 +1554,6 @@ namespace ServiceTelecomConnect
                         {
                             changeRSTForm.Show();
                         }
-                        //changeRSTForm.ShowDialog();
-
-
-                        #region старый метод для одной рст
-
-                        //int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-                        //Filling_datagridview.RefreshDataGrid(dataGridView1, comboBox_city.Text);
-                        //dataGridView1.ClearSelection();
-
-                        //if (dataGridView1.CurrentCell.RowIndex >= 0)
-                        //{
-                        //    dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                        //}
-                        //Refresh_values_TXB_CMB(currRowIndex);
-
-                        #endregion
                     }
                 }
                 catch (Exception)
@@ -1582,11 +1566,6 @@ namespace ServiceTelecomConnect
 
         #region panel_remont_info 
 
-        /// <summary>
-        /// откр. панели и считывание данных из реестра для ремонта
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void Button_remont_act_Click(object sender, EventArgs e)
         {
             if (Internet_check.AvailabilityChanged_bool())
