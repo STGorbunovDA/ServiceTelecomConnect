@@ -1801,6 +1801,48 @@ namespace ServiceTelecomConnect
 
         #region показать все радиостанции по участку без списаний
 
+        internal static void RefreshDataGridtDecommissionByPlot(DataGridView dgw, string city)
+        {
+            try
+            {
+                if (Internet_check.AvailabilityChanged_bool())
+                {
+                    if (city != "")
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+
+                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != ''";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRow(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки RefreshDataGridWithoutDecommission");
+            }
+        }
+
         internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city)
         {
             try
@@ -1842,6 +1884,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка загрузки RefreshDataGridWithoutDecommission");
             }
         }
+
         #endregion
     }
 }

@@ -1343,6 +1343,7 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                                 m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
+                                m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
@@ -3636,6 +3637,17 @@ namespace ServiceTelecomConnect
         void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
         {
             Filling_datagridview.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text);
+            Counters();
+        }
+
+
+        #endregion
+
+        #region показать списанные РСТ по участку
+
+        void Btn_RefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
+        {
+            Filling_datagridview.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text);
             Counters();
         }
 
