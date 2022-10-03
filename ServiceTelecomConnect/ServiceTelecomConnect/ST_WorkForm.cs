@@ -1342,6 +1342,7 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
                                 m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                                m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
@@ -3378,7 +3379,14 @@ namespace ServiceTelecomConnect
                 dataGridView1.Enabled = false;
                 panel_decommissionSerialNumber.Visible = true;
                 panel_decommissionSerialNumber.Enabled = true;
-                txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
+                if (cmB_model.Text == "Comrade R5")
+                {
+                    txB_reason_decommission.Text = "Выходная мощность несущей передатчика: номинальная – 5 Вт, максимальная – 9 Вт, что не соответствует нормам ГОСТ 12252 – 86г, для радиостанций третьего типа и техническим параметрам изготовителя, указанных в паспорте.";
+                }
+                else
+                {
+                    txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
+                }
 
             }
 
@@ -3621,6 +3629,17 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода ComboBox_seach_SelectionChangeCommitted");
             }
         }
+        #endregion
+
+        #region показать РСТ без списаний по участку
+
+        void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
+        {
+            Filling_datagridview.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text);
+            Counters();
+        }
+
+
         #endregion
 
     }

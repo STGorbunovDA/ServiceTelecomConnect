@@ -357,7 +357,7 @@ namespace ServiceTelecomConnect
                     dgw.Columns[10].Width = 100;
                     dgw.Columns[11].Width = 100;
                     dgw.Columns[17].Width = 120;
-                    if(dgw.Rows.Count > 1)
+                    if (dgw.Rows.Count > 1)
                         dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
 
                 }
@@ -1417,7 +1417,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка SortRemontAct");
-                return remontAct = "Отсутсвует";
+                return "Отсутсвует";
             }
 
         }
@@ -1797,6 +1797,51 @@ namespace ServiceTelecomConnect
         }
 
 
+        #endregion
+
+        #region показать все радиостанции по участку без списаний
+
+        internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city)
+        {
+            try
+            {
+                if (Internet_check.AvailabilityChanged_bool())
+                {
+                    if (city != "")
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+
+                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = ''";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRow(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка загрузки RefreshDataGridWithoutDecommission");
+            }
+        }
         #endregion
     }
 }

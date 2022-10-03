@@ -1532,7 +1532,6 @@
             this.cmB_city.Name = "cmB_city";
             this.cmB_city.Size = new System.Drawing.Size(236, 28);
             this.cmB_city.TabIndex = 77;
-            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmB_city_SelectionChangeCommitted);
             this.cmB_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
             // 
             // picB_seach_datadrid_replay
