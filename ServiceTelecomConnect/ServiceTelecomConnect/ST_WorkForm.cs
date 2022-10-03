@@ -136,31 +136,8 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                if (Internet_check.AvailabilityChanged_bool())
-                {
-                    try
-                    {
-                        string querystring = $"SELECT city FROM radiostantion GROUP BY city";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            DataTable city_table = new DataTable();
+                RegistryClass.SelectCityGropBy(cmB_city);
 
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                            {
-                                adapter.Fill(city_table);
-
-                                cmB_city.DataSource = city_table;
-                                cmB_city.DisplayMember = "city";
-                                DB.GetInstance.CloseConnection();
-                            }
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
-                    }
-                }
                 try
                 {
                     RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
