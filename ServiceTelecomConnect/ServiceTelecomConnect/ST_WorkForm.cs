@@ -1637,10 +1637,9 @@ namespace ServiceTelecomConnect
                             txB_3_post_remont_company.Text = "";
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.ToString()); ;
-                        MessageBox.Show("Ошибка считывания реестра!");
+                        MessageBox.Show("Ошибка открытия панели для формирования ремонта (Button_remont_act_Click)");
                     }
                 }
             }
@@ -3623,6 +3622,7 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
+
     }
 }
 

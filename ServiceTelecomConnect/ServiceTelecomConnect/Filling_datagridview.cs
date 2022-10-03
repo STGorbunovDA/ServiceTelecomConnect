@@ -1450,7 +1450,6 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода Number_unique_company");
             }
-
         }
 
         internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
