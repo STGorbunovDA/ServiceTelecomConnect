@@ -750,6 +750,7 @@ namespace ServiceTelecomConnect
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
+                    m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));

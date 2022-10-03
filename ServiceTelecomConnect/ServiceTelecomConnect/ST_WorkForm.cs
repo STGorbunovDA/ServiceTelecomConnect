@@ -304,19 +304,10 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
-
-            //await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity));
+            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);           
             new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
-
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
-
-            //await Task.Run(() => Filling_datagridview.CreateColums(dataGridView3));
-            //await Task.Run(() => Filling_datagridview.RefreshDataGrid(dataGridView3, taskCity));
-            //await Task.Run(() => SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView3, taskCity));
-
-            //await Task.Run(() => Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy());
         }
 
         #region Счётчики
@@ -1292,7 +1283,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m3 = new ContextMenu();
                         m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m3.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                        m3.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m3.Show(dataGridView1, new Point(e.X, e.Y));
                     }
                     else if(_user.IsAdmin == "Куратор")
@@ -1304,7 +1295,7 @@ namespace ServiceTelecomConnect
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (txB_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
@@ -1332,7 +1323,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m1 = new ContextMenu();
                             m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            m1.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                            m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
 
                             m1.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -1340,7 +1331,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m2 = new ContextMenu();
                             m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+                            m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
 
                             m2.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -1359,7 +1350,7 @@ namespace ServiceTelecomConnect
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (txB_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить добавленную радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
@@ -1374,7 +1365,7 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                                 m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                             }
-                            m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                            m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
@@ -1386,7 +1377,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m1 = new ContextMenu();
                             m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                            m1.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                            m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
 
                             m1.Show(dataGridView1, new Point(e.X, e.Y));
                         }
@@ -1394,7 +1385,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m2 = new ContextMenu();
                             m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+                            m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
 
                             m2.Show(dataGridView1, new Point(e.X, e.Y));
 
