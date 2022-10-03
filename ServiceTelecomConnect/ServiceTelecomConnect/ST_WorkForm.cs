@@ -136,7 +136,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                RegistryClass.SelectCityGropBy(cmB_city);
+                Filling_datagridview.SelectCityGropBy(cmB_city);
 
                 try
                 {
@@ -170,7 +170,7 @@ namespace ServiceTelecomConnect
                         txB_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
                         txB_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
 
-                        cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        //cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
                         lbL_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
                         lbL_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
                         lbL_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
@@ -1040,33 +1040,21 @@ namespace ServiceTelecomConnect
 
         void Button_seach_BD_city_Click(object sender, EventArgs e)
         {
+            RegistryKey currentUserKey = Registry.CurrentUser;
+            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
+            helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
+            helloKey.Close();
+
             Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+            Filling_datagridview.SelectCityGropBy(cmB_city);       
             Counters();
 
-            if (Internet_check.AvailabilityChanged_bool())
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
+            if (reg != null)
             {
-                try
-                {
-                    string querystring = $"SELECT city FROM radiostantion GROUP BY city";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        DataTable city_table = new DataTable();
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(city_table);
-
-                            cmB_city.DataSource = city_table;
-                            cmB_city.DisplayMember = "city";
-                            DB.GetInstance.CloseConnection();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
-                }
+                RegistryKey currentUserKey2 = Registry.CurrentUser;
+                RegistryKey helloKey2 = currentUserKey2.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
+                cmB_city.Text = helloKey2.GetValue("Город проведения проверки").ToString();
             }
         }
 
