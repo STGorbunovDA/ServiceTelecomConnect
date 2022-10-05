@@ -2137,6 +2137,7 @@ namespace ServiceTelecomConnect
                                 Refresh_values_TXB_CMB(currRowIndex);
                                 break;
                             }
+                            else MessageBox.Show("Данная радиостанция отсутствует!");
                         }
                     }
                 }
