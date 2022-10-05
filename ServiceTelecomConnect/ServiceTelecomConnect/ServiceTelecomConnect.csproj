@@ -282,7 +282,6 @@
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
     <Compile Include="PrintDocExcel.cs" />
-    <Compile Include="RegistryClass.cs" />
     <Compile Include="RemontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -170,7 +170,7 @@ namespace ServiceTelecomConnect
                         txB_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
                         txB_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
 
-                        //cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
+                        cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
                         lbL_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
                         lbL_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
                         lbL_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
@@ -3644,8 +3644,7 @@ namespace ServiceTelecomConnect
 
 
         #endregion
-
-       
+  
     }
 }
 
