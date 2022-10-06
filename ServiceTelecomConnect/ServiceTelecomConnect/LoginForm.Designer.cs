@@ -216,7 +216,7 @@
             this.Controls.Add(this.txB_loginField);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.AuthorizationLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(815, 500);
             this.MinimumSize = new System.Drawing.Size(815, 500);
             this.Name = "LoginForm";
