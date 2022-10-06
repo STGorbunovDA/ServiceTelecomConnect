@@ -92,7 +92,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 500);
+            this.panel1.Size = new System.Drawing.Size(804, 461);
             this.panel1.TabIndex = 2;
             // 
             // picB_setting
@@ -103,7 +103,7 @@
             this.picB_setting.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.data_integrated_data_management_data_processing_setting_configuration_icon_1906481;
             this.picB_setting.Location = new System.Drawing.Point(12, 12);
             this.picB_setting.Name = "picB_setting";
-            this.picB_setting.Size = new System.Drawing.Size(66, 66);
+            this.picB_setting.Size = new System.Drawing.Size(66, 67);
             this.picB_setting.TabIndex = 4;
             this.picB_setting.TabStop = false;
             this.picB_setting.Visible = false;
@@ -116,7 +116,7 @@
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_5;
             this.ClientSize = new System.Drawing.Size(804, 461);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximumSize = new System.Drawing.Size(820, 500);
             this.MinimumSize = new System.Drawing.Size(820, 500);
             this.Name = "Menu";

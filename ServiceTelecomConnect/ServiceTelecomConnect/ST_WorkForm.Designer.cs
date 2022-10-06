@@ -2456,6 +2456,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(1920, 1080);
             this.MinimumSize = new System.Drawing.Size(1366, 768);
