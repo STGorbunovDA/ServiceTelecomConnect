@@ -953,6 +953,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(875, 590);
             this.MinimumSize = new System.Drawing.Size(875, 590);

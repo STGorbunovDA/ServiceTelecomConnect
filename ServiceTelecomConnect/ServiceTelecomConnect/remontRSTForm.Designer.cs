@@ -784,6 +784,7 @@
             this.Controls.Add(this.picB_info);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_save_add_rst_remont);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximumSize = new System.Drawing.Size(865, 780);
             this.MinimumSize = new System.Drawing.Size(865, 780);
