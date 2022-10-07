@@ -1046,7 +1046,7 @@ namespace ServiceTelecomConnect
             helloKey.Close();
 
             Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
-            Filling_datagridview.SelectCityGropBy(cmB_city);       
+            Filling_datagridview.SelectCityGropBy(cmB_city);
             Counters();
 
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
@@ -2118,6 +2118,7 @@ namespace ServiceTelecomConnect
 
         void Seach_datagrid()
         {
+            bool found = false;
             if (txB_seach_panel_seach_datagrid.Text != "")
             {
                 string searchValue = txB_seach_panel_seach_datagrid.Text;
@@ -2135,19 +2136,29 @@ namespace ServiceTelecomConnect
                                 int currRowIndex = dataGridView1.Rows[i].Cells[j].RowIndex;
                                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
                                 Refresh_values_TXB_CMB(currRowIndex);
+                                found = true;
                                 break;
                             }
-                            else MessageBox.Show("Данная радиостанция отсутствует!");
                         }
+                    }
+                    if (!found)
+                    {
+                        MessageBox.Show($"Радиостанция {searchValue} не найдена!");
+                        panel_seach_datagrid.Enabled = true;
+                        panel_seach_datagrid.Visible = true;
+                        this.ActiveControl = txB_seach_panel_seach_datagrid;
+                    }
+                    else
+                    {
+                        txB_seach_panel_seach_datagrid.Text = "";
+                        panel_seach_datagrid.Enabled = false;
+                        panel_seach_datagrid.Visible = false;
                     }
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Ошибка поиска по DataGrid (Seach_datagrid)");
                 }
-                txB_seach_panel_seach_datagrid.Text = "";
-                panel_seach_datagrid.Enabled = false;
-                panel_seach_datagrid.Visible = false;
             }
             else
             {
@@ -3645,7 +3656,7 @@ namespace ServiceTelecomConnect
 
 
         #endregion
-  
+
     }
 }
 
