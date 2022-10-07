@@ -2647,45 +2647,5 @@ namespace ServiceTelecomConnect
                 MessageBox.Show(ex.ToString());
             }
         }
-
-        internal static void PrintExcelReport()
-        {
-            Excel.Application exApp = new Excel.Application();
-            try
-            {
-                Type officeType = Type.GetTypeFromProgID("Excel.Application");
-
-                if (officeType == null)
-                {
-                    string Mesage2 = "У Вас не установлен Excel!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    exApp.SheetsInNewWorkbook = 3;
-                    exApp.Workbooks.Add();
-                    exApp.DisplayAlerts = false;
-
-                    Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
-                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
-                    Excel.Worksheet workSheet3 = (Excel.Worksheet)exApp.Worksheets.get_Item(3);
-                }
-            }
-            catch (Exception ex)
-            {
-                if (exApp != null)
-                {
-                    exApp = null;
-                }
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                Environment.Exit(0);
-                MessageBox.Show(ex.ToString());
-            }
-        }
     }
 }

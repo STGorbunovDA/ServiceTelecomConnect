@@ -945,11 +945,6 @@ namespace ServiceTelecomConnect
 
         #region АКТ => excel
 
-        void Button_Report_Click(object sender, EventArgs e)
-        {
-            PrintDocExcel.PrintExcelReport();
-        }
-
         void Button_form_act_Click(object sender, EventArgs e)
         {
             try
@@ -1340,7 +1335,6 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                                 m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                                 m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
-                                m.MenuItems.Add(new MenuItem("Отчёт", Button_Report_Click));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
