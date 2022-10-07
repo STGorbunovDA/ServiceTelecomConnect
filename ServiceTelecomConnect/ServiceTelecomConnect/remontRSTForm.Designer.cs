@@ -790,7 +790,7 @@
             this.MinimumSize = new System.Drawing.Size(865, 780);
             this.Name = "RemontRSTForm";
             this.ShowIcon = false;
-            this.Text = "Добавление радиостанции";
+            this.Text = "Добавление ремонта";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RemontRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_info)).EndInit();

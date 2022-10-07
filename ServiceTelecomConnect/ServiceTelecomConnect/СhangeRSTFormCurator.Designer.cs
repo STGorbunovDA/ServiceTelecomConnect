@@ -749,6 +749,7 @@
             this.MinimumSize = new System.Drawing.Size(875, 530);
             this.Name = "СhangeRSTFormCurator";
             this.ShowIcon = false;
+            this.Text = "Изменение РСТ";
             this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

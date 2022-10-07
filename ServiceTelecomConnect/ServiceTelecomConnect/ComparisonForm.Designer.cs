@@ -1419,7 +1419,7 @@
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "ComparisonForm";
             this.ShowIcon = false;
-            this.Text = "Рабочий кабинет";
+            this.Text = "Рабочий кабинет Куратора";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComparisonForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ComparisonForm_FormClosed);
             this.Load += new System.EventHandler(this.ComparisonForm_Load);

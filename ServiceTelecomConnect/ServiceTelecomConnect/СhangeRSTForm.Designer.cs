@@ -928,6 +928,7 @@
             this.MinimumSize = new System.Drawing.Size(865, 600);
             this.Name = "СhangeRSTForm";
             this.ShowIcon = false;
+            this.Text = "Изменение РСТ";
             this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
