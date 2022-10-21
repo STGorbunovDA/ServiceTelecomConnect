@@ -330,6 +330,13 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region загрузка городов CmB_city_Click
+        void CmB_city_Click(object sender, EventArgs e)
+        {
+            Filling_datagridview.SelectCityGropBy(cmB_city);
+        }
+        #endregion
+
         #region panel date information
 
         void Button_record_date_Click(object sender, EventArgs e)
@@ -3662,6 +3669,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        
     }
 }
 
