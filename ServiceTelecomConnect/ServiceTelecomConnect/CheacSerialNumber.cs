@@ -229,5 +229,34 @@ namespace ServiceTelecomConnect
                 return true;
             }
         }
+        public Boolean CheacSerialNumber_OC6(string serialNumber)
+        {
+            try
+            {
+                string querystring = $"SELECT * FROM OC6 WHERE serialNumber = '{serialNumber}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
+                {
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице OC6 (CheacSerialNumber_OC6)");
+                return true;
+            }
+        }
     }
 }

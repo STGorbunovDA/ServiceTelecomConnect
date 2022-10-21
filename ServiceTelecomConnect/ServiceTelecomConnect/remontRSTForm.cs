@@ -21,7 +21,7 @@ namespace ServiceTelecomConnect
 
         void Button_save_add_rst_remont_Click(object sender, EventArgs e)
         {
-            if(txB_MainMeans.Text == "" && txB_NameProductRepaired.Text == "" )
+            if (txB_MainMeans.Text == "" && txB_NameProductRepaired.Text == "")
             {
                 string Mesage;
                 Mesage = "Поля Основное средство и Наименование изделия пустые. Им по умолчанию присвоится значение модели РСТ. Согласны?";
@@ -75,22 +75,36 @@ namespace ServiceTelecomConnect
                             $"completed_works_7 = '{сompleted_works_7.Trim()}', parts_1 = '{parts_1.Trim()}', parts_2 = '{parts_2.Trim()}', " +
                             $"parts_3 = '{parts_3.Trim()}', parts_4 = '{parts_4.Trim()}', parts_5 = '{parts_5.Trim()}', parts_6 = '{parts_6.Trim()}', parts_7 = '{parts_7.Trim()}'" +
                             $"WHERE serialNumber = '{serialNumber}'";
-
-                        var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired) " +
-                            $"VALUES ('{serialNumber.Trim()}','{mainMeans.Trim()}','{nameProductRepaired.Trim()}')";
-
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
                         }
-                        using (MySqlCommand command2 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
+                        if (CheacSerialNumber.GetInstance.CheacSerialNumber_OC6(serialNumber))
                         {
-                            DB.GetInstance.OpenConnection();
-                            command2.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
+                            var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}' WHERE serialNumber = '{serialNumber}'";
+                            using (MySqlCommand command2 = new MySqlCommand(changeQueryOC, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                command2.ExecuteNonQuery();
+                                DB.GetInstance.CloseConnection();
+                            }
                         }
+                        else
+                        {
+                            var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired) " +
+                                $"VALUES ('{serialNumber.Trim()}','{mainMeans.Trim()}','{nameProductRepaired.Trim()}')";
+
+                            using (MySqlCommand command3 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                command3.ExecuteNonQuery();
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                        }
+
 
 
                         MessageBox.Show("Ремонт успешно добавлен!");
