@@ -1920,5 +1920,43 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
+
+        #region OC-6 для ремонтов
+
+        internal static Tuple<string, string> Loading_OC_6_values(string serialNumber)
+        {
+            string mainMeans = "";
+            string nameProductRepaired = "";
+            try
+            {
+
+                if (Internet_check.AvailabilityChanged_bool())
+                {
+                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = {serialNumber}";
+
+                    using (MySqlCommand command = new MySqlCommand(querySelectOC, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                mainMeans = reader[0].ToString();
+                                nameProductRepaired = reader[1].ToString();
+                            }
+                            reader.Close();
+                        }
+                    }
+                }
+                return Tuple.Create(mainMeans, nameProductRepaired);
+            }
+            catch
+            {
+                return Tuple.Create(mainMeans, nameProductRepaired);
+            }
+
+        }
+
+        #endregion
     }
 }

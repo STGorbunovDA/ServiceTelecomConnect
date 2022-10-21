@@ -76,10 +76,19 @@ namespace ServiceTelecomConnect
                             $"parts_3 = '{parts_3.Trim()}', parts_4 = '{parts_4.Trim()}', parts_5 = '{parts_5.Trim()}', parts_6 = '{parts_6.Trim()}', parts_7 = '{parts_7.Trim()}'" +
                             $"WHERE serialNumber = '{serialNumber}'";
 
+                        var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired) " +
+                            $"VALUES ('{serialNumber.Trim()}','{mainMeans.Trim()}','{nameProductRepaired.Trim()}')";
+
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                        using (MySqlCommand command2 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command2.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
                         }
 
@@ -4800,5 +4809,11 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+        void RemontRSTForm_Load(object sender, EventArgs e)
+        {
+            txB_MainMeans.Text = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item1;
+            txB_NameProductRepaired.Text = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+        }
     }
 }

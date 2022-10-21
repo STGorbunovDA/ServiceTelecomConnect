@@ -839,6 +839,7 @@
             this.Name = "RemontRSTForm";
             this.ShowIcon = false;
             this.Text = "Добавление ремонта";
+            this.Load += new System.EventHandler(this.RemontRSTForm_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RemontRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_info)).EndInit();
