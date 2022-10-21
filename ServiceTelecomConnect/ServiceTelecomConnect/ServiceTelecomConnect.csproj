@@ -268,123 +268,123 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddExecutionСurator.cs" />
-    <Compile Include="CheacForm.cs" />
-    <Compile Include="CheacReggedit.cs" />
-    <Compile Include="CheacSerialNumber.cs" />
-    <Compile Include="DB_2.cs" />
-    <Compile Include="DB_3.cs" />
-    <Compile Include="DB_4.cs" />
-    <Compile Include="Filling_datagridview.cs" />
-    <Compile Include="FormClose.cs" />
-    <Compile Include="FunctionPanel.cs" />
-    <Compile Include="InstanceChecker.cs" />
-    <Compile Include="internet_check.cs" />
-    <Compile Include="MyTwoColumnComparer.cs" />
-    <Compile Include="PrintDocExcel.cs" />
-    <Compile Include="PrintExcel.cs" />
-    <Compile Include="RemontRSTForm.cs">
+    <Compile Include="Classes\Important\AddExecutionСurator.cs" />
+    <Compile Include="Classes\Cheac\CheacForm.cs" />
+    <Compile Include="Classes\Cheac\CheacReggedit.cs" />
+    <Compile Include="Classes\Cheac\CheacSerialNumber.cs" />
+    <Compile Include="Classes\DataBase\DB_2.cs" />
+    <Compile Include="Classes\DataBase\DB_3.cs" />
+    <Compile Include="Classes\DataBase\DB_4.cs" />
+    <Compile Include="Classes\Important\Filling_datagridview.cs" />
+    <Compile Include="Classes\Other\FormClose.cs" />
+    <Compile Include="Classes\Important\FunctionPanel.cs" />
+    <Compile Include="Classes\Other\InstanceChecker.cs" />
+    <Compile Include="Classes\Other\internet_check.cs" />
+    <Compile Include="Classes\Other\MyTwoColumnComparer.cs" />
+    <Compile Include="Classes\Print\PrintDocExcel.cs" />
+    <Compile Include="Classes\Print\PrintExcel.cs" />
+    <Compile Include="Forms\RemontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RemontRSTForm.Designer.cs">
+    <Compile Include="Forms\RemontRSTForm.Designer.cs">
       <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ComparisonForm.cs">
+    <Compile Include="Forms\ComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ComparisonForm.Designer.cs">
+    <Compile Include="Forms\ComparisonForm.Designer.cs">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="СhangeRSTFormCurator.cs">
+    <Compile Include="Forms\СhangeRSTFormCurator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="СhangeRSTFormCurator.Designer.cs">
+    <Compile Include="Forms\СhangeRSTFormCurator.Designer.cs">
       <DependentUpon>СhangeRSTFormCurator.cs</DependentUpon>
     </Compile>
-    <Compile Include="СhangeRSTForm.cs">
+    <Compile Include="Forms\СhangeRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="СhangeRSTForm.Designer.cs">
+    <Compile Include="Forms\СhangeRSTForm.Designer.cs">
       <DependentUpon>СhangeRSTForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddRSTForm.cs">
+    <Compile Include="Forms\AddRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddRSTForm.Designer.cs">
+    <Compile Include="Forms\AddRSTForm.Designer.cs">
       <DependentUpon>AddRSTForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddToProblemRST.cs">
+    <Compile Include="Forms\AddToProblemRST.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddToProblemRST.Designer.cs">
+    <Compile Include="Forms\AddToProblemRST.Designer.cs">
       <DependentUpon>AddToProblemRST.cs</DependentUpon>
     </Compile>
-    <Compile Include="cheakUser.cs" />
-    <Compile Include="DB.cs" />
-    <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Classes\Cheac\cheakUser.cs" />
+    <Compile Include="Classes\DataBase\DB.cs" />
+    <Compile Include="Classes\Other\ExtensionMethods.cs" />
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="md5.cs" />
-    <Compile Include="Menu.cs">
+    <Compile Include="Classes\Other\md5.cs" />
+    <Compile Include="Forms\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Forms\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="Forms\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="Forms\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaveFileDataGridViewPC.cs" />
-    <Compile Include="Setting_user.cs">
+    <Compile Include="Classes\Other\SaveFileDataGridViewPC.cs" />
+    <Compile Include="Forms\Setting_user.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting_user.Designer.cs">
+    <Compile Include="Forms\Setting_user.Designer.cs">
       <DependentUpon>Setting_user.cs</DependentUpon>
     </Compile>
-    <Compile Include="ST_WorkForm.cs">
+    <Compile Include="Forms\ST_WorkForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ST_WorkForm.Designer.cs">
+    <Compile Include="Forms\ST_WorkForm.Designer.cs">
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TutorialForm.cs">
+    <Compile Include="Forms\TutorialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TutorialForm.Designer.cs">
+    <Compile Include="Forms\TutorialForm.Designer.cs">
       <DependentUpon>TutorialForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintDocWord.cs" />
-    <EmbeddedResource Include="RemontRSTForm.resx">
+    <Compile Include="Classes\Print\PrintDocWord.cs" />
+    <EmbeddedResource Include="Forms\RemontRSTForm.resx">
       <DependentUpon>RemontRSTForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ComparisonForm.resx">
+    <EmbeddedResource Include="Forms\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="СhangeRSTFormCurator.resx">
+    <EmbeddedResource Include="Forms\СhangeRSTFormCurator.resx">
       <DependentUpon>СhangeRSTFormCurator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="СhangeRSTForm.resx">
+    <EmbeddedResource Include="Forms\СhangeRSTForm.resx">
       <DependentUpon>СhangeRSTForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddRSTForm.resx">
+    <EmbeddedResource Include="Forms\AddRSTForm.resx">
       <DependentUpon>AddRSTForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddToProblemRST.resx">
+    <EmbeddedResource Include="Forms\AddToProblemRST.resx">
       <DependentUpon>AddToProblemRST.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="Forms\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -398,16 +398,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="Forms\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setting_user.resx">
+    <EmbeddedResource Include="Forms\Setting_user.resx">
       <DependentUpon>Setting_user.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ST_WorkForm.resx">
+    <EmbeddedResource Include="Forms\ST_WorkForm.resx">
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TutorialForm.resx">
+    <EmbeddedResource Include="Forms\TutorialForm.resx">
       <DependentUpon>TutorialForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
