@@ -2405,6 +2405,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated125 = workSheet2.Rows.get_Range("A63", "K63");
                     Excel.Range range_Consolidated126 = workSheet2.Rows.get_Range("I62", "J62");
                     Excel.Range range_Consolidated127 = workSheet2.Rows.get_Range("K5", "K9");
+                    Excel.Range range_Consolidated1280000 = workSheet2.Rows.get_Range("B41", "C41");
 
                     range_Consolidated100.Font.Size = 9;
                     range_Consolidated101.Font.Bold = true;
@@ -2441,6 +2442,7 @@ namespace ServiceTelecomConnect
                     range_Consolidated125.Font.Size = 7;
                     range_Consolidated126.Font.Bold = true;
                     range_Consolidated127.NumberFormat = "@";
+                    range_Consolidated1280000.NumberFormat = "@";
 
                     workSheet2.Cells[1, 7] = $"Специализированная форма № ФОУ-18";
                     workSheet2.Cells[2, 6] = $"Утверждена распоряжением ОАО «РЖД» от 29.01.2015 № 190р";
@@ -2643,8 +2645,8 @@ namespace ServiceTelecomConnect
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
 
-                Environment.Exit(0);
                 MessageBox.Show(ex.ToString());
+                Environment.Exit(0);
             }
         }
     }

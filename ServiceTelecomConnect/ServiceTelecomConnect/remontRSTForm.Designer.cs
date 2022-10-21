@@ -635,7 +635,7 @@
             this.label_company.AutoSize = true;
             this.label_company.BackColor = System.Drawing.Color.Transparent;
             this.label_company.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_company.Location = new System.Drawing.Point(455, 13);
+            this.label_company.Location = new System.Drawing.Point(449, 13);
             this.label_company.Name = "label_company";
             this.label_company.Size = new System.Drawing.Size(109, 22);
             this.label_company.TabIndex = 156;

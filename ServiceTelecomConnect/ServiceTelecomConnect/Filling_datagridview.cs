@@ -1929,7 +1929,6 @@ namespace ServiceTelecomConnect
             string nameProductRepaired = "";
             try
             {
-
                 if (Internet_check.AvailabilityChanged_bool())
                 {
                     string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = {serialNumber}";
