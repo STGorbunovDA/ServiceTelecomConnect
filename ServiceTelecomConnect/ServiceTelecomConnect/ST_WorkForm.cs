@@ -969,7 +969,7 @@ namespace ServiceTelecomConnect
                 {
                     dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
                 }
-                PrintDocExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                     lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
                 Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
@@ -1001,7 +1001,7 @@ namespace ServiceTelecomConnect
                 string mainMeans = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item1;
                 string nameProductRepaired = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item2;
 
-                PrintDocExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                      lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
                      cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
@@ -3508,7 +3508,7 @@ namespace ServiceTelecomConnect
                     {"<comment>", comment}
                 };
 
-                    PrintDocWord.GetInstance.ProcessPrintWord(items, decommissionSerialNumber_company, dateDecommission, city, comment);
+                    PrintDocWord.GetInstance.ProcessPrintWordDecommission(items, decommissionSerialNumber_company, dateDecommission, city, comment);
                 }
             }
             catch (Exception)
@@ -3678,6 +3678,7 @@ namespace ServiceTelecomConnect
             {
                 panel_Tag.Visible = true;
                 panel_Tag.Enabled = true;
+                txB_Date_panel_Tag.Select();
             }
             catch (Exception)
             {
@@ -3703,6 +3704,29 @@ namespace ServiceTelecomConnect
 
         void Btn_FormTag_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txB_Date_panel_Tag.Text))
+            {
+                DateTime dateTime = Convert.ToDateTime(txB_Date_panel_Tag.Text);
+
+                string day = dateTime.ToString("dd");
+                string month = dateTime.ToString("MM");
+                string year = dateTime.ToString("yyyy");
+                string day2 = dateTime.AddDays(1).ToString("dd");
+                string year2 = dateTime.AddYears(1).ToString("yyyy");
+
+                var items2 = new Dictionary<string, string>
+                {
+                    {"day", day },
+                    {"month", month },
+                    {"year", year },
+                    {"day2", day2 },
+                    {"year2", year2 }
+                };
+
+                PrintDocExcel.GetInstance.ProcessPrintWordTag(items2, txB_Date_panel_Tag.Text);
+            }
+
+            else MessageBox.Show("Заполни дату!");
 
         }
 

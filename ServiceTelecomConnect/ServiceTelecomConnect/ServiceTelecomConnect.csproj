@@ -282,6 +282,7 @@
     <Compile Include="internet_check.cs" />
     <Compile Include="MyTwoColumnComparer.cs" />
     <Compile Include="PrintDocExcel.cs" />
+    <Compile Include="PrintExcel.cs" />
     <Compile Include="RemontRSTForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -413,7 +414,7 @@
     <None Include="documents\DV.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="documents\БИРКА_20.10.2022.xls">
+    <None Include="documents\TAG.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

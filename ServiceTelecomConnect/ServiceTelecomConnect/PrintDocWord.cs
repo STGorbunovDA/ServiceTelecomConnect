@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 
+
 namespace ServiceTelecomConnect
 {
     class PrintDocWord
@@ -18,7 +19,9 @@ namespace ServiceTelecomConnect
                     lock (SyncObject)
                     {
                         if (Class == null)
+                        {
                             Class = new PrintDocWord("documents\\DV.doc");
+                        }
                     }
                 return Class;
             }
@@ -43,7 +46,7 @@ namespace ServiceTelecomConnect
             }
             else
             {
-                string Mesage2 = "У Вас не установлен Word!";
+                string Mesage2 = "У Вас не установлен пакет Office(Excel + Word)!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -52,7 +55,9 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal bool ProcessPrintWord(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city, string comment)
+
+
+        internal void ProcessPrintWordDecommission(Dictionary<string, string> items, string txB_decommissionSerialNumber_company, string dateDecommission, string city, string comment)
         {
             var WordApp = new Word.Application();
             try
@@ -111,8 +116,6 @@ namespace ServiceTelecomConnect
                         MessageBox.Show("Не удаётся сохранить файл word");
                     }
                 }
-
-                return true;
             }
             catch (Exception)
             {
@@ -120,7 +123,8 @@ namespace ServiceTelecomConnect
                 WordApp.ActiveDocument.Close();
                 WordApp.Quit();
             }
-            return false;
         }
+
+       
     }
 }
