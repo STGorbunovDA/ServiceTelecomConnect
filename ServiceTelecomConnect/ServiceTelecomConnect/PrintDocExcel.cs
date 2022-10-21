@@ -1898,7 +1898,7 @@ namespace ServiceTelecomConnect
                     rowHeight24.EntireRow.RowHeight = 35;
 
                     workSheet.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ №";
-                    workSheet.Cells[1, 7] = $"{numberActRemont}";
+                    workSheet.Cells[1, 7] = $"{numberActRemont}-Р";
                     workSheet.Cells[2, 1] = $"выполненных работ по ремонту систем радиосвязи";
                     workSheet.Cells[4, 1] = $"{city}";
                     workSheet.Cells[5, 1] = $"город";
@@ -2046,8 +2046,6 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells130 = (Excel.Range)workSheet2.get_Range("C22", "E22").Cells;
                     Excel.Range _excelCells131 = (Excel.Range)workSheet2.get_Range("F22", "G22").Cells;
                     Excel.Range _excelCells132 = (Excel.Range)workSheet2.get_Range("H22", "K22").Cells;
-                    Excel.Range _excelCells133 = (Excel.Range)workSheet2.get_Range("A23", "C23").Cells;
-                    Excel.Range _excelCells134 = (Excel.Range)workSheet2.get_Range("D23", "G23").Cells;
                     Excel.Range _excelCells135 = (Excel.Range)workSheet2.get_Range("A24", "B24").Cells;
                     Excel.Range _excelCells136 = (Excel.Range)workSheet2.get_Range("C24", "K24").Cells;
                     Excel.Range _excelCells137 = (Excel.Range)workSheet2.get_Range("A25", "K25").Cells;
@@ -2136,7 +2134,6 @@ namespace ServiceTelecomConnect
                     _excelCells128.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells130.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells132.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
-                    _excelCells134.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells136.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells137.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells143.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -2197,8 +2194,6 @@ namespace ServiceTelecomConnect
                     _excelCells130.Merge(Type.Missing);
                     _excelCells131.Merge(Type.Missing);
                     _excelCells132.Merge(Type.Missing);
-                    _excelCells133.Merge(Type.Missing);
-                    _excelCells134.Merge(Type.Missing);
                     _excelCells135.Merge(Type.Missing);
                     _excelCells136.Merge(Type.Missing);
                     _excelCells138.Merge(Type.Missing);
@@ -2265,7 +2260,6 @@ namespace ServiceTelecomConnect
                     _excelCells131.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells132.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells132.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                    _excelCells134.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     _excelCells135.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     _excelCells136.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
                     _excelCells138.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
@@ -2315,6 +2309,9 @@ namespace ServiceTelecomConnect
 
                     Excel.Range rowHeight102 = workSheet2.get_Range("J14", "K14");
                     rowHeight102.EntireRow.RowHeight = 15;
+
+                    Excel.Range rowHeight124 = workSheet2.get_Range("A23", "K23");
+                    rowHeight124.EntireRow.RowHeight = 2;
 
                     Excel.Range rowHeight103 = workSheet2.get_Range("A27", "K27");
                     rowHeight103.EntireRow.RowHeight = 8;
@@ -2467,17 +2464,15 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[17, 4] = $"ДЕФЕКТНАЯ ВЕДОМОСТЬ";
                     workSheet2.Cells[18, 4] = $"Номер документа";
                     workSheet2.Cells[18, 7] = $"Дата составления";
-                    workSheet2.Cells[19, 4] = $"{numberActRemont}";
+                    workSheet2.Cells[19, 4] = $"{numberActRemont}-Д";
                     workSheet2.Cells[19, 7] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
                     workSheet2.Cells[21, 1] = $"Основное средство (здание, оборудование):";
                     workSheet2.Cells[21, 5] = $"{model}";
                     workSheet2.Cells[21, 8] = $"Заводской № {serialNumber}";
                     workSheet2.Cells[22, 1] = $"Инвентарный номер:";
                     workSheet2.Cells[22, 3] = $"{inventoryNumber}";
-                    workSheet2.Cells[22, 6] = $"Сетевой номер:";
-                    workSheet2.Cells[22, 8] = $"{networkNumber}";
-                    workSheet2.Cells[23, 1] = $"Местонахождение объекта:";
-                    workSheet2.Cells[23, 4] = $"{city}";
+                    workSheet2.Cells[22, 6] = $"Местонахождение объекта:";
+                    workSheet2.Cells[22, 8] = $"{city}";
                     workSheet2.Cells[24, 1] = $"Комиссия в составе:";
                     workSheet2.Cells[24, 3] = $"{chairman_post_remont_company} {chairman_FIO_remont_company}," +
                         $" {txb_1_post_remont_company} {txb_1_FIO_remont_company}";

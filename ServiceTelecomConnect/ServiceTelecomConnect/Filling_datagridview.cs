@@ -1904,9 +1904,11 @@ namespace ServiceTelecomConnect
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             adapter.Fill(city_table);
-
-                            cmB_city.DataSource = city_table;
-                            cmB_city.DisplayMember = "city";
+                            if (city_table.Rows.Count > 0)
+                            {
+                                cmB_city.DataSource = city_table;
+                                cmB_city.DisplayMember = "city";
+                            }
                             DB.GetInstance.CloseConnection();
                         }
                     }
