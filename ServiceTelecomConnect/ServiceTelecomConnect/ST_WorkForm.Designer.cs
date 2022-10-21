@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_date = new System.Windows.Forms.Panel();
             this.txB_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -210,6 +210,12 @@
             this.label33 = new System.Windows.Forms.Label();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txB_Date_panel_Tag = new System.Windows.Forms.TextBox();
+            this.btn_close_panel_Tag = new System.Windows.Forms.Button();
+            this.btn_FormTag = new System.Windows.Forms.Button();
+            this.panel_Tag = new System.Windows.Forms.Panel();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -226,6 +232,7 @@
             this.panel_seach_datagrid.SuspendLayout();
             this.panel_decommissionSerialNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.panel_Tag.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_date
@@ -960,44 +967,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -2436,6 +2443,76 @@
             this.dataGridView3.TabIndex = 82;
             this.dataGridView3.Visible = false;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Courier New", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label34.Location = new System.Drawing.Point(15, 68);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(75, 23);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "Дата:";
+            // 
+            // txB_Date_panel_Tag
+            // 
+            this.txB_Date_panel_Tag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_Date_panel_Tag.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_Date_panel_Tag.Location = new System.Drawing.Point(109, 67);
+            this.txB_Date_panel_Tag.Name = "txB_Date_panel_Tag";
+            this.txB_Date_panel_Tag.ReadOnly = true;
+            this.txB_Date_panel_Tag.Size = new System.Drawing.Size(185, 29);
+            this.txB_Date_panel_Tag.TabIndex = 37;
+            this.txB_Date_panel_Tag.Click += new System.EventHandler(this.TxB_Date_panel_Tag_Click);
+            // 
+            // btn_close_panel_Tag
+            // 
+            this.btn_close_panel_Tag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_Tag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_Tag.Location = new System.Drawing.Point(264, 24);
+            this.btn_close_panel_Tag.Name = "btn_close_panel_Tag";
+            this.btn_close_panel_Tag.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_Tag.TabIndex = 34;
+            this.btn_close_panel_Tag.Text = "X";
+            this.btn_close_panel_Tag.UseVisualStyleBackColor = false;
+            this.btn_close_panel_Tag.Click += new System.EventHandler(this.Btn_close_panel_Tag_Click);
+            // 
+            // btn_FormTag
+            // 
+            this.btn_FormTag.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_FormTag.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_FormTag.Location = new System.Drawing.Point(170, 109);
+            this.btn_FormTag.Name = "btn_FormTag";
+            this.btn_FormTag.Size = new System.Drawing.Size(124, 29);
+            this.btn_FormTag.TabIndex = 36;
+            this.btn_FormTag.Text = "Сформировать";
+            this.btn_FormTag.UseVisualStyleBackColor = false;
+            this.btn_FormTag.Click += new System.EventHandler(this.Btn_FormTag_Click);
+            // 
+            // panel_Tag
+            // 
+            this.panel_Tag.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_Tag.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_Tag.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_Tag.Controls.Add(this.monthCalendar1);
+            this.panel_Tag.Controls.Add(this.btn_FormTag);
+            this.panel_Tag.Controls.Add(this.btn_close_panel_Tag);
+            this.panel_Tag.Controls.Add(this.txB_Date_panel_Tag);
+            this.panel_Tag.Controls.Add(this.label34);
+            this.panel_Tag.Location = new System.Drawing.Point(550, 303);
+            this.panel_Tag.Name = "panel_Tag";
+            this.panel_Tag.Size = new System.Drawing.Size(313, 178);
+            this.panel_Tag.TabIndex = 39;
+            this.panel_Tag.Visible = false;
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(75, 7);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 39;
+            this.monthCalendar1.Visible = false;
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2445,8 +2522,9 @@
             this.ClientSize = new System.Drawing.Size(1424, 729);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
+            this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_seach_datagrid);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.Functional_loading_panel);
@@ -2494,6 +2572,8 @@
             this.panel_decommissionSerialNumber.ResumeLayout(false);
             this.panel_decommissionSerialNumber.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.panel_Tag.ResumeLayout(false);
+            this.panel_Tag.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2673,5 +2753,11 @@
         private System.Windows.Forms.TextBox txB_reason_decommission;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox txB_Date_panel_Tag;
+        private System.Windows.Forms.Button btn_close_panel_Tag;
+        private System.Windows.Forms.Button btn_FormTag;
+        private System.Windows.Forms.Panel panel_Tag;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

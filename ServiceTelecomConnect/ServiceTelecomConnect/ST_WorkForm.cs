@@ -1356,6 +1356,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -3669,7 +3670,45 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        
+        #region Бирка
+
+        void FormTag(object sender, EventArgs e)
+        {
+            try
+            {
+                panel_Tag.Visible = true;
+                panel_Tag.Enabled = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка формирования бирок (FormTag)");
+            }
+        }
+
+        void TxB_Date_panel_Tag_Click(object sender, EventArgs e)
+        {
+            monthCalendar1.Visible = true;
+        }
+
+        void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            txB_Date_panel_Tag.Text = e.End.ToString("dd.MM.yyyy");
+            monthCalendar1.Visible = false;
+        }
+
+        void Btn_close_panel_Tag_Click(object sender, EventArgs e)
+        {
+            panel_Tag.Visible = false;
+        }
+
+        void Btn_FormTag_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
     }
 }
 
