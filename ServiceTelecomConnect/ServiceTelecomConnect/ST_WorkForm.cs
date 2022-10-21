@@ -990,6 +990,9 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
+
+                Создать метод который будет принимать из таблице наименование узла и основное средство если они есть
+
                 PrintDocExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                      lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,

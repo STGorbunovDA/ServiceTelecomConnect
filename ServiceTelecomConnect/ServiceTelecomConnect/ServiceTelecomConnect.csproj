@@ -272,7 +272,6 @@
     <Compile Include="CheacForm.cs" />
     <Compile Include="CheacReggedit.cs" />
     <Compile Include="CheacSerialNumber.cs" />
-    <Compile Include="DataStorage.cs" />
     <Compile Include="DB_2.cs" />
     <Compile Include="DB_3.cs" />
     <Compile Include="DB_4.cs" />

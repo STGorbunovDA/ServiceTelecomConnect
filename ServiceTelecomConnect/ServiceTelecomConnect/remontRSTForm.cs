@@ -21,6 +21,17 @@ namespace ServiceTelecomConnect
 
         void Button_save_add_rst_remont_Click(object sender, EventArgs e)
         {
+            if(txB_MainMeans.Text == "" && txB_NameProductRepaired.Text == "" )
+            {
+                string Mesage;
+                Mesage = "Поля Основное средство и Наименование изделия пустые. Им по умолчанию присвоится значение модели РСТ. Согласны?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
             if (Internet_check.AvailabilityChanged_bool())
             {
                 string Mesage;
@@ -51,6 +62,8 @@ namespace ServiceTelecomConnect
                     var parts_6 = txB_parts_6.Text;
                     var parts_7 = txB_parts_7.Text;
                     var serialNumber = txB_serialNumber.Text;
+                    var mainMeans = txB_MainMeans.Text;
+                    var nameProductRepaired = txB_NameProductRepaired.Text;
 
 
                     if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
@@ -61,7 +74,7 @@ namespace ServiceTelecomConnect
                             $"completed_works_5 = '{сompleted_works_5.Trim()}', completed_works_6 = '{сompleted_works_6.Trim()}', " +
                             $"completed_works_7 = '{сompleted_works_7.Trim()}', parts_1 = '{parts_1.Trim()}', parts_2 = '{parts_2.Trim()}', " +
                             $"parts_3 = '{parts_3.Trim()}', parts_4 = '{parts_4.Trim()}', parts_5 = '{parts_5.Trim()}', parts_6 = '{parts_6.Trim()}', parts_7 = '{parts_7.Trim()}'" +
-                            $"WHERE serialNumber = '{serialNumber}' ";
+                            $"WHERE serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {

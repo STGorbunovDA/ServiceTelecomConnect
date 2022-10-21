@@ -83,6 +83,10 @@
             this.cmb_remont_select = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.lbL_last_act_remont = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txB_MainMeans = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txB_NameProductRepaired = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_info)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +95,7 @@
             // 
             this.picB_clear.BackColor = System.Drawing.Color.Transparent;
             this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160;
-            this.picB_clear.Location = new System.Drawing.Point(735, 12);
+            this.picB_clear.Location = new System.Drawing.Point(785, 11);
             this.picB_clear.Name = "picB_clear";
             this.picB_clear.Size = new System.Drawing.Size(52, 47);
             this.picB_clear.TabIndex = 8;
@@ -102,7 +106,7 @@
             // 
             this.picB_info.BackColor = System.Drawing.Color.Transparent;
             this.picB_info.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._756exclamationmark_100528__1_;
-            this.picB_info.Location = new System.Drawing.Point(677, 12);
+            this.picB_info.Location = new System.Drawing.Point(727, 11);
             this.picB_info.Name = "picB_info";
             this.picB_info.Size = new System.Drawing.Size(52, 47);
             this.picB_info.TabIndex = 7;
@@ -114,7 +118,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(274, 22);
+            this.label1.Location = new System.Drawing.Point(179, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(264, 27);
             this.label1.TabIndex = 0;
@@ -147,7 +151,7 @@
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.Color.Transparent;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(492, 217);
+            this.label36.Location = new System.Drawing.Point(492, 225);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(283, 18);
             this.label36.TabIndex = 103;
@@ -158,7 +162,7 @@
             this.label37.AutoSize = true;
             this.label37.BackColor = System.Drawing.Color.Transparent;
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(164, 217);
+            this.label37.Location = new System.Drawing.Point(164, 225);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(162, 18);
             this.label37.TabIndex = 102;
@@ -167,7 +171,7 @@
             // txB_priceRemont
             // 
             this.txB_priceRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_priceRemont.Location = new System.Drawing.Point(646, 155);
+            this.txB_priceRemont.Location = new System.Drawing.Point(657, 121);
             this.txB_priceRemont.Name = "txB_priceRemont";
             this.txB_priceRemont.ReadOnly = true;
             this.txB_priceRemont.Size = new System.Drawing.Size(86, 26);
@@ -178,7 +182,7 @@
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.Color.Transparent;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.Location = new System.Drawing.Point(528, 159);
+            this.label38.Location = new System.Drawing.Point(539, 125);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(112, 18);
             this.label38.TabIndex = 100;
@@ -196,7 +200,7 @@
             "4",
             "5",
             "6"});
-            this.cmB_сategory.Location = new System.Drawing.Point(407, 155);
+            this.cmB_сategory.Location = new System.Drawing.Point(418, 121);
             this.cmB_сategory.Name = "cmB_сategory";
             this.cmB_сategory.Size = new System.Drawing.Size(86, 28);
             this.cmB_сategory.TabIndex = 99;
@@ -208,7 +212,7 @@
             this.label39.BackColor = System.Drawing.Color.Transparent;
             this.label39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(317, 159);
+            this.label39.Location = new System.Drawing.Point(328, 125);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(84, 18);
             this.label39.TabIndex = 98;
@@ -217,7 +221,7 @@
             // txB_numberActRemont
             // 
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberActRemont.Location = new System.Drawing.Point(206, 155);
+            this.txB_numberActRemont.Location = new System.Drawing.Point(217, 121);
             this.txB_numberActRemont.MaxLength = 31;
             this.txB_numberActRemont.Name = "txB_numberActRemont";
             this.txB_numberActRemont.Size = new System.Drawing.Size(86, 26);
@@ -228,7 +232,7 @@
             this.label40.AutoSize = true;
             this.label40.BackColor = System.Drawing.Color.Transparent;
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label40.Location = new System.Drawing.Point(74, 159);
+            this.label40.Location = new System.Drawing.Point(85, 125);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(126, 18);
             this.label40.TabIndex = 96;
@@ -535,7 +539,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(15, 110);
+            this.label16.Location = new System.Drawing.Point(26, 76);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(47, 18);
             this.label16.TabIndex = 147;
@@ -544,7 +548,7 @@
             // txB_data_remont
             // 
             this.txB_data_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_data_remont.Location = new System.Drawing.Point(68, 106);
+            this.txB_data_remont.Location = new System.Drawing.Point(79, 72);
             this.txB_data_remont.Name = "txB_data_remont";
             this.txB_data_remont.ReadOnly = true;
             this.txB_data_remont.Size = new System.Drawing.Size(142, 26);
@@ -557,7 +561,7 @@
             this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label25.ForeColor = System.Drawing.Color.Brown;
-            this.label25.Location = new System.Drawing.Point(293, 157);
+            this.label25.Location = new System.Drawing.Point(304, 123);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(18, 24);
             this.label25.TabIndex = 149;
@@ -570,7 +574,7 @@
             this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label17.ForeColor = System.Drawing.Color.Brown;
-            this.label17.Location = new System.Drawing.Point(499, 157);
+            this.label17.Location = new System.Drawing.Point(510, 123);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(18, 24);
             this.label17.TabIndex = 150;
@@ -583,7 +587,7 @@
             this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label18.ForeColor = System.Drawing.Color.Brown;
-            this.label18.Location = new System.Drawing.Point(738, 157);
+            this.label18.Location = new System.Drawing.Point(749, 123);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(18, 24);
             this.label18.TabIndex = 151;
@@ -620,7 +624,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Transparent;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(241, 111);
+            this.label21.Location = new System.Drawing.Point(252, 77);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(68, 18);
             this.label21.TabIndex = 155;
@@ -631,17 +635,17 @@
             this.label_company.AutoSize = true;
             this.label_company.BackColor = System.Drawing.Color.Transparent;
             this.label_company.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_company.Location = new System.Drawing.Point(379, 59);
+            this.label_company.Location = new System.Drawing.Point(455, 13);
             this.label_company.Name = "label_company";
-            this.label_company.Size = new System.Drawing.Size(65, 22);
+            this.label_company.Size = new System.Drawing.Size(109, 22);
             this.label_company.TabIndex = 156;
-            this.label_company.Text = "ДЦС-1";
+            this.label_company.Text = "ПЧ ИССО-2";
             this.label_company.DoubleClick += new System.EventHandler(this.Label_company_DoubleClick);
             // 
             // txB_serialNumber
             // 
             this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_serialNumber.Location = new System.Drawing.Point(609, 106);
+            this.txB_serialNumber.Location = new System.Drawing.Point(620, 72);
             this.txB_serialNumber.Multiline = true;
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.ReadOnly = true;
@@ -653,7 +657,7 @@
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(538, 110);
+            this.label22.Location = new System.Drawing.Point(549, 76);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(65, 20);
             this.label22.TabIndex = 157;
@@ -662,7 +666,7 @@
             // txB_model
             // 
             this.txB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_model.Location = new System.Drawing.Point(311, 107);
+            this.txB_model.Location = new System.Drawing.Point(322, 73);
             this.txB_model.Multiline = true;
             this.txB_model.Name = "txB_model";
             this.txB_model.ReadOnly = true;
@@ -693,7 +697,7 @@
             "15",
             "16",
             "17"});
-            this.cmb_remont_select.Location = new System.Drawing.Point(450, 56);
+            this.cmb_remont_select.Location = new System.Drawing.Point(570, 9);
             this.cmb_remont_select.Name = "cmb_remont_select";
             this.cmb_remont_select.Size = new System.Drawing.Size(58, 28);
             this.cmb_remont_select.TabIndex = 160;
@@ -705,7 +709,7 @@
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(117, 186);
+            this.label23.Location = new System.Drawing.Point(128, 152);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(83, 15);
             this.label23.TabIndex = 162;
@@ -716,11 +720,51 @@
             this.lbL_last_act_remont.AutoSize = true;
             this.lbL_last_act_remont.BackColor = System.Drawing.Color.Transparent;
             this.lbL_last_act_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_last_act_remont.Location = new System.Drawing.Point(221, 186);
+            this.lbL_last_act_remont.Location = new System.Drawing.Point(232, 152);
             this.lbL_last_act_remont.Name = "lbL_last_act_remont";
             this.lbL_last_act_remont.Size = new System.Drawing.Size(54, 15);
             this.lbL_last_act_remont.TabIndex = 161;
             this.lbL_last_act_remont.Text = "Пустой";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.Color.Transparent;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label24.Location = new System.Drawing.Point(27, 183);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(151, 18);
+            this.label24.TabIndex = 163;
+            this.label24.Text = "Основное средство:";
+            // 
+            // txB_MainMeans
+            // 
+            this.txB_MainMeans.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_MainMeans.Location = new System.Drawing.Point(184, 179);
+            this.txB_MainMeans.MaxLength = 31;
+            this.txB_MainMeans.Name = "txB_MainMeans";
+            this.txB_MainMeans.Size = new System.Drawing.Size(195, 26);
+            this.txB_MainMeans.TabIndex = 164;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label26.Location = new System.Drawing.Point(397, 183);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(177, 18);
+            this.label26.TabIndex = 165;
+            this.label26.Text = "Наименование изделия:";
+            // 
+            // txB_NameProductRepaired
+            // 
+            this.txB_NameProductRepaired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_NameProductRepaired.Location = new System.Drawing.Point(584, 179);
+            this.txB_NameProductRepaired.MaxLength = 31;
+            this.txB_NameProductRepaired.Name = "txB_NameProductRepaired";
+            this.txB_NameProductRepaired.Size = new System.Drawing.Size(195, 26);
+            this.txB_NameProductRepaired.TabIndex = 166;
             // 
             // RemontRSTForm
             // 
@@ -729,6 +773,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 741);
+            this.Controls.Add(this.txB_NameProductRepaired);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.txB_MainMeans);
+            this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.lbL_last_act_remont);
             this.Controls.Add(this.cmb_remont_select);
@@ -855,5 +903,9 @@
         internal System.Windows.Forms.ComboBox cmb_remont_select;
         private System.Windows.Forms.Label label23;
         internal System.Windows.Forms.Label lbL_last_act_remont;
+        private System.Windows.Forms.Label label24;
+        internal System.Windows.Forms.TextBox txB_MainMeans;
+        private System.Windows.Forms.Label label26;
+        internal System.Windows.Forms.TextBox txB_NameProductRepaired;
     }
 }
