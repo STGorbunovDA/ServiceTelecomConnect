@@ -3387,6 +3387,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Enabled = false;
                 panel_decommissionSerialNumber.Visible = true;
                 panel_decommissionSerialNumber.Enabled = true;
+                txB1_decommissionSerialNumber.Text = txB_numberAct.Text + "C";
                 if (cmB_model.Text == "Comrade R5")
                 {
                     txB_reason_decommission.Text = "Выходная мощность несущей передатчика: номинальная – 5 Вт, максимальная – 9 Вт, что не соответствует нормам ГОСТ 12252 – 86г, для радиостанций третьего типа и техническим параметрам изготовителя, указанных в паспорте.";
