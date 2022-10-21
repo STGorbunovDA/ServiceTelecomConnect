@@ -2512,6 +2512,7 @@ namespace ServiceTelecomConnect
                     if (nameProductRepaired == "")
                         workSheet2.Cells[40, 2] = $"{model}";
                     else workSheet2.Cells[40, 2] = $"{nameProductRepaired}";
+                    workSheet2.Cells[41, 2] = $"{serialNumber}";
                     workSheet2.Cells[40, 4] = $"\n{parts_1}\n";
                     workSheet2.Cells[40, 6] = $"\n{сompleted_works_1}\n";
                     if (parts_1 != "" || сompleted_works_1 != "")
