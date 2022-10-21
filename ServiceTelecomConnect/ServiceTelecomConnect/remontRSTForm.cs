@@ -21,17 +21,6 @@ namespace ServiceTelecomConnect
 
         void Button_save_add_rst_remont_Click(object sender, EventArgs e)
         {
-            if (txB_MainMeans.Text == "" && txB_NameProductRepaired.Text == "")
-            {
-                string Mesage;
-                Mesage = "Поля Основное средство и Наименование изделия пустые. Им по умолчанию присвоится значение модели РСТ. Согласны?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-            }
-
             if (Internet_check.AvailabilityChanged_bool())
             {
                 string Mesage;
@@ -104,8 +93,6 @@ namespace ServiceTelecomConnect
                             }
 
                         }
-
-
 
                         MessageBox.Show("Ремонт успешно добавлен!");
 

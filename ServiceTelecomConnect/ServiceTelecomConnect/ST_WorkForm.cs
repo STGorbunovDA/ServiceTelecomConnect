@@ -990,7 +990,9 @@ namespace ServiceTelecomConnect
 
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
-                //
+
+                string mainMeans = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item1;
+                string nameProductRepaired = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item2;
 
                 PrintDocExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
@@ -1002,7 +1004,7 @@ namespace ServiceTelecomConnect
                      txB_Full_name_company.Text, txB_director_FIO_remont_company.Text, txB_numberActRemont.Text,
                      txB_chairman_post_remont_company.Text, txB_chairman_FIO_remont_company.Text, txB_1_post_remont_company.Text,
                      txB_1_FIO_remont_company.Text, txB_2_post_remont_company.Text, txB_2_FIO_remont_company.Text,
-                     txB_3_post_remont_company.Text, txB_3_FIO_remont_company.Text);
+                     txB_3_post_remont_company.Text, txB_3_FIO_remont_company.Text, mainMeans, nameProductRepaired);
                 panel1.Enabled = true;
             }
         }

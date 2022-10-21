@@ -1551,7 +1551,7 @@ namespace ServiceTelecomConnect
             string BE_remont, string Full_name_company, string director_FIO_remont_company, string numberActRemont,
             string chairman_post_remont_company, string chairman_FIO_remont_company, string txb_1_post_remont_company,
             string txb_1_FIO_remont_company, string txb_2_post_remont_company, string txb_2_FIO_remont_company,
-            string txb_3_post_remont_company, string txb_3_FIO_remont_company)
+            string txb_3_post_remont_company, string txb_3_FIO_remont_company, string mainMeans, string nameProductRepaired)
         {
             Excel.Application exApp = new Excel.Application();
 
@@ -2467,7 +2467,9 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[19, 4] = $"{numberActRemont}-Д";
                     workSheet2.Cells[19, 7] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
                     workSheet2.Cells[21, 1] = $"Основное средство (здание, оборудование):";
-                    workSheet2.Cells[21, 5] = $"{model}";
+                    if (mainMeans == "")
+                        workSheet2.Cells[21, 5] = $"{model}";
+                    else workSheet2.Cells[21, 5] = $"{mainMeans}";
                     workSheet2.Cells[21, 8] = $"Заводской № {serialNumber}";
                     workSheet2.Cells[22, 1] = $"Инвентарный номер:";
                     workSheet2.Cells[22, 3] = $"{inventoryNumber}";
@@ -2507,7 +2509,9 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[45, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"7";
-                    workSheet2.Cells[40, 2] = $"{model}";
+                    if (nameProductRepaired == "")
+                        workSheet2.Cells[40, 2] = $"{model}";
+                    else workSheet2.Cells[40, 2] = $"{nameProductRepaired}";
                     workSheet2.Cells[40, 4] = $"\n{parts_1}\n";
                     workSheet2.Cells[40, 6] = $"\n{сompleted_works_1}\n";
                     if (parts_1 != "" || сompleted_works_1 != "")
