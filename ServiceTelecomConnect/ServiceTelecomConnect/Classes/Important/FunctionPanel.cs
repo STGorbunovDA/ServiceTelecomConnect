@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect
                                 {
                                     while (reader.Read())
                                     {
-                                        Filling_datagridview.ReedSingleRow(dgw, reader);
+                                        QuerySettingDataBase.ReedSingleRow(dgw, reader);
                                     }
                                     reader.Close();
                                 }
@@ -101,7 +101,7 @@ namespace ServiceTelecomConnect
                                 {
                                     while (reader.Read())
                                     {
-                                        Filling_datagridview.ReedSingleRow(dgw, reader);
+                                        QuerySettingDataBase.ReedSingleRow(dgw, reader);
                                     }
                                     reader.Close();
                                 }
@@ -360,7 +360,7 @@ namespace ServiceTelecomConnect
             try
             {
 
-                Filling_datagridview.CreateColums(dgw);
+                QuerySettingDataBase.CreateColums(dgw);
 
                 string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
 
