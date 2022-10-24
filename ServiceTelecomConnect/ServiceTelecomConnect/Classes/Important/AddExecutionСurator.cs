@@ -143,7 +143,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    Filling_datagridview.RefreshDataGridСurator(dgw, cmB_city);
+                    QuerySettingDataBase.RefreshDataGridСurator(dgw, cmB_city);
                 }
                 catch (Exception ex)
                 {
