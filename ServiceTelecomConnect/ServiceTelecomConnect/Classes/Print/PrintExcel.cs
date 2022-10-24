@@ -2040,8 +2040,8 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells124 = (Excel.Range)workSheet2.get_Range("D19", "F19").Cells;
                     Excel.Range _excelCells125 = (Excel.Range)workSheet2.get_Range("G19", "H19").Cells;
                     Excel.Range _excelCells126 = (Excel.Range)workSheet2.get_Range("A21", "D21").Cells;
-                    Excel.Range _excelCells127 = (Excel.Range)workSheet2.get_Range("E21", "G21").Cells;
-                    Excel.Range _excelCells128 = (Excel.Range)workSheet2.get_Range("H21", "K21").Cells;
+                    Excel.Range _excelCells127 = (Excel.Range)workSheet2.get_Range("E21", "H21").Cells;
+                    Excel.Range _excelCells128 = (Excel.Range)workSheet2.get_Range("I21", "K21").Cells;
                     Excel.Range _excelCells129 = (Excel.Range)workSheet2.get_Range("A22", "B22").Cells;
                     Excel.Range _excelCells130 = (Excel.Range)workSheet2.get_Range("C22", "E22").Cells;
                     Excel.Range _excelCells131 = (Excel.Range)workSheet2.get_Range("F22", "G22").Cells;
@@ -2405,7 +2405,26 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated125 = workSheet2.Rows.get_Range("A63", "K63");
                     Excel.Range range_Consolidated126 = workSheet2.Rows.get_Range("I62", "J62");
                     Excel.Range range_Consolidated127 = workSheet2.Rows.get_Range("K5", "K9");
-                    Excel.Range range_Consolidated1280000 = workSheet2.Rows.get_Range("B41", "C41");
+                    Excel.Range range_Consolidated128 = workSheet2.Rows.get_Range("B41", "C41");
+
+                    if (mainMeans != "")
+                    {
+                        if (mainMeans.Length > 35)
+                        {
+                            Excel.Range range_Consolidated129 = workSheet2.Rows.get_Range("E21", "H21");
+                            range_Consolidated129.Font.Size = 8;
+                            if (mainMeans.Length > 39)
+                            {
+                                Excel.Range range_Consolidated130 = workSheet2.Rows.get_Range("E21", "H21");
+                                range_Consolidated130.Font.Size = 7;
+                                if (mainMeans.Length > 49)
+                                {
+                                    Excel.Range range_Consolidated131 = workSheet2.Rows.get_Range("E21", "H21");
+                                    range_Consolidated131.Font.Size = 6;
+                                }
+                            }
+                        }
+                    }
 
                     range_Consolidated100.Font.Size = 9;
                     range_Consolidated101.Font.Bold = true;
@@ -2442,7 +2461,9 @@ namespace ServiceTelecomConnect
                     range_Consolidated125.Font.Size = 7;
                     range_Consolidated126.Font.Bold = true;
                     range_Consolidated127.NumberFormat = "@";
-                    range_Consolidated1280000.NumberFormat = "@";
+                    range_Consolidated128.NumberFormat = "@";
+
+
 
                     workSheet2.Cells[1, 7] = $"Специализированная форма № ФОУ-18";
                     workSheet2.Cells[2, 6] = $"Утверждена распоряжением ОАО «РЖД» от 29.01.2015 № 190р";
@@ -2472,7 +2493,7 @@ namespace ServiceTelecomConnect
                     if (mainMeans == "")
                         workSheet2.Cells[21, 5] = $"{model}";
                     else workSheet2.Cells[21, 5] = $"{mainMeans}";
-                    workSheet2.Cells[21, 8] = $"Заводской № {serialNumber}";
+                    workSheet2.Cells[21, 9] = $"Заводской № {serialNumber}";
                     workSheet2.Cells[22, 1] = $"Инвентарный номер:";
                     workSheet2.Cells[22, 3] = $"{inventoryNumber}";
                     workSheet2.Cells[22, 6] = $"Местонахождение объекта:";
@@ -2513,7 +2534,7 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[46, 1] = $"7";
                     if (nameProductRepaired == "")
                         workSheet2.Cells[40, 2] = $"{model}";
-                    else workSheet2.Cells[40, 2] = $"{nameProductRepaired}";
+                    else workSheet2.Cells[40, 2] = $"\n{nameProductRepaired}\n";
                     workSheet2.Cells[41, 2] = $"{serialNumber}";
                     workSheet2.Cells[40, 4] = $"\n{parts_1}\n";
                     workSheet2.Cells[40, 6] = $"\n{сompleted_works_1}\n";
