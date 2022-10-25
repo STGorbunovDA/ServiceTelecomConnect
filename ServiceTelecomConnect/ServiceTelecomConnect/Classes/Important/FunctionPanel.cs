@@ -18,7 +18,7 @@ namespace ServiceTelecomConnect
 
         internal static void Show_DB_radiostantion_full(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -79,7 +79,7 @@ namespace ServiceTelecomConnect
 
         internal static void Show_DB_radiostantion_last_year(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {

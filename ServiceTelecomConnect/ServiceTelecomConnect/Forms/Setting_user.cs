@@ -62,7 +62,7 @@ namespace ServiceTelecomConnect
 
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -102,7 +102,7 @@ namespace ServiceTelecomConnect
         }
         void Setting_user_Load(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
@@ -141,7 +141,7 @@ namespace ServiceTelecomConnect
 
         private void Button_update_Click(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -156,7 +156,7 @@ namespace ServiceTelecomConnect
 
         void Button_delete_Click(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -164,7 +164,7 @@ namespace ServiceTelecomConnect
                     {
                         dataGridView1.Rows[row.Index].Cells[4].Value = RowState.Deleted;
                     }
-                    if (Internet_check.AvailabilityChanged_bool())
+                    if (Internet_check.CheackSkyNET())
                     {
 
                         DB.GetInstance.OpenConnection();
@@ -211,7 +211,7 @@ namespace ServiceTelecomConnect
         }
         void Button_change_Click(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -253,7 +253,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     var loginUser = txB_login.Text;
                     var passUser = md5.hashPassword(txB_pass.Text);
@@ -295,7 +295,7 @@ namespace ServiceTelecomConnect
 
         Boolean CheackUser(string loginUser, string passUser)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
 

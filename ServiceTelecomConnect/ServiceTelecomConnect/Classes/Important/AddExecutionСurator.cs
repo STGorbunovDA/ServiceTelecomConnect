@@ -10,7 +10,7 @@ namespace ServiceTelecomConnect
 
         internal static void AddExecutionRowСell(DataGridView dgw, string months)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -86,7 +86,7 @@ namespace ServiceTelecomConnect
 
         internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, string cmB_city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {

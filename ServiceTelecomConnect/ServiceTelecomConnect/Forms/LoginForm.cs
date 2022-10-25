@@ -39,7 +39,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     var loginUser = txB_loginField.Text;
                     var passUser = md5.hashPassword(txB_passField.Text);

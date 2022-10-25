@@ -124,7 +124,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGrid(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -186,7 +186,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -311,7 +311,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridСurator(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -385,7 +385,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -449,7 +449,7 @@ namespace ServiceTelecomConnect
 
         internal static void Full_BD(DataGridView dgw)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -503,7 +503,7 @@ namespace ServiceTelecomConnect
 
         internal static void Full_BD_Curator(DataGridView dgw)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -560,7 +560,7 @@ namespace ServiceTelecomConnect
 
         internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -654,7 +654,7 @@ namespace ServiceTelecomConnect
 
         internal static void SearchCurator(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -752,7 +752,7 @@ namespace ServiceTelecomConnect
 
         internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, string txb_flag_all_BD, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -845,7 +845,7 @@ namespace ServiceTelecomConnect
 
         internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -895,7 +895,7 @@ namespace ServiceTelecomConnect
 
         internal static void Update_datagridview_number_act_curator(DataGridView dgw, string city, string numberAct)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -948,7 +948,7 @@ namespace ServiceTelecomConnect
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
         internal static void Copy_BD_radiostantion_in_radiostantion_copy()
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -956,7 +956,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool())
+                        if (Internet_check.CheackSkyNET())
                         {
                             DB_2.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
@@ -968,7 +968,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool())
+                        if (Internet_check.CheackSkyNET())
                         {
                             DB_2.GetInstance.OpenConnection();
                             command2.ExecuteNonQuery();
@@ -985,7 +985,7 @@ namespace ServiceTelecomConnect
 
         internal static void Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy()
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -993,7 +993,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool())
+                        if (Internet_check.CheackSkyNET())
                         {
                             DB_2.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
@@ -1005,7 +1005,7 @@ namespace ServiceTelecomConnect
 
                     using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                     {
-                        if (Internet_check.AvailabilityChanged_bool())
+                        if (Internet_check.CheackSkyNET())
                         {
                             DB_2.GetInstance.OpenConnection();
                             command2.ExecuteNonQuery();
@@ -1027,7 +1027,7 @@ namespace ServiceTelecomConnect
 
         internal static void DeleteRowCurator(DataGridView dgw)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1063,7 +1063,7 @@ namespace ServiceTelecomConnect
 
         internal static void DeleteRowСellCurator(DataGridView dgw)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1102,7 +1102,7 @@ namespace ServiceTelecomConnect
 
         internal static void Delete_rst_remont(string numberActRemont, string serialNumber)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1138,7 +1138,7 @@ namespace ServiceTelecomConnect
 
         static Boolean CheacknumberActRemont_radiostantion(string numberActRemont)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1183,7 +1183,7 @@ namespace ServiceTelecomConnect
             string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
             string AKB, string batteryСharger, string comment, string number_printing_doc_datePanel, string txB_reason_decommission)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1257,7 +1257,7 @@ namespace ServiceTelecomConnect
 
         internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1318,7 +1318,7 @@ namespace ServiceTelecomConnect
 
         internal static void Show_radiostantion_decommission(DataGridView dgw, string city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1805,7 +1805,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     if (city != "")
                     {
@@ -1847,7 +1847,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     if (city != "")
                     {
@@ -1891,7 +1891,7 @@ namespace ServiceTelecomConnect
 
         internal static void SelectCityGropBy(ComboBox cmB_city)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1929,7 +1929,7 @@ namespace ServiceTelecomConnect
             string nameProductRepaired = "";
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = '{serialNumber}'";
 
@@ -1983,8 +1983,32 @@ namespace ServiceTelecomConnect
             {
                 DB.GetInstance.CloseConnection();
                 lbL_last_act_remont.Text = "Пустой";
+            }         
+        }
+        internal static void LoadingLastNumberActTO(Label lbL_last_act, string cmB_city)
+        {
+            try
+            {
+                var queryLastNumberActRemont = $"SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' ORDER BY id DESC LIMIT 1";
+                using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lbL_last_act.Text = reader[0].ToString();
+                        }
+                        reader.Close();
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
             }
-            
+            catch (Exception)
+            {
+                DB.GetInstance.CloseConnection();
+                lbL_last_act.Text = "Пустой";
+            }
         }
 
         #endregion

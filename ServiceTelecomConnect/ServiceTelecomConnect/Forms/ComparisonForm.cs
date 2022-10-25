@@ -72,7 +72,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     try
                     {
@@ -658,7 +658,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {

@@ -94,6 +94,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.lbL_last_act = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.lbL_cmb_city_ST_WorkForm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dateIssue)).BeginInit();
@@ -880,6 +881,18 @@
             this.label36.TabIndex = 103;
             this.label36.Text = "Крайний акт:";
             // 
+            // lbL_cmb_city_ST_WorkForm
+            // 
+            this.lbL_cmb_city_ST_WorkForm.AutoSize = true;
+            this.lbL_cmb_city_ST_WorkForm.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_cmb_city_ST_WorkForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_cmb_city_ST_WorkForm.Location = new System.Drawing.Point(7, 9);
+            this.lbL_cmb_city_ST_WorkForm.Name = "lbL_cmb_city_ST_WorkForm";
+            this.lbL_cmb_city_ST_WorkForm.Size = new System.Drawing.Size(92, 15);
+            this.lbL_cmb_city_ST_WorkForm.TabIndex = 104;
+            this.lbL_cmb_city_ST_WorkForm.Text = "Рабочий город";
+            this.lbL_cmb_city_ST_WorkForm.Visible = false;
+            // 
             // AddRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -887,6 +900,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 551);
+            this.Controls.Add(this.lbL_cmb_city_ST_WorkForm);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.lbL_last_act);
             this.Controls.Add(this.label14);
@@ -1037,5 +1051,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label36;
         internal System.Windows.Forms.Label lbL_last_act;
+        internal System.Windows.Forms.Label lbL_cmb_city_ST_WorkForm;
     }
 }

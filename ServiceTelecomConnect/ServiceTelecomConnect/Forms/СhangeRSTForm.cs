@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (Internet_check.AvailabilityChanged_bool())
+                if (Internet_check.CheackSkyNET())
                 {
                     DB.GetInstance.OpenConnection();
                     string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";

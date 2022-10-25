@@ -6,7 +6,7 @@ namespace ServiceTelecomConnect
 {
     class Internet_check
     { 
-        public static bool AvailabilityChanged_bool()
+        public static bool CheackSkyNET()
         {
             try
             {//if(new Ping().Send("yandex.ru").Status == IPStatus.Success)

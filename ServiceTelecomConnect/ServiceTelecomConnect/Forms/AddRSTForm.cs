@@ -29,7 +29,7 @@ namespace ServiceTelecomConnect
 
         void AddRSTForm_Load(object sender, EventArgs e)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -49,6 +49,7 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.CloseConnection();
                         }
                     }
+                    QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_cmb_city_ST_WorkForm.Text);
                 }
                 catch (Exception)
                 {
@@ -73,7 +74,7 @@ namespace ServiceTelecomConnect
 
         void Add_rst_radiostantion()
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 string Mesage;
                 Mesage = "Вы действительно хотите добавить радиостанцию?";
@@ -419,7 +420,7 @@ namespace ServiceTelecomConnect
         }
         void Add_rst_radiostantion_full()
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -521,7 +522,7 @@ namespace ServiceTelecomConnect
         #region проверка в таблице radiostantion_full и если есть изменение записей
         Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
         {
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 try
                 {
@@ -1279,7 +1280,7 @@ namespace ServiceTelecomConnect
             string Mesage;
             Mesage = "Вы действительно хотите добавить модель радиостанции?";
 
-            if (Internet_check.AvailabilityChanged_bool())
+            if (Internet_check.CheackSkyNET())
             {
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
