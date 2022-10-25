@@ -135,7 +135,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                Filling_datagridview.SelectCityGropBy(cmB_city);
+                QuerySettingDataBase.SelectCityGropBy(cmB_city);
 
                 try
                 {
@@ -214,9 +214,9 @@ namespace ServiceTelecomConnect
 
 
 
-                Filling_datagridview.CreateColums(dataGridView1);
-                Filling_datagridview.CreateColums(dataGridView2);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.CreateColums(dataGridView1);
+                QuerySettingDataBase.CreateColums(dataGridView2);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                 Counters();
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
@@ -280,10 +280,10 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            Filling_datagridview.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
+            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
             new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
-            new Thread(() => { Filling_datagridview.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+            new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
 
         #region Счётчики
@@ -322,7 +322,7 @@ namespace ServiceTelecomConnect
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Full_BD(dataGridView1);
+            QuerySettingDataBase.Full_BD(dataGridView1);
             Counters();
             txb_flag_all_BD.Text = "Вся БД";
         }
@@ -332,7 +332,7 @@ namespace ServiceTelecomConnect
         #region загрузка городов CmB_city_Click
         void CmB_city_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.SelectCityGropBy(cmB_city);
+            QuerySettingDataBase.SelectCityGropBy(cmB_city);
         }
         #endregion
 
@@ -719,11 +719,11 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                Filling_datagridview.DeleteRowCurator(dataGridView1);
+                QuerySettingDataBase.DeleteRowCurator(dataGridView1);
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                 txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
@@ -753,7 +753,7 @@ namespace ServiceTelecomConnect
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                     Counters();
                     dataGridView1.ClearSelection();
 
@@ -766,7 +766,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (dataGridView1.Rows.Count == 0)
                 {
-                    Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                     Counters();
                 }
             }
@@ -955,7 +955,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.ClearSelection();
 
@@ -971,7 +971,7 @@ namespace ServiceTelecomConnect
                 PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                     lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
-                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
             }
             catch (Exception)
             {
@@ -997,8 +997,8 @@ namespace ServiceTelecomConnect
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
 
-                string mainMeans = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item1;
-                string nameProductRepaired = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+                string mainMeans = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item1;
+                string nameProductRepaired = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item2;
 
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
@@ -1037,14 +1037,14 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            Filling_datagridview.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
@@ -1055,8 +1055,8 @@ namespace ServiceTelecomConnect
             helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
             helloKey.Close();
 
-            Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
-            Filling_datagridview.SelectCityGropBy(cmB_city);
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+            QuerySettingDataBase.SelectCityGropBy(cmB_city);
             Counters();
 
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
@@ -1072,7 +1072,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -1081,7 +1081,7 @@ namespace ServiceTelecomConnect
         {
             if (txB_numberAct.Text != "")
             {
-                Filling_datagridview.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -1250,7 +1250,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
-            Filling_datagridview.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
+            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
             Counters();
         }
 
@@ -1403,7 +1403,7 @@ namespace ServiceTelecomConnect
                     {
                         panel1.Enabled = true;
                         panel3.Enabled = true;
-                        Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                        QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                         Counters();
                     }
                 }
@@ -1428,7 +1428,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                Filling_datagridview.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text);
+                QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3039,7 +3039,7 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Clear_BD_current_year();
-                Filling_datagridview.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
                 btn_clear_BD_current_year.Enabled = true;
                 btn_manual_backup_current_DB.Enabled = true;
                 btn_loading_json_file_BD.Enabled = true;
@@ -3418,7 +3418,7 @@ namespace ServiceTelecomConnect
                     var re = new Regex(Environment.NewLine);
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
 
-                    Filling_datagridview.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
+                    QuerySettingDataBase.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
                         txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
                         txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
                         txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
@@ -3453,7 +3453,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                Filling_datagridview.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text);
+                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3471,7 +3471,7 @@ namespace ServiceTelecomConnect
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
-                Filling_datagridview.Show_radiostantion_decommission(dataGridView1, txB_city.Text);
+                QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text);
                 Counters();
             }
             catch (Exception)
@@ -3535,7 +3535,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_company(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3550,7 +3550,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_location(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3565,7 +3565,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3580,7 +3580,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3595,7 +3595,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3610,7 +3610,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3625,7 +3625,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        Filling_datagridview.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts);
                     }
                     catch (Exception ex)
                     {
@@ -3651,7 +3651,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
         {
-            Filling_datagridview.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text);
+            QuerySettingDataBase.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text);
             Counters();
         }
 
@@ -3662,7 +3662,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
         {
-            Filling_datagridview.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text);
+            QuerySettingDataBase.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text);
             Counters();
         }
 

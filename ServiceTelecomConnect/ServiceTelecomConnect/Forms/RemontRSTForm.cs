@@ -4813,8 +4813,19 @@ namespace ServiceTelecomConnect
 
         void RemontRSTForm_Load(object sender, EventArgs e)
         {
-            txB_MainMeans.Text = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item1;
-            txB_NameProductRepaired.Text = Filling_datagridview.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+            QuerySettingDataBase.LoadingLastNumberActRemont(lbL_last_act_remont);
+            txB_MainMeans.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item1;
+            txB_NameProductRepaired.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+            if(txB_numberActRemont.Text != "53/")
+            {
+                lbL_AddRemontRST.Text = "Изменение ремонта";
+                btn_save_add_rst_remont.Text = "Изменить";
+            }
+            else
+            {
+                lbL_AddRemontRST.Text = "Добавление ремонта";
+                btn_save_add_rst_remont.Text = "Добавить";
+            }
         }
     }
 }

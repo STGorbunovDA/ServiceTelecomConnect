@@ -275,7 +275,7 @@
     <Compile Include="Classes\DataBase\DB_2.cs" />
     <Compile Include="Classes\DataBase\DB_3.cs" />
     <Compile Include="Classes\DataBase\DB_4.cs" />
-    <Compile Include="Classes\Important\Filling_datagridview.cs" />
+    <Compile Include="Classes\Important\QuerySettingDataBase.cs" />
     <Compile Include="Classes\Other\FormClose.cs" />
     <Compile Include="Classes\Important\FunctionPanel.cs" />
     <Compile Include="Classes\Other\InstanceChecker.cs" />
