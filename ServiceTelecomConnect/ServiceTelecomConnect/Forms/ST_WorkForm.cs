@@ -1253,7 +1253,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
-            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, txB_city.Text);
+            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD.Text, cmB_city.Text);
             Counters();
         }
 
