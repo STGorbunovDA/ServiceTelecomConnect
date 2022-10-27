@@ -1989,7 +1989,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                var queryLastNumberActRemont = $"SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' ORDER BY id DESC LIMIT 1";
+                var queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' ORDER BY id DESC LIMIT 10) t ORDER BY numberAct DESC LIMIT 1";
                 using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
