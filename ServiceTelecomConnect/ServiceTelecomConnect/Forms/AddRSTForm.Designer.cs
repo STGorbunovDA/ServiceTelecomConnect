@@ -722,7 +722,7 @@
             this.txB_AKB.TabIndex = 89;
             this.txB_AKB.Text = "-";
             this.txB_AKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_AKB.Click += new System.EventHandler(this.TextBox_AKB_Click);
+            this.txB_AKB.Click += new System.EventHandler(this.TxB_AKB_Click);
             this.txB_AKB.Leave += new System.EventHandler(this.TextBox_AKB_Leave);
             // 
             // label33

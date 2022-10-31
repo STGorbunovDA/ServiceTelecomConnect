@@ -1193,10 +1193,7 @@ namespace ServiceTelecomConnect
                 txB_manipulator.Text = "-";
             }
         }
-        void TextBox_AKB_Click(object sender, EventArgs e)
-        {
-            txB_AKB.Text = "";
-        }
+        
         void TextBox_AKB_Leave(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "")
@@ -1227,6 +1224,15 @@ namespace ServiceTelecomConnect
                 txB_batteryСharger.Text = "-";
             }
         }
+
+        void TxB_AKB_Click(object sender, EventArgs e)
+        {
+            if(txB_AKB.Text == "-")
+            {
+                txB_AKB.Text = "";
+            }
+        }
+
         void TextBox_TextChanged()
         {
             if (cmB_poligon.Text.Length > 0 && txB_company.Text.Length > 0
@@ -1312,5 +1318,7 @@ namespace ServiceTelecomConnect
 
 
         #endregion
+
+        
     }
 }
