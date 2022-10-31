@@ -962,10 +962,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void TextBox_AKB_Click(object sender, EventArgs e)
-        {
-            txB_AKB.Text = "";
-        }
+
 
         void TextBox_AKB_Leave(object sender, EventArgs e)
         {
@@ -1043,6 +1040,13 @@ namespace ServiceTelecomConnect
                 toolTip1.Active = toolTip1.Active ? false : true;
             }
         }
+        void TxB_AKB_Click(object sender, EventArgs e)
+        {
+            if (txB_AKB.Text == "-")
+            {
+                txB_AKB.Text = "";
+            }
+        }
         #endregion
 
         #region свойства toolTip Popup Draw
@@ -1091,12 +1095,15 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        void LbL_client_FIO_company_DoubleClick(object sender, EventArgs e)
+
+        #region смена удостоврения сразу у всех рст по номеру акта или по пп
+
+        void Change_numberIdentification_numberAct_DoubleClick(object sender, EventArgs e)
         {
             try
             {
                 string Mesage;
-                Mesage = "Вы действительно хотите сменить удостоверение у всего акта?";
+                Mesage = "Вы действительно хотите сменить удостоверение представителя у всего акта?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
@@ -1109,11 +1116,39 @@ namespace ServiceTelecomConnect
                 using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
-                    if (command.ExecuteNonQuery() == 5)
-                    {
-                        DB.GetInstance.CloseConnection();
-                        MessageBox.Show($"Всё данные удостоверния по номеру акта изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                    MessageBox.Show($"Всё данные удостоверния по номеру акта изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка общего изменения юридических характеристик представителя предприятия по номеру акта (LbL_client_FIO_company_DoubleClick)");
+            }
+        }
+
+        void Change_numberIdentification_company_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                string Mesage;
+                Mesage = "Вы действительно хотите сменить удостоверение представителя у всего предприятия?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+
+                var queryUpdateClient = $"UPDATE radiostantion SET representative = '{txB_representative.Text}', post = '{txB_post.Text}', " +
+                    $"numberIdentification = '{txB_numberIdentification.Text}', dateIssue = '{txB_dateIssue.Text}',  phoneNumber = '{txB_phoneNumber.Text}' WHERE company = '{txB_company.Text}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                    MessageBox.Show($"Всё данные удостоверния по предприятию изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception)
@@ -1122,4 +1157,6 @@ namespace ServiceTelecomConnect
             }
         }
     }
+    #endregion
 }
+

@@ -71,10 +71,10 @@
             this.txB_dateIssue = new System.Windows.Forms.TextBox();
             this.txB_phoneNumber = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.LbL_client_FIO_company = new System.Windows.Forms.Label();
+            this.change_numberIdentification_numberAct = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.Change_numberIdentification_company = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -358,7 +358,7 @@
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label11.ForeColor = System.Drawing.Color.Brown;
-            this.label11.Location = new System.Drawing.Point(822, 127);
+            this.label11.Location = new System.Drawing.Point(821, 127);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(18, 24);
             this.label11.TabIndex = 56;
@@ -371,7 +371,7 @@
             this.label12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label12.ForeColor = System.Drawing.Color.Brown;
-            this.label12.Location = new System.Drawing.Point(822, 160);
+            this.label12.Location = new System.Drawing.Point(821, 160);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(18, 24);
             this.label12.TabIndex = 57;
@@ -384,7 +384,7 @@
             this.label13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label13.ForeColor = System.Drawing.Color.Brown;
-            this.label13.Location = new System.Drawing.Point(822, 195);
+            this.label13.Location = new System.Drawing.Point(821, 195);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(18, 24);
             this.label13.TabIndex = 58;
@@ -397,7 +397,7 @@
             this.label14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label14.ForeColor = System.Drawing.Color.Brown;
-            this.label14.Location = new System.Drawing.Point(822, 230);
+            this.label14.Location = new System.Drawing.Point(821, 230);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 24);
             this.label14.TabIndex = 59;
@@ -436,7 +436,7 @@
             this.label17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label17.ForeColor = System.Drawing.Color.Brown;
-            this.label17.Location = new System.Drawing.Point(822, 360);
+            this.label17.Location = new System.Drawing.Point(821, 360);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(18, 24);
             this.label17.TabIndex = 61;
@@ -449,7 +449,7 @@
             this.label18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label18.ForeColor = System.Drawing.Color.Brown;
-            this.label18.Location = new System.Drawing.Point(820, 429);
+            this.label18.Location = new System.Drawing.Point(821, 429);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(18, 24);
             this.label18.TabIndex = 65;
@@ -593,19 +593,19 @@
             this.label24.TabIndex = 74;
             this.label24.Text = "Номер телефона:";
             // 
-            // LbL_client_FIO_company
+            // change_numberIdentification_numberAct
             // 
-            this.LbL_client_FIO_company.AutoSize = true;
-            this.LbL_client_FIO_company.BackColor = System.Drawing.Color.Transparent;
-            this.LbL_client_FIO_company.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.LbL_client_FIO_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LbL_client_FIO_company.ForeColor = System.Drawing.Color.Brown;
-            this.LbL_client_FIO_company.Location = new System.Drawing.Point(381, 93);
-            this.LbL_client_FIO_company.Name = "LbL_client_FIO_company";
-            this.LbL_client_FIO_company.Size = new System.Drawing.Size(18, 24);
-            this.LbL_client_FIO_company.TabIndex = 76;
-            this.LbL_client_FIO_company.Text = "*";
-            this.LbL_client_FIO_company.DoubleClick += new System.EventHandler(this.LbL_client_FIO_company_DoubleClick);
+            this.change_numberIdentification_numberAct.AutoSize = true;
+            this.change_numberIdentification_numberAct.BackColor = System.Drawing.Color.Transparent;
+            this.change_numberIdentification_numberAct.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.change_numberIdentification_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.change_numberIdentification_numberAct.ForeColor = System.Drawing.Color.Brown;
+            this.change_numberIdentification_numberAct.Location = new System.Drawing.Point(381, 93);
+            this.change_numberIdentification_numberAct.Name = "change_numberIdentification_numberAct";
+            this.change_numberIdentification_numberAct.Size = new System.Drawing.Size(18, 24);
+            this.change_numberIdentification_numberAct.TabIndex = 76;
+            this.change_numberIdentification_numberAct.Text = "*";
+            this.change_numberIdentification_numberAct.DoubleClick += new System.EventHandler(this.Change_numberIdentification_numberAct_DoubleClick);
             // 
             // label26
             // 
@@ -627,24 +627,25 @@
             this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label27.ForeColor = System.Drawing.Color.Brown;
-            this.label27.Location = new System.Drawing.Point(383, 198);
+            this.label27.Location = new System.Drawing.Point(381, 196);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(18, 24);
             this.label27.TabIndex = 78;
             this.label27.Text = "*";
             // 
-            // label28
+            // Change_numberIdentification_company
             // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.ForeColor = System.Drawing.Color.Brown;
-            this.label28.Location = new System.Drawing.Point(385, 360);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(18, 24);
-            this.label28.TabIndex = 79;
-            this.label28.Text = "*";
+            this.Change_numberIdentification_company.AutoSize = true;
+            this.Change_numberIdentification_company.BackColor = System.Drawing.Color.Transparent;
+            this.Change_numberIdentification_company.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Change_numberIdentification_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Change_numberIdentification_company.ForeColor = System.Drawing.Color.Brown;
+            this.Change_numberIdentification_company.Location = new System.Drawing.Point(381, 360);
+            this.Change_numberIdentification_company.Name = "Change_numberIdentification_company";
+            this.Change_numberIdentification_company.Size = new System.Drawing.Size(18, 24);
+            this.Change_numberIdentification_company.TabIndex = 79;
+            this.Change_numberIdentification_company.Text = "*";
+            this.Change_numberIdentification_company.DoubleClick += new System.EventHandler(this.Change_numberIdentification_company_DoubleClick);
             // 
             // pictureBox6
             // 
@@ -665,7 +666,7 @@
             this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label29.ForeColor = System.Drawing.Color.Brown;
-            this.label29.Location = new System.Drawing.Point(380, 157);
+            this.label29.Location = new System.Drawing.Point(381, 163);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(18, 24);
             this.label29.TabIndex = 82;
@@ -727,7 +728,7 @@
             this.txB_AKB.TabIndex = 89;
             this.txB_AKB.Text = "-";
             this.txB_AKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_AKB.Click += new System.EventHandler(this.TextBox_AKB_Click);
+            this.txB_AKB.Click += new System.EventHandler(this.TxB_AKB_Click);
             this.txB_AKB.Leave += new System.EventHandler(this.TextBox_AKB_Leave);
             // 
             // txB_manipulator
@@ -826,7 +827,7 @@
             // monthCalendar2
             // 
             this.monthCalendar2.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar2.Location = new System.Drawing.Point(215, 219);
+            this.monthCalendar2.Location = new System.Drawing.Point(213, 211);
             this.monthCalendar2.Name = "monthCalendar2";
             this.monthCalendar2.TabIndex = 108;
             this.monthCalendar2.Visible = false;
@@ -879,10 +880,10 @@
             this.Controls.Add(this.label29);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.label28);
+            this.Controls.Add(this.Change_numberIdentification_company);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.LbL_client_FIO_company);
+            this.Controls.Add(this.change_numberIdentification_numberAct);
             this.Controls.Add(this.txB_phoneNumber);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txB_dateIssue);
@@ -968,10 +969,10 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label LbL_client_FIO_company;
+        private System.Windows.Forms.Label change_numberIdentification_numberAct;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label Change_numberIdentification_company;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label29;
