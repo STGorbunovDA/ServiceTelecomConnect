@@ -53,7 +53,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка модель радиостанций из БД не добавлены в comboBox_model(ComboBox_model_Click)");
-            } 
+            }
         }
 
         #region изменяем рст
@@ -1087,6 +1087,39 @@ namespace ServiceTelecomConnect
 
 
 
+
+
         #endregion
+
+        void LbL_client_FIO_company_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                string Mesage;
+                Mesage = "Вы действительно хотите сменить удостоверение у всего акта?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+
+                var queryUpdateClient = $"UPDATE radiostantion SET representative = '{txB_representative.Text}', post = '{txB_post.Text}', " +
+                    $"numberIdentification = '{txB_numberIdentification.Text}', dateIssue = '{txB_dateIssue.Text}',  phoneNumber = '{txB_phoneNumber.Text}' WHERE numberAct = '{txB_numberAct.Text}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    if (command.ExecuteNonQuery() == 5)
+                    {
+                        DB.GetInstance.CloseConnection();
+                        MessageBox.Show($"Всё данные удостоверния по номеру акта изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка общего изменения юридических характеристик представителя предприятия по номеру акта (LbL_client_FIO_company_DoubleClick)");
+            }
+        }
     }
 }

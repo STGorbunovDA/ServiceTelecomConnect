@@ -61,7 +61,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lbL_client_FIO = new System.Windows.Forms.Label();
             this.txB_representative = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.txB_post = new System.Windows.Forms.TextBox();
@@ -71,7 +71,7 @@
             this.txB_dateIssue = new System.Windows.Forms.TextBox();
             this.txB_phoneNumber = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.LbL_client_FIO_company = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -476,16 +476,16 @@
             this.label19.TabIndex = 63;
             this.label19.Text = "№ Акта:";
             // 
-            // label20
+            // lbL_client_FIO
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(14, 93);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(177, 20);
-            this.label20.TabIndex = 66;
-            this.label20.Text = "Представитель ФИО:";
+            this.lbL_client_FIO.AutoSize = true;
+            this.lbL_client_FIO.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_client_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_client_FIO.Location = new System.Drawing.Point(14, 93);
+            this.lbL_client_FIO.Name = "lbL_client_FIO";
+            this.lbL_client_FIO.Size = new System.Drawing.Size(177, 20);
+            this.lbL_client_FIO.TabIndex = 66;
+            this.lbL_client_FIO.Text = "Представитель ФИО:";
             // 
             // txB_representative
             // 
@@ -593,18 +593,19 @@
             this.label24.TabIndex = 74;
             this.label24.Text = "Номер телефона:";
             // 
-            // label25
+            // LbL_client_FIO_company
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.ForeColor = System.Drawing.Color.Brown;
-            this.label25.Location = new System.Drawing.Point(381, 93);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(18, 24);
-            this.label25.TabIndex = 76;
-            this.label25.Text = "*";
+            this.LbL_client_FIO_company.AutoSize = true;
+            this.LbL_client_FIO_company.BackColor = System.Drawing.Color.Transparent;
+            this.LbL_client_FIO_company.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.LbL_client_FIO_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LbL_client_FIO_company.ForeColor = System.Drawing.Color.Brown;
+            this.LbL_client_FIO_company.Location = new System.Drawing.Point(381, 93);
+            this.LbL_client_FIO_company.Name = "LbL_client_FIO_company";
+            this.LbL_client_FIO_company.Size = new System.Drawing.Size(18, 24);
+            this.LbL_client_FIO_company.TabIndex = 76;
+            this.LbL_client_FIO_company.Text = "*";
+            this.LbL_client_FIO_company.DoubleClick += new System.EventHandler(this.LbL_client_FIO_company_DoubleClick);
             // 
             // label26
             // 
@@ -881,7 +882,7 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.label25);
+            this.Controls.Add(this.LbL_client_FIO_company);
             this.Controls.Add(this.txB_phoneNumber);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.txB_dateIssue);
@@ -891,7 +892,7 @@
             this.Controls.Add(this.txB_post);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.txB_representative);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lbL_client_FIO);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.txB_numberAct);
             this.Controls.Add(this.label19);
@@ -962,12 +963,12 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbL_client_FIO;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label LbL_client_FIO_company;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;

@@ -1520,7 +1520,8 @@ namespace ServiceTelecomConnect
                             changeRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
                             changeRSTForm.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
                             changeRSTForm.txB_networkNumber.Text = txB_networkNumber.Text;
-                            changeRSTForm.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                            String dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("dd.MM.yyyy");
+                            changeRSTForm.txB_dateTO.Text = dateTO;
                             changeRSTForm.txB_numberAct.Text = txB_numberAct.Text;
                             changeRSTForm.txB_representative.Text = txB_representative.Text;
                             changeRSTForm.txB_numberIdentification.Text = txB_numberIdentification.Text;
