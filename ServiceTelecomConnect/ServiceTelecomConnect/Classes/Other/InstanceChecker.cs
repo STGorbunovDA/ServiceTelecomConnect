@@ -9,6 +9,5 @@ namespace ServiceTelecomConnect
         {
             return mutex.WaitOne();
         }
-
     }
 }

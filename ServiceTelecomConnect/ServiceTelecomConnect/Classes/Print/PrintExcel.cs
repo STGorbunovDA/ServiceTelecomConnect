@@ -8,7 +8,7 @@ namespace ServiceTelecomConnect
 {
     class PrintExcel
     {
-        internal static void PrintExcelActTo(DataGridView dgw, string numberAct, string dateTO,
+        internal static void PrintExcelActTo(DataGridView dgw, string numberAct, string date,
             string company, string location, string FIO_chief, string post, string representative,
             string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
             string dateIssue, string city, string poligon)
@@ -346,6 +346,7 @@ namespace ServiceTelecomConnect
                             Excel.Range range_Consolidated16 = workSheet.Rows.get_Range("M36", "O37");
                             Excel.Range range_Consolidated17 = workSheet.Rows.get_Range("D8", "D27");
                             Excel.Range range_Consolidated18 = workSheet.Rows.get_Range("L8", "L27");
+                            Excel.Range range_Consolidated19 = workSheet.Rows.get_Range("A1", "O1");
 
                             range_Consolidated.Font.Bold = true;
                             range_Consolidated.Font.Size = 10;
@@ -367,9 +368,12 @@ namespace ServiceTelecomConnect
                             range_Consolidated15.Font.Size = 7.5;
                             range_Consolidated16.Font.Size = 7.5;
                             range_Consolidated17.NumberFormat = "@";
+                            range_Consolidated19.NumberFormat = "@";
 
-                            workSheet.Cells[1, 5] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
-                            workSheet.Cells[1, 13] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
+                            String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
+
+                            workSheet.Cells[1, 5] = $"{dateTO}";
+                            workSheet.Cells[1, 13] = $"{dateTO}";
                             workSheet.Cells[3, 3] = $"НАКЛАДНАЯ №";
                             workSheet.Cells[3, 5] = $"{numberAct}";
                             workSheet.Cells[3, 11] = $"НАКЛАДНАЯ №";
@@ -1016,7 +1020,7 @@ namespace ServiceTelecomConnect
                             workSheet2.Cells[41, 2] = $"Инженер по ТО и ремонту СРС";
                             workSheet2.Cells[41, 8] = $"/                                     /";
                             workSheet2.Cells[41, 11] = $"{FIO_Engineer}";
-                            workSheet2.Cells[41, 20] = $"{dateTO.Remove(dateTO.IndexOf(" "))} г.";
+                            workSheet2.Cells[41, 20] = $"{dateTO} г.";
                             workSheet2.Cells[42, 2] = $"должность";
                             workSheet2.Cells[42, 8] = $"подпись";
                             workSheet2.Cells[42, 11] = $"расшифровка подписи";
@@ -1540,7 +1544,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void PrintExcelActRemont(DataGridView dgw, string dateTO,
+        internal static void PrintExcelActRemont(DataGridView dgw, string date,
             string company, string location, string FIO_chief, string post, string representative,
             string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
             string dateIssue, string city, string poligon, string сategory, string model, string serialNumber,
@@ -2488,7 +2492,10 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[18, 4] = $"Номер документа";
                     workSheet2.Cells[18, 7] = $"Дата составления";
                     workSheet2.Cells[19, 4] = $"{numberActRemont}-Д";
-                    workSheet2.Cells[19, 7] = $"{dateTO.Remove(dateTO.IndexOf(" "))}";
+
+                    String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
+
+                    workSheet2.Cells[19, 7] = $"{dateTO}";
                     workSheet2.Cells[21, 1] = $"Основное средство (здание, оборудование):";
                     if (mainMeans == "")
                         workSheet2.Cells[21, 5] = $"{model}";
