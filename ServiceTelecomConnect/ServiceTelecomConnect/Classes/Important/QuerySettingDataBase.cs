@@ -750,13 +750,13 @@ namespace ServiceTelecomConnect
 
         #region поиск отсутсвующих рст исходя из предыдущего года
 
-        internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, string txb_flag_all_BD, string city)
+        internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, TextBox txb_flag_all_BD, string city)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
-                    if (txb_flag_all_BD == "Вся БД")
+                    if (txb_flag_all_BD.Text == "Вся БД")
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -813,7 +813,7 @@ namespace ServiceTelecomConnect
                         }
                     }
 
-                    txb_flag_all_BD = "";
+                    txb_flag_all_BD.Text = "";
 
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
