@@ -287,6 +287,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("comment", "Примечание");
                 dgw.Columns.Add("month", "Месяц выполнения");
                 dgw.Columns.Add("IsNew", String.Empty);
+                dgw.Columns[18].Visible = false;
             }
             catch (Exception)
             {
