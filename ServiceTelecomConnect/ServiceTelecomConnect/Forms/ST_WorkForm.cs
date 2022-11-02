@@ -270,7 +270,7 @@ namespace ServiceTelecomConnect
 
                 dataGridView1.AllowUserToResizeColumns = false;
                 dataGridView1.AllowUserToResizeRows = false;
-                dataGridView1.Columns["id"].DisplayIndex = 1;
+                
             }
             catch (Exception)
             {
