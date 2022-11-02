@@ -2522,9 +2522,9 @@
             this.ClientSize = new System.Drawing.Size(1424, 729);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.Functional_loading_panel);
