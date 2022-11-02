@@ -91,7 +91,7 @@ namespace ServiceTelecomConnect
                                     else if (dgw.Columns[j].HeaderText.ToString() == "Дата ТО")
                                     {
                                         var re = new Regex(Environment.NewLine);
-                                        dateTO = dgw.Rows[i].Cells[j].Value.ToString();
+                                        dateTO = Convert.ToDateTime(dgw.Rows[i].Cells[j].Value.ToString()).ToString("dd.MM.yyyy");
                                         dateTO = re.Replace(dateTO, " ");
                                     }
                                     else if (dgw.Columns[j].HeaderText.ToString() == "№ акта ТО")
@@ -145,9 +145,19 @@ namespace ServiceTelecomConnect
                                 }
                                 if (j == dgw.ColumnCount - 1)
                                 {
+                                    if (priceRemont == "0.00")
+                                    {
+                                        priceRemont = "";
+                                    }
                                     if (!String.IsNullOrEmpty(decommissionSerialNumber))
                                     {
                                         numberAct = "списание"; dateTO = "списание";
+                                        if (!String.IsNullOrEmpty(numberActRemont))
+                                        {
+                                            numberActRemont = "";
+                                            category = "";
+                                            priceRemont = "";
+                                        }
                                     }
                                     sw.Write(poligon + "\t" + company + "\t" + location + "\t" + model + "\t" + serialNumber + "\t" + inventoryNumber + "\t"
                                         + networkNumber + "\t" + dateTO + "\t" + numberAct + "\t" + numberAct + "\t" + numberAct + "\t" + numberActRemont + "\t"
