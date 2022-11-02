@@ -108,7 +108,7 @@ namespace ServiceTelecomConnect
             try
             {
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(Convert.ToDateTime(record.GetString(8)).ToString("dd.MM.yyyy")), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
                          record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
