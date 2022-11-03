@@ -46,6 +46,10 @@ namespace ServiceTelecomConnect
             {
                 picB_setting.Visible = true;
             }
+            if (_user.IsAdmin == "Руководитель")
+            {
+                lbL_director.Visible = true;
+            }
 
             if (!(_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Инженер" || _user.IsAdmin == "Дирекция связи"))
             {
@@ -128,6 +132,21 @@ namespace ServiceTelecomConnect
         void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose();
+        }
+
+        void LbL_director_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void LbL_director_MouseEnter(object sender, EventArgs e)
+        {
+            lbL_director.ForeColor = Color.White;
+        }
+
+        void LbL_director_MouseLeave(object sender, EventArgs e)
+        {
+            lbL_director.ForeColor = Color.Black;
         }
     }
 }

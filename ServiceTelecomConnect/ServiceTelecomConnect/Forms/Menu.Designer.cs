@@ -32,6 +32,7 @@
             this.lbL_TutorialEngineers = new System.Windows.Forms.Label();
             this.lbL_сomparison = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbL_director = new System.Windows.Forms.Label();
             this.picB_setting = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picB_setting)).BeginInit();
@@ -42,7 +43,7 @@
             this.lbL_section_foreman.AutoSize = true;
             this.lbL_section_foreman.BackColor = System.Drawing.Color.Transparent;
             this.lbL_section_foreman.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_section_foreman.Location = new System.Drawing.Point(222, 231);
+            this.lbL_section_foreman.Location = new System.Drawing.Point(232, 214);
             this.lbL_section_foreman.Name = "lbL_section_foreman";
             this.lbL_section_foreman.Size = new System.Drawing.Size(392, 41);
             this.lbL_section_foreman.TabIndex = 1;
@@ -57,7 +58,7 @@
             this.lbL_TutorialEngineers.AutoSize = true;
             this.lbL_TutorialEngineers.BackColor = System.Drawing.Color.Transparent;
             this.lbL_TutorialEngineers.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_TutorialEngineers.Location = new System.Drawing.Point(333, 161);
+            this.lbL_TutorialEngineers.Location = new System.Drawing.Point(343, 144);
             this.lbL_TutorialEngineers.Name = "lbL_TutorialEngineers";
             this.lbL_TutorialEngineers.Size = new System.Drawing.Size(172, 41);
             this.lbL_TutorialEngineers.TabIndex = 2;
@@ -72,7 +73,7 @@
             this.lbL_сomparison.AutoSize = true;
             this.lbL_сomparison.BackColor = System.Drawing.Color.Transparent;
             this.lbL_сomparison.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_сomparison.Location = new System.Drawing.Point(333, 305);
+            this.lbL_сomparison.Location = new System.Drawing.Point(343, 288);
             this.lbL_сomparison.Name = "lbL_сomparison";
             this.lbL_сomparison.Size = new System.Drawing.Size(172, 41);
             this.lbL_сomparison.TabIndex = 3;
@@ -85,6 +86,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lbL_director);
             this.panel1.Controls.Add(this.picB_setting);
             this.panel1.Controls.Add(this.lbL_сomparison);
             this.panel1.Controls.Add(this.lbL_TutorialEngineers);
@@ -94,6 +96,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(804, 461);
             this.panel1.TabIndex = 2;
+            // 
+            // lbL_director
+            // 
+            this.lbL_director.AutoSize = true;
+            this.lbL_director.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_director.Font = new System.Drawing.Font("Courier New", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_director.Location = new System.Drawing.Point(287, 358);
+            this.lbL_director.Name = "lbL_director";
+            this.lbL_director.Size = new System.Drawing.Size(282, 41);
+            this.lbL_director.TabIndex = 5;
+            this.lbL_director.Text = "Руководитель";
+            this.lbL_director.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbL_director.Visible = false;
+            this.lbL_director.Click += new System.EventHandler(this.LbL_director_Click);
+            this.lbL_director.MouseEnter += new System.EventHandler(this.LbL_director_MouseEnter);
+            this.lbL_director.MouseLeave += new System.EventHandler(this.LbL_director_MouseLeave);
             // 
             // picB_setting
             // 
@@ -138,5 +156,6 @@
         private System.Windows.Forms.Label lbL_сomparison;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox picB_setting;
+        private System.Windows.Forms.Label lbL_director;
     }
 }
