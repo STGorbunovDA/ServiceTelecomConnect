@@ -1026,11 +1026,11 @@ namespace ServiceTelecomConnect
                 && txB_numberIdentification.Text.Length > 0 && txB_phoneNumber.Text.Length > 0
                 && txB_post.Text.Length > 0 && txB_dateIssue.Text.Length > 0)
             {
-                btn_save_add_rst.Enabled = true;
+                btn_change_rst.Enabled = true;
             }
             else
             {
-                btn_save_add_rst.Enabled = false;
+                btn_change_rst.Enabled = false;
             }
         }
 
@@ -1098,10 +1098,9 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-
         #region смена удостоврения сразу у всех рст по номеру акта или по пп
 
-        void Change_numberIdentification_numberAct_DoubleClick(object sender, EventArgs e)
+        void Btn_change_rst_act_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1131,7 +1130,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void Change_numberIdentification_company_DoubleClick(object sender, EventArgs e)
+        void Btn_change_rst_company_Click(object sender, EventArgs e)
         {
             try
             {
