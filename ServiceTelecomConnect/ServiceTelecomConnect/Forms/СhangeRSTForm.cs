@@ -83,7 +83,7 @@ namespace ServiceTelecomConnect
                     var poligon = cmB_poligon.Text;
                     var company = txB_company.Text;
                     var location = txB_location.Text;
-                    var model = cmB_model.Text;
+                    var model = cmB_model.GetItemText(cmB_model.SelectedItem); ;
                     var serialNumber = txB_serialNumber.Text;
                     var inventoryNumber = txB_inventoryNumber.Text;
                     var networkNumber = txB_networkNumber.Text;

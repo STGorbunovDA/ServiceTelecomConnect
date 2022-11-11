@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -1190,7 +1191,7 @@ namespace ServiceTelecomConnect
                 {
                     if (serialNumber != "")
                     {
-                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '{decommissionSerialNumber}', numberActRemont = '', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
@@ -1206,7 +1207,7 @@ namespace ServiceTelecomConnect
                         if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
                         {
 
-                            var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', " +
+                            var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                                 $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                                 $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                                 $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
@@ -1256,15 +1257,35 @@ namespace ServiceTelecomConnect
 
         #region Удалить номер списание из таблицы radiostantion
 
-        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber, string city)
+        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber, string city, ComboBox cmB_model, TextBox txB_numberAct)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
+                    var price = "";
                     if (decommissionSerialNumber != "")
                     {
-                        var changeQuery = $"UPDATE radiostantion SET decommissionSerialNumber = '' WHERE serialNumber = '{serialNumber}' ";
+
+                        if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
+                            cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+                            cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                            cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+                            cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+                            cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
+                        {
+                            price = "1411.18";
+                        }
+                        else
+                        {
+                            price = "1919.57";
+                        }
+
+                        var reg = new Regex("C");
+                        txB_numberAct.Text = reg.Replace(txB_numberAct.Text, "");
+
+                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'Измени', networkNumber = 'Измени', " +
+                            $"price = '{price}', numberAct = '{txB_numberAct.Text}', decommissionSerialNumber = '', comment = '' WHERE serialNumber = '{serialNumber}' ";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
@@ -1274,30 +1295,30 @@ namespace ServiceTelecomConnect
                             MessageBox.Show("Списание удалено! Заполни инвентарный и сетевой номер заново!");
                         }
 
-                        CreateColums(dgw2);
+                        //CreateColums(dgw2);
 
-                        var queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%' AND serialNumber = '{serialNumber}'";
-                        using (MySqlCommand command2 = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
+                        //var queryString = $"SELECT * FROM radiostantion_decommission WHERE city LIKE N'%{city.Trim()}%' AND serialNumber = '{serialNumber}'";
+                        //using (MySqlCommand command2 = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        //{
+                        //    DB.GetInstance.OpenConnection();
 
-                            using (MySqlDataReader reader = command2.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw2, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command2.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
-                        dgw2.Rows[0].Cells[40].Value = RowState.Deleted;
-                        var id = Convert.ToInt32(dgw2.Rows[0].Cells[0].Value);
-                        var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE id = {id}";
+                        //    using (MySqlDataReader reader = command2.ExecuteReader())
+                        //    {
+                        //        if (reader.HasRows)
+                        //        {
+                        //            while (reader.Read())
+                        //            {
+                        //                ReedSingleRow(dgw2, reader);
+                        //            }
+                        //            reader.Close();
+                        //        }
+                        //    }
+                        //    command2.ExecuteNonQuery();
+                        //    DB.GetInstance.CloseConnection();
+                        //}
+                        //dgw2.Rows[0].Cells[40].Value = RowState.Deleted;
+                        //var id = Convert.ToInt32(dgw2.Rows[0].Cells[0].Value);
+                        var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
@@ -1984,7 +2005,7 @@ namespace ServiceTelecomConnect
             {
                 DB.GetInstance.CloseConnection();
                 lbL_last_act_remont.Text = "Пустой";
-            }         
+            }
         }
         internal static void LoadingLastNumberActTO(Label lbL_last_act, string cmB_city)
         {

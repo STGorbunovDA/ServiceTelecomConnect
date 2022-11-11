@@ -3452,7 +3452,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text);
+                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
