@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
-                dgw.Columns[40].Visible = true;
+                dgw.Columns[40].Visible = false;
 
             }
             catch (Exception)
