@@ -2007,6 +2007,32 @@ namespace ServiceTelecomConnect
                 lbL_last_act_remont.Text = "Пустой";
             }
         }
+
+        internal static void LoadingLastDecommissionSerialNumber(Label lbL_last_decommission, string cmB_city)
+        {
+            try
+            {
+                var queryLastNumberActRemont = $"SELECT decommissionSerialNumber FROM (SELECT decommissionSerialNumber FROM radiostantion WHERE city = '{cmB_city}' ORDER BY id DESC LIMIT 100) t ORDER BY decommissionSerialNumber DESC LIMIT 1";
+                using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lbL_last_decommission.Text = reader[0].ToString();
+                        }
+                        reader.Close();
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+            catch (Exception)
+            {
+                DB.GetInstance.CloseConnection();
+                lbL_last_decommission.Text = "Пустой";
+            }
+        }
         internal static void LoadingLastNumberActTO(Label lbL_last_act, string cmB_city)
         {
             try
