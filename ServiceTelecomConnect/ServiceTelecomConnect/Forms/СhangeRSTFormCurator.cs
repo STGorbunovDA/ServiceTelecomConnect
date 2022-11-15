@@ -385,22 +385,14 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            txB_city.Text = "";
-            cmB_poligon.Text = "";
-            txB_company.Text = "";
-            txB_location.Text = "";
-            cmB_model.Text = "";
-            txB_serialNumber.Text = "";
-            txB_inventoryNumber.Text = "";
-            txB_networkNumber.Text = "";
-            txB_numberAct.Text = "";
-            txB_dateTO.Text = "";
-            txB_price.Text = "";
-            txB_numberActRemont.Text = "";
-            cmB_сategory.Text = "";
-            txB_priceRemont.Text = "";
-            txB_decommission.Text = "";
-            cmB_month.Text = "";
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+            }
         }
         #endregion
 

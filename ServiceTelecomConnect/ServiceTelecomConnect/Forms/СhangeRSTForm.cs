@@ -25,6 +25,40 @@ namespace ServiceTelecomConnect
 
         void ChangeRSTForm_Load(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            {
+                txB_city.Enabled = false;
+                cmB_poligon.Enabled = false;
+                txB_company.Enabled = false;
+                txB_location.Enabled = false;
+                cmB_model.Enabled = false;
+                txB_serialNumber.Enabled = false;
+                txB_inventoryNumber.Enabled = false;
+                txB_networkNumber.Enabled = false;
+                txB_price.Enabled = false;
+                txB_numberAct.Enabled = false;
+                txB_representative.Enabled = false;
+                txB_numberIdentification.Enabled = false;
+                txB_phoneNumber.Enabled = false;
+                txB_post.Enabled = false;
+                txB_dateIssue.Enabled = false;
+                txB_antenna.Enabled = false;
+                txB_manipulator.Enabled = false;
+                txB_batteryСharger.Enabled = false;
+                txB_AKB.Enabled = false;
+                picB_clear.Enabled = false;
+                pictureBox6.Enabled = false;
+                pictureBox5.Enabled = false;
+                btn_change_rst_act.Enabled = false;
+                btn_change_rst_company.Enabled = false;
+
+                lbL_Date.Text = "Дата списания:";
+
+                txB_decommissionSerialNumber.Focus();
+
+            }
+            else txB_decommissionSerialNumber.Enabled = false;
+
             cmB_model.Text = cmB_model.Items[0].ToString();
         }
 
@@ -100,6 +134,7 @@ namespace ServiceTelecomConnect
                     var AKB = txB_AKB.Text;
                     var batteryСharger = txB_batteryСharger.Text;
                     var comment = txB_comment.Text;
+                    var decommission = txB_decommissionSerialNumber.Text;
 
                     if (dateIssue.Length > 0)
                     {
@@ -366,7 +401,7 @@ namespace ServiceTelecomConnect
                                     $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                     $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                     $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                    $"batteryСharger = '{batteryСharger}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
+                                    $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
 
                                 var changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
                                     $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
@@ -374,7 +409,7 @@ namespace ServiceTelecomConnect
                                     $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                     $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                     $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                    $"batteryСharger = '{batteryСharger}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
+                                    $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
 
                                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                                 {
@@ -421,22 +456,13 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            cmB_poligon.Text = "";
-            txB_company.Text = "";
-            cmB_model.Text = "";
-            txB_serialNumber.Text = "";
-            txB_inventoryNumber.Text = "";
-            txB_networkNumber.Text = "";
-            txB_location.Text = "";
-            txB_dateTO.Text = "";
-            txB_city.Text = "";
-            txB_price.Text = "";
-            txB_numberAct.Text = "";
-            txB_representative.Text = "";
-            txB_post.Text = "";
-            txB_numberIdentification.Text = "";
-            txB_dateIssue.Text = "";
-            txB_phoneNumber.Text = "";
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+            }
             txB_antenna.Text = "-";
             txB_manipulator.Text = "-";
             txB_AKB.Text = "-";
