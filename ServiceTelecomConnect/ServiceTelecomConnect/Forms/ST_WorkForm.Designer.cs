@@ -202,6 +202,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.panel_seach_datagrid = new System.Windows.Forms.Panel();
             this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
+            this.lbL_last_decommission = new System.Windows.Forms.Label();
             this.txB_reason_decommission = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txB1_decommissionSerialNumber = new System.Windows.Forms.TextBox();
@@ -216,6 +217,10 @@
             this.btn_FormTag = new System.Windows.Forms.Button();
             this.panel_Tag = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.pnL_printBase = new System.Windows.Forms.Panel();
+            this.btn_SaveFullBase = new System.Windows.Forms.Button();
+            this.btn_SaveDirectorateBase = new System.Windows.Forms.Button();
+            this.pnL_printBaseClose = new System.Windows.Forms.Button();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -233,6 +238,7 @@
             this.panel_decommissionSerialNumber.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.panel_Tag.SuspendLayout();
+            this.pnL_printBase.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_date
@@ -2346,6 +2352,7 @@
             this.panel_decommissionSerialNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_decommissionSerialNumber.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_decommissionSerialNumber.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_decommissionSerialNumber.Controls.Add(this.lbL_last_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.txB_reason_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.label2);
             this.panel_decommissionSerialNumber.Controls.Add(this.txB1_decommissionSerialNumber);
@@ -2353,17 +2360,28 @@
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
             this.panel_decommissionSerialNumber.Controls.Add(this.label33);
             this.panel_decommissionSerialNumber.Enabled = false;
-            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(490, 349);
+            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(490, 250);
             this.panel_decommissionSerialNumber.Name = "panel_decommissionSerialNumber";
             this.panel_decommissionSerialNumber.Size = new System.Drawing.Size(447, 313);
             this.panel_decommissionSerialNumber.TabIndex = 39;
             this.panel_decommissionSerialNumber.Visible = false;
             // 
+            // lbL_last_decommission
+            // 
+            this.lbL_last_decommission.AutoSize = true;
+            this.lbL_last_decommission.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_last_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_last_decommission.Location = new System.Drawing.Point(233, 28);
+            this.lbL_last_decommission.Name = "lbL_last_decommission";
+            this.lbL_last_decommission.Size = new System.Drawing.Size(54, 15);
+            this.lbL_last_decommission.TabIndex = 103;
+            this.lbL_last_decommission.Text = "Пустой";
+            // 
             // txB_reason_decommission
             // 
             this.txB_reason_decommission.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txB_reason_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_reason_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_reason_decommission.Location = new System.Drawing.Point(117, 82);
             this.txB_reason_decommission.Multiline = true;
             this.txB_reason_decommission.Name = "txB_reason_decommission";
@@ -2513,6 +2531,54 @@
             this.monthCalendar1.Visible = false;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
             // 
+            // pnL_printBase
+            // 
+            this.pnL_printBase.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.pnL_printBase.Controls.Add(this.btn_SaveFullBase);
+            this.pnL_printBase.Controls.Add(this.btn_SaveDirectorateBase);
+            this.pnL_printBase.Controls.Add(this.pnL_printBaseClose);
+            this.pnL_printBase.Location = new System.Drawing.Point(550, 303);
+            this.pnL_printBase.Name = "pnL_printBase";
+            this.pnL_printBase.Size = new System.Drawing.Size(330, 178);
+            this.pnL_printBase.TabIndex = 83;
+            this.pnL_printBase.Visible = false;
+            // 
+            // btn_SaveFullBase
+            // 
+            this.btn_SaveFullBase.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_SaveFullBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_SaveFullBase.Location = new System.Drawing.Point(75, 99);
+            this.btn_SaveFullBase.Name = "btn_SaveFullBase";
+            this.btn_SaveFullBase.Size = new System.Drawing.Size(182, 40);
+            this.btn_SaveFullBase.TabIndex = 38;
+            this.btn_SaveFullBase.Text = "Сохранить полную базу";
+            this.btn_SaveFullBase.UseVisualStyleBackColor = false;
+            this.btn_SaveFullBase.Click += new System.EventHandler(this.Btn_SaveFullBase_Click);
+            // 
+            // btn_SaveDirectorateBase
+            // 
+            this.btn_SaveDirectorateBase.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_SaveDirectorateBase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_SaveDirectorateBase.Location = new System.Drawing.Point(75, 48);
+            this.btn_SaveDirectorateBase.Name = "btn_SaveDirectorateBase";
+            this.btn_SaveDirectorateBase.Size = new System.Drawing.Size(182, 43);
+            this.btn_SaveDirectorateBase.TabIndex = 37;
+            this.btn_SaveDirectorateBase.Text = "Сохранить для дирекции";
+            this.btn_SaveDirectorateBase.UseVisualStyleBackColor = false;
+            this.btn_SaveDirectorateBase.Click += new System.EventHandler(this.Btn_SaveDirectorateBase_Click);
+            // 
+            // pnL_printBaseClose
+            // 
+            this.pnL_printBaseClose.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pnL_printBaseClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pnL_printBaseClose.Location = new System.Drawing.Point(297, 3);
+            this.pnL_printBaseClose.Name = "pnL_printBaseClose";
+            this.pnL_printBaseClose.Size = new System.Drawing.Size(30, 29);
+            this.pnL_printBaseClose.TabIndex = 35;
+            this.pnL_printBaseClose.Text = "X";
+            this.pnL_printBaseClose.UseVisualStyleBackColor = false;
+            this.pnL_printBaseClose.Click += new System.EventHandler(this.PnL_printBaseClose_Click);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2520,9 +2586,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
+            this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel2);
@@ -2574,6 +2641,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.panel_Tag.ResumeLayout(false);
             this.panel_Tag.PerformLayout();
+            this.pnL_printBase.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2759,5 +2827,10 @@
         private System.Windows.Forms.Button btn_FormTag;
         private System.Windows.Forms.Panel panel_Tag;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Panel pnL_printBase;
+        private System.Windows.Forms.Button pnL_printBaseClose;
+        private System.Windows.Forms.Button btn_SaveFullBase;
+        private System.Windows.Forms.Button btn_SaveDirectorateBase;
+        internal System.Windows.Forms.Label lbL_last_decommission;
     }
 }

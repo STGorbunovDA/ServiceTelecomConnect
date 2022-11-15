@@ -270,7 +270,7 @@ namespace ServiceTelecomConnect
 
                 dataGridView1.AllowUserToResizeColumns = false;
                 dataGridView1.AllowUserToResizeRows = false;
-                
+
             }
             catch (Exception)
             {
@@ -958,6 +958,11 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                {
+                    MessageBox.Show($"Нельзя напечатать акт ТО, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
+                    return;
+                }
                 QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.ClearSelection();
@@ -1026,7 +1031,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                SaveFileDataGridViewPC.UserSaveFilePC(dataGridView1);
+                pnL_printBase.Visible = true;
             }
             catch (Exception)
             {
@@ -1451,6 +1456,12 @@ namespace ServiceTelecomConnect
                 {
                     if (txB_serialNumber.Text != "")
                     {
+                        if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                        {
+                            MessageBox.Show($"Нельзя добавить ремонт, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
+                            return;
+                        }
+
                         RemontRSTForm remontRSTForm = new RemontRSTForm();
                         if (Application.OpenForms["RemontRSTForm"] == null)
                         {
@@ -1511,6 +1522,7 @@ namespace ServiceTelecomConnect
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         if (Application.OpenForms["СhangeRSTForm"] == null)
                         {
+                            
                             changeRSTForm.DoubleBufferedForm(true);
                             changeRSTForm.txB_city.Text = txB_city.Text;
                             changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
@@ -1528,6 +1540,11 @@ namespace ServiceTelecomConnect
                             changeRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
                             changeRSTForm.txB_post.Text = txB_post.Text;
                             changeRSTForm.txB_comment.Text = txB_comment.Text;
+
+                            if(!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                            {
+                                changeRSTForm.txB_decommissionSerialNumber.Text = txB_decommissionSerialNumber.Text;
+                            }
 
                             if (txB_dateIssue.Text == "")
                             {
@@ -3380,6 +3397,11 @@ namespace ServiceTelecomConnect
         {
             if (txB_serialNumber.Text != "")
             {
+                if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                {
+                    MessageBox.Show($"На радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, уже есть списание!");
+                    return;
+                }
                 string Mesage;
                 Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
 
@@ -3387,6 +3409,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
+                QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, taskCity);
                 panel1.Enabled = false;
                 panel2.Enabled = false;
                 panel3.Enabled = false;
@@ -3404,7 +3427,6 @@ namespace ServiceTelecomConnect
                 }
 
             }
-
         }
 
 
@@ -3728,6 +3750,38 @@ namespace ServiceTelecomConnect
 
         }
 
+
+        #endregion
+
+        #region панель для выбора печати базы
+        void PnL_printBaseClose_Click(object sender, EventArgs e)
+        {
+            pnL_printBase.Visible = false;
+        }
+        void Btn_SaveDirectorateBase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnL_printBase.Visible = false;
+                SaveFileDataGridViewPC.directorateSaveFilePC(dataGridView1, taskCity);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения БД для Дирекции связи.");
+            }
+        }
+        void Btn_SaveFullBase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnL_printBase.Visible = false;
+                SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, taskCity);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения всей БД.");
+            }
+        }
         #endregion
 
 
