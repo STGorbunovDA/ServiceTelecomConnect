@@ -498,22 +498,13 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            cmB_poligon.Text = "";
-            txB_company.Text = "";
-            cmB_model.Text = "";
-            txB_serialNumber.Text = "";
-            txB_inventoryNumber.Text = "";
-            txB_networkNumber.Text = "";
-            txB_location.Text = "";
-            txB_dateTO.Text = "";
-            txB_city.Text = "";
-            txB_price.Text = "";
-            txB_numberAct.Text = "";
-            txB_representative.Text = "";
-            txB_post.Text = "";
-            txB_numberIdentification.Text = "";
-            txB_dateIssue.Text = "";
-            txB_phoneNumber.Text = "";
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
+            }
             txB_antenna.Text = "-";
             txB_manipulator.Text = "-";
             txB_AKB.Text = "-";
