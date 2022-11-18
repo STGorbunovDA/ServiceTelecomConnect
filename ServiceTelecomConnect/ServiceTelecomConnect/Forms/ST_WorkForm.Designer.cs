@@ -138,7 +138,6 @@
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.btn_all_BD = new System.Windows.Forms.Button();
             this.cmB_city = new System.Windows.Forms.ComboBox();
             this.picB_seach_datadrid_replay = new System.Windows.Forms.PictureBox();
@@ -161,7 +160,6 @@
             this.lbL_doverennost = new System.Windows.Forms.Label();
             this.lbL_FIO_chief = new System.Windows.Forms.Label();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
-            this.textBox_search = new System.Windows.Forms.TextBox();
             this.picB_update = new System.Windows.Forms.PictureBox();
             this.picB_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
@@ -221,6 +219,8 @@
             this.btn_SaveFullBase = new System.Windows.Forms.Button();
             this.btn_SaveDirectorateBase = new System.Windows.Forms.Button();
             this.pnL_printBaseClose = new System.Windows.Forms.Button();
+            this.textBox_search = new System.Windows.Forms.TextBox();
+            this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
@@ -1505,22 +1505,6 @@
             this.panel1.Size = new System.Drawing.Size(1427, 145);
             this.panel1.TabIndex = 0;
             // 
-            // cmb_number_unique_acts
-            // 
-            this.cmb_number_unique_acts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmb_number_unique_acts.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmb_number_unique_acts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_number_unique_acts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmb_number_unique_acts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_number_unique_acts.FormattingEnabled = true;
-            this.cmb_number_unique_acts.Location = new System.Drawing.Point(1175, 12);
-            this.cmb_number_unique_acts.Name = "cmb_number_unique_acts";
-            this.cmb_number_unique_acts.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmb_number_unique_acts.Size = new System.Drawing.Size(210, 28);
-            this.cmb_number_unique_acts.TabIndex = 79;
-            this.cmb_number_unique_acts.Visible = false;
-            // 
             // btn_all_BD
             // 
             this.btn_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1606,7 +1590,7 @@
             this.label_act_remont.AutoSize = true;
             this.label_act_remont.BackColor = System.Drawing.Color.Transparent;
             this.label_act_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_act_remont.Location = new System.Drawing.Point(1061, 93);
+            this.label_act_remont.Location = new System.Drawing.Point(1014, 95);
             this.label_act_remont.Name = "label_act_remont";
             this.label_act_remont.Size = new System.Drawing.Size(110, 16);
             this.label_act_remont.TabIndex = 30;
@@ -1619,7 +1603,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1099, 61);
+            this.label1.Location = new System.Drawing.Point(1052, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 29;
@@ -1769,7 +1753,7 @@
             "Номер акта Ремонта",
             "Представитель ПП",
             "Номер Акта списания"});
-            this.cmB_seach.Location = new System.Drawing.Point(952, 11);
+            this.cmB_seach.Location = new System.Drawing.Point(905, 12);
             this.cmB_seach.Name = "cmB_seach";
             this.cmB_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_seach.Size = new System.Drawing.Size(219, 28);
@@ -1810,24 +1794,12 @@
             this.txB_numberAct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberAct.Location = new System.Drawing.Point(1177, 52);
+            this.txB_numberAct.Location = new System.Drawing.Point(1132, 52);
             this.txB_numberAct.Name = "txB_numberAct";
-            this.txB_numberAct.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberAct.Size = new System.Drawing.Size(141, 29);
             this.txB_numberAct.TabIndex = 27;
             this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
             this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
-            // 
-            // textBox_search
-            // 
-            this.textBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_search.Location = new System.Drawing.Point(1177, 11);
-            this.textBox_search.Name = "textBox_search";
-            this.textBox_search.Size = new System.Drawing.Size(204, 29);
-            this.textBox_search.TabIndex = 4;
-            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
-            this.textBox_search.MouseEnter += new System.EventHandler(this.TextBox_search_MouseEnter);
             // 
             // picB_update
             // 
@@ -1835,7 +1807,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picB_update.BackColor = System.Drawing.Color.Transparent;
             this.picB_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
-            this.picB_update.Location = new System.Drawing.Point(952, 59);
+            this.picB_update.Location = new System.Drawing.Point(905, 61);
             this.picB_update.Name = "picB_update";
             this.picB_update.Size = new System.Drawing.Size(50, 50);
             this.picB_update.TabIndex = 2;
@@ -1849,7 +1821,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picB_clear.BackColor = System.Drawing.Color.Transparent;
             this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
-            this.picB_clear.Location = new System.Drawing.Point(1008, 59);
+            this.picB_clear.Location = new System.Drawing.Point(961, 61);
             this.picB_clear.Name = "picB_clear";
             this.picB_clear.Size = new System.Drawing.Size(47, 50);
             this.picB_clear.TabIndex = 1;
@@ -1862,10 +1834,10 @@
             this.txB_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberActRemont.Location = new System.Drawing.Point(1177, 87);
+            this.txB_numberActRemont.Location = new System.Drawing.Point(1132, 87);
             this.txB_numberActRemont.Name = "txB_numberActRemont";
             this.txB_numberActRemont.ReadOnly = true;
-            this.txB_numberActRemont.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberActRemont.Size = new System.Drawing.Size(141, 29);
             this.txB_numberActRemont.TabIndex = 72;
             // 
             // panel3
@@ -2579,6 +2551,35 @@
             this.pnL_printBaseClose.UseVisualStyleBackColor = false;
             this.pnL_printBaseClose.Click += new System.EventHandler(this.PnL_printBaseClose_Click);
             // 
+            // textBox_search
+            // 
+            this.textBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_search.Location = new System.Drawing.Point(1132, 11);
+            this.textBox_search.Name = "textBox_search";
+            this.textBox_search.Size = new System.Drawing.Size(249, 29);
+            this.textBox_search.TabIndex = 4;
+            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
+            this.textBox_search.MouseEnter += new System.EventHandler(this.TextBox_search_MouseEnter);
+            // 
+            // cmb_number_unique_acts
+            // 
+            this.cmb_number_unique_acts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmb_number_unique_acts.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmb_number_unique_acts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_number_unique_acts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb_number_unique_acts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_number_unique_acts.FormattingEnabled = true;
+            this.cmb_number_unique_acts.Location = new System.Drawing.Point(1134, 12);
+            this.cmb_number_unique_acts.Name = "cmb_number_unique_acts";
+            this.cmb_number_unique_acts.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmb_number_unique_acts.Size = new System.Drawing.Size(251, 28);
+            this.cmb_number_unique_acts.TabIndex = 79;
+            this.cmb_number_unique_acts.Visible = false;
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2650,7 +2651,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox picB_clear;
         private System.Windows.Forms.PictureBox picB_update;
-        private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.Button btn_new_add_rst_form;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lbL_count;
@@ -2817,7 +2817,6 @@
         private System.Windows.Forms.Label label_Sing;
         private System.Windows.Forms.TextBox txB_Sign;
         private System.Windows.Forms.Label lbl_Sign;
-        private System.Windows.Forms.ComboBox cmb_number_unique_acts;
         private System.Windows.Forms.TextBox txB_reason_decommission;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView3;
@@ -2832,5 +2831,7 @@
         private System.Windows.Forms.Button btn_SaveFullBase;
         private System.Windows.Forms.Button btn_SaveDirectorateBase;
         internal System.Windows.Forms.Label lbL_last_decommission;
+        private System.Windows.Forms.ComboBox cmb_number_unique_acts;
+        private System.Windows.Forms.TextBox textBox_search;
     }
 }

@@ -43,7 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_change_rst = new System.Windows.Forms.Button();
+            this.btn_change_rst_full = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -93,10 +93,12 @@
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
             this.label36 = new System.Windows.Forms.Label();
             this.txB_comment = new System.Windows.Forms.TextBox();
-            this.btn_change_rst_act = new System.Windows.Forms.Button();
-            this.btn_change_rst_company = new System.Windows.Forms.Button();
+            this.btn_identityCard_change_rst_act = new System.Windows.Forms.Button();
+            this.btn_identityCard_change_rst_company = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.txB_decommissionSerialNumber = new System.Windows.Forms.TextBox();
+            this.btn_change_rst_act = new System.Windows.Forms.Button();
+            this.chB_numberActTO_Enable = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -156,8 +158,6 @@
             this.txB_networkNumber.Name = "txB_networkNumber";
             this.txB_networkNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_networkNumber.TabIndex = 25;
-            this.txB_networkNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_networkNumber_KeyPress);
-            this.txB_networkNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_networkNumber_KeyUp);
             // 
             // txB_inventoryNumber
             // 
@@ -177,7 +177,7 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
-            this.txB_serialNumber.Click += new System.EventHandler(this.TextBox_serialNumber_Click);
+            this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxB_serialNumber_KeyDown);
             this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
             this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
             // 
@@ -189,8 +189,6 @@
             this.txB_company.Name = "txB_company";
             this.txB_company.Size = new System.Drawing.Size(232, 26);
             this.txB_company.TabIndex = 22;
-            this.txB_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_company_KeyPress);
-            this.txB_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_company_KeyUp);
             // 
             // label7
             // 
@@ -258,18 +256,17 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Предприятие:";
             // 
-            // btn_change_rst
+            // btn_change_rst_full
             // 
-            this.btn_change_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_change_rst.Enabled = false;
-            this.btn_change_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_change_rst.Location = new System.Drawing.Point(686, 498);
-            this.btn_change_rst.Name = "btn_change_rst";
-            this.btn_change_rst.Size = new System.Drawing.Size(119, 30);
-            this.btn_change_rst.TabIndex = 28;
-            this.btn_change_rst.Text = "Изменить";
-            this.btn_change_rst.UseVisualStyleBackColor = false;
-            this.btn_change_rst.Click += new System.EventHandler(this.Button_сhange_rst_Click);
+            this.btn_change_rst_full.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_change_rst_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_change_rst_full.Location = new System.Drawing.Point(686, 513);
+            this.btn_change_rst_full.Name = "btn_change_rst_full";
+            this.btn_change_rst_full.Size = new System.Drawing.Size(119, 30);
+            this.btn_change_rst_full.TabIndex = 28;
+            this.btn_change_rst_full.Text = "Изменить всё";
+            this.btn_change_rst_full.UseVisualStyleBackColor = false;
+            this.btn_change_rst_full.Click += new System.EventHandler(this.Button_сhange_rst_full_Click);
             // 
             // label8
             // 
@@ -325,8 +322,6 @@
             this.txB_location.Size = new System.Drawing.Size(232, 26);
             this.txB_location.TabIndex = 53;
             this.txB_location.Click += new System.EventHandler(this.TextBox_location_Click);
-            this.txB_location.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_location_KeyPress);
-            this.txB_location.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_location_KeyUp);
             // 
             // monthCalendar1
             // 
@@ -461,13 +456,13 @@
             // 
             // txB_numberAct
             // 
+            this.txB_numberAct.Enabled = false;
             this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_numberAct.Location = new System.Drawing.Point(585, 402);
             this.txB_numberAct.MaxLength = 31;
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(232, 26);
             this.txB_numberAct.TabIndex = 64;
-            this.txB_numberAct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_numberAct_KeyUp);
             // 
             // label19
             // 
@@ -499,8 +494,6 @@
             this.txB_representative.Name = "txB_representative";
             this.txB_representative.Size = new System.Drawing.Size(176, 26);
             this.txB_representative.TabIndex = 67;
-            this.txB_representative.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_representative_KeyPress);
-            this.txB_representative.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_representative_KeyUp);
             // 
             // label21
             // 
@@ -522,9 +515,6 @@
             this.txB_post.Name = "txB_post";
             this.txB_post.Size = new System.Drawing.Size(244, 120);
             this.txB_post.TabIndex = 69;
-            this.txB_post.Click += new System.EventHandler(this.TextBox_post_Click);
-            this.txB_post.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_post_KeyPress);
-            this.txB_post.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_post_KeyUp);
             // 
             // label22
             // 
@@ -545,9 +535,6 @@
             this.txB_numberIdentification.Name = "txB_numberIdentification";
             this.txB_numberIdentification.Size = new System.Drawing.Size(176, 26);
             this.txB_numberIdentification.TabIndex = 71;
-            this.txB_numberIdentification.Click += new System.EventHandler(this.TextBox_numberIdentification_Click);
-            this.txB_numberIdentification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberIdentification_KeyPress);
-            this.txB_numberIdentification.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_numberIdentification_KeyUp);
             // 
             // label23
             // 
@@ -582,9 +569,6 @@
             this.txB_phoneNumber.Name = "txB_phoneNumber";
             this.txB_phoneNumber.Size = new System.Drawing.Size(177, 26);
             this.txB_phoneNumber.TabIndex = 75;
-            this.txB_phoneNumber.Click += new System.EventHandler(this.TextBox_phoneNumber_Click);
-            this.txB_phoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_phoneNumber_KeyPress);
-            this.txB_phoneNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_phoneNumber_KeyUp);
             // 
             // label24
             // 
@@ -693,8 +677,6 @@
             this.txB_city.Name = "txB_city";
             this.txB_city.Size = new System.Drawing.Size(232, 26);
             this.txB_city.TabIndex = 84;
-            this.txB_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_city_KeyPress);
-            this.txB_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_city_KeyUp);
             // 
             // label31
             // 
@@ -856,29 +838,29 @@
             this.txB_comment.Size = new System.Drawing.Size(511, 65);
             this.txB_comment.TabIndex = 109;
             // 
-            // btn_change_rst_act
+            // btn_identityCard_change_rst_act
             // 
-            this.btn_change_rst_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_change_rst_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_change_rst_act.Location = new System.Drawing.Point(136, 330);
-            this.btn_change_rst_act.Name = "btn_change_rst_act";
-            this.btn_change_rst_act.Size = new System.Drawing.Size(106, 30);
-            this.btn_change_rst_act.TabIndex = 111;
-            this.btn_change_rst_act.Text = "Изменить в Акте";
-            this.btn_change_rst_act.UseVisualStyleBackColor = false;
-            this.btn_change_rst_act.Click += new System.EventHandler(this.Btn_change_rst_act_Click);
+            this.btn_identityCard_change_rst_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_identityCard_change_rst_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_identityCard_change_rst_act.Location = new System.Drawing.Point(136, 330);
+            this.btn_identityCard_change_rst_act.Name = "btn_identityCard_change_rst_act";
+            this.btn_identityCard_change_rst_act.Size = new System.Drawing.Size(106, 30);
+            this.btn_identityCard_change_rst_act.TabIndex = 111;
+            this.btn_identityCard_change_rst_act.Text = "Изменить в Акте";
+            this.btn_identityCard_change_rst_act.UseVisualStyleBackColor = false;
+            this.btn_identityCard_change_rst_act.Click += new System.EventHandler(this.Btn_identityCard_change_rst_act_Click);
             // 
-            // btn_change_rst_company
+            // btn_identityCard_change_rst_company
             // 
-            this.btn_change_rst_company.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_change_rst_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_change_rst_company.Location = new System.Drawing.Point(248, 330);
-            this.btn_change_rst_company.Name = "btn_change_rst_company";
-            this.btn_change_rst_company.Size = new System.Drawing.Size(133, 30);
-            this.btn_change_rst_company.TabIndex = 112;
-            this.btn_change_rst_company.Text = "Изменить у всего ПП";
-            this.btn_change_rst_company.UseVisualStyleBackColor = false;
-            this.btn_change_rst_company.Click += new System.EventHandler(this.Btn_change_rst_company_Click);
+            this.btn_identityCard_change_rst_company.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_identityCard_change_rst_company.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_identityCard_change_rst_company.Location = new System.Drawing.Point(248, 330);
+            this.btn_identityCard_change_rst_company.Name = "btn_identityCard_change_rst_company";
+            this.btn_identityCard_change_rst_company.Size = new System.Drawing.Size(133, 30);
+            this.btn_identityCard_change_rst_company.TabIndex = 112;
+            this.btn_identityCard_change_rst_company.Text = "Изменить у всего ПП";
+            this.btn_identityCard_change_rst_company.UseVisualStyleBackColor = false;
+            this.btn_identityCard_change_rst_company.Click += new System.EventHandler(this.Btn_identityCard_change_rst_company_Click);
             // 
             // label20
             // 
@@ -900,6 +882,30 @@
             this.txB_decommissionSerialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_decommissionSerialNumber.TabIndex = 114;
             // 
+            // btn_change_rst_act
+            // 
+            this.btn_change_rst_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_change_rst_act.Enabled = false;
+            this.btn_change_rst_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_change_rst_act.Location = new System.Drawing.Point(686, 478);
+            this.btn_change_rst_act.Name = "btn_change_rst_act";
+            this.btn_change_rst_act.Size = new System.Drawing.Size(119, 30);
+            this.btn_change_rst_act.TabIndex = 115;
+            this.btn_change_rst_act.Text = "Изменить акт";
+            this.btn_change_rst_act.UseVisualStyleBackColor = false;
+            this.btn_change_rst_act.Click += new System.EventHandler(this.Btn_change_rst_act_Click);
+            // 
+            // chB_numberActTO_Enable
+            // 
+            this.chB_numberActTO_Enable.AutoSize = true;
+            this.chB_numberActTO_Enable.BackColor = System.Drawing.Color.Transparent;
+            this.chB_numberActTO_Enable.Location = new System.Drawing.Point(565, 410);
+            this.chB_numberActTO_Enable.Name = "chB_numberActTO_Enable";
+            this.chB_numberActTO_Enable.Size = new System.Drawing.Size(15, 14);
+            this.chB_numberActTO_Enable.TabIndex = 116;
+            this.chB_numberActTO_Enable.UseVisualStyleBackColor = false;
+            this.chB_numberActTO_Enable.Click += new System.EventHandler(this.ChB_numberActTO_Enable_Click);
+            // 
             // СhangeRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -907,11 +913,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 561);
+            this.Controls.Add(this.chB_numberActTO_Enable);
+            this.Controls.Add(this.btn_change_rst_act);
             this.Controls.Add(this.txB_decommissionSerialNumber);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.monthCalendar2);
-            this.Controls.Add(this.btn_change_rst_company);
-            this.Controls.Add(this.btn_change_rst_act);
+            this.Controls.Add(this.btn_identityCard_change_rst_company);
+            this.Controls.Add(this.btn_identityCard_change_rst_act);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.picB_clear);
@@ -962,7 +970,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.btn_change_rst);
+            this.Controls.Add(this.btn_change_rst_full);
             this.Controls.Add(this.txB_dateTO);
             this.Controls.Add(this.txB_networkNumber);
             this.Controls.Add(this.txB_inventoryNumber);
@@ -1000,7 +1008,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_change_rst;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -1056,9 +1063,12 @@
         private System.Windows.Forms.MonthCalendar monthCalendar2;
         private System.Windows.Forms.Label label36;
         internal System.Windows.Forms.TextBox txB_comment;
-        private System.Windows.Forms.Button btn_change_rst_act;
-        private System.Windows.Forms.Button btn_change_rst_company;
+        private System.Windows.Forms.Button btn_identityCard_change_rst_act;
+        private System.Windows.Forms.Button btn_identityCard_change_rst_company;
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.TextBox txB_decommissionSerialNumber;
+        private System.Windows.Forms.Button btn_change_rst_act;
+        private System.Windows.Forms.CheckBox chB_numberActTO_Enable;
+        private System.Windows.Forms.Button btn_change_rst_full;
     }
 }
