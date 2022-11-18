@@ -125,9 +125,8 @@
             // btn_save_add_rst
             // 
             this.btn_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_save_add_rst.Enabled = false;
             this.btn_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save_add_rst.Location = new System.Drawing.Point(699, 495);
+            this.btn_save_add_rst.Location = new System.Drawing.Point(683, 485);
             this.btn_save_add_rst.Name = "btn_save_add_rst";
             this.btn_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.btn_save_add_rst.TabIndex = 28;
@@ -209,8 +208,6 @@
             this.txB_company.Name = "txB_company";
             this.txB_company.Size = new System.Drawing.Size(232, 26);
             this.txB_company.TabIndex = 22;
-            this.txB_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_company_KeyPress);
-            this.txB_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_company_KeyUp);
             // 
             // txB_serialNumber
             // 
@@ -220,7 +217,6 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
-            this.txB_serialNumber.Click += new System.EventHandler(this.TextBox_serialNumber_Click);
             this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyDown);
             this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
             this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
@@ -242,8 +238,6 @@
             this.txB_networkNumber.Name = "txB_networkNumber";
             this.txB_networkNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_networkNumber.TabIndex = 25;
-            this.txB_networkNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_networkNumber_KeyPress);
-            this.txB_networkNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_networkNumber_KeyUp);
             // 
             // txB_dateTO
             // 
@@ -324,13 +318,11 @@
             this.txB_location.Size = new System.Drawing.Size(232, 26);
             this.txB_location.TabIndex = 53;
             this.txB_location.Click += new System.EventHandler(this.TextBox_location_Click);
-            this.txB_location.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_location_KeyPress);
-            this.txB_location.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_location_KeyUp);
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(654, 213);
+            this.monthCalendar1.Location = new System.Drawing.Point(653, 204);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 54;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
@@ -450,7 +442,6 @@
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(232, 26);
             this.txB_numberAct.TabIndex = 64;
-            this.txB_numberAct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_numberAct_KeyUp);
             // 
             // label18
             // 
@@ -484,8 +475,6 @@
             this.txB_representative.Name = "txB_representative";
             this.txB_representative.Size = new System.Drawing.Size(176, 26);
             this.txB_representative.TabIndex = 67;
-            this.txB_representative.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_representative_KeyPress);
-            this.txB_representative.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_representative_KeyUp);
             // 
             // label21
             // 
@@ -527,9 +516,6 @@
             this.txB_numberIdentification.Name = "txB_numberIdentification";
             this.txB_numberIdentification.Size = new System.Drawing.Size(176, 26);
             this.txB_numberIdentification.TabIndex = 71;
-            this.txB_numberIdentification.Click += new System.EventHandler(this.TextBox_numberIdentification_Click);
-            this.txB_numberIdentification.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberIdentification_KeyPress);
-            this.txB_numberIdentification.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_numberIdentification_KeyUp);
             // 
             // label23
             // 
@@ -575,9 +561,6 @@
             this.txB_phoneNumber.Name = "txB_phoneNumber";
             this.txB_phoneNumber.Size = new System.Drawing.Size(177, 26);
             this.txB_phoneNumber.TabIndex = 75;
-            this.txB_phoneNumber.Click += new System.EventHandler(this.TextBox_phoneNumber_Click);
-            this.txB_phoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_phoneNumber_KeyPress);
-            this.txB_phoneNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_phoneNumber_KeyUp);
             // 
             // label25
             // 
@@ -685,8 +668,6 @@
             this.txB_city.Name = "txB_city";
             this.txB_city.Size = new System.Drawing.Size(232, 26);
             this.txB_city.TabIndex = 84;
-            this.txB_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_city_KeyPress);
-            this.txB_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_city_KeyUp);
             // 
             // label31
             // 
@@ -832,7 +813,7 @@
             // monthCalendar2
             // 
             this.monthCalendar2.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar2.Location = new System.Drawing.Point(209, 213);
+            this.monthCalendar2.Location = new System.Drawing.Point(208, 204);
             this.monthCalendar2.Name = "monthCalendar2";
             this.monthCalendar2.TabIndex = 99;
             this.monthCalendar2.Visible = false;
@@ -975,7 +956,6 @@
             this.ShowIcon = false;
             this.Text = "Добавление радиостанции";
             this.Load += new System.EventHandler(this.AddRSTForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AddRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dateIssue)).EndInit();

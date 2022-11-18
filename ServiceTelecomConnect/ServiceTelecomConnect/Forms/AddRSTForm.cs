@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ServiceTelecomConnect
 {
@@ -23,7 +24,6 @@ namespace ServiceTelecomConnect
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
             txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            btn_save_add_rst.Enabled = false;
             cmB_poligon.Text = cmB_poligon.Items[0].ToString();
         }
 
@@ -61,12 +61,19 @@ namespace ServiceTelecomConnect
         #region добавление РСТ
         void Button_save_add_rst_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txB_serialNumber.Text))
+            {
+                MessageBox.Show("\"Заводской номер\" не должен быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_serialNumber.Select();
+                return;
+            }
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
                 {
                     var re = new Regex(Environment.NewLine);
                     control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
                 }
             }
             Add_rst_radiostantion();
@@ -74,351 +81,530 @@ namespace ServiceTelecomConnect
 
         void Add_rst_radiostantion()
         {
-            if(!String.IsNullOrEmpty(txB_numberAct.Text))
+            if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
             {
-                if (Internet_check.CheackSkyNET())
+                MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_numberAct.Select();
+                return;
+            }
+
+            if (Internet_check.CheackSkyNET())
+            {
+                try
                 {
-                    string Mesage;
-                    Mesage = "Вы действительно хотите добавить радиостанцию?";
+                    var city = txB_city.Text;
 
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
                     {
-                        return;
-                    }
-                    try
-                    {
-                        var city = txB_city.Text;
-                        var poligon = cmB_poligon.Text;
-                        var company = txB_company.Text;
-                        var location = txB_location.Text;
-                        var model = cmB_model.Text;
-                        var serialNumber = txB_serialNumber.Text;
-                        var inventoryNumber = txB_inventoryNumber.Text;
-                        var networkNumber = txB_networkNumber.Text;
-                        var numberAct = txB_numberAct.Text;
-                        var dateTO = txB_dateTO.Text;
-                        var price = txB_price.Text;
-                        var representative = txB_representative.Text;
-                        var post = txB_post.Text;
-                        var numberIdentification = txB_numberIdentification.Text;
-                        var dateIssue = txB_dateIssue.Text;
-                        var phoneNumber = txB_phoneNumber.Text;
-                        var antenna = txB_antenna.Text;
-                        var manipulator = txB_manipulator.Text;
-                        var AKB = txB_AKB.Text;
-                        var batteryСharger = txB_batteryСharger.Text;
-                        var comment = txB_comment.Text;
-                        if (dateIssue.Length > 0)
+                        MessageBox.Show("Введите корректно поле \"Город\".\n P.s. название города должно быть с большой буквы.\nпример: \"Нижний-Новгород\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_city.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
+                            return;
+                        }
+                    }
 
-                            DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
-                            if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
-                            && !(serialNumber == "") && !(dateTO == "") && !(numberAct == "") && !(city == "")
-                            && !(representative == "") && !(post == "") && !(numberIdentification == "")
-                            && !(phoneNumber == "") && !(antenna == "")
-                            && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
+                    var poligon = cmB_poligon.Text;
+                    var company = txB_company.Text;
+
+                    if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_company.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+                    var location = txB_location.Text;
+                    if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_location.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+                    var model = cmB_model.GetItemText(cmB_model.SelectedItem);
+
+                    var serialNumber = txB_serialNumber.Text;
+                    #region
+                    if (model == "Motorola GP-340")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-340 - \"672TTD0000 или 672TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola GP-360")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-360 \"749TTD0000 или 749TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola DP-2400е" || model == "Motorola DP-2400")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-2400 - \"446TTD0000 или 446TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+                            return;
+                        }
+                    }
+                    else if (model == "Comrade R5")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[2][0][1][0][R][5]([0-9]{6,6})$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            return;
+                        }
+                    }
+                    else if (model == "Icom IC-F3GS")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[5][4]([0-9]{5,5})$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GS -\"5468318\r\n\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                             {
-                                #region проверка на ввод зав. номера рст
-                                if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F16" || cmB_model.Text == "Icom IC-F11"
-                                    || cmB_model.Text == "РН311М")
-                                {
-                                    if (!serialNumber.StartsWith("0"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"0\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Icom IC-F3GS")
-                                {
-                                    if (!serialNumber.StartsWith("54"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"54\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080")
-                                {
-                                    if (!serialNumber.StartsWith("442"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"442\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola DP-1400")
-                                {
-                                    if (!serialNumber.StartsWith("752"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"752\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola DP-2400" || cmB_model.Text == "Motorola DP-2400е")
-                                {
-                                    if (!serialNumber.StartsWith("446"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"446\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola DP-4400")
-                                {
-                                    if (!serialNumber.StartsWith("807"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"807\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola GP-300")
-                                {
-                                    if (!serialNumber.StartsWith("174"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"174\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola GP-320")
-                                {
-                                    if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Motorola GP-320
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola GP-340")
-                                {
-                                    if (!serialNumber.StartsWith("672"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"672\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Motorola GP-360")
-                                {
-                                    if (!serialNumber.StartsWith("749"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"749\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Элодия-351М")
-                                {
-                                    if (!serialNumber.StartsWith("1"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"1\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-
-                                if (cmB_model.Text == "Comrade R5")
-                                {
-                                    if (!serialNumber.StartsWith("2010R"))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"2010R\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Комбат T-44")
-                                {
-                                    if (!serialNumber.StartsWith("T44.19.10."))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"T44.19.10.\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-
-                                    if (!serialNumber.Contains("."))
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"В заводском номере радиостанции {cmB_model.Text} отстутсвет \".(точка)\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-                                if (cmB_model.Text == "Kenwood ТК-2107")
-                                {
-                                    if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Kenwood ТК-2107
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "Vertex - 261")
-                                {
-                                    if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Vertex - 261
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (cmB_model.Text == "РА-160")
-                                {
-                                    if (!serialNumber.StartsWith("_что-то"))//TODO узнать зав номер радиостанции Kenwood РА-160
-                                    {
-                                        string MesageRSTProv;
-                                        MesageRSTProv = $"Заводской номер радиостанции {cmB_model.Text} начинается не с \"что-то\". Вы действительно хотите добавить РСТ?";
-
-                                        if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                        {
-                                            return;
-                                        }
-                                    }
-                                }
-
-                                if (!representative.Contains("."))
-                                {
-                                    string MesageRSTProv;
-                                    MesageRSTProv = $"Вы ввели некоректную запись \"Фамилии И.О.\" представителя!";
-
-                                    if (MessageBox.Show(MesageRSTProv, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                    {
-                                        return;
-                                    }
-                                }
-                                #endregion
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
-                                {
-                                    if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
-                                    {
-                                        var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
-                                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
-                                            $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
-                                            $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
-                                            $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                            $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
-                                            $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
-                                            $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
-                                            $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
-
-
-                                        using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
-                                        {
-                                            DB.GetInstance.OpenConnection();
-                                            command.ExecuteNonQuery();
-                                            DB.GetInstance.CloseConnection();
-                                            Add_rst_radiostantion_full();
-                                            MessageBox.Show("Радиостанция успешно добавлена!");
-                                            txB_serialNumber.Text = "";
-                                            txB_inventoryNumber.Text = "";
-                                            txB_networkNumber.Text = "";
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Данная радиостанция с таким заводским номером уже присутствует в базе данных");
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Вы не заполнили нужные поля со (*)!");
+                                return;
                             }
                         }
                     }
-                    catch (Exception)
+                    else if (model == "Icom IC-F3GT")
                     {
-                        MessageBox.Show("Ошибка! Радиостнация не добавлена!(Add_rst_radiostantion)");
+                        if (!Regex.IsMatch(serialNumber, @"^[0][4]([0-9]{5,5})$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GT -\"0432600\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
                     }
+                    else if (model == "Icom IC-F16")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0][7]([0-9]{5,5})$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F16 -\"0726630\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Icom IC-F11")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[1][0]([0-9]{4,4})$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F11 -\"109025\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Альтавия-301М")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Альтавия-301М -\"160401173\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Элодия-351М")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Элодия-351М -\"160403711\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Комбат T-44")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][/.][0-9]{2,2}[/.]+[0-9]{2,2}[/.][0-9]{4,4}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "РН311М")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РН311М -\"0132 09.18\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Motorola DP-4400")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-4400 - \"807TTD0000 или 807TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola DP-1400")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola GP-320")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola GP-300")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola P080")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            return;
+                        }
+                    }
+                    else if (model == "Motorola P040")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            return;
+                        }
+                    }
+                    else if (model == "Гранит Р33П-1")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{5,5}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р33П-1 - \"03 29121\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Гранит Р-43")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{6,6}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р-43 - \"01 195580\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Радий-301")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{6,6}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Радий-301 - \"425266\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "РНД-500")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-500 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "РНД-512")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-512 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    #endregion
+
+                    var inventoryNumber = txB_inventoryNumber.Text;
+
+                    if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
+                    {
+                        MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_inventoryNumber.Select();
+
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+                    var networkNumber = txB_networkNumber.Text;
+
+                    if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
+                    {
+                        MessageBox.Show("Введите корректно поле: \"Сетевой номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_networkNumber.Select();
+
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+                    var numberAct = txB_numberAct.Text;
+                    var dateTO = txB_dateTO.Text;
+                    if (String.IsNullOrEmpty(dateTO))
+                    {
+                        MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_dateTO.Select();
+                        return;
+                    }
+                    var price = txB_price.Text;
+                    if (String.IsNullOrEmpty(price))
+                    {
+                        MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_price.Select();
+                        return;
+                    }
+                    var representative = txB_representative.Text;
+
+                    if (!representative.Contains("-"))
+                    {
+                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_representative.Select();
+                            return;
+                        }
+                        else if (representative.Contains("-"))
+                        {
+                            if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                            {
+                                MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txB_representative.Select();
+                                return;
+                            }
+                        }
+                    }
+                    
+                    var post = txB_post.Text;
+                    if (String.IsNullOrEmpty(post))
+                    {
+                        MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_post.Select();
+                        return;
+                    }
+                    var numberIdentification = txB_numberIdentification.Text;
+
+                    if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_numberIdentification.Select();
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                    var dateIssue = txB_dateIssue.Text;
+                    if (String.IsNullOrEmpty(dateIssue))
+                    {
+                        MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_dateIssue.Select();
+                        return;
+                    }
+
+                    var phoneNumber = txB_phoneNumber.Text;
+                    if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_phoneNumber.Select();
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                    var antenna = txB_antenna.Text;
+                    var manipulator = txB_manipulator.Text;
+                    var AKB = txB_AKB.Text;
+                    var batteryСharger = txB_batteryСharger.Text;
+                    var comment = txB_comment.Text;
+
+                    //var x = DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
+
+                    if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
+                    && !(serialNumber == "") && !(dateTO == "") && !(numberAct == "") && !(city == "")
+                    && !(representative == "") && !(post == "") && !(numberIdentification == "")
+                    && !(phoneNumber == "") && !(antenna == "")
+                    && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
+                    {
+                        if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
+                        {
+                            if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
+                            {
+                                var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                                    $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                    $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                    $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                    $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                    $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
+                                    $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
+                                    $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
+                                    $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                    $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
+
+
+                                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    command.ExecuteNonQuery();
+                                    DB.GetInstance.CloseConnection();
+                                    Add_rst_radiostantion_full();
+                                    MessageBox.Show("Радиостанция успешно добавлена!");
+                                    txB_serialNumber.Text = "";
+                                    txB_inventoryNumber.Text = "";
+                                    txB_networkNumber.Text = "";
+                                }
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Данная радиостанция с таким заводским номером уже присутствует в базе данных");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы не заполнили нужные поля со (*)!");
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Радиостнация не добавлена!(Add_rst_radiostantion)");
                 }
             }
-            else MessageBox.Show("Заполни номер акта");
+
         }
         void Add_rst_radiostantion_full()
         {
@@ -553,7 +739,7 @@ namespace ServiceTelecomConnect
                                     }
                                     DB.GetInstance.CloseConnection();
                                 }
-                                catch (Exception )
+                                catch (Exception)
                                 {
                                     MessageBox.Show("Ошибка! При добавлении в текущую БД найденная радиостанция в общей БД не изменена!(CheacSerialNumber_radiostantion_full)");
                                 }
@@ -646,32 +832,6 @@ namespace ServiceTelecomConnect
                 txB_price.Text = "1919.57";
             }
         }
-        void TextBox_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.KeyChar = char.ToUpper(e.KeyChar);
-
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_location_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_location_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
         void TextBox_location_Click(object sender, EventArgs e)
         {
             if (txB_location.Text == "")
@@ -686,193 +846,10 @@ namespace ServiceTelecomConnect
         {
             cmB_model.MaxLength = 99;
         }
-        void TextBox_city_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_city_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
+
         void TextBox_serialNumber_KeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_serialNumber_Click(object sender, EventArgs e)
-        {
-            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11")
-            {
-                txB_serialNumber.MaxLength = 7;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "0";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Icom IC-F16" || cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Гранит Р33П-1" ||
-                cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301")
-            {
-                txB_serialNumber.MaxLength = 7;
-            }
-
-            if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "442";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola DP-1400")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "752";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola DP-2400" || cmB_model.Text == "Motorola DP-2400е")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "446";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola DP-4400")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "807";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola GP-300")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "174";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261"
-                || cmB_model.Text == "РА-160") //TODO Проверить условия а имеено зав номер GP320 Вертех Кенвуд РА
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "что-то";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola GP-340")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "672";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Motorola GP-360")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "749";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Элодия-351М")
-            {
-                txB_serialNumber.MaxLength = 9;
-            }
-
-            if (cmB_model.Text == "РН311М")
-            {
-                txB_serialNumber.MaxLength = 10;
-
-            }
-
-            if (cmB_model.Text == "Comrade R5")
-            {
-                txB_serialNumber.MaxLength = 12;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "2010R";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "Комбат T-44")
-            {
-                txB_serialNumber.MaxLength = 14;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "T44.19.10.";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-            }
-
-            if (cmB_model.Text == "РНД-500")
-            {
-                txB_serialNumber.MaxLength = 4;
-                txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                txB_serialNumber.SelectionLength = 0;
-            }
-
-            if (cmB_model.Text == "РНД-512")
-            {
-                txB_serialNumber.MaxLength = 11;
-
-                if (txB_serialNumber.Text == "")
-                {
-                    txB_serialNumber.Text = "0";
-                    txB_serialNumber.SelectionStart = txB_serialNumber.Text.Length;
-                    txB_serialNumber.SelectionLength = 0;
-                }
-
-            }
         }
 
         void TextBox_serialNumber_KeyDown(object sender, KeyEventArgs e)
@@ -958,7 +935,7 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка добавления частичных данных из общей БД!Return в TextBox_serialNumber!(TextBox_serialNumber_KeyDown)");
-            } 
+            }
         }
 
         void TextBox_serialNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -969,7 +946,7 @@ namespace ServiceTelecomConnect
                 || cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301"
                 || cmB_model.Text == "РНД-500")
             {
-                if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
+                if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == ' ')
                 {
 
                 }
@@ -1009,7 +986,7 @@ namespace ServiceTelecomConnect
 
             if (cmB_model.Text == "Комбат T-44")
             {
-                if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == 84)
+                if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == 'T')
                 {
 
                 }
@@ -1058,87 +1035,8 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void TextBox_networkNumber_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_networkNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == ' '
-                || e.KeyChar == '/')
-            {
 
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_numberAct_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_representative_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_representative_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_numberIdentification_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_numberIdentification_Click(object sender, EventArgs e)
-        {
-            if (txB_numberIdentification.Text == "")
-            {
-                txB_numberIdentification.Text = "V ";
-                txB_numberIdentification.SelectionStart = txB_numberIdentification.Text.Length;
-                txB_numberIdentification.SelectionLength = 0;
-            }
-        }
-        void TextBox_numberIdentification_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '№' || e.KeyChar == ' ' || e.KeyChar == 'V')
-            {
 
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_phoneNumber_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_phoneNumber_Click(object sender, EventArgs e)
-        {
-
-            if (txB_phoneNumber.Text == "")
-            {
-                txB_phoneNumber.Text = "+7-";
-                txB_phoneNumber.SelectionStart = txB_phoneNumber.Text.Length;
-                txB_phoneNumber.SelectionLength = 0;
-            }
-        }
-        void TextBox_phoneNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back || e.KeyChar == '+' || e.KeyChar == ' ' || e.KeyChar == '-')
-            {
-
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
 
         void TextBox_antenna_Click(object sender, EventArgs e)
         {
@@ -1186,7 +1084,7 @@ namespace ServiceTelecomConnect
                 txB_manipulator.Text = "-";
             }
         }
-        
+
         void TextBox_AKB_Leave(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "")
@@ -1220,34 +1118,12 @@ namespace ServiceTelecomConnect
 
         void TxB_AKB_Click(object sender, EventArgs e)
         {
-            if(txB_AKB.Text == "-")
+            if (txB_AKB.Text == "-")
             {
                 txB_AKB.Text = "";
             }
         }
 
-        void TextBox_TextChanged()
-        {
-            if (cmB_poligon.Text.Length > 0 && txB_company.Text.Length > 0
-                && txB_location.Text.Length > 0
-                && cmB_model.Text.Length > 0 && txB_serialNumber.Text.Length > 0
-                && txB_inventoryNumber.Text.Length > 0 && txB_networkNumber.Text.Length > 0
-                && txB_dateTO.Text.Length > 0 && txB_price.Text.Length > 0
-                && txB_numberAct.Text.Length > 0 && txB_representative.Text.Length > 0
-                && txB_numberIdentification.Text.Length > 0 && txB_phoneNumber.Text.Length > 0
-                && txB_post.Text.Length > 0 && txB_dateIssue.Text.Length > 0)
-            {
-                btn_save_add_rst.Enabled = true;
-            }
-            else
-            {
-                btn_save_add_rst.Enabled = false;
-            }
-        }
-        void AddRSTForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            TextBox_TextChanged();
-        }
         #endregion
 
         #region очистка дат
@@ -1306,9 +1182,6 @@ namespace ServiceTelecomConnect
             }
 
         }
-
-
-
 
         #endregion
 
