@@ -58,6 +58,8 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
+
+
         public Boolean CheacSerialNumber_radiostantion(string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
@@ -128,6 +130,41 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
+
+        public Boolean CheackNumberAct_radiostantion_changeForm_2(string numberAct)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT * FROM radiostantion WHERE numberAct = '{numberAct}'";
+
+                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                    DataTable table = new DataTable();
+
+                    adapter.Fill(table);
+
+                    if (table.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка метода нахождения радиостанций в акте не более 20 в таблице radiostantion (CheackNumberAct_radiostantion)");
+                    return false;
+                }
+            }
+            return false;
+        }
+
         public Boolean CheackNumberAct_radiostantion(string numberAct)
         {
             if (Internet_check.CheackSkyNET())
@@ -148,7 +185,6 @@ namespace ServiceTelecomConnect
                     {
                         return false;
                     }
-
                     else
                     {
                         return true;
