@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TextBox = System.Windows.Forms.TextBox;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ServiceTelecomConnect
 {
@@ -420,10 +421,11 @@ namespace ServiceTelecomConnect
 
                         var numberActRemont = txB_numberActRemont.Text;
 
-                        if (numberActRemont == "53/" || numberActRemont == "" || numberActRemont == "5" || numberActRemont == "53"
-                            || numberActRemont == "3" || numberActRemont == "/" || numberActRemont == "3/")
+
+                        if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                         {
-                            MessageBox.Show("Заполните поле № акта");
+                            MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_numberActRemont.Select();
                             return;
                         }
                         var сategory = cmB_сategory.Text;
