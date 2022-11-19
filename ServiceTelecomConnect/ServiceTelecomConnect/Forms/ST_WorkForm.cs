@@ -3470,6 +3470,8 @@ namespace ServiceTelecomConnect
 
                     var re = new Regex(Environment.NewLine);
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
+                    txB_reason_decommission.Text.Trim();
+                    txB1_decommissionSerialNumber.Text.Trim();
 
                     QuerySettingDataBase.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
                         txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
