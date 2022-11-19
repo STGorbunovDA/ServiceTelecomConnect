@@ -562,11 +562,11 @@ namespace ServiceTelecomConnect
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                     $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                    $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
-                                    $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
-                                    $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
-                                    $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon}', '{company}', '{location}'," +
+                                    $"'{model}','{serialNumber}', '{inventoryNumber}', '{networkNumber}', " +
+                                    $"'{dateTO}','{numberAct}','{city}','{price}', '{representative}', '{post}', " +
+                                    $"'{numberIdentification}', '{dateIssue}', '{phoneNumber}', '{""}', '{""}', '{0.00}'," +
+                                    $"'{antenna}', '{manipulator}', '{AKB}', '{batteryСharger}', '{""}', '{""}', " +
                                     $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
 
 

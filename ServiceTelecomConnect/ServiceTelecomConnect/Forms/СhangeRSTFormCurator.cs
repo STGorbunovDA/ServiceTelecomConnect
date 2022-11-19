@@ -67,6 +67,7 @@ namespace ServiceTelecomConnect
                     {
                         var re = new Regex(Environment.NewLine);
                         control.Text = re.Replace(control.Text, " ");
+                        control.Text.Trim();
                     }
                 }
 
