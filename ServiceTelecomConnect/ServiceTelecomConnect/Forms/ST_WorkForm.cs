@@ -3447,6 +3447,27 @@ namespace ServiceTelecomConnect
             {
                 if (txB1_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
                 {
+
+                    if (!Regex.IsMatch(txB1_decommissionSerialNumber.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+                    {
+                        MessageBox.Show("Введите корректно \"№ Акта списания\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB1_decommissionSerialNumber.Select();
+                        return;
+                    }
+
+                    if (!Regex.IsMatch(txB_reason_decommission.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Причина\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_reason_decommission.Select();
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+
+
                     var re = new Regex(Environment.NewLine);
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
 
