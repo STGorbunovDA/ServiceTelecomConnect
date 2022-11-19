@@ -488,17 +488,17 @@ namespace ServiceTelecomConnect
                             txB_representative.Select();
                             return;
                         }
-                        else if (representative.Contains("-"))
+                    }
+                    if (representative.Contains("-"))
+                    {
+                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
                         {
-                            if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
-                            {
-                                MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                txB_representative.Select();
-                                return;
-                            }
+                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_representative.Select();
+                            return;
                         }
                     }
-                    
+
                     var post = txB_post.Text;
                     if (String.IsNullOrEmpty(post))
                     {
