@@ -33,7 +33,6 @@ namespace ServiceTelecomConnect
             txB_passField.MaxLength = 32;
             if (txB_loginField.Text == "Admin" || txB_passField.Text == "1818")
                 EnterButtonLogin_Click(sender, e);
-
         }
         void EnterButtonLogin_Click(object sender, EventArgs e)
         {

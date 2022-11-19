@@ -719,6 +719,27 @@ namespace ServiceTelecomConnect
                     }
                 }
 
+                if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                {
+                    string Mesage;
+                    Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание. Точно удалить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!String.IsNullOrEmpty(txB_numberActRemont.Text))
+                {
+                    string Mesage;
+                    Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть ремонт. Точно удалить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
                 QuerySettingDataBase.DeleteRowCurator(dataGridView1);
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
@@ -1522,7 +1543,7 @@ namespace ServiceTelecomConnect
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         if (Application.OpenForms["СhangeRSTForm"] == null)
                         {
-                            
+
                             changeRSTForm.DoubleBufferedForm(true);
                             changeRSTForm.txB_city.Text = txB_city.Text;
                             changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
@@ -1541,7 +1562,7 @@ namespace ServiceTelecomConnect
                             changeRSTForm.txB_post.Text = txB_post.Text;
                             changeRSTForm.txB_comment.Text = txB_comment.Text;
 
-                            if(!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                             {
                                 changeRSTForm.txB_decommissionSerialNumber.Text = txB_decommissionSerialNumber.Text;
                             }
@@ -1674,196 +1695,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = true;
         }
 
-        #region проверка текста panel_remont_info
-        void TextBox_Full_name_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b'
-                && ch != '-' && ch != '.' && ch != ' ' && ch != '=' && ch != '!' && ch != '*')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_Full_name_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_BE_remont_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
-            {
-
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_OKPO_remont_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == (char)Keys.Back)
-            {
-
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_OKPO_remont_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_BE_remont_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_director_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_director_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_director_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_director_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_chairman_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_chairman_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_chairman_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_chairman_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_1_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_1_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_1_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_1_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_2_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_2_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_2_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_2_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_3_FIO_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_3_FIO_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void TextBox_3_post_remont_company_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_3_post_remont_company_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        #endregion
+       
 
         /// <summary>
         /// считыванеи данных из реестра в panel_info_remont
@@ -1993,21 +1825,206 @@ namespace ServiceTelecomConnect
                 }
                 #endregion
 
+                if (!Regex.IsMatch(txB_OKPO_remont.Text, @"^[0-9]{8,}$"))
+                {
+                    MessageBox.Show("Введите корректно поле \"ОКПО\"\nP.s. пример: 00083262", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_OKPO_remont.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_BE_remont.Text, @"^[0-9]{4,}$"))
+                {
+                    MessageBox.Show("Введите корректно поле \"БЕ\"\nP.s. пример: 5374", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_BE_remont.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_Full_name_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_Full_name_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
+                if (!txB_director_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_director_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Руководитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_director_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_director_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_director_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Руководитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_director_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+
+                if (!txB_chairman_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_chairman_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Председатель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_chairman_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_chairman_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_chairman_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Председатель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_chairman_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+
+                if (!txB_1_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_1_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"1 член Ком.: ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_1_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_1_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_1_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"1 член Ком.: ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_1_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+
+                if (!txB_2_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_2_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"2 член Ком.: ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_2_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_2_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_2_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"2 член Ком.: ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_2_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+
+                if (!txB_3_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_3_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_3_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_3_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+
+                if (!Regex.IsMatch(txB_director_post_remont_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_director_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_chairman_post_remont_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_chairman_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_1_post_remont_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_1_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_2_post_remont_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_2_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                if (!Regex.IsMatch(txB_3_post_remont_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Полное наименование предприятия\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_3_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+
                 RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text}");
-                helloKey.SetValue("Полное наименование предприятия", $"{txB_Full_name_company.Text}");
-                helloKey.SetValue("ОКПО", $"{txB_OKPO_remont.Text}");
-                helloKey.SetValue("БЕ", $"{txB_BE_remont.Text}");
-                helloKey.SetValue("Руководитель ФИО", $"{txB_director_FIO_remont_company.Text}");
-                helloKey.SetValue("Руководитель Должность", $"{txB_director_post_remont_company.Text}");
-                helloKey.SetValue("Председатель ФИО", $"{txB_chairman_FIO_remont_company.Text}");
-                helloKey.SetValue("Председатель Должность", $"{txB_chairman_post_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии ФИО", $"{txB_1_FIO_remont_company.Text}");
-                helloKey.SetValue("1 член комиссии Должность", $"{txB_1_post_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии ФИО", $"{txB_2_FIO_remont_company.Text}");
-                helloKey.SetValue("2 член комиссии Должность", $"{txB_2_post_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии ФИО", $"{txB_3_FIO_remont_company.Text}");
-                helloKey.SetValue("3 член комиссии Должность", $"{txB_3_post_remont_company.Text}");
+                RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text.Trim()}");
+                helloKey.SetValue("Полное наименование предприятия", $"{txB_Full_name_company.Text.Trim()}");
+                helloKey.SetValue("ОКПО", $"{txB_OKPO_remont.Text.Trim()}");
+                helloKey.SetValue("БЕ", $"{txB_BE_remont.Text.Trim()}");
+                helloKey.SetValue("Руководитель ФИО", $"{txB_director_FIO_remont_company.Text.Trim()}");
+                helloKey.SetValue("Руководитель Должность", $"{txB_director_post_remont_company.Text.Trim()}");
+                helloKey.SetValue("Председатель ФИО", $"{txB_chairman_FIO_remont_company.Text.Trim()}");
+                helloKey.SetValue("Председатель Должность", $"{txB_chairman_post_remont_company.Text.Trim()}");
+                helloKey.SetValue("1 член комиссии ФИО", $"{txB_1_FIO_remont_company.Text.Trim()}");
+                helloKey.SetValue("1 член комиссии Должность", $"{txB_1_post_remont_company.Text.Trim()}");
+                helloKey.SetValue("2 член комиссии ФИО", $"{txB_2_FIO_remont_company.Text.Trim()}");
+                helloKey.SetValue("2 член комиссии Должность", $"{txB_2_post_remont_company.Text.Trim()}");
+                helloKey.SetValue("3 член комиссии ФИО", $"{txB_3_FIO_remont_company.Text.Trim()}");
+                helloKey.SetValue("3 член комиссии Должность", $"{txB_3_post_remont_company.Text.Trim()}");
 
                 helloKey.Close();
 
@@ -2435,12 +2452,6 @@ namespace ServiceTelecomConnect
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
-            {
-                Block_ST_Work_Form_control();
-                Functional_loading_panel.Visible = true;
-                Functional_loading_panel.Enabled = true;
-            }
 
         }
 
