@@ -44,7 +44,6 @@
             this.txB_pass = new System.Windows.Forms.TextBox();
             this.txB_login = new System.Windows.Forms.TextBox();
             this.txB_id = new System.Windows.Forms.TextBox();
-            this.cmB_road = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -111,7 +110,6 @@
             // panel2
             // 
             this.panel2.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
-            this.panel2.Controls.Add(this.cmB_road);
             this.panel2.Controls.Add(this.picB_clear);
             this.panel2.Controls.Add(this.btn_add);
             this.panel2.Controls.Add(this.btn_change);
@@ -234,38 +232,6 @@
             this.txB_id.TabIndex = 19;
             this.txB_id.Visible = false;
             // 
-            // cmB_road
-            // 
-            this.cmB_road.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmB_road.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_road.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmB_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_road.FormattingEnabled = true;
-            this.cmB_road.Items.AddRange(new object[] {
-            "Восточно-Сибирская ЖД",
-            "Горьковская ЖД",
-            "Дальневосточная ЖД",
-            "Забайкальская ЖД",
-            "Западно-Сибирская ЖД",
-            "Калининградская ЖД",
-            "Красноярская ЖД",
-            "Куйбышевская ЖД",
-            "Московская ЖД",
-            "Октябрьская ЖД",
-            "Приволжская ЖД",
-            "Сахалинская ЖД",
-            "Свердловская ЖД",
-            "Северная ЖД",
-            "Северо-Кавказская ЖД",
-            "Юго-Восточная ЖД",
-            "Южно-Уральская ЖД"});
-            this.cmB_road.Location = new System.Drawing.Point(570, 57);
-            this.cmB_road.Name = "cmB_road";
-            this.cmB_road.Size = new System.Drawing.Size(227, 28);
-            this.cmB_road.TabIndex = 62;
-            // 
             // Setting_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +272,5 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.PictureBox picB_clear;
-        private System.Windows.Forms.ComboBox cmB_road;
     }
 }

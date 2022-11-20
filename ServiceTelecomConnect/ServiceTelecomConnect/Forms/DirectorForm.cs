@@ -19,7 +19,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 try
                 {
-                    string querystring = $"SELECT id, login, is_admin, road FROM users WHERE is_admin = 'Начальник участка'";
+                    string querystring = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Начальник участка'";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect.Forms
                         }
                     }
 
-                    string querystring2 = $"SELECT id, login, is_admin, road FROM users WHERE is_admin = 'Инженер'";
+                    string querystring2 = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Инженер'";
                     using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -60,6 +60,8 @@ namespace ServiceTelecomConnect.Forms
                             }
                         }
                     }
+
+
 
                     if (String.IsNullOrEmpty(cmB_road.Text))
                     {
