@@ -46,6 +46,7 @@ namespace ServiceTelecomConnect
             if (_user.IsAdmin == "Admin")
             {
                 picB_setting.Visible = true;
+                lbL_director.Visible = true;
             }
             if (_user.IsAdmin == "Руководитель")
             {
