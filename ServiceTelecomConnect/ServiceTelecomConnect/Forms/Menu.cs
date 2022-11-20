@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceTelecomConnect.Forms;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -136,7 +137,12 @@ namespace ServiceTelecomConnect
 
         void LbL_director_Click(object sender, EventArgs e)
         {
-
+            using (DirectorForm directorForm = new DirectorForm())
+            {
+                this.Hide();
+                directorForm.ShowDialog();
+                this.Show();
+            }
         }
 
         void LbL_director_MouseEnter(object sender, EventArgs e)
