@@ -183,6 +183,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DirectorForm";
             this.Text = "Главная руководитель";
+            this.Load += new System.EventHandler(this.DirectorForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
