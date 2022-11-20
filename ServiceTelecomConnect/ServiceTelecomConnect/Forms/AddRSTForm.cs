@@ -482,7 +482,7 @@ namespace ServiceTelecomConnect
 
                     if (!representative.Contains("-"))
                     {
-                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                        if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
                         {
                             MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_representative.Select();
@@ -491,7 +491,7 @@ namespace ServiceTelecomConnect
                     }
                     if (representative.Contains("-"))
                     {
-                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                        if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
                         {
                             MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_representative.Select();
