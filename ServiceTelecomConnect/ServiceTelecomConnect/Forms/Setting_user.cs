@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -39,8 +40,9 @@ namespace ServiceTelecomConnect
                 dataGridView1.Columns.Add("login", "Логин");
                 dataGridView1.Columns.Add("pass", "Пароль");
                 dataGridView1.Columns.Add("is_admin", "Должность");
+                dataGridView1.Columns.Add("road", "Дорога");
                 dataGridView1.Columns.Add("IsNew", String.Empty);
-                dataGridView1.Columns[4].Visible = false;
+                dataGridView1.Columns[5].Visible = false;
             }
             catch (Exception)
             {
@@ -52,7 +54,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), RowState.ModifieldNew)));
+                dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -71,7 +73,7 @@ namespace ServiceTelecomConnect
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
 
-                    string queryString = $"select * from users";
+                    string queryString = $"select id, login, pass, is_admin, road from users";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -106,6 +108,10 @@ namespace ServiceTelecomConnect
             {
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
+                if(String.IsNullOrEmpty(cmB_road.Text))
+                {
+                    cmB_road.Text = cmB_road.Items[0].ToString();
+                }
             }
         }
 
@@ -123,6 +129,7 @@ namespace ServiceTelecomConnect
                     txB_login.Text = row.Cells[1].Value.ToString();
                     txB_pass.Text = row.Cells[2].Value.ToString();
                     cmB_is_admin_post.Text = row.Cells[3].Value.ToString();
+                    cmB_road.Text = row.Cells[4].Value.ToString();
                 }
             }
             catch (Exception)
@@ -162,7 +169,7 @@ namespace ServiceTelecomConnect
                 {
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
-                        dataGridView1.Rows[row.Index].Cells[4].Value = RowState.Deleted;
+                        dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
                     }
                     if (Internet_check.CheackSkyNET())
                     {
@@ -171,7 +178,7 @@ namespace ServiceTelecomConnect
 
                         for (int index = 0; index < dataGridView1.Rows.Count; index++)
                         {
-                            var rowState = (RowState)dataGridView1.Rows[index].Cells[4].Value;
+                            var rowState = (RowState)dataGridView1.Rows[index].Cells[5].Value;
 
                             if (rowState == RowState.Deleted)
                             {
@@ -183,21 +190,22 @@ namespace ServiceTelecomConnect
                                     command.ExecuteNonQuery();
                                 }
                             }
-                            if (rowState == RowState.Modifield)
-                            {
-                                var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
-                                var login = dataGridView1.Rows[index].Cells[1].Value.ToString();
-                                var pass = dataGridView1.Rows[index].Cells[2].Value.ToString();
-                                var is_admin = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                            //if (rowState == RowState.Modifield)
+                            //{
+                            //    var id = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                            //    var login = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                            //    var pass = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                            //    var is_admin = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                            //    var road = dataGridView1.Rows[index].Cells[4].Value.ToString();
 
 
-                                var changeQuery = $"update users set login = '{login}', pass = '{pass}', is_Admin = '{is_admin}' where id = '{id}'";
+                            //    var changeQuery = $"update users set login = '{login}', pass = '{pass}', is_Admin = '{is_admin}', road = '{road}' where id = '{id}'";
 
-                                using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                                {
-                                    command.ExecuteNonQuery();
-                                }
-                            }
+                            //    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                            //    {
+                            //        command.ExecuteNonQuery();
+                            //    }
+                            //}
                         }
                         DB.GetInstance.CloseConnection();
                     }
@@ -219,8 +227,9 @@ namespace ServiceTelecomConnect
                     var login = txB_login.Text;
                     var pass = txB_pass.Text;
                     var is_admin = cmB_is_admin_post.Text;
+                    var road = cmB_road.Text;
 
-                    var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
+                    var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}', road = '{road.Trim()}' where id = '{id.Trim()}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -256,14 +265,33 @@ namespace ServiceTelecomConnect
                 if (Internet_check.CheackSkyNET())
                 {
                     var loginUser = txB_login.Text;
-                    var passUser = md5.hashPassword(txB_pass.Text);
+                    if (!loginUser.Contains("-"))
+                    {
+                        if (!Regex.IsMatch(loginUser, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Логин\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_login.Select();
+                            return;
+                        }
+                    }
+                    if (loginUser.Contains("-"))
+                    {
+                        if (!Regex.IsMatch(loginUser, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Логин\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_login.Select();
+                            return;
+                        }
+                    }
 
+
+                    var passUser = md5.hashPassword(txB_pass.Text);
                     if (!CheackUser(loginUser, passUser))
                     {
-                        if (cmB_is_admin_post.Text == "Инженер" || cmB_is_admin_post.Text == "Начальник участка" ||
-                            cmB_is_admin_post.Text == "Куратор" || cmB_is_admin_post.Text == "Руководитель" || cmB_is_admin_post.Text == "Дирекция связи")
+                        if (!String.IsNullOrEmpty(cmB_is_admin_post.Text) && !String.IsNullOrEmpty(cmB_road.Text))
                         {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_is_admin_post.Text}')";
+
+                            string querystring = $"INSERT INTO users (login, pass, is_admin, road) VALUES ('{loginUser}', '{passUser}', '{cmB_is_admin_post.Text}', '{cmB_road.Text}')";
 
                             using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                             {
@@ -272,6 +300,7 @@ namespace ServiceTelecomConnect
                                 if (command.ExecuteNonQuery() == 1)
                                 {
                                     MessageBox.Show("Аккаунт успешно создан!");
+                                    RefreshDataGrid(dataGridView1);
                                 }
                                 else
                                 {
@@ -280,6 +309,7 @@ namespace ServiceTelecomConnect
                                 DB.GetInstance.CloseConnection();
                             }
                         }
+                        else { MessageBox.Show("Должность и Дорога не должны быть пустыми!"); }
                     }
                     else
                     {
