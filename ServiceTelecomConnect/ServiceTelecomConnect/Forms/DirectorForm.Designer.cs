@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.AuthorizationLabel = new System.Windows.Forms.Label();
-            this.cmB_login_FIO = new System.Windows.Forms.ComboBox();
+            this.cmB_section_foreman_FIO = new System.Windows.Forms.ComboBox();
             this.cmB_road = new System.Windows.Forms.ComboBox();
+            this.cmB_engineers_FIO = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txB_attorney = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -38,26 +44,26 @@
             this.AuthorizationLabel.AutoSize = true;
             this.AuthorizationLabel.BackColor = System.Drawing.Color.Transparent;
             this.AuthorizationLabel.Font = new System.Drawing.Font("Courier New", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AuthorizationLabel.Location = new System.Drawing.Point(205, 9);
+            this.AuthorizationLabel.Location = new System.Drawing.Point(126, 9);
             this.AuthorizationLabel.Name = "AuthorizationLabel";
             this.AuthorizationLabel.Size = new System.Drawing.Size(382, 31);
             this.AuthorizationLabel.TabIndex = 20;
             this.AuthorizationLabel.Text = "Регистрация сотрудников";
             this.AuthorizationLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // cmB_login_FIO
+            // cmB_section_foreman_FIO
             // 
-            this.cmB_login_FIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmB_section_foreman_FIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmB_login_FIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_login_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmB_login_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_login_FIO.FormattingEnabled = true;
-            this.cmB_login_FIO.Location = new System.Drawing.Point(12, 79);
-            this.cmB_login_FIO.Name = "cmB_login_FIO";
-            this.cmB_login_FIO.Size = new System.Drawing.Size(234, 28);
-            this.cmB_login_FIO.TabIndex = 58;
+            this.cmB_section_foreman_FIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_section_foreman_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_section_foreman_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_section_foreman_FIO.FormattingEnabled = true;
+            this.cmB_section_foreman_FIO.Location = new System.Drawing.Point(65, 107);
+            this.cmB_section_foreman_FIO.Name = "cmB_section_foreman_FIO";
+            this.cmB_section_foreman_FIO.Size = new System.Drawing.Size(262, 28);
+            this.cmB_section_foreman_FIO.TabIndex = 58;
             // 
             // cmB_road
             // 
@@ -86,19 +92,93 @@
             "Северо-Кавказская ЖД",
             "Юго-Восточная ЖД",
             "Южно-Уральская ЖД"});
-            this.cmB_road.Location = new System.Drawing.Point(270, 79);
+            this.cmB_road.Location = new System.Drawing.Point(65, 249);
             this.cmB_road.Name = "cmB_road";
-            this.cmB_road.Size = new System.Drawing.Size(211, 28);
+            this.cmB_road.Size = new System.Drawing.Size(262, 28);
             this.cmB_road.TabIndex = 59;
+            // 
+            // cmB_engineers_FIO
+            // 
+            this.cmB_engineers_FIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmB_engineers_FIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_engineers_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_engineers_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_engineers_FIO.FormattingEnabled = true;
+            this.cmB_engineers_FIO.Location = new System.Drawing.Point(65, 178);
+            this.cmB_engineers_FIO.Name = "cmB_engineers_FIO";
+            this.cmB_engineers_FIO.Size = new System.Drawing.Size(262, 28);
+            this.cmB_engineers_FIO.TabIndex = 60;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(61, 80);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(97, 20);
+            this.label30.TabIndex = 84;
+            this.label30.Text = "Начальник:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(61, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 20);
+            this.label1.TabIndex = 85;
+            this.label1.Text = "Инженер:";
+            // 
+            // txB_attorney
+            // 
+            this.txB_attorney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_attorney.Location = new System.Drawing.Point(348, 107);
+            this.txB_attorney.MaxLength = 49;
+            this.txB_attorney.Multiline = true;
+            this.txB_attorney.Name = "txB_attorney";
+            this.txB_attorney.Size = new System.Drawing.Size(234, 170);
+            this.txB_attorney.TabIndex = 86;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(395, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 20);
+            this.label2.TabIndex = 87;
+            this.label2.Text = "Довереность";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(61, 222);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.TabIndex = 88;
+            this.label3.Text = "Дорога:";
             // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(645, 344);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txB_attorney);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.cmB_engineers_FIO);
             this.Controls.Add(this.cmB_road);
-            this.Controls.Add(this.cmB_login_FIO);
+            this.Controls.Add(this.cmB_section_foreman_FIO);
             this.Controls.Add(this.AuthorizationLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DirectorForm";
@@ -111,7 +191,13 @@
         #endregion
 
         private System.Windows.Forms.Label AuthorizationLabel;
-        private System.Windows.Forms.ComboBox cmB_login_FIO;
+        private System.Windows.Forms.ComboBox cmB_section_foreman_FIO;
         private System.Windows.Forms.ComboBox cmB_road;
+        private System.Windows.Forms.ComboBox cmB_engineers_FIO;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.TextBox txB_attorney;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
