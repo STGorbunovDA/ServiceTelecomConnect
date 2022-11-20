@@ -1027,7 +1027,7 @@ namespace ServiceTelecomConnect
 
         #region Удаление
 
-        internal static void DeleteRowCurator(DataGridView dgw)
+        internal static void DeleteRowCell(DataGridView dgw)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1183,7 +1183,7 @@ namespace ServiceTelecomConnect
         internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber,
             string city, string poligon, string company, string location, string model, string dateTO, string price, string representative, string post,
             string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
-            string AKB, string batteryСharger, string comment, string number_printing_doc_datePanel, string txB_reason_decommission)
+            string AKB, string batteryСharger, string txB_reason_decommission)
         {
             if (Internet_check.CheackSkyNET())
             {
