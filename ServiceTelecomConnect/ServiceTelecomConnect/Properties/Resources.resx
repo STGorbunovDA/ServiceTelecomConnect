@@ -118,85 +118,88 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="756exclamationmark_100528 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\756exclamationmark_100528 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="data-analysis_icon-icons.com_52842" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\data-analysis_icon-icons.com_52842.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Untitled-5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\Untitled-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search_book_open_search_locate_6178 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\search_book_open_search_locate_6178 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="999" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\999.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button_blank_green_14986" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\button_blank_green_14986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gui_eraser_icon_157160" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\gui_eraser_icon_157160.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-скопировать-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\icons8-скопировать-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="add_insert_plus_1588" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\add_insert_plus_1588.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="data_integrated_data_management_data_processing_setting_configuration_icon_1906481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="blue_theprohibition_thefolder_12367" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\blue_theprohibition_thefolder_12367.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="actions_edit_clear_15784 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\actions_edit_clear_15784 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\Untitled-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iconfinder-document05-1622831_121951 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\iconfinder-document05-1622831_121951 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="system_software_update_22485 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\system_software_update_22485 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\user_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Untitled-6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\Untitled-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ghostview_search_document_6161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\ghostview_search_document_6161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-обновить-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\icons8-обновить-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="databasesearch_basededato_12920" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\databasesearch_basededato_12920.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-обновить-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\icons8-обновить-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blue_theprohibition_thefolder_12367" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\blue_theprohibition_thefolder_12367.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gui_eraser_icon_157160 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\gui_eraser_icon_157160 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="test_exam_icon_182954" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\test_exam_icon_182954.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lock_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\lock_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic-action-inbox_108233" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\ic-action-inbox_108233.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\user_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ghostview_search_document_61611" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\ghostview_search_document_6161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="data_integrated_data_management_data_processing_setting_configuration_icon_190648" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iconfinder-document05-1622831_121951 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\iconfinder-document05-1622831_121951 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic-action-inbox_108233" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\ic-action-inbox_108233.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add_insert_plus_1588" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\add_insert_plus_1588.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled-6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\Untitled-6.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled-5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\Untitled-5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="actions_edit_clear_15784 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\actions_edit_clear_15784 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-скопировать-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\icons8-скопировать-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button_blank_green_14986" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\button_blank_green_14986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\Untitled-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="data_integrated_data_management_data_processing_setting_configuration_icon_1906481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gui_eraser_icon_157160" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\gui_eraser_icon_157160.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lock_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\lock_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="756exclamationmark_100528 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\756exclamationmark_100528 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="test_exam_icon_182954" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\test_exam_icon_182954.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search_book_open_search_locate_6178 (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\search_book_open_search_locate_6178 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gui_eraser_icon_157160 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\gui_eraser_icon_157160 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="system_software_update_22485 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\system_software_update_22485 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="999" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\999.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="data-analysis_icon-icons.com_52842" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\data-analysis_icon-icons.com_52842.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghostview_search_document_6161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\ghostview_search_document_6161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-синхронизация-подключения-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\icons8-синхронизация-подключения-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
