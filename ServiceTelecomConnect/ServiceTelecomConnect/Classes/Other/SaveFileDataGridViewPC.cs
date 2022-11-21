@@ -16,7 +16,7 @@ namespace ServiceTelecomConnect
         /// <summary>
         /// сохранение БД на H(S)DD
         /// </summary>
-        internal static void directorateSaveFilePC(DataGridView dgw, string taskcity )
+        internal static void DirectorateSaveFilePC(DataGridView dgw, string cmB_city)
         {
             try
             {
@@ -24,7 +24,7 @@ namespace ServiceTelecomConnect
                 string dateTimeString = dateTime.ToString("dd.MM.yyyy");
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                sfd.FileName = $"База_{taskcity}_{dateTimeString}";
+                sfd.FileName = $"База_{cmB_city}_{dateTimeString}";
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -345,13 +345,13 @@ namespace ServiceTelecomConnect
         #endregion
 
 
-        internal static void SaveFullBasePC(DataGridView dgw, string taskcity)
+        internal static void SaveFullBasePC(DataGridView dgw, string cmB_city)
         {
             DateTime dateTime = DateTime.Now;
             string dateTimeString = dateTime.ToString("dd.MM.yyyy");
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-            sfd.FileName = $"ОБЩАЯ База_{taskcity}_{dateTimeString}";
+            sfd.FileName = $"ОБЩАЯ База_{cmB_city}_{dateTimeString}";
 
             if (sfd.ShowDialog() == DialogResult.OK)
             {
