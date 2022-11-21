@@ -575,6 +575,10 @@ namespace ServiceTelecomConnect
                     {
                         perem_comboBox = "company";
                     }
+                    else if (comboBox_seach == "Модель")
+                    {
+                        perem_comboBox = "model";
+                    }
                     else if (comboBox_seach == "Станция")
                     {
                         perem_comboBox = "location";
@@ -616,7 +620,7 @@ namespace ServiceTelecomConnect
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber")
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
                     {
                         searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
@@ -1464,6 +1468,32 @@ namespace ServiceTelecomConnect
 
                         cmb_number_unique_acts.DataSource = act_table_unique;
                         cmb_number_unique_acts.DisplayMember = "company";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+        }
+
+        internal static void Number_unique_model(string comboBox_city, ComboBox cmb_number_unique_acts)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY model";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "model";
                         DB.GetInstance.CloseConnection();
                     }
                 }
