@@ -61,8 +61,6 @@ namespace ServiceTelecomConnect.Forms
                         }
                     }
 
-
-
                     if (String.IsNullOrEmpty(cmB_road.Text))
                     {
                         cmB_road.Text = cmB_road.Items[0].ToString();
@@ -82,6 +80,11 @@ namespace ServiceTelecomConnect.Forms
                     MessageBox.Show("Ошибка добавления в comboBox данных");
                 }
             }
+        }
+
+        void Btn_save_add_rst_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
