@@ -259,6 +259,7 @@
             // btn_change_rst_full
             // 
             this.btn_change_rst_full.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_change_rst_full.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_change_rst_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_change_rst_full.Location = new System.Drawing.Point(686, 513);
             this.btn_change_rst_full.Name = "btn_change_rst_full";
@@ -886,6 +887,7 @@
             // 
             this.btn_change_rst_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_change_rst_act.Enabled = false;
+            this.btn_change_rst_act.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_change_rst_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_change_rst_act.Location = new System.Drawing.Point(686, 478);
             this.btn_change_rst_act.Name = "btn_change_rst_act";

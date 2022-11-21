@@ -37,6 +37,7 @@
             this.txB_attorney = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_save_add_rst = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -165,12 +166,26 @@
             this.label3.TabIndex = 88;
             this.label3.Text = "Дорога:";
             // 
+            // btn_save_add_rst
+            // 
+            this.btn_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_save_add_rst.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_save_add_rst.Location = new System.Drawing.Point(463, 293);
+            this.btn_save_add_rst.Name = "btn_save_add_rst";
+            this.btn_save_add_rst.Size = new System.Drawing.Size(119, 30);
+            this.btn_save_add_rst.TabIndex = 89;
+            this.btn_save_add_rst.Text = "Добавить";
+            this.btn_save_add_rst.UseVisualStyleBackColor = false;
+            this.btn_save_add_rst.Click += new System.EventHandler(this.Btn_save_add_rst_Click);
+            // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(645, 344);
+            this.ClientSize = new System.Drawing.Size(645, 343);
+            this.Controls.Add(this.btn_save_add_rst);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txB_attorney);
@@ -200,5 +215,6 @@
         internal System.Windows.Forms.TextBox txB_attorney;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_save_add_rst;
     }
 }

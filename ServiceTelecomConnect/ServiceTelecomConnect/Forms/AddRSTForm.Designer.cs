@@ -125,6 +125,7 @@
             // btn_save_add_rst
             // 
             this.btn_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_save_add_rst.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save_add_rst.Location = new System.Drawing.Point(683, 485);
             this.btn_save_add_rst.Name = "btn_save_add_rst";

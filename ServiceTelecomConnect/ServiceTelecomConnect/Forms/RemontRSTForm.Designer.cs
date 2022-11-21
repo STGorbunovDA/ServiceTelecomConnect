@@ -116,6 +116,7 @@
             // btn_save_add_rst_remont
             // 
             this.btn_save_add_rst_remont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_save_add_rst_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save_add_rst_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_save_add_rst_remont.Location = new System.Drawing.Point(355, 688);
             this.btn_save_add_rst_remont.Name = "btn_save_add_rst_remont";
