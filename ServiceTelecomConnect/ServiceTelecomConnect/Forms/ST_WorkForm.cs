@@ -3689,6 +3689,21 @@ namespace ServiceTelecomConnect
                         MessageBox.Show(ex.ToString());
                     }
                 }
+                else if (cmB_seach.SelectedIndex == 8)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Акты списаний не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
                 else
                 {
                     cmb_number_unique_acts.Visible = false;
@@ -3798,7 +3813,7 @@ namespace ServiceTelecomConnect
             try
             {
                 pnL_printBase.Visible = false;
-                SaveFileDataGridViewPC.directorateSaveFilePC(dataGridView1, taskCity);
+                SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, taskCity);
             }
             catch (Exception)
             {
@@ -3810,7 +3825,7 @@ namespace ServiceTelecomConnect
             try
             {
                 pnL_printBase.Visible = false;
-                SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, taskCity);
+                SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
             }
             catch (Exception)
             {
