@@ -3420,7 +3420,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, taskCity);
+                QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text);
                 panel1.Enabled = false;
                 panel2.Enabled = false;
                 panel3.Enabled = false;
@@ -3813,7 +3813,7 @@ namespace ServiceTelecomConnect
             try
             {
                 pnL_printBase.Visible = false;
-                SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, taskCity);
+                SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
             }
             catch (Exception)
             {
@@ -3833,8 +3833,6 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
-
-
     }
 }
 
