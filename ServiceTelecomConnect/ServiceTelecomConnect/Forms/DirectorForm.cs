@@ -11,6 +11,21 @@ namespace ServiceTelecomConnect.Forms
 {
     public partial class DirectorForm : Form
     {
+        int selectedRow;
+
+        #region состояние Rows
+        /// <summary>
+        /// для значений к базе данных, по данному статусу будем или удалять или редактировать
+        /// </summary>
+        enum RowState
+        {
+            Existed,
+            New,
+            Modifield,
+            ModifieldNew,
+            Deleted
+        }
+        #endregion
         public DirectorForm()
         {
             StartPosition = FormStartPosition.CenterScreen;
@@ -43,6 +58,30 @@ namespace ServiceTelecomConnect.Forms
             catch (Exception)
             {
                 MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(ReedSingleRow)");
+            }
+        }
+
+        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                dataGridView1.ReadOnly = false;
+
+                selectedRow = e.RowIndex;
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = dataGridView1.Rows[selectedRow];
+                    txB_id.Text = row.Cells[0].Value.ToString();
+                    cmB_section_foreman_FIO.Text = row.Cells[1].Value.ToString();
+                    cmB_engineers_FIO.Text = row.Cells[2].Value.ToString();
+                    txB_attorney.Text = row.Cells[3].Value.ToString();
+                    cmB_road.Text = row.Cells[4].Value.ToString();
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка! (DataGridView1_CellClick)");
             }
         }
 
@@ -202,6 +241,14 @@ namespace ServiceTelecomConnect.Forms
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex != 0)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

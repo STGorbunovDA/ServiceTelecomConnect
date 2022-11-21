@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btn_save_add_rst = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txB_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,6 +218,19 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(621, 253);
             this.dataGridView1.TabIndex = 90;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            // 
+            // txB_id
+            // 
+            this.txB_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_id.Location = new System.Drawing.Point(20, 448);
+            this.txB_id.MaxLength = 49;
+            this.txB_id.Multiline = true;
+            this.txB_id.Name = "txB_id";
+            this.txB_id.Size = new System.Drawing.Size(34, 28);
+            this.txB_id.TabIndex = 91;
+            this.txB_id.Visible = false;
             // 
             // DirectorForm
             // 
@@ -224,6 +238,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(645, 490);
+            this.Controls.Add(this.txB_id);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_save_add_rst);
             this.Controls.Add(this.label3);
@@ -258,5 +273,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_save_add_rst;
         private System.Windows.Forms.DataGridView dataGridView1;
+        internal System.Windows.Forms.TextBox txB_id;
     }
 }
