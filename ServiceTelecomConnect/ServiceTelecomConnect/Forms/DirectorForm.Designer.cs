@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AuthorizationLabel = new System.Windows.Forms.Label();
             this.cmB_section_foreman_FIO = new System.Windows.Forms.ComboBox();
             this.cmB_road = new System.Windows.Forms.ComboBox();
@@ -38,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_save_add_rst = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -61,7 +66,7 @@
             this.cmB_section_foreman_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_section_foreman_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_section_foreman_FIO.FormattingEnabled = true;
-            this.cmB_section_foreman_FIO.Location = new System.Drawing.Point(65, 107);
+            this.cmB_section_foreman_FIO.Location = new System.Drawing.Point(20, 344);
             this.cmB_section_foreman_FIO.Name = "cmB_section_foreman_FIO";
             this.cmB_section_foreman_FIO.Size = new System.Drawing.Size(262, 28);
             this.cmB_section_foreman_FIO.TabIndex = 58;
@@ -93,7 +98,7 @@
             "Северо-Кавказская ЖД",
             "Юго-Восточная ЖД",
             "Южно-Уральская ЖД"});
-            this.cmB_road.Location = new System.Drawing.Point(65, 249);
+            this.cmB_road.Location = new System.Drawing.Point(328, 344);
             this.cmB_road.Name = "cmB_road";
             this.cmB_road.Size = new System.Drawing.Size(262, 28);
             this.cmB_road.TabIndex = 59;
@@ -107,7 +112,7 @@
             this.cmB_engineers_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_engineers_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_engineers_FIO.FormattingEnabled = true;
-            this.cmB_engineers_FIO.Location = new System.Drawing.Point(65, 178);
+            this.cmB_engineers_FIO.Location = new System.Drawing.Point(20, 401);
             this.cmB_engineers_FIO.Name = "cmB_engineers_FIO";
             this.cmB_engineers_FIO.Size = new System.Drawing.Size(262, 28);
             this.cmB_engineers_FIO.TabIndex = 60;
@@ -117,7 +122,7 @@
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(61, 80);
+            this.label30.Location = new System.Drawing.Point(16, 317);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(97, 20);
             this.label30.TabIndex = 84;
@@ -128,7 +133,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(61, 155);
+            this.label1.Location = new System.Drawing.Point(16, 378);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 85;
@@ -137,11 +142,11 @@
             // txB_attorney
             // 
             this.txB_attorney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_attorney.Location = new System.Drawing.Point(348, 107);
+            this.txB_attorney.Location = new System.Drawing.Point(328, 401);
             this.txB_attorney.MaxLength = 49;
             this.txB_attorney.Multiline = true;
             this.txB_attorney.Name = "txB_attorney";
-            this.txB_attorney.Size = new System.Drawing.Size(234, 170);
+            this.txB_attorney.Size = new System.Drawing.Size(262, 28);
             this.txB_attorney.TabIndex = 86;
             // 
             // label2
@@ -149,7 +154,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(395, 80);
+            this.label2.Location = new System.Drawing.Point(324, 378);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 87;
@@ -160,7 +165,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(61, 222);
+            this.label3.Location = new System.Drawing.Point(324, 317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 88;
@@ -171,7 +176,7 @@
             this.btn_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_save_add_rst.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save_add_rst.Location = new System.Drawing.Point(463, 293);
+            this.btn_save_add_rst.Location = new System.Drawing.Point(471, 448);
             this.btn_save_add_rst.Name = "btn_save_add_rst";
             this.btn_save_add_rst.Size = new System.Drawing.Size(119, 30);
             this.btn_save_add_rst.TabIndex = 89;
@@ -179,12 +184,47 @@
             this.btn_save_add_rst.UseVisualStyleBackColor = false;
             this.btn_save_add_rst.Click += new System.EventHandler(this.Btn_save_add_rst_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.ShowCellToolTips = false;
+            this.dataGridView1.Size = new System.Drawing.Size(621, 253);
+            this.dataGridView1.TabIndex = 90;
+            // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(645, 343);
+            this.ClientSize = new System.Drawing.Size(645, 490);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btn_save_add_rst);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -199,6 +239,7 @@
             this.Name = "DirectorForm";
             this.Text = "Главная руководитель";
             this.Load += new System.EventHandler(this.DirectorForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,5 +257,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_save_add_rst;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

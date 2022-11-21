@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using Xamarin.Forms.Shapes;
 
@@ -13,6 +15,76 @@ namespace ServiceTelecomConnect.Forms
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+        }
+
+        private void CreateColums()
+        {
+            try
+            {
+                dataGridView1.Columns.Add("id", "№");
+                dataGridView1.Columns.Add("section_foreman_FIO", "Начальник участка");
+                dataGridView1.Columns.Add("engineers_FIO", "Инженер");
+                dataGridView1.Columns.Add("attorney", "Доверенность");
+                dataGridView1.Columns.Add("road", "Дорога");
+                dataGridView1.Columns.Add("IsNew", String.Empty);
+                dataGridView1.Columns[5].Visible = false;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка! Не сформированы столбцы Datagrid(CreateColums)");
+            }
+        }
+        void ReedSingleRow(DataGridView dgw, IDataRecord record)
+        {
+            try
+            {
+                dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4), RowState.ModifieldNew)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(ReedSingleRow)");
+            }
+        }
+
+        void RefreshDataGrid(DataGridView dgw)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road FROM сharacteristics_вrigade";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
+                }
+            }
         }
 
         void DirectorForm_Load(object sender, System.EventArgs e)
@@ -67,7 +139,7 @@ namespace ServiceTelecomConnect.Forms
                     {
                         cmB_road.Text = cmB_road.Items[0].ToString();
                     }
-                    if(String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+                    if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
                     {
                         MessageBox.Show("Добавьте инженера!");
                     }
@@ -76,6 +148,8 @@ namespace ServiceTelecomConnect.Forms
                         MessageBox.Show("Добавьте начальника участка!");
                     }
 
+                    CreateColums();
+                    RefreshDataGrid(dataGridView1);
                 }
                 catch (Exception)
                 {
@@ -127,7 +201,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
         }
     }
 }
