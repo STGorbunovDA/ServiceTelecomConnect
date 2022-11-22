@@ -6,8 +6,6 @@
 
         public string IsAdmin { get; }
 
-        //public string Status => IsAdmin ? "Admin" : "User";
-
         public cheakUser(string login, string isAdmin)
         {
             Login = login.Trim();
