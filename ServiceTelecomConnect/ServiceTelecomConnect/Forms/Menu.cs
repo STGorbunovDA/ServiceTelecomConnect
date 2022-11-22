@@ -1,5 +1,7 @@
-﻿using ServiceTelecomConnect.Forms;
+﻿using MySql.Data.MySqlClient;
+using ServiceTelecomConnect.Forms;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,6 +10,7 @@ namespace ServiceTelecomConnect
     public partial class Menu : Form
     {
         private readonly cheakUser _user;
+
         public Menu(cheakUser user)
         {
             InitializeComponent();
@@ -28,21 +31,6 @@ namespace ServiceTelecomConnect
                 lbL_section_foreman.Enabled = true;
             }
 
-            if (_user.IsAdmin == "Инженер")
-            {
-                //label_section_foreman.Enabled = false;
-                lbL_сomparison.Enabled = false;
-            }
-            if (_user.IsAdmin == "Начальник участка")
-            {
-                lbL_сomparison.Enabled = false;
-            }
-
-            if (_user.IsAdmin == "Куратор")
-            {
-                lbL_TutorialEngineers.Enabled = false;
-            }
-
             if (_user.IsAdmin == "Admin")
             {
                 picB_setting.Visible = true;
@@ -52,14 +40,6 @@ namespace ServiceTelecomConnect
             {
                 lbL_director.Visible = true;
             }
-
-            if (!(_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Куратор" || _user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Инженер" || _user.IsAdmin == "Дирекция связи"))
-            {
-                lbL_TutorialEngineers.Enabled = false;
-                lbL_section_foreman.Enabled = false;
-                lbL_сomparison.Enabled = false;
-            }
-
         }
 
         void Label_baza_Click(object sender, EventArgs e)
@@ -154,6 +134,56 @@ namespace ServiceTelecomConnect
         void LbL_director_MouseLeave(object sender, EventArgs e)
         {
             lbL_director.ForeColor = Color.Black;
+        }
+
+        void Menu_Load(object sender, EventArgs e)
+        {
+            if(_user.IsAdmin != "Admin")
+            {
+                string querystring = $"SELECT attorney FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        DataTable table = new DataTable();
+
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count == 1)
+                        {
+                            lbL_сomparison.Enabled = false;
+                        }
+                        else
+                        {
+                            string querystring2 = $"SELECT attorney FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
+                            using (MySqlCommand command2 = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataAdapter adapter2 = new MySqlDataAdapter(command2))
+                                {
+                                    DataTable table2 = new DataTable();
+
+                                    adapter2.Fill(table2);
+
+                                    if (table2.Rows.Count == 1)
+                                    {
+                                        lbL_сomparison.Enabled = false;
+                                    }
+                                    else
+                                    {
+                                        lbL_TutorialEngineers.Enabled = false;
+                                        lbL_section_foreman.Enabled = false;
+                                        lbL_сomparison.Enabled = false;
+                                        MessageBox.Show("Сообщи руководителю что-бы он выдал тебе доверенность!");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
         }
     }
 }
