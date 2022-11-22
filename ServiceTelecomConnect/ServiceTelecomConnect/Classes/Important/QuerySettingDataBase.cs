@@ -2090,5 +2090,42 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+        #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
+
+        internal static void GettingTeamdata(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_polinon_full, Label lbL_numberPrintDocument, string _user)
+        {
+            try
+            {
+                string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument FROM " +
+                    $"сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' OR engineers_FIO = '{_user}'";
+
+                if (Internet_check.CheackSkyNET())
+                {
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                lbL_FIO_chief.Text = reader[1].ToString();
+                                lbL_FIO_Engineer.Text = reader[2].ToString();
+                                lbL_doverennost.Text = reader[3].ToString();
+                                lbL_polinon_full.Text = reader[4].ToString();
+                                lbL_numberPrintDocument.Text = reader[5].ToString();
+                            }
+                            reader.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка получения данных о бригаде (GettingTeamdata)");
+            }
+        }
+
+        #endregion
     }
 }
