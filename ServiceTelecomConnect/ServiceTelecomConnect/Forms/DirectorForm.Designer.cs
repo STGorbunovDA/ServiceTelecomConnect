@@ -46,7 +46,9 @@
             this.btn_change_registrationEmployees = new System.Windows.Forms.Button();
             this.btn_delete_registrationEmployees = new System.Windows.Forms.Button();
             this.btn_update_registrationEmployees = new System.Windows.Forms.Button();
+            this.picB_clear = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -272,6 +274,18 @@
             this.btn_update_registrationEmployees.TabIndex = 94;
             this.btn_update_registrationEmployees.Text = "Обновить";
             this.btn_update_registrationEmployees.UseVisualStyleBackColor = false;
+            this.btn_update_registrationEmployees.Click += new System.EventHandler(this.Btn_update_registrationEmployees_Click);
+            // 
+            // picB_clear
+            // 
+            this.picB_clear.BackColor = System.Drawing.Color.Transparent;
+            this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
+            this.picB_clear.Location = new System.Drawing.Point(596, 401);
+            this.picB_clear.Name = "picB_clear";
+            this.picB_clear.Size = new System.Drawing.Size(33, 30);
+            this.picB_clear.TabIndex = 95;
+            this.picB_clear.TabStop = false;
+            this.picB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
             // 
             // DirectorForm
             // 
@@ -279,6 +293,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(645, 490);
+            this.Controls.Add(this.picB_clear);
             this.Controls.Add(this.btn_update_registrationEmployees);
             this.Controls.Add(this.btn_delete_registrationEmployees);
             this.Controls.Add(this.btn_change_registrationEmployees);
@@ -299,6 +314,7 @@
             this.Text = "Главная руководитель";
             this.Load += new System.EventHandler(this.DirectorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +337,6 @@
         private System.Windows.Forms.Button btn_change_registrationEmployees;
         private System.Windows.Forms.Button btn_delete_registrationEmployees;
         private System.Windows.Forms.Button btn_update_registrationEmployees;
+        private System.Windows.Forms.PictureBox picB_clear;
     }
 }

@@ -347,5 +347,38 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
         }
+
+        void Btn_update_registrationEmployees_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    RefreshDataGrid(dataGridView1);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Не загруженны данные в Datagridview(RefreshDataGrid)");
+                }
+            }
+        }
+
+        void PicB_clear_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+            {
+                MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+            {
+                MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            cmB_section_foreman_FIO.Text = cmB_section_foreman_FIO.Items[0].ToString();
+            cmB_engineers_FIO.Text = cmB_engineers_FIO.Items[0].ToString();
+            txB_attorney.Clear();
+            cmB_road.Text = cmB_road.Items[0].ToString();
+        }
     }
 }
