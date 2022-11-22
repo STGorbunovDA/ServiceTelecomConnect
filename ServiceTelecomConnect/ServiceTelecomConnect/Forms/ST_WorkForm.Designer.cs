@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -158,20 +158,7 @@
             this.btn_information_remont_company_regedit = new System.Windows.Forms.Button();
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.panel_date = new System.Windows.Forms.Panel();
-            this.txB_number_printing_doc_datePanel = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txB_polinon_full = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.btn_close_panel_date_info = new System.Windows.Forms.Button();
-            this.txB_FIO_Engineer = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.txB_GD_city = new System.Windows.Forms.TextBox();
-            this.label_GD = new System.Windows.Forms.Label();
-            this.btn_record_date = new System.Windows.Forms.Button();
-            this.txB_FIO_chief = new System.Windows.Forms.TextBox();
-            this.txB_doverennost = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label_dov = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
@@ -222,6 +209,8 @@
             this.lbL_count_remont = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lbL_numberPrintDocument = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -258,44 +247,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -1681,76 +1670,32 @@
             this.panel_date.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_date.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_date.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_date.Controls.Add(this.txB_number_printing_doc_datePanel);
-            this.panel_date.Controls.Add(this.label26);
-            this.panel_date.Controls.Add(this.txB_polinon_full);
+            this.panel_date.Controls.Add(this.lbL_numberPrintDocument);
             this.panel_date.Controls.Add(this.label7);
             this.panel_date.Controls.Add(this.btn_close_panel_date_info);
-            this.panel_date.Controls.Add(this.txB_FIO_Engineer);
-            this.panel_date.Controls.Add(this.label27);
-            this.panel_date.Controls.Add(this.txB_GD_city);
-            this.panel_date.Controls.Add(this.label_GD);
-            this.panel_date.Controls.Add(this.btn_record_date);
-            this.panel_date.Controls.Add(this.txB_FIO_chief);
-            this.panel_date.Controls.Add(this.txB_doverennost);
-            this.panel_date.Controls.Add(this.label25);
-            this.panel_date.Controls.Add(this.label_dov);
             this.panel_date.Controls.Add(this.label23);
+            this.panel_date.Controls.Add(this.label30);
+            this.panel_date.Controls.Add(this.lbL_FIO_chief);
+            this.panel_date.Controls.Add(this.lbL_doverennost);
+            this.panel_date.Controls.Add(this.label16);
+            this.panel_date.Controls.Add(this.lbL_FIO_Engineer);
+            this.panel_date.Controls.Add(this.lbL_polinon_full);
+            this.panel_date.Controls.Add(this.label28);
+            this.panel_date.Controls.Add(this.label29);
             this.panel_date.Enabled = false;
             this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.panel_date.Location = new System.Drawing.Point(400, 200);
+            this.panel_date.Location = new System.Drawing.Point(450, 300);
             this.panel_date.Name = "panel_date";
-            this.panel_date.Size = new System.Drawing.Size(642, 403);
+            this.panel_date.Size = new System.Drawing.Size(534, 264);
             this.panel_date.TabIndex = 28;
             this.panel_date.TabStop = true;
             this.panel_date.Visible = false;
-            // 
-            // txB_number_printing_doc_datePanel
-            // 
-            this.txB_number_printing_doc_datePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_number_printing_doc_datePanel.Location = new System.Drawing.Point(280, 315);
-            this.txB_number_printing_doc_datePanel.Name = "txB_number_printing_doc_datePanel";
-            this.txB_number_printing_doc_datePanel.Size = new System.Drawing.Size(345, 29);
-            this.txB_number_printing_doc_datePanel.TabIndex = 77;
-            this.txB_number_printing_doc_datePanel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_number_printing_doc_datePanel_KeyPress);
-            this.txB_number_printing_doc_datePanel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_number_printing_doc_datePanel_KeyUp);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Transparent;
-            this.label26.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(176, 324);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(98, 18);
-            this.label26.TabIndex = 76;
-            this.label26.Text = "№ Печати:";
-            // 
-            // txB_polinon_full
-            // 
-            this.txB_polinon_full.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_polinon_full.Location = new System.Drawing.Point(280, 266);
-            this.txB_polinon_full.Name = "txB_polinon_full";
-            this.txB_polinon_full.Size = new System.Drawing.Size(345, 29);
-            this.txB_polinon_full.TabIndex = 39;
-            this.txB_polinon_full.MouseEnter += new System.EventHandler(this.TextBox_polinon_full_MouseEnter);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(188, 275);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 18);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Полигон:";
             // 
             // btn_close_panel_date_info
             // 
             this.btn_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_close_panel_date_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_close_panel_date_info.Location = new System.Drawing.Point(609, 3);
+            this.btn_close_panel_date_info.Location = new System.Drawing.Point(501, 5);
             this.btn_close_panel_date_info.Name = "btn_close_panel_date_info";
             this.btn_close_panel_date_info.Size = new System.Drawing.Size(30, 29);
             this.btn_close_panel_date_info.TabIndex = 37;
@@ -1758,121 +1703,16 @@
             this.btn_close_panel_date_info.UseVisualStyleBackColor = false;
             this.btn_close_panel_date_info.Click += new System.EventHandler(this.Button_close_panel_date_info_Click);
             // 
-            // txB_FIO_Engineer
-            // 
-            this.txB_FIO_Engineer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_FIO_Engineer.Location = new System.Drawing.Point(280, 220);
-            this.txB_FIO_Engineer.Name = "txB_FIO_Engineer";
-            this.txB_FIO_Engineer.Size = new System.Drawing.Size(345, 29);
-            this.txB_FIO_Engineer.TabIndex = 13;
-            this.txB_FIO_Engineer.Click += new System.EventHandler(this.TextBox_FIO_Engineer_Click);
-            this.txB_FIO_Engineer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_Engineer_KeyPress);
-            this.txB_FIO_Engineer.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_Engineer_KeyUp);
-            this.txB_FIO_Engineer.MouseEnter += new System.EventHandler(this.TextBox_FIO_Engineer_MouseEnter);
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(136, 229);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(138, 18);
-            this.label27.TabIndex = 12;
-            this.label27.Text = "ФИО Инженера:";
-            // 
-            // txB_GD_city
-            // 
-            this.txB_GD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_GD_city.Location = new System.Drawing.Point(280, 73);
-            this.txB_GD_city.Name = "txB_GD_city";
-            this.txB_GD_city.Size = new System.Drawing.Size(345, 29);
-            this.txB_GD_city.TabIndex = 11;
-            this.txB_GD_city.Click += new System.EventHandler(this.TextBox_GD_city_Click);
-            this.txB_GD_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_GD_city_KeyPress);
-            this.txB_GD_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_GD_city_KeyUp);
-            this.txB_GD_city.MouseEnter += new System.EventHandler(this.TextBox_GD_city_MouseEnter);
-            // 
-            // label_GD
-            // 
-            this.label_GD.AutoSize = true;
-            this.label_GD.BackColor = System.Drawing.Color.Transparent;
-            this.label_GD.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_GD.Location = new System.Drawing.Point(6, 82);
-            this.label_GD.Name = "label_GD";
-            this.label_GD.Size = new System.Drawing.Size(268, 18);
-            this.label_GD.TabIndex = 10;
-            this.label_GD.Text = "Город проведения проверки:";
-            // 
-            // btn_record_date
-            // 
-            this.btn_record_date.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_record_date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_record_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_record_date.Location = new System.Drawing.Point(280, 360);
-            this.btn_record_date.Name = "btn_record_date";
-            this.btn_record_date.Size = new System.Drawing.Size(346, 29);
-            this.btn_record_date.TabIndex = 8;
-            this.btn_record_date.Text = "Записать данные";
-            this.btn_record_date.UseVisualStyleBackColor = false;
-            this.btn_record_date.Click += new System.EventHandler(this.Button_record_date_Click);
-            // 
-            // txB_FIO_chief
-            // 
-            this.txB_FIO_chief.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_FIO_chief.Location = new System.Drawing.Point(280, 121);
-            this.txB_FIO_chief.Name = "txB_FIO_chief";
-            this.txB_FIO_chief.Size = new System.Drawing.Size(345, 29);
-            this.txB_FIO_chief.TabIndex = 9;
-            this.txB_FIO_chief.Click += new System.EventHandler(this.TextBox_FIO_chief_Click);
-            this.txB_FIO_chief.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_FIO_chief_KeyPress);
-            this.txB_FIO_chief.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_FIO_chief_KeyUp);
-            this.txB_FIO_chief.MouseEnter += new System.EventHandler(this.TextBox_FIO_chief_MouseEnter);
-            // 
-            // txB_doverennost
-            // 
-            this.txB_doverennost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_doverennost.Location = new System.Drawing.Point(280, 170);
-            this.txB_doverennost.Name = "txB_doverennost";
-            this.txB_doverennost.Size = new System.Drawing.Size(345, 29);
-            this.txB_doverennost.TabIndex = 6;
-            this.txB_doverennost.Click += new System.EventHandler(this.TextBox_doverennost_Click);
-            this.txB_doverennost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_doverennost_KeyPress);
-            this.txB_doverennost.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_doverennost_KeyUp);
-            this.txB_doverennost.MouseEnter += new System.EventHandler(this.TextBox_doverennost_MouseEnter);
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(116, 130);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(158, 18);
-            this.label25.TabIndex = 8;
-            this.label25.Text = "ФИО Начальника:";
-            // 
-            // label_dov
-            // 
-            this.label_dov.AutoSize = true;
-            this.label_dov.BackColor = System.Drawing.Color.Transparent;
-            this.label_dov.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_dov.Location = new System.Drawing.Point(46, 179);
-            this.label_dov.Name = "label_dov";
-            this.label_dov.Size = new System.Drawing.Size(228, 18);
-            this.label_dov.TabIndex = 7;
-            this.label_dov.Text = "№ и Дату доверенности:";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.Transparent;
-            this.label23.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(233, 22);
+            this.label23.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.Location = new System.Drawing.Point(164, 7);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(164, 22);
+            this.label23.Size = new System.Drawing.Size(208, 27);
             this.label23.TabIndex = 6;
-            this.label23.Text = "Введите данные";
+            this.label23.Text = "Данные бригады";
             // 
             // panel1
             // 
@@ -1884,25 +1724,17 @@
             this.panel1.Controls.Add(this.btn_all_BD);
             this.panel1.Controls.Add(this.cmB_city);
             this.panel1.Controls.Add(this.picB_seach_datadrid_replay);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.lbL_polinon_full);
             this.panel1.Controls.Add(this.btn_remont_act);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label30);
             this.panel1.Controls.Add(this.btn_form_act);
             this.panel1.Controls.Add(this.txB_serialNumber);
             this.panel1.Controls.Add(this.btn_new_add_rst_form);
-            this.panel1.Controls.Add(this.label29);
-            this.panel1.Controls.Add(this.label28);
-            this.panel1.Controls.Add(this.lbL_FIO_Engineer);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.btn_add_city);
             this.panel1.Controls.Add(this.btn_seach_BD_city);
             this.panel1.Controls.Add(this.btn_search);
             this.panel1.Controls.Add(this.cmB_seach);
-            this.panel1.Controls.Add(this.lbL_doverennost);
-            this.panel1.Controls.Add(this.lbL_FIO_chief);
             this.panel1.Controls.Add(this.txB_numberAct);
             this.panel1.Controls.Add(this.textBox_search);
             this.panel1.Controls.Add(this.picB_update);
@@ -1985,26 +1817,23 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(379, 114);
+            this.label16.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(25, 170);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(88, 18);
+            this.label16.Size = new System.Drawing.Size(87, 22);
             this.label16.TabIndex = 75;
-            this.label16.Text = "Полигон:";
+            this.label16.Text = "Дорога:";
             // 
             // lbL_polinon_full
             // 
             this.lbL_polinon_full.AutoSize = true;
             this.lbL_polinon_full.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_polinon_full.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_polinon_full.Location = new System.Drawing.Point(523, 114);
+            this.lbL_polinon_full.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_polinon_full.Location = new System.Drawing.Point(207, 170);
             this.lbL_polinon_full.Name = "lbL_polinon_full";
-            this.lbL_polinon_full.Size = new System.Drawing.Size(128, 18);
+            this.lbL_polinon_full.Size = new System.Drawing.Size(241, 22);
             this.lbL_polinon_full.TabIndex = 74;
-            this.lbL_polinon_full.Text = "121e12e12e12";
-            this.lbL_polinon_full.DoubleClick += new System.EventHandler(this.Label_polinon_full_DoubleClick);
-            this.lbL_polinon_full.MouseEnter += new System.EventHandler(this.Label_polinon_full_MouseEnter);
-            this.lbL_polinon_full.MouseLeave += new System.EventHandler(this.Label_polinon_full_MouseLeave);
+            this.lbL_polinon_full.Text = "Восточно-Сибирская ЖД";
             // 
             // btn_remont_act
             // 
@@ -2050,10 +1879,10 @@
             // 
             this.label30.AutoSize = true;
             this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(379, 35);
+            this.label30.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(25, 71);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(138, 18);
+            this.label30.Size = new System.Drawing.Size(153, 22);
             this.label30.TabIndex = 21;
             this.label30.Text = "Доверенность:";
             // 
@@ -2097,10 +1926,10 @@
             // 
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(379, 88);
+            this.label29.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(26, 137);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(88, 18);
+            this.label29.Size = new System.Drawing.Size(98, 22);
             this.label29.TabIndex = 20;
             this.label29.Text = "Инженер:";
             // 
@@ -2108,10 +1937,10 @@
             // 
             this.label28.AutoSize = true;
             this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(379, 61);
+            this.label28.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label28.Location = new System.Drawing.Point(25, 104);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(108, 18);
+            this.label28.Size = new System.Drawing.Size(120, 22);
             this.label28.TabIndex = 19;
             this.label28.Text = "Начальник:";
             // 
@@ -2119,15 +1948,12 @@
             // 
             this.lbL_FIO_Engineer.AutoSize = true;
             this.lbL_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(523, 88);
+            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(207, 138);
             this.lbL_FIO_Engineer.Name = "lbL_FIO_Engineer";
-            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(128, 18);
+            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(142, 22);
             this.lbL_FIO_Engineer.TabIndex = 18;
             this.lbL_FIO_Engineer.Text = "Комаров А.Н.";
-            this.lbL_FIO_Engineer.DoubleClick += new System.EventHandler(this.Label_FIO_Engineer_DoubleClick);
-            this.lbL_FIO_Engineer.MouseEnter += new System.EventHandler(this.Label_FIO_Engineer_MouseEnter);
-            this.lbL_FIO_Engineer.MouseLeave += new System.EventHandler(this.Label_FIO_Engineer_MouseLeave);
             // 
             // label24
             // 
@@ -2213,29 +2039,23 @@
             // 
             this.lbL_doverennost.AutoSize = true;
             this.lbL_doverennost.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_doverennost.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_doverennost.Location = new System.Drawing.Point(522, 35);
+            this.lbL_doverennost.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_doverennost.Location = new System.Drawing.Point(207, 71);
             this.lbL_doverennost.Name = "lbL_doverennost";
-            this.lbL_doverennost.Size = new System.Drawing.Size(248, 18);
+            this.lbL_doverennost.Size = new System.Drawing.Size(274, 22);
             this.lbL_doverennost.TabIndex = 7;
             this.lbL_doverennost.Text = "28/22 от 10.01.2022 года";
-            this.lbL_doverennost.DoubleClick += new System.EventHandler(this.Label_doverennost_DoubleClick);
-            this.lbL_doverennost.MouseEnter += new System.EventHandler(this.Label_doverennost_MouseEnter);
-            this.lbL_doverennost.MouseLeave += new System.EventHandler(this.Label_doverennost_MouseLeave);
             // 
             // lbL_FIO_chief
             // 
             this.lbL_FIO_chief.AutoSize = true;
             this.lbL_FIO_chief.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_chief.Location = new System.Drawing.Point(522, 61);
+            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_chief.Location = new System.Drawing.Point(207, 104);
             this.lbL_FIO_chief.Name = "lbL_FIO_chief";
-            this.lbL_FIO_chief.Size = new System.Drawing.Size(138, 18);
+            this.lbL_FIO_chief.Size = new System.Drawing.Size(153, 22);
             this.lbL_FIO_chief.TabIndex = 6;
             this.lbL_FIO_chief.Text = "Горбунов Д.А.";
-            this.lbL_FIO_chief.DoubleClick += new System.EventHandler(this.Label_FIO_chief_DoubleClick);
-            this.lbL_FIO_chief.MouseEnter += new System.EventHandler(this.Label_FIO_chief_MouseEnter);
-            this.lbL_FIO_chief.MouseLeave += new System.EventHandler(this.Label_FIO_chief_MouseLeave);
             // 
             // txB_numberAct
             // 
@@ -2576,6 +2396,28 @@
             this.lbL_summ.TabIndex = 20;
             this.lbL_summ.Text = "999999999.99";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(25, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 22);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "№ печати:";
+            // 
+            // lbL_numberPrintDocument
+            // 
+            this.lbL_numberPrintDocument.AutoSize = true;
+            this.lbL_numberPrintDocument.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_numberPrintDocument.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_numberPrintDocument.Location = new System.Drawing.Point(209, 202);
+            this.lbL_numberPrintDocument.Name = "lbL_numberPrintDocument";
+            this.lbL_numberPrintDocument.Size = new System.Drawing.Size(32, 22);
+            this.lbL_numberPrintDocument.TabIndex = 77;
+            this.lbL_numberPrintDocument.Text = "53";
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2583,6 +2425,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.panel_seach_datagrid);
@@ -2591,7 +2434,6 @@
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_remont_information_company);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel1);
@@ -2659,16 +2501,9 @@
         private System.Windows.Forms.Label lbL_count_remont;
         private System.Windows.Forms.Button btn_form_act;
         private System.Windows.Forms.Panel panel_date;
-        private System.Windows.Forms.Label label_dov;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox txB_FIO_chief;
-        private System.Windows.Forms.TextBox txB_doverennost;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Button btn_record_date;
         private System.Windows.Forms.Label lbL_FIO_chief;
         private System.Windows.Forms.Label lbL_doverennost;
-        private System.Windows.Forms.Label label_GD;
-        private System.Windows.Forms.TextBox txB_GD_city;
         private System.Windows.Forms.ComboBox cmB_seach;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Button btn_seach_BD_city;
@@ -2676,8 +2511,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lbL_FIO_Engineer;
-        private System.Windows.Forms.TextBox txB_FIO_Engineer;
-        private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
@@ -2754,15 +2587,11 @@
         private System.Windows.Forms.Button btn_Continue_remont_act_excel;
         private System.Windows.Forms.Button btn_close_panel_date_info;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.TextBox txB_polinon_full;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label lbL_polinon_full;
         private System.Windows.Forms.PictureBox picB_seach_datadrid_replay;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbL_cell_rows;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox txB_number_printing_doc_datePanel;
         private System.Windows.Forms.Panel Functional_loading_panel;
         private System.Windows.Forms.Button btn_clear_BD_current_year;
         private System.Windows.Forms.Button btn_loading_file_current_DB;
@@ -2830,5 +2659,7 @@
         private System.Windows.Forms.ComboBox cmb_number_unique_acts;
         private System.Windows.Forms.TextBox textBox_search;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbL_numberPrintDocument;
+        private System.Windows.Forms.Label label7;
     }
 }

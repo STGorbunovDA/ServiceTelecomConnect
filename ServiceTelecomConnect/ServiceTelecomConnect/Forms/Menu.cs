@@ -46,6 +46,8 @@ namespace ServiceTelecomConnect
         {
             using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
             {
+
+                
                 this.Hide();
                 sT_WorkForm.ShowDialog();
             }
@@ -140,7 +142,7 @@ namespace ServiceTelecomConnect
         {
             if(_user.IsAdmin != "Admin")
             {
-                string querystring = $"SELECT attorney FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
+                string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
 
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
@@ -157,7 +159,7 @@ namespace ServiceTelecomConnect
                         }
                         else
                         {
-                            string querystring2 = $"SELECT attorney FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
+                            string querystring2 = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
                             using (MySqlCommand command2 = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
@@ -176,7 +178,7 @@ namespace ServiceTelecomConnect
                                         lbL_TutorialEngineers.Enabled = false;
                                         lbL_section_foreman.Enabled = false;
                                         lbL_сomparison.Enabled = false;
-                                        MessageBox.Show("Сообщи руководителю что-бы он выдал тебе доверенность!");
+                                        MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
                                     }
                                 }
                             }

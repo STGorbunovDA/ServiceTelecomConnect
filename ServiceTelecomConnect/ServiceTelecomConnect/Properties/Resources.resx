@@ -157,17 +157,20 @@
   <data name="actions_edit_clear_15784 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\actions_edit_clear_15784 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-синхронизация-подключения-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\icons8-синхронизация-подключения-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-скопировать-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\icons8-скопировать-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="button_blank_green_14986" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\button_blank_green_14986.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ghostview_search_document_6161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\ghostview_search_document_6161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Untitled-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\Untitled-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="data_integrated_data_management_data_processing_setting_configuration_icon_1906481" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gui_eraser_icon_157160" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\gui_eraser_icon_157160.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,10 +199,10 @@
   <data name="data-analysis_icon-icons.com_52842" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\data-analysis_icon-icons.com_52842.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ghostview_search_document_6161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageFon\ghostview_search_document_6161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="data_integrated_data_management_data_processing_setting_configuration_icon_1906481" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-синхронизация-подключения-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="icons8-синхронизация-подключения-321" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageFon\icons8-синхронизация-подключения-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

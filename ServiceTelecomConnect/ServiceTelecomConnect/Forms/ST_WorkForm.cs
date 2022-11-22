@@ -34,17 +34,10 @@ namespace ServiceTelecomConnect
     {
         #region global perem
 
-        //DB dB = new DB();//для интерфейса
-        //DB_2 dB_2 = new DB_2();// для загрузки файлов
-        //DB_3 dB_3 = new DB_3();// для копирования каждые 30 минут таблицы
-        //DB_4 dB_4 = new DB_4();// для формирования отчётов excel
-
         private delegate DialogResult ShowOpenFileDialogInvoker();
 
-        private static string taskCity;// для потоков
-        /// <summary>
-        /// переменная для индекса dataGridView1 
-        /// </summary>
+        private static string taskCity;
+
         int selectedRow;
 
         private readonly cheakUser _user;
@@ -136,83 +129,6 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
                 QuerySettingDataBase.SelectCityGropBy(cmB_city);
-
-                try
-                {
-                    RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
-
-                    if (reg != null)
-                    {
-                        RegistryKey currentUserKey = Registry.CurrentUser;
-                        RegistryKey helloKey = currentUserKey.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                        RegistryKey helloKey_record = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-
-                        string[] regKey = {$"Город проведения проверки", "Начальник по ТО и Р СРС", "Доверенность",
-                             "Инженер по ТО и Р СРС", "Полигон РЖД full", "Номер печати"};
-
-                        for (int i = 0; i < regKey.Length; i++)
-                        {
-                            bool flag = CheacReggedit.ValueExists(helloKey, regKey[i]);
-                            if (flag == false)
-                            {
-                                helloKey_record.SetValue($"{regKey[i]}", $"");
-                                Block_ST_Work_Form_control();
-                                panel_date.Visible = true;
-                                panel_date.Enabled = true;
-                            }
-                        }
-
-                        txB_GD_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        txB_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        txB_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        txB_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        txB_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-                        txB_number_printing_doc_datePanel.Text = helloKey.GetValue(regKey[5]).ToString();
-
-                        cmB_city.Text = helloKey.GetValue(regKey[0]).ToString();
-                        lbL_FIO_chief.Text = helloKey.GetValue(regKey[1]).ToString();
-                        lbL_doverennost.Text = helloKey.GetValue(regKey[2]).ToString();
-                        lbL_FIO_Engineer.Text = helloKey.GetValue(regKey[3]).ToString();
-                        lbL_polinon_full.Text = helloKey.GetValue(regKey[4]).ToString();
-
-                        TextBox[] textBoxes = { txB_GD_city, txB_FIO_chief, txB_doverennost, txB_FIO_Engineer,
-                                            txB_polinon_full, txB_number_printing_doc_datePanel};
-                        foreach (TextBox textBox in textBoxes)
-                        {
-                            if (textBox.Text == "")
-                            {
-                                this.ActiveControl = textBox;
-                            }
-                        }
-
-                        helloKey.Close();
-                    }
-                    else
-                    {
-                        if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
-                        {
-                            lbL_doverennost.Text = "Доверенность";
-                            lbL_FIO_chief.Text = "Начальник";
-                            lbL_FIO_Engineer.Text = "Инженер";
-                            lbL_FIO_Engineer.Text = "Инженер";
-                            lbL_polinon_full.Text = "Полигон";
-                            txB_number_printing_doc_datePanel.Text = "Печать";
-                        }
-                        else
-                        {
-                            Block_ST_Work_Form_control();
-                            panel_date.Visible = true;
-                            panel_date.Enabled = true;
-                        }
-
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки данных из реестра!(ST_WorkForm_Load)");
-                }
-
-
 
                 QuerySettingDataBase.CreateColums(dataGridView1);
                 QuerySettingDataBase.CreateColums(dataGridView2);
@@ -338,175 +254,8 @@ namespace ServiceTelecomConnect
 
         #region panel date information
 
-        void Button_record_date_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                #region проверка на пустые поля
-                if (txB_doverennost.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле доверенность!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (txB_FIO_chief.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле ФИО Начальника!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (txB_FIO_Engineer.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле ФИО Инженера!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (txB_GD_city.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле Город проведения проверки!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (txB_polinon_full.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                if (txB_number_printing_doc_datePanel.Text == "")
-                {
-                    string Mesage2;
-                    Mesage2 = "Вы не заполнили поле № печати!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-                #endregion
-
-                RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                helloKey.SetValue("Доверенность", $"{txB_doverennost.Text}");
-                helloKey.SetValue("Начальник по ТО и Р СРС", $"{txB_FIO_chief.Text}");
-                helloKey.SetValue("Инженер по ТО и Р СРС", $"{txB_FIO_Engineer.Text}");
-                helloKey.SetValue("Город проведения проверки", $"{txB_GD_city.Text}");
-                helloKey.SetValue("Полигон РЖД full", $"{txB_polinon_full.Text}");
-                helloKey.SetValue("Номер печати", $"{txB_number_printing_doc_datePanel.Text}");
-                helloKey.Close();
-
-                panel_date.Visible = false;
-                panel_date.Enabled = false;
-
-                dataGridView1.Enabled = true;
-                panel1.Enabled = true;
-                panel3.Enabled = true;
-
-                Application.Restart();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка записи в реестр данных(Button_record_date_Click)!");
-            }
-        }
-
-
-        void Block_ST_Work_Form_control()
-        {
-            dataGridView1.Enabled = false;
-            panel1.Enabled = false;
-            panel3.Enabled = false;
-        }
-
-
         void Button_close_panel_date_info_Click(object sender, EventArgs e)
         {
-
-            #region проверка на пустые поля
-
-            if (txB_GD_city.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле Город проведения проверки!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            if (txB_FIO_chief.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле ФИО Начальника!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            if (txB_doverennost.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле № и Дату доверенности!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            if (txB_FIO_Engineer.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле ФИО Инженера!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            if (txB_polinon_full.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле Полигон!(нужен для печати акта)";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            if (txB_number_printing_doc_datePanel.Text == "")
-            {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле № печати!";
-
-                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
-                    return;
-                }
-            }
-            #endregion
-
-            panel_date.Enabled = false;
             panel_date.Visible = false;
             dataGridView1.Enabled = true;
             panel1.Enabled = true;
@@ -821,7 +570,7 @@ namespace ServiceTelecomConnect
                     if (Application.OpenForms["AddRSTForm"] == null)
                     {
                         addRSTForm.DoubleBufferedForm(true);
-                        addRSTForm.txB_numberAct.Text = txB_number_printing_doc_datePanel.Text + "/";
+                        addRSTForm.txB_numberAct.Text = lbL_numberPrintDocument.Text + "/";
                         addRSTForm.lbL_cmb_city_ST_WorkForm.Text = cmB_city.Text;
                         if (txB_city.Text == "")
                         {
@@ -868,7 +617,7 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region проверка ввода текст боксов
+        #region ProcessKbdCtrlShortcuts
 
         void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
         {
@@ -906,71 +655,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода ctrl+c+v (ProcessKbdCtrlShortcuts)");
             }
         }
-        void TextBox_GD_city_Click(object sender, EventArgs e)
-        {
-            txB_company.MaxLength = 25;
-        }
-        void TextBox_GD_city_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_GD_city_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_FIO_chief_Click(object sender, EventArgs e)
-        {
-            txB_company.MaxLength = 25;
-        }
-
-        void TextBox_FIO_chief_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_FIO_chief_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_doverennost_Click(object sender, EventArgs e)
-        {
-            txB_company.MaxLength = 25;
-        }
-        void TextBox_doverennost_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-        void TextBox_doverennost_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ' && ch != '/')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_FIO_Engineer_Click(object sender, EventArgs e)
-        {
-            txB_company.MaxLength = 25;
-        }
-        void TextBox_FIO_Engineer_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch < 'А' || ch > 'Я') && (ch < 'а' || ch > 'я') && (ch <= 47 || ch >= 58) && ch != '\b' && ch != '-' && ch != '.' && ch != ' ')
-            {
-                e.Handled = true;
-            }
-        }
-        void TextBox_FIO_Engineer_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
+        
         #endregion
 
         #region АКТ => excel
@@ -1159,117 +844,6 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода DataGridView1_CellValueChanged");
             }
-        }
-        #endregion
-
-        #region открываем панель инфо о бригаде при double_click и Key press Key UP для печати
-
-        void TextBox_number_printing_doc_datePanel_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != '\b')
-            {
-                e.Handled = true;
-            }
-        }
-
-        void TextBox_number_printing_doc_datePanel_KeyUp(object sender, KeyEventArgs e)
-        {
-            ProcessKbdCtrlShortcuts(sender, e);
-        }
-
-        void Label_FIO_chief_DoubleClick(object sender, EventArgs e)
-        {
-            Change_information_ServiceTelecom();
-        }
-
-        void Label_FIO_Engineer_DoubleClick(object sender, EventArgs e)
-        {
-            Change_information_ServiceTelecom();
-        }
-
-        void Label_doverennost_DoubleClick(object sender, EventArgs e)
-        {
-            Change_information_ServiceTelecom();
-        }
-
-        void Label_polinon_full_DoubleClick(object sender, EventArgs e)
-        {
-            Change_information_ServiceTelecom();
-        }
-
-        void Label_number_printing_doc_reg_DoubleClick(object sender, EventArgs e)
-        {
-            Change_information_ServiceTelecom();
-        }
-        void Change_information_ServiceTelecom()
-        {
-            try
-            {
-                string Mesage;
-                Mesage = "Вы действительно хотите изменить основную информацию?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-
-                txB_GD_city.Text = cmB_city.Text;
-                txB_FIO_chief.Text = lbL_FIO_chief.Text;
-                txB_doverennost.Text = lbL_doverennost.Text;
-                txB_FIO_Engineer.Text = lbL_FIO_Engineer.Text;
-                txB_polinon_full.Text = lbL_polinon_full.Text;
-                Block_ST_Work_Form_control();
-                panel_date.Enabled = true;
-                panel_date.Visible = true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Change_information_ServiceTelecom");
-            }
-
-        }
-        #endregion
-
-        #region подсветка label_indo
-        void Label_FIO_chief_MouseEnter(object sender, EventArgs e)
-        {
-            lbL_FIO_chief.ForeColor = Color.White;
-        }
-
-        void Label_FIO_chief_MouseLeave(object sender, EventArgs e)
-        {
-            lbL_FIO_chief.ForeColor = Color.Black;
-        }
-
-        void Label_FIO_Engineer_MouseEnter(object sender, EventArgs e)
-        {
-            lbL_FIO_Engineer.ForeColor = Color.White;
-        }
-
-        void Label_FIO_Engineer_MouseLeave(object sender, EventArgs e)
-        {
-            lbL_FIO_Engineer.ForeColor = Color.Black;
-        }
-
-        void Label_doverennost_MouseEnter(object sender, EventArgs e)
-        {
-            lbL_doverennost.ForeColor = Color.White;
-        }
-
-        void Label_doverennost_MouseLeave(object sender, EventArgs e)
-        {
-            lbL_doverennost.ForeColor = Color.Black;
-        }
-
-        void Label_polinon_full_MouseEnter(object sender, EventArgs e)
-        {
-            lbL_polinon_full.ForeColor = Color.White;
-        }
-
-        void Label_polinon_full_MouseLeave(object sender, EventArgs e)
-        {
-            lbL_polinon_full.ForeColor = Color.Black;
         }
         #endregion
 
@@ -1516,7 +1090,7 @@ namespace ServiceTelecomConnect
 
                             if (txB_numberActRemont.Text == "")
                             {
-                                remontRSTForm.txB_numberActRemont.Text = txB_number_printing_doc_datePanel.Text + "/";
+                                remontRSTForm.txB_numberActRemont.Text = lbL_numberPrintDocument.Text + "/";
                             }
                             else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
                             remontRSTForm.Show();
@@ -2151,6 +1725,13 @@ namespace ServiceTelecomConnect
                         panel_txB_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
+                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
+                {
+                    dataGridView1.Enabled = false;
+                    panel1.Enabled = false;
+                    panel3.Enabled = false;
+                    panel_date.Visible = true;
+                }
             }
         }
 
@@ -2351,44 +1932,6 @@ namespace ServiceTelecomConnect
             {
                 toolTip1.Active = toolTip1.Active ? false : true;
             }
-        }
-        void TextBox_GD_city_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(txB_GD_city, $"Например: Москва");
-        }
-        void TextBox_FIO_chief_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(txB_FIO_chief, $"Например: Иванов И.А.");
-        }
-
-        void TextBox_doverennost_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(txB_doverennost, $"Например: 11/23 от 10.01.2023 года");
-        }
-
-        void TextBox_FIO_Engineer_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(txB_FIO_Engineer, $"Например: Иванов И.А.");
-        }
-
-        void TextBox_polinon_full_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(txB_polinon_full, $"Горьковская ЖД");
         }
 
         void Button_information_remont_company_regedit_MouseLeave(object sender, EventArgs e)

@@ -45,10 +45,13 @@
             this.txB_id = new System.Windows.Forms.TextBox();
             this.btn_change_registrationEmployees = new System.Windows.Forms.Button();
             this.btn_delete_registrationEmployees = new System.Windows.Forms.Button();
-            this.btn_update_registrationEmployees = new System.Windows.Forms.Button();
             this.picB_clear = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txB_numberPrintDocument = new System.Windows.Forms.TextBox();
+            this.picB_Update = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_Update)).BeginInit();
             this.SuspendLayout();
             // 
             // AuthorizationLabel
@@ -104,7 +107,7 @@
             "Северо-Кавказская ЖД",
             "Юго-Восточная ЖД",
             "Южно-Уральская ЖД"});
-            this.cmB_road.Location = new System.Drawing.Point(328, 344);
+            this.cmB_road.Location = new System.Drawing.Point(20, 463);
             this.cmB_road.Name = "cmB_road";
             this.cmB_road.Size = new System.Drawing.Size(262, 28);
             this.cmB_road.TabIndex = 59;
@@ -148,7 +151,7 @@
             // txB_attorney
             // 
             this.txB_attorney.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_attorney.Location = new System.Drawing.Point(328, 401);
+            this.txB_attorney.Location = new System.Drawing.Point(328, 344);
             this.txB_attorney.MaxLength = 49;
             this.txB_attorney.Multiline = true;
             this.txB_attorney.Name = "txB_attorney";
@@ -160,7 +163,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(324, 378);
+            this.label2.Location = new System.Drawing.Point(324, 317);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 87;
@@ -171,7 +174,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(324, 317);
+            this.label3.Location = new System.Drawing.Point(16, 436);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 88;
@@ -181,10 +184,10 @@
             // 
             this.btn_add_registrationEmployees.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_add_registrationEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_add_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_add_registrationEmployees.Location = new System.Drawing.Point(471, 448);
+            this.btn_add_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_add_registrationEmployees.Location = new System.Drawing.Point(328, 463);
             this.btn_add_registrationEmployees.Name = "btn_add_registrationEmployees";
-            this.btn_add_registrationEmployees.Size = new System.Drawing.Size(119, 30);
+            this.btn_add_registrationEmployees.Size = new System.Drawing.Size(78, 30);
             this.btn_add_registrationEmployees.TabIndex = 89;
             this.btn_add_registrationEmployees.Text = "Добавить";
             this.btn_add_registrationEmployees.UseVisualStyleBackColor = false;
@@ -241,10 +244,10 @@
             // 
             this.btn_change_registrationEmployees.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_change_registrationEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_change_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_change_registrationEmployees.Location = new System.Drawing.Point(328, 448);
+            this.btn_change_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_change_registrationEmployees.Location = new System.Drawing.Point(421, 463);
             this.btn_change_registrationEmployees.Name = "btn_change_registrationEmployees";
-            this.btn_change_registrationEmployees.Size = new System.Drawing.Size(119, 30);
+            this.btn_change_registrationEmployees.Size = new System.Drawing.Size(78, 30);
             this.btn_change_registrationEmployees.TabIndex = 92;
             this.btn_change_registrationEmployees.Text = "Изменить";
             this.btn_change_registrationEmployees.UseVisualStyleBackColor = false;
@@ -254,47 +257,68 @@
             // 
             this.btn_delete_registrationEmployees.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_delete_registrationEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_delete_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_delete_registrationEmployees.Location = new System.Drawing.Point(163, 448);
+            this.btn_delete_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_delete_registrationEmployees.Location = new System.Drawing.Point(512, 463);
             this.btn_delete_registrationEmployees.Name = "btn_delete_registrationEmployees";
-            this.btn_delete_registrationEmployees.Size = new System.Drawing.Size(119, 30);
+            this.btn_delete_registrationEmployees.Size = new System.Drawing.Size(78, 30);
             this.btn_delete_registrationEmployees.TabIndex = 93;
             this.btn_delete_registrationEmployees.Text = "Удалить";
             this.btn_delete_registrationEmployees.UseVisualStyleBackColor = false;
             this.btn_delete_registrationEmployees.Click += new System.EventHandler(this.Btn_delete_registrationEmployees_Click);
             // 
-            // btn_update_registrationEmployees
-            // 
-            this.btn_update_registrationEmployees.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_update_registrationEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_update_registrationEmployees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_update_registrationEmployees.Location = new System.Drawing.Point(20, 448);
-            this.btn_update_registrationEmployees.Name = "btn_update_registrationEmployees";
-            this.btn_update_registrationEmployees.Size = new System.Drawing.Size(119, 30);
-            this.btn_update_registrationEmployees.TabIndex = 94;
-            this.btn_update_registrationEmployees.Text = "Обновить";
-            this.btn_update_registrationEmployees.UseVisualStyleBackColor = false;
-            this.btn_update_registrationEmployees.Click += new System.EventHandler(this.Btn_update_registrationEmployees_Click);
-            // 
             // picB_clear
             // 
             this.picB_clear.BackColor = System.Drawing.Color.Transparent;
             this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
-            this.picB_clear.Location = new System.Drawing.Point(596, 401);
+            this.picB_clear.Location = new System.Drawing.Point(596, 368);
             this.picB_clear.Name = "picB_clear";
             this.picB_clear.Size = new System.Drawing.Size(33, 30);
             this.picB_clear.TabIndex = 95;
             this.picB_clear.TabStop = false;
             this.picB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(324, 378);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 20);
+            this.label4.TabIndex = 97;
+            this.label4.Text = "№ печати";
+            // 
+            // txB_numberPrintDocument
+            // 
+            this.txB_numberPrintDocument.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_numberPrintDocument.Location = new System.Drawing.Point(328, 401);
+            this.txB_numberPrintDocument.MaxLength = 49;
+            this.txB_numberPrintDocument.Multiline = true;
+            this.txB_numberPrintDocument.Name = "txB_numberPrintDocument";
+            this.txB_numberPrintDocument.Size = new System.Drawing.Size(262, 28);
+            this.txB_numberPrintDocument.TabIndex = 96;
+            // 
+            // picB_Update
+            // 
+            this.picB_Update.BackColor = System.Drawing.Color.Transparent;
+            this.picB_Update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.icons8_синхронизация_подключения_321;
+            this.picB_Update.Location = new System.Drawing.Point(600, 9);
+            this.picB_Update.Name = "picB_Update";
+            this.picB_Update.Size = new System.Drawing.Size(33, 30);
+            this.picB_Update.TabIndex = 98;
+            this.picB_Update.TabStop = false;
+            this.picB_Update.Click += new System.EventHandler(this.PicB_Update_Click);
+            // 
             // DirectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(645, 490);
+            this.ClientSize = new System.Drawing.Size(645, 522);
+            this.Controls.Add(this.picB_Update);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txB_numberPrintDocument);
             this.Controls.Add(this.picB_clear);
-            this.Controls.Add(this.btn_update_registrationEmployees);
             this.Controls.Add(this.btn_delete_registrationEmployees);
             this.Controls.Add(this.btn_change_registrationEmployees);
             this.Controls.Add(this.txB_id);
@@ -315,6 +339,7 @@
             this.Load += new System.EventHandler(this.DirectorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_Update)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,7 +361,9 @@
         internal System.Windows.Forms.TextBox txB_id;
         private System.Windows.Forms.Button btn_change_registrationEmployees;
         private System.Windows.Forms.Button btn_delete_registrationEmployees;
-        private System.Windows.Forms.Button btn_update_registrationEmployees;
         private System.Windows.Forms.PictureBox picB_clear;
+        private System.Windows.Forms.Label label4;
+        internal System.Windows.Forms.TextBox txB_numberPrintDocument;
+        private System.Windows.Forms.PictureBox picB_Update;
     }
 }
