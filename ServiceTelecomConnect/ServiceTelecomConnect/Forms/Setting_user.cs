@@ -177,11 +177,16 @@ namespace ServiceTelecomConnect
                             if (rowState == RowState.Deleted)
                             {
                                 var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                                var login = dataGridView1.Rows[index].Cells[1].Value;
                                 var deleteQuery = $"delete from users where id = {id}";
-
+                                var delete_сharacteristics_вrigade = $"delete from сharacteristics_вrigade where login = {login}";
                                 using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                                 {
                                     command.ExecuteNonQuery();
+                                }
+                                using (MySqlCommand command2 = new MySqlCommand(delete_сharacteristics_вrigade, DB.GetInstance.GetConnection()))
+                                {
+                                    command2.ExecuteNonQuery();
                                 }
                             }
                         }
