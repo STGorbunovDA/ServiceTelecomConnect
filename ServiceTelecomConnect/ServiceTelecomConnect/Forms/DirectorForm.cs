@@ -239,10 +239,11 @@ namespace ServiceTelecomConnect.Forms
                         MessageBox.Show("Бригада сформирована", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+                RefreshDataGrid(dataGridView1);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Ошибка! Не возможно изменить данные (Btn_add_registrationEmployeess_Click)");
             }
 
         }
@@ -266,6 +267,29 @@ namespace ServiceTelecomConnect.Forms
                     txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
                     txB_attorney.Text.Trim();
 
+                    if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+                    {
+                        MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+                    {
+                        MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (String.IsNullOrEmpty(cmB_road.Text))
+                    {
+                        MessageBox.Show("Поле \"Дорога\" не должна быть пустым, добавьте дорогу", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (!Regex.IsMatch(txB_attorney.Text, @"[0-9]{1,}[\/][0-9]{1,}[\s][о][т][\s][0-9]{2,2}[\.][0-9]{2,2}[\.][2][0][0-9]{2,2}[\s][г][о][д][а]$"))
+                    {
+                        MessageBox.Show("Введите корректно \"Доверенность\"\n P.s. Пример: 53/53 от 10.01.2023 года", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_attorney.Select();
+                        return;
+                    }
+
+
                     var changeQuery = $"update сharacteristics_вrigade set section_foreman_FIO = '{cmB_section_foreman_FIO.Text}', " +
                         $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}' where id = '{id}'";
 
@@ -280,7 +304,46 @@ namespace ServiceTelecomConnect.Forms
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Ошибка! Не возможно изменить данные (Button_change_Click)");
+                    MessageBox.Show("Ошибка! Не возможно изменить данные (Btn_change_registrationEmployees_Click)");
+                }
+            }
+        }
+
+        void Btn_delete_registrationEmployees_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
+                    }
+
+                    DB.GetInstance.OpenConnection();
+
+                    for (int index = 0; index < dataGridView1.Rows.Count; index++)
+                    {
+                        var rowState = (RowState)dataGridView1.Rows[index].Cells[5].Value;
+
+                        if (rowState == RowState.Deleted)
+                        {
+                            var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                            var deleteQuery = $"delete from сharacteristics_вrigade where id = {id}";
+
+                            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
+                            {
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
+
+                    RefreshDataGrid(dataGridView1);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Не возможно удалить данные (Btn_delete_registrationEmployees_Click)");
                 }
             }
         }
