@@ -96,7 +96,6 @@ namespace ServiceTelecomConnect
                 //panel1.Enabled = false;
                 panel3.Enabled = false;
                 Functional_loading_panel.Enabled = false;
-                panel_date.Enabled = false;
                 panel_remont_information_company.Enabled = false;
 
                 foreach (Control element in panel1.Controls)
@@ -123,6 +122,8 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                QuerySettingDataBase.GettingTeamdata(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_polinon_full, lbL_numberPrintDocument, _user.Login);
+
                 dataGridView1.EnableHeadersVisualStyles = false;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
@@ -1730,6 +1731,7 @@ namespace ServiceTelecomConnect
                     dataGridView1.Enabled = false;
                     panel1.Enabled = false;
                     panel3.Enabled = false;
+                    panel_date.Enabled = true;
                     panel_date.Visible = true;
                 }
             }

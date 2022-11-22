@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -158,33 +158,35 @@
             this.btn_information_remont_company_regedit = new System.Windows.Forms.Button();
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.panel_date = new System.Windows.Forms.Panel();
+            this.lbL_numberPrintDocument = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btn_close_panel_date_info = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lbL_FIO_chief = new System.Windows.Forms.Label();
+            this.lbL_doverennost = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.lbL_FIO_Engineer = new System.Windows.Forms.Label();
+            this.lbL_polinon_full = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.btn_all_BD = new System.Windows.Forms.Button();
             this.cmB_city = new System.Windows.Forms.ComboBox();
             this.picB_seach_datadrid_replay = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lbL_polinon_full = new System.Windows.Forms.Label();
             this.btn_remont_act = new System.Windows.Forms.Button();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.btn_form_act = new System.Windows.Forms.Button();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.btn_new_add_rst_form = new System.Windows.Forms.Button();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.lbL_FIO_Engineer = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.btn_add_city = new System.Windows.Forms.Button();
             this.btn_seach_BD_city = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.cmB_seach = new System.Windows.Forms.ComboBox();
-            this.lbL_doverennost = new System.Windows.Forms.Label();
-            this.lbL_FIO_chief = new System.Windows.Forms.Label();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
             this.textBox_search = new System.Windows.Forms.TextBox();
             this.picB_update = new System.Windows.Forms.PictureBox();
@@ -209,8 +211,6 @@
             this.lbL_count_remont = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lbL_numberPrintDocument = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -247,44 +247,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 147);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
@@ -1691,6 +1691,28 @@
             this.panel_date.TabStop = true;
             this.panel_date.Visible = false;
             // 
+            // lbL_numberPrintDocument
+            // 
+            this.lbL_numberPrintDocument.AutoSize = true;
+            this.lbL_numberPrintDocument.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_numberPrintDocument.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_numberPrintDocument.Location = new System.Drawing.Point(209, 202);
+            this.lbL_numberPrintDocument.Name = "lbL_numberPrintDocument";
+            this.lbL_numberPrintDocument.Size = new System.Drawing.Size(32, 22);
+            this.lbL_numberPrintDocument.TabIndex = 77;
+            this.lbL_numberPrintDocument.Text = "00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(25, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 22);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "№ печати:";
+            // 
             // btn_close_panel_date_info
             // 
             this.btn_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1713,6 +1735,94 @@
             this.label23.Size = new System.Drawing.Size(208, 27);
             this.label23.TabIndex = 6;
             this.label23.Text = "Данные бригады";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(25, 71);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(153, 22);
+            this.label30.TabIndex = 21;
+            this.label30.Text = "Доверенность:";
+            // 
+            // lbL_FIO_chief
+            // 
+            this.lbL_FIO_chief.AutoSize = true;
+            this.lbL_FIO_chief.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_chief.Location = new System.Drawing.Point(207, 104);
+            this.lbL_FIO_chief.Name = "lbL_FIO_chief";
+            this.lbL_FIO_chief.Size = new System.Drawing.Size(131, 22);
+            this.lbL_FIO_chief.TabIndex = 6;
+            this.lbL_FIO_chief.Text = "Иванов В.В.";
+            // 
+            // lbL_doverennost
+            // 
+            this.lbL_doverennost.AutoSize = true;
+            this.lbL_doverennost.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_doverennost.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_doverennost.Location = new System.Drawing.Point(207, 71);
+            this.lbL_doverennost.Name = "lbL_doverennost";
+            this.lbL_doverennost.Size = new System.Drawing.Size(142, 22);
+            this.lbL_doverennost.TabIndex = 7;
+            this.lbL_doverennost.Text = "Доверенность";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(25, 170);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(87, 22);
+            this.label16.TabIndex = 75;
+            this.label16.Text = "Дорога:";
+            // 
+            // lbL_FIO_Engineer
+            // 
+            this.lbL_FIO_Engineer.AutoSize = true;
+            this.lbL_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(207, 138);
+            this.lbL_FIO_Engineer.Name = "lbL_FIO_Engineer";
+            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(142, 22);
+            this.lbL_FIO_Engineer.TabIndex = 18;
+            this.lbL_FIO_Engineer.Text = "Сидоров В.В.";
+            // 
+            // lbL_polinon_full
+            // 
+            this.lbL_polinon_full.AutoSize = true;
+            this.lbL_polinon_full.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_polinon_full.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_polinon_full.Location = new System.Drawing.Point(207, 170);
+            this.lbL_polinon_full.Name = "lbL_polinon_full";
+            this.lbL_polinon_full.Size = new System.Drawing.Size(241, 22);
+            this.lbL_polinon_full.TabIndex = 74;
+            this.lbL_polinon_full.Text = "Восточно-Сибирская ЖД";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label28.Location = new System.Drawing.Point(25, 104);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(120, 22);
+            this.label28.TabIndex = 19;
+            this.label28.Text = "Начальник:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(26, 137);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(98, 22);
+            this.label29.TabIndex = 20;
+            this.label29.Text = "Инженер:";
             // 
             // panel1
             // 
@@ -1813,28 +1923,6 @@
             this.picB_seach_datadrid_replay.Click += new System.EventHandler(this.PictureBox_seach_datadrid_replay_Click);
             this.picB_seach_datadrid_replay.MouseEnter += new System.EventHandler(this.PictureBox_seach_datadrid_replay_MouseEnter);
             // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(25, 170);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(87, 22);
-            this.label16.TabIndex = 75;
-            this.label16.Text = "Дорога:";
-            // 
-            // lbL_polinon_full
-            // 
-            this.lbL_polinon_full.AutoSize = true;
-            this.lbL_polinon_full.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_polinon_full.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_polinon_full.Location = new System.Drawing.Point(207, 170);
-            this.lbL_polinon_full.Name = "lbL_polinon_full";
-            this.lbL_polinon_full.Size = new System.Drawing.Size(241, 22);
-            this.lbL_polinon_full.TabIndex = 74;
-            this.lbL_polinon_full.Text = "Восточно-Сибирская ЖД";
-            // 
             // btn_remont_act
             // 
             this.btn_remont_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1875,17 +1963,6 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Акт ТО №:";
             // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(25, 71);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(153, 22);
-            this.label30.TabIndex = 21;
-            this.label30.Text = "Доверенность:";
-            // 
             // btn_form_act
             // 
             this.btn_form_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1921,39 +1998,6 @@
             this.btn_new_add_rst_form.Text = "Добавить новую радиостанцию";
             this.btn_new_add_rst_form.UseVisualStyleBackColor = false;
             this.btn_new_add_rst_form.Click += new System.EventHandler(this.Button_new_add_rst_form_Click);
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(26, 137);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(98, 22);
-            this.label29.TabIndex = 20;
-            this.label29.Text = "Инженер:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(25, 104);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(120, 22);
-            this.label28.TabIndex = 19;
-            this.label28.Text = "Начальник:";
-            // 
-            // lbL_FIO_Engineer
-            // 
-            this.lbL_FIO_Engineer.AutoSize = true;
-            this.lbL_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(207, 138);
-            this.lbL_FIO_Engineer.Name = "lbL_FIO_Engineer";
-            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(142, 22);
-            this.lbL_FIO_Engineer.TabIndex = 18;
-            this.lbL_FIO_Engineer.Text = "Комаров А.Н.";
             // 
             // label24
             // 
@@ -2034,28 +2078,6 @@
             this.cmB_seach.TabIndex = 8;
             this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
             this.cmB_seach.MouseEnter += new System.EventHandler(this.ComboBox_seach_MouseEnter);
-            // 
-            // lbL_doverennost
-            // 
-            this.lbL_doverennost.AutoSize = true;
-            this.lbL_doverennost.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_doverennost.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_doverennost.Location = new System.Drawing.Point(207, 71);
-            this.lbL_doverennost.Name = "lbL_doverennost";
-            this.lbL_doverennost.Size = new System.Drawing.Size(274, 22);
-            this.lbL_doverennost.TabIndex = 7;
-            this.lbL_doverennost.Text = "28/22 от 10.01.2022 года";
-            // 
-            // lbL_FIO_chief
-            // 
-            this.lbL_FIO_chief.AutoSize = true;
-            this.lbL_FIO_chief.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_chief.Location = new System.Drawing.Point(207, 104);
-            this.lbL_FIO_chief.Name = "lbL_FIO_chief";
-            this.lbL_FIO_chief.Size = new System.Drawing.Size(153, 22);
-            this.lbL_FIO_chief.TabIndex = 6;
-            this.lbL_FIO_chief.Text = "Горбунов Д.А.";
             // 
             // txB_numberAct
             // 
@@ -2395,28 +2417,6 @@
             this.lbL_summ.Size = new System.Drawing.Size(99, 16);
             this.lbL_summ.TabIndex = 20;
             this.lbL_summ.Text = "999999999.99";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(25, 203);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 22);
-            this.label7.TabIndex = 76;
-            this.label7.Text = "№ печати:";
-            // 
-            // lbL_numberPrintDocument
-            // 
-            this.lbL_numberPrintDocument.AutoSize = true;
-            this.lbL_numberPrintDocument.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_numberPrintDocument.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_numberPrintDocument.Location = new System.Drawing.Point(209, 202);
-            this.lbL_numberPrintDocument.Name = "lbL_numberPrintDocument";
-            this.lbL_numberPrintDocument.Size = new System.Drawing.Size(32, 22);
-            this.lbL_numberPrintDocument.TabIndex = 77;
-            this.lbL_numberPrintDocument.Text = "53";
             // 
             // ST_WorkForm
             // 
