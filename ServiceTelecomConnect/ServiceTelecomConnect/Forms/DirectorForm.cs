@@ -197,10 +197,14 @@ namespace ServiceTelecomConnect.Forms
             }
         }
 
-        void Btn_save_add_rst_Click(object sender, EventArgs e)
+        void Btn_add_registrationEmployeess_Click(object sender, EventArgs e)
         {
             try
             {
+                var re = new Regex(Environment.NewLine);
+                txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
+                txB_attorney.Text.Trim();
+
                 if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
                 {
                     MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -225,7 +229,7 @@ namespace ServiceTelecomConnect.Forms
                 if (Internet_check.CheackSkyNET())
                 {
                     var addQuery = $"INSERT INTO сharacteristics_вrigade (section_foreman_FIO, engineers_FIO, attorney, road) " +
-                        $"VALUES ('{cmB_section_foreman_FIO.Text}', '{cmB_engineers_FIO.Text}', '{cmB_road.Text}','{txB_attorney.Text}')";
+                        $"VALUES ('{cmB_section_foreman_FIO.Text}', '{cmB_engineers_FIO.Text}', '{txB_attorney.Text}','{cmB_road.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
@@ -248,6 +252,36 @@ namespace ServiceTelecomConnect.Forms
             if (e.ColumnIndex != 0)
             {
                 e.Cancel = true;
+            }
+        }
+
+        void Btn_change_registrationEmployees_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var id = txB_id.Text.Trim();
+                    var re = new Regex(Environment.NewLine);
+                    txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
+                    txB_attorney.Text.Trim();
+
+                    var changeQuery = $"update сharacteristics_вrigade set section_foreman_FIO = '{cmB_section_foreman_FIO.Text}', " +
+                        $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}' where id = '{id}'";
+
+                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                        MessageBox.Show("Запись успешно изменена!");
+                    }
+                    RefreshDataGrid(dataGridView1);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Не возможно изменить данные (Button_change_Click)");
+                }
             }
         }
     }
