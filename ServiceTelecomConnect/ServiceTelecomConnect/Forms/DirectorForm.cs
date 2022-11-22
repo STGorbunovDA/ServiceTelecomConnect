@@ -41,8 +41,9 @@ namespace ServiceTelecomConnect.Forms
                 dataGridView1.Columns.Add("engineers_FIO", "Инженер");
                 dataGridView1.Columns.Add("attorney", "Доверенность");
                 dataGridView1.Columns.Add("road", "Дорога");
+                dataGridView1.Columns.Add("numberPrintDocument", "№ печати");
                 dataGridView1.Columns.Add("IsNew", String.Empty);
-                dataGridView1.Columns[5].Visible = false;
+                dataGridView1.Columns[6].Visible = false;
             }
             catch (Exception)
             {
@@ -53,7 +54,7 @@ namespace ServiceTelecomConnect.Forms
         {
             try
             {
-                dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4), RowState.ModifieldNew)));
+                dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4), record.GetString(5), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -76,6 +77,7 @@ namespace ServiceTelecomConnect.Forms
                     cmB_engineers_FIO.Text = row.Cells[2].Value.ToString();
                     txB_attorney.Text = row.Cells[3].Value.ToString();
                     cmB_road.Text = row.Cells[4].Value.ToString();
+                    txB_numberPrintDocument.Text = row.Cells[5].Value.ToString();
 
                 }
             }
@@ -96,7 +98,7 @@ namespace ServiceTelecomConnect.Forms
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
 
-                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road FROM сharacteristics_вrigade";
+                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument FROM сharacteristics_вrigade";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -220,16 +222,23 @@ namespace ServiceTelecomConnect.Forms
                     MessageBox.Show("Поле \"Дорога\" не должна быть пустым, добавьте дорогу", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (!Regex.IsMatch(txB_attorney.Text, @"[0-9]{1,}[\/][0-9]{1,}[\s][о][т][\s][0-9]{2,2}[\.][0-9]{2,2}[\.][2][0][0-9]{2,2}[\s][г][о][д][а]$"))
+                if (!Regex.IsMatch(txB_attorney.Text, @"^[0-9]{1,}[\/][0-9]{1,}[\s][о][т][\s][0-9]{2,2}[\.][0-9]{2,2}[\.][2][0][0-9]{2,2}[\s][г][о][д][а]$"))
                 {
                     MessageBox.Show("Введите корректно \"Доверенность\"\n P.s. Пример: 53/53 от 10.01.2023 года", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_attorney.Select();
                     return;
                 }
+                if (!Regex.IsMatch(txB_numberPrintDocument.Text, @"^[0-9]{2,}$"))
+                {
+                    MessageBox.Show("Введите корректно \"№ печати\"\n P.s. Пример: 53", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_numberPrintDocument.Select();
+                    return;
+                }
+
                 if (Internet_check.CheackSkyNET())
                 {
-                    var addQuery = $"INSERT INTO сharacteristics_вrigade (section_foreman_FIO, engineers_FIO, attorney, road) " +
-                        $"VALUES ('{cmB_section_foreman_FIO.Text}', '{cmB_engineers_FIO.Text}', '{txB_attorney.Text}','{cmB_road.Text}')";
+                    var addQuery = $"INSERT INTO сharacteristics_вrigade (section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument) " +
+                        $"VALUES ('{cmB_section_foreman_FIO.Text}', '{cmB_engineers_FIO.Text}', '{txB_attorney.Text}','{cmB_road.Text}','{txB_numberPrintDocument.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
@@ -266,6 +275,9 @@ namespace ServiceTelecomConnect.Forms
                     var re = new Regex(Environment.NewLine);
                     txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
                     txB_attorney.Text.Trim();
+                    var re2 = new Regex(Environment.NewLine);
+                    txB_numberPrintDocument.Text = re2.Replace(txB_numberPrintDocument.Text, " ");
+                    txB_numberPrintDocument.Text.Trim();
 
                     if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
                     {
@@ -282,16 +294,22 @@ namespace ServiceTelecomConnect.Forms
                         MessageBox.Show("Поле \"Дорога\" не должна быть пустым, добавьте дорогу", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    if (!Regex.IsMatch(txB_attorney.Text, @"[0-9]{1,}[\/][0-9]{1,}[\s][о][т][\s][0-9]{2,2}[\.][0-9]{2,2}[\.][2][0][0-9]{2,2}[\s][г][о][д][а]$"))
+                    if (!Regex.IsMatch(txB_attorney.Text, @"^[0-9]{1,}[\/][0-9]{1,}[\s][о][т][\s][0-9]{2,2}[\.][0-9]{2,2}[\.][2][0][0-9]{2,2}[\s][г][о][д][а]$"))
                     {
                         MessageBox.Show("Введите корректно \"Доверенность\"\n P.s. Пример: 53/53 от 10.01.2023 года", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_attorney.Select();
                         return;
                     }
-
+                    if (!Regex.IsMatch(txB_numberPrintDocument.Text, @"^[0-9]{2,}$"))
+                    {
+                        MessageBox.Show("Введите корректно \"№ печати\"\n P.s. Пример: 53", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_numberPrintDocument.Select();
+                        return;
+                    }
 
                     var changeQuery = $"update сharacteristics_вrigade set section_foreman_FIO = '{cmB_section_foreman_FIO.Text}', " +
-                        $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}' where id = '{id}'";
+                        $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}'," +
+                        $"numberPrintDocument = '{txB_numberPrintDocument.Text}' where id = '{id}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -317,14 +335,14 @@ namespace ServiceTelecomConnect.Forms
                 {
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
-                        dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
+                        dataGridView1.Rows[row.Index].Cells[6].Value = RowState.Deleted;
                     }
 
                     DB.GetInstance.OpenConnection();
 
                     for (int index = 0; index < dataGridView1.Rows.Count; index++)
                     {
-                        var rowState = (RowState)dataGridView1.Rows[index].Cells[5].Value;
+                        var rowState = (RowState)dataGridView1.Rows[index].Cells[6].Value;
 
                         if (rowState == RowState.Deleted)
                         {
@@ -348,7 +366,7 @@ namespace ServiceTelecomConnect.Forms
             }
         }
 
-        void Btn_update_registrationEmployees_Click(object sender, EventArgs e)
+        void PicB_Update_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -378,6 +396,7 @@ namespace ServiceTelecomConnect.Forms
             cmB_section_foreman_FIO.Text = cmB_section_foreman_FIO.Items[0].ToString();
             cmB_engineers_FIO.Text = cmB_engineers_FIO.Items[0].ToString();
             txB_attorney.Clear();
+            txB_numberPrintDocument.Clear();
             cmB_road.Text = cmB_road.Items[0].ToString();
         }
     }
