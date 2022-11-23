@@ -122,7 +122,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                QuerySettingDataBase.GettingTeamdata(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_polinon_full, lbL_numberPrintDocument, _user.Login);
+                QuerySettingDataBase.GettingTeamdata(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user.Login, cmB_road);
 
                 dataGridView1.EnableHeadersVisualStyles = false;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
@@ -685,7 +685,7 @@ namespace ServiceTelecomConnect
                 }
                 PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
-                    lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
+                    lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
                 QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
             }
             catch (Exception)
@@ -717,7 +717,7 @@ namespace ServiceTelecomConnect
 
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
-                     lbL_doverennost.Text, lbL_polinon_full.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
+                     lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
                      cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
                      txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
                      txB_сompleted_works_4.Text, txB_parts_4.Text, txB_сompleted_works_5.Text, txB_parts_5.Text, txB_сompleted_works_6.Text,
@@ -883,7 +883,7 @@ namespace ServiceTelecomConnect
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (txB_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
@@ -938,7 +938,7 @@ namespace ServiceTelecomConnect
                             var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                             if (txB_serialNumber.Text != "")
                             {
-                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change));
+                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
@@ -1107,7 +1107,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region отк. формы изменения РСТ
-        private void Button_new_add_rst_form_Click_change(object sender, EventArgs e)
+        private void Button_change_rst_form_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -2717,7 +2717,7 @@ namespace ServiceTelecomConnect
         #region close form
         void ST_WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Environment.Exit(1);
+            System.Environment.Exit(0);
         }
 
         private void ST_WorkForm_FormClosing(object sender, FormClosingEventArgs e)
