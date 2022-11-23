@@ -557,24 +557,6 @@ namespace ServiceTelecomConnect
                         addRSTForm.lbL_road.Text = cmB_road.Text;
                         addRSTForm.Show();
                     }
-
-                    #region старая сортировка получения крайнего акта с помощью грида
-                    //if (dataGridView1.RowCount != 0)
-                    //{
-                    //    this.dataGridView1.Sort(this.dataGridView1.Columns["numberAct"], ListSortDirection.Ascending);
-                    //    dataGridView1.CurrentCell = dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[0];
-                    //    DataGridViewRow row = dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex];
-                    //    addRSTForm.lbL_last_act.Text = row.Cells[9].Value.ToString();
-                    //    foreach (DataGridViewColumn column in dataGridView1.Columns)
-                    //    {
-                    //        column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                    //    }
-                    //}
-                    //foreach (DataGridViewColumn column in dataGridView1.Columns)
-                    //{
-                    //    column.SortMode = DataGridViewColumnSortMode.Automatic;
-                    //}
-                    #endregion
                 }
                 catch (Exception)
                 {
@@ -615,6 +597,7 @@ namespace ServiceTelecomConnect
                             changeRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
                             changeRSTForm.txB_post.Text = txB_post.Text;
                             changeRSTForm.txB_comment.Text = txB_comment.Text;
+                            changeRSTForm.lbL_road.Text = cmB_road.Text;
 
                             if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                             {

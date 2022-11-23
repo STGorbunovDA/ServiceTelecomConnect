@@ -96,6 +96,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
+                dgw.Columns[40].Visible = false;
                 dgw.Columns[41].Visible = false;
 
             }

@@ -886,6 +886,7 @@
             this.lbL_road.Size = new System.Drawing.Size(49, 15);
             this.lbL_road.TabIndex = 105;
             this.lbL_road.Text = "Дорога";
+            this.lbL_road.Visible = false;
             // 
             // AddRSTForm
             // 
