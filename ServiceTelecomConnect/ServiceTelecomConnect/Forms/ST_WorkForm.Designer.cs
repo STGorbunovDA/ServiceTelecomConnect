@@ -2036,6 +2036,7 @@
             // 
             // txB_serialNumber
             // 
+            this.txB_serialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_serialNumber.Location = new System.Drawing.Point(253, 68);
             this.txB_serialNumber.Multiline = true;
@@ -2193,6 +2194,7 @@
             // 
             this.txB_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txB_numberActRemont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_numberActRemont.Location = new System.Drawing.Point(1135, 103);
             this.txB_numberActRemont.Name = "txB_numberActRemont";

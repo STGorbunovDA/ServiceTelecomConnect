@@ -179,7 +179,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (1 * 60 * 1000); // 15 mins
+                timer.Interval = (30 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -278,7 +278,7 @@ namespace ServiceTelecomConnect
             {
                 if (String.IsNullOrEmpty(cmB_city.Text))
                 {
-                    MessageBox.Show("В Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -347,6 +347,7 @@ namespace ServiceTelecomConnect
                     txB_parts_7.Text = row.Cells[37].Value.ToString();
                     txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
                     txB_comment.Text = row.Cells[39].Value.ToString();
+                    cmB_road.Text = row.Cells[40].Value.ToString();
                 }
             }
             catch (Exception)
@@ -403,58 +404,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region Добавление радиостанций в выполнение
-
-        void AddExecution(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dataGridView1.SelectedRows.Count > 1)
-                {
-                    string Mesage;
-                    Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                else
-                {
-                    string Mesage;
-                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                ContextMenu m = new ContextMenu();
-                m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Январь")));
-                m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Февраль")));
-                m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Март")));
-                m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Апрель")));
-                m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Май")));
-                m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июнь")));
-                m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июль")));
-                m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Август")));
-                m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Сентябрь")));
-                m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Октябрь")));
-                m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
-                m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
-
-                m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка добавления радиостанции(й) в выполнение (AddExecution)");
-            }
-        }
-
-
-        #endregion
-
         #region Удаление из БД
 
         void Button_delete_Click(object sender, EventArgs e)
@@ -504,6 +453,9 @@ namespace ServiceTelecomConnect
                 }
 
                 QuerySettingDataBase.DeleteRowCell(dataGridView1);
+                txB_serialNumber.Clear();
+                txB_numberAct.Clear();
+                txB_numberActRemont.Clear(); 
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
@@ -533,7 +485,13 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (dataGridView1.Rows.Count > 0)
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                else if (dataGridView1.Rows.Count > 0)
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
@@ -547,11 +505,6 @@ namespace ServiceTelecomConnect
 
                         dataGridView1.FirstDisplayedScrollingRowIndex = index;
                     }
-                }
-                else if (dataGridView1.Rows.Count == 0)
-                {
-                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-                    Counters();
                 }
             }
             catch (Exception)
@@ -567,11 +520,6 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void pictureBox2_update_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
             Button_update_Click(sender, e);
         }
 
@@ -606,6 +554,7 @@ namespace ServiceTelecomConnect
                         addRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
                         addRSTForm.txB_post.Text = txB_post.Text;
                         addRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
+                        addRSTForm.lbL_road.Text = cmB_road.Text;
                         addRSTForm.Show();
                     }
 
@@ -633,6 +582,80 @@ namespace ServiceTelecomConnect
                 }
             }
 
+        }
+        #endregion
+
+        #region отк. формы изменения РСТ
+        private void Button_change_rst_form_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    if (txB_serialNumber.Text != "")
+                    {
+                        СhangeRSTForm changeRSTForm = new СhangeRSTForm();
+                        if (Application.OpenForms["СhangeRSTForm"] == null)
+                        {
+
+                            changeRSTForm.DoubleBufferedForm(true);
+                            changeRSTForm.txB_city.Text = txB_city.Text;
+                            changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
+                            changeRSTForm.txB_company.Text = txB_company.Text;
+                            changeRSTForm.txB_location.Text = txB_location.Text;
+                            changeRSTForm.cmB_model.Items.Add(cmB_model.Text).ToString();
+                            changeRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
+                            changeRSTForm.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
+                            changeRSTForm.txB_networkNumber.Text = txB_networkNumber.Text;
+                            String dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("dd.MM.yyyy");
+                            changeRSTForm.txB_dateTO.Text = dateTO;
+                            changeRSTForm.txB_numberAct.Text = txB_numberAct.Text;
+                            changeRSTForm.txB_representative.Text = txB_representative.Text;
+                            changeRSTForm.txB_numberIdentification.Text = txB_numberIdentification.Text;
+                            changeRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
+                            changeRSTForm.txB_post.Text = txB_post.Text;
+                            changeRSTForm.txB_comment.Text = txB_comment.Text;
+
+                            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+                            {
+                                changeRSTForm.txB_decommissionSerialNumber.Text = txB_decommissionSerialNumber.Text;
+                            }
+
+                            if (txB_dateIssue.Text == "")
+                            {
+                                txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
+                            }
+                            changeRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
+
+                            if (txB_antenna.Text == "")
+                            {
+                                txB_antenna.Text = "-";
+                            }
+                            changeRSTForm.txB_antenna.Text = txB_antenna.Text;
+                            if (txB_manipulator.Text == "")
+                            {
+                                txB_manipulator.Text = "-";
+                            }
+                            changeRSTForm.txB_manipulator.Text = txB_manipulator.Text;
+                            if (txB_batteryСharger.Text == "")
+                            {
+                                txB_batteryСharger.Text = "-";
+                            }
+                            changeRSTForm.txB_batteryСharger.Text = txB_batteryСharger.Text;
+                            if (txB_AKB.Text == "")
+                            {
+                                txB_AKB.Text = "-";
+                            }
+                            changeRSTForm.txB_AKB.Text = txB_AKB.Text;
+                            changeRSTForm.Show();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
+                }
+            }
         }
         #endregion
 
@@ -800,7 +823,7 @@ namespace ServiceTelecomConnect
         {
             if (String.IsNullOrEmpty(cmB_city.Text))
             {
-                MessageBox.Show("В Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             RegistryKey currentUserKey = Registry.CurrentUser;
@@ -1139,80 +1162,6 @@ namespace ServiceTelecomConnect
                 catch (Exception)
                 {
                     MessageBox.Show("Ошибка открытия формы добавления ремонта RemontRSTForm (Button_new_add_rst_form_click_remont)");
-                }
-            }
-        }
-        #endregion
-
-        #region отк. формы изменения РСТ
-        private void Button_change_rst_form_Click(object sender, EventArgs e)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    if (txB_serialNumber.Text != "")
-                    {
-                        СhangeRSTForm changeRSTForm = new СhangeRSTForm();
-                        if (Application.OpenForms["СhangeRSTForm"] == null)
-                        {
-
-                            changeRSTForm.DoubleBufferedForm(true);
-                            changeRSTForm.txB_city.Text = txB_city.Text;
-                            changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
-                            changeRSTForm.txB_company.Text = txB_company.Text;
-                            changeRSTForm.txB_location.Text = txB_location.Text;
-                            changeRSTForm.cmB_model.Items.Add(cmB_model.Text).ToString();
-                            changeRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
-                            changeRSTForm.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
-                            changeRSTForm.txB_networkNumber.Text = txB_networkNumber.Text;
-                            String dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("dd.MM.yyyy");
-                            changeRSTForm.txB_dateTO.Text = dateTO;
-                            changeRSTForm.txB_numberAct.Text = txB_numberAct.Text;
-                            changeRSTForm.txB_representative.Text = txB_representative.Text;
-                            changeRSTForm.txB_numberIdentification.Text = txB_numberIdentification.Text;
-                            changeRSTForm.txB_phoneNumber.Text = txB_phoneNumber.Text;
-                            changeRSTForm.txB_post.Text = txB_post.Text;
-                            changeRSTForm.txB_comment.Text = txB_comment.Text;
-
-                            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
-                            {
-                                changeRSTForm.txB_decommissionSerialNumber.Text = txB_decommissionSerialNumber.Text;
-                            }
-
-                            if (txB_dateIssue.Text == "")
-                            {
-                                txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                            }
-                            changeRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
-
-                            if (txB_antenna.Text == "")
-                            {
-                                txB_antenna.Text = "-";
-                            }
-                            changeRSTForm.txB_antenna.Text = txB_antenna.Text;
-                            if (txB_manipulator.Text == "")
-                            {
-                                txB_manipulator.Text = "-";
-                            }
-                            changeRSTForm.txB_manipulator.Text = txB_manipulator.Text;
-                            if (txB_batteryСharger.Text == "")
-                            {
-                                txB_batteryСharger.Text = "-";
-                            }
-                            changeRSTForm.txB_batteryСharger.Text = txB_batteryСharger.Text;
-                            if (txB_AKB.Text == "")
-                            {
-                                txB_AKB.Text = "-";
-                            }
-                            changeRSTForm.txB_AKB.Text = txB_AKB.Text;
-                            changeRSTForm.Show();
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка открытия формы изменения радиостанции СhangeRSTForm (Button_new_add_rst_form_Click_change)");
                 }
             }
         }
@@ -3416,6 +3365,58 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка сохранения всей БД.");
             }
         }
+        #endregion
+
+        #region Добавление радиостанций в выполнение для куратора
+
+        void AddExecution(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count > 1)
+                {
+                    string Mesage;
+                    Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    string Mesage;
+                    Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Январь")));
+                m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Февраль")));
+                m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Март")));
+                m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Апрель")));
+                m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Май")));
+                m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июнь")));
+                m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Июль")));
+                m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Август")));
+                m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Сентябрь")));
+                m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Октябрь")));
+                m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
+                m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
+
+                m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка добавления радиостанции(й) в выполнение (AddExecution)");
+            }
+        }
+
+
         #endregion
     }
 }

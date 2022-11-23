@@ -670,9 +670,24 @@ namespace ServiceTelecomConnect
                     }
                     else if (model == "Комбат T-44")
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][/.][0-9]{2,2}[/.]+[0-9]{2,2}[/.][0-9]{4,4}$"))
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
                         {
                             MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Шеврон T-44 V2")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_serialNumber.Select();
 
                             string Mesage = "Вы действительно хотите добавить радиостанцию?";
