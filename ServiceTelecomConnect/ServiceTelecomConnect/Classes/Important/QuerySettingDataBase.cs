@@ -2103,8 +2103,9 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument FROM " +
-                        $"сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' OR engineers_FIO = '{_user}'";
+                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
+                        $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' " +
+                        $"OR engineers_FIO = '{_user}' OR curator = '{_user}' OR departmentCommunications = '{_user}'";
 
                     if (Internet_check.CheackSkyNET())
                     {
@@ -2119,10 +2120,32 @@ namespace ServiceTelecomConnect
                                     lbL_FIO_Engineer.Text = reader[2].ToString();
                                     lbL_doverennost.Text = reader[3].ToString();
                                     lbL_road.Text = reader[4].ToString();
-                                    cmB_road.Text = reader[4].ToString();
                                     lbL_numberPrintDocument.Text = reader[5].ToString();
                                 }
                                 reader.Close();
+                            }
+                        }
+                    }
+
+                    string querystring = $"SELECT id, road FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' " +
+                        $"OR engineers_FIO = '{_user}' OR curator = '{_user}' OR departmentCommunications = '{_user}'";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable table = new DataTable();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                cmB_road.DataSource = table;
+                                cmB_road.ValueMember = "id";
+                                cmB_road.DisplayMember = "road";
+                            }
+                            else
+                            {
+                                MessageBox.Show($"Системная ошибка добавления дороги в Control ComboBox ({_user})");
+                                System.Environment.Exit(0);
                             }
                         }
                     }

@@ -149,7 +149,7 @@ namespace ServiceTelecomConnect
 
                         adapter.Fill(table);
 
-                        if (table.Rows.Count == 1)
+                        if (table.Rows.Count >= 1)
                         {
                             lbL_сomparison.Enabled = false;
                         }
@@ -176,7 +176,7 @@ namespace ServiceTelecomConnect
 
                         adapter.Fill(table);
 
-                        if (table.Rows.Count == 1)
+                        if (table.Rows.Count >= 1)
                         {
                             lbL_сomparison.Enabled = false;
                         }
@@ -203,7 +203,7 @@ namespace ServiceTelecomConnect
 
                         adapter.Fill(table);
 
-                        if (table.Rows.Count == 1)
+                        if (table.Rows.Count >= 1)
                         {
                             lbL_TutorialEngineers.Enabled = false;
                         }
@@ -229,7 +229,7 @@ namespace ServiceTelecomConnect
 
                         adapter.Fill(table);
 
-                        if (table.Rows.Count == 1)
+                        if (table.Rows.Count >= 1)
                         {
                             lbL_сomparison.Enabled = false;
                             lbL_TutorialEngineers.Enabled = false;
