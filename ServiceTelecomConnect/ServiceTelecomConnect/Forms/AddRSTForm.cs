@@ -270,9 +270,24 @@ namespace ServiceTelecomConnect
                     }
                     else if (model == "Комбат T-44")
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][/.][0-9]{2,2}[/.]+[0-9]{2,2}[/.][0-9]{4,4}$"))
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
                         {
                             MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Шеврон T-44 V2")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_serialNumber.Select();
 
                             string Mesage = "Вы действительно хотите добавить радиостанцию?";
@@ -544,6 +559,7 @@ namespace ServiceTelecomConnect
                     var AKB = txB_AKB.Text;
                     var batteryСharger = txB_batteryСharger.Text;
                     var comment = txB_comment.Text;
+                    var road = lbL_road.Text;
 
                     //var x = DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
 
@@ -562,12 +578,12 @@ namespace ServiceTelecomConnect
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                     $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon}', '{company}', '{location}'," +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon}', '{company}', '{location}'," +
                                     $"'{model}','{serialNumber}', '{inventoryNumber}', '{networkNumber}', " +
                                     $"'{dateTO}','{numberAct}','{city}','{price}', '{representative}', '{post}', " +
                                     $"'{numberIdentification}', '{dateIssue}', '{phoneNumber}', '{""}', '{""}', '{0.00}'," +
                                     $"'{antenna}', '{manipulator}', '{AKB}', '{batteryСharger}', '{""}', '{""}', " +
-                                    $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment.Trim()}')";
+                                    $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment}', '{road}')";
 
 
                                 using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
@@ -575,11 +591,39 @@ namespace ServiceTelecomConnect
                                     DB.GetInstance.OpenConnection();
                                     command.ExecuteNonQuery();
                                     DB.GetInstance.CloseConnection();
-                                    Add_rst_radiostantion_full();
                                     MessageBox.Show("Радиостанция успешно добавлена!");
                                     txB_serialNumber.Text = "";
                                     txB_inventoryNumber.Text = "";
                                     txB_networkNumber.Text = "";
+                                }
+
+                                try
+                                {
+                                    if (CheacSerialNumber_radiostantion_full(serialNumber) == false)
+                                    {
+                                        var addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
+                                                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                                        $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                                        $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                                        $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                                        $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                                        $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
+                                                        $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
+                                                        $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
+                                                        $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                                        $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment}', '{road}')";
+
+                                        using (MySqlCommand command2 = new MySqlCommand(addQuery2, DB.GetInstance.GetConnection()))
+                                        {
+                                            DB.GetInstance.OpenConnection();
+                                            command2.ExecuteNonQuery();
+                                            DB.GetInstance.CloseConnection();
+                                        }
+                                    }
+                                }
+                                catch (Exception)
+                                {
+                                    MessageBox.Show("Ошибка! Радиостнация не добавлена в общую БД!(CheacSerialNumber_radiostantion_full)");
                                 }
 
                             }
@@ -602,71 +646,6 @@ namespace ServiceTelecomConnect
                 catch (Exception)
                 {
                     MessageBox.Show("Ошибка! Радиостнация не добавлена!(Add_rst_radiostantion)");
-                }
-            }
-
-        }
-        void Add_rst_radiostantion_full()
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    var city = txB_city.Text;
-                    var poligon = cmB_poligon.Text;
-                    var company = txB_company.Text;
-                    var location = txB_location.Text;
-                    var model = cmB_model.Text;
-                    var serialNumber = txB_serialNumber.Text;
-                    var inventoryNumber = txB_inventoryNumber.Text;
-                    var networkNumber = txB_networkNumber.Text;
-                    var numberAct = txB_numberAct.Text;
-                    var dateTO = txB_dateTO.Text;
-                    var price = txB_price.Text;
-                    var representative = txB_representative.Text;
-                    var post = txB_post.Text;
-                    var numberIdentification = txB_numberIdentification.Text;
-                    var dateIssue = txB_dateIssue.Text;
-                    var phoneNumber = txB_phoneNumber.Text;
-                    var antenna = txB_antenna.Text;
-                    var manipulator = txB_manipulator.Text;
-                    var AKB = txB_AKB.Text;
-                    var batteryСharger = txB_batteryСharger.Text;
-                    var comment = txB_comment.Text;
-
-                    DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
-                    if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
-                    && !(serialNumber == "") && !(dateTO == "") && !(numberAct == "") && !(city == "")
-                    && !(representative == "") && !(post == "") && !(numberIdentification == "")
-                    && !(phoneNumber == "") && !(antenna == "")
-                    && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
-                    {
-                        if (CheacSerialNumber_radiostantion_full(serialNumber) == false)
-                        {
-                            var addQuery = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
-                                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
-                                            $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
-                                            $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
-                                            $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                            $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                            $"'{model.Trim()}','{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}', " +
-                                            $"'{dateTO.Trim()}','{numberAct.Trim()}','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
-                                            $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
-                                            $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                            $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment}')";
-
-                            using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Радиостнация не добавлена в общую БД!(CheacSerialNumber_radiostantion_full)");
                 }
             }
 
@@ -705,7 +684,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
+                    string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
 
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
@@ -719,7 +698,6 @@ namespace ServiceTelecomConnect
                             {
                                 try
                                 {
-                                    DB.GetInstance.OpenConnection();
                                     var model = cmB_model.Text;
                                     var inventoryNumber = txB_inventoryNumber.Text;
                                     var networkNumber = txB_networkNumber.Text;
@@ -731,8 +709,12 @@ namespace ServiceTelecomConnect
                                     var post = txB_post.Text;
                                     var dateIssue = txB_dateIssue.Text;
 
-                                    var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}' WHERE serialNumber = '{serialNumber}'";
+                                    var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                                        $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', " +
+                                        $"numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}'" +
+                                        $" WHERE serialNumber = '{serialNumber}'";
 
+                                    DB.GetInstance.OpenConnection();
                                     using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
                                     {
                                         command5.ExecuteNonQuery();
@@ -741,7 +723,7 @@ namespace ServiceTelecomConnect
                                 }
                                 catch (Exception)
                                 {
-                                    MessageBox.Show("Ошибка! При добавлении в текущую БД найденная радиостанция в общей БД не изменена!(CheacSerialNumber_radiostantion_full)");
+                                    MessageBox.Show("Ошибка! При добавлении в текущую БД, найденная радиостанция в общей БД не изменена!(CheacSerialNumber_radiostantion_full)");
                                 }
                                 return true;
                             }
@@ -1171,6 +1153,34 @@ namespace ServiceTelecomConnect
 
                     MessageBox.Show("Модель радиостанции успешно добавлена!");
                     DB.GetInstance.CloseConnection();
+
+
+                    try
+                    {
+                        string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                        using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            DataTable model_radiostation_name = new DataTable();
+
+                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command2))
+                            {
+                                adapter.Fill(model_radiostation_name);
+                                if (model_radiostation_name.Rows.Count > 0)
+                                {
+                                    cmB_model.DataSource = model_radiostation_name;
+                                    cmB_model.ValueMember = "id";
+                                    cmB_model.DisplayMember = "model_radiostation_name";
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                    }
+
 
                     cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
                     btn_model_radiostation_name.Enabled = false;

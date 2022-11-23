@@ -137,7 +137,12 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                            $"WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -199,7 +204,12 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                            $"WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -462,7 +472,11 @@ namespace ServiceTelecomConnect
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    string queryString = $"SELECT * FROM radiostantion";
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -1042,12 +1056,12 @@ namespace ServiceTelecomConnect
                 {
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[40].Value = RowState.Deleted;
+                        dgw.Rows[row.Index].Cells[41].Value = RowState.Deleted;
                     }
 
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = (RowState)dgw.Rows[index].Cells[40].Value;//проверить индекс
+                        var rowState = (RowState)dgw.Rows[index].Cells[41].Value;//проверить индекс
 
                         if (rowState == RowState.Deleted)
                         {
@@ -1059,6 +1073,7 @@ namespace ServiceTelecomConnect
                                 DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
                                 DB.GetInstance.CloseConnection();
+
                             }
                         }
                     }

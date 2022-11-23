@@ -95,6 +95,7 @@
             this.lbL_last_act = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.lbL_cmb_city_ST_WorkForm = new System.Windows.Forms.Label();
+            this.lbL_road = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dateIssue)).BeginInit();
@@ -875,6 +876,17 @@
             this.lbL_cmb_city_ST_WorkForm.Text = "Рабочий город";
             this.lbL_cmb_city_ST_WorkForm.Visible = false;
             // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(7, 45);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(49, 15);
+            this.lbL_road.TabIndex = 105;
+            this.lbL_road.Text = "Дорога";
+            // 
             // AddRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -882,6 +894,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 551);
+            this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.lbL_cmb_city_ST_WorkForm);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.lbL_last_act);
@@ -1033,5 +1046,6 @@
         private System.Windows.Forms.Label label36;
         internal System.Windows.Forms.Label lbL_last_act;
         internal System.Windows.Forms.Label lbL_cmb_city_ST_WorkForm;
+        internal System.Windows.Forms.Label lbL_road;
     }
 }
