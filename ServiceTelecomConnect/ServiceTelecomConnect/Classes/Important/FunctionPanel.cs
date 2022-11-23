@@ -276,7 +276,8 @@ namespace ServiceTelecomConnect
                         parts_6 = row.Cells[36].Value,
                         parts_7 = row.Cells[37].Value,
                         decommissionSerialNumber = row.Cells[38].Value,
-                        comment = row.Cells[39].Value
+                        comment = row.Cells[39].Value,
+                        road = row.Cells[40].Value
                     });
                     products.Add(product);
                 }

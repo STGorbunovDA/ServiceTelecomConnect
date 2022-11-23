@@ -71,6 +71,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
                 dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
                 dgw.Columns.Add("comment", "Примечание");
+                dgw.Columns.Add("road", "Дорога");
                 dgw.Columns.Add("IsNew", String.Empty);
                 dgw.Columns[12].Visible = true;
                 dgw.Columns[13].Visible = false;
@@ -95,7 +96,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[35].Visible = false;
                 dgw.Columns[36].Visible = false;
                 dgw.Columns[37].Visible = false;
-                dgw.Columns[40].Visible = false;
+                dgw.Columns[41].Visible = false;
 
             }
             catch (Exception)
@@ -115,7 +116,8 @@ namespace ServiceTelecomConnect
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
                          record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                          record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39), RowState.ModifieldNew)));
+                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                         record.GetString(40), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -123,7 +125,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void RefreshDataGrid(DataGridView dgw, string city)
+        internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -135,7 +137,7 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%'";
+                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -185,7 +187,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city)
+        internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -197,7 +199,7 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%'";
+                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -257,7 +259,8 @@ namespace ServiceTelecomConnect
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
                          record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                          record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39), RowState.ModifieldNew)));
+                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                         record.GetString(40), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -1941,13 +1944,13 @@ namespace ServiceTelecomConnect
 
         #region заполнение cmB_city из таблицы
 
-        internal static void SelectCityGropBy(ComboBox cmB_city)
+        internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
-                    string querystring = $"SELECT city FROM radiostantion GROUP BY city";
+                    string querystring = $"SELECT city FROM radiostantion WHERE road = '{cmB_road.Text}' GROUP BY city";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();

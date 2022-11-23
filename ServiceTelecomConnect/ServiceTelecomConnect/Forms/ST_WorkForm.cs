@@ -69,7 +69,6 @@ namespace ServiceTelecomConnect
         {
             if (_user.IsAdmin == "Дирекция связи")
             {
-                //panel1.Enabled = false;
                 panel3.Enabled = false;
                 Functional_loading_panel.Enabled = false;
                 panel_date.Enabled = false;
@@ -93,7 +92,6 @@ namespace ServiceTelecomConnect
             }
             else if (_user.IsAdmin == "Инженер")
             {
-                //panel1.Enabled = false;
                 panel3.Enabled = false;
                 Functional_loading_panel.Enabled = false;
                 panel_remont_information_company.Enabled = false;
@@ -129,11 +127,11 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                QuerySettingDataBase.SelectCityGropBy(cmB_city);
+                QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
 
                 QuerySettingDataBase.CreateColums(dataGridView1);
                 QuerySettingDataBase.CreateColums(dataGridView2);
-                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                 Counters();
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
@@ -181,7 +179,7 @@ namespace ServiceTelecomConnect
 
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
-                timer.Interval = (30 * 60 * 1000); // 15 mins
+                timer.Interval = (1 * 60 * 1000); // 15 mins
                 timer.Tick += new EventHandler(TimerEventProcessor);
                 timer.Start();
 
@@ -197,7 +195,11 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity);
+            if (dataGridView1.Rows.Count == 0)
+            {
+                return;
+            }
+            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, cmB_road.Text);
             new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
@@ -239,6 +241,11 @@ namespace ServiceTelecomConnect
         #region загрузка всей таблицы ТО в текущем году
         void Button_all_BD_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             QuerySettingDataBase.Full_BD(dataGridView1);
             Counters();
             txb_flag_all_BD.Text = "Вся БД";
@@ -249,7 +256,7 @@ namespace ServiceTelecomConnect
         #region загрузка городов CmB_city_Click
         void CmB_city_Click(object sender, EventArgs e)
         {
-            QuerySettingDataBase.SelectCityGropBy(cmB_city);
+            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
         }
         #endregion
 
@@ -269,6 +276,12 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                if (String.IsNullOrEmpty(cmB_city.Text))
+                {
+                    MessageBox.Show("В Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
                 helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
@@ -494,7 +507,7 @@ namespace ServiceTelecomConnect
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
-                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                 txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
@@ -524,7 +537,7 @@ namespace ServiceTelecomConnect
                 {
                     int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                     int index = dataGridView1.CurrentRow.Index;
-                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                     Counters();
                     dataGridView1.ClearSelection();
 
@@ -537,7 +550,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (dataGridView1.Rows.Count == 0)
                 {
-                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                     Counters();
                 }
             }
@@ -554,6 +567,11 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void pictureBox2_update_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             Button_update_Click(sender, e);
         }
 
@@ -656,7 +674,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка метода ctrl+c+v (ProcessKbdCtrlShortcuts)");
             }
         }
-        
+
         #endregion
 
         #region АКТ => excel
@@ -668,6 +686,11 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                 {
                     MessageBox.Show($"Нельзя напечатать акт ТО, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
+                    return;
+                }
+                if (String.IsNullOrEmpty(txB_numberAct.Text))
+                {
+                    MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
@@ -686,7 +709,7 @@ namespace ServiceTelecomConnect
                 PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                     lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
-                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
             }
             catch (Exception)
             {
@@ -738,6 +761,11 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 pnL_printBase.Visible = true;
             }
             catch (Exception)
@@ -759,19 +787,29 @@ namespace ServiceTelecomConnect
 
         void Button_search_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
             Counters();
         }
 
         void Button_seach_BD_city_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(cmB_city.Text))
+            {
+                MessageBox.Show("В Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             RegistryKey currentUserKey = Registry.CurrentUser;
             RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
             helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
             helloKey.Close();
 
-            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
-            QuerySettingDataBase.SelectCityGropBy(cmB_city);
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
             Counters();
 
             RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
@@ -1007,7 +1045,7 @@ namespace ServiceTelecomConnect
                     {
                         panel1.Enabled = true;
                         panel3.Enabled = true;
-                        QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                        QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                         Counters();
                     }
                 }
@@ -1186,15 +1224,10 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (txB_numberActRemont.Text == "")
+                if (String.IsNullOrEmpty(txB_numberActRemont.Text))
                 {
-                    string Mesage;
-                    Mesage = "На данной радиостанции нет ремонта!";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Нельзя напечатать \"Акт ремонта\"! Выбери \"Акт ремонта\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
                 else
                 {
@@ -1270,7 +1303,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = true;
         }
 
-       
+
 
         /// <summary>
         /// считыванеи данных из реестра в panel_info_remont
@@ -2611,7 +2644,7 @@ namespace ServiceTelecomConnect
                 btn_Show_DB_radiostantion_last_year.Enabled = false;
                 btn_Show_DB_radiostantion_full.Enabled = false;
                 FunctionPanel.Clear_BD_current_year();
-                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text);
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                 btn_clear_BD_current_year.Enabled = true;
                 btn_manual_backup_current_DB.Enabled = true;
                 btn_loading_json_file_BD.Enabled = true;
@@ -3129,6 +3162,12 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 if (cmB_seach.SelectedIndex == 0)
                 {
                     try
