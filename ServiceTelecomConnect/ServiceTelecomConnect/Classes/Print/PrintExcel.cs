@@ -10,7 +10,7 @@ namespace ServiceTelecomConnect
     {
         internal static void PrintExcelActTo(DataGridView dgw, string numberAct, string date,
             string company, string location, string FIO_chief, string post, string representative,
-            string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
+            string numberIdentification, string FIO_Engineer, string doverennost, string road,
             string dateIssue, string city, string poligon)
         {
             Excel.Application exApp = new Excel.Application();
@@ -1406,7 +1406,7 @@ namespace ServiceTelecomConnect
                             workSheet3.Cells[8, 2] = $"должность";
                             workSheet3.Cells[8, 8] = $"фамилия, инициалы";
                             workSheet3.Cells[9, 1] = $"действующий по доверенности № {doverennost} с одной стороны и представитель Заказчика";
-                            workSheet3.Cells[10, 1] = $"(эксплуатирующей организации):             {company}             {polinon_full} (полигон {poligon})";
+                            workSheet3.Cells[10, 1] = $"(эксплуатирующей организации):             {company}             {road} (полигон {poligon})";
                             workSheet3.Cells[11, 1] = $"\n{post}\n";
                             workSheet3.Cells[11, 7] = $"{representative}";
                             workSheet3.Cells[12, 1] = $"должность";
@@ -1546,7 +1546,7 @@ namespace ServiceTelecomConnect
 
         internal static void PrintExcelActRemont(DataGridView dgw, string date,
             string company, string location, string FIO_chief, string post, string representative,
-            string numberIdentification, string FIO_Engineer, string doverennost, string polinon_full,
+            string numberIdentification, string FIO_Engineer, string doverennost, string road,
             string dateIssue, string city, string poligon, string сategory, string model, string serialNumber,
             string inventoryNumber, string networkNumber, string сompleted_works_1, string parts_1,
             string сompleted_works_2, string parts_2, string сompleted_works_3, string parts_3,
@@ -1915,7 +1915,7 @@ namespace ServiceTelecomConnect
                     workSheet.Cells[9, 1] = $"действующий по доверенности № {doverennost} с одной стороны и представитель";
                     workSheet.Cells[10, 1] = $"эксплуатирующей организации:";
                     workSheet.Cells[10, 4] = $"{company}";
-                    workSheet.Cells[10, 6] = $"{polinon_full} (полигон {poligon})";
+                    workSheet.Cells[10, 6] = $"{road} (полигон {poligon})";
                     workSheet.Cells[11, 1] = $"\n{post}\n";
                     workSheet.Cells[11, 6] = $"{representative}";
                     workSheet.Cells[12, 1] = $"должность";

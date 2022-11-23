@@ -867,7 +867,7 @@ namespace ServiceTelecomConnect
 
         #region update_datagridview_number_act
 
-        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct)
+        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -876,9 +876,14 @@ namespace ServiceTelecomConnect
                     dgw.Rows.Clear();
                     dgw.AllowUserToAddRows = false;
 
-                    string searchString = $"SELECT * FROM radiostantion WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}'";
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                            $"WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}' AND road = '{road}'";
 
-                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
 

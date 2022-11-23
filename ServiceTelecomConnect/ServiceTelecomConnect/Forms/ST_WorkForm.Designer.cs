@@ -182,7 +182,7 @@
             this.btn_remont_act = new System.Windows.Forms.Button();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_form_act = new System.Windows.Forms.Button();
+            this.btn_actTO_print = new System.Windows.Forms.Button();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.btn_new_add_rst_form = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -1403,7 +1403,7 @@
             this.btn_Continue_remont_act_excel.TabIndex = 36;
             this.btn_Continue_remont_act_excel.Text = "Продолжить печать";
             this.btn_Continue_remont_act_excel.UseVisualStyleBackColor = false;
-            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_excel_Click);
+            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_Click);
             // 
             // txB_BE_remont
             // 
@@ -1829,6 +1829,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
             this.panel1.Controls.Add(this.button_save_in_file);
             this.panel1.Controls.Add(this.button_change_rst_form);
@@ -1841,7 +1843,7 @@
             this.panel1.Controls.Add(this.btn_remont_act);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btn_form_act);
+            this.panel1.Controls.Add(this.btn_actTO_print);
             this.panel1.Controls.Add(this.txB_serialNumber);
             this.panel1.Controls.Add(this.btn_new_add_rst_form);
             this.panel1.Controls.Add(this.label24);
@@ -2020,19 +2022,19 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Акт ТО №:";
             // 
-            // btn_form_act
+            // btn_actTO_print
             // 
-            this.btn_form_act.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_actTO_print.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_form_act.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_form_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_form_act.Location = new System.Drawing.Point(1282, 66);
-            this.btn_form_act.Name = "btn_form_act";
-            this.btn_form_act.Size = new System.Drawing.Size(137, 31);
-            this.btn_form_act.TabIndex = 8;
-            this.btn_form_act.Text = "сформировать";
-            this.btn_form_act.UseVisualStyleBackColor = false;
-            this.btn_form_act.Click += new System.EventHandler(this.Button_form_act_Click);
+            this.btn_actTO_print.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_actTO_print.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_actTO_print.Location = new System.Drawing.Point(1282, 66);
+            this.btn_actTO_print.Name = "btn_actTO_print";
+            this.btn_actTO_print.Size = new System.Drawing.Size(137, 31);
+            this.btn_actTO_print.TabIndex = 8;
+            this.btn_actTO_print.Text = "сформировать";
+            this.btn_actTO_print.UseVisualStyleBackColor = false;
+            this.btn_actTO_print.Click += new System.EventHandler(this.Button_actTO_print_Click);
             // 
             // txB_serialNumber
             // 
@@ -2559,7 +2561,7 @@
         private System.Windows.Forms.Label lbL_summ_remont;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lbL_count_remont;
-        private System.Windows.Forms.Button btn_form_act;
+        private System.Windows.Forms.Button btn_actTO_print;
         private System.Windows.Forms.Panel panel_date;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label lbL_FIO_chief;

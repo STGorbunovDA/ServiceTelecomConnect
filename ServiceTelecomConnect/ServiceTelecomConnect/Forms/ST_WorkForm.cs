@@ -111,7 +111,7 @@ namespace ServiceTelecomConnect
                 btn_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
                 btn_search.Enabled = true;
-                btn_form_act.Enabled = true;
+                btn_actTO_print.Enabled = true;
             }
         }
 
@@ -685,7 +685,7 @@ namespace ServiceTelecomConnect
 
         #region АКТ => excel
 
-        void Button_form_act_Click(object sender, EventArgs e)
+        void Button_actTO_print_Click(object sender, EventArgs e)
         {
             try
             {
@@ -699,7 +699,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.ClearSelection();
 
@@ -729,7 +729,7 @@ namespace ServiceTelecomConnect
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void Button_Continue_remont_act_excel_Click(object sender, EventArgs e)
+        void Button_Continue_remont_act_Click(object sender, EventArgs e)
         {
             if (txB_Full_name_company.Text != "" && txB_OKPO_remont.Text != "" && txB_BE_remont.Text != ""
                                 && txB_director_FIO_remont_company.Text != "" && txB_director_post_remont_company.Text != ""
@@ -831,7 +831,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
                 Counters();
             }
         }
@@ -840,7 +840,7 @@ namespace ServiceTelecomConnect
         {
             if (txB_numberAct.Text != "")
             {
-                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
                 Counters();
             }
         }
@@ -929,7 +929,7 @@ namespace ServiceTelecomConnect
                             {
                                 m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
-                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
@@ -984,7 +984,7 @@ namespace ServiceTelecomConnect
                             {
                                 m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                                 m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
-                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_form_act_Click));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
                                 m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                                 m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
