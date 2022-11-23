@@ -2093,36 +2093,44 @@ namespace ServiceTelecomConnect
 
         #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
 
-        internal static void GettingTeamdata(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_polinon_full, Label lbL_numberPrintDocument, string _user)
+        internal static void GettingTeamdata(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, string _user, ComboBox cmB_road)
         {
-            try
+            if(_user == "Admin" || _user == "Руководитель")
             {
-                string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument FROM " +
-                    $"сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' OR engineers_FIO = '{_user}'";
-
-                if (Internet_check.CheackSkyNET())
+                cmB_road.Text = cmB_road.Items[0].ToString();
+            }
+            else 
+            {
+                try
                 {
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument FROM " +
+                        $"сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' OR engineers_FIO = '{_user}'";
+
+                    if (Internet_check.CheackSkyNET())
                     {
-                        DB.GetInstance.OpenConnection();
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
-                            while (reader.Read())
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                lbL_FIO_chief.Text = reader[1].ToString();
-                                lbL_FIO_Engineer.Text = reader[2].ToString();
-                                lbL_doverennost.Text = reader[3].ToString();
-                                lbL_polinon_full.Text = reader[4].ToString();
-                                lbL_numberPrintDocument.Text = reader[5].ToString();
+                                while (reader.Read())
+                                {
+                                    lbL_FIO_chief.Text = reader[1].ToString();
+                                    lbL_FIO_Engineer.Text = reader[2].ToString();
+                                    lbL_doverennost.Text = reader[3].ToString();
+                                    lbL_road.Text = reader[4].ToString();
+                                    cmB_road.Text = reader[4].ToString();
+                                    lbL_numberPrintDocument.Text = reader[5].ToString();
+                                }
+                                reader.Close();
                             }
-                            reader.Close();
                         }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка получения данных о бригаде (GettingTeamdata)");
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка получения данных о бригаде (GettingTeamdata)");
+                }
             }
         }
 
