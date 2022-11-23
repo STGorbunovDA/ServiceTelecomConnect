@@ -132,6 +132,7 @@ namespace ServiceTelecomConnect
                     numberAct = reg.Replace(numberAct, " ");
                     var model = cmB_model.GetItemText(cmB_model.SelectedItem);
                     var serialNumber = txB_serialNumber.Text;
+                    var road = lbL_road.Text;
                     #region
                     if (model == "Motorola GP-340")
                     {
@@ -262,9 +263,24 @@ namespace ServiceTelecomConnect
                     }
                     else if (model == "Комбат T-44")
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][/.][0-9]{2,2}[/.]+[0-9]{2,2}[/.][0-9]{4,4}$"))
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
                         {
                             MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_serialNumber.Select();
+
+                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                    else if (model == "Шеврон T-44 V2")
+                    {
+                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
+                        {
+                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_serialNumber.Select();
 
                             string Mesage = "Вы действительно хотите добавить радиостанцию?";
@@ -425,7 +441,7 @@ namespace ServiceTelecomConnect
                     }
                     #endregion
 
-                    var changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}'";
+                    var changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -974,6 +990,7 @@ namespace ServiceTelecomConnect
                     var AKB = txB_AKB.Text;
                     var batteryСharger = txB_batteryСharger.Text;
                     var comment = txB_comment.Text;
+                    var road = lbL_road.Text;
 
                     try
                     {
@@ -992,7 +1009,8 @@ namespace ServiceTelecomConnect
                                      $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                      $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                      $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                     $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
+                                     $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                                     $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
 
                                 var changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
                                     $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
@@ -1000,7 +1018,8 @@ namespace ServiceTelecomConnect
                                     $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
                                     $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
                                     $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                    $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' WHERE serialNumber = '{serialNumber}'";
+                                    $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                                    $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
 
                                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                                 {
@@ -1552,10 +1571,12 @@ namespace ServiceTelecomConnect
                     txB_numberAct.Select();
                     return;
                 }
+                var road = lbL_road.Text;
                 if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(txB_numberAct.Text))
                 {
                     var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
-                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' WHERE numberAct = '{txB_numberAct.Text}'";
+                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' " +
+                    $"WHERE numberAct = '{txB_numberAct.Text}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
                     {
@@ -1664,9 +1685,10 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-
+                var road = lbL_road.Text;
                 var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
-                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' WHERE company = '{company}'";
+                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}'" +
+                    $"WHERE company = '{company}' AND road = '{road}'";
 
                 using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
                 {

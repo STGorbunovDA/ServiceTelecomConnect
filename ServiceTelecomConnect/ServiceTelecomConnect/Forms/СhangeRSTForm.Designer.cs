@@ -99,6 +99,7 @@
             this.txB_decommissionSerialNumber = new System.Windows.Forms.TextBox();
             this.btn_change_rst_act = new System.Windows.Forms.Button();
             this.chB_numberActTO_Enable = new System.Windows.Forms.CheckBox();
+            this.lbL_road = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -908,6 +909,18 @@
             this.chB_numberActTO_Enable.UseVisualStyleBackColor = false;
             this.chB_numberActTO_Enable.Click += new System.EventHandler(this.ChB_numberActTO_Enable_Click);
             // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(12, 12);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(49, 15);
+            this.lbL_road.TabIndex = 117;
+            this.lbL_road.Text = "Дорога";
+            this.lbL_road.Visible = false;
+            // 
             // СhangeRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -915,6 +928,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 561);
+            this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.chB_numberActTO_Enable);
             this.Controls.Add(this.btn_change_rst_act);
             this.Controls.Add(this.txB_decommissionSerialNumber);
@@ -1072,5 +1086,6 @@
         private System.Windows.Forms.Button btn_change_rst_act;
         private System.Windows.Forms.CheckBox chB_numberActTO_Enable;
         private System.Windows.Forms.Button btn_change_rst_full;
+        internal System.Windows.Forms.Label lbL_road;
     }
 }
