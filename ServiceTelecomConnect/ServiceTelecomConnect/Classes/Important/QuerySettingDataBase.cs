@@ -2093,7 +2093,7 @@ namespace ServiceTelecomConnect
 
         #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
 
-        internal static void GettingTeamdata(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, string _user, ComboBox cmB_road)
+        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, string _user, ComboBox cmB_road)
         {
             if(_user == "Admin" || _user == "Руководитель")
             {
