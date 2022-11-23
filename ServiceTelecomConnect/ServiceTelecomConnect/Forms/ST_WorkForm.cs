@@ -122,7 +122,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                QuerySettingDataBase.GettingTeamdata(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user.Login, cmB_road);
+                QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user.Login, cmB_road);
 
                 dataGridView1.EnableHeadersVisualStyles = false;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
