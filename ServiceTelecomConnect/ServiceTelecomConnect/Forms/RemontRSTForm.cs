@@ -372,8 +372,8 @@ namespace ServiceTelecomConnect
             }
 
             QuerySettingDataBase.LoadingLastNumberActRemont(lbL_last_act_remont);
-            txB_MainMeans.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item1;
-            txB_NameProductRepaired.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+            txB_MainMeans.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_road.Text, lbL_city.Text).Item1;
+            txB_NameProductRepaired.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_road.Text, lbL_city.Text).Item2;
             if (txB_numberActRemont.Text != "53/")
             {
                 lbL_AddRemontRST.Text = "Изменение ремонта";
@@ -452,6 +452,8 @@ namespace ServiceTelecomConnect
                         var parts_6 = txB_parts_6.Text;
                         var parts_7 = txB_parts_7.Text;
                         var serialNumber = txB_serialNumber.Text;
+                        var road = lbL_road.Text;
+                        var city = lbL_city.Text;
 
                         var regex3 = new Regex(Environment.NewLine);
                         txB_MainMeans.Text = regex3.Replace(txB_MainMeans.Text, "");
@@ -470,7 +472,7 @@ namespace ServiceTelecomConnect
                                 $"completed_works_5 = '{сompleted_works_5}', completed_works_6 = '{сompleted_works_6}', " +
                                 $"completed_works_7 = '{сompleted_works_7}', parts_1 = '{parts_1}', parts_2 = '{parts_2}', " +
                                 $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', parts_7 = '{parts_7}'" +
-                                $"WHERE serialNumber = '{serialNumber}'";
+                                $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
                             using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
@@ -479,7 +481,8 @@ namespace ServiceTelecomConnect
                             }
                             if (CheacSerialNumber.GetInstance.CheacSerialNumber_OC6(serialNumber))
                             {
-                                var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}' WHERE serialNumber = '{serialNumber}'";
+                                var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
+                                    $" WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
                                 using (MySqlCommand command2 = new MySqlCommand(changeQueryOC, DB.GetInstance.GetConnection()))
                                 {
                                     DB.GetInstance.OpenConnection();
@@ -489,8 +492,8 @@ namespace ServiceTelecomConnect
                             }
                             else
                             {
-                                var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired) " +
-                                    $"VALUES ('{serialNumber.Trim()}','{mainMeans.Trim()}','{nameProductRepaired.Trim()}')";
+                                var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired, city, road) " +
+                                    $"VALUES ('{serialNumber.Trim()}', '{mainMeans.Trim()}', '{nameProductRepaired.Trim()}', '{city.Trim()}','{road.Trim()}')";
 
                                 using (MySqlCommand command3 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
                                 {

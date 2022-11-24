@@ -86,6 +86,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lbL_road = new System.Windows.Forms.Label();
+            this.lbL_city = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -774,6 +776,30 @@
             this.listBox2.TabIndex = 171;
             this.listBox2.Click += new System.EventHandler(this.ListBox2_Click);
             // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(10, 12);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(49, 15);
+            this.lbL_road.TabIndex = 172;
+            this.lbL_road.Text = "Дорога";
+            this.lbL_road.Visible = false;
+            // 
+            // lbL_city
+            // 
+            this.lbL_city.AutoSize = true;
+            this.lbL_city.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_city.Location = new System.Drawing.Point(10, 38);
+            this.lbL_city.Name = "lbL_city";
+            this.lbL_city.Size = new System.Drawing.Size(92, 15);
+            this.lbL_city.TabIndex = 173;
+            this.lbL_city.Text = "Рабочий город";
+            this.lbL_city.Visible = false;
+            // 
             // RemontRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -781,6 +807,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 729);
+            this.Controls.Add(this.lbL_city);
+            this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.listBox1);
@@ -886,5 +914,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListBox listBox2;
+        internal System.Windows.Forms.Label lbL_road;
+        internal System.Windows.Forms.Label lbL_city;
     }
 }

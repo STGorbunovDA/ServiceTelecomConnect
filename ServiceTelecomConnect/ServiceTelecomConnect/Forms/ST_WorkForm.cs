@@ -546,7 +546,7 @@ namespace ServiceTelecomConnect
                     {
                         addRSTForm.DoubleBufferedForm(true);
                         addRSTForm.txB_numberAct.Text = lbL_numberPrintDocument.Text + "/";
-                        addRSTForm.lbL_cmb_city_ST_WorkForm.Text = cmB_city.Text;
+                        addRSTForm.lbL_city.Text = cmB_city.Text;
                         if (txB_city.Text == "")
                         {
                             addRSTForm.txB_city.Text = cmB_city.Text;
@@ -749,8 +749,8 @@ namespace ServiceTelecomConnect
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
 
-                string mainMeans = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item1;
-                string nameProductRepaired = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text).Item2;
+                string mainMeans = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
+                string nameProductRepaired = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
 
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
@@ -1159,6 +1159,8 @@ namespace ServiceTelecomConnect
                             remontRSTForm.txB_parts_5.Text = txB_parts_5.Text;
                             remontRSTForm.txB_parts_6.Text = txB_parts_6.Text;
                             remontRSTForm.txB_parts_7.Text = txB_parts_7.Text;
+                            remontRSTForm.lbL_city.Text = cmB_city.Text;
+                            remontRSTForm.lbL_road.Text = cmB_road.Text;
 
                             if (txB_dateTO.Text != "")
                             {
