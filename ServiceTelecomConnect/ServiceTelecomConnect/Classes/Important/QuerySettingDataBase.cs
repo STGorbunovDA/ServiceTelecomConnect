@@ -2046,7 +2046,7 @@ namespace ServiceTelecomConnect
 
         #region OC-6 для ремонтов
 
-        internal static Tuple<string, string> Loading_OC_6_values(string serialNumber)
+        internal static Tuple<string, string> Loading_OC_6_values(string serialNumber, string city, string road)
         {
             string mainMeans = "";
             string nameProductRepaired = "";
@@ -2054,7 +2054,7 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.CheackSkyNET())
                 {
-                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = '{serialNumber}'";
+                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(querySelectOC, DB.GetInstance.GetConnection()))
                     {
