@@ -1039,7 +1039,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                            m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+                            m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
                             m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -1113,7 +1113,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text);
+                QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -2969,7 +2969,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text);
+                QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text, cmB_road.Text);
                 panel1.Enabled = false;
                 panel2.Enabled = false;
                 panel3.Enabled = false;
@@ -2994,7 +2994,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                if (txB1_decommissionSerialNumber.Text != "" && txB_reason_decommission.Text != "")
+                if (!String.IsNullOrEmpty(txB1_decommissionSerialNumber.Text) && !String.IsNullOrEmpty(txB_reason_decommission.Text))
                 {
 
                     if (!Regex.IsMatch(txB1_decommissionSerialNumber.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
@@ -3026,7 +3026,7 @@ namespace ServiceTelecomConnect
                         txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
                         txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
                         txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
-                        txB_reason_decommission.Text);
+                        txB_reason_decommission.Text, cmB_road.Text);
 
                     Button_update_Click(sender, e);
                     panel_decommissionSerialNumber.Visible = false;
@@ -3058,7 +3058,8 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct);
+                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, 
+                    txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
                 Button_update_Click(sender, e);
             }
             catch (Exception)
@@ -3076,7 +3077,7 @@ namespace ServiceTelecomConnect
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
-                QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text);
+                QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text, cmB_road.Text);
                 Counters();
             }
             catch (Exception)
