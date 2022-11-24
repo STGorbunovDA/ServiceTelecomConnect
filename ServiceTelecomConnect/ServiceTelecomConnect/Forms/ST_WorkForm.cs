@@ -492,6 +492,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
+                txb_flag_all_BD.Text = ""; // для получения данных отст. РСТ по городу(исправлена ошибка при получении полной бд => обновление )
                 if (dataGridView1.Rows.Count == 0)
                 {
                     MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -934,7 +935,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
-            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD, cmB_city.Text);
+            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
             Counters();
         }
 
