@@ -260,6 +260,13 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
+        #region загрузка городов в cmB_road
+        void CmB_road_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
+        }
+        #endregion
+
         #region panel date information
 
         void Button_close_panel_date_info_Click(object sender, EventArgs e)
@@ -455,7 +462,7 @@ namespace ServiceTelecomConnect
                 QuerySettingDataBase.DeleteRowCell(dataGridView1);
                 txB_serialNumber.Clear();
                 txB_numberAct.Clear();
-                txB_numberActRemont.Clear(); 
+                txB_numberActRemont.Clear();
 
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
@@ -779,6 +786,38 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка сохранения таблицы пользователем(Button_save_in_file_Click)");
             }
         }
+
+        #region панель для выбора выгрузки базы
+        void PnL_printBaseClose_Click(object sender, EventArgs e)
+        {
+            pnL_printBase.Visible = false;
+        }
+        void Btn_SaveDirectorateBase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnL_printBase.Visible = false;
+                SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения БД для Дирекции связи.");
+            }
+        }
+        void Btn_SaveFullBase_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pnL_printBase.Visible = false;
+                SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка сохранения всей БД.");
+            }
+        }
+        #endregion
+
         #endregion
 
         #region Взаимодействие на форме Key-Press-ы, Button_click
@@ -838,11 +877,8 @@ namespace ServiceTelecomConnect
 
         void TextBox_numberAct_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (txB_numberAct.Text != "")
-            {
-                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
-                Counters();
-            }
+            QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            Counters();
         }
 
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -3319,37 +3355,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region панель для выбора печати базы
-        void PnL_printBaseClose_Click(object sender, EventArgs e)
-        {
-            pnL_printBase.Visible = false;
-        }
-        void Btn_SaveDirectorateBase_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                pnL_printBase.Visible = false;
-                SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка сохранения БД для Дирекции связи.");
-            }
-        }
-        void Btn_SaveFullBase_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                pnL_printBase.Visible = false;
-                SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка сохранения всей БД.");
-            }
-        }
-        #endregion
-
         #region Добавление радиостанций в выполнение для куратора
 
         void AddExecution(object sender, EventArgs e)
@@ -3400,7 +3405,10 @@ namespace ServiceTelecomConnect
         }
 
 
+
         #endregion
+
+
     }
 }
 

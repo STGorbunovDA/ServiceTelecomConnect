@@ -631,20 +631,36 @@ namespace ServiceTelecomConnect
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
                     {
-                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
                     }
                     else if (perem_comboBox == "numberAct")
                     {
-                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
                     {
-                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                     {
-                        searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
                     }
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
@@ -725,20 +741,32 @@ namespace ServiceTelecomConnect
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
                     {
-                        searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                            $"FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
                     }
                     else if (perem_comboBox == "numberAct")
                     {
-                        searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month")
                     {
-                        searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                     {
-                        searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
                     }
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
