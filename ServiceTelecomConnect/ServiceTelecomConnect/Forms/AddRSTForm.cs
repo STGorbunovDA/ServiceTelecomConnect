@@ -49,7 +49,7 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.CloseConnection();
                         }
                     }
-                    QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_cmb_city_ST_WorkForm.Text);
+                    QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text);
                 }
                 catch (Exception)
                 {
