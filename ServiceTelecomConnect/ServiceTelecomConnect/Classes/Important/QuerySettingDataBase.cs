@@ -802,7 +802,7 @@ namespace ServiceTelecomConnect
 
         #region поиск отсутсвующих рст исходя из предыдущего года
 
-        internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, TextBox txb_flag_all_BD, string city)
+        internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, TextBox txb_flag_all_BD, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -814,7 +814,10 @@ namespace ServiceTelecomConnect
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
-                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL";
+
+                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN " +
+                            $"radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) " +
+                            $"WHERE radiostantion.serialNumber IS NULL AND radiostantion_last_year.road LIKE '" + road + "'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -834,16 +837,32 @@ namespace ServiceTelecomConnect
                             command.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
                         }
+                        dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                        dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                        dgw.Columns[0].Width = 45;
+                        dgw.Columns[3].Width = 170;
+                        dgw.Columns[4].Width = 180;
+                        dgw.Columns[5].Width = 150;
+                        dgw.Columns[6].Width = 178;
+                        dgw.Columns[7].Width = 178;
+                        dgw.Columns[8].Width = 100;
+                        dgw.Columns[9].Width = 110;
+                        dgw.Columns[10].Width = 100;
+                        dgw.Columns[11].Width = 100;
+                        dgw.Columns[17].Width = 120;
                     }
 
-                    else if (city != "")
+                    else if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
 
-                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL AND radiostantion_last_year.city LIKE '%" + city + "%'";
+                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion " +
+                            $"ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL " +
+                            $"AND radiostantion_last_year.city LIKE '" + city + "'AND radiostantion_last_year.road LIKE '" + road + "'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
