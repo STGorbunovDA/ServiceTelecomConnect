@@ -1,6 +1,6 @@
-﻿using Microsoft.Office.Interop.Excel;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using ServiceTelecomConnect.Classes.Other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,9 +10,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
-using Xamarin.Forms.Shapes;
-using Xamarin.Forms;
 using WinForms = System.Windows.Forms;
 
 
@@ -1926,425 +1923,32 @@ namespace ServiceTelecomConnect
         {
             if (_user.Login == "Admin")
             {
+                Functional_loading_panel.Enabled = true;
                 Functional_loading_panel.Visible = true;
+                dataGridView1.Enabled = false;
+                panel1.Enabled = false;
+                panel3.Enabled = false;
             }
         }
 
         #region добавление из файла
 
-        async void Loading_file_current_BD_Click(object sender, EventArgs e)
+        void Loading_file_current_BD_Click(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET() == true)
-            {
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
-                await Task.Run(() => Loading_file_current_BD());
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
-            }
-        }
-        void Loading_file_current_BD()
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    OpenFileDialog openFile = new OpenFileDialog();
-
-                    openFile.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-
-                    ShowOpenFileDialogInvoker invoker = new ShowOpenFileDialogInvoker(openFile.ShowDialog);
-
-                    this.Invoke(invoker);
-
-                    if (openFile.FileName != "")
-                    {
-                        string filename = openFile.FileName;
-                        string text = File.ReadAllText(filename);
-
-                        var lineNumber = 0;
-
-                        if (Internet_check.CheackSkyNET() == true)
-                        {
-                            using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
-                            {
-                                if (Internet_check.CheackSkyNET() == true)
-                                {
-                                    connection.Open();
-
-                                    using (StreamReader reader = new StreamReader(filename))
-                                    {
-                                        while (!reader.EndOfStream)
-                                        {
-                                            var line = reader.ReadLine();
-
-                                            if (lineNumber != 0)
-                                            {
-                                                var values = line.Split('\t');
-
-                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(values[4]))
-                                                {
-                                                    var mySql = $"insert into radiostantion (poligon, company, location, model, serialNumber," +
-                                                    $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
-                                                    $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
-                                                    $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
-                                                    $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) " +
-                                                    $"values ('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}', " +
-                                                    $"'{values[4]}', '{values[5]}', '{values[6]}', '{values[7]}','{values[8]}'," +
-                                                    $"'{values[9]}','{values[10]}','{values[11]}','{values[12]}','{values[13]}','{values[14]}'," +
-                                                    $"'{values[15]}','{values[16]}','{values[17]}','{values[18]}','{values[19]}','{values[20]}'," +
-                                                    $"'{values[21]}','{values[22]}','{values[23]}','{values[24]}','{values[25]}','{values[26]}'," +
-                                                    $"'{values[27]}','{values[28]}','{values[29]}','{values[30]}','{values[31]}','{values[32]}'," +
-                                                    $"'{values[33]}','{values[34]}','{values[35]}','{values[36]}','{values[37]}','{values[38]}'," +
-                                                    $"'{values[39]}','{values[40]}')";
-
-                                                    using (MySqlCommand command = new MySqlCommand(mySql, connection))
-                                                    {
-                                                        command.CommandText = mySql;
-                                                        command.CommandType = System.Data.CommandType.Text;
-                                                        command.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    continue;
-                                                }
-                                            }
-                                            lineNumber++;
-                                        }
-                                        if (reader.EndOfStream == true)
-                                        {
-                                            MessageBox.Show("Радиостанции успешно добавлены!");
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                                        }
-                                    }
-                                    connection.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
-                                }
-
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("2.Радиостанции не добавленны, нет соединения с интернетом.");
-
-                        }
-                    }
-                    else
-                    {
-                        string Mesage;
-                        Mesage = "Вы не выбрали файл .csv который нужно добавить";
-
-                        if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        {
-                            return;
-                        }
-                    }
-
-                }
-                catch (Exception)
-                {
-                    string Mesage = $"Ошибка загрузки данных для текущей БД! Радиостанции не добавленны!(Loading_file_current_BD)";
-
-                    if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-            }
+            FunctionalPanel.Loading_file_current_BD();
         }
 
-        async void Button_Loading_file_last_year_Click(object sender, EventArgs e)
+        void Button_Loading_file_last_year_Click(object sender, EventArgs e)
         {
-            btn_clear_BD_current_year.Enabled = false;
-            btn_manual_backup_current_DB.Enabled = false;
-            btn_loading_json_file_BD.Enabled = false;
-            btn_Copying_current_BD_end_of_the_year.Enabled = false;
-            btn_Loading_file_last_year.Enabled = false;
-            btn_loading_file_full_BD.Enabled = false;
-            btn_loading_file_current_DB.Enabled = false;
-            btn_Uploading_JSON_file.Enabled = false;
-            btn_Show_DB_radiostantion_last_year.Enabled = false;
-            btn_Show_DB_radiostantion_full.Enabled = false;
-            await Task.Run(() => Loading_file_last_year());
-            btn_clear_BD_current_year.Enabled = true;
-            btn_manual_backup_current_DB.Enabled = true;
-            btn_loading_json_file_BD.Enabled = true;
-            btn_Copying_current_BD_end_of_the_year.Enabled = true;
-            btn_Loading_file_last_year.Enabled = true;
-            btn_loading_file_full_BD.Enabled = true;
-            btn_loading_file_current_DB.Enabled = true;
-            btn_Uploading_JSON_file.Enabled = true;
-            btn_Show_DB_radiostantion_last_year.Enabled = true;
-            btn_Show_DB_radiostantion_full.Enabled = true;
-        }
-        void Loading_file_last_year()
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    OpenFileDialog openFile = new OpenFileDialog();
-
-                    openFile.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-
-                    ShowOpenFileDialogInvoker invoker = new ShowOpenFileDialogInvoker(openFile.ShowDialog);
-
-                    this.Invoke(invoker);
-
-                    if (openFile.FileName != "")
-                    {
-                        string filename = openFile.FileName;
-                        string text = File.ReadAllText(filename);
-
-                        var lineNumber = 0;
-
-                        if (Internet_check.CheackSkyNET() == true)
-                        {
-                            using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
-                            {
-                                if (Internet_check.CheackSkyNET() == true)
-                                {
-                                    connection.Open();
-
-                                    using (StreamReader reader = new StreamReader(filename))
-                                    {
-                                        while (!reader.EndOfStream)
-                                        {
-                                            var line = reader.ReadLine();
-
-                                            if (lineNumber != 0)
-                                            {
-                                                var values = line.Split(';');
-
-                                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_last_year(values[4]))
-                                                {
-                                                    var mySql = $"insert into radiostantion_last_year (poligon, company, location, model, serialNumber, inventoryNumber, " +
-                                                    $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
-                                                    $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
-                                                    $"completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, " +
-                                                    $"parts_4, parts_5, parts_6, parts_7 ) values ('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}', " +
-                                                    $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
-                                                    $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                    $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
-
-                                                    using (MySqlCommand command = new MySqlCommand(mySql, connection))
-                                                    {
-                                                        command.CommandText = mySql;
-                                                        command.CommandType = System.Data.CommandType.Text;
-                                                        command.ExecuteNonQuery();
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    continue;
-                                                }
-                                            }
-                                            lineNumber++;
-                                        }
-                                        if (reader.EndOfStream == true)
-                                        {
-                                            MessageBox.Show("Радиостанции успешно добавлены!");
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                                        }
-                                    }
-                                    connection.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
-                                }
-
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("2.Радиостанции не добавленны, нет соединения с интернетом.");
-
-                        }
-                    }
-                    else
-                    {
-                        string Mesage;
-                        Mesage = "Вы не выбрали файл .csv который нужно добавить";
-
-                        if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        {
-                            return;
-                        }
-                    }
-
-                }
-                catch (Exception)
-                {
-                    string Mesage = $"Ошибка загрузки данных для БД прошлого года! Радиостанции не добавленны!(Loading_file_last_year)";
-
-                    if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        return;
-                    }
-                }
-            }
+            FunctionalPanel.Loading_file_last_year();
         }
 
-        async void Loading_file_full_BD_Click(object sender, EventArgs e)
+        void Loading_file_full_BD_Click(object sender, EventArgs e)
         {
-            btn_clear_BD_current_year.Enabled = false;
-            btn_manual_backup_current_DB.Enabled = false;
-            btn_loading_json_file_BD.Enabled = false;
-            btn_Copying_current_BD_end_of_the_year.Enabled = false;
-            btn_Loading_file_last_year.Enabled = false;
-            btn_loading_file_full_BD.Enabled = false;
-            btn_loading_file_current_DB.Enabled = false;
-            btn_Uploading_JSON_file.Enabled = false;
-            btn_Show_DB_radiostantion_last_year.Enabled = false;
-            btn_Show_DB_radiostantion_full.Enabled = false;
-            await Task.Run(() => Loading_file_full_BD_method());
-            btn_clear_BD_current_year.Enabled = true;
-            btn_manual_backup_current_DB.Enabled = true;
-            btn_loading_json_file_BD.Enabled = true;
-            btn_Copying_current_BD_end_of_the_year.Enabled = true;
-            btn_Loading_file_last_year.Enabled = true;
-            btn_loading_file_full_BD.Enabled = true;
-            btn_loading_file_current_DB.Enabled = true;
-            btn_Uploading_JSON_file.Enabled = true;
-            btn_Show_DB_radiostantion_last_year.Enabled = true;
-            btn_Show_DB_radiostantion_full.Enabled = true;
+            FunctionalPanel.Loading_file_full_BD();
         }
 
-        void Loading_file_full_BD_method()
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    OpenFileDialog openFile = new OpenFileDialog();
-
-                    openFile.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-
-                    ShowOpenFileDialogInvoker invoker = new ShowOpenFileDialogInvoker(openFile.ShowDialog);
-
-                    this.Invoke(invoker);
-
-                    if (openFile.FileName != "")
-                    {
-                        string filename = openFile.FileName;
-                        string text = File.ReadAllText(filename);
-
-                        var lineNumber = 0;
-
-
-                        using (var connection = new MySqlConnection("server=31.31.198.62;port=3306;username=u1748936_db_2;password=war74_89;database=u1748936_root;charset=utf8"))
-                        {
-                            if (Internet_check.CheackSkyNET())
-                            {
-                                connection.Open();
-
-                                using (StreamReader reader = new StreamReader(filename))
-                                {
-                                    while (!reader.EndOfStream)
-                                    {
-                                        var line = reader.ReadLine();
-
-                                        if (lineNumber != 0)
-                                        {
-                                            var values = line.Split(';');
-
-                                            if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(values[4]))
-                                            {
-                                                var mySql = $"insert into radiostantion_full (poligon, company, location, model, serialNumber, inventoryNumber, " +
-                                                $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
-                                                $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
-                                                $"completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, " +
-                                                $"parts_4, parts_5, parts_6, parts_7 ) values ('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}', " +
-                                                $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
-                                                $"'{(values[8].Replace(" ", "").Trim())}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
-                                                $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
-
-                                                using (MySqlCommand command = new MySqlCommand(mySql, connection))
-                                                {
-                                                    command.CommandText = mySql;
-                                                    command.CommandType = System.Data.CommandType.Text;
-                                                    command.ExecuteNonQuery();
-                                                }
-                                            }
-                                            else
-                                            {
-                                                continue;
-                                            }
-                                        }
-                                        lineNumber++;
-                                    }
-                                    if (reader.EndOfStream == true)
-                                    {
-                                        MessageBox.Show("Радиостанции успешно добавлены!");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                                    }
-                                }
-                                connection.Close();
-                            }
-                            else
-                            {
-                                MessageBox.Show("1.Радиостанции не добавленны, нет соединения с интернетом.");
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        string Mesage;
-                        Mesage = "Вы не выбрали файл .csv который нужно добавить";
-
-                        if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        {
-                            return;
-                        }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    string Mesage = $"Ошибка загрузки данных дляо бщей БД! Радиостанции не добавленны!(Loading_file_full_BD_method)";
-
-                    if (MessageBox.Show(Mesage, "Обратите внимание на содержимое файла", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
-                        MessageBox.Show(ex.ToString());
-                        return;
-                    }
-                }
-            }
-        }
+        
 
         #endregion
 
