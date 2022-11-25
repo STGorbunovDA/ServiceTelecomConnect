@@ -1,6 +1,4 @@
 ﻿using Microsoft.Win32;
-using MySql.Data.MySqlClient;
-using ServiceTelecomConnect.Classes.Other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,7 +176,7 @@ namespace ServiceTelecomConnect
                 return;
             }
             QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, cmB_road.Text);
-            new Thread(() => { FunctionPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
@@ -1910,14 +1908,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Функциональная панель
-        void Close_Functional_loading_panel_Click(object sender, EventArgs e)
-        {
-            Functional_loading_panel.Visible = false;
-            Functional_loading_panel.Enabled = false;
-            dataGridView1.Enabled = true;
-            panel1.Enabled = true;
-            panel3.Enabled = true;
-        }
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
@@ -1929,6 +1919,14 @@ namespace ServiceTelecomConnect
                 panel1.Enabled = false;
                 panel3.Enabled = false;
             }
+        }
+        void Close_Functional_loading_panel_Click(object sender, EventArgs e)
+        {
+            Functional_loading_panel.Visible = false;
+            Functional_loading_panel.Enabled = false;
+            dataGridView1.Enabled = true;
+            panel1.Enabled = true;
+            panel3.Enabled = true;
         }
 
         #region добавление из файла
@@ -1948,73 +1946,25 @@ namespace ServiceTelecomConnect
             FunctionalPanel.Loading_file_full_BD();
         }
 
-        
+
 
         #endregion
 
         #region загрузка и обновление json в radiostantion
-        async void Loading_json_file_BD_Click(object sender, EventArgs e)
+        void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string Mesage;
-                Mesage = "Вы выгрузили резервный файл json?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
-                await Task.Run(() => FunctionPanel.Loading_json_file_BD(dataGridView2, taskCity));
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+                FunctionalPanel.Loading_json_file_BD(dataGridView2, cmB_city.Text);
             }
         }
         #endregion
 
-        #region выгрузка всех данных из datagrid
+        #region выгрузка всех данных из datagrid в JSON
 
-        async void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
+        void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
-            btn_clear_BD_current_year.Enabled = false;
-            btn_manual_backup_current_DB.Enabled = false;
-            btn_loading_json_file_BD.Enabled = false;
-            btn_Copying_current_BD_end_of_the_year.Enabled = false;
-            btn_Loading_file_last_year.Enabled = false;
-            btn_loading_file_full_BD.Enabled = false;
-            btn_loading_file_current_DB.Enabled = false;
-            btn_Uploading_JSON_file.Enabled = false;
-            btn_Show_DB_radiostantion_last_year.Enabled = false;
-            btn_Show_DB_radiostantion_full.Enabled = false;
-            await Task.Run(() => FunctionPanel.Get_date_save_datagridview_json(dataGridView1, taskCity));
-            btn_clear_BD_current_year.Enabled = true;
-            btn_manual_backup_current_DB.Enabled = true;
-            btn_loading_json_file_BD.Enabled = true;
-            btn_Copying_current_BD_end_of_the_year.Enabled = true;
-            btn_Loading_file_last_year.Enabled = true;
-            btn_loading_file_full_BD.Enabled = true;
-            btn_loading_file_current_DB.Enabled = true;
-            btn_Uploading_JSON_file.Enabled = true;
-            btn_Show_DB_radiostantion_last_year.Enabled = true;
-            btn_Show_DB_radiostantion_full.Enabled = true;
+            FunctionalPanel.Get_date_save_datagridview_json(dataGridView1, cmB_city.Text);
         }
 
 
@@ -2042,27 +1992,9 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
-                FunctionPanel.Copying_current_BD_end_of_the_year();
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+
+                FunctionalPanel.Copying_current_BD_end_of_the_year();
+
             }
             catch (Exception)
             {
@@ -2072,12 +2004,8 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region функцональная панель ручное-резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
-        /// <summary>
-        /// Копирование данных БД(radiostantion) в резерв (radiostantion_copy) для дальнейшего пользования к концу года
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param> 
-        void Manual_backup_current_DB_Click(object sender, EventArgs e)
+
+        void Manual_backup_current_BD_Click(object sender, EventArgs e)
         {
             try
             {
@@ -2088,27 +2016,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
-                FunctionPanel.Manual_backup_current_DB();
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+                FunctionalPanel.Manual_backup_current_BD();
             }
             catch (Exception)
             {
@@ -2138,28 +2046,10 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
-                FunctionPanel.Clear_BD_current_year();
+
+                FunctionalPanel.Clear_BD_current_year();
                 QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+
             }
             catch (Exception)
             {
@@ -2175,30 +2065,8 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
                 Close_Functional_loading_panel_Click(sender, e);
-                panel1.Enabled = false;
-                panel3.Enabled = false;
-                FunctionPanel.Show_DB_radiostantion_last_year(dataGridView1, taskCity);
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+                FunctionalPanel.Show_DB_radiostantion_last_year(dataGridView1, cmB_city.Text, cmB_road.Text);
                 Counters();
             }
             catch (Exception)
@@ -2216,30 +2084,8 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                btn_clear_BD_current_year.Enabled = false;
-                btn_manual_backup_current_DB.Enabled = false;
-                btn_loading_json_file_BD.Enabled = false;
-                btn_Copying_current_BD_end_of_the_year.Enabled = false;
-                btn_Loading_file_last_year.Enabled = false;
-                btn_loading_file_full_BD.Enabled = false;
-                btn_loading_file_current_DB.Enabled = false;
-                btn_Uploading_JSON_file.Enabled = false;
-                btn_Show_DB_radiostantion_last_year.Enabled = false;
-                btn_Show_DB_radiostantion_full.Enabled = false;
                 Close_Functional_loading_panel_Click(sender, e);
-                panel1.Enabled = false;
-                panel3.Enabled = false;
-                FunctionPanel.Show_DB_radiostantion_full(dataGridView1, taskCity);
-                btn_clear_BD_current_year.Enabled = true;
-                btn_manual_backup_current_DB.Enabled = true;
-                btn_loading_json_file_BD.Enabled = true;
-                btn_Copying_current_BD_end_of_the_year.Enabled = true;
-                btn_Loading_file_last_year.Enabled = true;
-                btn_loading_file_full_BD.Enabled = true;
-                btn_loading_file_current_DB.Enabled = true;
-                btn_Uploading_JSON_file.Enabled = true;
-                btn_Show_DB_radiostantion_last_year.Enabled = true;
-                btn_Show_DB_radiostantion_full.Enabled = true;
+                FunctionalPanel.Show_DB_radiostantion_full(dataGridView1, cmB_city.Text, cmB_road.Text);
                 Counters();
             }
             catch (Exception)
