@@ -115,7 +115,6 @@
             this.picB_clear.TabIndex = 8;
             this.picB_clear.TabStop = false;
             this.picB_clear.Click += new System.EventHandler(this.PictureBox4_Click);
-            this.picB_clear.MouseEnter += new System.EventHandler(this.PictureBox4_MouseEnter);
             // 
             // label1
             // 
@@ -138,7 +137,6 @@
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
-            this.pictureBox5.MouseEnter += new System.EventHandler(this.PictureBox5_MouseEnter);
             // 
             // txB_dateTO
             // 
@@ -645,7 +643,6 @@
             this.pictureBox6.TabIndex = 81;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.PictureBox6_Click);
-            this.pictureBox6.MouseEnter += new System.EventHandler(this.PictureBox6_MouseEnter);
             // 
             // label29
             // 

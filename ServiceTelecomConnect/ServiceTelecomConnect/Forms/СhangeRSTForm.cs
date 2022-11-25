@@ -1440,52 +1440,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region свойства toolTip Popup Draw
-        void ToolTip1_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            Font tooltipFont = new Font("TimesNewRoman", 12.0f);
-            e.DrawBackground();
-            e.DrawBorder();
-            e.Graphics.DrawString(e.ToolTipText, tooltipFont, Brushes.Black, new PointF(1, 1));
-        }
-
-        void ToolTip1_Popup(object sender, PopupEventArgs e)
-        {
-            e.ToolTipSize = TextRenderer.MeasureText(toolTip1.GetToolTip(e.AssociatedControl), new Font("TimesNewRoman", 13.0f));
-        }
-        #endregion
-
-        #region toolTip для Control-ов формы
-        void PictureBox4_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_clear, $"Очистить все поля");
-        }
-
-        void PictureBox5_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox5, $"Очистить поле Дата ТО:");
-        }
-
-        void PictureBox6_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox6, $"Очистить поле Дата Выдачи удостоверения:");
-        }
-
-
-
-
-
-        #endregion
-
         #region смена удостоврения сразу у всех рст по номеру акта или по пп
 
         void Btn_identityCard_change_rst_act_Click(object sender, EventArgs e)
