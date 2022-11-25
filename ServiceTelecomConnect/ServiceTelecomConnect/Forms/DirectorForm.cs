@@ -386,7 +386,7 @@ namespace ServiceTelecomConnect.Forms
 
                     var changeQuery = $"update сharacteristics_вrigade set section_foreman_FIO = '{cmB_section_foreman_FIO.Text}', " +
                         $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}'," +
-                        $"numberPrintDocument = '{txB_numberPrintDocument.Text}', curator = '{cmB_curator.Text}', curator = '{cmB_departmentCommunications.Text}' where id = '{id}'";
+                        $"numberPrintDocument = '{txB_numberPrintDocument.Text}', curator = '{cmB_curator.Text}', departmentCommunications = '{cmB_departmentCommunications.Text}' where id = '{id}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
