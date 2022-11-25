@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Xamarin.Forms.Shapes;
 
 namespace ServiceTelecomConnect
 {
@@ -359,13 +357,13 @@ namespace ServiceTelecomConnect
                 {
                     string note = string.Empty;
 
-                    note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
+                    note += $"Полигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
                         $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
                         $"Представитель предприятия\tДолжность\tНомер удостоверения\tДата выдачи\tНомер телефона\t" +
                         $"Номер Акта ремонта\tКатегория\tЦена ремонта\tАнтенна\tМанипулятор\tАКБ\tЗУ\tВыполненные работы_1\t" +
                         $"Выполненные работы_2\tВыполненные работы_3\tВыполненные работы_4\tВыполненные работы_5\t" +
                         $"Выполненные работы_6\tВыполненные работы_7\tДеталь_1\tДеталь_2\tДеталь_3\tДеталь_4\tДеталь_5\t" +
-                        $"Деталь_6\tДеталь_7\t№ Акта списания\tПримечания";
+                        $"Деталь_6\tДеталь_7\t№ Акта списания\tПримечания\tДорога";
 
                     sw.WriteLine(note);
 
@@ -376,13 +374,21 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-
-                            sw.Write(value + "\t");//todo решить
+                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            {
+                                
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            {
+                                
+                            }
+                            else sw.Write(value + "\t");//todo решить
                         }
                         sw.WriteLine();
                     }
 
                 }
+                MessageBox.Show("Файл успешно сохранен!");
             }
         }
 
@@ -411,7 +417,7 @@ namespace ServiceTelecomConnect
                 {
                     string note = string.Empty;
 
-                    note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
+                    note += $"Полигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
                         $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
                         $"Представитель предприятия\tДолжность\tНомер удостоверения\tДата выдачи\tНомер телефона\t" +
                         $"Номер Акта ремонта\tКатегория\tЦена ремонта\tАнтенна\tМанипулятор\tАКБ\tЗУ\tВыполненные работы_1\t" +
@@ -428,7 +434,16 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            sw.Write(value + "\t");//todo решить
+                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            {
+                                value = "";
+                                sw.Write(value);
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            {
+                                value = "";
+                            }
+                            else sw.Write(value + "\t");//todo решить
                         }
                         sw.WriteLine();
                     }
