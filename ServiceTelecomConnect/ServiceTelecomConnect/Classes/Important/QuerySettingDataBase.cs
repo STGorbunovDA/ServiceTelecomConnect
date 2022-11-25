@@ -72,7 +72,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
                 dgw.Columns.Add("comment", "Примечание");
                 dgw.Columns.Add("road", "Дорога");
-                dgw.Columns.Add("IsNew", String.Empty);
+                dgw.Columns.Add("IsNew", "RowState");
                 dgw.Columns[12].Visible = true;
                 dgw.Columns[13].Visible = false;
                 dgw.Columns[14].Visible = false;
