@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Office.Interop.Excel;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
+using Xamarin.Forms.Shapes;
+using Xamarin.Forms;
 using WinForms = System.Windows.Forms;
 
 
@@ -89,29 +93,6 @@ namespace ServiceTelecomConnect
                 btn_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
                 btn_search.Enabled = true;
-            }
-            else if (_user.IsAdmin == "Инженер")
-            {
-                panel3.Enabled = false;
-                Functional_loading_panel.Enabled = false;
-                panel_remont_information_company.Enabled = false;
-
-                foreach (Control element in panel1.Controls)
-                {
-                    element.Enabled = false;
-                }
-
-                cmB_city.Enabled = true;
-                btn_seach_BD_city.Enabled = true;
-                btn_add_city.Enabled = true;
-                btn_all_BD.Enabled = true;
-                picB_update.Enabled = true;
-                cmB_seach.Enabled = true;
-                textBox_search.Enabled = true;
-                btn_search.Enabled = true;
-                cmb_number_unique_acts.Enabled = true;
-                btn_search.Enabled = true;
-                btn_actTO_print.Enabled = true;
             }
         }
 
@@ -948,7 +929,7 @@ namespace ServiceTelecomConnect
             {
                 if (e.Button == MouseButtons.Right)
                 {
-                    if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+                    if (_user.IsAdmin == "Дирекция связи")
                     {
                         ContextMenu m3 = new ContextMenu();
                         m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
@@ -973,6 +954,8 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
                                 m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                                m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
+                                m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
                                 m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
@@ -984,6 +967,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                             m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
                             m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
+
 
                             m.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -1010,7 +994,65 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Руководитель" || _user.IsAdmin == "Admin")
+                    else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Инженер" || _user.IsAdmin == "Руководитель")
+                    {
+                        if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            ContextMenu m = new ContextMenu();
+
+                            var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                            if (txB_serialNumber.Text != "")
+                            {
+                                m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
+                                m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
+                                m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                                m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
+                                m.MenuItems.Add(new MenuItem("Заполняем акт", DataGridView1_DefaultCellStyleChanged));
+                                m.MenuItems.Add(new MenuItem("На подпись", DataGridView1_Sign));
+                                m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                                m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
+                                m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
+                                m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
+                            }
+                            if (txB_decommissionSerialNumber.Text != "")
+                            {
+                                m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                                m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
+                            }
+                            m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                            m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                            m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
+                            m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
+                            m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
+
+                            m.Show(dataGridView1, new Point(e.X, e.Y));
+
+                        }
+                        else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
+                        {
+                            ContextMenu m1 = new ContextMenu();
+                            m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                            m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+
+                            m1.Show(dataGridView1, new Point(e.X, e.Y));
+                        }
+                        else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
+                        {
+                            ContextMenu m2 = new ContextMenu();
+                            m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                            m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+
+                            m2.Show(dataGridView1, new Point(e.X, e.Y));
+
+                            if (e.Button == MouseButtons.Left)
+                            {
+                                dataGridView1.ClearSelection();
+                            }
+                        }
+                    }
+                    else if (_user.IsAdmin == "Admin")
                     {
                         if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                         {
@@ -1685,7 +1727,7 @@ namespace ServiceTelecomConnect
         #region поиск по dataGrid без запроса к БД и открытие функциональной панели Control + K
         void DataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Инженер")
+            if (_user.IsAdmin == "Дирекция связи")
             {
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
                 {
@@ -1730,6 +1772,7 @@ namespace ServiceTelecomConnect
                         panel_txB_FIO_phoneNumber.Text = txB_phoneNumber.Text;
                     }
                 }
+                //инфа о бригаде
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.I)
                 {
                     dataGridView1.Enabled = false;
@@ -1838,126 +1881,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region toolTip для Control-ов формы
-
-        #region свойства toolTip Popup Draw
-        void ToolTip1_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            Font tooltipFont = new Font("TimesNewRoman", 12.0f);
-            e.DrawBackground();
-            e.DrawBorder();
-            e.Graphics.DrawString(e.ToolTipText, tooltipFont, Brushes.Black, new PointF(1, 1));
-        }
-
-        void ToolTip1_Popup(object sender, PopupEventArgs e)
-        {
-            e.ToolTipSize = TextRenderer.MeasureText(toolTip1.GetToolTip(e.AssociatedControl), new Font("TimesNewRoman", 13.0f));
-        }
-        #endregion
-
-        void ComboBox_city_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(cmB_city, $"Выберите названиe города");
-        }
-        void Button_seach_BD_city_Click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_seach_BD_city, $"Выполнить");
-        }
-
-        void Button_add_city_click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_add_city, $"Добавить в реестр\nназвание города");
-        }
-
-        void TextBox_search_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_search, $"Введи искомое");
-        }
-
-        void ComboBox_seach_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(cmB_seach, $"Поиск по:");
-        }
-
-        void Button_search_click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_search, $"Выполнить");
-        }
-
-        void PictureBox2_update_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_update, $"Обновить БД");
-        }
-
-        void PictureBox1_clear_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_clear, $"Очистить Control-ы");
-        }
-
-        void PictureBox_clear_BD_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-        }
-
-        void PictureBox_copy_BD_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-        }
-
-        void ST_WorkForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                toolTip1.Active = toolTip1.Active ? false : true;
-            }
-        }
-
-        void Button_information_remont_company_regedit_MouseLeave(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_information_remont_company_regedit, $"Запись данных ПП в реестр");
-        }
-
-        void PictureBox_seach_datadrid_replay_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_seach_datadrid_replay, $"Отбразить отсутствующие РСТ исходя из выполнения предыдущего года");
-        }
-
-        #endregion
-
         #region при выборе строк ползьзователем и их подсчёт
 
         void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -2001,7 +1924,10 @@ namespace ServiceTelecomConnect
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
-
+            if (_user.Login == "Admin")
+            {
+                Functional_loading_panel.Visible = true;
+            }
         }
 
         #region добавление из файла
@@ -2070,20 +1996,24 @@ namespace ServiceTelecomConnect
 
                                             if (lineNumber != 0)
                                             {
-                                                var values = line.Split(';');
+                                                var values = line.Split('\t');
 
                                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(values[4]))
                                                 {
-
-                                                    var mySql = $"insert into radiostantion (poligon, company, location, model, serialNumber, inventoryNumber, " +
-                                                    $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, phoneNumber, " +
-                                                    $"numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, " +
-                                                    $"completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, " +
-                                                    $"parts_4, parts_5, parts_6, parts_7 ) values ('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}', " +
-                                                       $"'{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', '{values[7].Trim()}', " +
-                                                       $"'{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}','{""}','{""}','{""}','{""}'," +
-                                                       $"'{""}','{""}','{""}','{0.00}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}'," +
-                                                       $"'{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}','{""}')";
+                                                    var mySql = $"insert into radiostantion (poligon, company, location, model, serialNumber," +
+                                                    $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                                    $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                                    $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                                    $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) " +
+                                                    $"values ('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}', " +
+                                                    $"'{values[4]}', '{values[5]}', '{values[6]}', '{values[7]}','{values[8]}'," +
+                                                    $"'{values[9]}','{values[10]}','{values[11]}','{values[12]}','{values[13]}','{values[14]}'," +
+                                                    $"'{values[15]}','{values[16]}','{values[17]}','{values[18]}','{values[19]}','{values[20]}'," +
+                                                    $"'{values[21]}','{values[22]}','{values[23]}','{values[24]}','{values[25]}','{values[26]}'," +
+                                                    $"'{values[27]}','{values[28]}','{values[29]}','{values[30]}','{values[31]}','{values[32]}'," +
+                                                    $"'{values[33]}','{values[34]}','{values[35]}','{values[36]}','{values[37]}','{values[38]}'," +
+                                                    $"'{values[39]}','{values[40]}')";
 
                                                     using (MySqlCommand command = new MySqlCommand(mySql, connection))
                                                     {
@@ -3058,7 +2988,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
-                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text, 
+                QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
                     txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
                 Button_update_Click(sender, e);
             }
@@ -3278,7 +3208,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
         {
-            QuerySettingDataBase.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text);
+            QuerySettingDataBase.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
 
@@ -3289,7 +3219,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
         {
-            QuerySettingDataBase.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text);
+            QuerySettingDataBase.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
 
@@ -3346,7 +3276,9 @@ namespace ServiceTelecomConnect
                     {"month", month },
                     {"year", year },
                     {"day2", day2 },
-                    {"year2", year2 }
+                    {"year2", year2 },
+                    {"road", cmB_road.Text }
+
                 };
 
                 PrintDocExcel.GetInstance.ProcessPrintWordTag(items2, txB_Date_panel_Tag.Text);
