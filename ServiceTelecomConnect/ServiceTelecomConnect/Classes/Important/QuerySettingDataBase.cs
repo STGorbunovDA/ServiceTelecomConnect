@@ -1915,7 +1915,7 @@ namespace ServiceTelecomConnect
 
         #region показать все радиостанции по участку без списаний
 
-        internal static void RefreshDataGridtDecommissionByPlot(DataGridView dgw, string city)
+        internal static void RefreshDataGridtDecommissionByPlot(DataGridView dgw, string city, string road)
         {
             try
             {
@@ -1928,7 +1928,12 @@ namespace ServiceTelecomConnect
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
 
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != ''";
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                            $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != '' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -1957,7 +1962,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city)
+        internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city, string road)
         {
             try
             {
@@ -1970,7 +1975,12 @@ namespace ServiceTelecomConnect
                         Thread.CurrentThread.CurrentCulture = myCulture;
                         dgw.Rows.Clear();
 
-                        string queryString = $"SELECT * FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = ''";
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                            $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = '' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
