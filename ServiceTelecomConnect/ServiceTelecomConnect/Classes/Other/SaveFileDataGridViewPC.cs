@@ -374,15 +374,11 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            if (dgw.Columns[j].HeaderText.ToString() == "№" || dgw.Columns[j].HeaderText.ToString() == "RowState")
                             {
-                                
+
                             }
-                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
-                            {
-                                
-                            }
-                            else sw.Write(value + "\t");//todo решить
+                            else sw.Write(value + "\t");
                         }
                         sw.WriteLine();
                     }
@@ -434,16 +430,11 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            if (dgw.Columns[j].HeaderText.ToString() == "№" || dgw.Columns[j].HeaderText.ToString() == "RowState")
                             {
-                                value = "";
-                                sw.Write(value);
+                                
                             }
-                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
-                            {
-                                value = "";
-                            }
-                            else sw.Write(value + "\t");//todo решить
+                            else sw.Write(value + "\t");
                         }
                         sw.WriteLine();
                     }

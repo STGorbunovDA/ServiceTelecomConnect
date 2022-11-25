@@ -143,7 +143,7 @@ namespace ServiceTelecomConnect
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
-                            $"WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
+                            $"WHERE city = '{city.Trim()}' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -1340,7 +1340,7 @@ namespace ServiceTelecomConnect
 
         #region Удалить номер списание из таблицы radiostantion
 
-        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber, 
+        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber,
             string city, ComboBox cmB_model, TextBox txB_numberAct, string road)
         {
             if (Internet_check.CheackSkyNET())
