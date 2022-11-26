@@ -74,7 +74,7 @@ namespace ServiceTelecomConnect
         }
         void Label1_Click(object sender, EventArgs e)
         {
-            using (ComparisonForm comparisonForm = new ComparisonForm())
+            using (ComparisonForm comparisonForm = new ComparisonForm(_user))
             {
                 this.Hide();
                 comparisonForm.ShowDialog();

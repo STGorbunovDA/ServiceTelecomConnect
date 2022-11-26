@@ -104,13 +104,15 @@
             this.close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmB_month = new System.Windows.Forms.ComboBox();
+            this.txB_serialNumber = new System.Windows.Forms.TextBox();
+            this.cmB_city = new System.Windows.Forms.ComboBox();
+            this.cmB_road = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
             this.btn_all_BD = new System.Windows.Forms.Button();
-            this.cmb_city = new System.Windows.Forms.ComboBox();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txB_serialNumber = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.btn_add_city = new System.Windows.Forms.Button();
             this.btn_seach_BD_city = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
@@ -145,6 +147,19 @@
             this.lbL_sum_TO_selection = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel_date = new System.Windows.Forms.Panel();
+            this.lbL_numberPrintDocument = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btn_close_panel_date_info = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.lbL_FIO_chief = new System.Windows.Forms.Label();
+            this.lbL_doverennost = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbL_FIO_Engineer = new System.Windows.Forms.Label();
+            this.lbL_road = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -156,6 +171,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel_date.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -483,7 +499,7 @@
             this.актToolStripMenuItem,
             this.базаToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(159, 70);
             // 
             // радиостанцияToolStripMenuItem
             // 
@@ -496,49 +512,49 @@
             this.decommissionRadiostationToolStripMenuItem,
             this.delDecommissionToolStripMenuItem});
             this.радиостанцияToolStripMenuItem.Name = "радиостанцияToolStripMenuItem";
-            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.радиостанцияToolStripMenuItem.Text = "Радиостанция";
             // 
             // addNewRadiostationToolStripMenuItem
             // 
             this.addNewRadiostationToolStripMenuItem.Name = "addNewRadiostationToolStripMenuItem";
-            this.addNewRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.addNewRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.addNewRadiostationToolStripMenuItem.Text = "Добавить Новую Радиостанцию";
             // 
             // changeRadiostationToolStripMenuItem
             // 
             this.changeRadiostationToolStripMenuItem.Name = "changeRadiostationToolStripMenuItem";
-            this.changeRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.changeRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.changeRadiostationToolStripMenuItem.Text = "Изменить Радиостанцию";
             // 
             // addСhangeRemontToolStripMenuItem
             // 
             this.addСhangeRemontToolStripMenuItem.Name = "addСhangeRemontToolStripMenuItem";
-            this.addСhangeRemontToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.addСhangeRemontToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.addСhangeRemontToolStripMenuItem.Text = "Добавить/Изменить Ремонт";
             // 
             // delRadiostationToolStripMenuItem
             // 
             this.delRadiostationToolStripMenuItem.Name = "delRadiostationToolStripMenuItem";
-            this.delRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.delRadiostationToolStripMenuItem.Text = "Удалить Радиостанцию";
             // 
             // delRemontToolStripMenuItem
             // 
             this.delRemontToolStripMenuItem.Name = "delRemontToolStripMenuItem";
-            this.delRemontToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delRemontToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.delRemontToolStripMenuItem.Text = "Удалить Ремонт";
             // 
             // decommissionRadiostationToolStripMenuItem
             // 
             this.decommissionRadiostationToolStripMenuItem.Name = "decommissionRadiostationToolStripMenuItem";
-            this.decommissionRadiostationToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.decommissionRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.decommissionRadiostationToolStripMenuItem.Text = "Списать Радиостанцию";
             // 
             // delDecommissionToolStripMenuItem
             // 
             this.delDecommissionToolStripMenuItem.Name = "delDecommissionToolStripMenuItem";
-            this.delDecommissionToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.delDecommissionToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.delDecommissionToolStripMenuItem.Text = "Удалить Списание";
             // 
             // актToolStripMenuItem
@@ -550,37 +566,37 @@
             this.actTOSignatureToolStripMenuItem,
             this.createActDecommissionToolStripMenuItem});
             this.актToolStripMenuItem.Name = "актToolStripMenuItem";
-            this.актToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.актToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.актToolStripMenuItem.Text = "Акт";
             // 
             // createActTOToolStripMenuItem
             // 
             this.createActTOToolStripMenuItem.Name = "createActTOToolStripMenuItem";
-            this.createActTOToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActTOToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.createActTOToolStripMenuItem.Text = "Сформировать Акт ТО";
             // 
             // createActRemontToolStripMenuItem
             // 
             this.createActRemontToolStripMenuItem.Name = "createActRemontToolStripMenuItem";
-            this.createActRemontToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActRemontToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.createActRemontToolStripMenuItem.Text = "Сформировать Акт Ремонта";
             // 
             // fillingActTOToolStripMenuItem
             // 
             this.fillingActTOToolStripMenuItem.Name = "fillingActTOToolStripMenuItem";
-            this.fillingActTOToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.fillingActTOToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.fillingActTOToolStripMenuItem.Text = "Заполняем Акт";
             // 
             // actTOSignatureToolStripMenuItem
             // 
             this.actTOSignatureToolStripMenuItem.Name = "actTOSignatureToolStripMenuItem";
-            this.actTOSignatureToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.actTOSignatureToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.actTOSignatureToolStripMenuItem.Text = "Акт на подпись";
             // 
             // createActDecommissionToolStripMenuItem
             // 
             this.createActDecommissionToolStripMenuItem.Name = "createActDecommissionToolStripMenuItem";
-            this.createActDecommissionToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.createActDecommissionToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.createActDecommissionToolStripMenuItem.Text = "Сформировать Акт Списания";
             // 
             // базаToolStripMenuItem
@@ -591,31 +607,31 @@
             this.showFullDecommissionToolStripMenuItem,
             this.saveBaseToolStripMenuItem});
             this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
-            this.базаToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.базаToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.базаToolStripMenuItem.Text = "База";
             // 
             // updateBaseToolStripMenuItem
             // 
             this.updateBaseToolStripMenuItem.Name = "updateBaseToolStripMenuItem";
-            this.updateBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.updateBaseToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
             this.updateBaseToolStripMenuItem.Text = "Обновить Базу";
             // 
             // showMatchPreviouYearToolStripMenuItem
             // 
             this.showMatchPreviouYearToolStripMenuItem.Name = "showMatchPreviouYearToolStripMenuItem";
-            this.showMatchPreviouYearToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.showMatchPreviouYearToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
             this.showMatchPreviouYearToolStripMenuItem.Text = "Показать совпадение с предыдущим годом";
             // 
             // showFullDecommissionToolStripMenuItem
             // 
             this.showFullDecommissionToolStripMenuItem.Name = "showFullDecommissionToolStripMenuItem";
-            this.showFullDecommissionToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.showFullDecommissionToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
             this.showFullDecommissionToolStripMenuItem.Text = "Показать все списания";
             // 
             // saveBaseToolStripMenuItem
             // 
             this.saveBaseToolStripMenuItem.Name = "saveBaseToolStripMenuItem";
-            this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(314, 22);
+            this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
             this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
             // 
             // panel_seach_datagrid_curator
@@ -831,13 +847,15 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel1.Controls.Add(this.cmB_month);
+            this.panel1.Controls.Add(this.txB_serialNumber);
+            this.panel1.Controls.Add(this.cmB_city);
+            this.panel1.Controls.Add(this.cmB_road);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
             this.panel1.Controls.Add(this.btn_all_BD);
-            this.panel1.Controls.Add(this.cmb_city);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txB_serialNumber);
-            this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.btn_add_city);
             this.panel1.Controls.Add(this.btn_seach_BD_city);
             this.panel1.Controls.Add(this.btn_search);
@@ -851,6 +869,97 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1427, 128);
             this.panel1.TabIndex = 0;
+            // 
+            // cmB_month
+            // 
+            this.cmB_month.BackColor = System.Drawing.SystemColors.Window;
+            this.cmB_month.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_month.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_month.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_month.FormattingEnabled = true;
+            this.cmB_month.Items.AddRange(new object[] {
+            "Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Сентябрь",
+            "Октябрь",
+            "Ноябрь",
+            "Декабрь"});
+            this.cmB_month.Location = new System.Drawing.Point(253, 33);
+            this.cmB_month.Name = "cmB_month";
+            this.cmB_month.Size = new System.Drawing.Size(235, 28);
+            this.cmB_month.TabIndex = 86;
+            this.cmB_month.SelectionChangeCommitted += new System.EventHandler(this.CmB_month_SelectionChangeCommitted);
+            // 
+            // txB_serialNumber
+            // 
+            this.txB_serialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_serialNumber.Location = new System.Drawing.Point(12, 67);
+            this.txB_serialNumber.Multiline = true;
+            this.txB_serialNumber.Name = "txB_serialNumber";
+            this.txB_serialNumber.ReadOnly = true;
+            this.txB_serialNumber.Size = new System.Drawing.Size(235, 29);
+            this.txB_serialNumber.TabIndex = 85;
+            this.txB_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // cmB_city
+            // 
+            this.cmB_city.BackColor = System.Drawing.SystemColors.Window;
+            this.cmB_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_city.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_city.FormattingEnabled = true;
+            this.cmB_city.Location = new System.Drawing.Point(494, 33);
+            this.cmB_city.Name = "cmB_city";
+            this.cmB_city.Size = new System.Drawing.Size(235, 28);
+            this.cmB_city.TabIndex = 84;
+            // 
+            // cmB_road
+            // 
+            this.cmB_road.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_road.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_road.FormattingEnabled = true;
+            this.cmB_road.Items.AddRange(new object[] {
+            "Восточно-Сибирская ЖД",
+            "Горьковская ЖД",
+            "Дальневосточная ЖД",
+            "Забайкальская ЖД",
+            "Западно-Сибирская ЖД",
+            "Калининградская ЖД",
+            "Красноярская ЖД",
+            "Куйбышевская ЖД",
+            "Московская ЖД",
+            "Октябрьская ЖД",
+            "Приволжская ЖД",
+            "Сахалинская ЖД",
+            "Свердловская ЖД",
+            "Северная ЖД",
+            "Северо-Кавказская ЖД",
+            "Юго-Восточная ЖД",
+            "Южно-Уральская ЖД"});
+            this.cmB_road.Location = new System.Drawing.Point(12, 33);
+            this.cmB_road.Name = "cmB_road";
+            this.cmB_road.Size = new System.Drawing.Size(235, 28);
+            this.cmB_road.TabIndex = 83;
+            this.cmB_road.SelectionChangeCommitted += new System.EventHandler(this.CmB_road_SelectionChangeCommitted);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 18);
+            this.label2.TabIndex = 80;
+            this.label2.Text = "Загрузка Базы:";
             // 
             // cmb_number_unique_acts
             // 
@@ -873,26 +982,13 @@
             this.btn_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_all_BD.Location = new System.Drawing.Point(254, 69);
+            this.btn_all_BD.Location = new System.Drawing.Point(766, 91);
             this.btn_all_BD.Name = "btn_all_BD";
             this.btn_all_BD.Size = new System.Drawing.Size(64, 29);
             this.btn_all_BD.TabIndex = 78;
             this.btn_all_BD.Text = "FULL BD";
             this.btn_all_BD.UseVisualStyleBackColor = false;
             this.btn_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
-            // 
-            // cmb_city
-            // 
-            this.cmb_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_city.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmb_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_city.FormattingEnabled = true;
-            this.cmb_city.Location = new System.Drawing.Point(12, 34);
-            this.cmb_city.Name = "cmb_city";
-            this.cmb_city.Size = new System.Drawing.Size(236, 28);
-            this.cmb_city.TabIndex = 77;
-            this.cmb_city.MouseEnter += new System.EventHandler(this.ComboBox_city_MouseEnter);
             // 
             // label_act_remont
             // 
@@ -920,32 +1016,11 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "Акт ТО №:";
             // 
-            // txB_serialNumber
-            // 
-            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_serialNumber.Location = new System.Drawing.Point(12, 70);
-            this.txB_serialNumber.Name = "txB_serialNumber";
-            this.txB_serialNumber.ReadOnly = true;
-            this.txB_serialNumber.Size = new System.Drawing.Size(235, 26);
-            this.txB_serialNumber.TabIndex = 11;
-            this.txB_serialNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Transparent;
-            this.label24.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(9, 12);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(318, 18);
-            this.label24.TabIndex = 16;
-            this.label24.Text = "Загрузка Базы данных по городу:";
-            // 
             // btn_add_city
             // 
             this.btn_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_add_city.Location = new System.Drawing.Point(289, 34);
+            this.btn_add_city.Location = new System.Drawing.Point(789, 56);
             this.btn_add_city.Name = "btn_add_city";
             this.btn_add_city.Size = new System.Drawing.Size(29, 29);
             this.btn_add_city.TabIndex = 15;
@@ -959,7 +1034,7 @@
             this.btn_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_seach_BD_city.Location = new System.Drawing.Point(254, 34);
+            this.btn_seach_BD_city.Location = new System.Drawing.Point(754, 56);
             this.btn_seach_BD_city.Name = "btn_seach_BD_city";
             this.btn_seach_BD_city.Size = new System.Drawing.Size(29, 29);
             this.btn_seach_BD_city.TabIndex = 14;
@@ -1397,6 +1472,164 @@
             this.panel3.Size = new System.Drawing.Size(1426, 63);
             this.panel3.TabIndex = 80;
             // 
+            // panel_date
+            // 
+            this.panel_date.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel_date.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel_date.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_date.Controls.Add(this.lbL_numberPrintDocument);
+            this.panel_date.Controls.Add(this.label7);
+            this.panel_date.Controls.Add(this.btn_close_panel_date_info);
+            this.panel_date.Controls.Add(this.label23);
+            this.panel_date.Controls.Add(this.label30);
+            this.panel_date.Controls.Add(this.lbL_FIO_chief);
+            this.panel_date.Controls.Add(this.lbL_doverennost);
+            this.panel_date.Controls.Add(this.label3);
+            this.panel_date.Controls.Add(this.lbL_FIO_Engineer);
+            this.panel_date.Controls.Add(this.lbL_road);
+            this.panel_date.Controls.Add(this.label28);
+            this.panel_date.Controls.Add(this.label29);
+            this.panel_date.Enabled = false;
+            this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.panel_date.Location = new System.Drawing.Point(445, 232);
+            this.panel_date.Name = "panel_date";
+            this.panel_date.Size = new System.Drawing.Size(534, 264);
+            this.panel_date.TabIndex = 83;
+            this.panel_date.TabStop = true;
+            this.panel_date.Visible = false;
+            // 
+            // lbL_numberPrintDocument
+            // 
+            this.lbL_numberPrintDocument.AutoSize = true;
+            this.lbL_numberPrintDocument.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_numberPrintDocument.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_numberPrintDocument.Location = new System.Drawing.Point(209, 202);
+            this.lbL_numberPrintDocument.Name = "lbL_numberPrintDocument";
+            this.lbL_numberPrintDocument.Size = new System.Drawing.Size(32, 22);
+            this.lbL_numberPrintDocument.TabIndex = 77;
+            this.lbL_numberPrintDocument.Text = "00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(25, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 22);
+            this.label7.TabIndex = 76;
+            this.label7.Text = "№ печати:";
+            // 
+            // btn_close_panel_date_info
+            // 
+            this.btn_close_panel_date_info.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_panel_date_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_panel_date_info.Location = new System.Drawing.Point(501, 5);
+            this.btn_close_panel_date_info.Name = "btn_close_panel_date_info";
+            this.btn_close_panel_date_info.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_panel_date_info.TabIndex = 37;
+            this.btn_close_panel_date_info.Text = "X";
+            this.btn_close_panel_date_info.UseVisualStyleBackColor = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.Transparent;
+            this.label23.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label23.Location = new System.Drawing.Point(164, 7);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(208, 27);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "Данные бригады";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label30.Location = new System.Drawing.Point(25, 71);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(153, 22);
+            this.label30.TabIndex = 21;
+            this.label30.Text = "Доверенность:";
+            // 
+            // lbL_FIO_chief
+            // 
+            this.lbL_FIO_chief.AutoSize = true;
+            this.lbL_FIO_chief.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_chief.Location = new System.Drawing.Point(207, 104);
+            this.lbL_FIO_chief.Name = "lbL_FIO_chief";
+            this.lbL_FIO_chief.Size = new System.Drawing.Size(131, 22);
+            this.lbL_FIO_chief.TabIndex = 6;
+            this.lbL_FIO_chief.Text = "Иванов В.В.";
+            // 
+            // lbL_doverennost
+            // 
+            this.lbL_doverennost.AutoSize = true;
+            this.lbL_doverennost.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_doverennost.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_doverennost.Location = new System.Drawing.Point(207, 71);
+            this.lbL_doverennost.Name = "lbL_doverennost";
+            this.lbL_doverennost.Size = new System.Drawing.Size(142, 22);
+            this.lbL_doverennost.TabIndex = 7;
+            this.lbL_doverennost.Text = "Доверенность";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(25, 170);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 22);
+            this.label3.TabIndex = 75;
+            this.label3.Text = "Дорога:";
+            // 
+            // lbL_FIO_Engineer
+            // 
+            this.lbL_FIO_Engineer.AutoSize = true;
+            this.lbL_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(207, 138);
+            this.lbL_FIO_Engineer.Name = "lbL_FIO_Engineer";
+            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(142, 22);
+            this.lbL_FIO_Engineer.TabIndex = 18;
+            this.lbL_FIO_Engineer.Text = "Сидоров В.В.";
+            // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(207, 170);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(241, 22);
+            this.lbL_road.TabIndex = 74;
+            this.lbL_road.Text = "Восточно-Сибирская ЖД";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label28.Location = new System.Drawing.Point(25, 104);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(120, 22);
+            this.label28.TabIndex = 19;
+            this.label28.Text = "Начальник:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label29.Location = new System.Drawing.Point(26, 137);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(98, 22);
+            this.label29.TabIndex = 20;
+            this.label29.Text = "Инженер:";
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1404,6 +1637,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
@@ -1440,6 +1674,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel_date.ResumeLayout(false);
+            this.panel_date.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1459,7 +1695,6 @@
         private System.Windows.Forms.Button btn_seach_BD_city;
         private System.Windows.Forms.Button btn_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txB_city;
@@ -1474,7 +1709,6 @@
         private System.Windows.Forms.TextBox txB_dateTO;
         private System.Windows.Forms.TextBox txB_networkNumber;
         private System.Windows.Forms.TextBox txB_inventoryNumber;
-        private System.Windows.Forms.TextBox txB_serialNumber;
         private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Label label_act_remont;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -1492,7 +1726,6 @@
         private System.Windows.Forms.Button button_Uploading_JSON_file;
         private System.Windows.Forms.Button button_Loading_file_last_year;
         private System.Windows.Forms.Label label32;
-        internal System.Windows.Forms.ComboBox cmb_city;
         private System.Windows.Forms.Button btn_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
@@ -1554,5 +1787,23 @@
         private System.Windows.Forms.Label lbL_sum_TO_selection;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmB_road;
+        internal System.Windows.Forms.ComboBox cmB_city;
+        private System.Windows.Forms.TextBox txB_serialNumber;
+        private System.Windows.Forms.Panel panel_date;
+        private System.Windows.Forms.Label lbL_numberPrintDocument;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_close_panel_date_info;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label lbL_FIO_chief;
+        private System.Windows.Forms.Label lbL_doverennost;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbL_FIO_Engineer;
+        private System.Windows.Forms.Label lbL_road;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        internal System.Windows.Forms.ComboBox cmB_month;
     }
 }
