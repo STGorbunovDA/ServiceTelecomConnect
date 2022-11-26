@@ -26,6 +26,33 @@ namespace ServiceTelecomConnect
         void ChangeRSTForm_Load(object sender, EventArgs e)
         {
             cmB_model.Text = cmB_model.Items[0].ToString();
+            if (String.IsNullOrEmpty(txB_numberActRemont.Text))
+            {
+                txB_numberActRemont.Enabled = false;
+                cmB_сategory.Enabled = false;
+                txB_priceRemont.Enabled = false;
+            }
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
+                txB_decommission.Enabled = false;
+            else
+            {
+                txB_city.Enabled = false;
+                cmB_poligon.Enabled = false;
+                txB_company.Enabled = false;
+                txB_location.Enabled = false;
+                cmB_model.Enabled = false;
+                txB_serialNumber.Enabled = false;
+                txB_inventoryNumber.Enabled = false;
+                txB_networkNumber.Enabled = false;
+                txB_price.Enabled = false;
+                txB_price.Text = "0.00";
+                txB_numberAct.Enabled = false;
+                txB_numberAct.Text = "";
+                pictureBox5.Enabled = false;
+                lbL_Date.Text = "Дата списания:";
+                txB_decommission.Focus();
+            }
+
         }
 
         void ComboBox_model_Click(object sender, EventArgs e)
@@ -259,6 +286,21 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
+                else if (model == "Шеврон T-44 V2")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
                 else if (model == "РН311М")
                 {
                     if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
@@ -424,7 +466,6 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-
                 var networkNumber = txB_networkNumber.Text;
 
                 if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
@@ -464,27 +505,30 @@ namespace ServiceTelecomConnect
                 }
 
                 var numberActRemont = txB_numberActRemont.Text;
-
-
-                if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
-                {
-                    MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_numberActRemont.Select();
-                    return;
-                }
                 var сategory = cmB_сategory.Text;
-                if (String.IsNullOrEmpty(сategory))
+                if (!String.IsNullOrEmpty(numberActRemont))
                 {
-                    MessageBox.Show("Заполните поле категория ремонта");
-                    return;
+                    if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+                    {
+                        MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_numberActRemont.Select();
+                        return;
+                    }
+                    if (String.IsNullOrEmpty(сategory))
+                    {
+                        MessageBox.Show("Заполните поле категория ремонта");
+                        return;
+                    }
                 }
+                
+                
                 var priceRemont = txB_priceRemont.Text;
                 var decommission = txB_decommission.Text;
                 var month = cmB_month.Text;
+                var road = lbL_road.Text;
 
                 try
                 {
-                    DateTime.Parse(dateTO).ToString("dd.MM.yyyy");
                     if ((city != "") && (poligon != "") && (company != "") && (location != "")
                     && (model != "") && (serialNumber != "") && (inventoryNumber != "") && (networkNumber != "")
                     && (numberAct != "") && (dateTO != ""))
@@ -732,7 +776,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
                             $"city = '{city}', price = '{Convert.ToDecimal(price)}', numberActRemont = '{numberActRemont}', " +
                             $"category  = '{сategory}', priceRemont = '{Convert.ToDecimal(priceRemont)}', decommissionSerialNumber = '{decommission}', " +
-                            $"month = '{month}' WHERE serialNumber = '{serialNumber}'";
+                            $"month = '{month}' WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
@@ -1151,74 +1195,6 @@ namespace ServiceTelecomConnect
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-
-        void TextBox_TextChanged()
-        {
-            if (txB_city.Text.Length > 0 && txB_company.Text.Length > 0
-                && txB_location.Text.Length > 0 && txB_serialNumber.Text.Length > 0
-                && txB_inventoryNumber.Text.Length > 0 && txB_networkNumber.Text.Length > 0
-                && txB_dateTO.Text.Length > 0 && txB_numberAct.Text.Length > 0)
-            {
-                button_save_add_rst.Enabled = true;
-            }
-            else
-            {
-                button_save_add_rst.Enabled = false;
-            }
-        }
-
-        void ChangeRSTForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            TextBox_TextChanged();
-
-            if (e.KeyCode == Keys.F1)
-            {
-                toolTip1.Active = toolTip1.Active ? false : true;
-            }
-        }
-        #endregion
-
-        #region свойства toolTip Popup Draw
-        void ToolTip1_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            Font tooltipFont = new Font("TimesNewRoman", 12.0f);
-            e.DrawBackground();
-            e.DrawBorder();
-            e.Graphics.DrawString(e.ToolTipText, tooltipFont, Brushes.Black, new PointF(1, 1));
-        }
-
-        void ToolTip1_Popup(object sender, PopupEventArgs e)
-        {
-            e.ToolTipSize = TextRenderer.MeasureText(toolTip1.GetToolTip(e.AssociatedControl), new Font("TimesNewRoman", 13.0f));
-        }
-        #endregion
-
-        #region toolTip для Control-ов формы
-        void PictureBox4_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox4, $"Очистить все поля");
-        }
-
-        void PictureBox5_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(pictureBox5, $"Очистить поле Дата ТО:");
-        }
-
-        void PictureBox6_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            //toolTip1.SetToolTip(pictureBox6, $"Очистить поле Дата Выдачи удостоверения:");
-        }
-
-
 
         #endregion
 

@@ -38,7 +38,7 @@
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.txB_company = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbL_Date = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -80,6 +80,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.cmB_month = new System.Windows.Forms.ComboBox();
+            this.lbL_road = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +95,6 @@
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Click += new System.EventHandler(this.PictureBox4_Click);
-            this.pictureBox4.MouseEnter += new System.EventHandler(this.PictureBox4_MouseEnter);
             // 
             // label1
             // 
@@ -117,7 +117,6 @@
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
-            this.pictureBox5.MouseEnter += new System.EventHandler(this.PictureBox5_MouseEnter);
             // 
             // txB_dateTO
             // 
@@ -186,16 +185,16 @@
             this.label7.TabIndex = 21;
             this.label7.Text = "Место нахождения:";
             // 
-            // label6
+            // lbL_Date
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(12, 350);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 20);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Дата ТО:";
+            this.lbL_Date.AutoSize = true;
+            this.lbL_Date.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_Date.Location = new System.Drawing.Point(12, 350);
+            this.lbL_Date.Name = "lbL_Date";
+            this.lbL_Date.Size = new System.Drawing.Size(77, 20);
+            this.lbL_Date.TabIndex = 20;
+            this.lbL_Date.Text = "Дата ТО:";
             // 
             // label5
             // 
@@ -244,7 +243,6 @@
             // button_save_add_rst
             // 
             this.button_save_add_rst.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button_save_add_rst.Enabled = false;
             this.button_save_add_rst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_save_add_rst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_save_add_rst.Location = new System.Drawing.Point(728, 450);
@@ -687,6 +685,18 @@
             this.cmB_month.Size = new System.Drawing.Size(232, 28);
             this.cmB_month.TabIndex = 148;
             // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(11, 19);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(49, 15);
+            this.lbL_road.TabIndex = 149;
+            this.lbL_road.Text = "Дорога";
+            this.lbL_road.Visible = false;
+            // 
             // СhangeRSTFormCurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -694,6 +704,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 491);
+            this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.cmB_month);
             this.Controls.Add(this.label40);
             this.Controls.Add(this.label24);
@@ -739,7 +750,7 @@
             this.Controls.Add(this.txB_serialNumber);
             this.Controls.Add(this.txB_company);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lbL_Date);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -752,7 +763,6 @@
             this.ShowIcon = false;
             this.Text = "Изменение РСТ";
             this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
@@ -764,7 +774,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbL_Date;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -812,5 +822,6 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label40;
         internal System.Windows.Forms.ComboBox cmB_month;
+        internal System.Windows.Forms.Label lbL_road;
     }
 }
