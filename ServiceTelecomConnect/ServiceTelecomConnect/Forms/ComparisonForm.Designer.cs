@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -104,6 +104,8 @@
             this.close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button_change_rst_form_curator = new System.Windows.Forms.Button();
             this.button_save_in_file_curator = new System.Windows.Forms.Button();
             this.cmB_month = new System.Windows.Forms.ComboBox();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
@@ -111,11 +113,9 @@
             this.cmB_road = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmb_number_unique_acts = new System.Windows.Forms.ComboBox();
-            this.btn_all_BD = new System.Windows.Forms.Button();
             this.label_act_remont = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_add_city = new System.Windows.Forms.Button();
-            this.btn_seach_BD_city = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
             this.cmB_seach = new System.Windows.Forms.ComboBox();
             this.txB_numberAct = new System.Windows.Forms.TextBox();
@@ -191,47 +191,47 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 134);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 151);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1427, 530);
+            this.dataGridView1.Size = new System.Drawing.Size(1427, 514);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
@@ -451,15 +451,13 @@
             this.toolTip1.BackColor = System.Drawing.Color.White;
             this.toolTip1.InitialDelay = 800;
             this.toolTip1.ReshowDelay = 100;
-            this.toolTip1.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.ToolTip1_Draw);
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.ToolTip1_Popup);
             // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Enabled = false;
-            this.dataGridView2.Location = new System.Drawing.Point(1, 147);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 151);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(240, 150);
@@ -476,7 +474,7 @@
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Enabled = false;
-            this.dataGridView3.Location = new System.Drawing.Point(1184, 147);
+            this.dataGridView3.Location = new System.Drawing.Point(1187, 151);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
@@ -646,7 +644,7 @@
             this.panel_seach_datagrid_curator.Controls.Add(this.txB_seach_panel_datagrid_curator);
             this.panel_seach_datagrid_curator.Controls.Add(this.label37);
             this.panel_seach_datagrid_curator.Enabled = false;
-            this.panel_seach_datagrid_curator.Location = new System.Drawing.Point(460, 380);
+            this.panel_seach_datagrid_curator.Location = new System.Drawing.Point(460, 300);
             this.panel_seach_datagrid_curator.Name = "panel_seach_datagrid_curator";
             this.panel_seach_datagrid_curator.Size = new System.Drawing.Size(528, 141);
             this.panel_seach_datagrid_curator.TabIndex = 37;
@@ -848,6 +846,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.button_change_rst_form_curator);
             this.panel1.Controls.Add(this.button_save_in_file_curator);
             this.panel1.Controls.Add(this.cmB_month);
             this.panel1.Controls.Add(this.txB_serialNumber);
@@ -855,11 +855,9 @@
             this.panel1.Controls.Add(this.cmB_road);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmb_number_unique_acts);
-            this.panel1.Controls.Add(this.btn_all_BD);
             this.panel1.Controls.Add(this.label_act_remont);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_add_city);
-            this.panel1.Controls.Add(this.btn_seach_BD_city);
             this.panel1.Controls.Add(this.btn_search);
             this.panel1.Controls.Add(this.cmB_seach);
             this.panel1.Controls.Add(this.txB_numberAct);
@@ -869,16 +867,41 @@
             this.panel1.Controls.Add(this.txB_numberActRemont);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1427, 128);
+            this.panel1.Size = new System.Drawing.Size(1427, 145);
             this.panel1.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.Location = new System.Drawing.Point(1201, 9);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(218, 18);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "Функциональная панель";
+            // 
+            // button_change_rst_form_curator
+            // 
+            this.button_change_rst_form_curator.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_change_rst_form_curator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_change_rst_form_curator.Location = new System.Drawing.Point(253, 65);
+            this.button_change_rst_form_curator.Name = "button_change_rst_form_curator";
+            this.button_change_rst_form_curator.Size = new System.Drawing.Size(235, 31);
+            this.button_change_rst_form_curator.TabIndex = 84;
+            this.button_change_rst_form_curator.Text = "Изменить радиостанцию";
+            this.button_change_rst_form_curator.UseVisualStyleBackColor = false;
+            this.button_change_rst_form_curator.Click += new System.EventHandler(this.Button_change_rst_form_curator_Click);
             // 
             // button_save_in_file_curator
             // 
             this.button_save_in_file_curator.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button_save_in_file_curator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_save_in_file_curator.Location = new System.Drawing.Point(253, 67);
+            this.button_save_in_file_curator.Location = new System.Drawing.Point(286, 31);
             this.button_save_in_file_curator.Name = "button_save_in_file_curator";
-            this.button_save_in_file_curator.Size = new System.Drawing.Size(235, 31);
+            this.button_save_in_file_curator.Size = new System.Drawing.Size(202, 31);
             this.button_save_in_file_curator.TabIndex = 85;
             this.button_save_in_file_curator.Text = "Сохранение базы";
             this.button_save_in_file_curator.UseVisualStyleBackColor = false;
@@ -891,20 +914,7 @@
             this.cmB_month.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_month.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_month.FormattingEnabled = true;
-            this.cmB_month.Items.AddRange(new object[] {
-            "Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Сентябрь",
-            "Октябрь",
-            "Ноябрь",
-            "Декабрь"});
-            this.cmB_month.Location = new System.Drawing.Point(253, 33);
+            this.cmB_month.Location = new System.Drawing.Point(12, 100);
             this.cmB_month.Name = "cmB_month";
             this.cmB_month.Size = new System.Drawing.Size(235, 28);
             this.cmB_month.TabIndex = 86;
@@ -914,7 +924,7 @@
             // 
             this.txB_serialNumber.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_serialNumber.Location = new System.Drawing.Point(12, 67);
+            this.txB_serialNumber.Location = new System.Drawing.Point(253, 99);
             this.txB_serialNumber.Multiline = true;
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.ReadOnly = true;
@@ -929,10 +939,11 @@
             this.cmB_city.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_city.FormattingEnabled = true;
-            this.cmB_city.Location = new System.Drawing.Point(494, 33);
+            this.cmB_city.Location = new System.Drawing.Point(12, 66);
             this.cmB_city.Name = "cmB_city";
             this.cmB_city.Size = new System.Drawing.Size(235, 28);
             this.cmB_city.TabIndex = 84;
+            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmB_city_SelectionChangeCommitted);
             // 
             // cmB_road
             // 
@@ -958,7 +969,7 @@
             "Северо-Кавказская ЖД",
             "Юго-Восточная ЖД",
             "Южно-Уральская ЖД"});
-            this.cmB_road.Location = new System.Drawing.Point(12, 33);
+            this.cmB_road.Location = new System.Drawing.Point(12, 32);
             this.cmB_road.Name = "cmB_road";
             this.cmB_road.Size = new System.Drawing.Size(235, 28);
             this.cmB_road.TabIndex = 83;
@@ -969,7 +980,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Location = new System.Drawing.Point(9, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 18);
             this.label2.TabIndex = 80;
@@ -984,26 +995,13 @@
             this.cmb_number_unique_acts.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmb_number_unique_acts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmb_number_unique_acts.FormattingEnabled = true;
-            this.cmb_number_unique_acts.Location = new System.Drawing.Point(1175, 12);
+            this.cmb_number_unique_acts.Location = new System.Drawing.Point(1171, 33);
             this.cmb_number_unique_acts.Name = "cmb_number_unique_acts";
             this.cmb_number_unique_acts.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(210, 28);
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
             this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
-            // 
-            // btn_all_BD
-            // 
-            this.btn_all_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_all_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_all_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_all_BD.Location = new System.Drawing.Point(766, 91);
-            this.btn_all_BD.Name = "btn_all_BD";
-            this.btn_all_BD.Size = new System.Drawing.Size(64, 29);
-            this.btn_all_BD.TabIndex = 78;
-            this.btn_all_BD.Text = "FULL BD";
-            this.btn_all_BD.UseVisualStyleBackColor = false;
-            this.btn_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
             // 
             // label_act_remont
             // 
@@ -1012,7 +1010,7 @@
             this.label_act_remont.AutoSize = true;
             this.label_act_remont.BackColor = System.Drawing.Color.Transparent;
             this.label_act_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_act_remont.Location = new System.Drawing.Point(1204, 87);
+            this.label_act_remont.Location = new System.Drawing.Point(1149, 106);
             this.label_act_remont.Name = "label_act_remont";
             this.label_act_remont.Size = new System.Drawing.Size(110, 16);
             this.label_act_remont.TabIndex = 30;
@@ -1025,7 +1023,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(1242, 52);
+            this.label1.Location = new System.Drawing.Point(1187, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 29;
@@ -1035,28 +1033,13 @@
             // 
             this.btn_add_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_add_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_add_city.Location = new System.Drawing.Point(789, 56);
+            this.btn_add_city.Location = new System.Drawing.Point(253, 32);
             this.btn_add_city.Name = "btn_add_city";
             this.btn_add_city.Size = new System.Drawing.Size(29, 29);
             this.btn_add_city.TabIndex = 15;
             this.btn_add_city.Text = "+";
             this.btn_add_city.UseVisualStyleBackColor = false;
             this.btn_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
-            this.btn_add_city.MouseEnter += new System.EventHandler(this.Button_add_city_click_MouseEnter);
-            // 
-            // btn_seach_BD_city
-            // 
-            this.btn_seach_BD_city.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_seach_BD_city.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_seach_BD_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_seach_BD_city.Location = new System.Drawing.Point(754, 56);
-            this.btn_seach_BD_city.Name = "btn_seach_BD_city";
-            this.btn_seach_BD_city.Size = new System.Drawing.Size(29, 29);
-            this.btn_seach_BD_city.TabIndex = 14;
-            this.btn_seach_BD_city.Text = "...";
-            this.btn_seach_BD_city.UseVisualStyleBackColor = false;
-            this.btn_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
-            this.btn_seach_BD_city.MouseEnter += new System.EventHandler(this.Button_seach_BD_city_Click_MouseEnter);
             // 
             // btn_search
             // 
@@ -1064,14 +1047,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_search.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_search.Location = new System.Drawing.Point(1387, 11);
+            this.btn_search.Location = new System.Drawing.Point(1387, 33);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(29, 29);
             this.btn_search.TabIndex = 13;
             this.btn_search.Text = "...";
             this.btn_search.UseVisualStyleBackColor = false;
             this.btn_search.Click += new System.EventHandler(this.Button_search_Click);
-            this.btn_search.MouseEnter += new System.EventHandler(this.Button_search_click_MouseEnter);
             // 
             // cmB_seach
             // 
@@ -1082,22 +1064,21 @@
             this.cmB_seach.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmB_seach.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_seach.FormattingEnabled = true;
-            this.cmB_seach.Location = new System.Drawing.Point(952, 11);
+            this.cmB_seach.Location = new System.Drawing.Point(946, 34);
             this.cmB_seach.Name = "cmB_seach";
             this.cmB_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_seach.Size = new System.Drawing.Size(219, 28);
             this.cmB_seach.TabIndex = 8;
             this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
-            this.cmB_seach.MouseEnter += new System.EventHandler(this.ComboBox_seach_MouseEnter);
             // 
             // txB_numberAct
             // 
             this.txB_numberAct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberAct.Location = new System.Drawing.Point(1320, 46);
+            this.txB_numberAct.Location = new System.Drawing.Point(1265, 66);
             this.txB_numberAct.Name = "txB_numberAct";
-            this.txB_numberAct.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberAct.Size = new System.Drawing.Size(151, 29);
             this.txB_numberAct.TabIndex = 27;
             this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
             this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
@@ -1107,12 +1088,11 @@
             this.textBox_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_search.Location = new System.Drawing.Point(1177, 11);
+            this.textBox_search.Location = new System.Drawing.Point(1177, 33);
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(204, 29);
             this.textBox_search.TabIndex = 4;
             this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
-            this.textBox_search.MouseEnter += new System.EventHandler(this.TextBox_search_MouseEnter);
             // 
             // picB_update
             // 
@@ -1120,13 +1100,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picB_update.BackColor = System.Drawing.Color.Transparent;
             this.picB_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
-            this.picB_update.Location = new System.Drawing.Point(1086, 56);
+            this.picB_update.Location = new System.Drawing.Point(1012, 75);
             this.picB_update.Name = "picB_update";
             this.picB_update.Size = new System.Drawing.Size(50, 47);
             this.picB_update.TabIndex = 2;
             this.picB_update.TabStop = false;
             this.picB_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
-            this.picB_update.MouseEnter += new System.EventHandler(this.PictureBox2_update_MouseEnter);
             // 
             // picB_clear
             // 
@@ -1134,23 +1113,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.picB_clear.BackColor = System.Drawing.Color.Transparent;
             this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
-            this.picB_clear.Location = new System.Drawing.Point(1142, 56);
+            this.picB_clear.Location = new System.Drawing.Point(1068, 75);
             this.picB_clear.Name = "picB_clear";
             this.picB_clear.Size = new System.Drawing.Size(47, 47);
             this.picB_clear.TabIndex = 1;
             this.picB_clear.TabStop = false;
             this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
-            this.picB_clear.MouseEnter += new System.EventHandler(this.PictureBox1_clear_MouseEnter);
             // 
             // txB_numberActRemont
             // 
             this.txB_numberActRemont.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txB_numberActRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberActRemont.Location = new System.Drawing.Point(1320, 81);
+            this.txB_numberActRemont.Location = new System.Drawing.Point(1265, 99);
             this.txB_numberActRemont.Name = "txB_numberActRemont";
             this.txB_numberActRemont.ReadOnly = true;
-            this.txB_numberActRemont.Size = new System.Drawing.Size(96, 29);
+            this.txB_numberActRemont.Size = new System.Drawing.Size(151, 29);
             this.txB_numberActRemont.TabIndex = 72;
             // 
             // txB_Sign
@@ -1707,7 +1685,6 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ComboBox cmB_seach;
         private System.Windows.Forms.Button btn_search;
-        private System.Windows.Forms.Button btn_seach_BD_city;
         private System.Windows.Forms.Button btn_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
@@ -1741,7 +1718,6 @@
         private System.Windows.Forms.Button button_Uploading_JSON_file;
         private System.Windows.Forms.Button button_Loading_file_last_year;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Button btn_all_BD;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.Button btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.TextBox txB_decommission;
@@ -1821,5 +1797,7 @@
         private System.Windows.Forms.Label label29;
         internal System.Windows.Forms.ComboBox cmB_month;
         private System.Windows.Forms.Button button_save_in_file_curator;
+        private System.Windows.Forms.Button button_change_rst_form_curator;
+        private System.Windows.Forms.Label label18;
     }
 }

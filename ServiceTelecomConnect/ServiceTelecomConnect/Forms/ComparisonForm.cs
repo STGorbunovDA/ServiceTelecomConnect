@@ -88,10 +88,21 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
-                QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
+                QuerySettingDataBase.SelectCityGropByCurator(cmB_city, cmB_road);
+                QuerySettingDataBase.SelectCityGropByMonthRoad(cmB_road, cmB_month);
 
                 QuerySettingDataBase.CreateColumsСurator(dataGridView1);
                 QuerySettingDataBase.CreateColumsСurator(dataGridView2);
+                RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Куратор\\");
+                if (reg1 != null)
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Куратор\\");
+                    cmB_road.Text = helloKey.GetValue("Дорога").ToString();
+
+                    helloKey.Close();
+                }
+
                 QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
                 Counters();
 
@@ -109,7 +120,10 @@ namespace ServiceTelecomConnect
                 dataGridView1.AllowUserToResizeColumns = false;
                 dataGridView1.AllowUserToResizeRows = false;
 
-                cmB_month.Text = cmB_month.Items[0].ToString();
+                if (dataGridView1.Rows.Count != 0)
+                    cmB_month.Text = cmB_month.Items[0].ToString();
+                else MessageBox.Show("Добавь радиостанцию в выполнение!");
+
 
             }
             catch (Exception)
@@ -168,16 +182,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region загрузка всей таблицы ТО в текущем году
-        void Button_all_BD_Click(object sender, EventArgs e)
-        {
-            //todo
-            // QuerySettingDataBase.Full_BD_Curator(dataGridView1);
-            txb_flag_all_BD.Text = "Вся БД";
-            Counters();
-        }
-
-        #endregion
 
         #region Сохранение поля город проведения проверки
         void Button_add_city_Click(object sender, EventArgs e)
@@ -185,8 +189,8 @@ namespace ServiceTelecomConnect
             try
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
-                helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
+                RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\Куратор");
+                helloKey.SetValue("Дорога", $"{cmB_road.Text}");
                 helloKey.Close();
             }
             catch (Exception)
@@ -200,14 +204,38 @@ namespace ServiceTelecomConnect
         #region загрузка городов в cmB_road
         void CmB_road_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
+            QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
+            QuerySettingDataBase.SelectCityGropByCurator(cmB_city, cmB_road);
+            QuerySettingDataBase.SelectCityGropByMonthRoad(cmB_road, cmB_month);
+            Counters();
         }
         #endregion
 
         #region загрузка базы согласно месяцам по дороге
         void CmB_month_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             QuerySettingDataBase.RefreshDataGridСuratorMonth(dataGridView1, cmB_road.Text, cmB_month.Text);
+            Counters();
+        }
+
+        #endregion
+
+        #region загрузка базы согласно городу
+        void CmB_city_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
+            QuerySettingDataBase.RefreshDataGridСuratorCity(dataGridView1, cmB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.SelectCityGropByMonthCity(cmB_city, cmB_road, cmB_month);
+
             Counters();
         }
         #endregion
@@ -389,6 +417,11 @@ namespace ServiceTelecomConnect
         /// <param name="e"></param>
         void pictureBox2_update_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             Button_update_Click(sender, e);
         }
 
@@ -438,6 +471,11 @@ namespace ServiceTelecomConnect
 
         void Button_save_in_file_curator_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             try
             {
                 SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1, cmB_road.Text);
@@ -447,13 +485,18 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка сохранения таблицы пользователем(Button_save_in_file_Click)");
             }
         }
-      
+
         #endregion
 
         #region показать кол-во уникальных записей БД в Combobox
 
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             try
             {
                 if (cmB_seach.SelectedIndex == 0)
@@ -594,6 +637,11 @@ namespace ServiceTelecomConnect
         #region Взаимодействие на search, cформировать на форме panel1
         void Cmb_number_unique_acts_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
         }
 
@@ -608,13 +656,12 @@ namespace ServiceTelecomConnect
 
         void Button_search_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
-            Counters();
-        }
-
-        void Button_seach_BD_city_Click(object sender, EventArgs e)
-        {
-            QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             Counters();
         }
 
@@ -622,6 +669,11 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Добавь радиостанцию в выполнение!");
+                    return;
+                }
                 QuerySettingDataBase.Update_datagridview_number_act_curator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
@@ -629,7 +681,12 @@ namespace ServiceTelecomConnect
 
         void TextBox_numberAct_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (txB_numberAct.Text != "")
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
                 QuerySettingDataBase.Update_datagridview_number_act_curator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
@@ -684,13 +741,19 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region отк. формы изменения РСТ
-        private void Button_new_add_rst_form_Click_change_curator(object sender, EventArgs e)
+        void Button_change_rst_form_curator_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Добавь радиостанцию в выполнение!");
+                    return;
+                }
+
                 try
                 {
-                    if (txB_serialNumber.Text != "")
+                    if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                     {
                         СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
                         сhangeRSTFormCurator.DoubleBufferedForm(true);
@@ -710,6 +773,7 @@ namespace ServiceTelecomConnect
                         сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
                         сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
                         сhangeRSTFormCurator.cmB_month.Text = txB_month.Text;
+                        сhangeRSTFormCurator.lbL_road.Text = cmB_road.Text;
                         if (Application.OpenForms["СhangeRSTFormCurator"] == null)
                         {
                             сhangeRSTFormCurator.Show();
@@ -722,6 +786,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
         #endregion
 
         #region изменения РСТ в выполнение по плану
@@ -749,18 +814,18 @@ namespace ServiceTelecomConnect
                 }
             }
             ContextMenu m = new ContextMenu();
-            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Февраль", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Март", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Апрель", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Май", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июнь", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июль", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Август", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Сентябрь", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmB_city.Text, cmB_road.Text)));
-            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmB_city.Text, cmB_road.Text)));
+            m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Февраль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Февраль", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Март", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Март", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Апрель", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Апрель", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Май", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Май", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Июнь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июнь", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Июль", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Июль", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Август", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Август", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Сентябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Сентябрь", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmB_road, cmB_month)));
+            m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmB_road, cmB_month)));
 
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
@@ -777,7 +842,7 @@ namespace ServiceTelecomConnect
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
-                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
+                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_curator_Click));
                     m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_curator_Click));
@@ -794,7 +859,6 @@ namespace ServiceTelecomConnect
             try
             {
                 DataGridViewRow row = dataGridView1.Rows[currRowIndex];
-
                 txB_id.Text = row.Cells[0].Value.ToString();
                 txB_poligon.Text = row.Cells[1].Value.ToString();
                 txB_company.Text = row.Cells[2].Value.ToString();
@@ -923,103 +987,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region toolTip для Control-ов формы
-
-        #region свойства toolTip Popup Draw
-        void ToolTip1_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            Font tooltipFont = new Font("TimesNewRoman", 12.0f);
-            e.DrawBackground();
-            e.DrawBorder();
-            e.Graphics.DrawString(e.ToolTipText, tooltipFont, Brushes.Black, new PointF(1, 1));
-        }
-
-        void ToolTip1_Popup(object sender, PopupEventArgs e)
-        {
-            e.ToolTipSize = TextRenderer.MeasureText(toolTip1.GetToolTip(e.AssociatedControl), new Font("TimesNewRoman", 13.0f));
-        }
-        #endregion
-
-        void ComboBox_city_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(cmB_city, $"Выберите названиe города");
-        }
-        void Button_seach_BD_city_Click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_seach_BD_city, $"Выполнить");
-        }
-
-        void Button_add_city_click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_add_city, $"Добавить в реестр\nназвание города");
-        }
-
-        void TextBox_search_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(textBox_search, $"Введи искомое");
-        }
-
-        void ComboBox_seach_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(cmB_seach, $"Поиск по:");
-        }
-
-        void Button_search_click_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(btn_search, $"Выполнить");
-        }
-
-        void PictureBox2_update_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_update, $"Обновить БД");
-        }
-
-        void PictureBox1_clear_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-            toolTip1.SetToolTip(picB_clear, $"Очистить Control-ы");
-        }
-
-        void PictureBox_clear_BD_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-        }
-
-        void PictureBox_copy_BD_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(ToolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(ToolTip1_Popup);
-        }
-
-
-        #endregion
-
         #region при выборе строк ползьзователем и их подсчёт
 
         void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -1067,9 +1034,11 @@ namespace ServiceTelecomConnect
 
 
 
+
+
         #endregion
 
-       
+
     }
 }
 
