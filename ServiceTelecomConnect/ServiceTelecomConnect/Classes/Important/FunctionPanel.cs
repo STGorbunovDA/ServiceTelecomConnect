@@ -338,7 +338,8 @@ namespace ServiceTelecomConnect
                         priceRemont = row.Cells[14].Value,
                         decommissionSerialNumber = row.Cells[15].Value,
                         comment = row.Cells[16].Value,
-                        month = row.Cells[17].Value
+                        month = row.Cells[17].Value,
+                        road = row.Cells[18].Value
                     });
                     products.Add(product);
                 }
