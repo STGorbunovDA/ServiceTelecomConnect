@@ -340,8 +340,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Файл не сохранен!(UserSaveFileCuratorPC)");
             }
         }
-        #endregion
-
 
         internal static void SaveFullBasePC(DataGridView dgw, string cmB_city)
         {
@@ -374,7 +372,15 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            if (dgw.Columns[j].HeaderText.ToString() == "№" || dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            {
+
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
+                            {
+                                sw.Write(value);
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
                             {
 
                             }
@@ -387,6 +393,10 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Файл успешно сохранен!");
             }
         }
+        #endregion
+
+
+
 
         #region Сохранение Бд по Таймеру 
 
@@ -430,9 +440,17 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            if (dgw.Columns[j].HeaderText.ToString() == "№" || dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            if (dgw.Columns[j].HeaderText.ToString() == "№")
                             {
-                                
+
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
+                            {
+                                sw.Write(value);
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            {
+
                             }
                             else sw.Write(value + "\t");
                         }
@@ -447,22 +465,22 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void AutoSaveFileCurator(DataGridView dgw, string city)
+        internal static void AutoSaveFileCurator(DataGridView dgw, string road)
         {
             try
             {
                 DateTime today = DateTime.Today;
 
-                if (File.Exists($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\Куратор\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv"))
+                if (File.Exists($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{road}\Куратор\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv"))
                 {
-                    File.Delete($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\Куратор\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv");
+                    File.Delete($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{road}\Куратор\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv");
                 }
 
-                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\Куратор\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv";
+                string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{road}\Куратор\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv";
 
-                if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\Куратор\"))
+                if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхExcel\{road}\Куратор\"))
                 {
-                    Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\Куратор\");
+                    Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{road}\Куратор\");
                 }
 
                 using (StreamWriter sw = new StreamWriter(fileNamePath, false, Encoding.Unicode))
@@ -471,7 +489,7 @@ namespace ServiceTelecomConnect
 
                     note += $"Номер\tПолигон\tПредприятие\tМесто нахождения\tМодель\tЗаводской номер\t" +
                         $"Инвентарный номер\tСетевой номер\tДата проведения ТО\tНомер акта\tГород\tЦена ТО\t" +
-                        $"Номер Акта ремонта\tКатегория\tЦена ремонта\t№ Акта списания\tПримечания\tМесяц выполнения";
+                        $"Номер Акта ремонта\tКатегория\tЦена ремонта\t№ Акта списания\tПримечания\tМесяц выполнения\tДорога";
 
                     sw.WriteLine(note);
 
@@ -482,7 +500,19 @@ namespace ServiceTelecomConnect
                             var re = new Regex(Environment.NewLine);
                             var value = dgw.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            sw.Write(value + "\t");//todo решить
+                            if (dgw.Columns[j].HeaderText.ToString() == "№")
+                            {
+
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
+                            {
+                                sw.Write(value);
+                            }
+                            else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
+                            {
+
+                            }
+                            else sw.Write(value + "\t");
                         }
                         sw.WriteLine();
                     }
