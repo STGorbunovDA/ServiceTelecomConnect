@@ -111,7 +111,7 @@ namespace ServiceTelecomConnect
             try
             {
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(Convert.ToDateTime(record.GetString(8)).ToString("dd.MM.yyyy")), record.GetString(9),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
                          record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
@@ -132,7 +132,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -164,6 +164,7 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.CloseConnection();
                         }
                     }
+                    else dgw.Rows.Clear();
 
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -210,7 +211,7 @@ namespace ServiceTelecomConnect
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
-                            $"WHERE city LIKE N'%{city.Trim()}%' AND road = '{road}'";
+                            $"WHERE city = '{city.Trim()}' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                         {
@@ -264,7 +265,7 @@ namespace ServiceTelecomConnect
             try
             {
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(Convert.ToDateTime(record.GetString(8)).ToString("dd.MM.yyyy")), record.GetString(9),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
                          record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
                          record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
@@ -278,6 +279,8 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка ReedSingleRow");
             }
         }
+
+
 
         internal static void CreateColumsСurator(DataGridView dgw)
         {
@@ -301,7 +304,8 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
                 dgw.Columns.Add("comment", "Примечание");
                 dgw.Columns.Add("month", "Месяц выполнения");
-                dgw.Columns.Add("IsNew", String.Empty);
+                dgw.Columns.Add("road", "Дорога");
+                dgw.Columns.Add("IsNew", "RowState");
                 dgw.Columns[18].Visible = false;
             }
             catch (Exception)
@@ -315,9 +319,9 @@ namespace ServiceTelecomConnect
             try
             {
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(Convert.ToDateTime(record.GetString(8)).ToString("dd.MM.yyyy")), record.GetString(9),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), RowState.ModifieldNew)));
+                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -325,13 +329,13 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void RefreshDataGridСurator(DataGridView dgw, string city)
+        internal static void RefreshDataGridСurator(DataGridView dgw, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(road))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -340,7 +344,70 @@ namespace ServiceTelecomConnect
                         string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                             $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
-                            $"radiostantion_сomparison WHERE city LIKE N'%{city.Trim()}%'";
+                            $"radiostantion_сomparison WHERE road = '{road}'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                        {
+                            DB_4.GetInstance.OpenConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRowСurator(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB_4.GetInstance.CloseConnection();
+                        }
+                    } else dgw.Rows.Clear();
+
+
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 170;
+                    dgw.Columns[5].Width = 170;
+                    dgw.Columns[6].Width = 170;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+                    if (dgw.Rows.Count > 1)
+                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridСurator");
+                }
+            }
+        }
+
+        internal static void RefreshDataGridСuratorMonth(DataGridView dgw, string road, string month)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    if (!String.IsNullOrEmpty(road))
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                            $"radiostantion_сomparison WHERE road = '{road}' AND month = '{month}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
                         {
@@ -361,6 +428,8 @@ namespace ServiceTelecomConnect
                             DB_4.GetInstance.CloseConnection();
                         }
                     }
+                    else dgw.Rows.Clear();
+
 
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -392,9 +461,9 @@ namespace ServiceTelecomConnect
             try
             {
                 dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(Convert.ToDateTime(record.GetString(8)).ToString("dd.MM.yyyy")), record.GetString(9),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
                          record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), RowState.ModifieldNew)));
+                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
             }
             catch (Exception)
             {
@@ -402,13 +471,13 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city)
+        internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -417,7 +486,7 @@ namespace ServiceTelecomConnect
                         string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                             $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $"FROM radiostantion_сomparison WHERE city LIKE N'%{city.Trim()}%'";
+                            $"FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
                         {
@@ -469,7 +538,7 @@ namespace ServiceTelecomConnect
 
         #region загрузка всей таблицы ТО в текущем году
 
-        internal static void Full_BD(DataGridView dgw)
+        internal static void Full_BD(DataGridView dgw, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -483,7 +552,8 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                            $"FROM radiostantion WHERE road = '{road.Trim()}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -527,7 +597,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Full_BD_Curator(DataGridView dgw)
+        internal static void Full_BD_Curator(DataGridView dgw, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -537,7 +607,11 @@ namespace ServiceTelecomConnect
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    string queryString = $"SELECT * FROM radiostantion_сomparison";
+
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                           $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                           $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                           $"radiostantion_сomparison WHERE road = '{road.Trim()}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
                     {
@@ -584,7 +658,7 @@ namespace ServiceTelecomConnect
 
         #region поиск по БД
 
-        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -641,7 +715,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}'AND road = '{road}' AND CONCAT ({perem_comboBox})";
                     }
                     else if (perem_comboBox == "numberAct")
                     {
@@ -649,7 +723,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
@@ -658,7 +732,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                     {
@@ -666,7 +740,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
                     }
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
@@ -1152,12 +1226,12 @@ namespace ServiceTelecomConnect
                 {
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[18].Value = RowState.Deleted;
+                        dgw.Rows[row.Index].Cells[19].Value = RowState.Deleted;
                     }
 
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = (RowState)dgw.Rows[index].Cells[18].Value;//проверить индекс
+                        var rowState = (RowState)dgw.Rows[index].Cells[19].Value;//проверить индекс
 
                         if (rowState == RowState.Deleted)
                         {
@@ -1348,7 +1422,7 @@ namespace ServiceTelecomConnect
                 try
                 {
                     var price = "";
-                    if (decommissionSerialNumber != "")
+                    if (!String.IsNullOrEmpty(decommissionSerialNumber))
                     {
 
                         if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
@@ -1405,7 +1479,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -1464,61 +1538,61 @@ namespace ServiceTelecomConnect
 
         #region Сортировка по ремонтам 
 
-        internal static string SortRemontAct(DataGridView dgw, string city)
-        {
-            string remontAct;
+        //internal static string SortRemontAct(DataGridView dgw, string city)
+        //{
+        //    string remontAct;
 
-            try
-            {
-                var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
+        //    try
+        //    {
+        //        var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
 
-                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
+        //        using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+        //        {
+        //            DB.GetInstance.OpenConnection();
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                ReedSingleRow(dgw, reader);
-                            }
-                            reader.Close();
-                        }
-                    }
-                    DB.GetInstance.CloseConnection();
-                }
+        //            using (MySqlDataReader reader = command.ExecuteReader())
+        //            {
+        //                if (reader.HasRows)
+        //                {
+        //                    while (reader.Read())
+        //                    {
+        //                        ReedSingleRow(dgw, reader);
+        //                    }
+        //                    reader.Close();
+        //                }
+        //            }
+        //            DB.GetInstance.CloseConnection();
+        //        }
 
-                dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+        //        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
 
-                dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-                DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
-                remontAct = row.Cells[17].Value.ToString();
+        //        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+        //        DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
+        //        remontAct = row.Cells[17].Value.ToString();
 
-                if (remontAct != "" || remontAct != null)
-                {
-                    return remontAct;
-                }
-                else return remontAct = "Отсутсвует";
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка SortRemontAct");
-                return "Отсутсвует";
-            }
+        //        if (remontAct != "" || remontAct != null)
+        //        {
+        //            return remontAct;
+        //        }
+        //        else return remontAct = "Отсутсвует";
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Ошибка SortRemontAct");
+        //        return "Отсутсвует";
+        //    }
 
-        }
+        //}
 
         #endregion
 
         #region показать уникальные данные по поиску
 
-        internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY company";
+                string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1540,11 +1614,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_model(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_model(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY model";
+                string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1593,11 +1667,11 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY location";
+                string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1647,11 +1721,11 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY dateTO";
+                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1663,6 +1737,7 @@ namespace ServiceTelecomConnect
 
                         cmb_number_unique_acts.DataSource = act_table_unique;
                         cmb_number_unique_acts.DisplayMember = "dateTO";
+
                         DB.GetInstance.CloseConnection();
                     }
                 }
@@ -1699,11 +1774,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberAct";
+                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1751,11 +1826,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
+                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1803,11 +1878,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY representative";
+                string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY representative";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1829,11 +1904,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
+                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1921,7 +1996,7 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.CheackSkyNET())
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -1968,7 +2043,7 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.CheackSkyNET())
                 {
-                    if (city != "")
+                    if (!String.IsNullOrEmpty(city))
                     {
                         var myCulture = new CultureInfo("ru-RU");
                         myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -2032,6 +2107,10 @@ namespace ServiceTelecomConnect
                             {
                                 cmB_city.DataSource = city_table;
                                 cmB_city.DisplayMember = "city";
+                            }
+                            else
+                            {
+                                cmB_city.DataSource = null;
                             }
                             DB.GetInstance.CloseConnection();
                         }
