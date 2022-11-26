@@ -18,15 +18,14 @@ namespace ServiceTelecomConnect
                     var AddExecutionQuery = "";
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[40].Value = months;
+                        dgw.Rows[row.Index].Cells[41].Value = months;
                     }
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = dgw.Rows[index].Cells[40].Value.ToString();//проверить индекс
+                        var rowState = dgw.Rows[index].Cells[41].Value.ToString();//проверить индекс
 
                         if (rowState == months)
                         {
-                            //var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                             var poligon = dgw.Rows[index].Cells[1].Value.ToString();
                             var company = dgw.Rows[index].Cells[2].Value.ToString();
                             var location = dgw.Rows[index].Cells[3].Value.ToString();
@@ -34,7 +33,8 @@ namespace ServiceTelecomConnect
                             var serialNumber = dgw.Rows[index].Cells[5].Value.ToString();
                             var inventoryNumber = dgw.Rows[index].Cells[6].Value.ToString();
                             var networkNumber = dgw.Rows[index].Cells[7].Value.ToString();
-                            var dateTO = dgw.Rows[index].Cells[8].Value.ToString();
+                            DateTime _dateTO = (DateTime)dgw.Rows[index].Cells[8].Value;
+                            var dateTO = _dateTO.ToString("dd.MM.yyyy");
                             var numberAct = dgw.Rows[index].Cells[9].Value.ToString();
                             var city = dgw.Rows[index].Cells[10].Value.ToString();
                             var price = dgw.Rows[index].Cells[11].Value.ToString();
@@ -43,6 +43,7 @@ namespace ServiceTelecomConnect
                             var priceRemont = dgw.Rows[index].Cells[19].Value.ToString();
                             var decommissionSerialNumber = dgw.Rows[index].Cells[38].Value.ToString();
                             var comment = dgw.Rows[index].Cells[39].Value.ToString();
+                            var road = dgw.Rows[index].Cells[40].Value.ToString();
 
                             if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantionCurator(serialNumber))
                             {
@@ -61,10 +62,10 @@ namespace ServiceTelecomConnect
 
                                 AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
                                         $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
-                                        $"category, priceRemont, decommissionSerialNumber, comment, month) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
+                                        $"category, priceRemont, decommissionSerialNumber, comment, month, road) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
                                         $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
                                         $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
-                                        $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{months.Trim()}')";
+                                        $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{months.Trim()}', '{road.Trim()}')";
 
                                 using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
                                 {
@@ -84,7 +85,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, string cmB_city)
+        internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, string cmB_city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -143,7 +144,7 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    QuerySettingDataBase.RefreshDataGridСurator(dgw, cmB_city);
+                    QuerySettingDataBase.RefreshDataGridСurator(dgw, road);
                 }
                 catch (Exception ex)
                 {
