@@ -715,7 +715,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}'AND road = '{road}' AND CONCAT ({perem_comboBox})";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
                     }
                     else if (perem_comboBox == "numberAct")
                     {
@@ -772,7 +772,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void SearchCurator(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique)
+        internal static void SearchCurator(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -815,6 +815,10 @@ namespace ServiceTelecomConnect
                     {
                         perem_comboBox = "month";
                     }
+                    else if (comboBox_seach == "Модель")
+                    {
+                        perem_comboBox = "model";
+                    }
 
                     var provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
@@ -824,22 +828,22 @@ namespace ServiceTelecomConnect
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                             $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $"FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox})";
+                            $"FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
                     }
                     else if (perem_comboBox == "numberAct")
                     {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                             $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month")
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month" || perem_comboBox == "model")
                     {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                             $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                     {
@@ -1640,33 +1644,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            try
-            {
-                string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY company";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "company";
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company_curator");
-            }
-
-        }
-
         internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
@@ -1690,33 +1667,6 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_location");
-            }
-
-        }
-
-        internal static void Number_unique_location_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            try
-            {
-                string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY location";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "location";
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_location_curator");
             }
 
         }
@@ -1748,32 +1698,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_dateTO_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            try
-            {
-                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY dateTO";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "dateTO";
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_dateTO_curator");
-            }
-        }
-
         internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
@@ -1800,32 +1724,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_numberAct_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            try
-            {
-                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY numberAct";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberAct";
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberAct_curator");
-            }
-        }
-
         internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
@@ -1849,32 +1747,6 @@ namespace ServiceTelecomConnect
             catch (Exception)
             {
                 MessageBox.Show("Ошибка метода Number_unique_numberActRemont");
-            }
-        }
-
-        internal static void Number_unique_numberActRemont_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
-        {
-            try
-            {
-                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY numberActRemont";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberActRemont_curator");
             }
         }
 
@@ -1931,11 +1803,169 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_decommissionActs_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_model_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY decommissionSerialNumber";
+                string querystring2 = $"SELECT DISTINCT model FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "model";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+        }
+
+        internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "company";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company_curator");
+            }
+
+        }
+
+        internal static void Number_unique_location_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "location";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_location_curator");
+            }
+
+        }
+
+        internal static void Number_unique_dateTO_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}'  AND road = '{road}' ORDER BY dateTO";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "dateTO";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_dateTO_curator");
+            }
+        }
+
+        internal static void Number_unique_numberAct_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "numberAct";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_numberAct_curator");
+            }
+        }
+
+        internal static void Number_unique_numberActRemont_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable act_table_unique = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(act_table_unique);
+
+                        cmb_number_unique_acts.DataSource = act_table_unique;
+                        cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_numberActRemont_curator");
+            }
+        }
+
+        internal static void Number_unique_decommissionActs_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1958,11 +1988,11 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts)
+        internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
             {
-                string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' ORDER BY month";
+                string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY month";
                 using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -1982,7 +2012,6 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Ошибка метода Number_unique_month_curator");
             }
-
         }
 
 
