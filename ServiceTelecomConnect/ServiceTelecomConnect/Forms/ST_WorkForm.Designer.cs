@@ -2475,11 +2475,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
-            this.Controls.Add(this.Functional_loading_panel);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.pnL_printBase);
+            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_decommissionSerialNumber);
-            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.dataGridView2);

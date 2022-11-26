@@ -35,8 +35,6 @@ namespace ServiceTelecomConnect
 
         private delegate DialogResult ShowOpenFileDialogInvoker();
 
-        private static string taskCity;
-
         int selectedRow;
 
         private readonly cheakUser _user;
@@ -150,9 +148,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Ошибка загрузки данных из реестра!(Акты_Заполняем_До_full, Акты_на_подпись)");
                 }
 
-
-                taskCity = cmB_city.Text;// для отдельных потоков
-
                 ///Таймер
                 WinForms::Timer timer = new WinForms::Timer();
                 timer.Interval = (30 * 60 * 1000); // 15 mins
@@ -175,9 +170,9 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, cmB_road.Text);
-            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
-            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, cmB_city.Text, cmB_road.Text);
+            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, cmB_city.Text); }) { IsBackground = true }.Start();
+            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, cmB_city.Text); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
 
@@ -222,7 +217,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            QuerySettingDataBase.Full_BD(dataGridView1);
+            QuerySettingDataBase.Full_BD(dataGridView1, cmB_road.Text);
             Counters();
             txb_flag_all_BD.Text = "Вся БД";
         }
@@ -802,7 +797,7 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
                 Counters();
             }
         }
@@ -814,7 +809,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
             Counters();
         }
 
@@ -1009,7 +1004,6 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                                 m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                                 m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
-                                m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
@@ -1067,6 +1061,7 @@ namespace ServiceTelecomConnect
                                 m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                                 m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                                 m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
+                                m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             }
                             if (txB_decommissionSerialNumber.Text != "")
                             {
@@ -2527,7 +2522,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2542,7 +2537,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2557,7 +2552,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2572,7 +2567,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2587,7 +2582,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2602,7 +2597,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2617,7 +2612,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -2632,7 +2627,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
