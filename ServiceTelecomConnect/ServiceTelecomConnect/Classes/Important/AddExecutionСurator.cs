@@ -85,7 +85,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, string cmB_city, string road)
+        internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, ComboBox road, ComboBox cmB_month)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -95,11 +95,11 @@ namespace ServiceTelecomConnect
                     var AddExecutionQuery = "";
                     foreach (DataGridViewRow row in dgw.SelectedRows)
                     {
-                        dgw.Rows[row.Index].Cells[18].Value = month;
+                        dgw.Rows[row.Index].Cells[19].Value = month;
                     }
                     for (int index = 0; index < dgw.Rows.Count; index++)
                     {
-                        var rowState = dgw.Rows[index].Cells[18].Value.ToString();//проверить индекс
+                        var rowState = dgw.Rows[index].Cells[19].Value.ToString();//проверить индекс
 
                         if (rowState == month)
                         {
@@ -134,7 +134,7 @@ namespace ServiceTelecomConnect
                                 }
                             }
 
-                            AddExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}'";
+                            AddExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}' AND road = '{road.Text}'";
 
                             using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
                             {
@@ -144,7 +144,15 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    QuerySettingDataBase.RefreshDataGridСurator(dgw, road);
+                    int currRowIndex = dgw.CurrentCell.RowIndex;
+                    QuerySettingDataBase.RefreshDataGridСurator(dgw, road.Text);
+                    QuerySettingDataBase.SelectCityGropByMonthRoad(road, cmB_month);
+                    dgw.ClearSelection();
+
+                    if (dgw.RowCount - currRowIndex > 0)
+                    {
+                        dgw.CurrentCell = dgw[0, currRowIndex];
+                    }
                 }
                 catch (Exception ex)
                 {
