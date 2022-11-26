@@ -102,11 +102,9 @@ namespace ServiceTelecomConnect
                 dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
 
                 QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
-
                 QuerySettingDataBase.CreateColums(dataGridView1);
                 QuerySettingDataBase.CreateColums(dataGridView2);
-                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-                Counters();
+
 
                 this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
                 dataGridView1.Columns["dateTO"].ValueType = typeof(DateTime);
@@ -115,6 +113,17 @@ namespace ServiceTelecomConnect
 
                 try
                 {
+                    RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\");
+                    if (reg1 != null)
+                    {
+                        RegistryKey currentUserKey = Registry.CurrentUser;
+                        RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\");
+                        cmB_city.Text = helloKey.GetValue("Город проведения проверки").ToString();
+                        
+                        helloKey.Close();
+                    }
+                    QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+                    Counters();
                     /// получение актов который не заполенны из реестра, которые указал пользователь
                     RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
                     if (reg2 != null)
@@ -122,7 +131,7 @@ namespace ServiceTelecomConnect
                         RegistryKey currentUserKey = Registry.CurrentUser;
                         RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
                         lbl_full_complete_act.Text = helloKey.GetValue("Акты_незаполненные").ToString();
-                        if (lbl_full_complete_act.Text != "")
+                        if (!String.IsNullOrEmpty(lbl_full_complete_act.Text))
                         {
                             label_complete.Visible = true;
                             lbl_full_complete_act.Visible = true;
@@ -135,7 +144,7 @@ namespace ServiceTelecomConnect
                         RegistryKey currentUserKey = Registry.CurrentUser;
                         RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
                         lbl_Sign.Text = helloKey.GetValue("Акты_на_подпись").ToString();
-                        if (lbl_Sign.Text != "")
+                        if (!String.IsNullOrEmpty(lbl_Sign.Text))
                         {
                             label_Sing.Visible = true;
                             lbl_Sign.Visible = true;
@@ -228,6 +237,11 @@ namespace ServiceTelecomConnect
         void CmB_city_Click(object sender, EventArgs e)
         {
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
+        }
+
+        void CmB_city_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Button_seach_BD_city_Click(sender, e);
         }
         #endregion
 
@@ -847,6 +861,11 @@ namespace ServiceTelecomConnect
         {
             if (e.KeyChar == (char)Keys.Return)
             {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Добавь радиостанцию в выполнение!");
+                    return;
+                }
                 QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
                 Counters();
             }
@@ -854,6 +873,11 @@ namespace ServiceTelecomConnect
 
         void TextBox_numberAct_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
             QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
             Counters();
         }
@@ -1788,7 +1812,7 @@ namespace ServiceTelecomConnect
         void Seach_datagrid()
         {
             bool found = false;
-            if (txB_seach_panel_seach_datagrid.Text != "")
+            if (!String.IsNullOrEmpty(txB_seach_panel_seach_datagrid.Text))
             {
                 string searchValue = txB_seach_panel_seach_datagrid.Text;
 
@@ -2793,9 +2817,10 @@ namespace ServiceTelecomConnect
 
 
 
+
         #endregion
 
-        
+       
     }
 }
 
