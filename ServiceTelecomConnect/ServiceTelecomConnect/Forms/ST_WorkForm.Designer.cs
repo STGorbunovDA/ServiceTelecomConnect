@@ -1939,6 +1939,7 @@
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(251, 28);
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
+            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
             // 
             // btn_all_BD
             // 

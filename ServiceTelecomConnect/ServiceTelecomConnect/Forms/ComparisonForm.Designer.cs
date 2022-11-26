@@ -104,6 +104,7 @@
             this.close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button_save_in_file_curator = new System.Windows.Forms.Button();
             this.cmB_month = new System.Windows.Forms.ComboBox();
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.cmB_city = new System.Windows.Forms.ComboBox();
@@ -847,6 +848,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel1.Controls.Add(this.button_save_in_file_curator);
             this.panel1.Controls.Add(this.cmB_month);
             this.panel1.Controls.Add(this.txB_serialNumber);
             this.panel1.Controls.Add(this.cmB_city);
@@ -869,6 +871,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1427, 128);
             this.panel1.TabIndex = 0;
+            // 
+            // button_save_in_file_curator
+            // 
+            this.button_save_in_file_curator.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button_save_in_file_curator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_save_in_file_curator.Location = new System.Drawing.Point(253, 67);
+            this.button_save_in_file_curator.Name = "button_save_in_file_curator";
+            this.button_save_in_file_curator.Size = new System.Drawing.Size(235, 31);
+            this.button_save_in_file_curator.TabIndex = 85;
+            this.button_save_in_file_curator.Text = "Сохранение базы";
+            this.button_save_in_file_curator.UseVisualStyleBackColor = false;
+            this.button_save_in_file_curator.Click += new System.EventHandler(this.Button_save_in_file_curator_Click);
             // 
             // cmB_month
             // 
@@ -976,6 +990,7 @@
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(210, 28);
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
+            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
             // 
             // btn_all_BD
             // 
@@ -1805,5 +1820,6 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
         internal System.Windows.Forms.ComboBox cmB_month;
+        private System.Windows.Forms.Button button_save_in_file_curator;
     }
 }

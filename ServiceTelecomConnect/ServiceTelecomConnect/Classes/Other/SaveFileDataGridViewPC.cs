@@ -181,12 +181,15 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void UserSaveFileCuratorPC(DataGridView dgw)
+        internal static void UserSaveFileCuratorPC(DataGridView dgw, string cmb_road)
         {
             try
             {
+                DateTime dateTime = DateTime.Now;
+                string dateTimeString = dateTime.ToString("dd.MM.yyyy");
                 SaveFileDialog sfd = new SaveFileDialog();
                 sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                sfd.FileName = $"База_{cmb_road}_{dateTimeString}";
 
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
@@ -196,7 +199,7 @@ namespace ServiceTelecomConnect
 
                         note += $"РЦС\tПредприятие(балансодержатель)\tМесто нахождения\tМодель\tЗаводской номер\tИнвентарный\t" +
                             $"Сетевой\tДата проведения ТО\t№ акта\t№ накладной\t№ ведомости\t№ акта ремонта\tКатегория\t" +
-                            $"№ акта списания\tЦенаТО(без НДС)\tЦена ремонта(без НДС)\tГород\tПримечание\tМесяц выполнения";
+                            $"№ акта списания\tЦенаТО(без НДС)\tЦена ремонта(без НДС)\tГород\tПримечание\tМесяц выполнения\tДорога";
 
                         sw.WriteLine(note);
 
@@ -204,6 +207,7 @@ namespace ServiceTelecomConnect
                         var inventoryNumber = ""; var networkNumber = ""; var dateTO = ""; var numberAct = "";
                         var numberActRemont = ""; var category = ""; var decommissionSerialNumber = "";
                         var price = ""; var priceRemont = ""; var city = ""; var comment = ""; var month = "";
+                        var road = "";
 
                         for (int i = 0; i < dgw.Rows.Count; i++)
                         {
@@ -313,16 +317,33 @@ namespace ServiceTelecomConnect
                                         month = dgw.Rows[i].Cells[j].Value.ToString();
                                         month = re.Replace(month, " ");
                                     }
+                                    else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
+                                    {
+                                        var re = new Regex(Environment.NewLine);
+                                        road = dgw.Rows[i].Cells[j].Value.ToString();
+                                        road = re.Replace(road, " ");
+                                    }
                                 }
                                 if (j == dgw.ColumnCount - 1)
                                 {
+                                    if (priceRemont == "0.00")
+                                    {
+                                        priceRemont = "";
+                                    }
                                     if (!String.IsNullOrEmpty(decommissionSerialNumber))
                                     {
                                         numberAct = "списание"; dateTO = "списание"; month = "списание";
+                                        if (!String.IsNullOrEmpty(numberActRemont))
+                                        {
+                                            numberActRemont = "";
+                                            category = "";
+                                            priceRemont = "";
+                                        }
                                     }
                                     sw.Write(poligon + "\t" + company + "\t" + location + "\t" + model + "\t" + serialNumber + "\t" + inventoryNumber + "\t"
                                         + networkNumber + "\t" + dateTO + "\t" + numberAct + "\t" + numberAct + "\t" + numberAct + "\t" + numberActRemont + "\t"
-                                        + category + "\t" + decommissionSerialNumber + "\t" + price + "\t" + priceRemont + "\t" + city + "\t" + comment + "\t" + month);
+                                        + category + "\t" + decommissionSerialNumber + "\t" + price + "\t" + priceRemont + "\t" + city + "\t" + comment + "\t" 
+                                        + month + "\t" + road);
                                 }
                             }
                             sw.WriteLine();

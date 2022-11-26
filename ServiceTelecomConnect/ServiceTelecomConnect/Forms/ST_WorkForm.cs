@@ -793,6 +793,11 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Взаимодействие на форме Key-Press-ы, Button_click
+        void Cmb_number_unique_acts_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
+        }
+
         void TextBox_search_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
@@ -2787,9 +2792,10 @@ namespace ServiceTelecomConnect
 
 
 
+
         #endregion
 
-
+        
     }
 }
 

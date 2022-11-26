@@ -43,7 +43,7 @@ namespace ServiceTelecomConnect
                 cmB_seach.Items.Add("Номер акта Ремонта");
                 cmB_seach.Items.Add("Номер Акта списания");
                 cmB_seach.Items.Add("Месяц");
-                cmB_seach.Items.Add("Дорога");
+                cmB_seach.Items.Add("Модель");
 
                 cmB_seach.Text = cmB_seach.Items[2].ToString();
 
@@ -108,6 +108,8 @@ namespace ServiceTelecomConnect
 
                 dataGridView1.AllowUserToResizeColumns = false;
                 dataGridView1.AllowUserToResizeRows = false;
+
+                cmB_month.Text = cmB_month.Items[0].ToString();
 
             }
             catch (Exception)
@@ -434,17 +436,18 @@ namespace ServiceTelecomConnect
 
         #region Сохранение БД на PC
 
-        void Button_save_in_file_Click(object sender, EventArgs e)
+        void Button_save_in_file_curator_Click(object sender, EventArgs e)
         {
             try
             {
-                SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1);
+                SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1, cmB_road.Text);
             }
             catch (Exception)
             {
                 MessageBox.Show("Ошибка сохранения таблицы пользователем(Button_save_in_file_Click)");
             }
         }
+      
         #endregion
 
         #region показать кол-во уникальных записей БД в Combobox
@@ -460,7 +463,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_company_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_company_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -475,7 +478,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_location_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_location_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -490,7 +493,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_dateTO_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_dateTO_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -505,7 +508,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_numberAct_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberAct_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -520,7 +523,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_numberActRemont_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_numberActRemont_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -535,7 +538,7 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_decommissionActs_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_decommissionActs_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -550,7 +553,22 @@ namespace ServiceTelecomConnect
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
 
-                        QuerySettingDataBase.Number_unique_month_curator(cmB_city.Text, cmb_number_unique_acts);
+                        QuerySettingDataBase.Number_unique_month_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! месяца выполнений плана не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (cmB_seach.SelectedIndex == 8)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = true;
+                        textBox_search.Visible = false;
+
+                        QuerySettingDataBase.Number_unique_model_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
                     catch (Exception ex)
                     {
@@ -574,19 +592,23 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Взаимодействие на search, cформировать на форме panel1
+        void Cmb_number_unique_acts_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
+        }
 
         void TextBox_search_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {
-                QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+                QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
                 Counters();
             }
         }
 
         void Button_search_Click(object sender, EventArgs e)
         {
-            QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text);
+            QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
             Counters();
         }
 
@@ -758,7 +780,7 @@ namespace ServiceTelecomConnect
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_new_add_rst_form_Click_change_curator));
                     m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", Button_delete_Click));
-                    m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_Click));
+                    m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_curator_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }
@@ -1043,9 +1065,11 @@ namespace ServiceTelecomConnect
 
 
 
+
+
         #endregion
 
-
+       
     }
 }
 
