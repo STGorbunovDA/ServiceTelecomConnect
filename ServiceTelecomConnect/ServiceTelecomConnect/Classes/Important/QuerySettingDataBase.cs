@@ -306,7 +306,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns.Add("month", "Месяц выполнения");
                 dgw.Columns.Add("road", "Дорога");
                 dgw.Columns.Add("IsNew", "RowState");
-                dgw.Columns[18].Visible = false;
+                dgw.Columns[19].Visible = false;
             }
             catch (Exception)
             {
@@ -364,7 +364,72 @@ namespace ServiceTelecomConnect
                             command.ExecuteNonQuery();
                             DB_4.GetInstance.CloseConnection();
                         }
-                    } else dgw.Rows.Clear();
+                    }
+                    else dgw.Rows.Clear();
+
+
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 45;
+                    dgw.Columns[3].Width = 170;
+                    dgw.Columns[4].Width = 170;
+                    dgw.Columns[5].Width = 170;
+                    dgw.Columns[6].Width = 170;
+                    dgw.Columns[7].Width = 178;
+                    dgw.Columns[8].Width = 100;
+                    dgw.Columns[9].Width = 110;
+                    dgw.Columns[10].Width = 100;
+                    dgw.Columns[11].Width = 100;
+                    dgw.Columns[17].Width = 120;
+                    if (dgw.Rows.Count > 1)
+                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridСurator");
+                }
+            }
+        }
+
+        internal static void RefreshDataGridСuratorCity(DataGridView dgw, string city, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    if (!String.IsNullOrEmpty(city))
+                    {
+                        var myCulture = new CultureInfo("ru-RU");
+                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                        Thread.CurrentThread.CurrentCulture = myCulture;
+                        dgw.Rows.Clear();
+                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                            $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                            $"radiostantion_сomparison WHERE city = '{city}' AND road = '{road}'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                        {
+                            DB_4.GetInstance.OpenConnection();
+
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    while (reader.Read())
+                                    {
+                                        ReedSingleRowСurator(dgw, reader);
+                                    }
+                                    reader.Close();
+                                }
+                            }
+                            command.ExecuteNonQuery();
+                            DB_4.GetInstance.CloseConnection();
+                        }
+                    }
+                    else dgw.Rows.Clear();
 
 
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -2116,6 +2181,113 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region заполнение cmB_city из таблицы
+
+        internal static void SelectCityGropByCurator(ComboBox cmB_city, ComboBox cmB_road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT city FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY city";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable city_table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(city_table);
+                            if (city_table.Rows.Count > 0)
+                            {
+                                cmB_city.DataSource = city_table;
+                                cmB_city.DisplayMember = "city";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                                cmB_city.DataSource = null;
+                                return;
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                }
+            }
+        }
+
+        internal static void SelectCityGropByMonthRoad(ComboBox cmB_road, ComboBox cmB_month)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT month FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY month";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                cmB_month.DataSource = table;
+                                cmB_month.DisplayMember = "month";
+                            }
+                            else
+                            {
+                                cmB_month.DataSource = null;
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                }
+            }
+        }
+
+        internal static void SelectCityGropByMonthCity(ComboBox cmB_city, ComboBox cmB_road, ComboBox cmB_month)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT month FROM radiostantion_сomparison WHERE city = '{cmB_city.Text}' AND road = '{cmB_road.Text}' GROUP BY month";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                cmB_month.DataSource = table;
+                                cmB_month.DisplayMember = "month";
+                            }
+                            else
+                            {
+                                cmB_month.DataSource = null;
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
+                }
+            }
+        }
 
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
