@@ -517,7 +517,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Форма добавления РСТ
-
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
@@ -2548,6 +2547,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2563,6 +2563,22 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
+
+                        QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка! Станции не добавлены в comboBox!");
+                        MessageBox.Show(ex.ToString());
+                    }
+                }
+                else if (cmB_seach.SelectedIndex == 2)
+                {
+                    try
+                    {
+                        cmb_number_unique_acts.Visible = false;
+                        textBox_search.Visible = true;
 
                         QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2578,6 +2594,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2593,6 +2610,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2608,6 +2626,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2623,6 +2642,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2638,6 +2658,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
@@ -2653,6 +2674,7 @@ namespace ServiceTelecomConnect
                     {
                         cmb_number_unique_acts.Visible = true;
                         textBox_search.Visible = false;
+                        textBox_search.Clear();
 
                         QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
                     }
