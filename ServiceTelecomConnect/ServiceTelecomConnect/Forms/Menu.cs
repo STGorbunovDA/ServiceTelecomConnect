@@ -38,9 +38,7 @@ namespace ServiceTelecomConnect
         void Label_baza_Click(object sender, EventArgs e)
         {
             using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
-            {
-
-                
+            { 
                 this.Hide();
                 sT_WorkForm.ShowDialog();
             }
@@ -57,7 +55,7 @@ namespace ServiceTelecomConnect
         }
         void Label_TutorialEngineers_Click(object sender, EventArgs e)
         {
-            using (TutorialForm tutorialForm = new TutorialForm())
+            using (TutorialForm tutorialForm = new TutorialForm(_user))
             {
                 this.Hide();
                 tutorialForm.ShowDialog();
