@@ -2289,6 +2289,42 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void modelGetEngineer(ComboBox cmB_model)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT model_radiostation_name FROM model_radiostation";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                cmB_model.DataSource = table;
+                                cmB_model.DisplayMember = "model_radiostation_name";
+                            }
+                            else
+                            {
+                                cmB_model.DataSource = null;
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Модели не добавлены в Combobox формы инженера");
+                }
+            }
+        }
+
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
             if (Internet_check.CheackSkyNET())
@@ -2510,5 +2546,7 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+       
     }
 }
