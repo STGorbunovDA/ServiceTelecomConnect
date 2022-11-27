@@ -46,7 +46,7 @@
             this.panel1.Controls.Add(this.cmB_model);
             this.panel1.Location = new System.Drawing.Point(1, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(903, 100);
+            this.panel1.Size = new System.Drawing.Size(1293, 100);
             this.panel1.TabIndex = 0;
             // 
             // cmB_model
@@ -73,10 +73,11 @@
             "Северо-Кавказская ЖД",
             "Юго-Восточная ЖД",
             "Южно-Уральская ЖД"});
-            this.cmB_model.Location = new System.Drawing.Point(665, 9);
+            this.cmB_model.Location = new System.Drawing.Point(11, 9);
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(235, 28);
             this.cmB_model.TabIndex = 83;
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
             // 
             // dataGridView1
             // 
@@ -122,7 +123,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(903, 278);
+            this.dataGridView1.Size = new System.Drawing.Size(1293, 321);
             this.dataGridView1.TabIndex = 2;
             // 
             // TutorialForm
@@ -130,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(906, 524);
+            this.ClientSize = new System.Drawing.Size(1296, 567);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

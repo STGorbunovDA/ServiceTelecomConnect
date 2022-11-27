@@ -31,7 +31,22 @@ namespace ServiceTelecomConnect.Forms
 
         void TutorialForm_Load(object sender, EventArgs e)
         {
-            QuerySettingDataBase.modelGetEngineer(cmB_model);
+            QuerySettingDataBase.ModelGetEngineer(cmB_model);
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
+
+            QuerySettingDataBase.CreateColumsEngineer(dataGridView1);
+            QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
+
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+        }
+
+        void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
         }
     }
 }
