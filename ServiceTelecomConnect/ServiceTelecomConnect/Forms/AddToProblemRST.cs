@@ -1,136 +1,114 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
     public partial class AddToProblemRST : Form
     {
-        public AddToProblemRST()
+        private readonly cheakUser _user;
+
+        public AddToProblemRST(cheakUser user)
         {
             InitializeComponent();
-            FunctionTextBox();
-        }
-
-        DB dB = new DB();
-        private void FunctionTextBox()
-        {
             StartPosition = FormStartPosition.CenterScreen;
-            this.textBox_actions.AutoSize = false;
-            this.textBox_info.AutoSize = false;
-            this.textBox_actions.Size = new Size(this.textBox_actions.Size.Width, 150);
-            this.textBox_info.Size = new Size(this.textBox_info.Size.Width, 120);
+            _user = user;
         }
 
-        private void button_new_add_problem_rst_form_Click(object sender, EventArgs e)
+        void AddToProblemRST_Load(object sender, EventArgs e)
         {
-            dB.OpenConnection();
-            try
+            lbL_Author.Text = _user.Login;
+            if (Internet_check.CheackSkyNET())
             {
-                string Mesage;
-                Mesage = "Вы действительно хотите добавить неисправность соответсвующей модели радиостанции?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                try
                 {
-                    return;
-                }
-
-                var author = textBox_author.Text;
-
-                if (author == "")
-                {
-                    string Mesage2;
-
-                    Mesage2 = "Вы не заполнили поле \"Автор записи\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        return;
+                        DB.GetInstance.OpenConnection();
+                        DataTable model_RSR_table = new DataTable();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(model_RSR_table);
+
+                            cmB_model.DataSource = model_RSR_table;
+                            cmB_model.ValueMember = "id";
+                            cmB_model.DisplayMember = "model_radiostation_name";
+
+                            DB.GetInstance.CloseConnection();
+                        }
                     }
                 }
-
-                var model = comboBox_model.Text;
-
-                if (model == "")
+                catch (Exception)
                 {
-                    string Mesage2;
-
-                    Mesage2 = "Вы не добавили модель!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
+                    MessageBox.Show("Ошибка модель не добавленна в comboBox (AddRSTForm_Load)");
                 }
-
-                var problem = textBox_problem.Text;
-
-                if (problem == "")
-                {
-                    string Mesage2;
-
-                    Mesage2 = "Вы не заполнили поле \"Неисправность:\"!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-
-                var info = textBox_info.Text;
-
-                if (info == "")
-                {
-                    string Mesage2;
-
-                    Mesage2 = "Вы не добавили описание неисправности!";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-
-                var actions = textBox_actions.Text;
-
-                if (actions == "")
-                {
-                    string Mesage2;
-
-                    Mesage2 = "Вы не заполнили поле \"Что нужно делать\"";
-
-                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }           
-
-                if (!(model == "") && !(problem == "") && !(info == "") && !(model == "") && !(actions == "") && !(author == ""))
-                {
-                    var addQuery = $"insert into problem (modelRST, problem, info, actions, author ) values ('{model}', '{problem}','{info}', '{actions}', '{author}')";
-
-                    MySqlCommand command = new MySqlCommand(addQuery, dB.GetConnection());
-                    command.ExecuteNonQuery();
-
-                    MessageBox.Show("Новая запись успешно добавлена!");
-                }
-                else
-                {
-                    MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                }
-
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Ошибка! Новая запись не добавлена!");
-                MessageBox.Show(ex.ToString());
-;            }
-
-            dB.CloseConnection();
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        void Btn_save_add_rst_problem_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(cmB_model.Text))
+            {
+                MessageBox.Show("Модель не может быть пустой", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmB_model.Select();
+                return;
+            }
+            if (String.IsNullOrEmpty(txB_problem.Text))
+            {
+                MessageBox.Show("Опиши неисправность", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_problem.Select();
+                return;
+            }
+            if (String.IsNullOrEmpty(txB_info.Text))
+            {
+                MessageBox.Show("Не заполнено поле \"Описание дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_info.Select();
+                return;
+            }
+            if (String.IsNullOrEmpty(txB_actions.Text))
+            {
+                MessageBox.Show("Не заполнено поле \"Виды работ по устраненнию дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_actions.Select();
+                return;
+            }
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
+                }
+            }
+            if (Internet_check.CheackSkyNET())
+            {
+                var model = cmB_model.Text;
+                var problem = txB_problem.Text;
+                var info = txB_info.Text;
+                var actions = txB_actions.Text;
+                var author = lbL_Author.Text;
+
+                var addQuery = $"INSERT INTO problem_engineer (model, problem, info, actions, author) " +
+                    $"VALUES ('{model}', '{problem}', '{info}', '{actions}', '{author}')";
+
+                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                    MessageBox.Show("Неисправность успешно добавлена!");
+                }
+            }
+
+
+        }
+
+        void PictureBox4_Click(object sender, EventArgs e)
         {
             string Mesage;
             Mesage = "Вы действительно хотите очистить все введенные вами поля?";
@@ -139,21 +117,13 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            textBox_author.Text = "";
-            comboBox_model.Text = "";
-            textBox_problem.Text = "";
-            textBox_info.Text = "";
-            textBox_actions.Text = "";
-        }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            string Mesage;
-            Mesage = "Перед вами форма добавление неисправности радиостанций! Ввведите в поля соответсвующие неисправности";
-
-            if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            foreach (Control control in this.Controls)
             {
-                return;
+                if (control is TextBox)
+                {
+                    control.Text = "";
+                }
             }
         }
     }
