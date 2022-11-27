@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -27,6 +28,7 @@ namespace ServiceTelecomConnect
 
         #region заполнение datagridview 
 
+        #region Начальника участка
         internal static void CreateColums(DataGridView dgw)
         {
             try
@@ -106,17 +108,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void CreateColumsEngineer(DataGridView dgw)
-        {
-            dgw.Columns.Add("id", "№");
-            dgw.Columns.Add("modelRST", "Модель");
-            dgw.Columns.Add("problem", "Неисправность");
-            dgw.Columns.Add("info", "Описание неисправности");
-            dgw.Columns.Add("actions", "Виды работ по устраненнию дефекта");
-            dgw.Columns.Add("author", "Автор");
-            dgw.Columns.Add("IsNew", "RowState");
-            dgw.Columns[6].Visible = false;
-        }
+
 
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
@@ -291,7 +283,21 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка ReedSingleRow");
             }
         }
+        #endregion
 
+        #region Инженера
+
+        internal static void CreateColumsEngineer(DataGridView dgw)
+        {
+            dgw.Columns.Add("id", "№");
+            dgw.Columns.Add("modelRST", "Модель");
+            dgw.Columns.Add("problem", "Неисправность");
+            dgw.Columns.Add("info", "Описание неисправности");
+            dgw.Columns.Add("actions", "Виды работ по устраненнию дефекта");
+            dgw.Columns.Add("author", "Автор");
+            dgw.Columns.Add("IsNew", "RowState");
+            dgw.Columns[6].Visible = false;
+        }
         internal static void RefreshDataGridEngineer(DataGridView dgw)
         {
             if (Internet_check.CheackSkyNET())
@@ -303,7 +309,7 @@ namespace ServiceTelecomConnect
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
 
-                    string queryString = $"SELECT id, modelRST, problem, info, actions, author FROM problem_engineer";
+                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -315,7 +321,7 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                 {
-                                    ReedSingleRow(dgw, reader);
+                                    ReedSingleRowEnginer(dgw, reader);
                                 }
                                 reader.Close();
                             }
@@ -323,15 +329,25 @@ namespace ServiceTelecomConnect
                         command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                    //dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    //dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+
+                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
                     dgw.Columns[0].Width = 40;
                     dgw.Columns[1].Width = 200;
                     dgw.Columns[2].Width = 200;
                     dgw.Columns[3].Width = 300;
-                    dgw.Columns[4].Width = 340;
-                    dgw.Columns[5].Width = 170;
+                    dgw.Columns[4].Width = 424;
+                    dgw.Columns[5].Width = 142;
+
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        dgw.Rows[i].Height = 140;
+                    }
+
 
                 }
                 catch (Exception)
@@ -341,16 +357,188 @@ namespace ServiceTelecomConnect
             }
         }
 
-
         internal static void ReedSingleRowEnginer(DataGridView dgw, IDataRecord record)
         {
-
+            try
+            {
+                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3),
+                    record.GetString(4), record.GetString(5), RowState.ModifieldNew)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка ReedSingleRowEnginer");
+            }
         }
 
+        internal static void RefreshDataGridEngineerModel(DataGridView dgw, string model)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowEnginer(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                    dgw.Columns[0].Width = 40;
+                    dgw.Columns[1].Width = 200;
+                    dgw.Columns[2].Width = 200;
+                    dgw.Columns[3].Width = 300;
+                    dgw.Columns[4].Width = 424;
+                    dgw.Columns[5].Width = 142;
+
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        dgw.Rows[i].Height = 140;
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                }
+            }
+        }
+
+        internal static void RefreshDataGridEngineerModelProblem(DataGridView dgw, string model, string problem)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}' AND problem = '{problem}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowEnginer(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                    dgw.Columns[0].Width = 40;
+                    dgw.Columns[1].Width = 200;
+                    dgw.Columns[2].Width = 200;
+                    dgw.Columns[3].Width = 300;
+                    dgw.Columns[4].Width = 424;
+                    dgw.Columns[5].Width = 142;
+
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        dgw.Rows[i].Height = 140;
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                }
+            }
+        }
+
+        internal static void RefreshDataGridEngineerAuthor(DataGridView dgw, string author)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE author = '{author}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowEnginer(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                    dgw.Columns[0].Width = 40;
+                    dgw.Columns[1].Width = 200;
+                    dgw.Columns[2].Width = 200;
+                    dgw.Columns[3].Width = 300;
+                    dgw.Columns[4].Width = 424;
+                    dgw.Columns[5].Width = 142;
+
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        dgw.Rows[i].Height = 140;
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineerAuthor");
+                }
+            }
+        }
+
+        #endregion
 
 
-
-
+        #region Куратор
         internal static void CreateColumsСurator(DataGridView dgw)
         {
             try
@@ -667,7 +855,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
+        #endregion
         #endregion
 
         #region загрузка всей таблицы ТО в текущем году
@@ -790,7 +978,87 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region поиск по БД
+        #region поиск по БД 
+
+        internal static void SearchEngineer(DataGridView dgw, string cmb_unique, string txB_search, string cmb_number_unique)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                var searchString = string.Empty;
+                string perem_comboBox = string.Empty;
+                dgw.Rows.Clear();
+
+                if (cmb_unique == "Модель")
+                {
+                    perem_comboBox = "model";
+                }
+                else if (cmb_unique == "Неисправность")
+                {
+                    perem_comboBox = "problem";
+                }
+                else if (cmb_unique == "Автор")
+                {
+                    perem_comboBox = "author";
+                }
+                else if (cmb_unique == "Виды работ")
+                {
+                    perem_comboBox = "actions";
+                }
+
+
+
+                txB_search = txB_search.ToUpper();
+
+                if (txB_search == "ВСЕ" || txB_search == "ВСЁ")
+                {
+                    searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer";
+                }
+                else if (perem_comboBox == "model" || perem_comboBox == "problem" || perem_comboBox == "author")
+                {
+                    searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                }
+                else if (perem_comboBox == "actions")
+                {
+                    searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + txB_search + "%'";
+                }
+
+                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRowEnginer(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+
+                dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgw.Columns[0].Width = 40;
+                dgw.Columns[1].Width = 200;
+                dgw.Columns[2].Width = 200;
+                dgw.Columns[3].Width = 300;
+                dgw.Columns[4].Width = 424;
+                dgw.Columns[5].Width = 142;
+
+                for (int i = 0; i < dgw.Rows.Count; i++)
+                {
+                    dgw.Rows[i].Height = 140;
+                }
+
+            }
+        }
+
 
         internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique, string road)
         {
@@ -1726,6 +1994,89 @@ namespace ServiceTelecomConnect
 
         #region показать уникальные данные по поиску
 
+        #region инженер
+
+        internal static void Cmb_unique_model_engineer(ComboBox cmb_unique)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT model FROM problem_engineer ORDER BY model";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+
+                        cmb_unique.DataSource = table;
+                        cmb_unique.DisplayMember = "model";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+        }
+
+        internal static void Cmb_unique_problem_engineer(ComboBox cmb_unique)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT problem FROM problem_engineer ORDER BY problem";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+
+                        cmb_unique.DataSource = table;
+                        cmb_unique.DisplayMember = "problem";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+        }
+
+        internal static void Cmb_unique_author_engineer(ComboBox cmb_unique)
+        {
+            try
+            {
+                string querystring2 = $"SELECT DISTINCT author FROM problem_engineer ORDER BY author";
+                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+
+                        cmb_unique.DataSource = table;
+                        cmb_unique.DisplayMember = "author";
+                        DB.GetInstance.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка метода Number_unique_company");
+            }
+        }
+
+        #endregion
+
+
         internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             try
@@ -2358,13 +2709,49 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void ModelGetEngineer(ComboBox cmB_model)
+        internal static void ProblemGetEngineerAuthor(ComboBox cmB_problem, string author)
         {
             if (Internet_check.CheackSkyNET())
             {
                 try
                 {
-                    string querystring = $"SELECT model_radiostation_name FROM model_radiostation";
+                    string querystring = $"SELECT problem FROM problem_engineer WHERE author = '{author}' GROUP BY problem";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        DataTable table = new DataTable();
+
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            adapter.Fill(table);
+                            if (table.Rows.Count > 0)
+                            {
+                                cmB_problem.DataSource = table;
+                                cmB_problem.DisplayMember = "problem";
+                            }
+                            else
+                            {
+                                cmB_problem.DataSource = null;
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка! Модели не добавлены в Combobox формы инженера");
+                }
+            }
+        }
+
+        internal static void ModelGetEngineerAuthor(ComboBox cmB_model, string author)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    string querystring = $"SELECT model FROM problem_engineer WHERE author = '{author}' GROUP BY model";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -2376,7 +2763,7 @@ namespace ServiceTelecomConnect
                             if (table.Rows.Count > 0)
                             {
                                 cmB_model.DataSource = table;
-                                cmB_model.DisplayMember = "model_radiostation_name";
+                                cmB_model.DisplayMember = "model";
                             }
                             else
                             {
@@ -2393,6 +2780,9 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
+
+
 
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
@@ -2616,6 +3006,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-       
+
     }
 }
