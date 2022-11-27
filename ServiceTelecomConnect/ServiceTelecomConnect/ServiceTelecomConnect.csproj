@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" />
-  <Import Project="..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -257,15 +256,6 @@
     <Reference Include="Uno.Foundation.Logging, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Uno.Foundation.Logging.4.5.12\lib\net461\Uno.Foundation.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.5.0.0.2478\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.5.0.0.2478\lib\netstandard2.0\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.5.0.0.2478\lib\netstandard2.0\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
     <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.29\lib\net452\ZstdNet.dll</HintPath>
     </Reference>
@@ -303,6 +293,12 @@
     </Compile>
     <Compile Include="Forms\ComparisonForm.Designer.cs">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TutorialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TutorialForm.Designer.cs">
+      <DependentUpon>TutorialForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\СhangeRSTFormCurator.cs">
       <SubType>Form</SubType>
@@ -365,12 +361,6 @@
     <Compile Include="Forms\ST_WorkForm.Designer.cs">
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TutorialForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\TutorialForm.Designer.cs">
-      <DependentUpon>TutorialForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Print\PrintDocWord.cs" />
     <EmbeddedResource Include="Forms\DirectorForm.resx">
       <DependentUpon>DirectorForm.cs</DependentUpon>
@@ -380,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TutorialForm.resx">
+      <DependentUpon>TutorialForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\СhangeRSTFormCurator.resx">
       <DependentUpon>СhangeRSTFormCurator.cs</DependentUpon>
@@ -418,9 +411,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ST_WorkForm.resx">
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TutorialForm.resx">
-      <DependentUpon>TutorialForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="documents\DV.doc">
@@ -521,14 +511,11 @@
     <PropertyGroup>
       <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.props'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.targets'))" />
     <Error Condition="!Exists('..\packages\Fody.6.5.5\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.5\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.props'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Uno.SourceGenerationTasks.4.1.0\build\netstandard1.0\Uno.SourceGenerationTasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Uno.SourceGenerationTasks.4.1.0\build\netstandard1.0\Uno.SourceGenerationTasks.targets'))" />
   </Target>
-  <Import Project="..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.5.0.0.2478\build\Xamarin.Forms.targets')" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
   <Import Project="..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.7.0\build\Costura.Fody.targets')" />
   <PropertyGroup>
