@@ -106,24 +106,16 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void ReedSingleRow(DataGridView dgw, IDataRecord record)
+        internal static void CreateColumsEngineer(DataGridView dgw)
         {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
-                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
-                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
-                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
-                         record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
-                         record.GetString(40), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRow");
-            }
+            dgw.Columns.Add("id", "№");
+            dgw.Columns.Add("modelRST", "Модель");
+            dgw.Columns.Add("problem", "Неисправность");
+            dgw.Columns.Add("info", "Описание неисправности");
+            dgw.Columns.Add("actions", "Виды работ по устраненнию дефекта");
+            dgw.Columns.Add("author", "Автор");
+            dgw.Columns.Add("IsNew", "RowState");
+            dgw.Columns[6].Visible = false;
         }
 
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
@@ -191,6 +183,26 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Ошибка загрузки RefreshDataGrid");
                 }
+            }
+        }
+
+        internal static void ReedSingleRow(DataGridView dgw, IDataRecord record)
+        {
+            try
+            {
+                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
+                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
+                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
+                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
+                         record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
+                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                         record.GetString(40), RowState.ModifieldNew)));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка ReedSingleRow");
             }
         }
 
@@ -279,6 +291,63 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка ReedSingleRow");
             }
         }
+
+        internal static void RefreshDataGridEngineer(DataGridView dgw)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                try
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, modelRST, problem, info, actions, author FROM problem_engineer";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                    dgw.Columns[0].Width = 40;
+                    dgw.Columns[1].Width = 200;
+                    dgw.Columns[2].Width = 200;
+                    dgw.Columns[3].Width = 300;
+                    dgw.Columns[4].Width = 340;
+                    dgw.Columns[5].Width = 170;
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                }
+            }
+        }
+
+
+        internal static void ReedSingleRowEnginer(DataGridView dgw, IDataRecord record)
+        {
+
+        }
+
+
 
 
 
@@ -2289,7 +2358,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void modelGetEngineer(ComboBox cmB_model)
+        internal static void ModelGetEngineer(ComboBox cmB_model)
         {
             if (Internet_check.CheackSkyNET())
             {
