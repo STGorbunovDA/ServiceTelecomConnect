@@ -16,7 +16,10 @@ namespace ServiceTelecomConnect
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             _user = user;
+            cmB_problem.Text = cmB_problem.Items[0].ToString();
         }
+
+
 
         void AddToProblemRST_Load(object sender, EventArgs e)
         {
@@ -57,11 +60,14 @@ namespace ServiceTelecomConnect
                 cmB_model.Select();
                 return;
             }
-            if (String.IsNullOrEmpty(txB_problem.Text))
+            if(chB_problem_Enable.Checked)
             {
-                MessageBox.Show("Опиши неисправность", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_problem.Select();
-                return;
+                if (String.IsNullOrEmpty(txB_problem.Text))
+                {
+                    MessageBox.Show("Опиши неисправность", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_problem.Select();
+                    return;
+                }
             }
             if (String.IsNullOrEmpty(txB_info.Text))
             {
@@ -87,8 +93,12 @@ namespace ServiceTelecomConnect
             }
             if (Internet_check.CheackSkyNET())
             {
+                var problem = String.Empty;
                 var model = cmB_model.Text;
-                var problem = txB_problem.Text;
+                if (chB_problem_Enable.Checked)
+                    problem = txB_problem.Text;
+                else problem = cmB_problem.Text;
+
                 var info = txB_info.Text;
                 var actions = txB_actions.Text;
                 var author = lbL_Author.Text;
@@ -124,6 +134,22 @@ namespace ServiceTelecomConnect
                 {
                     control.Text = "";
                 }
+            }
+        }
+
+        void ChB_problem_Enable_Click(object sender, EventArgs e)
+        {
+            if (chB_problem_Enable.Checked)
+            {
+                cmB_problem.Enabled = false;
+                txB_problem.Enabled = true;
+                txB_problem.Select();
+            }
+            else if (!chB_problem_Enable.Checked)
+            {
+                cmB_problem.Enabled = true;
+                txB_problem.Enabled = false;
+                txB_problem.Clear();
             }
         }
     }
