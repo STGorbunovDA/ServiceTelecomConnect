@@ -1,6 +1,6 @@
 ﻿namespace ServiceTelecomConnect
 {
-    partial class AddToProblemRST
+    partial class ChangeToProblemRST
     {
         /// <summary>
         /// Required designer variable.
@@ -41,12 +41,12 @@
             this.btn_save_add_rst_problem = new System.Windows.Forms.Button();
             this.cmB_problem = new System.Windows.Forms.ComboBox();
             this.chB_problem_Enable = new System.Windows.Forms.CheckBox();
+            this.txB_id = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // txB_problem
             // 
-            this.txB_problem.Enabled = false;
             this.txB_problem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_problem.Location = new System.Drawing.Point(16, 114);
             this.txB_problem.Multiline = true;
@@ -59,7 +59,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(540, 82);
+            this.label4.Location = new System.Drawing.Point(519, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 20);
             this.label4.TabIndex = 49;
@@ -70,7 +70,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 244);
+            this.label3.Location = new System.Drawing.Point(12, 240);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(303, 20);
             this.label3.TabIndex = 48;
@@ -130,6 +130,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(293, 28);
             this.cmB_model.TabIndex = 84;
+            this.cmB_model.Click += new System.EventHandler(this.CmB_model_Click);
             // 
             // txB_info
             // 
@@ -137,16 +138,16 @@
             this.txB_info.Location = new System.Drawing.Point(411, 114);
             this.txB_info.Multiline = true;
             this.txB_info.Name = "txB_info";
-            this.txB_info.Size = new System.Drawing.Size(377, 321);
+            this.txB_info.Size = new System.Drawing.Size(369, 321);
             this.txB_info.TabIndex = 86;
             // 
             // txB_actions
             // 
             this.txB_actions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_actions.Location = new System.Drawing.Point(16, 277);
+            this.txB_actions.Location = new System.Drawing.Point(16, 272);
             this.txB_actions.Multiline = true;
             this.txB_actions.Name = "txB_actions";
-            this.txB_actions.Size = new System.Drawing.Size(377, 193);
+            this.txB_actions.Size = new System.Drawing.Size(377, 198);
             this.txB_actions.TabIndex = 87;
             // 
             // btn_save_add_rst_problem
@@ -154,17 +155,18 @@
             this.btn_save_add_rst_problem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_save_add_rst_problem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_save_add_rst_problem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save_add_rst_problem.Location = new System.Drawing.Point(669, 441);
+            this.btn_save_add_rst_problem.Location = new System.Drawing.Point(661, 441);
             this.btn_save_add_rst_problem.Name = "btn_save_add_rst_problem";
             this.btn_save_add_rst_problem.Size = new System.Drawing.Size(119, 30);
             this.btn_save_add_rst_problem.TabIndex = 88;
-            this.btn_save_add_rst_problem.Text = "Добавить";
+            this.btn_save_add_rst_problem.Text = "Изменить";
             this.btn_save_add_rst_problem.UseVisualStyleBackColor = false;
             this.btn_save_add_rst_problem.Click += new System.EventHandler(this.Btn_save_add_rst_problem_Click);
             // 
             // cmB_problem
             // 
             this.cmB_problem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_problem.Enabled = false;
             this.cmB_problem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_problem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_problem.FormattingEnabled = true;
@@ -192,12 +194,23 @@
             this.chB_problem_Enable.UseVisualStyleBackColor = false;
             this.chB_problem_Enable.Click += new System.EventHandler(this.ChB_problem_Enable_Click);
             // 
-            // AddToProblemRST
+            // txB_id
+            // 
+            this.txB_id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_id.Location = new System.Drawing.Point(496, 19);
+            this.txB_id.Multiline = true;
+            this.txB_id.Name = "txB_id";
+            this.txB_id.Size = new System.Drawing.Size(57, 24);
+            this.txB_id.TabIndex = 118;
+            this.txB_id.Visible = false;
+            // 
+            // ChangeToProblemRST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
             this.ClientSize = new System.Drawing.Size(800, 482);
+            this.Controls.Add(this.txB_id);
             this.Controls.Add(this.chB_problem_Enable);
             this.Controls.Add(this.cmB_problem);
             this.Controls.Add(this.btn_save_add_rst_problem);
@@ -214,7 +227,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(816, 521);
             this.MinimumSize = new System.Drawing.Size(816, 521);
-            this.Name = "AddToProblemRST";
+            this.Name = "ChangeToProblemRST";
             this.ShowIcon = false;
             this.Text = "Добавление неисправности радиостанции";
             this.Load += new System.EventHandler(this.AddToProblemRST_Load);
@@ -229,7 +242,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label lbL_Author;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btn_save_add_rst_problem;
         private System.Windows.Forms.CheckBox chB_problem_Enable;
@@ -238,5 +250,7 @@
         internal System.Windows.Forms.TextBox txB_info;
         internal System.Windows.Forms.TextBox txB_actions;
         internal System.Windows.Forms.ComboBox cmB_problem;
+        internal System.Windows.Forms.Label lbL_Author;
+        internal System.Windows.Forms.TextBox txB_id;
     }
 }
