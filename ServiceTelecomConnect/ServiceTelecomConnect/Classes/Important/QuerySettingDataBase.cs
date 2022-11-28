@@ -339,8 +339,8 @@ namespace ServiceTelecomConnect
                     dgw.Columns[0].Width = 40;
                     dgw.Columns[1].Width = 200;
                     dgw.Columns[2].Width = 200;
-                    dgw.Columns[3].Width = 300;
-                    dgw.Columns[4].Width = 424;
+                    dgw.Columns[3].Width = 424;
+                    dgw.Columns[4].Width = 300;
                     dgw.Columns[5].Width = 142;
 
                     for (int i = 0; i < dgw.Rows.Count; i++)
@@ -1000,9 +1000,9 @@ namespace ServiceTelecomConnect
                 {
                     perem_comboBox = "author";
                 }
-                else if (cmb_unique == "Виды работ")
+                else if (cmb_unique == "Описание неисправности")
                 {
-                    perem_comboBox = "actions";
+                    perem_comboBox = "info";
                 }
 
 
@@ -1017,7 +1017,7 @@ namespace ServiceTelecomConnect
                 {
                     searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                 }
-                else if (perem_comboBox == "actions")
+                else if (perem_comboBox == "info")
                 {
                     searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + txB_search + "%'";
                 }
@@ -1047,9 +1047,10 @@ namespace ServiceTelecomConnect
                 dgw.Columns[0].Width = 40;
                 dgw.Columns[1].Width = 200;
                 dgw.Columns[2].Width = 200;
-                dgw.Columns[3].Width = 300;
-                dgw.Columns[4].Width = 424;
+                dgw.Columns[3].Width = 424;
+                dgw.Columns[4].Width = 300;
                 dgw.Columns[5].Width = 142;
+
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
                 {
