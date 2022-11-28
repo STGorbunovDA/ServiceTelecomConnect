@@ -117,7 +117,7 @@ namespace ServiceTelecomConnect
                         RegistryKey currentUserKey = Registry.CurrentUser;
                         RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\");
                         cmB_city.Text = helloKey.GetValue("Город проведения проверки").ToString();
-                        
+
                         helloKey.Close();
                     }
                     QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
@@ -564,7 +564,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    if (txB_serialNumber.Text != "")
+                    if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                     {
                         СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                         if (Application.OpenForms["СhangeRSTForm"] == null)
@@ -2840,7 +2840,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-       
+
     }
 }
 

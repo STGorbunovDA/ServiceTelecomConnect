@@ -276,6 +276,12 @@
     <Compile Include="Classes\Other\MyTwoColumnComparer.cs" />
     <Compile Include="Classes\Print\PrintDocExcel.cs" />
     <Compile Include="Classes\Print\PrintExcel.cs" />
+    <Compile Include="Forms\ChangeToProblemRST.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChangeToProblemRST.Designer.cs">
+      <DependentUpon>ChangeToProblemRST.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DirectorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +368,9 @@
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Print\PrintDocWord.cs" />
+    <EmbeddedResource Include="Forms\ChangeToProblemRST.resx">
+      <DependentUpon>ChangeToProblemRST.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DirectorForm.resx">
       <DependentUpon>DirectorForm.cs</DependentUpon>
     </EmbeddedResource>
