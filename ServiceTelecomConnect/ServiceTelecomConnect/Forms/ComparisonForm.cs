@@ -61,11 +61,7 @@ namespace ServiceTelecomConnect
 
         void IsAdmin()
         {
-            if (_user.IsAdmin == "Куратор")
-            {
-
-            }
-            else if (_user.IsAdmin == "Admin")
+            if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
             {
 
             }
@@ -81,7 +77,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user.Login, cmB_road);
+                QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
                 dataGridView1.EnableHeadersVisualStyles = false;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
