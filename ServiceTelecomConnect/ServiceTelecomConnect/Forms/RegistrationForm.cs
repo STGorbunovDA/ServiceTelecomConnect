@@ -69,7 +69,7 @@ namespace ServiceTelecomConnect
                 if (Internet_check.CheackSkyNET())
                 {
                     var loginUser = txB_loginField.Text;
-                    var passUser = Md5.hashPassword(txB_passField.Text);
+                    var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
 
                     if (!CheackUser(loginUser, passUser))
                     {
