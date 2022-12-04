@@ -2953,8 +2953,8 @@ namespace ServiceTelecomConnect
                 try
                 {
                     string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
-                        $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' " +
-                        $"OR engineers_FIO = '{_user}' OR curator = '{_user}' OR departmentCommunications = '{_user}'";
+                        $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
+                        $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
 
                     if (Internet_check.CheackSkyNET())
                     {
@@ -2976,8 +2976,8 @@ namespace ServiceTelecomConnect
                         }
                     }
 
-                    string querystring = $"SELECT id, road FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user}' " +
-                        $"OR engineers_FIO = '{_user}' OR curator = '{_user}' OR departmentCommunications = '{_user}'";
+                    string querystring = $"SELECT id, road FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
+                        $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -2993,7 +2993,7 @@ namespace ServiceTelecomConnect
                             }
                             else
                             {
-                                MessageBox.Show($"Системная ошибка добавления дороги в Control ComboBox ({_user})");
+                                MessageBox.Show($"Системная ошибка добавления дороги в Control ComboBox ({_user.Login})");
                                 System.Environment.Exit(0);
                             }
                         }
