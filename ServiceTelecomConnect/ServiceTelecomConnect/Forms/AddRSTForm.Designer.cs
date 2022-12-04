@@ -53,7 +53,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lbL_ExceptionsSerialNumbers = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -386,18 +386,19 @@
             this.label13.TabIndex = 58;
             this.label13.Text = "*";
             // 
-            // label15
+            // lbL_ExceptionsSerialNumbers
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.ForeColor = System.Drawing.Color.Brown;
-            this.label15.Location = new System.Drawing.Point(824, 250);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(18, 24);
-            this.label15.TabIndex = 60;
-            this.label15.Text = "*";
+            this.lbL_ExceptionsSerialNumbers.AutoSize = true;
+            this.lbL_ExceptionsSerialNumbers.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_ExceptionsSerialNumbers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lbL_ExceptionsSerialNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_ExceptionsSerialNumbers.ForeColor = System.Drawing.Color.Brown;
+            this.lbL_ExceptionsSerialNumbers.Location = new System.Drawing.Point(824, 250);
+            this.lbL_ExceptionsSerialNumbers.Name = "lbL_ExceptionsSerialNumbers";
+            this.lbL_ExceptionsSerialNumbers.Size = new System.Drawing.Size(18, 24);
+            this.lbL_ExceptionsSerialNumbers.TabIndex = 60;
+            this.lbL_ExceptionsSerialNumbers.Text = "*";
+            this.lbL_ExceptionsSerialNumbers.DoubleClick += new System.EventHandler(this.LbL_ExceptionsSerialNumbers_DoubleClick);
             // 
             // label17
             // 
@@ -939,7 +940,7 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lbL_ExceptionsSerialNumbers);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -1005,7 +1006,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbL_ExceptionsSerialNumbers;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label19;
