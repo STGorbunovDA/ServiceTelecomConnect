@@ -1000,7 +1000,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m2 = new ContextMenu();
                             m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
 
                             m2.Show(dataGridView1, new Point(e.X, e.Y));
 
