@@ -2941,9 +2941,10 @@ namespace ServiceTelecomConnect
 
         #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
 
-        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, string _user, ComboBox cmB_road)
+        //private readonly cheakUser _user;
+        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, cheakUser _user, ComboBox cmB_road)
         {
-            if (_user == "Admin" || _user == "Руководитель")
+            if (_user.Login == "Admin" || _user.IsAdmin == "Руководитель")
             {
                 cmB_road.Text = cmB_road.Items[0].ToString();
             }
