@@ -41,6 +41,7 @@ namespace ServiceTelecomConnect
             { 
                 this.Hide();
                 sT_WorkForm.ShowDialog();
+                this.Show();
             }
         }
 
@@ -131,7 +132,7 @@ namespace ServiceTelecomConnect
 
         void Menu_Load(object sender, EventArgs e)
         {
-            if(_user.IsAdmin == "Admin")
+            if(_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
             {
                
             }
