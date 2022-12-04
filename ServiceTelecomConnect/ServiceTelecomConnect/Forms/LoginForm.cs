@@ -41,7 +41,7 @@ namespace ServiceTelecomConnect
                 if (Internet_check.CheackSkyNET())
                 {
                     var loginUser = txB_loginField.Text;
-                    var passUser = md5.hashPassword(txB_passField.Text);
+                    var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
 
                     string querystring = $"SELECT id, login, pass, is_admin	FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
 
