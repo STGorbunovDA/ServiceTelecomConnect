@@ -122,7 +122,8 @@ namespace ServiceTelecomConnect
                     DataGridViewRow row = dataGridView1.Rows[selectedRow];
                     txB_id.Text = row.Cells[0].Value.ToString();
                     txB_login.Text = row.Cells[1].Value.ToString();
-                    txB_pass.Text = row.Cells[2].Value.ToString();
+                  //txB_pass.Text = row.Cells[2].Value.ToString();
+                    txB_pass.Text = Md5.DecryptCipherTextToPlainText(row.Cells[2].Value.ToString());
                     cmB_is_admin_post.Text = row.Cells[3].Value.ToString();
                 }
             }
@@ -214,7 +215,7 @@ namespace ServiceTelecomConnect
                 {
                     var id = txB_id.Text;
                     var login = txB_login.Text;
-                    var pass = txB_pass.Text;
+                    var pass = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                     var is_admin = cmB_is_admin_post.Text;
 
                     var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
@@ -273,7 +274,7 @@ namespace ServiceTelecomConnect
                     }
 
 
-                    var passUser = md5.hashPassword(txB_pass.Text);
+                    var passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                     if (!CheackUser(loginUser, passUser))
                     {
                         if (!String.IsNullOrEmpty(cmB_is_admin_post.Text))
