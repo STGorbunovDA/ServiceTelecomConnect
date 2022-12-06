@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -43,7 +42,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-            
+
             if (String.IsNullOrEmpty(txB_info.Text))
             {
                 MessageBox.Show("Не заполнено поле \"Описание дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -90,8 +89,6 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Неисправность успешно добавлена!");
                 }
             }
-
-
         }
 
         void PictureBox4_Click(object sender, EventArgs e)
@@ -133,28 +130,21 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DB.GetInstance.OpenConnection();
+                    DataTable model_RSR_table = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DB.GetInstance.OpenConnection();
-                        DataTable model_RSR_table = new DataTable();
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(model_RSR_table);
+                        adapter.Fill(model_RSR_table);
 
-                            cmB_model.DataSource = model_RSR_table;
-                            cmB_model.ValueMember = "id";
-                            cmB_model.DisplayMember = "model_radiostation_name";
+                        cmB_model.DataSource = model_RSR_table;
+                        cmB_model.ValueMember = "id";
+                        cmB_model.DisplayMember = "model_radiostation_name";
 
-                            DB.GetInstance.CloseConnection();
-                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка модель не добавленна в comboBox (AddRSTForm_Load)");
                 }
             }
         }
