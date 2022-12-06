@@ -121,7 +121,7 @@
             this.picB_setting.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.data_integrated_data_management_data_processing_setting_configuration_icon_1906481;
             this.picB_setting.Location = new System.Drawing.Point(12, 12);
             this.picB_setting.Name = "picB_setting";
-            this.picB_setting.Size = new System.Drawing.Size(66, 67);
+            this.picB_setting.Size = new System.Drawing.Size(66, 66);
             this.picB_setting.TabIndex = 4;
             this.picB_setting.TabStop = false;
             this.picB_setting.Visible = false;
