@@ -127,8 +127,9 @@ namespace ServiceTelecomConnect
                     cmB_is_admin_post.Text = row.Cells[3].Value.ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 MessageBox.Show("Ошибка! (DataGridView1_CellClick)");
             }
         }
