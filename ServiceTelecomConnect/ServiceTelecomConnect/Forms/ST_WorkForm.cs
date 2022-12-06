@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Win32;
-using ServiceTelecomConnect.Forms;
+﻿using Microsoft.Win32;
+using ServiceTelecomConnect.Classes.Other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,11 +88,25 @@ namespace ServiceTelecomConnect
             }
         }
 
+        private void CommonBtn_Click(object sender, EventArgs e)
+        {
+            string msg = ((Button)sender).Text;
+            LogUser.LogMethodUserSaveFilePC(_user.Login, msg);
+        }
 
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
             try
             {
+                
+                foreach (var item in panel1.Controls) //обходим все элементы формы
+                {
+                    if (item is Button) // проверяем, что это кнопка
+                    {
+                        ((Button)item).Click += CommonBtn_Click; //приводим к типу и устанавливаем обработчик события
+                    }
+                }
+
                 QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
                 dataGridView1.EnableHeadersVisualStyles = false;
@@ -452,6 +465,7 @@ namespace ServiceTelecomConnect
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
                 QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Удалить радиостанцию");
                 txB_numberAct.Text = "";
 
                 dataGridView1.ClearSelection();
@@ -491,6 +505,7 @@ namespace ServiceTelecomConnect
                     QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                     Counters();
                     dataGridView1.ClearSelection();
+                    LogUser.LogMethodUserSaveFilePC(_user.Login, "Обновить");
 
                     if (currRowIndex >= 0)
                     {
@@ -547,6 +562,7 @@ namespace ServiceTelecomConnect
                         addRSTForm.txB_post.Text = txB_post.Text;
                         addRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
                         addRSTForm.lbL_road.Text = cmB_road.Text;
+                        LogUser.LogMethodUserSaveFilePC(_user.Login, "Добавить новую радиостанцию");
                         addRSTForm.Show();
                     }
                 }
@@ -622,6 +638,7 @@ namespace ServiceTelecomConnect
                                 txB_AKB.Text = "-";
                             }
                             changeRSTForm.txB_AKB.Text = txB_AKB.Text;
+                            LogUser.LogMethodUserSaveFilePC(_user.Login, "Изменить радиостанцию");
                             changeRSTForm.Show();
                         }
                     }
@@ -707,6 +724,7 @@ namespace ServiceTelecomConnect
                 PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                     lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Сформировать акт ТО");
                 QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
             }
             catch (Exception)
@@ -735,7 +753,7 @@ namespace ServiceTelecomConnect
 
                 string mainMeans = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
                 string nameProductRepaired = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
-
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Продолжить печать акта ремонта");
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                      lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
@@ -783,6 +801,7 @@ namespace ServiceTelecomConnect
             {
                 pnL_printBase.Visible = false;
                 SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Сохранить для дирекции");
             }
             catch (Exception)
             {
@@ -795,6 +814,7 @@ namespace ServiceTelecomConnect
             {
                 pnL_printBase.Visible = false;
                 SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Сохранить полную базу");
             }
             catch (Exception)
             {
@@ -934,6 +954,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Показать совпадение с предыдущим годом");
             QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
             Counters();
         }
@@ -1173,6 +1194,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Удалить ремонт");
                 QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
                 Button_update_Click(sender, e);
             }
@@ -1237,6 +1259,7 @@ namespace ServiceTelecomConnect
                                 remontRSTForm.txB_numberActRemont.Text = lbL_numberPrintDocument.Text + "/";
                             }
                             else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
+                            LogUser.LogMethodUserSaveFilePC(_user.Login, "Добавить/изменить ремонт");
                             remontRSTForm.Show();
                         }
                     }
@@ -1264,6 +1287,7 @@ namespace ServiceTelecomConnect
                 {
                     try
                     {
+                        LogUser.LogMethodUserSaveFilePC(_user.Login, "Сформировать акт Ремонта");
                         dataGridView1.Enabled = false;
                         panel1.Enabled = false;
                         panel_remont_information_company.Enabled = true;
@@ -1675,6 +1699,7 @@ namespace ServiceTelecomConnect
                 {
                     btn_Continue_remont_act_excel.Enabled = true;
                 }
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Запись данных в реестр ФОУ");
             }
             catch (Exception ex)
             {
@@ -1872,12 +1897,14 @@ namespace ServiceTelecomConnect
         }
         void Button_seach_panel_seach_datagrid_Click(object sender, EventArgs e)
         {
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
             Seach_datagrid();
         }
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
             {
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
                 Seach_datagrid();
             }
         }
@@ -2157,6 +2184,7 @@ namespace ServiceTelecomConnect
                     RegistryKey currentUserKey = Registry.CurrentUser;
                     RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
                     helloKey.SetValue("Акты_на_подпись", $"{lbl_Sign.Text}");
+                    LogUser.LogMethodUserSaveFilePC(_user.Login, "На подпись");
                     helloKey.Close();
                 }
                 catch (Exception ex)
@@ -2188,6 +2216,7 @@ namespace ServiceTelecomConnect
                     RegistryKey currentUserKey = Registry.CurrentUser;
                     RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
                     helloKey.SetValue("Акты_незаполненные", $"{lbl_full_complete_act.Text}");
+                    LogUser.LogMethodUserSaveFilePC(_user.Login, "Заполняем акт");
                     helloKey.Close();
                 }
                 catch (Exception ex)
@@ -2372,6 +2401,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
+                
                 QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text, cmB_road.Text);
                 panel1.Enabled = false;
                 panel2.Enabled = false;
@@ -2424,7 +2454,7 @@ namespace ServiceTelecomConnect
                     txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
                     txB_reason_decommission.Text.Trim();
                     txB1_decommissionSerialNumber.Text.Trim();
-
+                    LogUser.LogMethodUserSaveFilePC(_user.Login, "Списать РСТ");
                     QuerySettingDataBase.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
                         txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
                         txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
@@ -2461,6 +2491,7 @@ namespace ServiceTelecomConnect
                 {
                     return;
                 }
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Удалить списание");
                 QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
                     txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
                 Button_update_Click(sender, e);
@@ -2480,6 +2511,7 @@ namespace ServiceTelecomConnect
             {
                 panel1.Enabled = false;
                 panel3.Enabled = false;
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Показать все списания по дороге");
                 QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text, cmB_road.Text);
                 Counters();
             }
@@ -2517,6 +2549,7 @@ namespace ServiceTelecomConnect
                 };
 
                     PrintDocWord.GetInstance.ProcessPrintWordDecommission(items, decommissionSerialNumber_company, dateDecommission, city, comment);
+                    LogUser.LogMethodUserSaveFilePC(_user.Login, "Сформировать акт списания");
                 }
             }
             catch (Exception)
@@ -2704,6 +2737,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
         {
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Показать РСТ без списаний по участку");
             QuerySettingDataBase.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
@@ -2715,6 +2749,7 @@ namespace ServiceTelecomConnect
 
         void Btn_RefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
         {
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Показать списанные РСТ по участку");
             QuerySettingDataBase.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
@@ -2776,7 +2811,7 @@ namespace ServiceTelecomConnect
                     {"road", cmB_road.Text }
 
                 };
-
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Сформировать бирки");
                 PrintDocExcel.GetInstance.ProcessPrintWordTag(items2, txB_Date_panel_Tag.Text);
             }
 
@@ -2826,7 +2861,7 @@ namespace ServiceTelecomConnect
                 m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Октябрь")));
                 m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
                 m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
-
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Добавить в выполнение");
                 m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
             }
@@ -2835,6 +2870,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Ошибка добавления радиостанции(й) в выполнение (AddExecution)");
             }
         }
+
 
 
 
