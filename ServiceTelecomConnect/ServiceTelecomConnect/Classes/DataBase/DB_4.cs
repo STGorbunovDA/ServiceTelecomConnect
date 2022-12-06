@@ -1,6 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
@@ -35,31 +33,17 @@ namespace ServiceTelecomConnect
 
         public void OpenConnection()
         {
-            try
+            if (connection.State == System.Data.ConnectionState.Closed)
             {
-                if (connection.State == System.Data.ConnectionState.Closed)
-                {
-                    connection.Open();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода OpenConnection");
+                connection.Open();
             }
         }
 
         public void CloseConnection()
         {
-            try
+            if (connection.State == System.Data.ConnectionState.Open)
             {
-                if (connection.State == System.Data.ConnectionState.Open)
-                {
-                    connection.Close();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода CloseConnection");
+                connection.Close();
             }
         }
     }
