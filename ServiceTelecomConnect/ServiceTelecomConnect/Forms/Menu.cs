@@ -3,6 +3,7 @@ using ServiceTelecomConnect.Forms;
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
@@ -36,155 +37,146 @@ namespace ServiceTelecomConnect
         }
         void Menu_Load(object sender, EventArgs e)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                DateTime Date = DateTime.Now;
+                var inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
+
+                var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
+
+
+                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                 {
-                    DateTime Date = DateTime.Now;
-                    var inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
+                    DB.GetInstance.OpenConnection();
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                }
 
-                    var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
+                if (_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
+                {
 
-
-                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                }
+                else if (_user.IsAdmin == "Начальник участка")
+                {
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
-                    }
-
-                    if (_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
-                    {
-
-                    }
-                    else if (_user.IsAdmin == "Начальник участка")
-                    {
-                        string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
-                            DB.GetInstance.OpenConnection();
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count >= 1)
                             {
-                                DataTable table = new DataTable();
+                                lbL_сomparison.Enabled = false;
+                            }
+                            else
+                            {
+                                lbL_сomparison.Enabled = false;
+                                lbL_TutorialEngineers.Enabled = false;
+                                lbL_section_foreman.Enabled = false;
+                                MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
+                            }
 
-                                adapter.Fill(table);
+                        }
+                    }
+                }
+                else if (_user.IsAdmin == "Инженер")
+                {
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            DataTable table = new DataTable();
 
-                                if (table.Rows.Count >= 1)
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                }
-                                else
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                    lbL_TutorialEngineers.Enabled = false;
-                                    lbL_section_foreman.Enabled = false;
-                                    MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
-                                }
+                            adapter.Fill(table);
 
+                            if (table.Rows.Count >= 1)
+                            {
+                                lbL_сomparison.Enabled = false;
+                            }
+                            else
+                            {
+                                lbL_сomparison.Enabled = false;
+                                lbL_TutorialEngineers.Enabled = false;
+                                lbL_section_foreman.Enabled = false;
+                                MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
+                            }
+
+                        }
+                    }
+                }
+                else if (_user.IsAdmin == "Куратор")
+                {
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE curator = '{_user.Login}'";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        {
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count >= 1)
+                            {
+                                lbL_TutorialEngineers.Enabled = false;
+                            }
+                            else
+                            {
+                                lbL_сomparison.Enabled = false;
+                                lbL_TutorialEngineers.Enabled = false;
+                                lbL_section_foreman.Enabled = false;
+                                MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
                             }
                         }
                     }
-                    else if (_user.IsAdmin == "Инженер")
+                }
+                else if (_user.IsAdmin == "Дирекция связи")
+                {
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE departmentCommunications = '{_user.Login}'";
+                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
-                        string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
-                            DB.GetInstance.OpenConnection();
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                            DataTable table = new DataTable();
+
+                            adapter.Fill(table);
+
+                            if (table.Rows.Count >= 1)
                             {
-                                DataTable table = new DataTable();
-
-                                adapter.Fill(table);
-
-                                if (table.Rows.Count >= 1)
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                }
-                                else
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                    lbL_TutorialEngineers.Enabled = false;
-                                    lbL_section_foreman.Enabled = false;
-                                    MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
-                                }
-
+                                lbL_сomparison.Enabled = false;
+                                lbL_TutorialEngineers.Enabled = false;
+                                lbL_section_foreman.Enabled = true;
+                            }
+                            else
+                            {
+                                lbL_сomparison.Enabled = false;
+                                lbL_TutorialEngineers.Enabled = false;
+                                lbL_section_foreman.Enabled = false;
+                                MessageBox.Show("Сообщи руководителю что-бы добавил Вас в бригаду");
                             }
                         }
                     }
-                    else if (_user.IsAdmin == "Куратор")
-                    {
-                        string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE curator = '{_user.Login}'";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                            {
-                                DataTable table = new DataTable();
-
-                                adapter.Fill(table);
-
-                                if (table.Rows.Count >= 1)
-                                {
-                                    lbL_TutorialEngineers.Enabled = false;
-                                }
-                                else
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                    lbL_TutorialEngineers.Enabled = false;
-                                    lbL_section_foreman.Enabled = false;
-                                    MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
-                                }
-                            }
-                        }
-                    }
-                    else if (_user.IsAdmin == "Дирекция связи")
-                    {
-                        string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE departmentCommunications = '{_user.Login}'";
-                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                            {
-                                DataTable table = new DataTable();
-
-                                adapter.Fill(table);
-
-                                if (table.Rows.Count >= 1)
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                    lbL_TutorialEngineers.Enabled = false;
-                                    lbL_section_foreman.Enabled = true;
-                                }
-                                else
-                                {
-                                    lbL_сomparison.Enabled = false;
-                                    lbL_TutorialEngineers.Enabled = false;
-                                    lbL_section_foreman.Enabled = false;
-                                    MessageBox.Show("Сообщи руководителю что-бы добавил Вас в бригаду");
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        lbL_сomparison.Enabled = false;
-                        lbL_TutorialEngineers.Enabled = false;
-                        lbL_section_foreman.Enabled = false;
-                    }
-                }    
-
-                   
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка загрузки Menu_Load");
+                }
+                else
+                {
+                    lbL_сomparison.Enabled = false;
+                    lbL_TutorialEngineers.Enabled = false;
+                    lbL_section_foreman.Enabled = false;
+                }
             }
         }
 
         void Label_baza_Click(object sender, EventArgs e)
         {
             using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
-            { 
+            {
                 this.Hide();
                 sT_WorkForm.ShowDialog();
                 this.Show();
@@ -276,6 +268,6 @@ namespace ServiceTelecomConnect
             lbL_director.ForeColor = Color.Black;
         }
 
-       
+
     }
 }

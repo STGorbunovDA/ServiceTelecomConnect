@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -32,54 +33,44 @@ namespace ServiceTelecomConnect
             txB_loginField.MaxLength = 100;
             txB_passField.MaxLength = 32;
             if (txB_loginField.Text == "Admin" || txB_passField.Text == "1818")
-                EnterButtonLogin_Click(sender, e);
+                EnterButtonLogin_Click(sender, e);    
         }
         void EnterButtonLogin_Click(object sender, EventArgs e)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                var loginUser = txB_loginField.Text;
+                var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
+
+                string querystring = $"SELECT id, login, pass, is_admin	FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    var loginUser = txB_loginField.Text;
-                    var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
-
-                    string querystring = $"SELECT id, login, pass, is_admin	FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
-
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DB.GetInstance.OpenConnection();
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        DataTable table = new DataTable();
+
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count == 1)
                         {
-                            DataTable table = new DataTable();
-
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count == 1)
+                            var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
+                            using (Menu menu = new Menu(user))
                             {
-                                var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
-                                using (Menu menu = new Menu(user))
-                                {
-                                    this.Hide();
-                                    menu.ShowDialog();
-                                    DB.GetInstance.CloseConnection();
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Неверный логин и пароль");
+                                this.Hide();
+                                menu.ShowDialog();
                                 DB.GetInstance.CloseConnection();
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show("Неверный логин и пароль");
+                            DB.GetInstance.CloseConnection();
+                        }
                     }
                 }
-
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Системная ошибка авторизации(EnterButtonLogin_Click)");
-            }
-
         }
         void OpenPassword_Click(object sender, EventArgs e)
         {
@@ -98,7 +89,7 @@ namespace ServiceTelecomConnect
             txB_loginField.Text = "";
             txB_passField.Text = "";
         }
-        
+
         void RegistrationLoginForm_Click(object sender, EventArgs e)
         {
             using (RegistrationForm registrationForm = new RegistrationForm())
@@ -110,32 +101,32 @@ namespace ServiceTelecomConnect
         }
 
         #region Подсветка
-       
+
         void RegistrationLoginForm_MouseEnter(object sender, EventArgs e)
         {
             lbL_registrationLoginForm.ForeColor = Color.White;
         }
-        
+
         void RegistrationLoginForm_MouseLeave(object sender, EventArgs e)
         {
             lbL_registrationLoginForm.ForeColor = Color.Black;
         }
-        
+
         void OpenPassword_MouseEnter(object sender, EventArgs e)
         {
             lbL_openPassword.ForeColor = Color.White;
         }
-        
+
         void OpenPassword_MouseLeave(object sender, EventArgs e)
         {
             lbL_openPassword.ForeColor = Color.Black;
         }
-        
+
         void HidePassword_MouseEnter(object sender, EventArgs e)
         {
             lbL_hidePassword.ForeColor = Color.White;
         }
-        
+
         void HidePassword_MouseLeave(object sender, EventArgs e)
         {
             lbL_hidePassword.ForeColor = Color.Black;
