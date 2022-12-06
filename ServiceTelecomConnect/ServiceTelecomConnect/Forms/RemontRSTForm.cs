@@ -7,8 +7,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TextBox = System.Windows.Forms.TextBox;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace ServiceTelecomConnect
 {
@@ -303,19 +301,19 @@ namespace ServiceTelecomConnect
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = myCulture;
             foreach (TextBox textBox in panel1.Controls.OfType<TextBox>()) //перебираем текстбоксы
-                textBox.GotFocus += new EventHandler(textBox_GotFocus); //подписываем обработчик к событию получения фокуса
+                textBox.GotFocus += new EventHandler(TextBox_GotFocus); //подписываем обработчик к событию получения фокуса
 
             foreach (TextBox textBox in panel2.Controls.OfType<TextBox>())
                 //перебираем текстбоксы
-                textBox.GotFocus += new EventHandler(textBox_GotFocus2); //подписываем обработчик к событию получения фокуса
+                textBox.GotFocus += new EventHandler(TextBox_GotFocus2); //подписываем обработчик к событию получения фокуса
         }
 
-        void textBox_GotFocus(object sender, EventArgs e)
+        void TextBox_GotFocus(object sender, EventArgs e)
         {
             focusedTB = (sender as TextBox); //передаем в переменную focusedTB ссылку на текстбокс, получивший фокус
         }
 
-        void textBox_GotFocus2(object sender, EventArgs e)
+        void TextBox_GotFocus2(object sender, EventArgs e)
         {
             focusedTB2 = (sender as TextBox); //передаем в переменную focusedTB ссылку на текстбокс, получивший фокус
         }
@@ -399,124 +397,114 @@ namespace ServiceTelecomConnect
                     {
                         return;
                     }
-
-                    try
+                    foreach (Control control in panel1.Controls)
                     {
-                        foreach (Control control in panel1.Controls)
+                        if (control is TextBox && !String.IsNullOrEmpty(control.Text))
                         {
-                            if (control is TextBox && !String.IsNullOrEmpty(control.Text))
-                            {
-                                var regex = new Regex(Environment.NewLine);
-                                control.Text = regex.Replace(control.Text, "");
-                                control.Text.Trim();
-                            }
+                            var regex = new Regex(Environment.NewLine);
+                            control.Text = regex.Replace(control.Text, "");
+                            control.Text.Trim();
                         }
-                        foreach (Control control in panel2.Controls)
+                    }
+                    foreach (Control control in panel2.Controls)
+                    {
+                        if (control is TextBox && !String.IsNullOrEmpty(control.Text))
                         {
-                            if (control is TextBox && !String.IsNullOrEmpty(control.Text))
-                            {
-                                var regex2 = new Regex(Environment.NewLine);
-                                control.Text = regex2.Replace(control.Text, "");
-                                control.Text.Trim();
-                            }
+                            var regex2 = new Regex(Environment.NewLine);
+                            control.Text = regex2.Replace(control.Text, "");
+                            control.Text.Trim();
                         }
+                    }
 
-                        var numberActRemont = txB_numberActRemont.Text;
+                    var numberActRemont = txB_numberActRemont.Text;
 
 
-                        if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+                    if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+                    {
+                        MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_numberActRemont.Select();
+                        return;
+                    }
+                    var сategory = cmB_сategory.Text;
+                    if (String.IsNullOrEmpty(сategory))
+                    {
+                        MessageBox.Show("Заполните поле категория ремонта");
+                        return;
+                    }
+                    var priceRemont = txB_priceRemont.Text;
+                    var сompleted_works_1 = txB_сompleted_works_1.Text;
+                    var сompleted_works_2 = txB_сompleted_works_2.Text;
+                    var сompleted_works_3 = txB_сompleted_works_3.Text;
+                    var сompleted_works_4 = txB_сompleted_works_4.Text;
+                    var сompleted_works_5 = txB_сompleted_works_5.Text;
+                    var сompleted_works_6 = txB_сompleted_works_6.Text;
+                    var сompleted_works_7 = txB_сompleted_works_7.Text;
+                    var parts_1 = txB_parts_1.Text;
+                    var parts_2 = txB_parts_2.Text;
+                    var parts_3 = txB_parts_3.Text;
+                    var parts_4 = txB_parts_4.Text;
+                    var parts_5 = txB_parts_5.Text;
+                    var parts_6 = txB_parts_6.Text;
+                    var parts_7 = txB_parts_7.Text;
+                    var serialNumber = txB_serialNumber.Text;
+                    var road = lbL_road.Text;
+                    var city = lbL_city.Text;
+
+                    var regex3 = new Regex(Environment.NewLine);
+                    txB_MainMeans.Text = regex3.Replace(txB_MainMeans.Text, "");
+                    var mainMeans = txB_MainMeans.Text;
+
+                    var regex4 = new Regex(Environment.NewLine);
+                    txB_NameProductRepaired.Text = regex4.Replace(txB_NameProductRepaired.Text, "");
+                    var nameProductRepaired = txB_NameProductRepaired.Text;
+
+
+                    if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
+                    {
+                        var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
+                            $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1}', completed_works_2 = '{сompleted_works_2}', " +
+                            $"completed_works_3 = '{сompleted_works_3}', completed_works_4 = '{сompleted_works_4}', " +
+                            $"completed_works_5 = '{сompleted_works_5}', completed_works_6 = '{сompleted_works_6}', " +
+                            $"completed_works_7 = '{сompleted_works_7}', parts_1 = '{parts_1}', parts_2 = '{parts_2}', " +
+                            $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', parts_7 = '{parts_7}'" +
+                            $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-                            MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_numberActRemont.Select();
-                            return;
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
                         }
-                        var сategory = cmB_сategory.Text;
-                        if (String.IsNullOrEmpty(сategory))
+                        if (CheacSerialNumber.GetInstance.CheacSerialNumber_OC6(serialNumber))
                         {
-                            MessageBox.Show("Заполните поле категория ремонта");
-                            return;
-                        }
-                        var priceRemont = txB_priceRemont.Text;
-                        var сompleted_works_1 = txB_сompleted_works_1.Text;
-                        var сompleted_works_2 = txB_сompleted_works_2.Text;
-                        var сompleted_works_3 = txB_сompleted_works_3.Text;
-                        var сompleted_works_4 = txB_сompleted_works_4.Text;
-                        var сompleted_works_5 = txB_сompleted_works_5.Text;
-                        var сompleted_works_6 = txB_сompleted_works_6.Text;
-                        var сompleted_works_7 = txB_сompleted_works_7.Text;
-                        var parts_1 = txB_parts_1.Text;
-                        var parts_2 = txB_parts_2.Text;
-                        var parts_3 = txB_parts_3.Text;
-                        var parts_4 = txB_parts_4.Text;
-                        var parts_5 = txB_parts_5.Text;
-                        var parts_6 = txB_parts_6.Text;
-                        var parts_7 = txB_parts_7.Text;
-                        var serialNumber = txB_serialNumber.Text;
-                        var road = lbL_road.Text;
-                        var city = lbL_city.Text;
-
-                        var regex3 = new Regex(Environment.NewLine);
-                        txB_MainMeans.Text = regex3.Replace(txB_MainMeans.Text, "");
-                        var mainMeans = txB_MainMeans.Text;
-
-                        var regex4 = new Regex(Environment.NewLine);
-                        txB_NameProductRepaired.Text = regex4.Replace(txB_NameProductRepaired.Text, "");
-                        var nameProductRepaired = txB_NameProductRepaired.Text;
-
-
-                        if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
-                        {
-                            var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
-                                $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1}', completed_works_2 = '{сompleted_works_2}', " +
-                                $"completed_works_3 = '{сompleted_works_3}', completed_works_4 = '{сompleted_works_4}', " +
-                                $"completed_works_5 = '{сompleted_works_5}', completed_works_6 = '{сompleted_works_6}', " +
-                                $"completed_works_7 = '{сompleted_works_7}', parts_1 = '{parts_1}', parts_2 = '{parts_2}', " +
-                                $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', parts_7 = '{parts_7}'" +
-                                $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
-                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                            var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
+                                $" WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                            using (MySqlCommand command2 = new MySqlCommand(changeQueryOC, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
-                                command.ExecuteNonQuery();
+                                command2.ExecuteNonQuery();
                                 DB.GetInstance.CloseConnection();
                             }
-                            if (CheacSerialNumber.GetInstance.CheacSerialNumber_OC6(serialNumber))
-                            {
-                                var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
-                                    $" WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
-                                using (MySqlCommand command2 = new MySqlCommand(changeQueryOC, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.OpenConnection();
-                                    command2.ExecuteNonQuery();
-                                    DB.GetInstance.CloseConnection();
-                                }
-                            }
-                            else
-                            {
-                                var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired, city, road) " +
-                                    $"VALUES ('{serialNumber.Trim()}', '{mainMeans.Trim()}', '{nameProductRepaired.Trim()}', '{city.Trim()}','{road.Trim()}')";
-
-                                using (MySqlCommand command3 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.OpenConnection();
-                                    command3.ExecuteNonQuery();
-                                    DB.GetInstance.CloseConnection();
-                                }
-
-                            }
-                            MessageBox.Show("Ремонт успешно добавлен!");
-                            this.Close();
-
                         }
                         else
                         {
-                            MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                        }
+                            var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired, city, road) " +
+                                $"VALUES ('{serialNumber.Trim()}', '{mainMeans.Trim()}', '{nameProductRepaired.Trim()}', '{city.Trim()}','{road.Trim()}')";
 
+                            using (MySqlCommand command3 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                command3.ExecuteNonQuery();
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                        }
+                        MessageBox.Show("Ремонт успешно добавлен!");
+                        this.Close();
 
                     }
-                    catch (Exception)
+                    else
                     {
-                        MessageBox.Show("Ошибка! Ремонт не добавлен!(Button_save_add_rst_Click)");
+                        MessageBox.Show("Вы не заполнили нужные поля со (*)!");
                     }
                 }
                 else { MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей"); }
@@ -5168,7 +5156,6 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-
         }
 
 
