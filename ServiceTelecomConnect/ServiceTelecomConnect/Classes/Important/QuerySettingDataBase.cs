@@ -2,7 +2,6 @@
 using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -31,257 +30,218 @@ namespace ServiceTelecomConnect
         #region Начальника участка
         internal static void CreateColums(DataGridView dgw)
         {
-            try
-            {
-                dgw.Columns.Add("id", "№");
-                dgw.Columns.Add("poligon", "Полигон");
-                dgw.Columns.Add("company", "Предприятие");
-                dgw.Columns.Add("location", "Место нахождения");
-                dgw.Columns.Add("model", "Модель радиостанции");
-                dgw.Columns.Add("serialNumber", "Заводской номер");
-                dgw.Columns.Add("inventoryNumber", "Инвентарный номер");
-                dgw.Columns.Add("networkNumber", "Сетевой номер");
-                dgw.Columns.Add("dateTO", "Дата ТО");
-                dgw.Columns.Add("numberAct", "№ акта ТО");
-                dgw.Columns.Add("city", "Город");
-                dgw.Columns.Add("price", "Цена ТО");
-                dgw.Columns.Add("representative", "Представитель предприятия");
-                dgw.Columns.Add("post", "Должность");
-                dgw.Columns.Add("numberIdentification", "Номер удостоверения");
-                dgw.Columns.Add("dateIssue", "Дата выдачи удостоверения");
-                dgw.Columns.Add("phoneNumber", "Номер телефона");
-                dgw.Columns.Add("numberActRemont", "№ акта ремонта");
-                dgw.Columns.Add("category", "Категория");
-                dgw.Columns.Add("priceRemont", "Цена ремонта");
-                dgw.Columns.Add("antenna", "Антенна");
-                dgw.Columns.Add("manipulator", "Манипулятор");
-                dgw.Columns.Add("AKB", "АКБ");
-                dgw.Columns.Add("batteryСharger", "ЗУ");
-                dgw.Columns.Add("completed_works_1", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_2", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_3", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_4", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_5", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_6", "Выполненные работы_1");
-                dgw.Columns.Add("completed_works_7", "Выполненные работы_1");
-                dgw.Columns.Add("parts_1", "Израсходованные материалы и детали_1");
-                dgw.Columns.Add("parts_2", "Израсходованные материалы и детали_2");
-                dgw.Columns.Add("parts_3", "Израсходованные материалы и детали_3");
-                dgw.Columns.Add("parts_4", "Израсходованные материалы и детали_4");
-                dgw.Columns.Add("parts_5", "Израсходованные материалы и детали_5");
-                dgw.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
-                dgw.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
-                dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
-                dgw.Columns.Add("comment", "Примечание");
-                dgw.Columns.Add("road", "Дорога");
-                dgw.Columns.Add("IsNew", "RowState");
-                dgw.Columns[12].Visible = true;
-                dgw.Columns[13].Visible = false;
-                dgw.Columns[14].Visible = false;
-                dgw.Columns[15].Visible = false;
-                dgw.Columns[16].Visible = false;
-                dgw.Columns[20].Visible = false;
-                dgw.Columns[21].Visible = false;
-                dgw.Columns[22].Visible = false;
-                dgw.Columns[23].Visible = false;
-                dgw.Columns[24].Visible = false;
-                dgw.Columns[25].Visible = false;
-                dgw.Columns[26].Visible = false;
-                dgw.Columns[27].Visible = false;
-                dgw.Columns[28].Visible = false;
-                dgw.Columns[29].Visible = false;
-                dgw.Columns[30].Visible = false;
-                dgw.Columns[31].Visible = false;
-                dgw.Columns[32].Visible = false;
-                dgw.Columns[33].Visible = false;
-                dgw.Columns[34].Visible = false;
-                dgw.Columns[35].Visible = false;
-                dgw.Columns[36].Visible = false;
-                dgw.Columns[37].Visible = false;
-                dgw.Columns[40].Visible = false;
-                dgw.Columns[41].Visible = false;
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка CreateColums");
-            }
+            dgw.Columns.Add("id", "№");
+            dgw.Columns.Add("poligon", "Полигон");
+            dgw.Columns.Add("company", "Предприятие");
+            dgw.Columns.Add("location", "Место нахождения");
+            dgw.Columns.Add("model", "Модель радиостанции");
+            dgw.Columns.Add("serialNumber", "Заводской номер");
+            dgw.Columns.Add("inventoryNumber", "Инвентарный номер");
+            dgw.Columns.Add("networkNumber", "Сетевой номер");
+            dgw.Columns.Add("dateTO", "Дата ТО");
+            dgw.Columns.Add("numberAct", "№ акта ТО");
+            dgw.Columns.Add("city", "Город");
+            dgw.Columns.Add("price", "Цена ТО");
+            dgw.Columns.Add("representative", "Представитель предприятия");
+            dgw.Columns.Add("post", "Должность");
+            dgw.Columns.Add("numberIdentification", "Номер удостоверения");
+            dgw.Columns.Add("dateIssue", "Дата выдачи удостоверения");
+            dgw.Columns.Add("phoneNumber", "Номер телефона");
+            dgw.Columns.Add("numberActRemont", "№ акта ремонта");
+            dgw.Columns.Add("category", "Категория");
+            dgw.Columns.Add("priceRemont", "Цена ремонта");
+            dgw.Columns.Add("antenna", "Антенна");
+            dgw.Columns.Add("manipulator", "Манипулятор");
+            dgw.Columns.Add("AKB", "АКБ");
+            dgw.Columns.Add("batteryСharger", "ЗУ");
+            dgw.Columns.Add("completed_works_1", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_2", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_3", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_4", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_5", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_6", "Выполненные работы_1");
+            dgw.Columns.Add("completed_works_7", "Выполненные работы_1");
+            dgw.Columns.Add("parts_1", "Израсходованные материалы и детали_1");
+            dgw.Columns.Add("parts_2", "Израсходованные материалы и детали_2");
+            dgw.Columns.Add("parts_3", "Израсходованные материалы и детали_3");
+            dgw.Columns.Add("parts_4", "Израсходованные материалы и детали_4");
+            dgw.Columns.Add("parts_5", "Израсходованные материалы и детали_5");
+            dgw.Columns.Add("parts_6", "Израсходованные материалы и детали_6");
+            dgw.Columns.Add("parts_7", "Израсходованные материалы и детали_7");
+            dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
+            dgw.Columns.Add("comment", "Примечание");
+            dgw.Columns.Add("road", "Дорога");
+            dgw.Columns.Add("IsNew", "RowState");
+            dgw.Columns[12].Visible = true;
+            dgw.Columns[13].Visible = false;
+            dgw.Columns[14].Visible = false;
+            dgw.Columns[15].Visible = false;
+            dgw.Columns[16].Visible = false;
+            dgw.Columns[20].Visible = false;
+            dgw.Columns[21].Visible = false;
+            dgw.Columns[22].Visible = false;
+            dgw.Columns[23].Visible = false;
+            dgw.Columns[24].Visible = false;
+            dgw.Columns[25].Visible = false;
+            dgw.Columns[26].Visible = false;
+            dgw.Columns[27].Visible = false;
+            dgw.Columns[28].Visible = false;
+            dgw.Columns[29].Visible = false;
+            dgw.Columns[30].Visible = false;
+            dgw.Columns[31].Visible = false;
+            dgw.Columns[32].Visible = false;
+            dgw.Columns[33].Visible = false;
+            dgw.Columns[34].Visible = false;
+            dgw.Columns[35].Visible = false;
+            dgw.Columns[36].Visible = false;
+            dgw.Columns[37].Visible = false;
+            dgw.Columns[40].Visible = false;
+            dgw.Columns[41].Visible = false;
         }
-
-
 
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (!String.IsNullOrEmpty(city))
                 {
-                    if (!String.IsNullOrEmpty(city))
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $"WHERE city = '{city.Trim()}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
-                            $"WHERE city = '{city.Trim()}' AND road = '{road}'";
+                        DB.GetInstance.OpenConnection();
 
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
+                                    ReedSingleRow(dgw, reader);
                                 }
+                                reader.Close();
                             }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
                         }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
-                    else dgw.Rows.Clear();
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    dgw.Columns[39].Width = 300;
-
-                    //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
-                    if (dgw.Rows.Count > 1)
-                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGrid");
-                }
+                else dgw.Rows.Clear();
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                dgw.Columns[39].Width = 300;
+
+                //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
+                if (dgw.Rows.Count > 1)
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
         }
 
         internal static void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
-                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
-                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
-                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
-                         record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
-                         record.GetString(40), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRow");
-            }
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                     record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                     record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
+                     record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
+                     record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
+                     record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
+                     record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
+                     record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                     record.GetString(40), RowState.ModifieldNew)));
+
         }
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (city != "")
                 {
-                    if (city != "")
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $"WHERE city = '{city.Trim()}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
-                            $"WHERE city = '{city.Trim()}' AND road = '{road}'";
+                        DB.GetInstance.OpenConnection();
 
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRowTimerEventProcessor(dgw, reader);
-                                    }
-                                    reader.Close();
+                                    ReedSingleRowTimerEventProcessor(dgw, reader);
                                 }
+                                reader.Close();
                             }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
                         }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    dgw.Columns[39].Width = 300;
-
-                    //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
-                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGrid");
-                }
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                dgw.Columns[39].Width = 300;
+
+                //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
+                dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
         }
 
         internal static void ReedSingleRowTimerEventProcessor(DataGridView dgw, IDataRecord record)
         {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
-                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
-                         record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
-                         record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
-                         record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
-                         record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
-                         record.GetString(40), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRow");
-            }
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                     record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                     record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
+                     record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
+                     record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
+                     record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
+                     record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
+                     record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                     record.GetString(40), RowState.ModifieldNew)));
         }
         #endregion
 
@@ -302,125 +262,101 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+
+                string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
-                    var myCulture = new CultureInfo("ru-RU");
-                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                    Thread.CurrentThread.CurrentCulture = myCulture;
-                    dgw.Rows.Clear();
+                    DB.GetInstance.OpenConnection();
 
-                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer";
-
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRowEnginer(dgw, reader);
-                                }
-                                reader.Close();
+                                ReedSingleRowEnginer(dgw, reader);
                             }
+                            reader.Close();
                         }
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
                     }
-                    //dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    //dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
-
-                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-                    dgw.Columns[0].Width = 40;
-                    dgw.Columns[1].Width = 200;
-                    dgw.Columns[2].Width = 200;
-                    dgw.Columns[3].Width = 424;
-                    dgw.Columns[4].Width = 300;
-                    dgw.Columns[5].Width = 142;
-
-                    for (int i = 0; i < dgw.Rows.Count; i++)
-                    {
-                        dgw.Rows[i].Height = 140;
-                    }
-
-
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
                 }
-                catch (Exception)
+                //dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                //dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
+
+                dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgw.Columns[0].Width = 40;
+                dgw.Columns[1].Width = 200;
+                dgw.Columns[2].Width = 200;
+                dgw.Columns[3].Width = 424;
+                dgw.Columns[4].Width = 300;
+                dgw.Columns[5].Width = 142;
+
+                for (int i = 0; i < dgw.Rows.Count; i++)
                 {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                    dgw.Rows[i].Height = 140;
                 }
             }
         }
 
         internal static void ReedSingleRowEnginer(DataGridView dgw, IDataRecord record)
         {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3),
-                    record.GetString(4), record.GetString(5), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRowEnginer");
-            }
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3),
+                record.GetString(4), record.GetString(5), RowState.ModifieldNew)));
         }
 
         internal static void RefreshDataGridEngineerModel(DataGridView dgw, string model)
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+
+                string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
-                    var myCulture = new CultureInfo("ru-RU");
-                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                    Thread.CurrentThread.CurrentCulture = myCulture;
-                    dgw.Rows.Clear();
+                    DB.GetInstance.OpenConnection();
 
-                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}'";
-
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRowEnginer(dgw, reader);
-                                }
-                                reader.Close();
+                                ReedSingleRowEnginer(dgw, reader);
                             }
+                            reader.Close();
                         }
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
                     }
-                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-                    dgw.Columns[0].Width = 40;
-                    dgw.Columns[1].Width = 200;
-                    dgw.Columns[2].Width = 200;
-                    dgw.Columns[3].Width = 300;
-                    dgw.Columns[4].Width = 424;
-                    dgw.Columns[5].Width = 142;
-
-                    for (int i = 0; i < dgw.Rows.Count; i++)
-                    {
-                        dgw.Rows[i].Height = 140;
-                    }
-
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
                 }
-                catch (Exception)
+                dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgw.Columns[0].Width = 40;
+                dgw.Columns[1].Width = 200;
+                dgw.Columns[2].Width = 200;
+                dgw.Columns[3].Width = 300;
+                dgw.Columns[4].Width = 424;
+                dgw.Columns[5].Width = 142;
+
+                for (int i = 0; i < dgw.Rows.Count; i++)
                 {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                    dgw.Rows[i].Height = 140;
                 }
             }
         }
@@ -429,53 +365,45 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+
+                string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}' AND problem = '{problem}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
-                    var myCulture = new CultureInfo("ru-RU");
-                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                    Thread.CurrentThread.CurrentCulture = myCulture;
-                    dgw.Rows.Clear();
+                    DB.GetInstance.OpenConnection();
 
-                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE model = '{model}' AND problem = '{problem}'";
-
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRowEnginer(dgw, reader);
-                                }
-                                reader.Close();
+                                ReedSingleRowEnginer(dgw, reader);
                             }
+                            reader.Close();
                         }
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
                     }
-                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-                    dgw.Columns[0].Width = 40;
-                    dgw.Columns[1].Width = 200;
-                    dgw.Columns[2].Width = 200;
-                    dgw.Columns[3].Width = 300;
-                    dgw.Columns[4].Width = 424;
-                    dgw.Columns[5].Width = 142;
-
-                    for (int i = 0; i < dgw.Rows.Count; i++)
-                    {
-                        dgw.Rows[i].Height = 140;
-                    }
-
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
                 }
-                catch (Exception)
+                dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgw.Columns[0].Width = 40;
+                dgw.Columns[1].Width = 200;
+                dgw.Columns[2].Width = 200;
+                dgw.Columns[3].Width = 300;
+                dgw.Columns[4].Width = 424;
+                dgw.Columns[5].Width = 142;
+
+                for (int i = 0; i < dgw.Rows.Count; i++)
                 {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineer");
+                    dgw.Rows[i].Height = 140;
                 }
             }
         }
@@ -484,53 +412,45 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+
+                string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE author = '{author}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
-                    var myCulture = new CultureInfo("ru-RU");
-                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                    Thread.CurrentThread.CurrentCulture = myCulture;
-                    dgw.Rows.Clear();
+                    DB.GetInstance.OpenConnection();
 
-                    string queryString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE author = '{author}'";
-
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
+                        if (reader.HasRows)
                         {
-                            if (reader.HasRows)
+                            while (reader.Read())
                             {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRowEnginer(dgw, reader);
-                                }
-                                reader.Close();
+                                ReedSingleRowEnginer(dgw, reader);
                             }
+                            reader.Close();
                         }
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
                     }
-                    dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-                    dgw.Columns[0].Width = 40;
-                    dgw.Columns[1].Width = 200;
-                    dgw.Columns[2].Width = 200;
-                    dgw.Columns[3].Width = 300;
-                    dgw.Columns[4].Width = 424;
-                    dgw.Columns[5].Width = 142;
-
-                    for (int i = 0; i < dgw.Rows.Count; i++)
-                    {
-                        dgw.Rows[i].Height = 140;
-                    }
-
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
                 }
-                catch (Exception)
+                dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+                dgw.Columns[0].Width = 40;
+                dgw.Columns[1].Width = 200;
+                dgw.Columns[2].Width = 200;
+                dgw.Columns[3].Width = 300;
+                dgw.Columns[4].Width = 424;
+                dgw.Columns[5].Width = 142;
+
+                for (int i = 0; i < dgw.Rows.Count; i++)
                 {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridEngineerAuthor");
+                    dgw.Rows[i].Height = 140;
                 }
             }
         }
@@ -541,399 +461,52 @@ namespace ServiceTelecomConnect
         #region Куратор
         internal static void CreateColumsСurator(DataGridView dgw)
         {
-            try
-            {
-                dgw.Columns.Add("id", "№");
-                dgw.Columns.Add("poligon", "Полигон");
-                dgw.Columns.Add("company", "Предприятие");
-                dgw.Columns.Add("location", "Место нахождения");
-                dgw.Columns.Add("model", "Модель радиостанции");
-                dgw.Columns.Add("serialNumber", "Заводской номер");
-                dgw.Columns.Add("inventoryNumber", "Инвентарный номер");
-                dgw.Columns.Add("networkNumber", "Сетевой номер");
-                dgw.Columns.Add("dateTO", "Дата ТО");
-                dgw.Columns.Add("numberAct", "№ акта ТО");
-                dgw.Columns.Add("city", "Город");
-                dgw.Columns.Add("price", "Цена ТО");
-                dgw.Columns.Add("numberActRemont", "№ акта ремонта");
-                dgw.Columns.Add("category", "Категория");
-                dgw.Columns.Add("priceRemont", "Цена ремонта");
-                dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
-                dgw.Columns.Add("comment", "Примечание");
-                dgw.Columns.Add("month", "Месяц выполнения");
-                dgw.Columns.Add("road", "Дорога");
-                dgw.Columns.Add("IsNew", "RowState");
-                dgw.Columns[19].Visible = false;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка CreateColumsСurator");
-            }
+            dgw.Columns.Add("id", "№");
+            dgw.Columns.Add("poligon", "Полигон");
+            dgw.Columns.Add("company", "Предприятие");
+            dgw.Columns.Add("location", "Место нахождения");
+            dgw.Columns.Add("model", "Модель радиостанции");
+            dgw.Columns.Add("serialNumber", "Заводской номер");
+            dgw.Columns.Add("inventoryNumber", "Инвентарный номер");
+            dgw.Columns.Add("networkNumber", "Сетевой номер");
+            dgw.Columns.Add("dateTO", "Дата ТО");
+            dgw.Columns.Add("numberAct", "№ акта ТО");
+            dgw.Columns.Add("city", "Город");
+            dgw.Columns.Add("price", "Цена ТО");
+            dgw.Columns.Add("numberActRemont", "№ акта ремонта");
+            dgw.Columns.Add("category", "Категория");
+            dgw.Columns.Add("priceRemont", "Цена ремонта");
+            dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
+            dgw.Columns.Add("comment", "Примечание");
+            dgw.Columns.Add("month", "Месяц выполнения");
+            dgw.Columns.Add("road", "Дорога");
+            dgw.Columns.Add("IsNew", "RowState");
+            dgw.Columns[19].Visible = false;
         }
 
         internal static void ReedSingleRowСurator(DataGridView dgw, IDataRecord record)
         {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
-                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRowСurator");
-            }
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                     record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                     record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
+                     record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
+
         }
 
         internal static void RefreshDataGridСurator(DataGridView dgw, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
-                {
-                    if (!String.IsNullOrEmpty(road))
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
-                            $"radiostantion_сomparison WHERE road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
-                        {
-                            DB_4.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRowСurator(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB_4.GetInstance.CloseConnection();
-                        }
-                    }
-                    else dgw.Rows.Clear();
-
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    if (dgw.Rows.Count > 1)
-                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridСurator");
-                }
-            }
-        }
-
-        internal static void RefreshDataGridСuratorCity(DataGridView dgw, string city, string road)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(city))
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
-                            $"radiostantion_сomparison WHERE city = '{city}' AND road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
-                        {
-                            DB_4.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRowСurator(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB_4.GetInstance.CloseConnection();
-                        }
-                    }
-                    else dgw.Rows.Clear();
-
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    if (dgw.Rows.Count > 1)
-                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridСurator");
-                }
-            }
-        }
-
-        internal static void RefreshDataGridСuratorMonth(DataGridView dgw, string road, string month)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(road))
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
-                            $"radiostantion_сomparison WHERE road = '{road}' AND month = '{month}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
-                        {
-                            DB_4.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRowСurator(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB_4.GetInstance.CloseConnection();
-                        }
-                    }
-                    else dgw.Rows.Clear();
-
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    if (dgw.Rows.Count > 1)
-                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGridСurator");
-                }
-            }
-        }
-
-        internal static void ReedSingleRowСuratorTimerEventProcessor(DataGridView dgw, IDataRecord record)
-        {
-            try
-            {
-                dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
-                         record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
-                         record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
-                         record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка ReedSingleRow");
-            }
-        }
-
-        internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city, string road)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(city))
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $"FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
-                        {
-                            DB_4.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRowСuratorTimerEventProcessor(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB_4.GetInstance.CloseConnection();
-                        }
-                    }
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 170;
-                    dgw.Columns[5].Width = 170;
-                    dgw.Columns[6].Width = 170;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                    dgw.Columns[39].Width = 300;
-                    if (dgw.Rows.Count > 1)
-                        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка загрузки RefreshDataGrid");
-                }
-            }
-        }
-        #endregion
-        #endregion
-
-        #region загрузка всей таблицы ТО в текущем году
-
-        internal static void Full_BD(DataGridView dgw, string road)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
+                if (!String.IsNullOrEmpty(road))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
-                            $"FROM radiostantion WHERE road = '{road.Trim()}'";
-
-                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRow(dgw, reader);
-                                }
-                                reader.Close();
-                            }
-                        }
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
-                    }
-
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-                }
-                catch (MySqlException)
-                {
-                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ");
-                }
-            }
-        }
-
-        internal static void Full_BD_Curator(DataGridView dgw, string road)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
-                    var myCulture = new CultureInfo("ru-RU");
-                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                    Thread.CurrentThread.CurrentCulture = myCulture;
-                    dgw.Rows.Clear();
-
                     string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                           $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                           $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
-                           $"radiostantion_сomparison WHERE road = '{road.Trim()}'";
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                        $"radiostantion_сomparison WHERE road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
                     {
@@ -953,26 +526,308 @@ namespace ServiceTelecomConnect
                         command.ExecuteNonQuery();
                         DB_4.GetInstance.CloseConnection();
                     }
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
                 }
-                catch (MySqlException)
+                else dgw.Rows.Clear();
+
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                if (dgw.Rows.Count > 1)
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+
+            }
+        }
+
+        internal static void RefreshDataGridСuratorCity(DataGridView dgw, string city, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                if (!String.IsNullOrEmpty(city))
                 {
-                    MessageBox.Show("Ошибка загрузки всей таблицы текущих ТО РСТ(Full_BD_Curator)");
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                        $"radiostantion_сomparison WHERE city = '{city}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                    {
+                        DB_4.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowСurator(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB_4.GetInstance.CloseConnection();
+                    }
                 }
+                else dgw.Rows.Clear();
+
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                if (dgw.Rows.Count > 1)
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+            }
+        }
+
+        internal static void RefreshDataGridСuratorMonth(DataGridView dgw, string road, string month)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                if (!String.IsNullOrEmpty(road))
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                        $"radiostantion_сomparison WHERE road = '{road}' AND month = '{month}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                    {
+                        DB_4.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowСurator(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB_4.GetInstance.CloseConnection();
+                    }
+                }
+                else dgw.Rows.Clear();
+
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                if (dgw.Rows.Count > 1)
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+            }
+        }
+
+        internal static void ReedSingleRowСuratorTimerEventProcessor(DataGridView dgw, IDataRecord record)
+        {
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                     record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                     record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetDecimal(14),
+                     record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), RowState.ModifieldNew)));
+        }
+
+        internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                if (!String.IsNullOrEmpty(city))
+                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $"FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                    {
+                        DB_4.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRowСuratorTimerEventProcessor(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        command.ExecuteNonQuery();
+                        DB_4.GetInstance.CloseConnection();
+                    }
+                }
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 170;
+                dgw.Columns[5].Width = 170;
+                dgw.Columns[6].Width = 170;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+                dgw.Columns[39].Width = 300;
+                if (dgw.Rows.Count > 1)
+                    dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
+            }
+        }
+        #endregion
+        #endregion
+
+        #region загрузка всей таблицы ТО в текущем году
+
+        internal static void Full_BD(DataGridView dgw, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+                string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"FROM radiostantion WHERE road = '{road.Trim()}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRow(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                }
+
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+            }
+        }
+
+        internal static void Full_BD_Curator(DataGridView dgw, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                var myCulture = new CultureInfo("ru-RU");
+                myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                Thread.CurrentThread.CurrentCulture = myCulture;
+                dgw.Rows.Clear();
+
+                string queryString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                       $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                       $"category, priceRemont, decommissionSerialNumber, comment, month, road FROM " +
+                       $"radiostantion_сomparison WHERE road = '{road.Trim()}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB_4.GetInstance.GetConnection()))
+                {
+                    DB_4.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRowСurator(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    command.ExecuteNonQuery();
+                    DB_4.GetInstance.CloseConnection();
+                }
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
             }
         }
 
@@ -1004,8 +859,6 @@ namespace ServiceTelecomConnect
                 {
                     perem_comboBox = "info";
                 }
-
-
 
                 txB_search = txB_search.ToUpper();
 
@@ -1051,12 +904,10 @@ namespace ServiceTelecomConnect
                 dgw.Columns[4].Width = 300;
                 dgw.Columns[5].Width = 142;
 
-
                 for (int i = 0; i < dgw.Rows.Count; i++)
                 {
                     dgw.Rows[i].Height = 140;
                 }
-
             }
         }
 
@@ -1065,112 +916,105 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var searchString = string.Empty;
+                string perem_comboBox = "serialNumber";
+
+                dgw.Rows.Clear();
+
+                if (comboBox_seach == "Предприятие")
                 {
-                    var searchString = string.Empty;
-                    string perem_comboBox = "serialNumber";
-
-                    dgw.Rows.Clear();
-
-                    if (comboBox_seach == "Предприятие")
-                    {
-                        perem_comboBox = "company";
-                    }
-                    else if (comboBox_seach == "Модель")
-                    {
-                        perem_comboBox = "model";
-                    }
-                    else if (comboBox_seach == "Станция")
-                    {
-                        perem_comboBox = "location";
-                    }
-                    else if (comboBox_seach == "Заводской номер")
-                    {
-                        perem_comboBox = "serialNumber";
-                    }
-                    else if (comboBox_seach == "Дата ТО")
-                    {
-                        perem_comboBox = "dateTO";
-                    }
-                    else if (comboBox_seach == "Номер акта ТО")
-                    {
-                        perem_comboBox = "numberAct";
-                    }
-                    else if (comboBox_seach == "Номер акта Ремонта")
-                    {
-                        perem_comboBox = "numberActRemont";
-                    }
-                    else if (comboBox_seach == "Представитель ПП")
-                    {
-                        perem_comboBox = "representative";
-                    }
-                    else if (comboBox_seach == "Номер Акта списания")
-                    {
-                        perem_comboBox = "decommissionSerialNumber";
-                    }
-
-                    var provSeach = textBox_search;
-                    provSeach = provSeach.ToUpper();
-
-                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
-                    }
-                    else if (perem_comboBox == "numberAct")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                    }
-                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }
-                    else
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                    }
-
-                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRow(dgw, reader);
-                                }
-                                reader.Close();
-                            }
-                        }
-                        DB.GetInstance.CloseConnection();
-                    }
-                    if (perem_comboBox == "numberActRemont")
-                    {
-                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-                    }
+                    perem_comboBox = "company";
                 }
-                catch (Exception)
+                else if (comboBox_seach == "Модель")
                 {
-                    MessageBox.Show("Ошибка Search");
+                    perem_comboBox = "model";
+                }
+                else if (comboBox_seach == "Станция")
+                {
+                    perem_comboBox = "location";
+                }
+                else if (comboBox_seach == "Заводской номер")
+                {
+                    perem_comboBox = "serialNumber";
+                }
+                else if (comboBox_seach == "Дата ТО")
+                {
+                    perem_comboBox = "dateTO";
+                }
+                else if (comboBox_seach == "Номер акта ТО")
+                {
+                    perem_comboBox = "numberAct";
+                }
+                else if (comboBox_seach == "Номер акта Ремонта")
+                {
+                    perem_comboBox = "numberActRemont";
+                }
+                else if (comboBox_seach == "Представитель ПП")
+                {
+                    perem_comboBox = "representative";
+                }
+                else if (comboBox_seach == "Номер Акта списания")
+                {
+                    perem_comboBox = "decommissionSerialNumber";
+                }
+
+                var provSeach = textBox_search;
+                provSeach = provSeach.ToUpper();
+
+                if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
+                }
+                else if (perem_comboBox == "numberAct")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                }
+                else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                    || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                }
+                else
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                }
+
+                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRow(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+                if (perem_comboBox == "numberActRemont")
+                {
+                    dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
                 }
             }
         }
@@ -1179,108 +1023,101 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var searchString = string.Empty;
+                string perem_comboBox = "serialNumber";
+
+                dgw.Rows.Clear();
+
+                if (comboBox_seach == "Предприятие")
                 {
-                    var searchString = string.Empty;
-                    string perem_comboBox = "serialNumber";
-
-                    dgw.Rows.Clear();
-
-                    if (comboBox_seach == "Предприятие")
-                    {
-                        perem_comboBox = "company";
-                    }
-                    else if (comboBox_seach == "Станция")
-                    {
-                        perem_comboBox = "location";
-                    }
-                    else if (comboBox_seach == "Заводской номер")
-                    {
-                        perem_comboBox = "serialNumber";
-                    }
-                    else if (comboBox_seach == "Дата ТО")
-                    {
-                        perem_comboBox = "dateTO";
-                    }
-                    else if (comboBox_seach == "Номер акта ТО")
-                    {
-                        perem_comboBox = "numberAct";
-                    }
-                    else if (comboBox_seach == "Номер акта Ремонта")
-                    {
-                        perem_comboBox = "numberActRemont";
-                    }
-                    else if (comboBox_seach == "Номер Акта списания")
-                    {
-                        perem_comboBox = "decommissionSerialNumber";
-                    }
-                    else if (comboBox_seach == "Месяц")
-                    {
-                        perem_comboBox = "month";
-                    }
-                    else if (comboBox_seach == "Модель")
-                    {
-                        perem_comboBox = "model";
-                    }
-
-                    var provSeach = textBox_search;
-                    provSeach = provSeach.ToUpper();
-
-                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $"FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
-                    }
-                    else if (perem_comboBox == "numberAct")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                    }
-                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month" || perem_comboBox == "model")
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }
-                    else
-                    {
-                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
-                            $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
-                            $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
-                            $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                    }
-
-                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                while (reader.Read())
-                                {
-                                    ReedSingleRowСurator(dgw, reader);
-                                }
-                                reader.Close();
-                            }
-                        }
-                        DB.GetInstance.CloseConnection();
-                    }
-                    if (perem_comboBox == "numberActRemont")
-                    {
-                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-                    }
+                    perem_comboBox = "company";
                 }
-                catch (Exception)
+                else if (comboBox_seach == "Станция")
                 {
-                    MessageBox.Show("Ошибка SearchCurator");
+                    perem_comboBox = "location";
+                }
+                else if (comboBox_seach == "Заводской номер")
+                {
+                    perem_comboBox = "serialNumber";
+                }
+                else if (comboBox_seach == "Дата ТО")
+                {
+                    perem_comboBox = "dateTO";
+                }
+                else if (comboBox_seach == "Номер акта ТО")
+                {
+                    perem_comboBox = "numberAct";
+                }
+                else if (comboBox_seach == "Номер акта Ремонта")
+                {
+                    perem_comboBox = "numberActRemont";
+                }
+                else if (comboBox_seach == "Номер Акта списания")
+                {
+                    perem_comboBox = "decommissionSerialNumber";
+                }
+                else if (comboBox_seach == "Месяц")
+                {
+                    perem_comboBox = "month";
+                }
+                else if (comboBox_seach == "Модель")
+                {
+                    perem_comboBox = "model";
+                }
+
+                var provSeach = textBox_search;
+                provSeach = provSeach.ToUpper();
+
+                if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $"FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
+                }
+                else if (perem_comboBox == "numberAct")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                }
+                else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                    || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month" || perem_comboBox == "model")
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                }
+                else
+                {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                }
+
+                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRowСurator(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+                if (perem_comboBox == "numberActRemont")
+                {
+                    dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
                 }
             }
         }
@@ -1293,129 +1130,16 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (txb_flag_all_BD.Text == "Вся БД")
                 {
-                    if (txb_flag_all_BD.Text == "Вся БД")
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-
-                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN " +
-                            $"radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) " +
-                            $"WHERE radiostantion.serialNumber IS NULL AND radiostantion_last_year.road LIKE '" + road + "'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
-                        dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                        dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                        dgw.Columns[0].Width = 45;
-                        dgw.Columns[3].Width = 170;
-                        dgw.Columns[4].Width = 180;
-                        dgw.Columns[5].Width = 150;
-                        dgw.Columns[6].Width = 178;
-                        dgw.Columns[7].Width = 178;
-                        dgw.Columns[8].Width = 100;
-                        dgw.Columns[9].Width = 110;
-                        dgw.Columns[10].Width = 100;
-                        dgw.Columns[11].Width = 100;
-                        dgw.Columns[17].Width = 120;
-                    }
-
-                    else if (!String.IsNullOrEmpty(city))
-                    {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-
-                        string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion " +
-                            $"ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL " +
-                            $"AND radiostantion_last_year.city LIKE '" + city + "'AND radiostantion_last_year.road LIKE '" + road + "'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                if (reader.HasRows)
-                                {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
-                                }
-                            }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
-                    }
-
-                    txb_flag_all_BD.Text = "";
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Seach_DataGrid_Replay_RST");
-                }
-            }
-
-        }
-
-        #endregion
-
-        #region update_datagridview_number_act
-
-        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct, string road)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
-                {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    dgw.AllowUserToAddRows = false;
 
-                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
-                            $"WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}' AND road = '{road}'";
+                    string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN " +
+                        $"radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) " +
+                        $"WHERE radiostantion.serialNumber IS NULL AND radiostantion_last_year.road LIKE '" + road + "'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -1432,10 +1156,12 @@ namespace ServiceTelecomConnect
                                 reader.Close();
                             }
                         }
+                        command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
                     dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
                     dgw.Columns[0].Width = 45;
                     dgw.Columns[3].Width = 170;
                     dgw.Columns[4].Width = 180;
@@ -1447,27 +1173,20 @@ namespace ServiceTelecomConnect
                     dgw.Columns[10].Width = 100;
                     dgw.Columns[11].Width = 100;
                     dgw.Columns[17].Width = 120;
-
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Update_datagridview_number_act");
-                }
-            }
-        }
 
-        internal static void Update_datagridview_number_act_curator(DataGridView dgw, string city, string numberAct)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                try
+                else if (!String.IsNullOrEmpty(city))
                 {
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
-                    dgw.AllowUserToAddRows = false;
 
-                    string searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}'";
+                    string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion " +
+                        $"ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL " +
+                        $"AND radiostantion_last_year.city LIKE '" + city + "'AND radiostantion_last_year.road LIKE '" + road + "'";
 
-                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
 
@@ -1477,32 +1196,126 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                 {
-                                    ReedSingleRowСurator(dgw, reader);
+                                    ReedSingleRow(dgw, reader);
                                 }
                                 reader.Close();
                             }
                         }
+                        command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
+                }
 
-                }
-                catch (Exception)
+                txb_flag_all_BD.Text = "";
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+            }
+
+        }
+
+        #endregion
+
+        #region update_datagridview_number_act
+
+        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct, string road)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                dgw.Rows.Clear();
+                dgw.AllowUserToAddRows = false;
+
+                string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $"WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}' AND road = '{road}'";
+
+                using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
-                    MessageBox.Show("Ошибка Update_datagridview_number_act_curator");
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRow(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
                 }
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
+            }
+        }
+
+        internal static void Update_datagridview_number_act_curator(DataGridView dgw, string city, string numberAct)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                dgw.Rows.Clear();
+                dgw.AllowUserToAddRows = false;
+
+                string searchString = $"SELECT * FROM radiostantion_сomparison WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}'";
+
+                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                ReedSingleRowСurator(dgw, reader);
+                            }
+                            reader.Close();
+                        }
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
             }
         }
 
@@ -1513,35 +1326,28 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var clearBD = "TRUNCATE TABLE radiostantion_copy";
+
+                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    var clearBD = "TRUNCATE TABLE radiostantion_copy";
-
-                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                    if (Internet_check.CheackSkyNET())
                     {
-                        if (Internet_check.CheackSkyNET())
-                        {
-                            DB_2.GetInstance.OpenConnection();
-                            command.ExecuteNonQuery();
-                            DB_2.GetInstance.CloseConnection();
-                        }
-                    }
-
-                    var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
-
-                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
-                    {
-                        if (Internet_check.CheackSkyNET())
-                        {
-                            DB_2.GetInstance.OpenConnection();
-                            command2.ExecuteNonQuery();
-                            DB_2.GetInstance.CloseConnection();
-                        }
+                        DB_2.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB_2.GetInstance.CloseConnection();
                     }
                 }
-                catch (Exception)
+
+                var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
+
+                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    MessageBox.Show("Ошибка Copy_BD_radiostantion_in_radiostantion_copy");
+                    if (Internet_check.CheackSkyNET())
+                    {
+                        DB_2.GetInstance.OpenConnection();
+                        command2.ExecuteNonQuery();
+                        DB_2.GetInstance.CloseConnection();
+                    }
                 }
             }
         }
@@ -1550,35 +1356,28 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
+
+                using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
-
-                    using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+                    if (Internet_check.CheackSkyNET())
                     {
-                        if (Internet_check.CheackSkyNET())
-                        {
-                            DB_2.GetInstance.OpenConnection();
-                            command.ExecuteNonQuery();
-                            DB_2.GetInstance.CloseConnection();
-                        }
-                    }
-
-                    var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
-
-                    using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
-                    {
-                        if (Internet_check.CheackSkyNET())
-                        {
-                            DB_2.GetInstance.OpenConnection();
-                            command2.ExecuteNonQuery();
-                            DB_2.GetInstance.CloseConnection();
-                        }
+                        DB_2.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB_2.GetInstance.CloseConnection();
                     }
                 }
-                catch (Exception)
+
+                var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
+
+                using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    MessageBox.Show("Ошибка Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy");
+                    if (Internet_check.CheackSkyNET())
+                    {
+                        DB_2.GetInstance.OpenConnection();
+                        command2.ExecuteNonQuery();
+                        DB_2.GetInstance.CloseConnection();
+                    }
                 }
             }
         }
@@ -1592,35 +1391,28 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                foreach (DataGridViewRow row in dgw.SelectedRows)
                 {
-                    foreach (DataGridViewRow row in dgw.SelectedRows)
-                    {
-                        dgw.Rows[row.Index].Cells[41].Value = RowState.Deleted;
-                    }
+                    dgw.Rows[row.Index].Cells[41].Value = RowState.Deleted;
+                }
 
-                    for (int index = 0; index < dgw.Rows.Count; index++)
-                    {
-                        var rowState = (RowState)dgw.Rows[index].Cells[41].Value;//проверить индекс
+                for (int index = 0; index < dgw.Rows.Count; index++)
+                {
+                    var rowState = (RowState)dgw.Rows[index].Cells[41].Value;//проверить индекс
 
-                        if (rowState == RowState.Deleted)
+                    if (rowState == RowState.Deleted)
+                    {
+                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        var deleteQuery = $"DELETE FROM radiostantion WHERE id = {id}";
+
+                        using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
-                            var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
-                            var deleteQuery = $"DELETE FROM radiostantion WHERE id = {id}";
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
 
-                            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-
-                            }
                         }
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка DeleteRowСell");
                 }
             }
         }
@@ -1629,34 +1421,27 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                foreach (DataGridViewRow row in dgw.SelectedRows)
                 {
-                    foreach (DataGridViewRow row in dgw.SelectedRows)
-                    {
-                        dgw.Rows[row.Index].Cells[19].Value = RowState.Deleted;
-                    }
+                    dgw.Rows[row.Index].Cells[19].Value = RowState.Deleted;
+                }
 
-                    for (int index = 0; index < dgw.Rows.Count; index++)
-                    {
-                        var rowState = (RowState)dgw.Rows[index].Cells[19].Value;//проверить индекс
+                for (int index = 0; index < dgw.Rows.Count; index++)
+                {
+                    var rowState = (RowState)dgw.Rows[index].Cells[19].Value;//проверить индекс
 
-                        if (rowState == RowState.Deleted)
+                    if (rowState == RowState.Deleted)
+                    {
+                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        var deleteQuery = $"DELETE FROM radiostantion_сomparison WHERE id = {id}";
+
+                        using (MySqlCommand command = new MySqlCommand(deleteQuery, DB_4.GetInstance.GetConnection()))
                         {
-                            var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
-                            var deleteQuery = $"DELETE FROM radiostantion_сomparison WHERE id = {id}";
-
-                            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB_4.GetInstance.GetConnection()))
-                            {
-                                DB_4.GetInstance.OpenConnection();
-                                command.ExecuteNonQuery();
-                                DB_4.GetInstance.CloseConnection();
-                            }
+                            DB_4.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB_4.GetInstance.CloseConnection();
                         }
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка DeleteRowСellCurator");
                 }
             }
         }
@@ -1668,34 +1453,26 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (numberActRemont != "")
                 {
-                    if (numberActRemont != "")
+                    if (CheacknumberActRemont_radiostantion(numberActRemont))
                     {
-                        if (CheacknumberActRemont_radiostantion(numberActRemont))
+
+                        var changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
+                            $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
+                            $"completed_works_3 = '', completed_works_4 = '', " +
+                            $"completed_works_5 = '', completed_works_6 = '', " +
+                            $"completed_works_7 = '', parts_1 = '', parts_2 = '', " +
+                            $"parts_3 = '', parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = ''" +
+                            $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
-
-                            var changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
-                                $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
-                                $"completed_works_3 = '', completed_works_4 = '', " +
-                                $"completed_works_5 = '', completed_works_6 = '', " +
-                                $"completed_works_7 = '', parts_1 = '', parts_2 = '', " +
-                                $"parts_3 = '', parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = ''" +
-                                $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
-
-                            using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
                         }
                     }
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Delete_rst_remont");
                 }
             }
         }
@@ -1704,35 +1481,27 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT numberActRemont FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT numberActRemont FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
-
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+
+                        DataTable table = new DataTable();
+
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count > 0)
                         {
+                            return true;
+                        }
 
-                            DataTable table = new DataTable();
-
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count > 0)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
+                        else
+                        {
+                            return false;
                         }
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка CheacknumberActRemont_radiostantion");
-                    return true;
                 }
             }
             return true;
@@ -1749,70 +1518,63 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (serialNumber != "")
                 {
-                    if (serialNumber != "")
+                    var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                        $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
+                        $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
+                        $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
+                        $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' " +
+                        $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
-                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
-                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+
+                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
+                    {
+
+                        var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                            $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                            $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' " +
-                            $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                            $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
-                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+
+                        using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
-                            command.ExecuteNonQuery();
+                            command2.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
                         }
-
-                        if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
-                        {
-
-                            var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
-                                $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
-                                $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
-                                $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                                $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
-
-
-                            using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command2.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
-                        }
-
-                        if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
-                        {
-                            var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
-                                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
-                                        $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
-                                        $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
-                                        $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                        $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                        $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
-                                        $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
-                                        $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
-                                        $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
-                                        $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', " +
-                                        $"'{decommissionSerialNumber}', '{txB_reason_decommission}', '{road}')";
-
-                            using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command3.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
-                        }
-
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Record_decommissionSerialNumber");
+
+                    if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
+                    {
+                        var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
+                                    $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
+                                    $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
+                                    $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
+                                    $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
+                                    $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
+                                    $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
+                                    $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
+                                    $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
+                                    $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', " +
+                                    $"'{decommissionSerialNumber}', '{txB_reason_decommission}', '{road}')";
+
+                        using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command3.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }
+
                 }
             }
         }
@@ -1826,53 +1588,46 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var price = "";
+                if (!String.IsNullOrEmpty(decommissionSerialNumber))
                 {
-                    var price = "";
-                    if (!String.IsNullOrEmpty(decommissionSerialNumber))
+
+                    if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
+                        cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+                        cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                        cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+                        cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+                        cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
                     {
-
-                        if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
-                            cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
-                            cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
-                            cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
-                            cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
-                            cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
-                        {
-                            price = "1411.18";
-                        }
-                        else
-                        {
-                            price = "1919.57";
-                        }
-
-                        var reg = new Regex("C");
-                        txB_numberAct.Text = reg.Replace(txB_numberAct.Text, "");
-
-                        var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'Измени', networkNumber = 'Измени', " +
-                            $"price = '{price}', numberAct = '{txB_numberAct.Text}', decommissionSerialNumber = '', comment = '' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}' ";
-
-                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                            MessageBox.Show("Списание удалено! Заполни \"номер акта\", \"инвентарный и сетевой номер\" заново!");
-                        }
-
-                        var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
-
-                        using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            command2.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
+                        price = "1411.18";
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Delete_decommissionSerialNumber_radiostantion");
+                    else
+                    {
+                        price = "1919.57";
+                    }
+
+                    var reg = new Regex("C");
+                    txB_numberAct.Text = reg.Replace(txB_numberAct.Text, "");
+
+                    var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'Измени', networkNumber = 'Измени', " +
+                        $"price = '{price}', numberAct = '{txB_numberAct.Text}', decommissionSerialNumber = '', comment = '' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}' ";
+
+                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                        MessageBox.Show("Списание удалено! Заполни \"номер акта\", \"инвентарный и сетевой номер\" заново!");
+                    }
+
+                    var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
+
+                    using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command2.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
             }
         }
@@ -1884,112 +1639,55 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                if (!String.IsNullOrEmpty(city))
                 {
-                    if (!String.IsNullOrEmpty(city))
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"FROM radiostantion_decommission WHERE road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
-                            $"FROM radiostantion_decommission WHERE road = '{road}'";
+                        DB.GetInstance.OpenConnection();
 
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
+                                    ReedSingleRow(dgw, reader);
                                 }
+                                reader.Close();
                             }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
                         }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
-
-                    dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                    dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
-
-                    dgw.Columns[0].Width = 45;
-                    dgw.Columns[3].Width = 170;
-                    dgw.Columns[4].Width = 180;
-                    dgw.Columns[5].Width = 150;
-                    dgw.Columns[6].Width = 178;
-                    dgw.Columns[7].Width = 178;
-                    dgw.Columns[8].Width = 100;
-                    dgw.Columns[9].Width = 110;
-                    dgw.Columns[10].Width = 100;
-                    dgw.Columns[11].Width = 100;
-                    dgw.Columns[17].Width = 120;
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка Show_radiostantion_decommission");
-                }
+
+                dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
+
+                dgw.Columns[0].Width = 45;
+                dgw.Columns[3].Width = 170;
+                dgw.Columns[4].Width = 180;
+                dgw.Columns[5].Width = 150;
+                dgw.Columns[6].Width = 178;
+                dgw.Columns[7].Width = 178;
+                dgw.Columns[8].Width = 100;
+                dgw.Columns[9].Width = 110;
+                dgw.Columns[10].Width = 100;
+                dgw.Columns[11].Width = 100;
+                dgw.Columns[17].Width = 120;
             }
         }
-
-        #endregion
-
-        #region Сортировка по ремонтам 
-
-        //internal static string SortRemontAct(DataGridView dgw, string city)
-        //{
-        //    string remontAct;
-
-        //    try
-        //    {
-        //        var searchString = $"SELECT * FROM radiostantion WHERE city = '{city}' AND numberActRemont != ''";
-
-        //        using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
-        //        {
-        //            DB.GetInstance.OpenConnection();
-
-        //            using (MySqlDataReader reader = command.ExecuteReader())
-        //            {
-        //                if (reader.HasRows)
-        //                {
-        //                    while (reader.Read())
-        //                    {
-        //                        ReedSingleRow(dgw, reader);
-        //                    }
-        //                    reader.Close();
-        //                }
-        //            }
-        //            DB.GetInstance.CloseConnection();
-        //        }
-
-        //        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-
-        //        dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-        //        DataGridViewRow row = dgw.Rows[dgw.CurrentCell.RowIndex];
-        //        remontAct = row.Cells[17].Value.ToString();
-
-        //        if (remontAct != "" || remontAct != null)
-        //        {
-        //            return remontAct;
-        //        }
-        //        else return remontAct = "Отсутсвует";
-        //    }
-        //    catch (Exception)
-        //    {
-        //        MessageBox.Show("Ошибка SortRemontAct");
-        //        return "Отсутсвует";
-        //    }
-
-        //}
 
         #endregion
 
@@ -1999,79 +1697,58 @@ namespace ServiceTelecomConnect
 
         internal static void Cmb_unique_model_engineer(ComboBox cmb_unique)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT model FROM problem_engineer ORDER BY model";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT model FROM problem_engineer ORDER BY model";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable table = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable table = new DataTable();
+                    adapter.Fill(table);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(table);
-
-                        cmb_unique.DataSource = table;
-                        cmb_unique.DisplayMember = "model";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_unique.DataSource = table;
+                    cmb_unique.DisplayMember = "model";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
         internal static void Cmb_unique_problem_engineer(ComboBox cmb_unique)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT problem FROM problem_engineer ORDER BY problem";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT problem FROM problem_engineer ORDER BY problem";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable table = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable table = new DataTable();
+                    adapter.Fill(table);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(table);
-
-                        cmb_unique.DataSource = table;
-                        cmb_unique.DisplayMember = "problem";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_unique.DataSource = table;
+                    cmb_unique.DisplayMember = "problem";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
         internal static void Cmb_unique_author_engineer(ComboBox cmb_unique)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT author FROM problem_engineer ORDER BY author";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT author FROM problem_engineer ORDER BY author";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable table = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable table = new DataTable();
+                    adapter.Fill(table);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(table);
-
-                        cmb_unique.DataSource = table;
-                        cmb_unique.DisplayMember = "author";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_unique.DataSource = table;
+                    cmb_unique.DisplayMember = "author";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
@@ -2080,423 +1757,315 @@ namespace ServiceTelecomConnect
 
         internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "company";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
         internal static void Number_unique_model(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "model";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "model";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
         internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "location";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "location";
+                    DB.GetInstance.CloseConnection();
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_location");
-            }
-
         }
 
         internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "dateTO";
 
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "dateTO";
-
-                        DB.GetInstance.CloseConnection();
-                    }
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_dateTO");
             }
         }
 
         internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberAct";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberAct";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberAct");
             }
         }
 
         internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberActRemont");
             }
         }
 
         internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY representative";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY representative";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "representative";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "representative";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_representative");
             }
         }
 
         internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_decommissionActs");
             }
 
         }
 
         internal static void Number_unique_model_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT model FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT model FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "model";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "model";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company");
             }
         }
 
         internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "company";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_company_curator");
             }
 
         }
 
         internal static void Number_unique_location_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "location";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "location";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_location_curator");
             }
 
         }
 
         internal static void Number_unique_dateTO_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}'  AND road = '{road}' ORDER BY dateTO";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}'  AND road = '{road}' ORDER BY dateTO";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "dateTO";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "dateTO";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_dateTO_curator");
             }
         }
 
         internal static void Number_unique_numberAct_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberAct";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberAct";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberAct_curator");
             }
         }
 
         internal static void Number_unique_numberActRemont_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_numberActRemont_curator");
             }
         }
 
         internal static void Number_unique_decommissionActs_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+
+            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
+                    DB.GetInstance.CloseConnection();
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_decommissionActs_curator");
-            }
-
         }
 
         internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            try
+            string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY month";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
-                string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY month";
-                using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    DB.GetInstance.OpenConnection();
-                    DataTable act_table_unique = new DataTable();
+                    adapter.Fill(act_table_unique);
 
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(act_table_unique);
-
-                        cmb_number_unique_acts.DataSource = act_table_unique;
-                        cmb_number_unique_acts.DisplayMember = "month";
-                        DB.GetInstance.CloseConnection();
-                    }
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "month";
+                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода Number_unique_month_curator");
             }
         }
 
@@ -2507,95 +2076,81 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridtDecommissionByPlot(DataGridView dgw, string city, string road)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                if (!String.IsNullOrEmpty(city))
                 {
-                    if (!String.IsNullOrEmpty(city))
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != '' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
+                        DB.GetInstance.OpenConnection();
 
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
-                            $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != '' AND road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
+                                    ReedSingleRow(dgw, reader);
                                 }
+                                reader.Close();
                             }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
                         }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка загрузки RefreshDataGridWithoutDecommission");
             }
         }
 
         internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city, string road)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                if (!String.IsNullOrEmpty(city))
                 {
-                    if (!String.IsNullOrEmpty(city))
+                    var myCulture = new CultureInfo("ru-RU");
+                    myCulture.NumberFormat.NumberDecimalSeparator = ".";
+                    Thread.CurrentThread.CurrentCulture = myCulture;
+                    dgw.Rows.Clear();
+
+                    string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = '' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
-                        var myCulture = new CultureInfo("ru-RU");
-                        myCulture.NumberFormat.NumberDecimalSeparator = ".";
-                        Thread.CurrentThread.CurrentCulture = myCulture;
-                        dgw.Rows.Clear();
+                        DB.GetInstance.OpenConnection();
 
-                        string queryString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
-                            $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = '' AND road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            DB.GetInstance.OpenConnection();
-
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
+                                while (reader.Read())
                                 {
-                                    while (reader.Read())
-                                    {
-                                        ReedSingleRow(dgw, reader);
-                                    }
-                                    reader.Close();
+                                    ReedSingleRow(dgw, reader);
                                 }
+                                reader.Close();
                             }
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
                         }
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка загрузки RefreshDataGridWithoutDecommission");
             }
         }
 
@@ -2607,35 +2162,28 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT city FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY city";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT city FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY city";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        DataTable city_table = new DataTable();
+                    DB.GetInstance.OpenConnection();
+                    DataTable city_table = new DataTable();
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(city_table);
+                        if (city_table.Rows.Count > 0)
                         {
-                            adapter.Fill(city_table);
-                            if (city_table.Rows.Count > 0)
-                            {
-                                cmB_city.DataSource = city_table;
-                                cmB_city.DisplayMember = "city";
-                            }
-                            else
-                            {
-                                MessageBox.Show("Добавь радиостанцию в выполнение!");
-                                cmB_city.DataSource = null;
-                                return;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_city.DataSource = city_table;
+                            cmB_city.DisplayMember = "city";
                         }
+                        else
+                        {
+                            MessageBox.Show("Добавь радиостанцию в выполнение!");
+                            cmB_city.DataSource = null;
+                            return;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                 }
             }
         }
@@ -2644,33 +2192,26 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT month FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY month";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT month FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY month";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        DataTable table = new DataTable();
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
                         {
-                            adapter.Fill(table);
-                            if (table.Rows.Count > 0)
-                            {
-                                cmB_month.DataSource = table;
-                                cmB_month.DisplayMember = "month";
-                            }
-                            else
-                            {
-                                cmB_month.DataSource = null;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_month.DataSource = table;
+                            cmB_month.DisplayMember = "month";
                         }
+                        else
+                        {
+                            cmB_month.DataSource = null;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                 }
             }
         }
@@ -2679,33 +2220,26 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT month FROM radiostantion_сomparison WHERE city = '{cmB_city.Text}' AND road = '{cmB_road.Text}' GROUP BY month";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT month FROM radiostantion_сomparison WHERE city = '{cmB_city.Text}' AND road = '{cmB_road.Text}' GROUP BY month";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        DataTable table = new DataTable();
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
                         {
-                            adapter.Fill(table);
-                            if (table.Rows.Count > 0)
-                            {
-                                cmB_month.DataSource = table;
-                                cmB_month.DisplayMember = "month";
-                            }
-                            else
-                            {
-                                cmB_month.DataSource = null;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_month.DataSource = table;
+                            cmB_month.DisplayMember = "month";
                         }
+                        else
+                        {
+                            cmB_month.DataSource = null;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                 }
             }
         }
@@ -2714,34 +2248,26 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT problem FROM problem_engineer WHERE author = '{author}' GROUP BY problem";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT problem FROM problem_engineer WHERE author = '{author}' GROUP BY problem";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DB.GetInstance.OpenConnection();
-                        DataTable table = new DataTable();
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
                         {
-                            adapter.Fill(table);
-                            if (table.Rows.Count > 0)
-                            {
-                                cmB_problem.DataSource = table;
-                                cmB_problem.DisplayMember = "problem";
-                            }
-                            else
-                            {
-                                cmB_problem.DataSource = null;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_problem.DataSource = table;
+                            cmB_problem.DisplayMember = "problem";
                         }
+                        else
+                        {
+                            cmB_problem.DataSource = null;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Модели не добавлены в Combobox формы инженера");
                 }
             }
         }
@@ -2750,72 +2276,54 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT model FROM problem_engineer WHERE author = '{author}' GROUP BY model";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT model FROM problem_engineer WHERE author = '{author}' GROUP BY model";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DB.GetInstance.OpenConnection();
-                        DataTable table = new DataTable();
-
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
                         {
-                            adapter.Fill(table);
-                            if (table.Rows.Count > 0)
-                            {
-                                cmB_model.DataSource = table;
-                                cmB_model.DisplayMember = "model";
-                            }
-                            else
-                            {
-                                cmB_model.DataSource = null;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_model.DataSource = table;
+                            cmB_model.DisplayMember = "model";
                         }
+                        else
+                        {
+                            cmB_model.DataSource = null;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Модели не добавлены в Combobox формы инженера");
                 }
             }
         }
-
-
-
 
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT city FROM radiostantion WHERE road = '{cmB_road.Text}' GROUP BY city";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT city FROM radiostantion WHERE road = '{cmB_road.Text}' GROUP BY city";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        DataTable city_table = new DataTable();
+                    DB.GetInstance.OpenConnection();
+                    DataTable city_table = new DataTable();
 
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(city_table);
+                        if (city_table.Rows.Count > 0)
                         {
-                            adapter.Fill(city_table);
-                            if (city_table.Rows.Count > 0)
-                            {
-                                cmB_city.DataSource = city_table;
-                                cmB_city.DisplayMember = "city";
-                            }
-                            else
-                            {
-                                cmB_city.DataSource = null;
-                            }
-                            DB.GetInstance.CloseConnection();
+                            cmB_city.DataSource = city_table;
+                            cmB_city.DisplayMember = "city";
                         }
+                        else
+                        {
+                            cmB_city.DataSource = null;
+                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка! Города не добавленны в comboBox!ST_WorkForm_Load");
                 }
             }
         }
@@ -2950,59 +2458,53 @@ namespace ServiceTelecomConnect
             }
             else
             {
-                try
+                string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
+                    $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
+                    $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
+
+                if (Internet_check.CheackSkyNET())
                 {
-                    string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
-                        $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
-                        $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
-
-                    if (Internet_check.CheackSkyNET())
-                    {
-                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            using (MySqlDataReader reader = command.ExecuteReader())
-                            {
-                                while (reader.Read())
-                                {
-                                    lbL_FIO_chief.Text = reader[1].ToString();
-                                    lbL_FIO_Engineer.Text = reader[2].ToString();
-                                    lbL_doverennost.Text = reader[3].ToString();
-                                    lbL_road.Text = reader[4].ToString();
-                                    lbL_numberPrintDocument.Text = reader[5].ToString();
-                                }
-                                reader.Close();
-                            }
-                        }
-                    }
-
-                    string querystring = $"SELECT id, road FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
-                        $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
-                        DataTable table = new DataTable();
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            adapter.Fill(table);
-                            if (table.Rows.Count > 0)
+                            while (reader.Read())
                             {
-                                cmB_road.DataSource = table;
-                                cmB_road.ValueMember = "id";
-                                cmB_road.DisplayMember = "road";
+                                lbL_FIO_chief.Text = reader[1].ToString();
+                                lbL_FIO_Engineer.Text = reader[2].ToString();
+                                lbL_doverennost.Text = reader[3].ToString();
+                                lbL_road.Text = reader[4].ToString();
+                                lbL_numberPrintDocument.Text = reader[5].ToString();
                             }
-                            else
-                            {
-                                MessageBox.Show($"Системная ошибка добавления дороги в Control ComboBox ({_user.Login})");
-                                System.Environment.Exit(0);
-                            }
+                            reader.Close();
                         }
                     }
                 }
-                catch (Exception)
+
+                string querystring = $"SELECT id, road FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
+                    $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    MessageBox.Show("Ошибка получения данных о бригаде (GettingTeamdata)");
+                    DB.GetInstance.OpenConnection();
+                    DataTable table = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        adapter.Fill(table);
+                        if (table.Rows.Count > 0)
+                        {
+                            cmB_road.DataSource = table;
+                            cmB_road.ValueMember = "id";
+                            cmB_road.DisplayMember = "road";
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Системная ошибка добавления дороги в Control ComboBox ({_user.Login})");
+                            System.Environment.Exit(0);
+                        }
+                    }
                 }
+
             }
         }
 
