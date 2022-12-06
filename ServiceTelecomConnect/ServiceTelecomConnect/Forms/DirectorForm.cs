@@ -11,6 +11,7 @@ namespace ServiceTelecomConnect.Forms
     public partial class DirectorForm : Form
     {
         int selectedRow;
+        private readonly cheakUser _user;
 
         #region состояние Rows
         /// <summary>
@@ -25,10 +26,11 @@ namespace ServiceTelecomConnect.Forms
             Deleted
         }
         #endregion
-        public DirectorForm()
+        public DirectorForm(cheakUser user)
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+            _user = user;
         }
 
         private void CreateColums()
@@ -476,6 +478,16 @@ namespace ServiceTelecomConnect.Forms
             cmB_departmentCommunications.Text = cmB_road.Items[0].ToString();
             txB_attorney.Clear();
             txB_numberPrintDocument.Clear();
+        }
+
+        void DirectorForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(1);
+        }
+
+        void DirectorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
     }
 }
