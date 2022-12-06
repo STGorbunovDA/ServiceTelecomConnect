@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -19,35 +18,26 @@ namespace ServiceTelecomConnect
             cmB_problem.Text = cmB_problem.Items[0].ToString();
         }
 
-
-
         void AddToProblemRST_Load(object sender, EventArgs e)
         {
             lbL_Author.Text = _user.Login;
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DB.GetInstance.OpenConnection();
+                    DataTable model_RSR_table = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DB.GetInstance.OpenConnection();
-                        DataTable model_RSR_table = new DataTable();
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(model_RSR_table);
+                        adapter.Fill(model_RSR_table);
 
-                            cmB_model.DataSource = model_RSR_table;
-                            cmB_model.ValueMember = "id";
-                            cmB_model.DisplayMember = "model_radiostation_name";
+                        cmB_model.DataSource = model_RSR_table;
+                        cmB_model.ValueMember = "id";
+                        cmB_model.DisplayMember = "model_radiostation_name";
 
-                            DB.GetInstance.CloseConnection();
-                        }
+                        DB.GetInstance.CloseConnection();
                     }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка модель не добавленна в comboBox (AddRSTForm_Load)");
                 }
             }
         }
@@ -60,7 +50,7 @@ namespace ServiceTelecomConnect
                 cmB_model.Select();
                 return;
             }
-            if(chB_problem_Enable.Checked)
+            if (chB_problem_Enable.Checked)
             {
                 if (String.IsNullOrEmpty(txB_problem.Text))
                 {
