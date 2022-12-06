@@ -1023,7 +1023,7 @@ namespace ServiceTelecomConnect
 
         void ComparisonForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = FormClose.GetInstance.FClose();
+            e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
 
 
