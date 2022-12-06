@@ -275,7 +275,6 @@
   <ItemGroup>
     <Compile Include="Classes\Important\AddExecutionСurator.cs" />
     <Compile Include="Classes\Cheac\CheacForm.cs" />
-    <Compile Include="Classes\Cheac\CheacReggedit.cs" />
     <Compile Include="Classes\Cheac\CheacSerialNumber.cs" />
     <Compile Include="Classes\DataBase\DB_2.cs" />
     <Compile Include="Classes\DataBase\DB_3.cs" />
@@ -312,6 +311,12 @@
     </Compile>
     <Compile Include="Forms\ComparisonForm.Designer.cs">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ReportCardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ReportCardForm.Designer.cs">
+      <DependentUpon>ReportCardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TutorialForm.cs">
       <SubType>Form</SubType>
@@ -392,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ComparisonForm.resx">
       <DependentUpon>ComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportCardForm.resx">
+      <DependentUpon>ReportCardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TutorialForm.resx">
       <DependentUpon>TutorialForm.cs</DependentUpon>
