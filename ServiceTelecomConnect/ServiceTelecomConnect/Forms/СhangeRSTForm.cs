@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -74,29 +73,22 @@ namespace ServiceTelecomConnect
 
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                DB.GetInstance.OpenConnection();
+                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    DB.GetInstance.OpenConnection();
-                    string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    DataTable model_RSR_table = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        DataTable model_RSR_table = new DataTable();
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                        {
-                            adapter.Fill(model_RSR_table);
-                            cmB_model.DataSource = model_RSR_table;
-                            cmB_model.ValueMember = "id";
-                            cmB_model.DisplayMember = "model_radiostation_name";
-                        }
+                        adapter.Fill(model_RSR_table);
+                        cmB_model.DataSource = model_RSR_table;
+                        cmB_model.ValueMember = "id";
+                        cmB_model.DisplayMember = "model_radiostation_name";
                     }
-                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка модель радиостанций из БД не добавлены в comboBox_model(ComboBox_model_Click)");
+                DB.GetInstance.CloseConnection();
             }
         }
 
@@ -125,337 +117,329 @@ namespace ServiceTelecomConnect
 
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var numberAct = txB_numberAct.Text;
+                var reg = new Regex(Environment.NewLine);
+                numberAct = reg.Replace(numberAct, " ");
+                var model = cmB_model.GetItemText(cmB_model.SelectedItem);
+                var serialNumber = txB_serialNumber.Text;
+                var road = lbL_road.Text;
+                #region
+                if (model == "Motorola GP-340")
                 {
-                    var numberAct = txB_numberAct.Text;
-                    var reg = new Regex(Environment.NewLine);
-                    numberAct = reg.Replace(numberAct, " ");
-                    var model = cmB_model.GetItemText(cmB_model.SelectedItem);
-                    var serialNumber = txB_serialNumber.Text;
-                    var road = lbL_road.Text;
-                    #region
-                    if (model == "Motorola GP-340")
+                    if (!Regex.IsMatch(serialNumber, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-340 - \"672TTD0000 или 672TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-                            return;
-                        }
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-340 - \"672TTD0000 или 672TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
                     }
-                    else if (model == "Motorola GP-360")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-360 \"749TTD0000 или 749TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola DP-2400е" || model == "Motorola DP-2400")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-2400 - \"446TTD0000 или 446TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-                            return;
-                        }
-                    }
-                    else if (model == "Comrade R5")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[2][0][1][0][R][5]([0-9]{6,6})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Icom IC-F3GS")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[5][4]([0-9]{5,5})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GS -\"5468318\r\n\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F3GT")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0][4]([0-9]{5,5})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GT -\"0432600\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F16")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0][7]([0-9]{5,5})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F16 -\"0726630\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F11")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[1][0]([0-9]{4,4})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F11 -\"109025\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Альтавия-301М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Альтавия-301М -\"160401173\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Элодия-351М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Элодия-351М -\"160403711\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Комбат T-44")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Шеврон T-44 V2")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РН311М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РН311М -\"0132 09.18\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Motorola DP-4400")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-4400 - \"807TTD0000 или 807TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola DP-1400")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola GP-320")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola GP-300")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola P080")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola P040")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Гранит Р33П-1")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{5,5}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р33П-1 - \"03 29121\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Гранит Р-43")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{6,6}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р-43 - \"01 195580\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Радий-301")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{6,6}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Радий-301 - \"425266\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РНД-500")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-500 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РНД-512")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-512 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    #endregion
-
-                    var changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
-
-                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
-                    }
-                    MessageBox.Show("Акт успешно изменён");
-
                 }
-                catch (Exception)
+                else if (model == "Motorola GP-360")
                 {
-                    MessageBox.Show("Ошибка! Номер акта не изменён!(Btn_change_rst_act_Click)");
+                    if (!Regex.IsMatch(serialNumber, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-360 \"749TTD0000 или 749TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
                 }
+                else if (model == "Motorola DP-2400е" || model == "Motorola DP-2400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-2400 - \"446TTD0000 или 446TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Comrade R5")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[2][0][1][0][R][5]([0-9]{6,6})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Icom IC-F3GS")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[5][4]([0-9]{5,5})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GS -\"5468318\r\n\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Icom IC-F3GT")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0][4]([0-9]{5,5})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GT -\"0432600\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Icom IC-F16")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0][7]([0-9]{5,5})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F16 -\"0726630\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Icom IC-F11")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[1][0]([0-9]{4,4})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F11 -\"109025\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Альтавия-301М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Альтавия-301М -\"160401173\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Элодия-351М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Элодия-351М -\"160403711\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Комбат T-44")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Шеврон T-44 V2")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "РН311М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РН311М -\"0132 09.18\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Motorola DP-4400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-4400 - \"807TTD0000 или 807TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Motorola DP-1400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Motorola GP-320")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola GP-300")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola P080")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola P040")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Гранит Р33П-1")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{5,5}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р33П-1 - \"03 29121\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Гранит Р-43")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{6,6}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р-43 - \"01 195580\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "Радий-301")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{6,6}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Радий-301 - \"425266\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "РНД-500")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-500 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "РНД-512")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-512 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                #endregion
+
+                var changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
+
+                using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                }
+                MessageBox.Show("Акт успешно изменён");
             }
         }
 
@@ -506,16 +490,98 @@ namespace ServiceTelecomConnect
 
             if (Internet_check.CheackSkyNET())
             {
-                try
+                var decommission = txB_decommissionSerialNumber.Text;
+
+                var city = txB_city.Text;
+
+                if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
                 {
-                    var decommission = txB_decommissionSerialNumber.Text;
+                    MessageBox.Show("Введите корректно поле \"Город\".\n P.s. название города должно быть с большой буквы.\nпример: \"Нижний-Новгород\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_city.Select();
 
-                    var city = txB_city.Text;
+                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
-                    if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
-                        MessageBox.Show("Введите корректно поле \"Город\".\n P.s. название города должно быть с большой буквы.\nпример: \"Нижний-Новгород\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_city.Select();
+                        return;
+                    }
+                }
+
+                var poligon = cmB_poligon.Text;
+                var company = txB_company.Text;
+
+                if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_company.Select();
+
+                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                var location = txB_location.Text;
+
+                if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_location.Select();
+
+                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                var model = cmB_model.GetItemText(cmB_model.SelectedItem);
+                var serialNumber = txB_serialNumber.Text;
+                #region
+                if (model == "Motorola GP-340")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-340 - \"672TTD0000 или 672TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Motorola GP-360")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-360 \"749TTD0000 или 749TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Motorola DP-2400е" || model == "Motorola DP-2400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-2400 - \"446TTD0000 или 446TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+                        return;
+                    }
+                }
+                else if (model == "Comrade R5")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[2][0][1][0][R][5]([0-9]{6,6})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Icom IC-F3GS")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[5][4]([0-9]{5,5})$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GS -\"5468318\r\n\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
@@ -524,14 +590,13 @@ namespace ServiceTelecomConnect
                             return;
                         }
                     }
-
-                    var poligon = cmB_poligon.Text;
-                    var company = txB_company.Text;
-
-                    if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
+                }
+                else if (model == "Icom IC-F3GT")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0][4]([0-9]{5,5})$"))
                     {
-                        MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_company.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GT -\"0432600\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
@@ -540,12 +605,13 @@ namespace ServiceTelecomConnect
                             return;
                         }
                     }
-                    var location = txB_location.Text;
-
-                    if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
+                }
+                else if (model == "Icom IC-F16")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0][7]([0-9]{5,5})$"))
                     {
-                        MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_location.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F16 -\"0726630\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
@@ -554,397 +620,239 @@ namespace ServiceTelecomConnect
                             return;
                         }
                     }
-                    var model = cmB_model.GetItemText(cmB_model.SelectedItem);
-                    var serialNumber = txB_serialNumber.Text;
-                    #region
-                    if (model == "Motorola GP-340")
+                }
+                else if (model == "Icom IC-F11")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[1][0]([0-9]{4,4})$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F11 -\"109025\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-340 - \"672TTD0000 или 672TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
                             return;
                         }
                     }
-                    else if (model == "Motorola GP-360")
+                }
+                else if (model == "Альтавия-301М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Альтавия-301М -\"160401173\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-360 \"749TTD0000 или 749TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
                             return;
                         }
                     }
-                    else if (model == "Motorola DP-2400е" || model == "Motorola DP-2400")
+                }
+                else if (model == "Элодия-351М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Элодия-351М -\"160403711\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-2400 - \"446TTD0000 или 446TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
                             return;
                         }
                     }
-                    else if (model == "Comrade R5")
+                }
+                else if (model == "Комбат T-44")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^[2][0][1][0][R][5]([0-9]{6,6})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
 
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
                             return;
                         }
                     }
-                    else if (model == "Icom IC-F3GS")
+                }
+                else if (model == "Шеврон T-44 V2")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^[5][4]([0-9]{5,5})$"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GS -\"5468318\r\n\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F3GT")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0][4]([0-9]{5,5})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F3GT -\"0432600\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F16")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0][7]([0-9]{5,5})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F16 -\"0726630\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Icom IC-F11")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[1][0]([0-9]{4,4})$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Icom IC-F11 -\"109025\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Альтавия-301М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Альтавия-301М -\"160401173\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Элодия-351М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{9,9}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Элодия-351М -\"160403711\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Комбат T-44")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{2,2}[.][0-9]{4,4}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.19.10.0248\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Шеврон T-44 V2")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[T][4][4][.][0-9]{2,2}[.]+[0-9]{1,2}[.][0-9]{4,4}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Комбат T-44 -\"T44.20.9.0192\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РН311М")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РН311М -\"0132 09.18\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Motorola DP-4400")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-4400 - \"807TTD0000 или 807TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
                             return;
                         }
                     }
-                    else if (model == "Motorola DP-1400")
+                }
+                else if (model == "РН311М")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,20}((([\S][0-9])*$)?([\s][0-9]{2,2}[.]?[0-9]{2,2}?)*$)"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РН311М -\"0132 09.18\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
                             return;
                         }
                     }
-                    else if (model == "Motorola GP-320")
+                }
+                else if (model == "Motorola DP-4400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
                     {
-                        if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola GP-300")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola P080")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Motorola P040")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            return;
-                        }
-                    }
-                    else if (model == "Гранит Р33П-1")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{5,5}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р33П-1 - \"03 29121\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Гранит Р-43")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{6,6}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р-43 - \"01 195580\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "Радий-301")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{6,6}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Радий-301 - \"425266\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РНД-500")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-500 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    else if (model == "РНД-512")
-                    {
-                        if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-512 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_serialNumber.Select();
-
-                            string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-                    #endregion
-                    var inventoryNumber = txB_inventoryNumber.Text;
-                    if (String.IsNullOrEmpty(decommission))
-                    {
-                        if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
-                        {
-                            MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_inventoryNumber.Select();
-
-                            string Mesage = "Вы действительно хотите продолжить?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-
-                    var networkNumber = txB_networkNumber.Text;
-
-                    if (String.IsNullOrEmpty(decommission))
-                    {
-                        if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
-                        {
-                            MessageBox.Show("Введите корректно поле: \"Сетевой номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_networkNumber.Select();
-
-                            string Mesage = "Вы действительно хотите продолжить?";
-
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
-
-
-                    var numberAct = txB_numberAct.Text;
-                    var dateTO = txB_dateTO.Text;
-                    if (String.IsNullOrEmpty(dateTO))
-                    {
-                        MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_dateTO.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-4400 - \"807TTD0000 или 807TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
                         return;
                     }
-                    var price = txB_price.Text;
-                    if (String.IsNullOrEmpty(price))
+                }
+                else if (model == "Motorola DP-1400")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
                     {
-                        MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_price.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
                         return;
                     }
-                    var representative = txB_representative.Text;
-                    if (!representative.Contains("-"))
+                }
+                else if (model == "Motorola GP-320")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
                     {
-                        if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola GP-300")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola P080")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Motorola P040")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        return;
+                    }
+                }
+                else if (model == "Гранит Р33П-1")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{5,5}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р33П-1 - \"03 29121\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_representative.Select();
                             return;
                         }
                     }
-                    if (representative.Contains("-"))
+                }
+                else if (model == "Гранит Р-43")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{2,2}[\s][0-9]{6,6}$"))
                     {
-                        if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Гранит Р-43 - \"01 195580\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_representative.Select();
                             return;
                         }
                     }
-                    var post = txB_post.Text;
-                    if (String.IsNullOrEmpty(post))
+                }
+                else if (model == "Радий-301")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{6,6}$"))
                     {
-                        MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_post.Select();
-                        return;
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Радий-301 - \"425266\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
                     }
-                    var numberIdentification = txB_numberIdentification.Text;
-                    if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
+                }
+                else if (model == "РНД-500")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
                     {
-                        MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_numberIdentification.Select();
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-500 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                else if (model == "РНД-512")
+                {
+                    if (!Regex.IsMatch(serialNumber, @"^[0-9]{1,}[[\s]?[0-9]{2,}[\.]?[0-9]{2,}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: РНД-512 - \"03169 10.20\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_serialNumber.Select();
+
+                        string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                }
+                #endregion
+                var inventoryNumber = txB_inventoryNumber.Text;
+                if (String.IsNullOrEmpty(decommission))
+                {
+                    if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
+                    {
+                        MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_inventoryNumber.Select();
+
                         string Mesage = "Вы действительно хотите продолжить?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
@@ -952,109 +860,170 @@ namespace ServiceTelecomConnect
                             return;
                         }
                     }
-                    var dateIssue = txB_dateIssue.Text;
-                    if (String.IsNullOrEmpty(dateIssue))
-                    {
-                        MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_dateIssue.Select();
-                        return;
-                    }
-                    var phoneNumber = txB_phoneNumber.Text;
-                    if (String.IsNullOrEmpty(decommission))
-                    {
-                        if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_phoneNumber.Select();
-                            string Mesage = "Вы действительно хотите продолжить?";
+                }
 
-                            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
-                                return;
-                            }
-                        }
-                    }
+                var networkNumber = txB_networkNumber.Text;
 
-                    if (!String.IsNullOrEmpty(decommission))
+                if (String.IsNullOrEmpty(decommission))
+                {
+                    if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                     {
-                        if (!Regex.IsMatch(decommission, @"^[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?[СC]{1,1}([.\-][0-9]+)?)$"))
+                        MessageBox.Show("Введите корректно поле: \"Сетевой номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_networkNumber.Select();
+
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         {
-                            MessageBox.Show("Введите корректно \"№ Акта списания\"\nP.s. 53/778C или 53/778C-1", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_decommissionSerialNumber.Select();
                             return;
                         }
                     }
-
-                    var antenna = txB_antenna.Text;
-                    var manipulator = txB_manipulator.Text;
-                    var AKB = txB_AKB.Text;
-                    var batteryСharger = txB_batteryСharger.Text;
-                    var comment = txB_comment.Text;
-                    var road = lbL_road.Text;
-
-                    try
-                    {
-                        if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
-                        && !(serialNumber == "") && !(dateTO == "") && !(city == "")
-                        && !(representative == "") && !(post == "") && !(numberIdentification == "")
-                        && !(dateIssue == "") && !(phoneNumber == "") && !(antenna == "")
-                        && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
-                        {
-                            if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
-                            {
-
-                                var changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
-                                     $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
-                                     $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
-                                     $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
-                                     $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
-                                     $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                     $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
-                                     $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
-
-                                var changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
-                                    $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
-                                    $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
-                                    $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
-                                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
-                                    $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                                    $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
-                                    $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
-
-                                using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.OpenConnection();
-                                    command.ExecuteNonQuery();
-                                    DB.GetInstance.CloseConnection();
-                                }
-
-                                using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
-                                {
-                                    DB.GetInstance.OpenConnection();
-                                    command2.ExecuteNonQuery();
-                                    DB.GetInstance.CloseConnection();
-                                }
-                                MessageBox.Show("Радиостанция успешно изменена!");
-                            }
-                            else MessageBox.Show("Данная радиостанция с таким заводским номером не присутствует в базе данных");
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Дата выдачи удостоверения введена неверно!");
-                    }
-
                 }
-                catch (Exception)
+
+
+                var numberAct = txB_numberAct.Text;
+                var dateTO = txB_dateTO.Text;
+                if (String.IsNullOrEmpty(dateTO))
                 {
-                    MessageBox.Show("Ошибка! Радиостнация не изменена!(Button_сhange_rst_Click)");
+                    MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_dateTO.Select();
+                    return;
+                }
+                var price = txB_price.Text;
+                if (String.IsNullOrEmpty(price))
+                {
+                    MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_price.Select();
+                    return;
+                }
+                var representative = txB_representative.Text;
+                if (!representative.Contains("-"))
+                {
+                    if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_representative.Select();
+                        return;
+                    }
+                }
+                if (representative.Contains("-"))
+                {
+                    if (!Regex.IsMatch(representative, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_representative.Select();
+                        return;
+                    }
+                }
+                var post = txB_post.Text;
+                if (String.IsNullOrEmpty(post))
+                {
+                    MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_post.Select();
+                    return;
+                }
+                var numberIdentification = txB_numberIdentification.Text;
+                if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_numberIdentification.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+                var dateIssue = txB_dateIssue.Text;
+                if (String.IsNullOrEmpty(dateIssue))
+                {
+                    MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_dateIssue.Select();
+                    return;
+                }
+                var phoneNumber = txB_phoneNumber.Text;
+                if (String.IsNullOrEmpty(decommission))
+                {
+                    if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_phoneNumber.Select();
+                        string Mesage = "Вы действительно хотите продолжить?";
+
+                        if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
                 }
 
+                if (!String.IsNullOrEmpty(decommission))
+                {
+                    if (!Regex.IsMatch(decommission, @"^[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?[СC]{1,1}([.\-][0-9]+)?)$"))
+                    {
+                        MessageBox.Show("Введите корректно \"№ Акта списания\"\nP.s. 53/778C или 53/778C-1", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_decommissionSerialNumber.Select();
+                        return;
+                    }
+                }
+
+                var antenna = txB_antenna.Text;
+                var manipulator = txB_manipulator.Text;
+                var AKB = txB_AKB.Text;
+                var batteryСharger = txB_batteryСharger.Text;
+                var comment = txB_comment.Text;
+                var road = lbL_road.Text;
+
+
+                if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
+                && !(serialNumber == "") && !(dateTO == "") && !(city == "")
+                && !(representative == "") && !(post == "") && !(numberIdentification == "")
+                && !(dateIssue == "") && !(phoneNumber == "") && !(antenna == "")
+                && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
+                {
+                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
+                    {
+
+                        var changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
+                             $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
+                             $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
+                             $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
+                             $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
+                             $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                             $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+
+                        var changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
+                            $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                            $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
+                            $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
+                            $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
+                            $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
+                            $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                            $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+
+                        using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command2.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                        MessageBox.Show("Радиостанция успешно изменена!");
+                    }
+                    else MessageBox.Show("Данная радиостанция с таким заводским номером не присутствует в базе данных");
+
+                }
+                else
+                {
+                    MessageBox.Show("Вы не заполнили нужные поля со (*)!");
+                }
             }
         }
 
@@ -1162,87 +1131,74 @@ namespace ServiceTelecomConnect
         }
         void TxB_serialNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
-                if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
+                if (txB_serialNumber.Text != "")
                 {
-                    if (txB_serialNumber.Text != "")
+                    var serialNumber = txB_serialNumber.Text;
+
+                    string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
+
+                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                    DataTable table = new DataTable();
+
+                    adapter.Fill(table);
+
+                    if (table.Rows.Count > 0)
                     {
-                        var serialNumber = txB_serialNumber.Text;
-
-                        string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
-                        MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                        DataTable table = new DataTable();
-
-                        adapter.Fill(table);
-
-                        if (table.Rows.Count > 0)
-                        {
-                            cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                            txB_company.Text = table.Rows[0].ItemArray[2].ToString();
-                            txB_location.Text = table.Rows[0].ItemArray[3].ToString();
-                            cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
-                            txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                            txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                            txB_numberAct.Text = table.Rows[0].ItemArray[9].ToString();
-                            txB_city.Text = table.Rows[0].ItemArray[10].ToString();
-                            txB_representative.Text = table.Rows[0].ItemArray[12].ToString();
-                            txB_post.Text = table.Rows[0].ItemArray[13].ToString();
-                            txB_numberIdentification.Text = table.Rows[0].ItemArray[14].ToString();
-                            txB_dateIssue.Text = table.Rows[0].ItemArray[15].ToString();
-                            txB_phoneNumber.Text = table.Rows[0].ItemArray[16].ToString();
-                        }
+                        cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
+                        txB_company.Text = table.Rows[0].ItemArray[2].ToString();
+                        txB_location.Text = table.Rows[0].ItemArray[3].ToString();
+                        cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
+                        txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
+                        txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
+                        txB_numberAct.Text = table.Rows[0].ItemArray[9].ToString();
+                        txB_city.Text = table.Rows[0].ItemArray[10].ToString();
+                        txB_representative.Text = table.Rows[0].ItemArray[12].ToString();
+                        txB_post.Text = table.Rows[0].ItemArray[13].ToString();
+                        txB_numberIdentification.Text = table.Rows[0].ItemArray[14].ToString();
+                        txB_dateIssue.Text = table.Rows[0].ItemArray[15].ToString();
+                        txB_phoneNumber.Text = table.Rows[0].ItemArray[16].ToString();
                     }
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка добавления полных данных из общей БД!Ctrl + F в TextBox_serialNumber!(TextBox_serialNumber_KeyDown)");
-            }
 
-            try
+            if (e.KeyCode == Keys.Return)
             {
-                if (e.KeyCode == Keys.Return)
+                if (txB_serialNumber.Text != "")
                 {
-                    if (txB_serialNumber.Text != "")
+                    var serialNumber = txB_serialNumber.Text;
+
+                    string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
+
+                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                    DataTable table = new DataTable();
+
+                    adapter.Fill(table);
+
+                    if (table.Rows.Count > 0)
                     {
-                        var serialNumber = txB_serialNumber.Text;
-
-                        string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
-                        MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                        DataTable table = new DataTable();
-
-                        adapter.Fill(table);
-
-                        if (table.Rows.Count > 0)
-                        {
-                            cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                            txB_company.Text = table.Rows[0].ItemArray[2].ToString();
-                            txB_location.Text = table.Rows[0].ItemArray[3].ToString();
-                            cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
-                            txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                            txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                            txB_city.Text = table.Rows[0].ItemArray[10].ToString();
-                        }
-                        else
-                        {
-                            txB_inventoryNumber.Text = "";
-                            txB_networkNumber.Text = "";
-                        }
+                        cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
+                        txB_company.Text = table.Rows[0].ItemArray[2].ToString();
+                        txB_location.Text = table.Rows[0].ItemArray[3].ToString();
+                        cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
+                        txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
+                        txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
+                        txB_city.Text = table.Rows[0].ItemArray[10].ToString();
+                    }
+                    else
+                    {
+                        txB_inventoryNumber.Text = "";
+                        txB_networkNumber.Text = "";
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка добавления частичных данных из общей БД!Return в TextBox_serialNumber!(TextBox_serialNumber_KeyDown)");
             }
         }
         void TextBox_serialNumber_KeyUp(object sender, KeyEventArgs e)
@@ -1444,217 +1400,202 @@ namespace ServiceTelecomConnect
 
         void Btn_identityCard_change_rst_act_Click(object sender, EventArgs e)
         {
-            try
+            foreach (Control control in this.Controls)
             {
-                foreach (Control control in this.Controls)
+                if (control is TextBox)
                 {
-                    if (control is TextBox)
-                    {
-                        var re = new Regex(Environment.NewLine);
-                        control.Text = re.Replace(control.Text, " ");
-                        control.Text.Trim();
-                    }
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
                 }
+            }
 
-                if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего акта?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего акта?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+
+            var representative = txB_representative.Text;
+            if (!representative.Contains("-"))
+            {
+                if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
                 {
+                    MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_representative.Select();
                     return;
                 }
-
-                var representative = txB_representative.Text;
-                if (!representative.Contains("-"))
+                else if (representative.Contains("-"))
                 {
-                    if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
                     {
-                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_representative.Select();
                         return;
                     }
-                    else if (representative.Contains("-"))
-                    {
-                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_representative.Select();
-                            return;
-                        }
-                    }
                 }
-                var post = txB_post.Text;
-                if (String.IsNullOrEmpty(post))
-                {
-                    MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_post.Select();
-                    return;
-                }
-                var numberIdentification = txB_numberIdentification.Text;
-                if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
-                {
-                    MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_numberIdentification.Select();
-                    string Mesage = "Вы действительно хотите продолжить?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                var dateIssue = txB_dateIssue.Text;
-                if (String.IsNullOrEmpty(dateIssue))
-                {
-                    MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_dateIssue.Select();
-                    return;
-                }
-                var phoneNumber = txB_phoneNumber.Text;
-                if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
-                {
-                    MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_phoneNumber.Select();
-                    string Mesage = "Вы действительно хотите продолжить?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-
-                if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
-                {
-                    MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_numberAct.Select();
-                    return;
-                }
-                var road = lbL_road.Text;
-                if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(txB_numberAct.Text))
-                {
-                    var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
-                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' " +
-                    $"WHERE numberAct = '{txB_numberAct.Text}' AND road = '{road}'";
-
-                    using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
-                    {
-                        DB.GetInstance.OpenConnection();
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
-                        MessageBox.Show($"Всё данные удостоверния по номеру акта изменены", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-                }
-                else MessageBox.Show("В БД нет акта по которому вы хотите поменять удостоверение представителя");
-
             }
-            catch (Exception)
+            var post = txB_post.Text;
+            if (String.IsNullOrEmpty(post))
             {
-                MessageBox.Show("Ошибка общего изменения юридических характеристик представителя предприятия по номеру акта (LbL_client_FIO_company_DoubleClick)");
+                MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_post.Select();
+                return;
             }
-        }
-
-        void Btn_identityCard_change_rst_company_Click(object sender, EventArgs e)
-        {
-            try
+            var numberIdentification = txB_numberIdentification.Text;
+            if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
             {
-                foreach (Control control in this.Controls)
-                {
-                    if (control is TextBox)
-                    {
-                        var re = new Regex(Environment.NewLine);
-                        control.Text = re.Replace(control.Text, " ");
-                        control.Text.Trim();
-                    }
-                }
+                MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_numberIdentification.Select();
+                string Mesage = "Вы действительно хотите продолжить?";
 
-                if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего предприятия?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
+            }
+            var dateIssue = txB_dateIssue.Text;
+            if (String.IsNullOrEmpty(dateIssue))
+            {
+                MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_dateIssue.Select();
+                return;
+            }
+            var phoneNumber = txB_phoneNumber.Text;
+            if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
+            {
+                MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_phoneNumber.Select();
+                string Mesage = "Вы действительно хотите продолжить?";
 
-                var representative = txB_representative.Text;
-                if (!representative.Contains("-"))
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
-                    if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
-                    {
-                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_representative.Select();
-                        return;
-                    }
-                    else if (representative.Contains("-"))
-                    {
-                        if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
-                        {
-                            MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_representative.Select();
-                            return;
-                        }
-                    }
-                }
-                var post = txB_post.Text;
-                if (String.IsNullOrEmpty(post))
-                {
-                    MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_post.Select();
                     return;
                 }
-                var numberIdentification = txB_numberIdentification.Text;
-                if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
-                {
-                    MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_numberIdentification.Select();
-                    string Mesage = "Вы действительно хотите продолжить?";
+            }
 
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                var dateIssue = txB_dateIssue.Text;
-                if (String.IsNullOrEmpty(dateIssue))
-                {
-                    MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_dateIssue.Select();
-                    return;
-                }
-                var phoneNumber = txB_phoneNumber.Text;
-                if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
-                {
-                    MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_phoneNumber.Select();
-                    string Mesage = "Вы действительно хотите продолжить?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                var company = txB_company.Text;
-                if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
-                {
-                    MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_company.Select();
-
-                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
-                        return;
-                    }
-                }
-                var road = lbL_road.Text;
+            if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+            {
+                MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_numberAct.Select();
+                return;
+            }
+            var road = lbL_road.Text;
+            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(txB_numberAct.Text))
+            {
                 var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
-                    $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}'" +
-                    $"WHERE company = '{company}' AND road = '{road}'";
+                $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' " +
+                $"WHERE numberAct = '{txB_numberAct.Text}' AND road = '{road}'";
 
                 using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
                     DB.GetInstance.CloseConnection();
-                    MessageBox.Show($"Всё данные удостоверния по предприятию изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Всё данные удостоверния по номеру акта изменены", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
-            catch (Exception)
+            else MessageBox.Show("В БД нет акта по которому вы хотите поменять удостоверение представителя");
+        }
+
+        void Btn_identityCard_change_rst_company_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in this.Controls)
             {
-                MessageBox.Show("Ошибка общего изменения юридических характеристик представителя предприятия по номеру акта (LbL_client_FIO_company_DoubleClick)");
+                if (control is TextBox)
+                {
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
+                }
+            }
+
+            if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего предприятия?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+
+            var representative = txB_representative.Text;
+            if (!representative.Contains("-"))
+            {
+                if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_representative.Select();
+                    return;
+                }
+                else if (representative.Contains("-"))
+                {
+                    if (!Regex.IsMatch(representative, @"^[А-Я][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"Представитель ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_representative.Select();
+                        return;
+                    }
+                }
+            }
+            var post = txB_post.Text;
+            if (String.IsNullOrEmpty(post))
+            {
+                MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_post.Select();
+                return;
+            }
+            var numberIdentification = txB_numberIdentification.Text;
+            if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
+            {
+                MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_numberIdentification.Select();
+                string Mesage = "Вы действительно хотите продолжить?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            var dateIssue = txB_dateIssue.Text;
+            if (String.IsNullOrEmpty(dateIssue))
+            {
+                MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_dateIssue.Select();
+                return;
+            }
+            var phoneNumber = txB_phoneNumber.Text;
+            if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
+            {
+                MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_phoneNumber.Select();
+                string Mesage = "Вы действительно хотите продолжить?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            var company = txB_company.Text;
+            if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
+            {
+                MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_company.Select();
+
+                string Mesage = "Вы действительно хотите добавить радиостанцию?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            var road = lbL_road.Text;
+            var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
+                $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}'" +
+                $"WHERE company = '{company}' AND road = '{road}'";
+
+            using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                command.ExecuteNonQuery();
+                DB.GetInstance.CloseConnection();
+                MessageBox.Show($"Всё данные удостоверния по предприятию изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -1675,9 +1616,6 @@ namespace ServiceTelecomConnect
                 btn_change_rst_full.Enabled = true;
             }
         }
-
-     
     }
-
 }
 
