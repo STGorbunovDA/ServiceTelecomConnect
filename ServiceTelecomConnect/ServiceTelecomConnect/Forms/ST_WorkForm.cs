@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Win32;
+using ServiceTelecomConnect.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1000,7 +1002,7 @@ namespace ServiceTelecomConnect
                         {
                             ContextMenu m2 = new ContextMenu();
                             m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                            m2.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+                            m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
 
                             m2.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -2127,7 +2129,7 @@ namespace ServiceTelecomConnect
 
         private void ST_WorkForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            e.Cancel = FormClose.GetInstance.FClose();
+            e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
         #endregion
 
@@ -2838,9 +2840,10 @@ namespace ServiceTelecomConnect
 
 
 
+
         #endregion
 
-
+        
     }
 }
 
