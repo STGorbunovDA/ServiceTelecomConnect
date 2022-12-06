@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
-using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
@@ -27,33 +26,24 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT serialNumber FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string querystring = $"SELECT serialNumber FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
 
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_decommission (CheacSerialNumber_radiostantion_decommission)");
-                    return true;
+                    return false;
                 }
             }
             return true;
@@ -64,33 +54,24 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT serialNumber FROM radiostantion WHERE serialNumber = '{serialNumber}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string querystring = $"SELECT serialNumber FROM radiostantion WHERE serialNumber = '{serialNumber}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
 
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion (CheacSerialNumber_radiostantion)");
-                    return true;
+                    return false;
                 }
             }
             return true;
@@ -99,33 +80,25 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+
+                string querystring = $"SELECT serialNumber FROM radiostantion_сomparison WHERE serialNumber = '{serialNumber}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string querystring = $"SELECT serialNumber FROM radiostantion_сomparison WHERE serialNumber = '{serialNumber}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
 
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion (CheacSerialNumber_radiostantion)");
-                    return true;
+                    return false;
                 }
             }
             return true;
@@ -135,30 +108,22 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    return true;
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Ошибка метода нахождения радиостанций в акте не более 20 в таблице radiostantion (CheackNumberAct_radiostantion)");
                     return false;
                 }
             }
@@ -169,30 +134,22 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count < 20)
                 {
-                    string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count < 20)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    return false;
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Ошибка метода нахождения радиостанций в акте не более 20 в таблице radiostantion (CheackNumberAct_radiostantion)");
                     return true;
                 }
             }
@@ -202,96 +159,72 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                try
+                string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
+
+                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
-                    using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+
+                        DataTable table = new DataTable();
+
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count > 0)
                         {
+                            return true;
+                        }
 
-                            DataTable table = new DataTable();
-
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count > 0)
-                            {
-                                return true;
-                            }
-
-                            else
-                            {
-                                return false;
-                            }
+                        else
+                        {
+                            return false;
                         }
                     }
-                }
-
-                catch (Exception)
-                {
-                    MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_full (CheacSerialNumber_radiostantion_full)");
-                    return true;
                 }
             }
             return true;
         }
         public Boolean CheacSerialNumber_radiostantion_last_year(string serialNumber)
         {
-            try
-            {
-                string querystring = $"SELECT serialNumber FROM radiostantion_last_year WHERE serialNumber = '{serialNumber}'";
 
-                using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
+            string querystring = $"SELECT serialNumber FROM radiostantion_last_year WHERE serialNumber = '{serialNumber}'";
+
+            using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    if (table.Rows.Count > 0)
                     {
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-                        if (table.Rows.Count > 0)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице radiostantion_last_year (CheacSerialNumber_radiostantion_last_year)");
-                return true;
             }
         }
         public Boolean CheacSerialNumber_OC6(string serialNumber)
         {
-            try
-            {
-                string querystring = $"SELECT serialNumber FROM OC6 WHERE serialNumber = '{serialNumber}'";
+            string querystring = $"SELECT serialNumber FROM OC6 WHERE serialNumber = '{serialNumber}'";
 
-                using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
+            using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    if (table.Rows.Count > 0)
                     {
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-                        if (table.Rows.Count > 0)
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка метода проверки нахождения радиостанции в таблице OC6 (CheacSerialNumber_OC6)");
-                return true;
             }
         }
     }
