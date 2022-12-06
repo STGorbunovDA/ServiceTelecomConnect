@@ -64,51 +64,44 @@ namespace ServiceTelecomConnect
         }
         void EnterButtonLogin_Click(object sender, EventArgs e)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                if (Internet_check.CheackSkyNET())
+                var loginUser = txB_loginField.Text;
+                var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
+
+                if (!CheackUser(loginUser, passUser))
                 {
-                    var loginUser = txB_loginField.Text;
-                    var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
-
-                    if (!CheackUser(loginUser, passUser))
+                    if (cmB_post.Text == "Инженер" || cmB_post.Text == "Начальник участка" ||
+                        cmB_post.Text == "Куратор" || cmB_post.Text == "Руководитель" || cmB_post.Text == "Дирекция связи")
                     {
-                        if (cmB_post.Text == "Инженер" || cmB_post.Text == "Начальник участка" || 
-                            cmB_post.Text == "Куратор" || cmB_post.Text == "Руководитель" || cmB_post.Text == "Дирекция связи")
-                        {
-                            string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_post.Text}')";
+                        string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_post.Text}')";
 
-                            using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+
+                            if (command.ExecuteNonQuery() == 1)
                             {
-                                DB.GetInstance.OpenConnection();
-
-                                if (command.ExecuteNonQuery() == 1)
-                                {
-                                    MessageBox.Show("Аккаунт успешно создан!");
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Аккаунт не создан! Ошибка соединения");
-                                }
-                                DB.GetInstance.CloseConnection();
+                                MessageBox.Show("Аккаунт успешно создан!");
+                                this.Close();
                             }
-                        }
-
-                        if (cmB_post.Text == "")
-                        {
-                            MessageBox.Show("Вы не указали должность!");
+                            else
+                            {
+                                MessageBox.Show("Аккаунт не создан! Ошибка соединения");
+                            }
+                            DB.GetInstance.CloseConnection();
                         }
                     }
-                    else
+
+                    if (cmB_post.Text == "")
                     {
-                        MessageBox.Show("Такой пользователь уже существует!");
+                        MessageBox.Show("Вы не указали должность!");
                     }
                 }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка регистрации!(EnterButtonLogin_Click)");
+                else
+                {
+                    MessageBox.Show("Такой пользователь уже существует!");
+                }
             }
         }
         Boolean CheackUser(string loginUser, string passUser)
