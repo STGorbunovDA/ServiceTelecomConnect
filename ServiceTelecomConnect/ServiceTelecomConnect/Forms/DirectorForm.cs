@@ -391,10 +391,7 @@ namespace ServiceTelecomConnect.Forms
 
         void PicB_Update_Click(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
-            {
-                RefreshDataGrid(dataGridView1);
-            }
+            RefreshDataGrid(dataGridView1);
         }
 
         void PicB_clear_Click(object sender, EventArgs e)
@@ -435,8 +432,13 @@ namespace ServiceTelecomConnect.Forms
                 MessageBox.Show("Нет сформированных бригад");
                 return;
             }
+            using (ReportCardForm reportCard = new ReportCardForm())
+            {
+                this.Hide();
+                reportCard.ShowDialog();
+                this.Show();
+            }
 
-            
         }
     }
 }
