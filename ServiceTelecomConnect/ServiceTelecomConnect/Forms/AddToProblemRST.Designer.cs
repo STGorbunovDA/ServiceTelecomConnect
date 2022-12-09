@@ -217,8 +217,6 @@
             this.Name = "AddToProblemRST";
             this.ShowIcon = false;
             this.Text = "Добавление неисправности радиостанции";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddToProblemRST_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddToProblemRST_FormClosed);
             this.Load += new System.EventHandler(this.AddToProblemRST_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);

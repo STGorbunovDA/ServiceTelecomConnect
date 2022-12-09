@@ -143,14 +143,5 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void AddToProblemRST_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            System.Environment.Exit(1);
-        }
-
-        void AddToProblemRST_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = FormClose.GetInstance.FClose(_user.Login);
-        }
     }
 }
