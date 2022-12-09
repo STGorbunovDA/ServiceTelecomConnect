@@ -29,27 +29,8 @@ namespace ServiceTelecomConnect
 
         void AddRSTForm_Load(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
-            {
-                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable model_RSR_table = new DataTable();
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        adapter.Fill(model_RSR_table);
-
-                        cmB_model.DataSource = model_RSR_table;
-                        cmB_model.ValueMember = "id";
-                        cmB_model.DisplayMember = "model_radiostation_name";
-
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-                QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
-            }
-
+            QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+            QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
         }
 
         #region добавление РСТ

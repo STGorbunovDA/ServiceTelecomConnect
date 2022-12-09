@@ -31,7 +31,7 @@
             this.cmB_model = new System.Windows.Forms.ComboBox();
             this.btn_add_modelRST = new System.Windows.Forms.Button();
             this.btn_change_modelRST = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_delete_modelRST = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmB_model
@@ -45,6 +45,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(264, 228);
             this.cmB_model.TabIndex = 53;
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
             // 
             // btn_add_modelRST
             // 
@@ -72,17 +73,18 @@
             this.btn_change_modelRST.UseVisualStyleBackColor = false;
             this.btn_change_modelRST.Click += new System.EventHandler(this.Btn_change_modelRST_Click);
             // 
-            // button2
+            // btn_delete_modelRST
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(310, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 30);
-            this.button2.TabIndex = 56;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btn_delete_modelRST.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_delete_modelRST.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_delete_modelRST.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_delete_modelRST.Location = new System.Drawing.Point(310, 176);
+            this.btn_delete_modelRST.Name = "btn_delete_modelRST";
+            this.btn_delete_modelRST.Size = new System.Drawing.Size(119, 30);
+            this.btn_delete_modelRST.TabIndex = 56;
+            this.btn_delete_modelRST.Text = "Удалить";
+            this.btn_delete_modelRST.UseVisualStyleBackColor = false;
+            this.btn_delete_modelRST.Click += new System.EventHandler(this.Btn_delete_modelRST_Click);
             // 
             // AddChangeModelRST
             // 
@@ -90,7 +92,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(461, 287);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_delete_modelRST);
             this.Controls.Add(this.btn_change_modelRST);
             this.Controls.Add(this.btn_add_modelRST);
             this.Controls.Add(this.cmB_model);
@@ -107,6 +109,6 @@
         internal System.Windows.Forms.ComboBox cmB_model;
         private System.Windows.Forms.Button btn_add_modelRST;
         private System.Windows.Forms.Button btn_change_modelRST;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_delete_modelRST;
     }
 }
