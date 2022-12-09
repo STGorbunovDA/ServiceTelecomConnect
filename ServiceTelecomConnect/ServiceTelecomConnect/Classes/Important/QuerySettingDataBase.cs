@@ -2510,6 +2510,37 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region получение Даты регистрации входа в программу для табеля
+
+        public static DateTime CheacDateTimeInput_logUserDB(string user)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                DateTime Date = DateTime.Now;
+                string querystring = $"SELECT dateTimeInput FROM logUserDB WHERE user = '{user}' AND dateTimeInput LIKE '%{Date.ToString("yyyy-MM-dd")}%'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
+                {
+                    return Convert.ToDateTime(table.Rows[0].ItemArray[0]);
+                }
+                else
+                {
+                    return DateTime.MinValue;
+                }
+            }
+            return DateTime.MinValue;
+        }
+
+        #endregion
+
 
     }
 }
