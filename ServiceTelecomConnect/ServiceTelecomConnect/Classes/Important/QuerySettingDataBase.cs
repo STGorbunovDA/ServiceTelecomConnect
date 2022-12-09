@@ -2421,27 +2421,30 @@ namespace ServiceTelecomConnect
         }
         internal static void LoadingLastNumberActTO(Label lbL_last_act, string cmB_city, string road)
         {
-            try
+            if (Internet_check.CheackSkyNET())
             {
-                var queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY numberAct DESC LIMIT 1";
-                using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                try
                 {
-                    DB.GetInstance.OpenConnection();
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    var queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY numberAct DESC LIMIT 1";
+                    using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                     {
-                        while (reader.Read())
+                        DB.GetInstance.OpenConnection();
+                        using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            lbL_last_act.Text = reader[0].ToString();
+                            while (reader.Read())
+                            {
+                                lbL_last_act.Text = reader[0].ToString();
+                            }
+                            reader.Close();
                         }
-                        reader.Close();
+                        DB.GetInstance.CloseConnection();
                     }
-                    DB.GetInstance.CloseConnection();
                 }
-            }
-            catch (Exception)
-            {
-                DB.GetInstance.CloseConnection();
-                lbL_last_act.Text = "Пустой";
+                catch (Exception)
+                {
+                    DB.GetInstance.CloseConnection();
+                    lbL_last_act.Text = "Пустой";
+                }
             }
         }
 
@@ -2541,6 +2544,30 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region Получение моделей радиостанций 
 
+        internal static void GettingModelRST_CMB(ComboBox cmB_model)
+        {
+            string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
+            using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable table = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command2))
+                {
+                    adapter.Fill(table);
+                    if (table.Rows.Count > 0)
+                    {
+                        cmB_model.DataSource = table;
+                        cmB_model.ValueMember = "id";
+                        cmB_model.DisplayMember = "model_radiostation_name";
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        #endregion
     }
 }
