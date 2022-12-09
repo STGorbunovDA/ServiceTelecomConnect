@@ -504,7 +504,6 @@ namespace ServiceTelecomConnect
                     СhangeRSTForm changeRSTForm = new СhangeRSTForm();
                     if (Application.OpenForms["СhangeRSTForm"] == null)
                     {
-
                         changeRSTForm.DoubleBufferedForm(true);
                         changeRSTForm.txB_city.Text = txB_city.Text;
                         changeRSTForm.cmB_poligon.Text = cmB_poligon.Text;
