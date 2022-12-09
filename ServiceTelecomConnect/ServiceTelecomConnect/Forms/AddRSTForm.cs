@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ServiceTelecomConnect.Forms;
 using System;
 using System.Data;
 using System.Globalization;
@@ -1058,60 +1059,22 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region возможность редактирования comBox_model
-        void Button_Enable_editor_comBox_model_Click(object sender, EventArgs e)
-        {
-            if (cmB_model.Text != "" && cmB_model.DropDownStyle != ComboBoxStyle.DropDown)
-            {
-                cmB_model.DropDownStyle = ComboBoxStyle.DropDown;
-                btn_model_radiostation_name.Enabled = true;
-            }
-        }
-        #endregion
-
         #region добавление модели радиостанции в БД
         void Button_model_radiostation_name_MouseClick(object sender, MouseEventArgs e)
         {
             string Mesage;
             Mesage = "Вы действительно хотите добавить модель радиостанции?";
-
-            if (Internet_check.CheackSkyNET())
+            
+            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
             {
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
+                return;
+            }
 
-                DB.GetInstance.OpenConnection();
-                var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
-
-                MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection());
-                command.ExecuteNonQuery();
-
-                MessageBox.Show("Модель радиостанции успешно добавлена!");
-                DB.GetInstance.CloseConnection();
-
-                string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
-                using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    DataTable model_radiostation_name = new DataTable();
-
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command2))
-                    {
-                        adapter.Fill(model_radiostation_name);
-                        if (model_radiostation_name.Rows.Count > 0)
-                        {
-                            cmB_model.DataSource = model_radiostation_name;
-                            cmB_model.ValueMember = "id";
-                            cmB_model.DisplayMember = "model_radiostation_name";
-                        }
-                        DB.GetInstance.CloseConnection();
-                    }
-                }
-
-                cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
-                btn_model_radiostation_name.Enabled = false;
+            using (AddChangeModelRST addChangeModel = new AddChangeModelRST())
+            {
+                this.Hide();
+                addChangeModel.ShowDialog();
+                this.Show();
             }
         }
 

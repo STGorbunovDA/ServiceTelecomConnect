@@ -87,7 +87,6 @@
             this.txB_antenna = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.txB_batteryСharger = new System.Windows.Forms.TextBox();
-            this.btn_Enable_editor_comBox_model = new System.Windows.Forms.Button();
             this.btn_model_radiostation_name = new System.Windows.Forms.Button();
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
             this.txB_comment = new System.Windows.Forms.TextBox();
@@ -299,9 +298,9 @@
             // 
             // cmB_model
             // 
-            this.cmB_model.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_model.BackColor = System.Drawing.SystemColors.Window;
             this.cmB_model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_model.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmB_model.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_model.FormattingEnabled = true;
             this.cmB_model.Location = new System.Drawing.Point(586, 213);
@@ -331,8 +330,9 @@
             // 
             // cmB_poligon
             // 
-            this.cmB_poligon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_poligon.BackColor = System.Drawing.SystemColors.Window;
             this.cmB_poligon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_poligon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_poligon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_poligon.FormattingEnabled = true;
             this.cmB_poligon.Items.AddRange(new object[] {
@@ -788,22 +788,9 @@
             this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_batteryСharger_KeyUp);
             this.txB_batteryСharger.Leave += new System.EventHandler(this.TextBox_batteryСharger_Leave);
             // 
-            // btn_Enable_editor_comBox_model
-            // 
-            this.btn_Enable_editor_comBox_model.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Enable_editor_comBox_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Enable_editor_comBox_model.Location = new System.Drawing.Point(557, 213);
-            this.btn_Enable_editor_comBox_model.Name = "btn_Enable_editor_comBox_model";
-            this.btn_Enable_editor_comBox_model.Size = new System.Drawing.Size(23, 28);
-            this.btn_Enable_editor_comBox_model.TabIndex = 97;
-            this.btn_Enable_editor_comBox_model.Text = "!";
-            this.btn_Enable_editor_comBox_model.UseVisualStyleBackColor = false;
-            this.btn_Enable_editor_comBox_model.Click += new System.EventHandler(this.Button_Enable_editor_comBox_model_Click);
-            // 
             // btn_model_radiostation_name
             // 
             this.btn_model_radiostation_name.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_model_radiostation_name.Enabled = false;
             this.btn_model_radiostation_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_model_radiostation_name.Location = new System.Drawing.Point(818, 213);
             this.btn_model_radiostation_name.Name = "btn_model_radiostation_name";
@@ -904,7 +891,6 @@
             this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.monthCalendar2);
             this.Controls.Add(this.btn_model_radiostation_name);
-            this.Controls.Add(this.btn_Enable_editor_comBox_model);
             this.Controls.Add(this.picB_clear);
             this.Controls.Add(this.txB_batteryСharger);
             this.Controls.Add(this.label35);
@@ -1040,7 +1026,6 @@
         internal System.Windows.Forms.TextBox txB_antenna;
         private System.Windows.Forms.Label label35;
         internal System.Windows.Forms.TextBox txB_batteryСharger;
-        private System.Windows.Forms.Button btn_Enable_editor_comBox_model;
         private System.Windows.Forms.Button btn_model_radiostation_name;
         private System.Windows.Forms.MonthCalendar monthCalendar2;
         internal System.Windows.Forms.TextBox txB_comment;
