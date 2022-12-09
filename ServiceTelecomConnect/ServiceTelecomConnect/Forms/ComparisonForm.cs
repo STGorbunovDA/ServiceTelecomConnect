@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using ServiceTelecomConnect.Classes.Other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,8 +65,22 @@ namespace ServiceTelecomConnect
             }
         }
 
+        private void CommonBtn_Click(object sender, EventArgs e)
+        {
+            string msg = ((Button)sender).Text;
+            LogUser.LogMethodUserSaveFilePC(_user.Login, msg);
+        }
+
         private void ComparisonForm_Load(object sender, EventArgs e)
         {
+            foreach (var item in panel1.Controls) //обходим все элементы формы
+            {
+                if (item is Button) // проверяем, что это кнопка
+                {
+                    ((Button)item).Click += CommonBtn_Click; //приводим к типу и устанавливаем обработчик события
+                }
+            }
+
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
             dataGridView1.EnableHeadersVisualStyles = false;
@@ -284,13 +299,14 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
+
             QuerySettingDataBase.DeleteRowСellCurator(dataGridView1);
 
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             txB_numberAct.Text = "";
-
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Удалить из выполнения");
             dataGridView1.ClearSelection();
 
             if (dataGridView1.RowCount - currRowIndex > 0)
@@ -313,7 +329,7 @@ namespace ServiceTelecomConnect
                 QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
                 Counters();
                 dataGridView1.ClearSelection();
-
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Обновить");
                 if (currRowIndex >= 0)
                 {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
@@ -382,6 +398,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Добавь радиостанцию в выполнение!");
                 return;
             }
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Сохрание базы куратора");
             SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1, cmB_road.Text);
         }
 
@@ -560,26 +577,27 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
                     СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
-                    сhangeRSTFormCurator.DoubleBufferedForm(true);
-                    сhangeRSTFormCurator.txB_city.Text = txB_city.Text;
-                    сhangeRSTFormCurator.cmB_poligon.Text = txB_poligon.Text;
-                    сhangeRSTFormCurator.txB_company.Text = txB_company.Text;
-                    сhangeRSTFormCurator.txB_location.Text = txB_location.Text;
-                    сhangeRSTFormCurator.cmB_model.Items.Add(cmB_model.Text).ToString();
-                    сhangeRSTFormCurator.txB_serialNumber.Text = txB_serialNumber.Text;
-                    сhangeRSTFormCurator.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
-                    сhangeRSTFormCurator.txB_networkNumber.Text = txB_networkNumber.Text;
-                    сhangeRSTFormCurator.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
-                    сhangeRSTFormCurator.txB_numberAct.Text = txB_numberAct.Text;
-                    сhangeRSTFormCurator.txB_numberActRemont.Text = txB_numberActRemont.Text;
-                    сhangeRSTFormCurator.cmB_сategory.Text = cmB_сategory.Text;
-                    сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
-                    сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
-                    сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
-                    сhangeRSTFormCurator.cmB_month.Text = txB_month.Text;
-                    сhangeRSTFormCurator.lbL_road.Text = cmB_road.Text;
                     if (Application.OpenForms["СhangeRSTFormCurator"] == null)
                     {
+                        сhangeRSTFormCurator.DoubleBufferedForm(true);
+                        сhangeRSTFormCurator.txB_city.Text = txB_city.Text;
+                        сhangeRSTFormCurator.cmB_poligon.Text = txB_poligon.Text;
+                        сhangeRSTFormCurator.txB_company.Text = txB_company.Text;
+                        сhangeRSTFormCurator.txB_location.Text = txB_location.Text;
+                        сhangeRSTFormCurator.cmB_model.Items.Add(cmB_model.Text).ToString();
+                        сhangeRSTFormCurator.txB_serialNumber.Text = txB_serialNumber.Text;
+                        сhangeRSTFormCurator.txB_inventoryNumber.Text = txB_inventoryNumber.Text;
+                        сhangeRSTFormCurator.txB_networkNumber.Text = txB_networkNumber.Text;
+                        сhangeRSTFormCurator.txB_dateTO.Text = txB_dateTO.Text.Remove(txB_dateTO.Text.IndexOf(" "));
+                        сhangeRSTFormCurator.txB_numberAct.Text = txB_numberAct.Text;
+                        сhangeRSTFormCurator.txB_numberActRemont.Text = txB_numberActRemont.Text;
+                        сhangeRSTFormCurator.cmB_сategory.Text = cmB_сategory.Text;
+                        сhangeRSTFormCurator.txB_priceRemont.Text = txB_priceRemont.Text;
+                        сhangeRSTFormCurator.txB_decommission.Text = txB_decommission.Text;
+                        сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
+                        сhangeRSTFormCurator.cmB_month.Text = txB_month.Text;
+                        сhangeRSTFormCurator.lbL_road.Text = cmB_road.Text;
+                        LogUser.LogMethodUserSaveFilePC(_user.Login, "Изменить радиостанцию форма куратора");
                         сhangeRSTFormCurator.Show();
                     }
                 }
@@ -625,7 +643,7 @@ namespace ServiceTelecomConnect
             m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", cmB_road, cmB_month)));
             m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmB_road, cmB_month)));
             m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmB_road, cmB_month)));
-
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Добавить в выполнение");
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
         }
@@ -687,6 +705,11 @@ namespace ServiceTelecomConnect
                 panel_seach_datagrid_curator.Visible = true;
                 this.ActiveControl = txB_seach_panel_datagrid_curator;
             }
+            // открываем функциональную панель
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
+            {
+                Button_Functional_loading_panel(sender, e);
+            }
         }
 
         void Seach_datagrid_curator()
@@ -736,12 +759,14 @@ namespace ServiceTelecomConnect
         }
         void Button_seach_panel_seach_datagrid_Click(object sender, EventArgs e)
         {
+            LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
             Seach_datagrid_curator();
         }
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
             {
+                LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
                 Seach_datagrid_curator();
             }
         }
@@ -808,7 +833,50 @@ namespace ServiceTelecomConnect
         {
             e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
+
         #endregion
+
+        #region Функциональная панель
+
+        void Button_Functional_loading_panel(object sender, EventArgs e)
+        {
+            if (_user.Login == "Admin" || _user.Login == "Куратор")
+            {
+                Functional_loading_panel.Enabled = true;
+                Functional_loading_panel.Visible = true;
+                dataGridView1.Enabled = false;
+                panel1.Enabled = false;
+                panel3.Enabled = false;
+            }
+        }
+
+        #region Очистка текущей БД 
+        void Btn_clear_BD_current_year_Curator_Click(object sender, EventArgs e)
+        {
+            string Mesage;
+            Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
+
+            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+
+            string Mesage2;
+            Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
+
+            if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            {
+                return;
+            }
+
+            FunctionalPanel.Clear_BD_current_year_Curator();
+            QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
+        }
+        #endregion
+
+        #endregion
+
+
     }
 }
 

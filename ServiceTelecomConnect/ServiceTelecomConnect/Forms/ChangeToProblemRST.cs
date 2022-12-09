@@ -18,7 +18,6 @@ namespace ServiceTelecomConnect
         }
 
 
-
         void AddToProblemRST_Load(object sender, EventArgs e)
         {
             lbL_Author.Text = _user.Login;

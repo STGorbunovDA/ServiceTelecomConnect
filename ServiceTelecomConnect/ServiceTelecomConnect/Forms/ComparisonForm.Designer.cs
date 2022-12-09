@@ -161,6 +161,19 @@
             this.lbL_road = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.Functional_loading_panel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Loading_file_last_year = new System.Windows.Forms.Button();
+            this.btn_Uploading_JSON_file = new System.Windows.Forms.Button();
+            this.btn_Copying_current_BD_end_of_the_year = new System.Windows.Forms.Button();
+            this.btn_loading_file_full_BD = new System.Windows.Forms.Button();
+            this.btn_manual_backup_current_DB = new System.Windows.Forms.Button();
+            this.btn_loading_file_current_DB = new System.Windows.Forms.Button();
+            this.btn_clear_BD_current_year_Curator = new System.Windows.Forms.Button();
+            this.btn_loading_json_file_BD = new System.Windows.Forms.Button();
+            this.btn_close_Functional_loading_panel = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -173,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel_date.SuspendLayout();
+            this.Functional_loading_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -1623,6 +1637,174 @@
             this.label29.TabIndex = 20;
             this.label29.Text = "Инженер:";
             // 
+            // Functional_loading_panel
+            // 
+            this.Functional_loading_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Functional_loading_panel.BackColor = System.Drawing.Color.SkyBlue;
+            this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.Functional_loading_panel.Controls.Add(this.button3);
+            this.Functional_loading_panel.Controls.Add(this.button4);
+            this.Functional_loading_panel.Controls.Add(this.btn_Loading_file_last_year);
+            this.Functional_loading_panel.Controls.Add(this.btn_Uploading_JSON_file);
+            this.Functional_loading_panel.Controls.Add(this.btn_Copying_current_BD_end_of_the_year);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_file_full_BD);
+            this.Functional_loading_panel.Controls.Add(this.btn_manual_backup_current_DB);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_file_current_DB);
+            this.Functional_loading_panel.Controls.Add(this.btn_clear_BD_current_year_Curator);
+            this.Functional_loading_panel.Controls.Add(this.btn_loading_json_file_BD);
+            this.Functional_loading_panel.Controls.Add(this.btn_close_Functional_loading_panel);
+            this.Functional_loading_panel.Controls.Add(this.label4);
+            this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.Functional_loading_panel.Location = new System.Drawing.Point(391, 199);
+            this.Functional_loading_panel.Name = "Functional_loading_panel";
+            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 330);
+            this.Functional_loading_panel.TabIndex = 84;
+            this.Functional_loading_panel.TabStop = true;
+            this.Functional_loading_panel.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(326, 246);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(247, 40);
+            this.button3.TabIndex = 88;
+            this.button3.Text = "Показать общую БД по всем участкам";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(64, 245);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(249, 40);
+            this.button4.TabIndex = 87;
+            this.button4.Text = "Показать БД прошлого года по текущему участку";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // btn_Loading_file_last_year
+            // 
+            this.btn_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
+            this.btn_Loading_file_last_year.Name = "btn_Loading_file_last_year";
+            this.btn_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
+            this.btn_Loading_file_last_year.TabIndex = 86;
+            this.btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
+            this.btn_Loading_file_last_year.UseVisualStyleBackColor = false;
+            // 
+            // btn_Uploading_JSON_file
+            // 
+            this.btn_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
+            this.btn_Uploading_JSON_file.Name = "btn_Uploading_JSON_file";
+            this.btn_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
+            this.btn_Uploading_JSON_file.TabIndex = 85;
+            this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
+            // 
+            // btn_Copying_current_BD_end_of_the_year
+            // 
+            this.btn_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
+            this.btn_Copying_current_BD_end_of_the_year.Name = "btn_Copying_current_BD_end_of_the_year";
+            this.btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
+            this.btn_Copying_current_BD_end_of_the_year.TabIndex = 84;
+            this.btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
+            this.btn_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
+            // 
+            // btn_loading_file_full_BD
+            // 
+            this.btn_loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
+            this.btn_loading_file_full_BD.Name = "btn_loading_file_full_BD";
+            this.btn_loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
+            this.btn_loading_file_full_BD.TabIndex = 83;
+            this.btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
+            this.btn_loading_file_full_BD.UseVisualStyleBackColor = false;
+            // 
+            // btn_manual_backup_current_DB
+            // 
+            this.btn_manual_backup_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_manual_backup_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_manual_backup_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_manual_backup_current_DB.Location = new System.Drawing.Point(324, 56);
+            this.btn_manual_backup_current_DB.Name = "btn_manual_backup_current_DB";
+            this.btn_manual_backup_current_DB.Size = new System.Drawing.Size(249, 42);
+            this.btn_manual_backup_current_DB.TabIndex = 81;
+            this.btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            this.btn_manual_backup_current_DB.UseVisualStyleBackColor = false;
+            // 
+            // btn_loading_file_current_DB
+            // 
+            this.btn_loading_file_current_DB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_file_current_DB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_file_current_DB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_file_current_DB.Location = new System.Drawing.Point(64, 105);
+            this.btn_loading_file_current_DB.Name = "btn_loading_file_current_DB";
+            this.btn_loading_file_current_DB.Size = new System.Drawing.Size(249, 42);
+            this.btn_loading_file_current_DB.TabIndex = 79;
+            this.btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            this.btn_loading_file_current_DB.UseVisualStyleBackColor = false;
+            // 
+            // btn_clear_BD_current_year_Curator
+            // 
+            this.btn_clear_BD_current_year_Curator.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_clear_BD_current_year_Curator.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_clear_BD_current_year_Curator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_clear_BD_current_year_Curator.Location = new System.Drawing.Point(64, 56);
+            this.btn_clear_BD_current_year_Curator.Name = "btn_clear_BD_current_year_Curator";
+            this.btn_clear_BD_current_year_Curator.Size = new System.Drawing.Size(249, 42);
+            this.btn_clear_BD_current_year_Curator.TabIndex = 80;
+            this.btn_clear_BD_current_year_Curator.Text = "Полная очистка БД текущего года";
+            this.btn_clear_BD_current_year_Curator.UseVisualStyleBackColor = false;
+            this.btn_clear_BD_current_year_Curator.Click += new System.EventHandler(this.Btn_clear_BD_current_year_Curator_Click);
+            // 
+            // btn_loading_json_file_BD
+            // 
+            this.btn_loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
+            this.btn_loading_json_file_BD.Name = "btn_loading_json_file_BD";
+            this.btn_loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
+            this.btn_loading_json_file_BD.TabIndex = 78;
+            this.btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            this.btn_loading_json_file_BD.UseVisualStyleBackColor = false;
+            // 
+            // btn_close_Functional_loading_panel
+            // 
+            this.btn_close_Functional_loading_panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_Functional_loading_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_Functional_loading_panel.Location = new System.Drawing.Point(609, 3);
+            this.btn_close_Functional_loading_panel.Name = "btn_close_Functional_loading_panel";
+            this.btn_close_Functional_loading_panel.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_Functional_loading_panel.TabIndex = 37;
+            this.btn_close_Functional_loading_panel.Text = "X";
+            this.btn_close_Functional_loading_panel.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(203, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(241, 22);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Функциональная панель";
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1630,13 +1812,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 729);
-            this.Controls.Add(this.panel_date);
+            this.Controls.Add(this.Functional_loading_panel);
+            this.Controls.Add(this.panel_seach_datagrid_curator);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_seach_datagrid_curator);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1669,6 +1852,8 @@
             this.panel3.PerformLayout();
             this.panel_date.ResumeLayout(false);
             this.panel_date.PerformLayout();
+            this.Functional_loading_panel.ResumeLayout(false);
+            this.Functional_loading_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1799,5 +1984,18 @@
         private System.Windows.Forms.Button button_save_in_file_curator;
         private System.Windows.Forms.Button button_change_rst_form_curator;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Panel Functional_loading_panel;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Loading_file_last_year;
+        private System.Windows.Forms.Button btn_Uploading_JSON_file;
+        private System.Windows.Forms.Button btn_Copying_current_BD_end_of_the_year;
+        private System.Windows.Forms.Button btn_loading_file_full_BD;
+        private System.Windows.Forms.Button btn_manual_backup_current_DB;
+        private System.Windows.Forms.Button btn_clear_BD_current_year_Curator;
+        private System.Windows.Forms.Button btn_loading_file_current_DB;
+        private System.Windows.Forms.Button btn_loading_json_file_BD;
+        private System.Windows.Forms.Button btn_close_Functional_loading_panel;
+        private System.Windows.Forms.Label label4;
     }
 }
