@@ -1124,6 +1124,37 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region поиск по номеру акта для Combobox на подпись и акты до Full
+        internal static void SearchNumberActCombobox(DataGridView dgw, string city, string road, string numberAct)
+        {
+            dgw.Rows.Clear();
+            var searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE " +
+                        $"numberAct = '{numberAct}' AND city = '{city}' AND road = '{road}'";
+
+            using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            ReedSingleRow(dgw, reader);
+                        }
+                        reader.Close();
+                    }
+                }
+                DB.GetInstance.CloseConnection();
+            }
+        }
+        #endregion
+
         #region поиск отсутсвующих рст исходя из предыдущего года
 
         internal static void Seach_DataGrid_Replay_RST(DataGridView dgw, TextBox txb_flag_all_BD, string city, string road)
