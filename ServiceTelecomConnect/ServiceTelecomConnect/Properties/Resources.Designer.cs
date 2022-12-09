@@ -285,6 +285,16 @@ namespace ServiceTelecomConnect.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_book_open_search_locate_6178__2_ {
             get {
                 object obj = ResourceManager.GetObject("search_book_open_search_locate_6178 (2)", resourceCulture);
