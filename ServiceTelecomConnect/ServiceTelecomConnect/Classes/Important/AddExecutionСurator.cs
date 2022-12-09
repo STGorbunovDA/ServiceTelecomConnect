@@ -12,7 +12,6 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                //MessageBox.Show(months);
                 var AddExecutionQuery = "";
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                 {
@@ -74,6 +73,7 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
+                MessageBox.Show("Успешно!");
             }
         }
 
@@ -120,6 +120,7 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
+                MessageBox.Show("Успешно!");
                 int currRowIndex = dgw.CurrentCell.RowIndex;
                 QuerySettingDataBase.RefreshDataGridСurator(dgw, road.Text);
                 QuerySettingDataBase.SelectCityGropByMonthRoad(road, cmB_month);
