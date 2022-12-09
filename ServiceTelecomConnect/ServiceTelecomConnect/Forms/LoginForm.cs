@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Drawing;
@@ -33,7 +34,22 @@ namespace ServiceTelecomConnect
             txB_loginField.MaxLength = 100;
             txB_passField.MaxLength = 32;
             if (txB_loginField.Text == "Admin" || txB_passField.Text == "1818")
-                EnterButtonLogin_Click(sender, e);    
+                EnterButtonLogin_Click(sender, e);
+            try
+            {
+                RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Login_Password");
+                if (reg1 != null)
+                {
+                    RegistryKey currentUserKey = Registry.CurrentUser;
+                    RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Login_Password");
+                    txB_loginField.Text = helloKey.GetValue("Login").ToString();
+                    txB_passField.Text = helloKey.GetValue("Password").ToString();
+                    helloKey.Close();
+                }
+            }
+            catch 
+            {
+            }
         }
         void EnterButtonLogin_Click(object sender, EventArgs e)
         {
@@ -58,6 +74,11 @@ namespace ServiceTelecomConnect
                             var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
                             using (Menu menu = new Menu(user))
                             {
+                                RegistryKey currentUserKey = Registry.CurrentUser;
+                                RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\Login_Password");
+                                helloKey.SetValue("Login", $"{txB_loginField.Text}");
+                                helloKey.SetValue("Password", $"{txB_passField.Text}");
+                                helloKey.Close();
                                 this.Hide();
                                 menu.ShowDialog();
                                 DB.GetInstance.CloseConnection();
