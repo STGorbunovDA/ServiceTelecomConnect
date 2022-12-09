@@ -1043,19 +1043,20 @@ namespace ServiceTelecomConnect
         #region добавление модели радиостанции в БД
         void Button_model_radiostation_name_MouseClick(object sender, MouseEventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите добавить модель радиостанции?";
-            
-            if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
+            if (Internet_check.CheackSkyNET())
             {
-                return;
-            }
+                AddChangeModelRST addChangeModel = new AddChangeModelRST();
+                if (Application.OpenForms["AddChangeModelRST"] == null)
+                {
+                    string Mesage;
+                    Mesage = "Вы действительно хотите добавить модель радиостанции?";
 
-            using (AddChangeModelRST addChangeModel = new AddChangeModelRST())
-            {
-                this.Hide();
-                addChangeModel.ShowDialog();
-                this.Show();
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        return;
+                    }
+                    addChangeModel.Show();
+                }
             }
         }
 
