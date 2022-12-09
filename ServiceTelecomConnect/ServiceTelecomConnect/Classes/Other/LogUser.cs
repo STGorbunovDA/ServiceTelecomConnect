@@ -7,30 +7,32 @@ namespace ServiceTelecomConnect.Classes.Other
 {
     class LogUser
     {
-        internal static void LogMethodUserSaveFilePC(string user, string method)
-        {
-            try
-            {
-                DateTime today = DateTime.Now;
+        #region сохран действий пользователя
+        //internal static void LogMethodUserSaveFilePC(string user, string method)
+        //{
+        //    try
+        //    {
+        //        DateTime today = DateTime.Now;
 
-                string fileNamePath = $@"C:\Documents_ServiceTelekom\Log\{user}\{user}-{today.ToString("dd.MM.yyyy")}.txt";
+        //        string fileNamePath = $@"C:\Documents_ServiceTelekom\Log\{user}\{user}-{today.ToString("dd.MM.yyyy")}.txt";
 
-                if (!File.Exists($@"C:\Documents_ServiceTelekom\Log\{user}\"))
-                {
-                    Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Log\{user}\");
-                }
+        //        if (!File.Exists($@"C:\Documents_ServiceTelekom\Log\{user}\"))
+        //        {
+        //            Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Log\{user}\");
+        //        }
 
-                using (StreamWriter sw = new StreamWriter(fileNamePath, true, Encoding.Unicode))
-                {
-                    sw.WriteLine($"{user}\t{method}\t{today}");
-                }
+        //        using (StreamWriter sw = new StreamWriter(fileNamePath, true, Encoding.Unicode))
+        //        {
+        //            sw.WriteLine($"{user}\t{method}\t{today}");
+        //        }
 
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Файл не сохранен!(LogMethodUserSaveFilePC)");
-            }
-        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Файл не сохранен!(LogMethodUserSaveFilePC)");
+        //    }
+        //}
+        #endregion
         internal static void LogExceptionUserSaveFilePC(string exception)
         {
             try
