@@ -527,6 +527,7 @@
     <None Include="ImageFon\data_integrated_data_management_data_processing_setting_configuration_icon_190648.png" />
     <None Include="ImageFon\pngegg.png" />
     <None Include="ImageFon\icons8-синхронизация-подключения-32.png" />
+    <None Include="ImageFon\pngwing.com.png" />
     <Content Include="radio_22703.ico" />
     <Content Include="RST_Image\transistor.jpg" />
   </ItemGroup>

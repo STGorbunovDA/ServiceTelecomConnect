@@ -65,21 +65,8 @@ namespace ServiceTelecomConnect
             }
         }
 
-        private void CommonBtn_Click(object sender, EventArgs e)
-        {
-            string msg = ((Button)sender).Text;
-            LogUser.LogMethodUserSaveFilePC(_user.Login, msg);
-        }
-
         private void ComparisonForm_Load(object sender, EventArgs e)
         {
-            foreach (var item in panel1.Controls) //обходим все элементы формы
-            {
-                if (item is Button) // проверяем, что это кнопка
-                {
-                    ((Button)item).Click += CommonBtn_Click; //приводим к типу и устанавливаем обработчик события
-                }
-            }
 
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
@@ -306,7 +293,6 @@ namespace ServiceTelecomConnect
 
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             txB_numberAct.Text = "";
-            LogUser.LogMethodUserSaveFilePC(_user.Login, "Удалить из выполнения");
             dataGridView1.ClearSelection();
 
             if (dataGridView1.RowCount - currRowIndex > 0)
@@ -329,7 +315,6 @@ namespace ServiceTelecomConnect
                 QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
                 Counters();
                 dataGridView1.ClearSelection();
-                LogUser.LogMethodUserSaveFilePC(_user.Login, "Обновить");
                 if (currRowIndex >= 0)
                 {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
@@ -398,7 +383,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Добавь радиостанцию в выполнение!");
                 return;
             }
-            LogUser.LogMethodUserSaveFilePC(_user.Login, "Сохрание базы куратора");
             SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1, cmB_road.Text);
         }
 
@@ -597,7 +581,6 @@ namespace ServiceTelecomConnect
                         сhangeRSTFormCurator.txB_comment.Text = txB_comment.Text;
                         сhangeRSTFormCurator.cmB_month.Text = txB_month.Text;
                         сhangeRSTFormCurator.lbL_road.Text = cmB_road.Text;
-                        LogUser.LogMethodUserSaveFilePC(_user.Login, "Изменить радиостанцию форма куратора");
                         сhangeRSTFormCurator.Show();
                     }
                 }
@@ -643,7 +626,6 @@ namespace ServiceTelecomConnect
             m.MenuItems.Add(new MenuItem("Октябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Октябрь", cmB_road, cmB_month)));
             m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmB_road, cmB_month)));
             m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmB_road, cmB_month)));
-            LogUser.LogMethodUserSaveFilePC(_user.Login, "Добавить в выполнение");
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
 
         }
@@ -759,14 +741,12 @@ namespace ServiceTelecomConnect
         }
         void Button_seach_panel_seach_datagrid_Click(object sender, EventArgs e)
         {
-            LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
             Seach_datagrid_curator();
         }
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
             {
-                LogUser.LogMethodUserSaveFilePC(_user.Login, "Поиск по гриду");
                 Seach_datagrid_curator();
             }
         }
