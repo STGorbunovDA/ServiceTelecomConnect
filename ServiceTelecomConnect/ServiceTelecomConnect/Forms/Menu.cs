@@ -42,15 +42,20 @@ namespace ServiceTelecomConnect
                 DateTime Date = DateTime.Now;
                 var inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-                var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
-
-
-                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                var dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(_user.Login);
+               
+                if (Date.ToString("yyyy-MM-dd") != dateTimeInput.ToString("yyyy-MM-dd"))
                 {
-                    DB.GetInstance.OpenConnection();
-                    command.ExecuteNonQuery();
-                    DB.GetInstance.CloseConnection();
-                }
+                    var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
+
+                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                }    
+
 
                 if (_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
                 {
@@ -267,7 +272,6 @@ namespace ServiceTelecomConnect
         {
             lbL_director.ForeColor = Color.Black;
         }
-
 
     }
 }
