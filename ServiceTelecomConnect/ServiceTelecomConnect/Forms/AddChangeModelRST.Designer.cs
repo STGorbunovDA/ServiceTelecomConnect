@@ -41,7 +41,7 @@
             this.cmB_model.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_model.FormattingEnabled = true;
-            this.cmB_model.Location = new System.Drawing.Point(12, 31);
+            this.cmB_model.Location = new System.Drawing.Point(31, 31);
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(264, 228);
             this.cmB_model.TabIndex = 53;
@@ -52,7 +52,7 @@
             this.btn_add_modelRST.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_add_modelRST.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_add_modelRST.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_add_modelRST.Location = new System.Drawing.Point(310, 104);
+            this.btn_add_modelRST.Location = new System.Drawing.Point(317, 157);
             this.btn_add_modelRST.Name = "btn_add_modelRST";
             this.btn_add_modelRST.Size = new System.Drawing.Size(119, 30);
             this.btn_add_modelRST.TabIndex = 54;
@@ -65,7 +65,7 @@
             this.btn_change_modelRST.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_change_modelRST.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_change_modelRST.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_change_modelRST.Location = new System.Drawing.Point(310, 140);
+            this.btn_change_modelRST.Location = new System.Drawing.Point(317, 193);
             this.btn_change_modelRST.Name = "btn_change_modelRST";
             this.btn_change_modelRST.Size = new System.Drawing.Size(119, 30);
             this.btn_change_modelRST.TabIndex = 55;
@@ -78,7 +78,7 @@
             this.btn_delete_modelRST.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_delete_modelRST.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_delete_modelRST.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_delete_modelRST.Location = new System.Drawing.Point(310, 176);
+            this.btn_delete_modelRST.Location = new System.Drawing.Point(317, 229);
             this.btn_delete_modelRST.Name = "btn_delete_modelRST";
             this.btn_delete_modelRST.Size = new System.Drawing.Size(119, 30);
             this.btn_delete_modelRST.TabIndex = 56;
