@@ -172,6 +172,21 @@ namespace ServiceTelecomConnect
 
         }
 
+        internal static void Clear_BD_current_year_Curator()
+        {
+            var clearBD = "TRUNCATE TABLE radiostantion_сomparison";
+
+            using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.OpenConnection();
+                command.ExecuteNonQuery();
+                DB_2.GetInstance.CloseConnection();
+            }
+
+            MessageBox.Show("База данных успешно очищенна!");
+
+        }
+
         #endregion
 
         #region копирование текущей БД в БД прошлого года для следующего года
