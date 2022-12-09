@@ -32,14 +32,19 @@ namespace ServiceTelecomConnect
                     DateTime Date = DateTime.Now;
                     var exitDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-                    var addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}'";
+                    var dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(login);
 
-                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    if (Date.ToString("yyyy-MM-dd") == dateTimeInput.ToString("yyyy-MM-dd"))
                     {
-                        DB.GetInstance.OpenConnection();
-                        command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
-                    }
+                        var addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}'";
+
+                        using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+                        }
+                    }                    
                 }
 
                 return false;
