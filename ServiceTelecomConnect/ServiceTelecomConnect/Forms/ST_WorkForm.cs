@@ -109,6 +109,7 @@ namespace ServiceTelecomConnect
                 mTrip_Add_Fill_Full_ActTO.Visible = false;
                 mTrip_Add_Signature_ActTO.Visible = false;
                 mTrip_funcionalpanel.Visible = false;
+                panel4.Visible = false;
             }
 
         }
