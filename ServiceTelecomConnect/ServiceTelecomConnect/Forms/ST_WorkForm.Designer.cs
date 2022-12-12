@@ -2652,12 +2652,14 @@
             this.mTrip_Button_remont_act.Name = "mTrip_Button_remont_act";
             this.mTrip_Button_remont_act.Size = new System.Drawing.Size(247, 22);
             this.mTrip_Button_remont_act.Text = "Сформировать акт Ремонта";
+            this.mTrip_Button_remont_act.Click += new System.EventHandler(this.MTrip_Button_remont_act_Click);
             // 
             // mTrip_PrintWord_Act_decommission
             // 
             this.mTrip_PrintWord_Act_decommission.Name = "mTrip_PrintWord_Act_decommission";
             this.mTrip_PrintWord_Act_decommission.Size = new System.Drawing.Size(247, 22);
             this.mTrip_PrintWord_Act_decommission.Text = "Сформировать акт Списания";
+            this.mTrip_PrintWord_Act_decommission.Click += new System.EventHandler(this.MTrip_PrintWord_Act_decommission_Click);
             // 
             // расширениеToolStripMenuItem
             // 

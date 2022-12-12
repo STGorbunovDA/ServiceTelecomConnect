@@ -2410,6 +2410,16 @@ namespace ServiceTelecomConnect
         {
             Button_actTO_print_Click(sender, e);
         }
+
+        void MTrip_Button_remont_act_Click(object sender, EventArgs e)
+        {
+            Button_remont_act_Click(sender, e);
+        }
+
+        void MTrip_PrintWord_Act_decommission_Click(object sender, EventArgs e)
+        {
+            PrintWord_Act_decommission(sender, e);
+        }
     }
 }
 
