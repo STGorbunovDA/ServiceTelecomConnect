@@ -2794,6 +2794,7 @@
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Name = "mTrip_btn_Copying_current_BD_end_of_the_year";
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
+            this.mTrip_btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.MTrip_btn_Copying_current_BD_end_of_the_year_Click);
             // 
             // mTrip_btn_Loading_file_last_year
             // 

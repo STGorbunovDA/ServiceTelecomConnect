@@ -2475,6 +2475,11 @@ namespace ServiceTelecomConnect
         {
             Loading_file_current_BD_Click(sender, e);
         }
+
+        void MTrip_btn_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
+        {
+            Button_Copying_current_BD_end_of_the_year_Click(sender, e);
+        }
     }
 }
 
