@@ -2677,6 +2677,7 @@
             this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
             this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(202, 22);
             this.mTrip_Button_save_in_file.Text = "Сохранение базы";
+            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTrip_Button_save_in_file_Click);
             // 
             // mTrip_FormTag
             // 

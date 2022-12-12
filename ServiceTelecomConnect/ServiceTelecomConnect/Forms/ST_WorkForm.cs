@@ -2420,6 +2420,11 @@ namespace ServiceTelecomConnect
         {
             PrintWord_Act_decommission(sender, e);
         }
+
+        void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
+        {
+            Button_save_in_file_Click(sender, e);
+        }
     }
 }
 
