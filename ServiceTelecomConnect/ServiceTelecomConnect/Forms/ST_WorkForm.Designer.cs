@@ -2716,12 +2716,14 @@
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Name = "mTrip_Btn_RefreshDataGridWithoutDecommission";
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Text = "Показать РСТ без списаний по участку";
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Click += new System.EventHandler(this.MTrip_Btn_RefreshDataGridWithoutDecommission_Click);
             // 
             // mTrip_Btn_RefreshDataGridtDecommissionByPlot
             // 
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Name = "mTrip_Btn_RefreshDataGridtDecommissionByPlot";
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Text = "Показать списанные РСТ по участку";
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Click += new System.EventHandler(this.MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click);
             // 
             // mTrip_PictureBox_seach_datadrid_replay_Click
             // 

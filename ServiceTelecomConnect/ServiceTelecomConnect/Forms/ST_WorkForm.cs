@@ -2440,6 +2440,16 @@ namespace ServiceTelecomConnect
         {
             Add_Signature_ActTO(sender, e);
         }
+
+        void MTrip_Btn_RefreshDataGridWithoutDecommission_Click(object sender, EventArgs e)
+        {
+            Btn_RefreshDataGridWithoutDecommission(sender, e);
+        }
+
+        void MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click(object sender, EventArgs e)
+        {
+            Btn_RefreshDataGridtDecommissionByPlot(sender, e);
+        }
     }
 }
 
