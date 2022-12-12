@@ -2787,6 +2787,7 @@
             this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
             this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTrip_btn_loading_file_current_DB_Click);
             // 
             // mTrip_btn_Copying_current_BD_end_of_the_year
             // 

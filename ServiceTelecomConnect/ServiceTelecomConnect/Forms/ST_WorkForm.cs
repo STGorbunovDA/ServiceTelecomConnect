@@ -2470,6 +2470,11 @@ namespace ServiceTelecomConnect
         {
             Manual_backup_current_BD_Click(sender, e);
         }
+
+        void MTrip_btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        {
+            Loading_file_current_BD_Click(sender, e);
+        }
     }
 }
 
