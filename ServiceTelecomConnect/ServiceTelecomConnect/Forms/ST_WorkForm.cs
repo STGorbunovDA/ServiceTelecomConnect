@@ -840,7 +840,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (_user.IsAdmin == "Дирекция связи")
+                if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Руководитель")
                 {
                     ContextMenu m3 = new ContextMenu();
                     m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
@@ -905,7 +905,53 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                else if (_user.IsAdmin == "Начальник участка" || _user.IsAdmin == "Инженер" || _user.IsAdmin == "Руководитель")
+                else if (_user.IsAdmin == "Инженер")
+                {
+                    if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
+                    {
+                        ContextMenu m = new ContextMenu();
+
+                        var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        if (txB_serialNumber.Text != "")
+                        {
+                            m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
+                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
+                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
+                            m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
+                        }
+                        m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                        m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
+                        m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
+                        m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
+
+                        m.Show(dataGridView1, new Point(e.X, e.Y));
+
+                    }
+                    else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
+                    {
+                        ContextMenu m1 = new ContextMenu();
+                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+
+                        m1.Show(dataGridView1, new Point(e.X, e.Y));
+                    }
+                    else if (dataGridView1.Rows.Count > 0 || dataGridView1.Rows.Count == 0 && panel1.Enabled == false && panel3.Enabled == false)
+                    {
+                        ContextMenu m2 = new ContextMenu();
+                        m2.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
+                        m2.MenuItems.Add(new MenuItem("Обновить", Button_update_Click_after_Seach_DataGrid_Replay_RST));
+
+                        m2.Show(dataGridView1, new Point(e.X, e.Y));
+
+                        if (e.Button == MouseButtons.Left)
+                        {
+                            dataGridView1.ClearSelection();
+                        }
+                    }
+                }
+                else if (_user.IsAdmin == "Начальник участка" )
                 {
                     if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
