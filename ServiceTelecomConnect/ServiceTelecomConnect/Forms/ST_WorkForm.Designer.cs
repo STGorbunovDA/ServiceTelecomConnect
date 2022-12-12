@@ -2801,6 +2801,7 @@
             this.mTrip_btn_Loading_file_last_year.Name = "mTrip_btn_Loading_file_last_year";
             this.mTrip_btn_Loading_file_last_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
+            this.mTrip_btn_Loading_file_last_year.Click += new System.EventHandler(this.MTrip_btn_Loading_file_last_year_Click);
             // 
             // mTrip_btn_loading_file_full_BD
             // 
