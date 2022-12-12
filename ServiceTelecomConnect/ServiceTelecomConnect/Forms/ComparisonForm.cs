@@ -865,11 +865,19 @@ namespace ServiceTelecomConnect
             FunctionalPanel.Manual_backup_current_BD_curator();
         }
 
+
+        #endregion
+
+        #region Загрузка из файла для текущей БД
+        void Btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        {
+            FunctionalPanel.Loading_file_current_BD_curator();
+        }
         #endregion
 
         #endregion
 
-        
+
     }
 }
 
