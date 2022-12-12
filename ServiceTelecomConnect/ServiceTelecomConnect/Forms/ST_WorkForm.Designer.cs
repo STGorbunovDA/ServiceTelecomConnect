@@ -2591,6 +2591,7 @@
             this.mTrip_delete_rst_decommission.Name = "mTrip_delete_rst_decommission";
             this.mTrip_delete_rst_decommission.Size = new System.Drawing.Size(212, 22);
             this.mTrip_delete_rst_decommission.Text = "Удалить списание";
+            this.mTrip_delete_rst_decommission.Click += new System.EventHandler(this.MTrip_delete_rst_decommission_Click);
             // 
             // списатьToolStripMenuItem
             // 

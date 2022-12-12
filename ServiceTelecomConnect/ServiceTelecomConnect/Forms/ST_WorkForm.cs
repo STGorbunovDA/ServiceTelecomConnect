@@ -2383,7 +2383,12 @@ namespace ServiceTelecomConnect
 
         void MTrip_delete_rst_remont_Click(object sender, EventArgs e)
         {
+            Delete_rst_remont_click(sender, e);
+        }
 
+        void MTrip_delete_rst_decommission_Click(object sender, EventArgs e)
+        {
+            Delete_rst_decommission_click(sender, e);
         }
     }
 }
