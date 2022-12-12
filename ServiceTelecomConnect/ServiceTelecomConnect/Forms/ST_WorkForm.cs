@@ -108,6 +108,7 @@ namespace ServiceTelecomConnect
                 mTrip_Curator.Enabled = false;
                 mTrip_Add_Fill_Full_ActTO.Enabled = false;
                 mTrip_Add_Signature_ActTO.Enabled = false;
+                mTrip_funcionalpanel.Enabled = false;
             }
 
         }
