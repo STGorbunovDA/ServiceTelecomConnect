@@ -450,7 +450,7 @@ namespace ServiceTelecomConnect
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void pictureBox2_update_Click(object sender, EventArgs e)
+        void PicB_update_Click(object sender, EventArgs e)
         {
             Button_update_Click(sender, e);
         }
@@ -794,6 +794,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
+            menuStrip1.Enabled = false;
             QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
             Counters();
         }
@@ -999,6 +1000,7 @@ namespace ServiceTelecomConnect
                 {
                     panel1.Enabled = true;
                     panel3.Enabled = true;
+                    menuStrip1.Enabled = true;
                     QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                     Counters();
                 }
@@ -2098,6 +2100,7 @@ namespace ServiceTelecomConnect
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
+            menuStrip1.Enabled = false;
             QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text, cmB_road.Text);
             Counters();
         }
@@ -2361,6 +2364,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region MenuTrip
         void MTrip_new_add_rst_Click(object sender, EventArgs e)
         {
             Button_new_add_rst_form_Click(sender, e);
@@ -2510,6 +2514,7 @@ namespace ServiceTelecomConnect
         {
             Btn_Show_DB_radiostantion_full_Click(sender, e);
         }
+        #endregion
     }
 }
 
