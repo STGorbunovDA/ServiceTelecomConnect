@@ -2450,6 +2450,11 @@ namespace ServiceTelecomConnect
         {
             Btn_RefreshDataGridtDecommissionByPlot(sender, e);
         }
+
+        void MTrip_PictureBox_seach_datadrid_replay_Click_Click(object sender, EventArgs e)
+        {
+            PictureBox_seach_datadrid_replay_Click(sender, e);
+        }
     }
 }
 

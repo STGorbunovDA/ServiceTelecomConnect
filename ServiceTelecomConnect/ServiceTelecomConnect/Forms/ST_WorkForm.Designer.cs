@@ -2730,6 +2730,7 @@
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Name = "mTrip_PictureBox_seach_datadrid_replay_Click";
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Size = new System.Drawing.Size(326, 22);
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Text = "Показать совпадение с предыдущим годом";
+            this.mTrip_PictureBox_seach_datadrid_replay_Click.Click += new System.EventHandler(this.MTrip_PictureBox_seach_datadrid_replay_Click_Click);
             // 
             // mTrip_Show_radiostantion_decommission_Click
             // 
