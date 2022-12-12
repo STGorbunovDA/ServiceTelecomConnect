@@ -88,14 +88,26 @@ namespace ServiceTelecomConnect
                 txB_serialNumber.Enabled = true;
                 button_save_in_file.Enabled = true;
             }
-            if(_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
+            if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
             {
                 mTrip_funcionalpanel.Enabled = false;
             }
-            if(_user.IsAdmin == "Начальник участка")
+            if (_user.IsAdmin == "Начальник участка")
             {
                 mTrip_Curator.Enabled = false;
                 mTrip_funcionalpanel.Enabled = false;
+            }
+            if (_user.IsAdmin == "Инженер")
+            {
+                button_change_rst_form.Enabled = false;
+                mTrip_Curator.Enabled = false;
+                mTrip_funcionalpanel.Enabled = false;
+                mTrip_change_rst.Enabled = false;
+                mTrip_delete.Enabled = false;
+                mTrip_decommission.Enabled = false;
+                mTrip_Curator.Enabled = false;
+                mTrip_Add_Fill_Full_ActTO.Enabled = false;
+                mTrip_Add_Signature_ActTO.Enabled = false;
             }
 
         }
