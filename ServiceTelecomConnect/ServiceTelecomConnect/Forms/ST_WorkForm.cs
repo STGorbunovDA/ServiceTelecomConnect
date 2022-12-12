@@ -2395,6 +2395,11 @@ namespace ServiceTelecomConnect
         {
             DecommissionSerialNumber(sender, e);
         }
+
+        void MTrip_AddExecution_Click(object sender, EventArgs e)
+        {
+            AddExecution(sender, e);
+        }
     }
 }
 

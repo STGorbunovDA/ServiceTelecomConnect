@@ -2621,6 +2621,7 @@
             this.mTrip_AddExecution.Name = "mTrip_AddExecution";
             this.mTrip_AddExecution.Size = new System.Drawing.Size(217, 22);
             this.mTrip_AddExecution.Text = "Добавить в выполнение";
+            this.mTrip_AddExecution.Click += new System.EventHandler(this.MTrip_AddExecution_Click);
             // 
             // mTrip_Button_update
             // 
