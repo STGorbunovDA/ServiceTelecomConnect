@@ -828,7 +828,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
-                            m.MenuItems.Add(new MenuItem("На подпись", Add_Signature_ActTO));
+                            m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                             m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
@@ -886,7 +886,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
-                            m.MenuItems.Add(new MenuItem("На подпись", Add_Signature_ActTO));
+                            m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                             m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
@@ -943,7 +943,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
-                            m.MenuItems.Add(new MenuItem("На подпись", Add_Signature_ActTO));
+                            m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
                             m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
@@ -2357,7 +2357,34 @@ namespace ServiceTelecomConnect
         {
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_add_Fill_Full_ActTO.Text);
         }
+
+
         #endregion
+
+        void MTrip_new_add_rst_Click(object sender, EventArgs e)
+        {
+            Button_new_add_rst_form_Click(sender, e);
+        }
+
+        void MTrip_change_rst_Click(object sender, EventArgs e)
+        {
+            Button_change_rst_form_Click(sender, e);
+        }
+
+        void MTrip_new_add_rst_remont_Click(object sender, EventArgs e)
+        {
+            Button_new_add_rst_form_click_remont(sender, e);
+        }
+
+        void MTrip_delete_rst_Click(object sender, EventArgs e)
+        {
+            Button_delete_Click(sender, e);
+        }
+
+        void MTrip_delete_rst_remont_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

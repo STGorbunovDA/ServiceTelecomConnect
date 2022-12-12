@@ -214,8 +214,35 @@
             this.lbL_count_remont = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьИзменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_new_add_rst = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_new_add_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_delete_rst = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_delete_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_delete_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
+            this.списатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
+            this.дляКуратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_AddExecution = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_update = new System.Windows.Forms.ToolStripMenuItem();
+            this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_actTO_print = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_remont_act = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_PrintWord_Act_decommission = new System.Windows.Forms.ToolStripMenuItem();
+            this.расширениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_FormTag = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Add_Fill_Full_ActTO = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Add_Signature_ActTO = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_PictureBox_seach_datadrid_replay_Click = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Show_radiostantion_decommission_Click = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -236,7 +263,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -279,7 +306,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -295,7 +322,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1427, 517);
+            this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
@@ -741,7 +768,7 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Enabled = false;
-            this.dataGridView2.Location = new System.Drawing.Point(1, 147);
+            this.dataGridView2.Location = new System.Drawing.Point(1, 179);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(240, 150);
@@ -758,7 +785,7 @@
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Enabled = false;
-            this.dataGridView3.Location = new System.Drawing.Point(1184, 147);
+            this.dataGridView3.Location = new System.Drawing.Point(1184, 179);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
@@ -783,7 +810,7 @@
             this.Functional_loading_panel.Controls.Add(this.btn_close_Functional_loading_panel);
             this.Functional_loading_panel.Controls.Add(this.label36);
             this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.Functional_loading_panel.Location = new System.Drawing.Point(400, 240);
+            this.Functional_loading_panel.Location = new System.Drawing.Point(400, 264);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
             this.Functional_loading_panel.Size = new System.Drawing.Size(642, 330);
             this.Functional_loading_panel.TabIndex = 80;
@@ -954,7 +981,7 @@
             this.panel_seach_datagrid.Controls.Add(this.txB_seach_panel_seach_datagrid);
             this.panel_seach_datagrid.Controls.Add(this.label37);
             this.panel_seach_datagrid.Enabled = false;
-            this.panel_seach_datagrid.Location = new System.Drawing.Point(460, 340);
+            this.panel_seach_datagrid.Location = new System.Drawing.Point(460, 364);
             this.panel_seach_datagrid.Name = "panel_seach_datagrid";
             this.panel_seach_datagrid.Size = new System.Drawing.Size(528, 141);
             this.panel_seach_datagrid.TabIndex = 37;
@@ -1125,7 +1152,7 @@
             this.panel_info_phone_FIO.Controls.Add(this.panel_txB_FIO_representative);
             this.panel_info_phone_FIO.Controls.Add(this.label21);
             this.panel_info_phone_FIO.Enabled = false;
-            this.panel_info_phone_FIO.Location = new System.Drawing.Point(487, 380);
+            this.panel_info_phone_FIO.Location = new System.Drawing.Point(487, 404);
             this.panel_info_phone_FIO.Name = "panel_info_phone_FIO";
             this.panel_info_phone_FIO.Size = new System.Drawing.Size(471, 141);
             this.panel_info_phone_FIO.TabIndex = 38;
@@ -1195,7 +1222,7 @@
             this.panel_Tag.Controls.Add(this.btn_close_panel_Tag);
             this.panel_Tag.Controls.Add(this.txB_Date_panel_Tag);
             this.panel_Tag.Controls.Add(this.label34);
-            this.panel_Tag.Location = new System.Drawing.Point(550, 303);
+            this.panel_Tag.Location = new System.Drawing.Point(550, 327);
             this.panel_Tag.Name = "panel_Tag";
             this.panel_Tag.Size = new System.Drawing.Size(313, 178);
             this.panel_Tag.TabIndex = 39;
@@ -1268,7 +1295,7 @@
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
             this.panel_decommissionSerialNumber.Controls.Add(this.label33);
             this.panel_decommissionSerialNumber.Enabled = false;
-            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(490, 250);
+            this.panel_decommissionSerialNumber.Location = new System.Drawing.Point(490, 274);
             this.panel_decommissionSerialNumber.Name = "panel_decommissionSerialNumber";
             this.panel_decommissionSerialNumber.Size = new System.Drawing.Size(447, 313);
             this.panel_decommissionSerialNumber.TabIndex = 39;
@@ -1372,7 +1399,7 @@
             this.panel_date.Controls.Add(this.label29);
             this.panel_date.Enabled = false;
             this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.panel_date.Location = new System.Drawing.Point(450, 300);
+            this.panel_date.Location = new System.Drawing.Point(450, 324);
             this.panel_date.Name = "panel_date";
             this.panel_date.Size = new System.Drawing.Size(534, 264);
             this.panel_date.TabIndex = 28;
@@ -1545,7 +1572,7 @@
             this.panel_remont_information_company.Controls.Add(this.label4);
             this.panel_remont_information_company.Controls.Add(this.btn_information_remont_company_regedit);
             this.panel_remont_information_company.Controls.Add(this.label_information_remont_pp);
-            this.panel_remont_information_company.Location = new System.Drawing.Point(327, 171);
+            this.panel_remont_information_company.Location = new System.Drawing.Point(327, 195);
             this.panel_remont_information_company.Name = "panel_remont_information_company";
             this.panel_remont_information_company.Size = new System.Drawing.Size(813, 458);
             this.panel_remont_information_company.TabIndex = 29;
@@ -1862,9 +1889,9 @@
             this.panel1.Controls.Add(this.picB_update);
             this.panel1.Controls.Add(this.picB_clear);
             this.panel1.Controls.Add(this.txB_numberActRemont);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1427, 145);
+            this.panel1.Size = new System.Drawing.Size(1427, 146);
             this.panel1.TabIndex = 0;
             // 
             // picB_delete_Item_Fill_Full_ActTO
@@ -2079,7 +2106,7 @@
             this.btn_remont_act.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_remont_act.Location = new System.Drawing.Point(1282, 101);
             this.btn_remont_act.Name = "btn_remont_act";
-            this.btn_remont_act.Size = new System.Drawing.Size(137, 31);
+            this.btn_remont_act.Size = new System.Drawing.Size(137, 32);
             this.btn_remont_act.TabIndex = 73;
             this.btn_remont_act.Text = "сформировать";
             this.btn_remont_act.UseVisualStyleBackColor = false;
@@ -2119,7 +2146,7 @@
             this.btn_actTO_print.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_actTO_print.Location = new System.Drawing.Point(1282, 66);
             this.btn_actTO_print.Name = "btn_actTO_print";
-            this.btn_actTO_print.Size = new System.Drawing.Size(137, 31);
+            this.btn_actTO_print.Size = new System.Drawing.Size(137, 32);
             this.btn_actTO_print.TabIndex = 8;
             this.btn_actTO_print.Text = "сформировать";
             this.btn_actTO_print.UseVisualStyleBackColor = false;
@@ -2193,7 +2220,7 @@
             this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_search.Location = new System.Drawing.Point(1390, 31);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(29, 29);
+            this.btn_search.Size = new System.Drawing.Size(29, 30);
             this.btn_search.TabIndex = 13;
             this.btn_search.Text = "...";
             this.btn_search.UseVisualStyleBackColor = false;
@@ -2256,7 +2283,7 @@
             this.picB_update.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.system_software_update_22485__1_;
             this.picB_update.Location = new System.Drawing.Point(908, 77);
             this.picB_update.Name = "picB_update";
-            this.picB_update.Size = new System.Drawing.Size(50, 50);
+            this.picB_update.Size = new System.Drawing.Size(50, 51);
             this.picB_update.TabIndex = 2;
             this.picB_update.TabStop = false;
             this.picB_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
@@ -2269,7 +2296,7 @@
             this.picB_clear.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.actions_edit_clear_15784__1_;
             this.picB_clear.Location = new System.Drawing.Point(964, 77);
             this.picB_clear.Name = "picB_clear";
-            this.picB_clear.Size = new System.Drawing.Size(47, 50);
+            this.picB_clear.Size = new System.Drawing.Size(47, 51);
             this.picB_clear.TabIndex = 1;
             this.picB_clear.TabStop = false;
             this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
@@ -2303,7 +2330,7 @@
             this.panel3.Controls.Add(this.lbL_count_remont);
             this.panel3.Controls.Add(this.lbL_count);
             this.panel3.Controls.Add(this.lbL_summ);
-            this.panel3.Location = new System.Drawing.Point(1, 668);
+            this.panel3.Location = new System.Drawing.Point(1, 716);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1426, 63);
             this.panel3.TabIndex = 29;
@@ -2476,18 +2503,226 @@
             this.lbL_summ.TabIndex = 20;
             this.lbL_summ.Text = "999999999.99";
             // 
-            // contextMenuStrip1
+            // menuStrip1
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.оПрограммеToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.mTrip_Button_update,
+            this.печатьToolStripMenuItem,
+            this.расширениеToolStripMenuItem,
+            this.показатьToolStripMenuItem});
+            this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1424, 24);
+            this.menuStrip1.TabIndex = 84;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // оПрограммеToolStripMenuItem
+            // файлToolStripMenuItem
             // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьИзменитьToolStripMenuItem,
+            this.удалитьToolStripMenuItem,
+            this.списатьToolStripMenuItem,
+            this.дляКуратораToolStripMenuItem});
+            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.файлToolStripMenuItem.Text = "Файл";
+            // 
+            // добавитьИзменитьToolStripMenuItem
+            // 
+            this.добавитьИзменитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_new_add_rst,
+            this.mTrip_change_rst,
+            this.mTrip_new_add_rst_remont});
+            this.добавитьИзменитьToolStripMenuItem.Name = "добавитьИзменитьToolStripMenuItem";
+            this.добавитьИзменитьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.добавитьИзменитьToolStripMenuItem.Text = "Добавить/Изменить";
+            // 
+            // mTrip_new_add_rst
+            // 
+            this.mTrip_new_add_rst.Name = "mTrip_new_add_rst";
+            this.mTrip_new_add_rst.Size = new System.Drawing.Size(258, 22);
+            this.mTrip_new_add_rst.Text = "Добавить новую радиостанцию";
+            this.mTrip_new_add_rst.Click += new System.EventHandler(this.MTrip_new_add_rst_Click);
+            // 
+            // mTrip_change_rst
+            // 
+            this.mTrip_change_rst.Name = "mTrip_change_rst";
+            this.mTrip_change_rst.Size = new System.Drawing.Size(258, 22);
+            this.mTrip_change_rst.Text = "Изменить радиостанцию";
+            this.mTrip_change_rst.Click += new System.EventHandler(this.MTrip_change_rst_Click);
+            // 
+            // mTrip_new_add_rst_remont
+            // 
+            this.mTrip_new_add_rst_remont.Name = "mTrip_new_add_rst_remont";
+            this.mTrip_new_add_rst_remont.Size = new System.Drawing.Size(258, 22);
+            this.mTrip_new_add_rst_remont.Text = "Добавить/изменить ремонт";
+            this.mTrip_new_add_rst_remont.Click += new System.EventHandler(this.MTrip_new_add_rst_remont_Click);
+            // 
+            // удалитьToolStripMenuItem
+            // 
+            this.удалитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_delete_rst,
+            this.mTrip_delete_rst_remont,
+            this.mTrip_delete_rst_decommission});
+            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
+            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.удалитьToolStripMenuItem.Text = "Удалить";
+            // 
+            // mTrip_delete_rst
+            // 
+            this.mTrip_delete_rst.Name = "mTrip_delete_rst";
+            this.mTrip_delete_rst.Size = new System.Drawing.Size(212, 22);
+            this.mTrip_delete_rst.Text = "Удалить радиостанцию";
+            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTrip_delete_rst_Click);
+            // 
+            // mTrip_delete_rst_remont
+            // 
+            this.mTrip_delete_rst_remont.Name = "mTrip_delete_rst_remont";
+            this.mTrip_delete_rst_remont.Size = new System.Drawing.Size(212, 22);
+            this.mTrip_delete_rst_remont.Text = "Удалить ремонт";
+            this.mTrip_delete_rst_remont.Click += new System.EventHandler(this.MTrip_delete_rst_remont_Click);
+            // 
+            // mTrip_delete_rst_decommission
+            // 
+            this.mTrip_delete_rst_decommission.Name = "mTrip_delete_rst_decommission";
+            this.mTrip_delete_rst_decommission.Size = new System.Drawing.Size(212, 22);
+            this.mTrip_delete_rst_decommission.Text = "Удалить списание";
+            // 
+            // списатьToolStripMenuItem
+            // 
+            this.списатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_rst_decommission});
+            this.списатьToolStripMenuItem.Name = "списатьToolStripMenuItem";
+            this.списатьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.списатьToolStripMenuItem.Text = "Списать";
+            // 
+            // mTrip_rst_decommission
+            // 
+            this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
+            this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
+            this.mTrip_rst_decommission.Text = "Списать РСТ";
+            // 
+            // дляКуратораToolStripMenuItem
+            // 
+            this.дляКуратораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_AddExecution});
+            this.дляКуратораToolStripMenuItem.Name = "дляКуратораToolStripMenuItem";
+            this.дляКуратораToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.дляКуратораToolStripMenuItem.Text = "Для куратора";
+            // 
+            // mTrip_AddExecution
+            // 
+            this.mTrip_AddExecution.Name = "mTrip_AddExecution";
+            this.mTrip_AddExecution.Size = new System.Drawing.Size(217, 22);
+            this.mTrip_AddExecution.Text = "Добавить в выполнение";
+            // 
+            // mTrip_Button_update
+            // 
+            this.mTrip_Button_update.Name = "mTrip_Button_update";
+            this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
+            this.mTrip_Button_update.Text = "Обновить";
+            // 
+            // печатьToolStripMenuItem
+            // 
+            this.печатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_Button_actTO_print,
+            this.mTrip_Button_remont_act,
+            this.mTrip_PrintWord_Act_decommission});
+            this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
+            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
+            this.печатьToolStripMenuItem.Text = "Печать";
+            // 
+            // mTrip_Button_actTO_print
+            // 
+            this.mTrip_Button_actTO_print.Name = "mTrip_Button_actTO_print";
+            this.mTrip_Button_actTO_print.Size = new System.Drawing.Size(247, 22);
+            this.mTrip_Button_actTO_print.Text = "Сформировать акт ТО";
+            // 
+            // mTrip_Button_remont_act
+            // 
+            this.mTrip_Button_remont_act.Name = "mTrip_Button_remont_act";
+            this.mTrip_Button_remont_act.Size = new System.Drawing.Size(247, 22);
+            this.mTrip_Button_remont_act.Text = "Сформировать акт Ремонта";
+            // 
+            // mTrip_PrintWord_Act_decommission
+            // 
+            this.mTrip_PrintWord_Act_decommission.Name = "mTrip_PrintWord_Act_decommission";
+            this.mTrip_PrintWord_Act_decommission.Size = new System.Drawing.Size(247, 22);
+            this.mTrip_PrintWord_Act_decommission.Text = "Сформировать акт Списания";
+            // 
+            // расширениеToolStripMenuItem
+            // 
+            this.расширениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_Button_save_in_file,
+            this.mTrip_FormTag,
+            this.mTrip_Add_Fill_Full_ActTO,
+            this.mTrip_Add_Signature_ActTO});
+            this.расширениеToolStripMenuItem.Name = "расширениеToolStripMenuItem";
+            this.расширениеToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.расширениеToolStripMenuItem.Text = "Расширение";
+            // 
+            // mTrip_Button_save_in_file
+            // 
+            this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
+            this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(202, 22);
+            this.mTrip_Button_save_in_file.Text = "Сохранение базы";
+            // 
+            // mTrip_FormTag
+            // 
+            this.mTrip_FormTag.Name = "mTrip_FormTag";
+            this.mTrip_FormTag.Size = new System.Drawing.Size(202, 22);
+            this.mTrip_FormTag.Text = "Сформировать бирки";
+            // 
+            // mTrip_Add_Fill_Full_ActTO
+            // 
+            this.mTrip_Add_Fill_Full_ActTO.Name = "mTrip_Add_Fill_Full_ActTO";
+            this.mTrip_Add_Fill_Full_ActTO.Size = new System.Drawing.Size(202, 22);
+            this.mTrip_Add_Fill_Full_ActTO.Text = "Заполняем акт";
+            // 
+            // mTrip_Add_Signature_ActTO
+            // 
+            this.mTrip_Add_Signature_ActTO.Name = "mTrip_Add_Signature_ActTO";
+            this.mTrip_Add_Signature_ActTO.Size = new System.Drawing.Size(202, 22);
+            this.mTrip_Add_Signature_ActTO.Text = "На подписание акт";
+            // 
+            // показатьToolStripMenuItem
+            // 
+            this.показатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission,
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot,
+            this.mTrip_PictureBox_seach_datadrid_replay_Click,
+            this.mTrip_Show_radiostantion_decommission_Click});
+            this.показатьToolStripMenuItem.Name = "показатьToolStripMenuItem";
+            this.показатьToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.показатьToolStripMenuItem.Text = "Показать";
+            // 
+            // mTrip_Btn_RefreshDataGridWithoutDecommission
+            // 
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Name = "mTrip_Btn_RefreshDataGridWithoutDecommission";
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Size = new System.Drawing.Size(326, 22);
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Text = "Показать РСТ без списаний по участку";
+            // 
+            // mTrip_Btn_RefreshDataGridtDecommissionByPlot
+            // 
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Name = "mTrip_Btn_RefreshDataGridtDecommissionByPlot";
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Size = new System.Drawing.Size(326, 22);
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Text = "Показать списанные РСТ по участку";
+            // 
+            // mTrip_PictureBox_seach_datadrid_replay_Click
+            // 
+            this.mTrip_PictureBox_seach_datadrid_replay_Click.Name = "mTrip_PictureBox_seach_datadrid_replay_Click";
+            this.mTrip_PictureBox_seach_datadrid_replay_Click.Size = new System.Drawing.Size(326, 22);
+            this.mTrip_PictureBox_seach_datadrid_replay_Click.Text = "Показать совпадение с предыдущим годом";
+            // 
+            // mTrip_Show_radiostantion_decommission_Click
+            // 
+            this.mTrip_Show_radiostantion_decommission_Click.Name = "mTrip_Show_radiostantion_decommission_Click";
+            this.mTrip_Show_radiostantion_decommission_Click.Size = new System.Drawing.Size(326, 22);
+            this.mTrip_Show_radiostantion_decommission_Click.Text = "Показать все списания по дороге";
             // 
             // ST_WorkForm
             // 
@@ -2495,7 +2730,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.ClientSize = new System.Drawing.Size(1424, 777);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.pnL_printBase);
@@ -2510,6 +2745,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -2518,7 +2754,6 @@
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "ST_WorkForm";
             this.ShowIcon = false;
-            this.Text = "Рабочий кабинет";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ST_WorkForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ST_WorkForm_FormClosed);
             this.Load += new System.EventHandler(this.ST_WorkForm_Load);
@@ -2553,8 +2788,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2737,7 +2974,34 @@
         private System.Windows.Forms.ComboBox cmB_add_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Fill_Full_ActTO;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьИзменитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_new_add_rst;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_change_rst;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_new_add_rst_remont;
+        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst_remont;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst_decommission;
+        private System.Windows.Forms.ToolStripMenuItem списатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_rst_decommission;
+        private System.Windows.Forms.ToolStripMenuItem дляКуратораToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_AddExecution;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_update;
+        private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_actTO_print;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_remont_act;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_PrintWord_Act_decommission;
+        private System.Windows.Forms.ToolStripMenuItem расширениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_save_in_file;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_FormTag;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Add_Fill_Full_ActTO;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Add_Signature_ActTO;
+        private System.Windows.Forms.ToolStripMenuItem показатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Btn_RefreshDataGridWithoutDecommission;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Btn_RefreshDataGridtDecommissionByPlot;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_PictureBox_seach_datadrid_replay_Click;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Show_radiostantion_decommission_Click;
     }
 }
