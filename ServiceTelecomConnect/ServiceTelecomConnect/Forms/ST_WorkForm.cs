@@ -2390,6 +2390,11 @@ namespace ServiceTelecomConnect
         {
             Delete_rst_decommission_click(sender, e);
         }
+
+        void MTrip_rst_decommission_Click(object sender, EventArgs e)
+        {
+            DecommissionSerialNumber(sender, e);
+        }
     }
 }
 

@@ -2604,8 +2604,9 @@
             // mTrip_rst_decommission
             // 
             this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
-            this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
+            this.mTrip_rst_decommission.Size = new System.Drawing.Size(180, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
+            this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
             // 
             // дляКуратораToolStripMenuItem
             // 
