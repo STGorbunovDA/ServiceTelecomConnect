@@ -2400,6 +2400,11 @@ namespace ServiceTelecomConnect
         {
             AddExecution(sender, e);
         }
+
+        void MTrip_Button_update_Click(object sender, EventArgs e)
+        {
+            Button_update_Click(sender, e);
+        }
     }
 }
 

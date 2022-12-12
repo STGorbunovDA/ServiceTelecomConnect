@@ -2604,7 +2604,7 @@
             // mTrip_rst_decommission
             // 
             this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
-            this.mTrip_rst_decommission.Size = new System.Drawing.Size(180, 22);
+            this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
             // 
@@ -2628,6 +2628,7 @@
             this.mTrip_Button_update.Name = "mTrip_Button_update";
             this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
             this.mTrip_Button_update.Text = "Обновить";
+            this.mTrip_Button_update.Click += new System.EventHandler(this.MTrip_Button_update_Click);
             // 
             // печатьToolStripMenuItem
             // 
