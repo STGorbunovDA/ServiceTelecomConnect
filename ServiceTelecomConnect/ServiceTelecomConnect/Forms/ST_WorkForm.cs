@@ -118,8 +118,6 @@ namespace ServiceTelecomConnect
 
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
-
-
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
             dataGridView1.EnableHeadersVisualStyles = false;
