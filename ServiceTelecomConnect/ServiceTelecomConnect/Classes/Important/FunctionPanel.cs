@@ -154,6 +154,28 @@ namespace ServiceTelecomConnect
             }
             MessageBox.Show("База данных успешно скопирована!");
         }
+        internal static void Manual_backup_current_BD_curator()
+        {
+            var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
+
+            using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.OpenConnection();
+                command.ExecuteNonQuery();
+                DB_2.GetInstance.CloseConnection();
+            }
+
+            var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
+
+            using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
+            {
+                DB_2.GetInstance.OpenConnection();
+                command2.ExecuteNonQuery();
+                DB_2.GetInstance.CloseConnection();
+            }
+            MessageBox.Show("База данных успешно скопирована!");
+        }
+
         #endregion
 
         #region очистка текущей БД
