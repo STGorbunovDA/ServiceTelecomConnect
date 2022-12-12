@@ -2455,6 +2455,11 @@ namespace ServiceTelecomConnect
         {
             PictureBox_seach_datadrid_replay_Click(sender, e);
         }
+
+        void MTrip_Show_radiostantion_decommission_Click_Click(object sender, EventArgs e)
+        {
+            Show_radiostantion_decommission_Click(sender, e);
+        }
     }
 }
 

@@ -2737,6 +2737,7 @@
             this.mTrip_Show_radiostantion_decommission_Click.Name = "mTrip_Show_radiostantion_decommission_Click";
             this.mTrip_Show_radiostantion_decommission_Click.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Show_radiostantion_decommission_Click.Text = "Показать все списания по дороге";
+            this.mTrip_Show_radiostantion_decommission_Click.Click += new System.EventHandler(this.MTrip_Show_radiostantion_decommission_Click_Click);
             // 
             // ST_WorkForm
             // 
