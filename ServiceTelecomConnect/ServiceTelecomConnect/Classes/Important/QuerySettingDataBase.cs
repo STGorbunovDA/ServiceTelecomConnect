@@ -136,7 +136,7 @@ namespace ServiceTelecomConnect
                     }
                 }
                 else dgw.Rows.Clear();
-
+                
                 dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
