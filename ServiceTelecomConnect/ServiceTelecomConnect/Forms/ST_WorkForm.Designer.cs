@@ -215,7 +215,7 @@
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_file = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьИзменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_new_add_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
@@ -229,21 +229,21 @@
             this.дляКуратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_AddExecution = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_update = new System.Windows.Forms.ToolStripMenuItem();
-            this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_print = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_actTO_print = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_remont_act = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PrintWord_Act_decommission = new System.Windows.Forms.ToolStripMenuItem();
-            this.расширениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_expansion = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_FormTag = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Add_Fill_Full_ActTO = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Add_Signature_ActTO = new System.Windows.Forms.ToolStripMenuItem();
-            this.показатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_show = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Btn_RefreshDataGridWithoutDecommission = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PictureBox_seach_datadrid_replay_Click = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Show_radiostantion_decommission_Click = new System.Windows.Forms.ToolStripMenuItem();
-            this.функциональнаяПанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_funcionalpanel = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_clear_BD_current_year = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_manual_backup_current_DB = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_loading_file_current_DB = new System.Windows.Forms.ToolStripMenuItem();
@@ -2519,12 +2519,12 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
+            this.mTrip_file,
             this.mTrip_Button_update,
-            this.печатьToolStripMenuItem,
-            this.расширениеToolStripMenuItem,
-            this.показатьToolStripMenuItem,
-            this.функциональнаяПанельToolStripMenuItem});
+            this.mTrip_print,
+            this.mTrip_expansion,
+            this.mTrip_show,
+            this.mTrip_funcionalpanel});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -2532,16 +2532,16 @@
             this.menuStrip1.TabIndex = 84;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
+            // mTrip_file
             // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьИзменитьToolStripMenuItem,
             this.удалитьToolStripMenuItem,
             this.списатьToolStripMenuItem,
             this.дляКуратораToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
+            this.mTrip_file.Name = "mTrip_file";
+            this.mTrip_file.Size = new System.Drawing.Size(51, 20);
+            this.mTrip_file.Text = "Файл";
             // 
             // добавитьИзменитьToolStripMenuItem
             // 
@@ -2619,7 +2619,6 @@
             this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
-            
             // 
             // дляКуратораToolStripMenuItem
             // 
@@ -2643,15 +2642,15 @@
             this.mTrip_Button_update.Text = "Обновить";
             this.mTrip_Button_update.Click += new System.EventHandler(this.MTrip_Button_update_Click);
             // 
-            // печатьToolStripMenuItem
+            // mTrip_print
             // 
-            this.печатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_print.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_Button_actTO_print,
             this.mTrip_Button_remont_act,
             this.mTrip_PrintWord_Act_decommission});
-            this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-            this.печатьToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.печатьToolStripMenuItem.Text = "Печать";
+            this.mTrip_print.Name = "mTrip_print";
+            this.mTrip_print.Size = new System.Drawing.Size(62, 20);
+            this.mTrip_print.Text = "Печать";
             // 
             // mTrip_Button_actTO_print
             // 
@@ -2674,16 +2673,16 @@
             this.mTrip_PrintWord_Act_decommission.Text = "Сформировать акт Списания";
             this.mTrip_PrintWord_Act_decommission.Click += new System.EventHandler(this.MTrip_PrintWord_Act_decommission_Click);
             // 
-            // расширениеToolStripMenuItem
+            // mTrip_expansion
             // 
-            this.расширениеToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_expansion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_Button_save_in_file,
             this.mTrip_FormTag,
             this.mTrip_Add_Fill_Full_ActTO,
             this.mTrip_Add_Signature_ActTO});
-            this.расширениеToolStripMenuItem.Name = "расширениеToolStripMenuItem";
-            this.расширениеToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.расширениеToolStripMenuItem.Text = "Расширение";
+            this.mTrip_expansion.Name = "mTrip_expansion";
+            this.mTrip_expansion.Size = new System.Drawing.Size(91, 20);
+            this.mTrip_expansion.Text = "Расширение";
             // 
             // mTrip_Button_save_in_file
             // 
@@ -2713,16 +2712,16 @@
             this.mTrip_Add_Signature_ActTO.Text = "На подписание акт";
             this.mTrip_Add_Signature_ActTO.Click += new System.EventHandler(this.MTrip_Add_Signature_ActTO_Click);
             // 
-            // показатьToolStripMenuItem
+            // mTrip_show
             // 
-            this.показатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_show.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_Btn_RefreshDataGridWithoutDecommission,
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot,
             this.mTrip_PictureBox_seach_datadrid_replay_Click,
             this.mTrip_Show_radiostantion_decommission_Click});
-            this.показатьToolStripMenuItem.Name = "показатьToolStripMenuItem";
-            this.показатьToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.показатьToolStripMenuItem.Text = "Показать";
+            this.mTrip_show.Name = "mTrip_show";
+            this.mTrip_show.Size = new System.Drawing.Size(75, 20);
+            this.mTrip_show.Text = "Показать";
             // 
             // mTrip_Btn_RefreshDataGridWithoutDecommission
             // 
@@ -2752,9 +2751,9 @@
             this.mTrip_Show_radiostantion_decommission_Click.Text = "Показать все списания по дороге";
             this.mTrip_Show_radiostantion_decommission_Click.Click += new System.EventHandler(this.MTrip_Show_radiostantion_decommission_Click_Click);
             // 
-            // функциональнаяПанельToolStripMenuItem
+            // mTrip_funcionalpanel
             // 
-            this.функциональнаяПанельToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_funcionalpanel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_btn_clear_BD_current_year,
             this.mTrip_btn_manual_backup_current_DB,
             this.mTrip_btn_loading_file_current_DB,
@@ -2765,9 +2764,9 @@
             this.mTrip_btn_Uploading_JSON_file,
             this.mTrip_btn_Show_DB_radiostantion_last_year,
             this.mTrip_btn_Show_DB_radiostantion_full});
-            this.функциональнаяПанельToolStripMenuItem.Name = "функциональнаяПанельToolStripMenuItem";
-            this.функциональнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(163, 20);
-            this.функциональнаяПанельToolStripMenuItem.Text = "Функциональная панель";
+            this.mTrip_funcionalpanel.Name = "mTrip_funcionalpanel";
+            this.mTrip_funcionalpanel.Size = new System.Drawing.Size(163, 20);
+            this.mTrip_funcionalpanel.Text = "Функциональная панель";
             // 
             // mTrip_btn_clear_BD_current_year
             // 
@@ -3090,7 +3089,7 @@
         private System.Windows.Forms.PictureBox picB_delete_Item_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Fill_Full_ActTO;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_file;
         private System.Windows.Forms.ToolStripMenuItem добавитьИзменитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mTrip_new_add_rst;
         private System.Windows.Forms.ToolStripMenuItem mTrip_change_rst;
@@ -3104,21 +3103,21 @@
         private System.Windows.Forms.ToolStripMenuItem дляКуратораToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mTrip_AddExecution;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Button_update;
-        private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_print;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Button_actTO_print;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Button_remont_act;
         private System.Windows.Forms.ToolStripMenuItem mTrip_PrintWord_Act_decommission;
-        private System.Windows.Forms.ToolStripMenuItem расширениеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_expansion;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Button_save_in_file;
         private System.Windows.Forms.ToolStripMenuItem mTrip_FormTag;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Add_Fill_Full_ActTO;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Add_Signature_ActTO;
-        private System.Windows.Forms.ToolStripMenuItem показатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_show;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Btn_RefreshDataGridWithoutDecommission;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Btn_RefreshDataGridtDecommissionByPlot;
         private System.Windows.Forms.ToolStripMenuItem mTrip_PictureBox_seach_datadrid_replay_Click;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Show_radiostantion_decommission_Click;
-        private System.Windows.Forms.ToolStripMenuItem функциональнаяПанельToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_funcionalpanel;
         private System.Windows.Forms.ToolStripMenuItem mTrip_btn_clear_BD_current_year;
         private System.Windows.Forms.ToolStripMenuItem mTrip_btn_manual_backup_current_DB;
         private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_file_current_DB;
