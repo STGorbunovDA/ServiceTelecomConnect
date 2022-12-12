@@ -852,6 +852,14 @@ namespace ServiceTelecomConnect
             FunctionalPanel.Clear_BD_current_year_Curator();
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
         }
+
+        #endregion
+
+        #region Ручное-резервное копирование текущей БД
+        void Btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         #endregion
