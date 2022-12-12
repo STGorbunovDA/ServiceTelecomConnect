@@ -1758,6 +1758,7 @@
             this.btn_loading_file_current_DB.TabIndex = 79;
             this.btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
             this.btn_loading_file_current_DB.UseVisualStyleBackColor = false;
+            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.Btn_loading_file_current_DB_Click);
             // 
             // btn_clear_BD_current_year_Curator
             // 
