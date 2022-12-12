@@ -90,25 +90,25 @@ namespace ServiceTelecomConnect
             }
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
             {
-                mTrip_funcionalpanel.Enabled = false;
+                mTrip_funcionalpanel.Visible = false;
             }
             if (_user.IsAdmin == "Начальник участка")
             {
-                mTrip_Curator.Enabled = false;
-                mTrip_funcionalpanel.Enabled = false;
+                mTrip_Curator.Visible = false;
+                mTrip_funcionalpanel.Visible = false;
             }
             if (_user.IsAdmin == "Инженер")
             {
                 button_change_rst_form.Enabled = false;
-                mTrip_Curator.Enabled = false;
-                mTrip_funcionalpanel.Enabled = false;
-                mTrip_change_rst.Enabled = false;
-                mTrip_delete.Enabled = false;
-                mTrip_decommission.Enabled = false;
-                mTrip_Curator.Enabled = false;
-                mTrip_Add_Fill_Full_ActTO.Enabled = false;
-                mTrip_Add_Signature_ActTO.Enabled = false;
-                mTrip_funcionalpanel.Enabled = false;
+                mTrip_Curator.Visible = false;
+                mTrip_funcionalpanel.Visible = false;
+                mTrip_change_rst.Visible = false;
+                mTrip_delete.Visible = false;
+                mTrip_decommission.Visible = false;
+                mTrip_Curator.Visible = false;
+                mTrip_Add_Fill_Full_ActTO.Visible = false;
+                mTrip_Add_Signature_ActTO.Visible = false;
+                mTrip_funcionalpanel.Visible = false;
             }
 
         }
