@@ -1858,6 +1858,7 @@ namespace ServiceTelecomConnect
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
                     cmb_number_unique_acts.DisplayMember = "dateTO";
+                    cmb_number_unique_acts.ValueMember = "dateTO";
 
                     DB.GetInstance.CloseConnection();
                 }
@@ -2563,7 +2564,7 @@ namespace ServiceTelecomConnect
 
                 if (table.Rows.Count > 0)
                 {
-                    return Convert.ToDateTime(table.Rows[0].ItemArray[0]);
+                    return Convert.ToDateTime(table.Rows[table.Rows.Count - 1].ItemArray[0]);
                 }
                 else
                 {
