@@ -243,6 +243,17 @@
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PictureBox_seach_datadrid_replay_Click = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Show_radiostantion_decommission_Click = new System.Windows.Forms.ToolStripMenuItem();
+            this.функциональнаяПанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_clear_BD_current_year = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_manual_backup_current_DB = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_loading_file_current_DB = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Copying_current_BD_end_of_the_year = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Loading_file_last_year = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_loading_file_full_BD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_loading_json_file_BD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Uploading_JSON_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Show_DB_radiostantion_full = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -2512,7 +2523,8 @@
             this.mTrip_Button_update,
             this.печатьToolStripMenuItem,
             this.расширениеToolStripMenuItem,
-            this.показатьToolStripMenuItem});
+            this.показатьToolStripMenuItem,
+            this.функциональнаяПанельToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -2738,6 +2750,83 @@
             this.mTrip_Show_radiostantion_decommission_Click.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Show_radiostantion_decommission_Click.Text = "Показать все списания по дороге";
             this.mTrip_Show_radiostantion_decommission_Click.Click += new System.EventHandler(this.MTrip_Show_radiostantion_decommission_Click_Click);
+            // 
+            // функциональнаяПанельToolStripMenuItem
+            // 
+            this.функциональнаяПанельToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_btn_clear_BD_current_year,
+            this.mTrip_btn_manual_backup_current_DB,
+            this.mTrip_btn_loading_file_current_DB,
+            this.mTrip_btn_Copying_current_BD_end_of_the_year,
+            this.mTrip_btn_Loading_file_last_year,
+            this.mTrip_btn_loading_file_full_BD,
+            this.mTrip_btn_loading_json_file_BD,
+            this.mTrip_btn_Uploading_JSON_file,
+            this.mTrip_btn_Show_DB_radiostantion_last_year,
+            this.mTrip_btn_Show_DB_radiostantion_full});
+            this.функциональнаяПанельToolStripMenuItem.Name = "функциональнаяПанельToolStripMenuItem";
+            this.функциональнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(163, 20);
+            this.функциональнаяПанельToolStripMenuItem.Text = "Функциональная панель";
+            // 
+            // mTrip_btn_clear_BD_current_year
+            // 
+            this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
+            this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
+            // 
+            // mTrip_btn_manual_backup_current_DB
+            // 
+            this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
+            this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            // 
+            // mTrip_btn_loading_file_current_DB
+            // 
+            this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
+            this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            // 
+            // mTrip_btn_Copying_current_BD_end_of_the_year
+            // 
+            this.mTrip_btn_Copying_current_BD_end_of_the_year.Name = "mTrip_btn_Copying_current_BD_end_of_the_year";
+            this.mTrip_btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
+            // 
+            // mTrip_btn_Loading_file_last_year
+            // 
+            this.mTrip_btn_Loading_file_last_year.Name = "mTrip_btn_Loading_file_last_year";
+            this.mTrip_btn_Loading_file_last_year.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
+            // 
+            // mTrip_btn_loading_file_full_BD
+            // 
+            this.mTrip_btn_loading_file_full_BD.Name = "mTrip_btn_loading_file_full_BD";
+            this.mTrip_btn_loading_file_full_BD.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
+            // 
+            // mTrip_btn_loading_json_file_BD
+            // 
+            this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
+            this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            // 
+            // mTrip_btn_Uploading_JSON_file
+            // 
+            this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
+            this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            // 
+            // mTrip_btn_Show_DB_radiostantion_last_year
+            // 
+            this.mTrip_btn_Show_DB_radiostantion_last_year.Name = "mTrip_btn_Show_DB_radiostantion_last_year";
+            this.mTrip_btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_Show_DB_radiostantion_last_year.Text = "Показать БД прошлого года по текущему участку";
+            // 
+            // mTrip_btn_Show_DB_radiostantion_full
+            // 
+            this.mTrip_btn_Show_DB_radiostantion_full.Name = "mTrip_btn_Show_DB_radiostantion_full";
+            this.mTrip_btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(429, 22);
+            this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             // 
             // ST_WorkForm
             // 
@@ -3018,5 +3107,16 @@
         private System.Windows.Forms.ToolStripMenuItem mTrip_Btn_RefreshDataGridtDecommissionByPlot;
         private System.Windows.Forms.ToolStripMenuItem mTrip_PictureBox_seach_datadrid_replay_Click;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Show_radiostantion_decommission_Click;
+        private System.Windows.Forms.ToolStripMenuItem функциональнаяПанельToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_clear_BD_current_year;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_manual_backup_current_DB;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_file_current_DB;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Copying_current_BD_end_of_the_year;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Loading_file_last_year;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_file_full_BD;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_json_file_BD;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Uploading_JSON_file;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Show_DB_radiostantion_last_year;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Show_DB_radiostantion_full;
     }
 }
