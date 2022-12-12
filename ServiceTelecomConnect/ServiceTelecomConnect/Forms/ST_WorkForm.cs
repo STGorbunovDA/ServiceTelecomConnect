@@ -2505,6 +2505,11 @@ namespace ServiceTelecomConnect
         {
             Btn_Show_DB_radiostantion_last_year_Click(sender, e);
         }
+
+        void MTrip_btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
+        {
+            Btn_Show_DB_radiostantion_full_Click(sender, e);
+        }
     }
 }
 

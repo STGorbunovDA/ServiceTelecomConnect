@@ -2836,6 +2836,7 @@
             this.mTrip_btn_Show_DB_radiostantion_full.Name = "mTrip_btn_Show_DB_radiostantion_full";
             this.mTrip_btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
+            this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_full_Click);
             // 
             // ST_WorkForm
             // 
