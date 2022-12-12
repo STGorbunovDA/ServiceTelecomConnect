@@ -2684,6 +2684,7 @@
             this.mTrip_FormTag.Name = "mTrip_FormTag";
             this.mTrip_FormTag.Size = new System.Drawing.Size(202, 22);
             this.mTrip_FormTag.Text = "Сформировать бирки";
+            this.mTrip_FormTag.Click += new System.EventHandler(this.MTrip_FormTag_Click);
             // 
             // mTrip_Add_Fill_Full_ActTO
             // 

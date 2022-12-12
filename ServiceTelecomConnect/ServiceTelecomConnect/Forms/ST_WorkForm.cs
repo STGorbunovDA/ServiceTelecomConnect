@@ -2425,6 +2425,11 @@ namespace ServiceTelecomConnect
         {
             Button_save_in_file_Click(sender, e);
         }
+
+        void MTrip_FormTag_Click(object sender, EventArgs e)
+        {
+            FormTag(sender, e);
+        }
     }
 }
 
