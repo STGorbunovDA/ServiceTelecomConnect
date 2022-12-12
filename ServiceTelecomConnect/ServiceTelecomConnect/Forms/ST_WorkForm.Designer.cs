@@ -2773,12 +2773,14 @@
             this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
             this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
+            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTrip_btn_clear_BD_current_year_Click);
             // 
             // mTrip_btn_manual_backup_current_DB
             // 
             this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
             this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTrip_btn_manual_backup_current_DB_Click);
             // 
             // mTrip_btn_loading_file_current_DB
             // 

@@ -2460,6 +2460,16 @@ namespace ServiceTelecomConnect
         {
             Show_radiostantion_decommission_Click(sender, e);
         }
+
+        void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
+        {
+            Clear_BD_current_year_Click(sender, e);
+        }
+
+        void MTrip_btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        {
+            Manual_backup_current_BD_Click(sender, e);
+        }
     }
 }
 
