@@ -817,6 +817,10 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Функциональная панель
+        void Btn_close_Functional_loading_panel_Click(object sender, EventArgs e)
+        {
+            Functional_loading_panel.Visible = false;
+        }
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
@@ -860,11 +864,12 @@ namespace ServiceTelecomConnect
         {
             FunctionalPanel.Manual_backup_current_BD_curator();
         }
-        #endregion
 
         #endregion
 
+        #endregion
 
+        
     }
 }
 
