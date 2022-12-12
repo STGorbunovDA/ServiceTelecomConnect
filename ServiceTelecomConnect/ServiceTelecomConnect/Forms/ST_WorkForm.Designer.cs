@@ -2808,6 +2808,7 @@
             this.mTrip_btn_loading_file_full_BD.Name = "mTrip_btn_loading_file_full_BD";
             this.mTrip_btn_loading_file_full_BD.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
+            this.mTrip_btn_loading_file_full_BD.Click += new System.EventHandler(this.MTrip_btn_loading_file_full_BD_Click);
             // 
             // mTrip_btn_loading_json_file_BD
             // 

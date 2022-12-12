@@ -2485,6 +2485,11 @@ namespace ServiceTelecomConnect
         {
             Button_Loading_file_last_year_Click(sender, e);
         }
+
+        void MTrip_btn_loading_file_full_BD_Click(object sender, EventArgs e)
+        {
+            Loading_file_full_BD_Click(sender, e);
+        }
     }
 }
 
