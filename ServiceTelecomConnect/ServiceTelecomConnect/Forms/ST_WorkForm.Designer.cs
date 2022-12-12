@@ -2297,7 +2297,7 @@
             this.picB_update.Size = new System.Drawing.Size(50, 51);
             this.picB_update.TabIndex = 2;
             this.picB_update.TabStop = false;
-            this.picB_update.Click += new System.EventHandler(this.pictureBox2_update_Click);
+            this.picB_update.Click += new System.EventHandler(this.PicB_update_Click);
             // 
             // picB_clear
             // 
@@ -2619,6 +2619,7 @@
             this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
+            
             // 
             // дляКуратораToolStripMenuItem
             // 
