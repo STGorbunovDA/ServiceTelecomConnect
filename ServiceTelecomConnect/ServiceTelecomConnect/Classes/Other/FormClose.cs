@@ -36,7 +36,7 @@ namespace ServiceTelecomConnect
 
                     if (Date.ToString("yyyy-MM-dd") == dateTimeInput.ToString("yyyy-MM-dd"))
                     {
-                        var addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}'";
+                        var addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}' AND dateTimeInput = '{dateTimeInput.ToString("yyyy-MM-dd HH:mm:ss")}'";
 
                         using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                         {

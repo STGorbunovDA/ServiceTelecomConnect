@@ -1,16 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect.Forms
@@ -93,6 +89,7 @@ namespace ServiceTelecomConnect.Forms
                     DB.GetInstance.CloseConnection();
                 }
             }
+            this.dataGridView1.Sort(this.dataGridView1.Columns["dateTimeInput"], ListSortDirection.Ascending);
         }
 
         void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -169,12 +166,15 @@ namespace ServiceTelecomConnect.Forms
 
         void CmB_dateTimeInput_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             if (cmB_dateTimeInput.Items.Count == 0)
             {
                 return;
             }
 
-            var searchString = $"SELECT id, user, dateTimeInput, dateTimeExit FROM logUserDB WHERE CONCAT (dateTimeInput) LIKE '%" + cmB_dateTimeInput.Text + "%'";
+            var date = Convert.ToDateTime(cmB_dateTimeInput.Text).ToString("yyyy-MM-dd");
+
+            var searchString = $"SELECT id, user, dateTimeInput, dateTimeExit FROM logUserDB WHERE dateTimeInput LIKE '%" + date + "%'";
             using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();

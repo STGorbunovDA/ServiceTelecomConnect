@@ -100,6 +100,8 @@
             this.btn_change_rst_act = new System.Windows.Forms.Button();
             this.chB_numberActTO_Enable = new System.Windows.Forms.CheckBox();
             this.lbL_road = new System.Windows.Forms.Label();
+            this.chB_analog = new System.Windows.Forms.CheckBox();
+            this.chB_digital = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -305,11 +307,11 @@
             // 
             this.txB_price.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.txB_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_price.Location = new System.Drawing.Point(585, 368);
+            this.txB_price.Location = new System.Drawing.Point(640, 367);
             this.txB_price.MaxLength = 20;
             this.txB_price.Name = "txB_price";
             this.txB_price.ReadOnly = true;
-            this.txB_price.Size = new System.Drawing.Size(232, 26);
+            this.txB_price.Size = new System.Drawing.Size(110, 26);
             this.txB_price.TabIndex = 39;
             this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_price_KeyPress);
             // 
@@ -335,7 +337,7 @@
             // 
             this.cmB_poligon.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cmB_poligon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_poligon.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmB_poligon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_poligon.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_poligon.FormattingEnabled = true;
             this.cmB_poligon.Items.AddRange(new object[] {
@@ -797,14 +799,14 @@
             // 
             this.cmB_model.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cmB_model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_model.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmB_model.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_model.FormattingEnabled = true;
             this.cmB_model.Location = new System.Drawing.Point(585, 198);
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
-            this.cmB_model.SelectedIndexChanged += new System.EventHandler(this.ComboBox_model_SelectedIndexChanged);
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
             this.cmB_model.Click += new System.EventHandler(this.ComboBox_model_Click);
             // 
             // monthCalendar2
@@ -918,6 +920,34 @@
             this.lbL_road.Text = "Дорога";
             this.lbL_road.Visible = false;
             // 
+            // chB_analog
+            // 
+            this.chB_analog.AutoSize = true;
+            this.chB_analog.BackColor = System.Drawing.Color.Transparent;
+            this.chB_analog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chB_analog.Location = new System.Drawing.Point(558, 369);
+            this.chB_analog.Name = "chB_analog";
+            this.chB_analog.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chB_analog.Size = new System.Drawing.Size(76, 20);
+            this.chB_analog.TabIndex = 118;
+            this.chB_analog.Text = ".Аналог";
+            this.chB_analog.UseVisualStyleBackColor = false;
+            this.chB_analog.Click += new System.EventHandler(this.ChB_analog_Click);
+            // 
+            // chB_digital
+            // 
+            this.chB_digital.AutoSize = true;
+            this.chB_digital.BackColor = System.Drawing.Color.Transparent;
+            this.chB_digital.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chB_digital.Location = new System.Drawing.Point(756, 369);
+            this.chB_digital.Name = "chB_digital";
+            this.chB_digital.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.chB_digital.Size = new System.Drawing.Size(65, 20);
+            this.chB_digital.TabIndex = 119;
+            this.chB_digital.Text = "Цифр.";
+            this.chB_digital.UseVisualStyleBackColor = false;
+            this.chB_digital.Click += new System.EventHandler(this.ChB_digital_Click);
+            // 
             // СhangeRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -925,6 +955,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(849, 561);
+            this.Controls.Add(this.chB_digital);
+            this.Controls.Add(this.chB_analog);
             this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.chB_numberActTO_Enable);
             this.Controls.Add(this.btn_change_rst_act);
@@ -1084,5 +1116,7 @@
         private System.Windows.Forms.CheckBox chB_numberActTO_Enable;
         private System.Windows.Forms.Button btn_change_rst_full;
         internal System.Windows.Forms.Label lbL_road;
+        private System.Windows.Forms.CheckBox chB_analog;
+        private System.Windows.Forms.CheckBox chB_digital;
     }
 }

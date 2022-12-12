@@ -56,6 +56,8 @@ namespace ServiceTelecomConnect
                 pictureBox5.Enabled = false;
                 btn_identityCard_change_rst_act.Enabled = false;
                 btn_identityCard_change_rst_company.Enabled = false;
+                chB_analog.Enabled = false;
+                chB_digital.Enabled = false;
 
                 lbL_Date.Text = "Дата списания:";
 
@@ -69,6 +71,24 @@ namespace ServiceTelecomConnect
             }
 
             cmB_model.Text = cmB_model.Items[0].ToString();
+
+            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
+               cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+               cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+               cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+               cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+               cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
+            {
+                txB_price.Text = "1411.18";
+                chB_analog.CheckState = CheckState.Checked;
+                chB_digital.CheckState = CheckState.Unchecked;
+            }
+            else
+            {
+                txB_price.Text = "1919.57";
+                chB_digital.CheckState = CheckState.Checked;
+                chB_analog.CheckState = CheckState.Unchecked;
+            }
         }
 
         void ComboBox_model_Click(object sender, EventArgs e)
@@ -1081,7 +1101,7 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void ComboBox_model_SelectedIndexChanged(object sender, EventArgs e)
+        void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
@@ -1093,15 +1113,19 @@ namespace ServiceTelecomConnect
                cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
                 {
                     txB_price.Text = "1411.18";
+                    chB_analog.CheckState = CheckState.Checked;
+                    chB_digital.CheckState = CheckState.Unchecked;
                 }
                 else
                 {
                     txB_price.Text = "1919.57";
+                    chB_digital.CheckState = CheckState.Checked;
+                    chB_analog.CheckState = CheckState.Unchecked;
                 }
             }
             else txB_price.Text = "0.00";
-
         }
+
         void PictureBox5_Click(object sender, EventArgs e)
         {
             txB_dateTO.Text = "";
@@ -1598,6 +1622,28 @@ namespace ServiceTelecomConnect
                 txB_numberAct.Enabled = false;
                 btn_change_rst_act.Enabled = false;
                 btn_change_rst_full.Enabled = true;
+            }
+        }
+
+        void ChB_analog_Click(object sender, EventArgs e)
+        {
+            chB_digital.CheckState = CheckState.Unchecked;
+            txB_price.Text = "1411.18";
+            if (chB_analog.CheckState == CheckState.Unchecked)
+            {
+                chB_digital.CheckState = CheckState.Checked;
+                txB_price.Text = "1919.57";
+            }
+        }
+
+        void ChB_digital_Click(object sender, EventArgs e)
+        {
+            chB_analog.CheckState = CheckState.Unchecked;
+            txB_price.Text = "1919.57";
+            if (chB_digital.CheckState == CheckState.Unchecked)
+            {
+                chB_analog.CheckState = CheckState.Checked;
+                txB_price.Text = "1411.18";
             }
         }
     }

@@ -214,6 +214,8 @@
             this.lbL_count_remont = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -234,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_update)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -2473,6 +2476,19 @@
             this.lbL_summ.TabIndex = 20;
             this.lbL_summ.Text = "999999999.99";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оПрограммеToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // оПрограммеToolStripMenuItem
+            // 
+            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Text = "О программе";
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2537,6 +2553,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2720,5 +2737,7 @@
         private System.Windows.Forms.ComboBox cmB_add_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Fill_Full_ActTO;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
     }
 }

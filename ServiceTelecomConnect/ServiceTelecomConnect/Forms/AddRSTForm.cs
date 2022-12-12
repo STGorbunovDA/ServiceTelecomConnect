@@ -31,6 +31,8 @@ namespace ServiceTelecomConnect
         {
             QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
             QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
+            chB_analog.CheckState = CheckState.Checked;
+            txB_price.Text = "1411.18";
         }
 
         #region добавление РСТ
@@ -741,7 +743,7 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void ComboBox_model_SelectedIndexChanged(object sender, EventArgs e)
+        void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                 cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
@@ -751,12 +753,17 @@ namespace ServiceTelecomConnect
                 cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
             {
                 txB_price.Text = "1411.18";
+                chB_analog.CheckState = CheckState.Checked;
+                chB_digital.CheckState = CheckState.Unchecked;
             }
             else
             {
                 txB_price.Text = "1919.57";
+                chB_digital.CheckState = CheckState.Checked;
+                chB_analog.CheckState = CheckState.Unchecked;
             }
         }
+       
         void TextBox_location_Click(object sender, EventArgs e)
         {
             if (txB_location.Text == "")
@@ -1635,5 +1642,30 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
+
+        void ChB_analog_Click(object sender, EventArgs e)
+        {
+            chB_digital.CheckState = CheckState.Unchecked;
+            txB_price.Text = "1411.18";
+            if(chB_analog.CheckState == CheckState.Unchecked)
+            {
+                chB_digital.CheckState = CheckState.Checked;
+                txB_price.Text = "1919.57";
+            }
+
+        }
+
+        void ChB_digital_Click(object sender, EventArgs e)
+        {
+            chB_analog.CheckState = CheckState.Unchecked;
+            txB_price.Text = "1919.57";
+            if (chB_digital.CheckState == CheckState.Unchecked)
+            {
+                chB_analog.CheckState = CheckState.Checked;
+                txB_price.Text = "1411.18";
+            }
+        }
+
+        
     }
 }
