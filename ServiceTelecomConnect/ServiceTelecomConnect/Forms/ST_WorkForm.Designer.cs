@@ -226,7 +226,7 @@
             this.mTrip_delete_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
             this.списатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
-            this.дляКуратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Curator = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_AddExecution = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_update = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_print = new System.Windows.Forms.ToolStripMenuItem();
@@ -2538,7 +2538,7 @@
             this.добавитьИзменитьToolStripMenuItem,
             this.удалитьToolStripMenuItem,
             this.списатьToolStripMenuItem,
-            this.дляКуратораToolStripMenuItem});
+            this.mTrip_Curator});
             this.mTrip_file.Name = "mTrip_file";
             this.mTrip_file.Size = new System.Drawing.Size(51, 20);
             this.mTrip_file.Text = "Файл";
@@ -2620,13 +2620,13 @@
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
             // 
-            // дляКуратораToolStripMenuItem
+            // mTrip_Curator
             // 
-            this.дляКуратораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_Curator.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_AddExecution});
-            this.дляКуратораToolStripMenuItem.Name = "дляКуратораToolStripMenuItem";
-            this.дляКуратораToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.дляКуратораToolStripMenuItem.Text = "Для куратора";
+            this.mTrip_Curator.Name = "mTrip_Curator";
+            this.mTrip_Curator.Size = new System.Drawing.Size(194, 22);
+            this.mTrip_Curator.Text = "Для куратора";
             // 
             // mTrip_AddExecution
             // 
@@ -3100,7 +3100,7 @@
         private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst_decommission;
         private System.Windows.Forms.ToolStripMenuItem списатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mTrip_rst_decommission;
-        private System.Windows.Forms.ToolStripMenuItem дляКуратораToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Curator;
         private System.Windows.Forms.ToolStripMenuItem mTrip_AddExecution;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Button_update;
         private System.Windows.Forms.ToolStripMenuItem mTrip_print;
