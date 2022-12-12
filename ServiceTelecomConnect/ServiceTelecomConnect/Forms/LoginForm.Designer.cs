@@ -75,7 +75,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
             this.label4.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(482, 225);
+            this.label4.Location = new System.Drawing.Point(518, 225);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 22);
             this.label4.TabIndex = 15;
@@ -86,7 +86,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
             this.label3.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(250, 225);
+            this.label3.Location = new System.Drawing.Point(214, 225);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 22);
             this.label3.TabIndex = 14;
@@ -98,7 +98,7 @@
             this.pictureBox2.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.lock_64;
             this.pictureBox2.ErrorImage = null;
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(586, 220);
+            this.pictureBox2.Location = new System.Drawing.Point(622, 220);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(63, 66);
             this.pictureBox2.TabIndex = 12;
@@ -107,10 +107,10 @@
             // txB_loginField
             // 
             this.txB_loginField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_loginField.Location = new System.Drawing.Point(250, 255);
+            this.txB_loginField.Location = new System.Drawing.Point(214, 255);
             this.txB_loginField.Multiline = true;
             this.txB_loginField.Name = "txB_loginField";
-            this.txB_loginField.Size = new System.Drawing.Size(162, 31);
+            this.txB_loginField.Size = new System.Drawing.Size(198, 31);
             this.txB_loginField.TabIndex = 11;
             // 
             // pictureBox1
@@ -119,7 +119,7 @@
             this.pictureBox1.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.user_64;
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(186, 225);
+            this.pictureBox1.Location = new System.Drawing.Point(150, 225);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(58, 61);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -132,7 +132,7 @@
             this.txB_passField.Location = new System.Drawing.Point(418, 255);
             this.txB_passField.Multiline = true;
             this.txB_passField.Name = "txB_passField";
-            this.txB_passField.Size = new System.Drawing.Size(162, 31);
+            this.txB_passField.Size = new System.Drawing.Size(198, 31);
             this.txB_passField.TabIndex = 17;
             // 
             // lbL_registrationLoginForm
