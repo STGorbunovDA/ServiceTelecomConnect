@@ -78,13 +78,25 @@ namespace ServiceTelecomConnect
                 btn_search.Enabled = true;
                 cmb_number_unique_acts.Enabled = true;
                 btn_search.Enabled = true;
+                mTrip_funcionalpanel.Visible = false;
+                mTrip_show.Visible = false;
+                mTrip_FormTag.Visible = false;
+                mTrip_Add_Fill_Full_ActTO.Visible = false;
+                mTrip_Add_Signature_ActTO.Visible = false;
+                mTrip_print.Visible = false;
+                mTrip_file.Visible = false;
+                txB_serialNumber.Enabled = true;
+                button_save_in_file.Enabled = true;
             }
+
         }
 
 
 
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
+
+
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
 
             dataGridView1.EnableHeadersVisualStyles = false;
