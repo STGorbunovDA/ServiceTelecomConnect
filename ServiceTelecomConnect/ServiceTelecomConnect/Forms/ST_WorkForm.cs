@@ -88,6 +88,15 @@ namespace ServiceTelecomConnect
                 txB_serialNumber.Enabled = true;
                 button_save_in_file.Enabled = true;
             }
+            if(_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
+            {
+                mTrip_funcionalpanel.Enabled = false;
+            }
+            if(_user.IsAdmin == "Начальник участка")
+            {
+                mTrip_Curator.Enabled = false;
+                mTrip_funcionalpanel.Enabled = false;
+            }
 
         }
 
