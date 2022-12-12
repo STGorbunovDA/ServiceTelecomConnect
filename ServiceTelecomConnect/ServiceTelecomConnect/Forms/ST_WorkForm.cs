@@ -2495,6 +2495,16 @@ namespace ServiceTelecomConnect
         {
             Loading_json_file_BD_Click(sender, e);
         }
+
+        void MTrip_btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        {
+            Button_Uploading_JSON_file_Click(sender, e);
+        }
+
+        void MTrip_btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
+        {
+            Btn_Show_DB_radiostantion_last_year_Click(sender, e);
+        }
     }
 }
 

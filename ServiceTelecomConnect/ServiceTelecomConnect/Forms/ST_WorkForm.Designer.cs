@@ -2822,12 +2822,14 @@
             this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
             this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTrip_btn_Uploading_JSON_file_Click);
             // 
             // mTrip_btn_Show_DB_radiostantion_last_year
             // 
             this.mTrip_btn_Show_DB_radiostantion_last_year.Name = "mTrip_btn_Show_DB_radiostantion_last_year";
             this.mTrip_btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Show_DB_radiostantion_last_year.Text = "Показать БД прошлого года по текущему участку";
+            this.mTrip_btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_last_year_Click);
             // 
             // mTrip_btn_Show_DB_radiostantion_full
             // 
