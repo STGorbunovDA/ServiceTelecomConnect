@@ -2691,6 +2691,7 @@
             this.mTrip_Add_Fill_Full_ActTO.Name = "mTrip_Add_Fill_Full_ActTO";
             this.mTrip_Add_Fill_Full_ActTO.Size = new System.Drawing.Size(202, 22);
             this.mTrip_Add_Fill_Full_ActTO.Text = "Заполняем акт";
+            this.mTrip_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.MTrip_Add_Fill_Full_ActTO_Click);
             // 
             // mTrip_Add_Signature_ActTO
             // 
