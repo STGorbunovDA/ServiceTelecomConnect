@@ -2698,6 +2698,7 @@
             this.mTrip_Add_Signature_ActTO.Name = "mTrip_Add_Signature_ActTO";
             this.mTrip_Add_Signature_ActTO.Size = new System.Drawing.Size(202, 22);
             this.mTrip_Add_Signature_ActTO.Text = "На подписание акт";
+            this.mTrip_Add_Signature_ActTO.Click += new System.EventHandler(this.MTrip_Add_Signature_ActTO_Click);
             // 
             // показатьToolStripMenuItem
             // 

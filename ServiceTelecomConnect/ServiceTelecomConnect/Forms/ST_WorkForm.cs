@@ -2435,6 +2435,11 @@ namespace ServiceTelecomConnect
         {
             Add_Fill_Full_ActTO(sender, e);
         }
+
+        void MTrip_Add_Signature_ActTO_Click(object sender, EventArgs e)
+        {
+            Add_Signature_ActTO(sender, e);
+        }
     }
 }
 
