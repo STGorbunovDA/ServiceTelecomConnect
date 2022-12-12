@@ -2645,6 +2645,7 @@
             this.mTrip_Button_actTO_print.Name = "mTrip_Button_actTO_print";
             this.mTrip_Button_actTO_print.Size = new System.Drawing.Size(247, 22);
             this.mTrip_Button_actTO_print.Text = "Сформировать акт ТО";
+            this.mTrip_Button_actTO_print.Click += new System.EventHandler(this.MTrip_Button_actTO_print_Click);
             // 
             // mTrip_Button_remont_act
             // 

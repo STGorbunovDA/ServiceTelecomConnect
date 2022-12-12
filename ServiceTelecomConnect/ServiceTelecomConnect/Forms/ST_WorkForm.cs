@@ -2405,6 +2405,11 @@ namespace ServiceTelecomConnect
         {
             Button_update_Click(sender, e);
         }
+
+        void MTrip_Button_actTO_print_Click(object sender, EventArgs e)
+        {
+            Button_actTO_print_Click(sender, e);
+        }
     }
 }
 
