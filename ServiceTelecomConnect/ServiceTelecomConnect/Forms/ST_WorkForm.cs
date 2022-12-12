@@ -2490,6 +2490,11 @@ namespace ServiceTelecomConnect
         {
             Loading_file_full_BD_Click(sender, e);
         }
+
+        void MTrip_btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        {
+            Loading_json_file_BD_Click(sender, e);
+        }
     }
 }
 

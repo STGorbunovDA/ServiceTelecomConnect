@@ -2815,6 +2815,7 @@
             this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
             this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTrip_btn_loading_json_file_BD_Click);
             // 
             // mTrip_btn_Uploading_JSON_file
             // 
