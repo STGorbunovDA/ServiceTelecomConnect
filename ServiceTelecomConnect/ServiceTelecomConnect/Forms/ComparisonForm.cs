@@ -820,7 +820,7 @@ namespace ServiceTelecomConnect
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
         {
-            if (_user.Login == "Admin" || _user.Login == "Куратор")
+            if (_user.Login == "Admin")
             {
                 Functional_loading_panel.Enabled = true;
                 Functional_loading_panel.Visible = true;
@@ -858,7 +858,7 @@ namespace ServiceTelecomConnect
         #region Ручное-резервное копирование текущей БД
         void Btn_manual_backup_current_DB_Click(object sender, EventArgs e)
         {
-
+            FunctionalPanel.Manual_backup_current_BD_curator();
         }
         #endregion
 
