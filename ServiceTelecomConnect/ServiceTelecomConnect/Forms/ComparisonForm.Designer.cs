@@ -1794,6 +1794,7 @@
             this.btn_close_Functional_loading_panel.TabIndex = 37;
             this.btn_close_Functional_loading_panel.Text = "X";
             this.btn_close_Functional_loading_panel.UseVisualStyleBackColor = false;
+            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.Btn_close_Functional_loading_panel_Click);
             // 
             // label4
             // 
