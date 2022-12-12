@@ -220,11 +220,11 @@
             this.mTrip_new_add_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_new_add_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
-            this.списатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_decommission = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_rst_decommission = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Curator = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_AddExecution = new System.Windows.Forms.ToolStripMenuItem();
@@ -2536,8 +2536,8 @@
             // 
             this.mTrip_file.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьИзменитьToolStripMenuItem,
-            this.удалитьToolStripMenuItem,
-            this.списатьToolStripMenuItem,
+            this.mTrip_delete,
+            this.mTrip_decommission,
             this.mTrip_Curator});
             this.mTrip_file.Name = "mTrip_file";
             this.mTrip_file.Size = new System.Drawing.Size(51, 20);
@@ -2574,15 +2574,15 @@
             this.mTrip_new_add_rst_remont.Text = "Добавить/изменить ремонт";
             this.mTrip_new_add_rst_remont.Click += new System.EventHandler(this.MTrip_new_add_rst_remont_Click);
             // 
-            // удалитьToolStripMenuItem
+            // mTrip_delete
             // 
-            this.удалитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_delete.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_delete_rst,
             this.mTrip_delete_rst_remont,
             this.mTrip_delete_rst_decommission});
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.mTrip_delete.Name = "mTrip_delete";
+            this.mTrip_delete.Size = new System.Drawing.Size(194, 22);
+            this.mTrip_delete.Text = "Удалить";
             // 
             // mTrip_delete_rst
             // 
@@ -2605,18 +2605,18 @@
             this.mTrip_delete_rst_decommission.Text = "Удалить списание";
             this.mTrip_delete_rst_decommission.Click += new System.EventHandler(this.MTrip_delete_rst_decommission_Click);
             // 
-            // списатьToolStripMenuItem
+            // mTrip_decommission
             // 
-            this.списатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_decommission.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_rst_decommission});
-            this.списатьToolStripMenuItem.Name = "списатьToolStripMenuItem";
-            this.списатьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.списатьToolStripMenuItem.Text = "Списать";
+            this.mTrip_decommission.Name = "mTrip_decommission";
+            this.mTrip_decommission.Size = new System.Drawing.Size(194, 22);
+            this.mTrip_decommission.Text = "Списать";
             // 
             // mTrip_rst_decommission
             // 
             this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
-            this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
+            this.mTrip_rst_decommission.Size = new System.Drawing.Size(180, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
             // 
@@ -3094,11 +3094,11 @@
         private System.Windows.Forms.ToolStripMenuItem mTrip_new_add_rst;
         private System.Windows.Forms.ToolStripMenuItem mTrip_change_rst;
         private System.Windows.Forms.ToolStripMenuItem mTrip_new_add_rst_remont;
-        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_delete;
         private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst;
         private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst_remont;
         private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst_decommission;
-        private System.Windows.Forms.ToolStripMenuItem списатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_decommission;
         private System.Windows.Forms.ToolStripMenuItem mTrip_rst_decommission;
         private System.Windows.Forms.ToolStripMenuItem mTrip_Curator;
         private System.Windows.Forms.ToolStripMenuItem mTrip_AddExecution;
