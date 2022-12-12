@@ -506,7 +506,7 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-                    string text = File.ReadAllText(filename);
+                   // string text = File.ReadAllText(filename);
 
                     var lineNumber = 0;
 
@@ -557,6 +557,80 @@ namespace ServiceTelecomConnect
                         else
                         {
                             MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
+                        }
+                    }
+                }
+                else
+                {
+                    string Mesage;
+                    Mesage = "Вы не выбрали файл .csv который нужно добавить";
+
+                    if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        internal static void Loading_file_current_BD_curator()
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                OpenFileDialog openFile = new OpenFileDialog
+                {
+                    Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*"
+                };
+
+                openFile.ShowDialog();
+
+                if (!String.IsNullOrEmpty(openFile.FileName))
+                {
+                    string filename = openFile.FileName;
+                    //string text = File.ReadAllText(filename);
+
+                    var lineNumber = 0;
+
+                    using (StreamReader reader = new StreamReader(filename))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            var line = reader.ReadLine();
+
+                            if (lineNumber != 0)
+                            {
+                                var values = line.Split('\t');
+
+                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantionCurator(values[4]))
+                                {
+                                    var mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                                    $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                                    $"category, priceRemont, decommissionSerialNumber, comment, month, road) VALUES " +
+                                    $"('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}','{values[4]}', '{values[5]}', '{values[6]}', " +
+                                    $"'{values[7]}','{values[8]}','{values[9]}','{values[10]}', '{values[11]}', '{values[12]}', " +
+                                    $"'{values[13]}', '{values[14]}', '{values[15]}', '{values[16]}', '{values[17]}')";
+
+                                    using (MySqlCommand command = new MySqlCommand(mySql, DB.GetInstance.GetConnection()))
+                                    {
+                                        DB.GetInstance.OpenConnection();
+                                        command.ExecuteNonQuery();
+                                        DB.GetInstance.CloseConnection();
+                                    }
+                                }
+                                else
+                                {
+                                    continue;
+                                }
+                            }
+                            lineNumber++;
+                        }
+                        if (reader.EndOfStream)
+                        {
+                            MessageBox.Show("Радиостанции успешно добавлены!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка");
                         }
                     }
                 }
