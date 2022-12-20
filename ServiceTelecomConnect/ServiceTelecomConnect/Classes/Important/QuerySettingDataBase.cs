@@ -1168,9 +1168,9 @@ namespace ServiceTelecomConnect
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
 
-                    string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN " +
-                        $"radiostantion ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) " +
-                        $"WHERE radiostantion.serialNumber IS NULL AND radiostantion_last_year.road LIKE '" + road + "'";
+                    string queryString = $"SELECT radiostantion_full. * FROM radiostantion_full LEFT JOIN " +
+                        $"radiostantion ON (radiostantion_full.serialNumber=radiostantion.serialNumber) " +
+                        $"WHERE radiostantion.serialNumber IS NULL AND radiostantion_full.road LIKE '" + road + "'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -1213,9 +1213,9 @@ namespace ServiceTelecomConnect
                     Thread.CurrentThread.CurrentCulture = myCulture;
                     dgw.Rows.Clear();
 
-                    string queryString = $"SELECT radiostantion_last_year. * FROM radiostantion_last_year LEFT JOIN radiostantion " +
-                        $"ON (radiostantion_last_year.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL " +
-                        $"AND radiostantion_last_year.city LIKE '" + city + "'AND radiostantion_last_year.road LIKE '" + road + "'";
+                    string queryString = $"SELECT radiostantion_full. * FROM radiostantion_full LEFT JOIN radiostantion " +
+                        $"ON (radiostantion_full.serialNumber=radiostantion.serialNumber) WHERE radiostantion.serialNumber IS NULL " +
+                        $"AND radiostantion_full.city LIKE '" + city + "'AND radiostantion_full.road LIKE '" + road + "'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
