@@ -255,7 +255,7 @@ namespace ServiceTelecomConnect
                     serialNumber = row.Cells[5].Value,
                     inventoryNumber = row.Cells[6].Value,
                     networkNumber = row.Cells[7].Value,
-                    dateTO = row.Cells[8].Value,
+                    dateTO = Convert.ToDateTime(row.Cells[8].Value).ToString("dd.MM.yyyy"),
                     numberAct = row.Cells[9].Value,
                     city = row.Cells[10].Value,
                     price = row.Cells[11].Value,
@@ -320,7 +320,7 @@ namespace ServiceTelecomConnect
                     serialNumber = row.Cells[5].Value,
                     inventoryNumber = row.Cells[6].Value,
                     networkNumber = row.Cells[7].Value,
-                    dateTO = row.Cells[8].Value,
+                    dateTO = Convert.ToDateTime(row.Cells[8].Value).ToString("dd.MM.yyyy"),
                     numberAct = row.Cells[9].Value,
                     city = row.Cells[10].Value,
                     price = row.Cells[11].Value,
@@ -337,11 +337,11 @@ namespace ServiceTelecomConnect
 
             string json = JsonConvert.SerializeObject(products);
 
-            string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\БазаДанныхJson.json";
+            string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\БазаДанныхJsonCurator.json";
 
-            if (!File.Exists($@"С:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\"))
+            if (!File.Exists($@"С:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\"))
             {
-                Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\");
+                Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\");
             }
             File.WriteAllText(fileNamePath, json);
             MessageBox.Show("Успешно!");
@@ -487,9 +487,7 @@ namespace ServiceTelecomConnect
 
         internal static void Loading_json_file_BD_curator(DataGridView dgw, string city)
         {
-            QuerySettingDataBase.CreateColums(dgw);
-
-            string fileNamePath = $@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\Куратор\БазаДанныхJsonCurator.json";
+            string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\БазаДанныхJsonCurator.json";
 
             if (File.Exists(fileNamePath))
             {
