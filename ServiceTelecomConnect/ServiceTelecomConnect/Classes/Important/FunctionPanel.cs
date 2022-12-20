@@ -294,8 +294,6 @@ namespace ServiceTelecomConnect
 
             string json = JsonConvert.SerializeObject(products);
 
-            DateTime today = DateTime.Today;
-
             string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
 
             if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\"))
@@ -339,16 +337,14 @@ namespace ServiceTelecomConnect
 
             string json = JsonConvert.SerializeObject(products);
 
-            DateTime today = DateTime.Today;
+            string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\БазаДанныхJson.json";
 
-            string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\Куратор\БазаДанныхJson.json";
-
-            if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\Куратор\"))
+            if (!File.Exists($@"С:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\"))
             {
-                Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\Куратор\");
+                Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson\");
             }
-
             File.WriteAllText(fileNamePath, json);
+            MessageBox.Show("Успешно!");
         }
 
         #endregion
@@ -493,7 +489,7 @@ namespace ServiceTelecomConnect
         {
             QuerySettingDataBase.CreateColums(dgw);
 
-            string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJsonCurator\{city}\БазаДанныхJsonCurator.json";
+            string fileNamePath = $@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\Куратор\БазаДанныхJsonCurator.json";
 
             if (File.Exists(fileNamePath))
             {
