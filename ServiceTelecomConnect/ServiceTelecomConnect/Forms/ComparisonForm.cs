@@ -883,8 +883,20 @@ namespace ServiceTelecomConnect
             }
         }
 
+
+
         #endregion
 
+        #endregion
+
+        #region Выгрузка файла JSON
+        void Btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView2, cmB_city.Text);
+            }
+        }
 
         #endregion
 

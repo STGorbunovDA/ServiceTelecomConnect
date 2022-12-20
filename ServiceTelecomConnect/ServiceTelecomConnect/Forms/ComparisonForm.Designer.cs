@@ -162,8 +162,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.Functional_loading_panel = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.btn_Uploading_JSON_file = new System.Windows.Forms.Button();
             this.btn_manual_backup_current_DB = new System.Windows.Forms.Button();
             this.btn_loading_file_current_DB = new System.Windows.Forms.Button();
@@ -1639,8 +1637,6 @@
             this.Functional_loading_panel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Functional_loading_panel.BackColor = System.Drawing.Color.SkyBlue;
             this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.Functional_loading_panel.Controls.Add(this.button3);
-            this.Functional_loading_panel.Controls.Add(this.button4);
             this.Functional_loading_panel.Controls.Add(this.btn_Uploading_JSON_file);
             this.Functional_loading_panel.Controls.Add(this.btn_manual_backup_current_DB);
             this.Functional_loading_panel.Controls.Add(this.btn_loading_file_current_DB);
@@ -1651,46 +1647,23 @@
             this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.Functional_loading_panel.Location = new System.Drawing.Point(391, 199);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
-            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 330);
+            this.Functional_loading_panel.Size = new System.Drawing.Size(642, 225);
             this.Functional_loading_panel.TabIndex = 84;
             this.Functional_loading_panel.TabStop = true;
             this.Functional_loading_panel.Visible = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(326, 246);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(247, 40);
-            this.button3.TabIndex = 88;
-            this.button3.Text = "Показать общую БД по всем участкам";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(64, 245);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(249, 40);
-            this.button4.TabIndex = 87;
-            this.button4.Text = "Показать БД прошлого года по текущему участку";
-            this.button4.UseVisualStyleBackColor = false;
             // 
             // btn_Uploading_JSON_file
             // 
             this.btn_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_Uploading_JSON_file.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_Uploading_JSON_file.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Uploading_JSON_file.Location = new System.Drawing.Point(326, 200);
+            this.btn_Uploading_JSON_file.Location = new System.Drawing.Point(188, 153);
             this.btn_Uploading_JSON_file.Name = "btn_Uploading_JSON_file";
             this.btn_Uploading_JSON_file.Size = new System.Drawing.Size(247, 40);
             this.btn_Uploading_JSON_file.TabIndex = 85;
             this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
             this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
+            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.Btn_Uploading_JSON_file_Click);
             // 
             // btn_manual_backup_current_DB
             // 
@@ -1947,8 +1920,6 @@
         private System.Windows.Forms.Button button_change_rst_form_curator;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel Functional_loading_panel;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btn_Uploading_JSON_file;
         private System.Windows.Forms.Button btn_manual_backup_current_DB;
         private System.Windows.Forms.Button btn_clear_BD_current_year_Curator;
