@@ -820,6 +820,9 @@ namespace ServiceTelecomConnect
         void Btn_close_Functional_loading_panel_Click(object sender, EventArgs e)
         {
             Functional_loading_panel.Visible = false;
+            dataGridView1.Enabled = true;
+            panel1.Enabled = true;
+            panel3.Enabled = true;
         }
 
         void Button_Functional_loading_panel(object sender, EventArgs e)
@@ -879,7 +882,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                FunctionalPanel.Loading_json_file_BD_curator(dataGridView2, cmB_city.Text);
+                FunctionalPanel.Loading_json_file_BD_curator(dataGridView1, cmB_city.Text);
             }
         }
 
@@ -894,7 +897,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView2, cmB_city.Text);
+                FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView1, cmB_city.Text);
             }
         }
 
