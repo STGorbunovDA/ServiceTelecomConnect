@@ -858,9 +858,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
-                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
-                            m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
-                            m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
+                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber)); 
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
@@ -870,8 +868,6 @@ namespace ServiceTelecomConnect
                         }
                         m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                        m.MenuItems.Add(new MenuItem("Показать все списания", Show_radiostantion_decommission_Click));
 
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -911,13 +907,9 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
-                            m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
-                            m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                        m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
                         m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -963,8 +955,6 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
-                            m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
-                            m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
                         {
@@ -973,8 +963,6 @@ namespace ServiceTelecomConnect
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                        m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
                         m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -1020,8 +1008,6 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
-                            m.MenuItems.Add(new MenuItem("Показать РСТ без списаний по участку", Btn_RefreshDataGridWithoutDecommission));
-                            m.MenuItems.Add(new MenuItem("Показать списанные РСТ по участку", Btn_RefreshDataGridtDecommissionByPlot));
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
@@ -1031,8 +1017,6 @@ namespace ServiceTelecomConnect
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m.MenuItems.Add(new MenuItem("Показать совпадение с предыдущим годом", PictureBox_seach_datadrid_replay_Click));
-                        m.MenuItems.Add(new MenuItem("Показать все списания по дороге", Show_radiostantion_decommission_Click));
                         m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
