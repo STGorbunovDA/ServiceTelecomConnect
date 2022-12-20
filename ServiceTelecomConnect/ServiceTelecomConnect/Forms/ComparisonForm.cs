@@ -767,13 +767,6 @@ namespace ServiceTelecomConnect
             ProcessKbdCtrlShortcuts(sender, e);
         }
 
-        void ComparisonForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-            {
-                toolTip1.Active = toolTip1.Active ? false : true;
-            }
-        }
 
         #endregion
 
@@ -904,7 +897,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #endregion
-
 
     }
 }

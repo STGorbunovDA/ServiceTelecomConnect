@@ -30,7 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,32 +54,11 @@
             this.txB_networkNumber = new System.Windows.Forms.TextBox();
             this.txB_inventoryNumber = new System.Windows.Forms.TextBox();
             this.txB_company = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.закрытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.радиостанцияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addСhangeRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.decommissionRadiostationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.актToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createActTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createActRemontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fillingActTOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actTOSignatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createActDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.базаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.updateBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showMatchPreviouYearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showFullDecommissionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveBaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_seach_datagrid_curator = new System.Windows.Forms.Panel();
             this.panel_ = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -173,7 +151,6 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.panel_seach_datagrid_curator.SuspendLayout();
             this.panel_.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -454,13 +431,6 @@
             this.txB_company.Size = new System.Drawing.Size(35, 26);
             this.txB_company.TabIndex = 10;
             // 
-            // toolTip1
-            // 
-            this.toolTip1.AutoPopDelay = 10000;
-            this.toolTip1.BackColor = System.Drawing.Color.White;
-            this.toolTip1.InitialDelay = 800;
-            this.toolTip1.ReshowDelay = 100;
-            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -499,148 +469,6 @@
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(32, 19);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.радиостанцияToolStripMenuItem,
-            this.актToolStripMenuItem,
-            this.базаToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(159, 70);
-            // 
-            // радиостанцияToolStripMenuItem
-            // 
-            this.радиостанцияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewRadiostationToolStripMenuItem,
-            this.changeRadiostationToolStripMenuItem,
-            this.addСhangeRemontToolStripMenuItem,
-            this.delRadiostationToolStripMenuItem,
-            this.delRemontToolStripMenuItem,
-            this.decommissionRadiostationToolStripMenuItem,
-            this.delDecommissionToolStripMenuItem});
-            this.радиостанцияToolStripMenuItem.Name = "радиостанцияToolStripMenuItem";
-            this.радиостанцияToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.радиостанцияToolStripMenuItem.Text = "Радиостанция";
-            // 
-            // addNewRadiostationToolStripMenuItem
-            // 
-            this.addNewRadiostationToolStripMenuItem.Name = "addNewRadiostationToolStripMenuItem";
-            this.addNewRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.addNewRadiostationToolStripMenuItem.Text = "Добавить Новую Радиостанцию";
-            // 
-            // changeRadiostationToolStripMenuItem
-            // 
-            this.changeRadiostationToolStripMenuItem.Name = "changeRadiostationToolStripMenuItem";
-            this.changeRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.changeRadiostationToolStripMenuItem.Text = "Изменить Радиостанцию";
-            // 
-            // addСhangeRemontToolStripMenuItem
-            // 
-            this.addСhangeRemontToolStripMenuItem.Name = "addСhangeRemontToolStripMenuItem";
-            this.addСhangeRemontToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.addСhangeRemontToolStripMenuItem.Text = "Добавить/Изменить Ремонт";
-            // 
-            // delRadiostationToolStripMenuItem
-            // 
-            this.delRadiostationToolStripMenuItem.Name = "delRadiostationToolStripMenuItem";
-            this.delRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.delRadiostationToolStripMenuItem.Text = "Удалить Радиостанцию";
-            // 
-            // delRemontToolStripMenuItem
-            // 
-            this.delRemontToolStripMenuItem.Name = "delRemontToolStripMenuItem";
-            this.delRemontToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.delRemontToolStripMenuItem.Text = "Удалить Ремонт";
-            // 
-            // decommissionRadiostationToolStripMenuItem
-            // 
-            this.decommissionRadiostationToolStripMenuItem.Name = "decommissionRadiostationToolStripMenuItem";
-            this.decommissionRadiostationToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.decommissionRadiostationToolStripMenuItem.Text = "Списать Радиостанцию";
-            // 
-            // delDecommissionToolStripMenuItem
-            // 
-            this.delDecommissionToolStripMenuItem.Name = "delDecommissionToolStripMenuItem";
-            this.delDecommissionToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.delDecommissionToolStripMenuItem.Text = "Удалить Списание";
-            // 
-            // актToolStripMenuItem
-            // 
-            this.актToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createActTOToolStripMenuItem,
-            this.createActRemontToolStripMenuItem,
-            this.fillingActTOToolStripMenuItem,
-            this.actTOSignatureToolStripMenuItem,
-            this.createActDecommissionToolStripMenuItem});
-            this.актToolStripMenuItem.Name = "актToolStripMenuItem";
-            this.актToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.актToolStripMenuItem.Text = "Акт";
-            // 
-            // createActTOToolStripMenuItem
-            // 
-            this.createActTOToolStripMenuItem.Name = "createActTOToolStripMenuItem";
-            this.createActTOToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.createActTOToolStripMenuItem.Text = "Сформировать Акт ТО";
-            // 
-            // createActRemontToolStripMenuItem
-            // 
-            this.createActRemontToolStripMenuItem.Name = "createActRemontToolStripMenuItem";
-            this.createActRemontToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.createActRemontToolStripMenuItem.Text = "Сформировать Акт Ремонта";
-            // 
-            // fillingActTOToolStripMenuItem
-            // 
-            this.fillingActTOToolStripMenuItem.Name = "fillingActTOToolStripMenuItem";
-            this.fillingActTOToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.fillingActTOToolStripMenuItem.Text = "Заполняем Акт";
-            // 
-            // actTOSignatureToolStripMenuItem
-            // 
-            this.actTOSignatureToolStripMenuItem.Name = "actTOSignatureToolStripMenuItem";
-            this.actTOSignatureToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.actTOSignatureToolStripMenuItem.Text = "Акт на подпись";
-            // 
-            // createActDecommissionToolStripMenuItem
-            // 
-            this.createActDecommissionToolStripMenuItem.Name = "createActDecommissionToolStripMenuItem";
-            this.createActDecommissionToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
-            this.createActDecommissionToolStripMenuItem.Text = "Сформировать Акт Списания";
-            // 
-            // базаToolStripMenuItem
-            // 
-            this.базаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateBaseToolStripMenuItem,
-            this.showMatchPreviouYearToolStripMenuItem,
-            this.showFullDecommissionToolStripMenuItem,
-            this.saveBaseToolStripMenuItem});
-            this.базаToolStripMenuItem.Name = "базаToolStripMenuItem";
-            this.базаToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.базаToolStripMenuItem.Text = "База";
-            // 
-            // updateBaseToolStripMenuItem
-            // 
-            this.updateBaseToolStripMenuItem.Name = "updateBaseToolStripMenuItem";
-            this.updateBaseToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.updateBaseToolStripMenuItem.Text = "Обновить Базу";
-            // 
-            // showMatchPreviouYearToolStripMenuItem
-            // 
-            this.showMatchPreviouYearToolStripMenuItem.Name = "showMatchPreviouYearToolStripMenuItem";
-            this.showMatchPreviouYearToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.showMatchPreviouYearToolStripMenuItem.Text = "Показать совпадение с предыдущим годом";
-            // 
-            // showFullDecommissionToolStripMenuItem
-            // 
-            this.showFullDecommissionToolStripMenuItem.Name = "showFullDecommissionToolStripMenuItem";
-            this.showFullDecommissionToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.showFullDecommissionToolStripMenuItem.Text = "Показать все списания";
-            // 
-            // saveBaseToolStripMenuItem
-            // 
-            this.saveBaseToolStripMenuItem.Name = "saveBaseToolStripMenuItem";
-            this.saveBaseToolStripMenuItem.Size = new System.Drawing.Size(326, 22);
-            this.saveBaseToolStripMenuItem.Text = "Сохранение Базы";
             // 
             // panel_seach_datagrid_curator
             // 
@@ -1768,13 +1596,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComparisonForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ComparisonForm_FormClosed);
             this.Load += new System.EventHandler(this.ComparisonForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComparisonForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.panel_seach_datagrid_curator.ResumeLayout(false);
             this.panel_seach_datagrid_curator.PerformLayout();
             this.panel_.ResumeLayout(false);
@@ -1823,7 +1649,6 @@
         private System.Windows.Forms.TextBox txB_inventoryNumber;
         private System.Windows.Forms.TextBox txB_company;
         private System.Windows.Forms.Label label_act_remont;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button clear_BD_current_year;
         private System.Windows.Forms.Button loading_file_current_DB;
@@ -1863,26 +1688,6 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem радиостанцияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewRadiostationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changeRadiostationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addСhangeRemontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem delRadiostationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem delRemontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem decommissionRadiostationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem актToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem базаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem delDecommissionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createActTOToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createActRemontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fillingActTOToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem actTOSignatureToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createActDecommissionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem updateBaseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showMatchPreviouYearToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showFullDecommissionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveBaseToolStripMenuItem;
         private System.Windows.Forms.TextBox txB_month;
         private System.Windows.Forms.TextBox txb_flag_all_BD;
         private System.Windows.Forms.Label lbL_summ;
