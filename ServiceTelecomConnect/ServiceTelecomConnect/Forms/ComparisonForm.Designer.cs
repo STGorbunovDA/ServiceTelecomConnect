@@ -164,10 +164,7 @@
             this.Functional_loading_panel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.btn_Loading_file_last_year = new System.Windows.Forms.Button();
             this.btn_Uploading_JSON_file = new System.Windows.Forms.Button();
-            this.btn_Copying_current_BD_end_of_the_year = new System.Windows.Forms.Button();
-            this.btn_loading_file_full_BD = new System.Windows.Forms.Button();
             this.btn_manual_backup_current_DB = new System.Windows.Forms.Button();
             this.btn_loading_file_current_DB = new System.Windows.Forms.Button();
             this.btn_clear_BD_current_year_Curator = new System.Windows.Forms.Button();
@@ -1644,10 +1641,7 @@
             this.Functional_loading_panel.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.Functional_loading_panel.Controls.Add(this.button3);
             this.Functional_loading_panel.Controls.Add(this.button4);
-            this.Functional_loading_panel.Controls.Add(this.btn_Loading_file_last_year);
             this.Functional_loading_panel.Controls.Add(this.btn_Uploading_JSON_file);
-            this.Functional_loading_panel.Controls.Add(this.btn_Copying_current_BD_end_of_the_year);
-            this.Functional_loading_panel.Controls.Add(this.btn_loading_file_full_BD);
             this.Functional_loading_panel.Controls.Add(this.btn_manual_backup_current_DB);
             this.Functional_loading_panel.Controls.Add(this.btn_loading_file_current_DB);
             this.Functional_loading_panel.Controls.Add(this.btn_clear_BD_current_year_Curator);
@@ -1686,18 +1680,6 @@
             this.button4.Text = "Показать БД прошлого года по текущему участку";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // btn_Loading_file_last_year
-            // 
-            this.btn_Loading_file_last_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Loading_file_last_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_Loading_file_last_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Loading_file_last_year.Location = new System.Drawing.Point(64, 153);
-            this.btn_Loading_file_last_year.Name = "btn_Loading_file_last_year";
-            this.btn_Loading_file_last_year.Size = new System.Drawing.Size(249, 40);
-            this.btn_Loading_file_last_year.TabIndex = 86;
-            this.btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
-            this.btn_Loading_file_last_year.UseVisualStyleBackColor = false;
-            // 
             // btn_Uploading_JSON_file
             // 
             this.btn_Uploading_JSON_file.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1709,30 +1691,6 @@
             this.btn_Uploading_JSON_file.TabIndex = 85;
             this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
             this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
-            // 
-            // btn_Copying_current_BD_end_of_the_year
-            // 
-            this.btn_Copying_current_BD_end_of_the_year.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Copying_current_BD_end_of_the_year.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_Copying_current_BD_end_of_the_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Copying_current_BD_end_of_the_year.Location = new System.Drawing.Point(324, 105);
-            this.btn_Copying_current_BD_end_of_the_year.Name = "btn_Copying_current_BD_end_of_the_year";
-            this.btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(249, 42);
-            this.btn_Copying_current_BD_end_of_the_year.TabIndex = 84;
-            this.btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
-            this.btn_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
-            // 
-            // btn_loading_file_full_BD
-            // 
-            this.btn_loading_file_full_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_loading_file_full_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btn_loading_file_full_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_loading_file_full_BD.Location = new System.Drawing.Point(326, 153);
-            this.btn_loading_file_full_BD.Name = "btn_loading_file_full_BD";
-            this.btn_loading_file_full_BD.Size = new System.Drawing.Size(247, 40);
-            this.btn_loading_file_full_BD.TabIndex = 83;
-            this.btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
-            this.btn_loading_file_full_BD.UseVisualStyleBackColor = false;
             // 
             // btn_manual_backup_current_DB
             // 
@@ -1778,12 +1736,13 @@
             this.btn_loading_json_file_BD.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_loading_json_file_BD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btn_loading_json_file_BD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_loading_json_file_BD.Location = new System.Drawing.Point(63, 200);
+            this.btn_loading_json_file_BD.Location = new System.Drawing.Point(324, 105);
             this.btn_loading_json_file_BD.Name = "btn_loading_json_file_BD";
             this.btn_loading_json_file_BD.Size = new System.Drawing.Size(249, 40);
             this.btn_loading_json_file_BD.TabIndex = 78;
             this.btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
             this.btn_loading_json_file_BD.UseVisualStyleBackColor = false;
+            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.Btn_loading_json_file_BD_Click);
             // 
             // btn_close_Functional_loading_panel
             // 
@@ -1990,10 +1949,7 @@
         private System.Windows.Forms.Panel Functional_loading_panel;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button btn_Loading_file_last_year;
         private System.Windows.Forms.Button btn_Uploading_JSON_file;
-        private System.Windows.Forms.Button btn_Copying_current_BD_end_of_the_year;
-        private System.Windows.Forms.Button btn_loading_file_full_BD;
         private System.Windows.Forms.Button btn_manual_backup_current_DB;
         private System.Windows.Forms.Button btn_clear_BD_current_year_Curator;
         private System.Windows.Forms.Button btn_loading_file_current_DB;
