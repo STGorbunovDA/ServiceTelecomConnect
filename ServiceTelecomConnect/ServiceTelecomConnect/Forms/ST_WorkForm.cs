@@ -839,14 +839,14 @@ namespace ServiceTelecomConnect
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (_user.IsAdmin == "Дирекция связи" || _user.IsAdmin == "Руководитель")
+                if (_user.IsAdmin == "Дирекция связи" )
                 {
                     ContextMenu m3 = new ContextMenu();
                     m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                     m3.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                     m3.Show(dataGridView1, new Point(e.X, e.Y));
                 }
-                else if (_user.IsAdmin == "Куратор")
+                else if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
                 {
                     if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
