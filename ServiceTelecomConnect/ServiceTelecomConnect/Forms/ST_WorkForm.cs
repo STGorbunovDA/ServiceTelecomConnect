@@ -455,13 +455,7 @@ namespace ServiceTelecomConnect
         void Button_update_Click(object sender, EventArgs e)
         {
             txb_flag_all_BD.Text = ""; // для получения данных отст. РСТ по городу(исправлена ошибка при получении полной бд => обновление )
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            else if (dataGridView1.Rows.Count > 0)
+            if (dataGridView1.Rows.Count > 0)
             {
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 int index = dataGridView1.CurrentRow.Index;
@@ -476,13 +470,14 @@ namespace ServiceTelecomConnect
                     dataGridView1.FirstDisplayedScrollingRowIndex = index;
                 }
             }
+            else
+            {
+                QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+                Counters();
+                dataGridView1.ClearSelection();
+            }
         }
 
-        /// <summary>
-        /// при нажатии на картинку обновить вызываем метод подключения к базе данных RefreshDataGridб обновляем кол-во строк и очищаем поля методом ClearFields
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void PicB_update_Click(object sender, EventArgs e)
         {
             Button_update_Click(sender, e);
