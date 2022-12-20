@@ -489,6 +489,91 @@ namespace ServiceTelecomConnect
             MessageBox.Show("Радиостанции успешно загруженны из JSON");
         }
 
+        internal static void Loading_json_file_BD_curator(DataGridView dgw, string city)
+        {
+            QuerySettingDataBase.CreateColums(dgw);
+
+            string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJsonCurator\{city}\БазаДанныхJsonCurator.json";
+
+            if (File.Exists(fileNamePath))
+            {
+                dgw.Rows.Clear();
+                string result;
+                using (var reader = new StreamReader(fileNamePath))
+                {
+                    result = reader.ReadToEnd();
+                }
+
+                JArray fetch = JArray.Parse(result);
+
+                if (fetch.Count() > 0)
+                {
+                    for (int i = 0; fetch.Count() > i; i++)
+                    {
+                        int n = dgw.Rows.Add();
+                        dgw.Rows[n].Cells[0].Value = fetch[i]["id"].ToString();
+                        dgw.Rows[n].Cells[1].Value = fetch[i]["poligon"].ToString();
+                        dgw.Rows[n].Cells[2].Value = fetch[i]["company"].ToString();
+                        dgw.Rows[n].Cells[3].Value = fetch[i]["location"].ToString();
+                        dgw.Rows[n].Cells[4].Value = fetch[i]["model"].ToString();
+                        dgw.Rows[n].Cells[5].Value = fetch[i]["serialNumber"].ToString();
+                        dgw.Rows[n].Cells[6].Value = fetch[i]["inventoryNumber"].ToString();
+                        dgw.Rows[n].Cells[7].Value = fetch[i]["networkNumber"].ToString();
+                        dgw.Rows[n].Cells[8].Value = fetch[i]["dateTO"].ToString();
+                        dgw.Rows[n].Cells[9].Value = fetch[i]["numberAct"].ToString();
+                        dgw.Rows[n].Cells[10].Value = fetch[i]["city"].ToString();
+                        dgw.Rows[n].Cells[11].Value = fetch[i]["price"].ToString();
+                        dgw.Rows[n].Cells[12].Value = fetch[i]["numberActRemont"].ToString();
+                        dgw.Rows[n].Cells[13].Value = fetch[i]["category"].ToString();
+                        dgw.Rows[n].Cells[14].Value = fetch[i]["priceRemont"].ToString();
+                        dgw.Rows[n].Cells[15].Value = fetch[i]["decommissionSerialNumber"].ToString();
+                        dgw.Rows[n].Cells[16].Value = fetch[i]["comment"].ToString();
+                        dgw.Rows[n].Cells[17].Value = fetch[i]["month"].ToString();
+                        dgw.Rows[n].Cells[18].Value = fetch[i]["road"].ToString();
+                    }
+                }
+                for (int i = 0; i < dgw.Rows.Count; i++)
+                {
+                    var id = dgw.Rows[i].Cells["id"].Value;
+                    var poligon = dgw.Rows[i].Cells["poligon"].Value.ToString();
+                    var company = dgw.Rows[i].Cells["company"].Value.ToString();
+                    var location = dgw.Rows[i].Cells["location"].Value.ToString();
+                    var model = dgw.Rows[i].Cells["model"].Value.ToString();
+                    var serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+                    var inventoryNumber = dgw.Rows[i].Cells["inventoryNumber"].Value.ToString();
+                    var networkNumber = dgw.Rows[i].Cells["networkNumber"].Value.ToString();
+                    var dateTO = dgw.Rows[i].Cells["dateTO"].Value.ToString();
+                    var numberAct = dgw.Rows[i].Cells["numberAct"].Value.ToString();
+                    var cityDGW = dgw.Rows[i].Cells["city"].Value.ToString();
+                    var price = dgw.Rows[i].Cells["price"].Value;
+                    var numberActRemont = dgw.Rows[i].Cells["numberActRemont"].Value.ToString();
+                    var category = dgw.Rows[i].Cells["category"].Value.ToString();
+                    var priceRemont = dgw.Rows[i].Cells["priceRemont"].Value;
+                    var decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
+                    var comment = dgw.Rows[i].Cells["comment"].Value.ToString();
+                    var month = dgw.Rows[i].Cells["month"].Value.ToString();
+                    var road = dgw.Rows[i].Cells["road"].Value.ToString();
+
+                    string queryString = $"UPDATE radiostantion_сomparison SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
+                        $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
+                        $"dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{cityDGW}', price = '{price}', numberActRemont = '{numberActRemont}', " +
+                        $"category = '{category}', priceRemont = '{priceRemont}', decommissionSerialNumber = '{decommissionSerialNumber}', " +
+                        $"comment = '{comment}', month = '{month}', road = '{road}'  WHERE id = '{id}'";
+
+                    using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
+                    {
+                        DB_2.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB_2.GetInstance.CloseConnection();
+
+                    }
+                }
+            }
+            else { MessageBox.Show("Отсутствует файл JSON"); };
+
+            MessageBox.Show("Радиостанции успешно загруженны из JSON");
+        }
+
         #endregion
 
         #region добавление из файла
