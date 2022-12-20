@@ -873,6 +873,19 @@ namespace ServiceTelecomConnect
         {
             FunctionalPanel.Loading_file_current_BD_curator();
         }
+
+        #region Загрузка и обновление резервного файла JSON
+        void Btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                FunctionalPanel.Loading_json_file_BD_curator(dataGridView2, cmB_city.Text);
+            }
+        }
+
+        #endregion
+
+
         #endregion
 
         #endregion
