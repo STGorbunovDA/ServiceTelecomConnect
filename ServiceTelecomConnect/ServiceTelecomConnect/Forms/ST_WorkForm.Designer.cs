@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -171,12 +171,13 @@
             this.btn_information_remont_company_regedit = new System.Windows.Forms.Button();
             this.label_information_remont_pp = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.picB_delete_Item_Fill_Full_ActTO = new System.Windows.Forms.PictureBox();
+            this.cmB_add_Signature = new System.Windows.Forms.ComboBox();
             this.picB_delete_Item_Signature = new System.Windows.Forms.PictureBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.cmB_add_Fill_Full_ActTO = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cmB_add_Signature = new System.Windows.Forms.ComboBox();
             this.button_save_in_file = new System.Windows.Forms.Button();
             this.button_change_rst_form = new System.Windows.Forms.Button();
             this.cmB_road = new System.Windows.Forms.ComboBox();
@@ -254,7 +255,6 @@
             this.mTrip_btn_Uploading_JSON_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_full = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -269,6 +269,7 @@
             this.panel_date.SuspendLayout();
             this.panel_remont_information_company.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picB_delete_Item_Fill_Full_ActTO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_delete_Item_Signature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_seach_datadrid_replay)).BeginInit();
@@ -276,7 +277,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -295,44 +295,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
@@ -1902,6 +1902,20 @@
             this.panel1.Size = new System.Drawing.Size(1427, 146);
             this.panel1.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.picB_delete_Item_Fill_Full_ActTO);
+            this.panel4.Controls.Add(this.cmB_add_Signature);
+            this.panel4.Controls.Add(this.picB_delete_Item_Signature);
+            this.panel4.Controls.Add(this.label25);
+            this.panel4.Controls.Add(this.label26);
+            this.panel4.Controls.Add(this.cmB_add_Fill_Full_ActTO);
+            this.panel4.Location = new System.Drawing.Point(570, 43);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(332, 68);
+            this.panel4.TabIndex = 117;
+            // 
             // picB_delete_Item_Fill_Full_ActTO
             // 
             this.picB_delete_Item_Fill_Full_ActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1914,6 +1928,21 @@
             this.picB_delete_Item_Fill_Full_ActTO.TabStop = false;
             this.picB_delete_Item_Fill_Full_ActTO.Click += new System.EventHandler(this.PicB_delete_Item_Fill_Full_ActTO_Click);
             // 
+            // cmB_add_Signature
+            // 
+            this.cmB_add_Signature.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmB_add_Signature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_add_Signature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_add_Signature.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmB_add_Signature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_add_Signature.FormattingEnabled = true;
+            this.cmB_add_Signature.Location = new System.Drawing.Point(30, 29);
+            this.cmB_add_Signature.Name = "cmB_add_Signature";
+            this.cmB_add_Signature.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmB_add_Signature.Size = new System.Drawing.Size(94, 28);
+            this.cmB_add_Signature.TabIndex = 85;
+            this.cmB_add_Signature.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Signature_SelectionChangeCommitted);
+            // 
             // picB_delete_Item_Signature
             // 
             this.picB_delete_Item_Signature.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1925,6 +1954,20 @@
             this.picB_delete_Item_Signature.TabIndex = 115;
             this.picB_delete_Item_Signature.TabStop = false;
             this.picB_delete_Item_Signature.Click += new System.EventHandler(this.PicB_delete_Item_Signature_Click);
+            // 
+            // label25
+            // 
+            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.Transparent;
+            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label25.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label25.Location = new System.Drawing.Point(27, 6);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(85, 16);
+            this.label25.TabIndex = 113;
+            this.label25.Text = "На подпись:";
             // 
             // label26
             // 
@@ -1954,35 +1997,6 @@
             this.cmB_add_Fill_Full_ActTO.Size = new System.Drawing.Size(105, 28);
             this.cmB_add_Fill_Full_ActTO.TabIndex = 114;
             this.cmB_add_Fill_Full_ActTO.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Fill_Full_ActTO_SelectionChangeCommitted);
-            // 
-            // label25
-            // 
-            this.label25.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Transparent;
-            this.label25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label25.Location = new System.Drawing.Point(27, 6);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(85, 16);
-            this.label25.TabIndex = 113;
-            this.label25.Text = "На подпись:";
-            // 
-            // cmB_add_Signature
-            // 
-            this.cmB_add_Signature.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cmB_add_Signature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmB_add_Signature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_add_Signature.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmB_add_Signature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_add_Signature.FormattingEnabled = true;
-            this.cmB_add_Signature.Location = new System.Drawing.Point(30, 29);
-            this.cmB_add_Signature.Name = "cmB_add_Signature";
-            this.cmB_add_Signature.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmB_add_Signature.Size = new System.Drawing.Size(94, 28);
-            this.cmB_add_Signature.TabIndex = 85;
-            this.cmB_add_Signature.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Signature_SelectionChangeCommitted);
             // 
             // button_save_in_file
             // 
@@ -2613,7 +2627,7 @@
             // mTrip_rst_decommission
             // 
             this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
-            this.mTrip_rst_decommission.Size = new System.Drawing.Size(180, 22);
+            this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
             this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
             // 
@@ -2835,20 +2849,6 @@
             this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_full_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.picB_delete_Item_Fill_Full_ActTO);
-            this.panel4.Controls.Add(this.cmB_add_Signature);
-            this.panel4.Controls.Add(this.picB_delete_Item_Signature);
-            this.panel4.Controls.Add(this.label25);
-            this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.cmB_add_Fill_Full_ActTO);
-            this.panel4.Location = new System.Drawing.Point(570, 43);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(332, 68);
-            this.panel4.TabIndex = 117;
-            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2856,9 +2856,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_decommissionSerialNumber);
@@ -2906,6 +2906,8 @@
             this.panel_remont_information_company.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picB_delete_Item_Fill_Full_ActTO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_delete_Item_Signature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_seach_datadrid_replay)).EndInit();
@@ -2915,8 +2917,6 @@
             this.panel3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

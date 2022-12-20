@@ -1845,7 +1845,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                FunctionalPanel.Loading_json_file_BD(dataGridView2, cmB_city.Text);
+                FunctionalPanel.Loading_json_file_BD(dataGridView1, cmB_city.Text);
             }
         }
         #endregion
