@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ServiceTelecomConnect
 {
@@ -745,6 +746,8 @@ namespace ServiceTelecomConnect
         }
         void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            chB_scan.CheckState = CheckState.Unchecked;
+            cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                 cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
                 cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
@@ -763,7 +766,7 @@ namespace ServiceTelecomConnect
                 chB_analog.CheckState = CheckState.Unchecked;
             }
         }
-       
+
         void TextBox_location_Click(object sender, EventArgs e)
         {
             if (txB_location.Text == "")
@@ -1647,12 +1650,11 @@ namespace ServiceTelecomConnect
         {
             chB_digital.CheckState = CheckState.Unchecked;
             txB_price.Text = "1411.18";
-            if(chB_analog.CheckState == CheckState.Unchecked)
+            if (chB_analog.CheckState == CheckState.Unchecked)
             {
                 chB_digital.CheckState = CheckState.Checked;
                 txB_price.Text = "1919.57";
             }
-
         }
 
         void ChB_digital_Click(object sender, EventArgs e)
@@ -1666,6 +1668,28 @@ namespace ServiceTelecomConnect
             }
         }
 
-        
+        void TxB_serialNumber_TextChanged(object sender, EventArgs e)
+        {
+            //if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
+            //{
+            //    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-340");
+            //    //int index = cmB_model.Items.IndexOf("GP-340");
+            //    //cmB_model.SelectedIndex = index;
+            //}
+            //if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+            //{
+            //    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-2400е");
+            //}
+        }
+
+        void ChB_scan_Click(object sender, EventArgs e)
+        {
+            if (chB_scan.CheckState == CheckState.Checked)
+            {
+                cmB_model.DropDownStyle = ComboBoxStyle.DropDown;
+                cmB_model.Text = "";
+            }
+            else cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
     }
 }
