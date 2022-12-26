@@ -1608,30 +1608,35 @@
             this.mTrip_mTrip_AddExecutionCurator.Name = "mTrip_mTrip_AddExecutionCurator";
             this.mTrip_mTrip_AddExecutionCurator.Size = new System.Drawing.Size(179, 20);
             this.mTrip_mTrip_AddExecutionCurator.Text = "Изменить выполнение РСТ";
+            this.mTrip_mTrip_AddExecutionCurator.Click += new System.EventHandler(this.MTrip_mTrip_AddExecutionCurator_Click);
             // 
             // mTrip_change_rst
             // 
             this.mTrip_change_rst.Name = "mTrip_change_rst";
             this.mTrip_change_rst.Size = new System.Drawing.Size(166, 20);
             this.mTrip_change_rst.Text = "Изменить радиостанцию";
+            this.mTrip_change_rst.Click += new System.EventHandler(this.MTrip_change_rst_Click);
             // 
             // mTrip_delete_rst
             // 
             this.mTrip_delete_rst.Name = "mTrip_delete_rst";
             this.mTrip_delete_rst.Size = new System.Drawing.Size(153, 20);
             this.mTrip_delete_rst.Text = "Убрать из выполнения";
+            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTrip_delete_rst_Click);
             // 
             // mTrip_Button_update
             // 
             this.mTrip_Button_update.Name = "mTrip_Button_update";
             this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
             this.mTrip_Button_update.Text = "Обновить";
+            this.mTrip_Button_update.Click += new System.EventHandler(this.MTrip_Button_update_Click);
             // 
             // mTrip_Button_save_in_file
             // 
             this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
             this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(121, 20);
             this.mTrip_Button_save_in_file.Text = "Сохранение базы";
+            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTrip_Button_save_in_file_Click);
             // 
             // mTrip_funcionalpanel
             // 
@@ -1650,30 +1655,35 @@
             this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
             this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
+            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTrip_btn_clear_BD_current_year_Click);
             // 
             // mTrip_btn_manual_backup_current_DB
             // 
             this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
             this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTrip_btn_manual_backup_current_DB_Click);
             // 
             // mTrip_btn_loading_file_current_DB
             // 
             this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
             this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTrip_btn_loading_file_current_DB_Click);
             // 
             // mTrip_btn_loading_json_file_BD
             // 
             this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
             this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTrip_btn_loading_json_file_BD_Click);
             // 
             // mTrip_btn_Uploading_JSON_file
             // 
             this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
             this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTrip_btn_Uploading_JSON_file_Click);
             // 
             // ComparisonForm
             // 

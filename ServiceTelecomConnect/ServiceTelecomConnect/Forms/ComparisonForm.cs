@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using ServiceTelecomConnect.Classes.Other;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -904,6 +903,58 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region  MenuTrip
+
+        void MTrip_mTrip_AddExecutionCurator_Click(object sender, EventArgs e)
+        {
+            AddExecutionCurator(sender, e);
+        }
+
+        void MTrip_change_rst_Click(object sender, EventArgs e)
+        {
+            Сhange_rst_form_curator_Click(sender, e);
+        }
+
+        void MTrip_delete_rst_Click(object sender, EventArgs e)
+        {
+            Button_delete_Click(sender, e);
+        }
+
+        void MTrip_Button_update_Click(object sender, EventArgs e)
+        {
+            Button_update_Click(sender, e);
+        }
+
+        void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
+        {
+            Button_save_in_file_curator_Click(sender, e);
+        }
+
+        void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
+        {
+            Btn_clear_BD_current_year_Curator_Click(sender, e);
+        }
+
+        void MTrip_btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        {
+            Btn_manual_backup_current_DB_Click(sender, e);
+        }
+
+        void MTrip_btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        {
+            Btn_loading_file_current_DB_Click(sender, e);
+        }
+
+        void MTrip_btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        {
+            Btn_loading_json_file_BD_Click(sender, e);
+        }
+
+        void MTrip_btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        {
+            Btn_Uploading_JSON_file_Click(sender, e);
+        }
+        #endregion
     }
 }
 
