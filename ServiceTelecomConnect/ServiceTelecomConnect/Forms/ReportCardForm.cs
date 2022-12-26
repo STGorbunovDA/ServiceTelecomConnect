@@ -13,6 +13,17 @@ namespace ServiceTelecomConnect.Forms
 {
     public partial class ReportCardForm : Form
     {
+        #region состояние Rows
+
+        enum RowState
+        {
+            Existed,
+            New,
+            Modifield,
+            ModifieldNew,
+            Deleted
+        }
+        #endregion
         int selectedRow;
         public ReportCardForm()
         {
@@ -26,7 +37,9 @@ namespace ServiceTelecomConnect.Forms
             dataGridView1.Columns.Add("dateTimeInput", "Дата входа");
             dataGridView1.Columns.Add("dateTimeExit", "Дата выхода");
             dataGridView1.Columns.Add("TimeCount", "Время нахождения");
+            dataGridView1.Columns.Add("IsNew", String.Empty);
             dataGridView1.Columns[0].Visible = false;
+            dataGridView1.Columns[5].Visible = false;
         }
         void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
@@ -198,6 +211,38 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
                 DB.GetInstance.CloseConnection();
+            }
+        }
+
+        void PicB_delete_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
+                }
+
+                DB.GetInstance.OpenConnection();
+
+                for (int index = 0; index < dataGridView1.Rows.Count; index++)
+                {
+                    var rowState = (RowState)dataGridView1.Rows[index].Cells[5].Value;
+
+                    if (rowState == RowState.Deleted)
+                    {
+                        var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                        var deleteQuery = $"delete from logUserDB where id = {id}";
+
+                        using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+                DB.GetInstance.CloseConnection();
+
+                RefreshDataGrid(dataGridView1);
             }
         }
     }
