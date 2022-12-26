@@ -2223,8 +2223,9 @@ namespace ServiceTelecomConnect
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
                 textBox_search.Clear();
-
-                QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                if (txb_flag_all_BD.Text == "Вся БД")
+                    QuerySettingDataBase.Number_unique_company_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 1)
             {
