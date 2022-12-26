@@ -1,8 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -912,109 +914,213 @@ namespace ServiceTelecomConnect
         }
 
 
-        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique, string road)
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, 
+            string cmb_number_unique, string road, string txb_flag_all_BD)
         {
             if (Internet_check.CheackSkyNET())
             {
                 var searchString = string.Empty;
-                string perem_comboBox = "serialNumber";
+                if (txb_flag_all_BD == "Вся БД")
+                {
+                    string perem_comboBox = "serialNumber";
 
-                dgw.Rows.Clear();
+                    dgw.Rows.Clear();
 
-                if (comboBox_seach == "Предприятие")
-                {
-                    perem_comboBox = "company";
-                }
-                else if (comboBox_seach == "Модель")
-                {
-                    perem_comboBox = "model";
-                }
-                else if (comboBox_seach == "Станция")
-                {
-                    perem_comboBox = "location";
-                }
-                else if (comboBox_seach == "Заводской номер")
-                {
-                    perem_comboBox = "serialNumber";
-                }
-                else if (comboBox_seach == "Дата ТО")
-                {
-                    perem_comboBox = "dateTO";
-                }
-                else if (comboBox_seach == "Номер акта ТО")
-                {
-                    perem_comboBox = "numberAct";
-                }
-                else if (comboBox_seach == "Номер акта Ремонта")
-                {
-                    perem_comboBox = "numberActRemont";
-                }
-                else if (comboBox_seach == "Представитель ПП")
-                {
-                    perem_comboBox = "representative";
-                }
-                else if (comboBox_seach == "Номер Акта списания")
-                {
-                    perem_comboBox = "decommissionSerialNumber";
-                }
+                    if (comboBox_seach == "Предприятие")
+                    {
+                        perem_comboBox = "company";
+                    }
+                    else if (comboBox_seach == "Модель")
+                    {
+                        perem_comboBox = "model";
+                    }
+                    else if (comboBox_seach == "Станция")
+                    {
+                        perem_comboBox = "location";
+                    }
+                    else if (comboBox_seach == "Заводской номер")
+                    {
+                        perem_comboBox = "serialNumber";
+                    }
+                    else if (comboBox_seach == "Дата ТО")
+                    {
+                        perem_comboBox = "dateTO";
+                    }
+                    else if (comboBox_seach == "Номер акта ТО")
+                    {
+                        perem_comboBox = "numberAct";
+                    }
+                    else if (comboBox_seach == "Номер акта Ремонта")
+                    {
+                        perem_comboBox = "numberActRemont";
+                    }
+                    else if (comboBox_seach == "Представитель ПП")
+                    {
+                        perem_comboBox = "representative";
+                    }
+                    else if (comboBox_seach == "Номер Акта списания")
+                    {
+                        perem_comboBox = "decommissionSerialNumber";
+                    }
 
-                var provSeach = textBox_search;
-                provSeach = provSeach.ToUpper();
+                    var provSeach = textBox_search;
+                    provSeach = provSeach.ToUpper();
 
-                if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                {
-                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
-                }
-                else if (perem_comboBox == "numberAct")
-                {
-                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                }
-                else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
-                    || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model")
-                {
-                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox})";
+                    }
+                    else if (perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                    }
+                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
+                    else
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                    }
+                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        DB.GetInstance.CloseConnection();
+                    }
+                    if (perem_comboBox == "numberActRemont")
+                    {
+                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+                    }
                 }
                 else
                 {
-                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
-                        $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
-                        $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
-                        $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                }
+                    string perem_comboBox = "serialNumber";
 
-                using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
+                    dgw.Rows.Clear();
 
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    if (comboBox_seach == "Предприятие")
                     {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                ReedSingleRow(dgw, reader);
-                            }
-                            reader.Close();
-                        }
+                        perem_comboBox = "company";
                     }
-                    DB.GetInstance.CloseConnection();
-                }
-                if (perem_comboBox == "numberActRemont")
-                {
-                    dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+                    else if (comboBox_seach == "Модель")
+                    {
+                        perem_comboBox = "model";
+                    }
+                    else if (comboBox_seach == "Станция")
+                    {
+                        perem_comboBox = "location";
+                    }
+                    else if (comboBox_seach == "Заводской номер")
+                    {
+                        perem_comboBox = "serialNumber";
+                    }
+                    else if (comboBox_seach == "Дата ТО")
+                    {
+                        perem_comboBox = "dateTO";
+                    }
+                    else if (comboBox_seach == "Номер акта ТО")
+                    {
+                        perem_comboBox = "numberAct";
+                    }
+                    else if (comboBox_seach == "Номер акта Ремонта")
+                    {
+                        perem_comboBox = "numberActRemont";
+                    }
+                    else if (comboBox_seach == "Представитель ПП")
+                    {
+                        perem_comboBox = "representative";
+                    }
+                    else if (comboBox_seach == "Номер Акта списания")
+                    {
+                        perem_comboBox = "decommissionSerialNumber";
+                    }
+
+                    var provSeach = textBox_search;
+                    provSeach = provSeach.ToUpper();
+
+                    if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
+                    }
+                    else if (perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                    }
+                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                        || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }
+                    else
+                    {
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                    }
+                    using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    ReedSingleRow(dgw, reader);
+                                }
+                                reader.Close();
+                            }
+                        }
+                        DB.GetInstance.CloseConnection();
+                    }
+                    if (perem_comboBox == "numberActRemont")
+                    {
+                        dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
+                    }
                 }
             }
         }
@@ -1964,6 +2070,145 @@ namespace ServiceTelecomConnect
                 }
             }
         }
+
+        internal static void Number_unique_model_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE road = '{road}' ORDER BY model";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "model";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_location_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE road = '{road}' ORDER BY location";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "location";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_dateTO_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE road = '{road}' ORDER BY dateTO";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "dateTO";
+                    cmb_number_unique_acts.ValueMember = "dateTO";
+
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_numberAct_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion WHERE road = '{road}' ORDER BY numberAct";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberAct";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_numberActRemont_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE road = '{road}' ORDER BY numberActRemont";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_representative_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE road = '{road}' ORDER BY representative";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "representative";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_decommissionActs_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE road = '{road}' ORDER BY decommissionSerialNumber";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+
+        }
+
         #endregion
 
         #region Начальник участка для города
