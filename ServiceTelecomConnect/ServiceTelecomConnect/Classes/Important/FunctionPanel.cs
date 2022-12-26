@@ -344,7 +344,7 @@ namespace ServiceTelecomConnect
                 Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\");
             }
             File.WriteAllText(fileNamePath, json);
-            MessageBox.Show("Успешно!");
+            //MessageBox.Show("Успешно!");
         }
 
         #endregion
