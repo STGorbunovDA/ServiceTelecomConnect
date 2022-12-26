@@ -719,7 +719,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[10].Width = 100;
                 dgw.Columns[11].Width = 100;
                 dgw.Columns[17].Width = 120;
-                dgw.Columns[39].Width = 300;
+                //dgw.Columns[39].Width = 300;
                 if (dgw.Rows.Count > 1)
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
