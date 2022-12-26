@@ -53,7 +53,11 @@ namespace ServiceTelecomConnect
 
         void IsAdmin()
         {
-            if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
+            if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
+            {
+                mTrip_funcionalpanel.Visible = false;
+            }
+            if (_user.IsAdmin == "Admin")
             {
 
             }
@@ -114,9 +118,11 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessorCurator(Object myObject, EventArgs myEventArgs)
         {
-            QuerySettingDataBase.RefreshDataGridСuratorTimerEventProcessor(dataGridView2, cmB_city.Text, cmB_road.Text);
-            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView2, cmB_city.Text); }) { IsBackground = true }.Start();
-            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFileCurator(dataGridView2, cmB_road.Text); }) { IsBackground = true }.Start();
+            var taskCity = cmB_city.Text;
+            var road = cmB_road.Text;
+            QuerySettingDataBase.RefreshDataGridСuratorTimerEventProcessor(dataGridView2, taskCity, road);
+            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFileCurator(dataGridView2, road); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy(); }) { IsBackground = true }.Start();
         }
 
@@ -549,7 +555,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region отк. формы изменения РСТ
-        void Button_change_rst_form_curator_Click(object sender, EventArgs e)
+        void Сhange_rst_form_curator_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -641,7 +647,7 @@ namespace ServiceTelecomConnect
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
-                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_curator_Click));
+                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Сhange_rst_form_curator_Click));
                     m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", Button_delete_Click));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_curator_Click));

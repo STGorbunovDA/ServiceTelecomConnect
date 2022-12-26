@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -147,6 +148,19 @@
             this.btn_loading_json_file_BD = new System.Windows.Forms.Button();
             this.btn_close_Functional_loading_panel = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mTrip_mTrip_AddExecutionCurator = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_delete_rst = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_update = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_funcionalpanel = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_clear_BD_current_year = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_manual_backup_current_DB = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_loading_file_current_DB = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_loading_json_file_BD = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_btn_Uploading_JSON_file = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -159,6 +173,7 @@
             this.panel3.SuspendLayout();
             this.panel_date.SuspendLayout();
             this.Functional_loading_panel.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -201,7 +216,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 151);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 178);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -217,7 +232,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1427, 514);
+            this.dataGridView1.Size = new System.Drawing.Size(1427, 535);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
@@ -247,7 +262,7 @@
             this.panel2.Controls.Add(this.txB_inventoryNumber);
             this.panel2.Controls.Add(this.txB_company);
             this.panel2.Enabled = false;
-            this.panel2.Location = new System.Drawing.Point(93, 668);
+            this.panel2.Location = new System.Drawing.Point(90, 601);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1259, 47);
             this.panel2.TabIndex = 2;
@@ -436,7 +451,7 @@
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Enabled = false;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 151);
+            this.dataGridView2.Location = new System.Drawing.Point(0, 178);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(240, 150);
@@ -453,7 +468,7 @@
             this.dataGridView3.AllowUserToAddRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Enabled = false;
-            this.dataGridView3.Location = new System.Drawing.Point(1187, 151);
+            this.dataGridView3.Location = new System.Drawing.Point(1184, 178);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(240, 150);
@@ -481,7 +496,7 @@
             this.panel_seach_datagrid_curator.Controls.Add(this.txB_seach_panel_datagrid_curator);
             this.panel_seach_datagrid_curator.Controls.Add(this.label37);
             this.panel_seach_datagrid_curator.Enabled = false;
-            this.panel_seach_datagrid_curator.Location = new System.Drawing.Point(460, 300);
+            this.panel_seach_datagrid_curator.Location = new System.Drawing.Point(460, 324);
             this.panel_seach_datagrid_curator.Name = "panel_seach_datagrid_curator";
             this.panel_seach_datagrid_curator.Size = new System.Drawing.Size(528, 141);
             this.panel_seach_datagrid_curator.TabIndex = 37;
@@ -702,7 +717,7 @@
             this.panel1.Controls.Add(this.picB_update);
             this.panel1.Controls.Add(this.picB_clear);
             this.panel1.Controls.Add(this.txB_numberActRemont);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(1, 27);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1427, 145);
             this.panel1.TabIndex = 0;
@@ -730,7 +745,7 @@
             this.button_change_rst_form_curator.TabIndex = 84;
             this.button_change_rst_form_curator.Text = "Изменить радиостанцию";
             this.button_change_rst_form_curator.UseVisualStyleBackColor = false;
-            this.button_change_rst_form_curator.Click += new System.EventHandler(this.Button_change_rst_form_curator_Click);
+            this.button_change_rst_form_curator.Click += new System.EventHandler(this.Сhange_rst_form_curator_Click);
             // 
             // button_save_in_file_curator
             // 
@@ -1297,7 +1312,7 @@
             this.panel3.Controls.Add(this.lbL_count_remont);
             this.panel3.Controls.Add(this.lbL_count);
             this.panel3.Controls.Add(this.lbL_summ);
-            this.panel3.Location = new System.Drawing.Point(1, 668);
+            this.panel3.Location = new System.Drawing.Point(1, 716);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1426, 63);
             this.panel3.TabIndex = 80;
@@ -1321,7 +1336,7 @@
             this.panel_date.Controls.Add(this.label29);
             this.panel_date.Enabled = false;
             this.panel_date.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.panel_date.Location = new System.Drawing.Point(445, 232);
+            this.panel_date.Location = new System.Drawing.Point(445, 256);
             this.panel_date.Name = "panel_date";
             this.panel_date.Size = new System.Drawing.Size(534, 264);
             this.panel_date.TabIndex = 83;
@@ -1473,7 +1488,7 @@
             this.Functional_loading_panel.Controls.Add(this.btn_close_Functional_loading_panel);
             this.Functional_loading_panel.Controls.Add(this.label4);
             this.Functional_loading_panel.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.Functional_loading_panel.Location = new System.Drawing.Point(391, 199);
+            this.Functional_loading_panel.Location = new System.Drawing.Point(391, 223);
             this.Functional_loading_panel.Name = "Functional_loading_panel";
             this.Functional_loading_panel.Size = new System.Drawing.Size(642, 225);
             this.Functional_loading_panel.TabIndex = 84;
@@ -1568,13 +1583,106 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Функциональная панель";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_mTrip_AddExecutionCurator,
+            this.mTrip_change_rst,
+            this.mTrip_delete_rst,
+            this.mTrip_Button_update,
+            this.mTrip_Button_save_in_file,
+            this.mTrip_funcionalpanel});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1424, 24);
+            this.menuStrip1.TabIndex = 86;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mTrip_mTrip_AddExecutionCurator
+            // 
+            this.mTrip_mTrip_AddExecutionCurator.Name = "mTrip_mTrip_AddExecutionCurator";
+            this.mTrip_mTrip_AddExecutionCurator.Size = new System.Drawing.Size(179, 20);
+            this.mTrip_mTrip_AddExecutionCurator.Text = "Изменить выполнение РСТ";
+            // 
+            // mTrip_change_rst
+            // 
+            this.mTrip_change_rst.Name = "mTrip_change_rst";
+            this.mTrip_change_rst.Size = new System.Drawing.Size(166, 20);
+            this.mTrip_change_rst.Text = "Изменить радиостанцию";
+            // 
+            // mTrip_delete_rst
+            // 
+            this.mTrip_delete_rst.Name = "mTrip_delete_rst";
+            this.mTrip_delete_rst.Size = new System.Drawing.Size(153, 20);
+            this.mTrip_delete_rst.Text = "Убрать из выполнения";
+            // 
+            // mTrip_Button_update
+            // 
+            this.mTrip_Button_update.Name = "mTrip_Button_update";
+            this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
+            this.mTrip_Button_update.Text = "Обновить";
+            // 
+            // mTrip_Button_save_in_file
+            // 
+            this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
+            this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(121, 20);
+            this.mTrip_Button_save_in_file.Text = "Сохранение базы";
+            // 
+            // mTrip_funcionalpanel
+            // 
+            this.mTrip_funcionalpanel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mTrip_btn_clear_BD_current_year,
+            this.mTrip_btn_manual_backup_current_DB,
+            this.mTrip_btn_loading_file_current_DB,
+            this.mTrip_btn_loading_json_file_BD,
+            this.mTrip_btn_Uploading_JSON_file});
+            this.mTrip_funcionalpanel.Name = "mTrip_funcionalpanel";
+            this.mTrip_funcionalpanel.Size = new System.Drawing.Size(163, 20);
+            this.mTrip_funcionalpanel.Text = "Функциональная панель";
+            // 
+            // mTrip_btn_clear_BD_current_year
+            // 
+            this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
+            this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(351, 22);
+            this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
+            // 
+            // mTrip_btn_manual_backup_current_DB
+            // 
+            this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
+            this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(351, 22);
+            this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
+            // 
+            // mTrip_btn_loading_file_current_DB
+            // 
+            this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
+            this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(351, 22);
+            this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
+            // 
+            // mTrip_btn_loading_json_file_BD
+            // 
+            this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
+            this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(351, 22);
+            this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
+            // 
+            // mTrip_btn_Uploading_JSON_file
+            // 
+            this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
+            this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(351, 22);
+            this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
+            // 
             // ComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1424, 729);
+            this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.panel_seach_datagrid_curator);
             this.Controls.Add(this.panel3);
@@ -1615,7 +1723,10 @@
             this.panel_date.PerformLayout();
             this.Functional_loading_panel.ResumeLayout(false);
             this.Functional_loading_panel.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1732,5 +1843,18 @@
         private System.Windows.Forms.Button btn_loading_json_file_BD;
         private System.Windows.Forms.Button btn_close_Functional_loading_panel;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_mTrip_AddExecutionCurator;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_update;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_change_rst;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_delete_rst;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_Button_save_in_file;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_funcionalpanel;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_clear_BD_current_year;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_manual_backup_current_DB;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_file_current_DB;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_loading_json_file_BD;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Uploading_JSON_file;
     }
 }
