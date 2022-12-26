@@ -1668,20 +1668,6 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void TxB_serialNumber_TextChanged(object sender, EventArgs e)
-        {
-            //if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
-            //{
-            //    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-340");
-            //    //int index = cmB_model.Items.IndexOf("GP-340");
-            //    //cmB_model.SelectedIndex = index;
-            //}
-            //if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
-            //{
-            //    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-2400е");
-            //}
-        }
-
         void ChB_scan_Click(object sender, EventArgs e)
         {
             if (chB_scan.CheckState == CheckState.Checked)
@@ -1689,7 +1675,11 @@ namespace ServiceTelecomConnect
                 cmB_model.DropDownStyle = ComboBoxStyle.DropDown;
                 cmB_model.Text = "";
             }
-            else cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
+            else
+            {
+                cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
+                cmB_model.Text = cmB_model.Items[0].ToString();
+            }
         }
     }
 }
