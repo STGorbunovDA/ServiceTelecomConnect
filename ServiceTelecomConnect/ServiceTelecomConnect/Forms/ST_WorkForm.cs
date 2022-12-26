@@ -187,7 +187,7 @@ namespace ServiceTelecomConnect
             }
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
-            timer.Interval = (1 * 60 * 1000); // 15 mins
+            timer.Interval = (30 * 60 * 1000); // 15 mins
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Start();
 
@@ -836,7 +836,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (_user.IsAdmin == "Дирекция связи" )
+                if (_user.IsAdmin == "Дирекция связи")
                 {
                     ContextMenu m3 = new ContextMenu();
                     m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
@@ -860,7 +860,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
-                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber)); 
+                            m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
@@ -939,7 +939,7 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-                else if (_user.IsAdmin == "Начальник участка" )
+                else if (_user.IsAdmin == "Начальник участка")
                 {
                     if (dataGridView1.Rows.Count > 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
@@ -1945,6 +1945,12 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region добавление актов на заполнение
+
+        private void Btn_Add_Fill_Full_ActTO_Click(object sender, EventArgs e)
+        {
+            Add_Fill_Full_ActTO(sender, e);
+        }
+
         void Add_Fill_Full_ActTO(object sender, EventArgs e)
         {
             if (txB_numberAct.Text != "")
@@ -1994,6 +2000,11 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region добавление актов на подпись представителю ПП
+
+        void Btn_Add_Signature_ActTO_Click(object sender, EventArgs e)
+        {
+            Add_Signature_ActTO(sender, e);
+        }
 
         void Add_Signature_ActTO(object sender, EventArgs e)
         {
@@ -2574,7 +2585,9 @@ namespace ServiceTelecomConnect
         {
             Btn_Show_DB_radiostantion_full_Click(sender, e);
         }
+
         #endregion
+
     }
 }
 

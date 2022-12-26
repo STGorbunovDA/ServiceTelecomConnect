@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -255,6 +255,8 @@
             this.mTrip_btn_Uploading_JSON_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_full = new System.Windows.Forms.ToolStripMenuItem();
+            this.Btn_Add_Signature_ActTO = new System.Windows.Forms.Button();
+            this.Btn_Add_Fill_Full_ActTO = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -295,44 +297,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
@@ -1904,16 +1906,20 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.Btn_Add_Fill_Full_ActTO);
+            this.panel4.Controls.Add(this.Btn_Add_Signature_ActTO);
             this.panel4.Controls.Add(this.picB_delete_Item_Fill_Full_ActTO);
             this.panel4.Controls.Add(this.cmB_add_Signature);
             this.panel4.Controls.Add(this.picB_delete_Item_Signature);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
             this.panel4.Controls.Add(this.cmB_add_Fill_Full_ActTO);
-            this.panel4.Location = new System.Drawing.Point(570, 43);
+            this.panel4.Location = new System.Drawing.Point(572, 37);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(332, 68);
+            this.panel4.Size = new System.Drawing.Size(332, 89);
             this.panel4.TabIndex = 117;
             // 
             // picB_delete_Item_Fill_Full_ActTO
@@ -1977,11 +1983,11 @@
             this.label26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label26.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label26.Location = new System.Drawing.Point(169, 6);
+            this.label26.Location = new System.Drawing.Point(186, 6);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(108, 16);
+            this.label26.Size = new System.Drawing.Size(83, 16);
             this.label26.TabIndex = 113;
-            this.label26.Text = "Заполняем акт:";
+            this.label26.Text = "Заполняем:";
             // 
             // cmB_add_Fill_Full_ActTO
             // 
@@ -1991,10 +1997,10 @@
             this.cmB_add_Fill_Full_ActTO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmB_add_Fill_Full_ActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_add_Fill_Full_ActTO.FormattingEnabled = true;
-            this.cmB_add_Fill_Full_ActTO.Location = new System.Drawing.Point(172, 29);
+            this.cmB_add_Fill_Full_ActTO.Location = new System.Drawing.Point(179, 29);
             this.cmB_add_Fill_Full_ActTO.Name = "cmB_add_Fill_Full_ActTO";
             this.cmB_add_Fill_Full_ActTO.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmB_add_Fill_Full_ActTO.Size = new System.Drawing.Size(105, 28);
+            this.cmB_add_Fill_Full_ActTO.Size = new System.Drawing.Size(94, 28);
             this.cmB_add_Fill_Full_ActTO.TabIndex = 114;
             this.cmB_add_Fill_Full_ActTO.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Fill_Full_ActTO_SelectionChangeCommitted);
             // 
@@ -2849,6 +2855,32 @@
             this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_full_Click);
             // 
+            // Btn_Add_Signature_ActTO
+            // 
+            this.Btn_Add_Signature_ActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Add_Signature_ActTO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_Add_Signature_ActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_Add_Signature_ActTO.Location = new System.Drawing.Point(30, 60);
+            this.Btn_Add_Signature_ActTO.Name = "Btn_Add_Signature_ActTO";
+            this.Btn_Add_Signature_ActTO.Size = new System.Drawing.Size(94, 23);
+            this.Btn_Add_Signature_ActTO.TabIndex = 118;
+            this.Btn_Add_Signature_ActTO.Text = "Добавить";
+            this.Btn_Add_Signature_ActTO.UseVisualStyleBackColor = false;
+            this.Btn_Add_Signature_ActTO.Click += new System.EventHandler(this.Btn_Add_Signature_ActTO_Click);
+            // 
+            // Btn_Add_Fill_Full_ActTO
+            // 
+            this.Btn_Add_Fill_Full_ActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Btn_Add_Fill_Full_ActTO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Btn_Add_Fill_Full_ActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_Add_Fill_Full_ActTO.Location = new System.Drawing.Point(179, 60);
+            this.Btn_Add_Fill_Full_ActTO.Name = "Btn_Add_Fill_Full_ActTO";
+            this.Btn_Add_Fill_Full_ActTO.Size = new System.Drawing.Size(94, 23);
+            this.Btn_Add_Fill_Full_ActTO.TabIndex = 119;
+            this.Btn_Add_Fill_Full_ActTO.Text = "Добавить";
+            this.Btn_Add_Fill_Full_ActTO.UseVisualStyleBackColor = false;
+            this.Btn_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.Btn_Add_Fill_Full_ActTO_Click);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3142,5 +3174,7 @@
         private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Show_DB_radiostantion_last_year;
         private System.Windows.Forms.ToolStripMenuItem mTrip_btn_Show_DB_radiostantion_full;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button Btn_Add_Fill_Full_ActTO;
+        private System.Windows.Forms.Button Btn_Add_Signature_ActTO;
     }
 }
