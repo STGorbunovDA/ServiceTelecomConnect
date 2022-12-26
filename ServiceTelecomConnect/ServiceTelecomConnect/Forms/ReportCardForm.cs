@@ -89,6 +89,13 @@ namespace ServiceTelecomConnect.Forms
                     DB.GetInstance.CloseConnection();
                 }
             }
+            if (cmB_dateTimeInput.Items.Count > 0)
+            {
+                cmB_dateTimeInput.SelectedIndex = cmB_dateTimeInput.Items.Count - 1;
+                CmB_dateTimeInput_SelectionChangeCommitted(sender, e);
+            }
+
+
             this.dataGridView1.Sort(this.dataGridView1.Columns["dateTimeInput"], ListSortDirection.Ascending);
         }
 
