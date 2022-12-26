@@ -1785,6 +1785,188 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region Куратор
+
+        internal static void Number_unique_model_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT model FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "model";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+
+        }
+
+        internal static void Number_unique_location_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "location";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+
+        }
+
+        internal static void Number_unique_dateTO_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}'  AND road = '{road}' ORDER BY dateTO";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "dateTO";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_numberAct_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberAct";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_numberActRemont_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_decommissionActs_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+
+            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY month";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "month";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+        #endregion
+
+        #region Начальник участка вся БД
+        internal static void Number_unique_company_full_BD(ComboBox cmb_number_unique_acts, string road)
+        {
+            string querystring2 = $"SELECT DISTINCT company FROM radiostantion WHERE road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable act_table_unique = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                {
+                    adapter.Fill(act_table_unique);
+
+                    cmb_number_unique_acts.DataSource = act_table_unique;
+                    cmb_number_unique_acts.DisplayMember = "company";
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+        #endregion
+
+        #region Начальник участка для города
 
         internal static void Number_unique_company(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
@@ -1944,163 +2126,7 @@ namespace ServiceTelecomConnect
 
         }
 
-        internal static void Number_unique_model_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-            string querystring2 = $"SELECT DISTINCT model FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "model";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        internal static void Number_unique_company_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-
-            string querystring2 = $"SELECT DISTINCT company FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY company";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "company";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-
-        }
-
-        internal static void Number_unique_location_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-
-            string querystring2 = $"SELECT DISTINCT location FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "location";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-
-        }
-
-        internal static void Number_unique_dateTO_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion_сomparison WHERE city = '{comboBox_city}'  AND road = '{road}' ORDER BY dateTO";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "dateTO";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        internal static void Number_unique_numberAct_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-            string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberAct";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "numberAct";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        internal static void Number_unique_numberActRemont_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-            string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "numberActRemont";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        internal static void Number_unique_decommissionActs_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-
-            string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "decommissionSerialNumber";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
-        internal static void Number_unique_month_curator(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
-        {
-            string querystring2 = $"SELECT DISTINCT month FROM radiostantion_сomparison WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY month";
-            using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
-
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "month";
-                    DB.GetInstance.CloseConnection();
-                }
-            }
-        }
-
+        #endregion
 
         #endregion
 
