@@ -187,7 +187,7 @@ namespace ServiceTelecomConnect
             }
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
-            timer.Interval = (30 * 60 * 1000); // 15 mins
+            timer.Interval = (1 * 60 * 1000); // 15 mins
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Start();
 
@@ -201,9 +201,11 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, cmB_city.Text, cmB_road.Text);
-            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, cmB_city.Text); }) { IsBackground = true }.Start();
-            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, cmB_city.Text); }) { IsBackground = true }.Start();
+            var taskCity = cmB_city.Text;
+            var road = cmB_road.Text;
+            QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, road);
+            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
 
