@@ -32,6 +32,16 @@ namespace ServiceTelecomConnect
         {
             QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
             QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
+
+            if (Regex.IsMatch(lbL_last_act.Text, @"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+            {
+                Regex re = new Regex(@"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$");
+                Match result = re.Match(lbL_last_act.Text);
+                var y1 = Convert.ToDouble(result.Groups[2].Value);
+                y1++;
+                txB_numberAct.Text += y1.ToString();
+            }
+
             chB_analog.CheckState = CheckState.Checked;
             txB_price.Text = "1411.18";
         }
@@ -746,8 +756,6 @@ namespace ServiceTelecomConnect
         }
         void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            chB_scan.CheckState = CheckState.Unchecked;
-            cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                 cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
                 cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
@@ -1668,18 +1676,9 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void ChB_scan_Click(object sender, EventArgs e)
+        void TxB_serialNumber_Click(object sender, EventArgs e)
         {
-            if (chB_scan.CheckState == CheckState.Checked)
-            {
-                cmB_model.DropDownStyle = ComboBoxStyle.DropDown;
-                cmB_model.Text = "";
-            }
-            else
-            {
-                cmB_model.DropDownStyle = ComboBoxStyle.DropDownList;
-                cmB_model.Text = cmB_model.Items[0].ToString();
-            }
+            Application.CurrentInputLanguage = InputLanguage.FromCulture(new CultureInfo("en-us"));
         }
     }
 }

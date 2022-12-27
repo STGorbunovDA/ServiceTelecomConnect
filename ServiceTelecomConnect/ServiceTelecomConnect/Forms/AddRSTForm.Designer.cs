@@ -96,7 +96,6 @@
             this.lbL_road = new System.Windows.Forms.Label();
             this.chB_digital = new System.Windows.Forms.CheckBox();
             this.chB_analog = new System.Windows.Forms.CheckBox();
-            this.chB_scan = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dateIssue)).BeginInit();
@@ -220,6 +219,7 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
+            this.txB_serialNumber.Click += new System.EventHandler(this.TxB_serialNumber_Click);
             this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyDown);
             this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
             this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
@@ -893,20 +893,6 @@
             this.chB_analog.UseVisualStyleBackColor = false;
             this.chB_analog.Click += new System.EventHandler(this.ChB_analog_Click);
             // 
-            // chB_scan
-            // 
-            this.chB_scan.AutoSize = true;
-            this.chB_scan.BackColor = System.Drawing.Color.Transparent;
-            this.chB_scan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chB_scan.Location = new System.Drawing.Point(529, 219);
-            this.chB_scan.Name = "chB_scan";
-            this.chB_scan.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.chB_scan.Size = new System.Drawing.Size(51, 17);
-            this.chB_scan.TabIndex = 108;
-            this.chB_scan.Text = "Scan";
-            this.chB_scan.UseVisualStyleBackColor = false;
-            this.chB_scan.Click += new System.EventHandler(this.ChB_scan_Click);
-            // 
             // AddRSTForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -914,7 +900,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(859, 551);
-            this.Controls.Add(this.chB_scan);
             this.Controls.Add(this.chB_analog);
             this.Controls.Add(this.chB_digital);
             this.Controls.Add(this.lbL_road);
@@ -1068,6 +1053,5 @@
         internal System.Windows.Forms.Label lbL_road;
         private System.Windows.Forms.CheckBox chB_digital;
         private System.Windows.Forms.CheckBox chB_analog;
-        private System.Windows.Forms.CheckBox chB_scan;
     }
 }
