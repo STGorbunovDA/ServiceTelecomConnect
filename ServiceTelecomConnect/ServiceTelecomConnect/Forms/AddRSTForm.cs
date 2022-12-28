@@ -127,6 +127,7 @@ namespace ServiceTelecomConnect
                 var model = cmB_model.GetItemText(cmB_model.SelectedItem);
 
                 var serialNumber = txB_serialNumber.Text;
+                
                 #region
                 if (model == "Motorola GP-340")
                 {
@@ -320,7 +321,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (model == "Motorola GP-320")
                 {
-                    if (!Regex.IsMatch(serialNumber, @"^([0-9]{3,3}([A-Z]{3,3}[0-9]{4,4}))?([0-9]{3,3}[A-Z]{4,4}[0-9]{3,3})*$"))
+                    if (!Regex.IsMatch(serialNumber, @"^([6][3][8]([A-Z]{3,3}[0-9]{4,4}))?([6][3][8][A-Z]{4,4}[0-9]{3,3})*$"))
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
@@ -466,7 +467,7 @@ namespace ServiceTelecomConnect
                 }
 
                 var numberAct = txB_numberAct.Text;
-                var dateTO = txB_dateTO.Text;
+                var dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
                 if (String.IsNullOrEmpty(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1679,6 +1680,45 @@ namespace ServiceTelecomConnect
         void TxB_serialNumber_Click(object sender, EventArgs e)
         {
             Application.CurrentInputLanguage = InputLanguage.FromCulture(new CultureInfo("en-us"));
+        }
+
+        void TxB_serialNumber_TextChanged(object sender, EventArgs e)
+        {
+            if(txB_serialNumber.Text.Length == 10)
+            {
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-340");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][3][8]([A-Z]{3,3}[0-9]{4,4}))?([6][3][8][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-320");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-360");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-2400е");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-4400");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-1400");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-300");
+                }
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                {
+                    cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola P080");
+                }
+            }
         }
     }
 }

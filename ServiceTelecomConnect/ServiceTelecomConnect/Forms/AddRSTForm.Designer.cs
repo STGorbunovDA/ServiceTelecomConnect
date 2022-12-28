@@ -220,6 +220,7 @@
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
             this.txB_serialNumber.Click += new System.EventHandler(this.TxB_serialNumber_Click);
+            this.txB_serialNumber.TextChanged += new System.EventHandler(this.TxB_serialNumber_TextChanged);
             this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyDown);
             this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
             this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
