@@ -1197,9 +1197,17 @@ namespace ServiceTelecomConnect
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
                         $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                 }
-                else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "numberActRemont"
                     || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month" || perem_comboBox == "model")
                 {
+                    searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
+                        $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
+                        $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
+                        $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                }
+                else if (perem_comboBox == "dateTO")
+                {
+                    cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
                     searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                         $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
