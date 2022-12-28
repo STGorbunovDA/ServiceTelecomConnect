@@ -958,6 +958,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
+                            m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
                         {
@@ -2601,6 +2602,61 @@ namespace ServiceTelecomConnect
             Btn_Show_DB_radiostantion_full_Click(sender, e);
         }
 
+        #endregion
+
+        #region изменить номер акта у радиостанции
+
+        void ChangeNumberAct(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 1)
+            {
+                string Mesage;
+                Mesage = $"Вы действительно хотите изменить номер акта радиостанций у предприятия: {txB_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                string Mesage;
+                Mesage = $"Вы действительно хотите изменить номер акта у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            {
+                string Mesage;
+                Mesage = $"Нельзя изменить номер акта на РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание";
+
+                MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                return;
+            }
+
+            QuerySettingDataBase.ChangeNumberAct(dataGridView1);
+
+            txB_serialNumber.Clear();
+            txB_numberAct.Clear();
+            txB_numberActRemont.Clear();
+
+            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+            txB_numberAct.Text = "";
+
+            dataGridView1.ClearSelection();
+
+            if (dataGridView1.RowCount - currRowIndex > 0)
+            {
+                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+            }
+            Counters();
+        }
         #endregion
 
     }
