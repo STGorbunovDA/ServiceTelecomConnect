@@ -187,7 +187,7 @@ namespace ServiceTelecomConnect
             }
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
-            timer.Interval = (30 * 60 * 1000); // 15 mins
+            timer.Interval = (31 * 60 * 1000); // 15 mins
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Start();
 
@@ -1122,7 +1122,7 @@ namespace ServiceTelecomConnect
                         remontRSTForm.lbL_city.Text = cmB_city.Text;
                         remontRSTForm.lbL_road.Text = cmB_road.Text;
 
-                        if (txB_dateTO.Text != "")
+                        if (String.IsNullOrEmpty(txB_dateTO.Text))
                         {
                             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                         }
