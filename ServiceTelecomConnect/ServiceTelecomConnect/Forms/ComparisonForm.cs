@@ -56,7 +56,7 @@ namespace ServiceTelecomConnect
             {
                 mTrip_funcionalpanel.Visible = false;
             }
-            if (_user.IsAdmin == "Admin")
+            else if (_user.IsAdmin == "Admin")
             {
 
             }
@@ -92,14 +92,12 @@ namespace ServiceTelecomConnect
 
                 helloKey.Close();
             }
-
-            QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
-            Counters();
-
             this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
             dataGridView1.Columns["dateTO"].ValueType = typeof(DateTime);
             dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
             dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
+            QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
+            Counters();   
 
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
@@ -477,6 +475,7 @@ namespace ServiceTelecomConnect
                 return;
             }
             QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
+            Counters();
         }
 
         void TextBox_search_KeyPress(object sender, KeyPressEventArgs e)
