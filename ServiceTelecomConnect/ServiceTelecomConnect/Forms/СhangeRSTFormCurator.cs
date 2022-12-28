@@ -481,7 +481,7 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            var dateTO = txB_dateTO.Text;
+            var dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
             if (String.IsNullOrEmpty(dateTO))
             {
                 MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
