@@ -459,7 +459,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-
         #region Куратор
         internal static void CreateColumsСurator(DataGridView dgw)
         {
@@ -727,6 +726,7 @@ namespace ServiceTelecomConnect
             }
         }
         #endregion
+
         #endregion
 
         #region загрузка всей таблицы ТО в текущем году
@@ -1536,6 +1536,18 @@ namespace ServiceTelecomConnect
             }
         }
 
+
+        #endregion
+
+        #region изменить номер акта у радиостанции
+
+        internal static void ChangeNumberAct(DataGridView dgw)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+
+            }
+        }
 
         #endregion
 
