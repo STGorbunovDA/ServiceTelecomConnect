@@ -370,6 +370,15 @@ namespace ServiceTelecomConnect
             }
 
             QuerySettingDataBase.LoadingLastNumberActRemont(lbL_last_act_remont, lbL_city.Text, lbL_road.Text);
+            
+            //if (Regex.IsMatch(lbL_last_act_remont.Text, @"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+            //{
+            //    Regex re = new Regex(@"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$");
+            //    Match result = re.Match(lbL_last_act_remont.Text);
+            //    var y1 = Convert.ToDouble(result.Groups[2].Value);
+            //    y1++;
+            //    txB_numberActRemont.Text += y1.ToString();
+            //}
             txB_MainMeans.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item1;
             txB_NameProductRepaired.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item2;
             if (txB_numberActRemont.Text != "53/")
@@ -459,6 +468,7 @@ namespace ServiceTelecomConnect
                     var nameProductRepaired = txB_NameProductRepaired.Text;
 
 
+
                     if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
                     {
                         var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
@@ -466,37 +476,23 @@ namespace ServiceTelecomConnect
                             $"completed_works_3 = '{сompleted_works_3}', completed_works_4 = '{сompleted_works_4}', " +
                             $"completed_works_5 = '{сompleted_works_5}', completed_works_6 = '{сompleted_works_6}', " +
                             $"completed_works_7 = '{сompleted_works_7}', parts_1 = '{parts_1}', parts_2 = '{parts_2}', " +
-                            $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', parts_7 = '{parts_7}'" +
+                            $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', " +
+                            $"parts_7 = '{parts_7}' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+
+                        var changeQuery2 = $"UPDATE radiostantion_full SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
                             $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
                         }
-                        if (CheacSerialNumber.GetInstance.CheacSerialNumber_OC6(serialNumber))
+                        using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
                         {
-                            var changeQueryOC = $"UPDATE OC6 SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
-                                $" WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
-                            using (MySqlCommand command2 = new MySqlCommand(changeQueryOC, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command2.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
-                        }
-                        else
-                        {
-                            var addQueryOC = $"INSERT INTO OC6 (serialNumber, mainMeans, nameProductRepaired, city, road) " +
-                                $"VALUES ('{serialNumber.Trim()}', '{mainMeans.Trim()}', '{nameProductRepaired.Trim()}', '{city.Trim()}','{road.Trim()}')";
-
-                            using (MySqlCommand command3 = new MySqlCommand(addQueryOC, DB.GetInstance.GetConnection()))
-                            {
-                                DB.GetInstance.OpenConnection();
-                                command3.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                            }
-
+                            DB.GetInstance.OpenConnection();
+                            command2.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
                         }
                         MessageBox.Show("Ремонт успешно добавлен!");
                         this.Close();
