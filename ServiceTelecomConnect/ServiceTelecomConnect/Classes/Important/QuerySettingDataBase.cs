@@ -1083,7 +1083,7 @@ namespace ServiceTelecomConnect
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
                     }
-                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
+                    else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
                     {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
@@ -1092,6 +1092,15 @@ namespace ServiceTelecomConnect
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
+                    else if(perem_comboBox == "dateTO")
+                    {
+                        cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
+                        searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+                            $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
+                            $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
+                            $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                    }    
                     else
                     {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
@@ -1691,6 +1700,7 @@ namespace ServiceTelecomConnect
 
                     if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(serialNumber))
                     {
+                        dateTO = Convert.ToDateTime(dateTO).ToString("yyyy-MM-dd");
                         var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
@@ -2642,7 +2652,7 @@ namespace ServiceTelecomConnect
             {
                 if (Internet_check.CheackSkyNET())
                 {
-                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM OC6 WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(querySelectOC, DB.GetInstance.GetConnection()))
                     {
