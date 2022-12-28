@@ -31,7 +31,7 @@ namespace ServiceTelecomConnect
                         var inventoryNumber = dgw.Rows[index].Cells[6].Value.ToString();
                         var networkNumber = dgw.Rows[index].Cells[7].Value.ToString();
                         DateTime _dateTO = (DateTime)dgw.Rows[index].Cells[8].Value;
-                        var dateTO = _dateTO.ToString("dd.MM.yyyy");
+                        var dateTO = Convert.ToDateTime(_dateTO).ToString("yyyy-MM-dd");
                         var numberAct = dgw.Rows[index].Cells[9].Value.ToString();
                         var city = dgw.Rows[index].Cells[10].Value.ToString();
                         var price = dgw.Rows[index].Cells[11].Value.ToString();
