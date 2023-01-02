@@ -223,6 +223,7 @@
             this.mTrip_new_add_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_new_add_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_pnl_ChangeNumberActTOFull = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
@@ -262,7 +263,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.mTrip_pnl_ChangeNumberActTOFull = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -2117,7 +2117,6 @@
             this.cmb_number_unique_acts.Name = "cmb_number_unique_acts";
             this.cmb_number_unique_acts.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(251, 28);
-            this.cmb_number_unique_acts.Sorted = true;
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
             this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
@@ -2626,6 +2625,13 @@
             this.mTrip_new_add_rst_remont.Text = "Добавить/изменить ремонт";
             this.mTrip_new_add_rst_remont.Click += new System.EventHandler(this.MTrip_new_add_rst_remont_Click);
             // 
+            // mTrip_pnl_ChangeNumberActTOFull
+            // 
+            this.mTrip_pnl_ChangeNumberActTOFull.Name = "mTrip_pnl_ChangeNumberActTOFull";
+            this.mTrip_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(258, 22);
+            this.mTrip_pnl_ChangeNumberActTOFull.Text = "Изменить номер акта";
+            this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTrip_pnl_ChangeNumberActTOFull_Click);
+            // 
             // mTrip_delete
             // 
             this.mTrip_delete.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2947,13 +2953,6 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
-            // mTrip_pnl_ChangeNumberActTOFull
-            // 
-            this.mTrip_pnl_ChangeNumberActTOFull.Name = "mTrip_pnl_ChangeNumberActTOFull";
-            this.mTrip_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(258, 22);
-            this.mTrip_pnl_ChangeNumberActTOFull.Text = "Изменить номер акта";
-            this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTrip_pnl_ChangeNumberActTOFull_Click);
-            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2961,9 +2960,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.pnl_ChangeNumberActTOFull);
             this.Controls.Add(this.panel_seach_datagrid);
-            this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_info_phone_FIO);
