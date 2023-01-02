@@ -601,6 +601,8 @@ namespace ServiceTelecomConnect
 
                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(values[4]))
                                 {
+                                    var dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
+
                                     var mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
@@ -608,7 +610,7 @@ namespace ServiceTelecomConnect
                                     $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
                                     $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES " +
                                     $"('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}','{values[4]}', '{values[5]}', '{values[6]}', " +
-                                    $"'{values[7]}','{values[8]}','{values[9]}','{values[10]}', '{values[11]}', '{values[12]}', " +
+                                    $"'{dateTO}','{values[8]}','{values[9]}','{values[10]}', '{values[11]}', '{values[12]}', " +
                                     $"'{values[13]}', '{values[14]}', '{values[15]}', '{values[16]}', '{values[17]}', '{values[18]}'," +
                                     $"'{values[19]}', '{values[20]}', '{values[21]}', '{values[22]}', '{values[23]}', '{values[24]}', " +
                                     $"'{values[25]}', '{values[26]}', '{values[27]}', '{values[28]}', '{values[29]}', '{values[30]}', " +
