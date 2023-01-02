@@ -635,7 +635,15 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            var dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            if (dgwRowsCount == 0)
+                return;
+            if (dgwRowsCount > 20)
+            {
+                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! В Акте более 20 радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
             dataGridView1.ClearSelection();
 
@@ -1013,6 +1021,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
+                            m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                         }
                         if (txB_decommissionSerialNumber.Text != "")
                         {
@@ -2452,6 +2461,11 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region MenuTrip
+        void MTrip_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        {
+            ChangeNumberAct(sender, e);
+        }
+
         void MTrip_new_add_rst_Click(object sender, EventArgs e)
         {
             Button_new_add_rst_form_Click(sender, e);
@@ -2606,43 +2620,61 @@ namespace ServiceTelecomConnect
 
         #region изменить номер акта у радиостанции
 
+        void Btn_close_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        {
+            pnl_ChangeNumberActTOFull.Visible = false;
+            dataGridView1.Enabled = true;
+            panel1.Enabled = true;
+        }
+
         void ChangeNumberAct(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count > 1)
-            {
-                string Mesage;
-                Mesage = $"Вы действительно хотите изменить номер акта радиостанций у предприятия: {txB_company.Text}?";
+            if (String.IsNullOrEmpty(txB_numberAct.Text))
+                return;
+            if (dataGridView1.Rows.Count == 0)
+                return;
 
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-            }
-            else
+            if (dataGridView1.SelectedRows.Count == 0)
+                return;
+            if (dataGridView1.SelectedRows.Count > 20)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите изменить номер акта у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    return;
-                }
-            }
-
-            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
-            {
-                string Mesage;
-                Mesage = $"Нельзя изменить номер акта на РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание";
+                string Mesage = $"Вы выбрали более 20 радиостанций. В Акте не должно быть более 20 радиостанций.";
 
                 MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 return;
+
             }
 
-            QuerySettingDataBase.ChangeNumberAct(dataGridView1);
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                string Mesage = $"Вы действительно хотите изменить текущий номер акта {txB_numberAct.Text}?";
 
-            txB_serialNumber.Clear();
-            txB_numberAct.Clear();
-            txB_numberActRemont.Clear();
+                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+            txB_pnl_ChangeNumberActTOFull.Text = txB_numberAct.Text;
+            pnl_ChangeNumberActTOFull.Visible = true;
+            dataGridView1.Enabled = false;
+            panel1.Enabled = false;
+        }
+        void Btn_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txB_pnl_ChangeNumberActTOFull.Text))
+            {
+                MessageBox.Show("\"Заводской номер\" не должен быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_pnl_ChangeNumberActTOFull.Select();
+                return;
+            }
+            if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
+            {
+                MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_numberAct.Select();
+                return;
+            }
+
+            QuerySettingDataBase.ChangeNumberAct(dataGridView1, txB_pnl_ChangeNumberActTOFull.Text, cmB_city.Text, cmB_road.Text);
 
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
@@ -2655,8 +2687,11 @@ namespace ServiceTelecomConnect
             {
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             }
+            txB_pnl_ChangeNumberActTOFull.Clear();
             Counters();
+            Btn_close_pnl_ChangeNumberActTOFull_Click(sender, e);
         }
+
         #endregion
 
     }

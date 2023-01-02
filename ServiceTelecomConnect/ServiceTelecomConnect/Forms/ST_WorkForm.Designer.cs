@@ -257,6 +257,12 @@
             this.mTrip_btn_Uploading_JSON_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_last_year = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_btn_Show_DB_radiostantion_full = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnl_ChangeNumberActTOFull = new System.Windows.Forms.Panel();
+            this.btn_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
+            this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
+            this.mTrip_pnl_ChangeNumberActTOFull = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -279,6 +285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).BeginInit();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.pnl_ChangeNumberActTOFull.SuspendLayout();
             this.SuspendLayout();
             // 
             // loading_file_last_year
@@ -2592,7 +2599,8 @@
             this.добавитьИзменитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mTrip_new_add_rst,
             this.mTrip_change_rst,
-            this.mTrip_new_add_rst_remont});
+            this.mTrip_new_add_rst_remont,
+            this.mTrip_pnl_ChangeNumberActTOFull});
             this.добавитьИзменитьToolStripMenuItem.Name = "добавитьИзменитьToolStripMenuItem";
             this.добавитьИзменитьToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.добавитьИзменитьToolStripMenuItem.Text = "Добавить/Изменить";
@@ -2882,6 +2890,70 @@
             this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_full_Click);
             // 
+            // pnl_ChangeNumberActTOFull
+            // 
+            this.pnl_ChangeNumberActTOFull.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.pnl_ChangeNumberActTOFull.Controls.Add(this.btn_pnl_ChangeNumberActTOFull);
+            this.pnl_ChangeNumberActTOFull.Controls.Add(this.label27);
+            this.pnl_ChangeNumberActTOFull.Controls.Add(this.txB_pnl_ChangeNumberActTOFull);
+            this.pnl_ChangeNumberActTOFull.Controls.Add(this.btn_close_pnl_ChangeNumberActTOFull);
+            this.pnl_ChangeNumberActTOFull.Location = new System.Drawing.Point(580, 380);
+            this.pnl_ChangeNumberActTOFull.Name = "pnl_ChangeNumberActTOFull";
+            this.pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(305, 162);
+            this.pnl_ChangeNumberActTOFull.TabIndex = 85;
+            this.pnl_ChangeNumberActTOFull.Visible = false;
+            // 
+            // btn_pnl_ChangeNumberActTOFull
+            // 
+            this.btn_pnl_ChangeNumberActTOFull.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_pnl_ChangeNumberActTOFull.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pnl_ChangeNumberActTOFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_pnl_ChangeNumberActTOFull.Location = new System.Drawing.Point(192, 107);
+            this.btn_pnl_ChangeNumberActTOFull.Name = "btn_pnl_ChangeNumberActTOFull";
+            this.btn_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(98, 29);
+            this.btn_pnl_ChangeNumberActTOFull.TabIndex = 40;
+            this.btn_pnl_ChangeNumberActTOFull.Text = "Изменить";
+            this.btn_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
+            this.btn_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_pnl_ChangeNumberActTOFull_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label27.Location = new System.Drawing.Point(59, 14);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(175, 22);
+            this.label27.TabIndex = 39;
+            this.label27.Text = "Изменить № Акта";
+            // 
+            // txB_pnl_ChangeNumberActTOFull
+            // 
+            this.txB_pnl_ChangeNumberActTOFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_pnl_ChangeNumberActTOFull.Location = new System.Drawing.Point(15, 60);
+            this.txB_pnl_ChangeNumberActTOFull.Name = "txB_pnl_ChangeNumberActTOFull";
+            this.txB_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(275, 29);
+            this.txB_pnl_ChangeNumberActTOFull.TabIndex = 38;
+            // 
+            // btn_close_pnl_ChangeNumberActTOFull
+            // 
+            this.btn_close_pnl_ChangeNumberActTOFull.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_close_pnl_ChangeNumberActTOFull.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_close_pnl_ChangeNumberActTOFull.Location = new System.Drawing.Point(267, 9);
+            this.btn_close_pnl_ChangeNumberActTOFull.Name = "btn_close_pnl_ChangeNumberActTOFull";
+            this.btn_close_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(30, 29);
+            this.btn_close_pnl_ChangeNumberActTOFull.TabIndex = 35;
+            this.btn_close_pnl_ChangeNumberActTOFull.Text = "X";
+            this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
+            this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
+            // 
+            // mTrip_pnl_ChangeNumberActTOFull
+            // 
+            this.mTrip_pnl_ChangeNumberActTOFull.Name = "mTrip_pnl_ChangeNumberActTOFull";
+            this.mTrip_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(258, 22);
+            this.mTrip_pnl_ChangeNumberActTOFull.Text = "Изменить номер акта";
+            this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTrip_pnl_ChangeNumberActTOFull_Click);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2889,10 +2961,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.pnl_ChangeNumberActTOFull);
+            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_decommissionSerialNumber);
-            this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_date);
@@ -2950,6 +3023,8 @@
             this.panel3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnl_ChangeNumberActTOFull.ResumeLayout(false);
+            this.pnl_ChangeNumberActTOFull.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3177,5 +3252,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button Btn_Add_Fill_Full_ActTO;
         private System.Windows.Forms.Button Btn_Add_Signature_ActTO;
+        private System.Windows.Forms.Panel pnl_ChangeNumberActTOFull;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txB_pnl_ChangeNumberActTOFull;
+        private System.Windows.Forms.Button btn_close_pnl_ChangeNumberActTOFull;
+        private System.Windows.Forms.Button btn_pnl_ChangeNumberActTOFull;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_pnl_ChangeNumberActTOFull;
     }
 }
