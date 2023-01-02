@@ -139,7 +139,7 @@ namespace ServiceTelecomConnect
                     }
                 }
                 else dgw.Rows.Clear();
-                
+
                 dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
@@ -915,7 +915,7 @@ namespace ServiceTelecomConnect
         }
 
 
-        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search, 
+        internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search,
             string cmb_number_unique, string road, string txb_flag_all_BD)
         {
             if (Internet_check.CheackSkyNET())
@@ -1093,7 +1093,7 @@ namespace ServiceTelecomConnect
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
-                    else if(perem_comboBox == "dateTO")
+                    else if (perem_comboBox == "dateTO")
                     {
                         cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
@@ -1101,7 +1101,7 @@ namespace ServiceTelecomConnect
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }    
+                    }
                     else
                     {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
@@ -2332,7 +2332,8 @@ namespace ServiceTelecomConnect
 
         internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO";
+
+            string querystring2 = $"SELECT DISTINCT DATE(dateTO) FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY DATE(dateTO) DESC";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
@@ -2343,8 +2344,8 @@ namespace ServiceTelecomConnect
                     adapter.Fill(act_table_unique);
 
                     cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "dateTO";
-                    cmb_number_unique_acts.ValueMember = "dateTO";
+                    cmb_number_unique_acts.DisplayMember = "DATE(dateTO)";
+                    cmb_number_unique_acts.ValueMember = "DATE(dateTO)";
 
                     DB.GetInstance.CloseConnection();
                 }
