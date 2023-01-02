@@ -22,6 +22,7 @@ namespace ServiceTelecomConnect
             New,
             Modifield,
             ModifieldNew,
+            Change,
             Deleted
         }
 
@@ -1384,7 +1385,7 @@ namespace ServiceTelecomConnect
 
         #region update_datagridview_number_act
 
-        internal static void Update_datagridview_number_act(DataGridView dgw, string city, string numberAct, string road)
+        internal static int Update_datagridview_number_act(DataGridView dgw, string city, string numberAct, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1428,7 +1429,10 @@ namespace ServiceTelecomConnect
                 dgw.Columns[10].Width = 100;
                 dgw.Columns[11].Width = 100;
                 dgw.Columns[17].Width = 120;
+
+                return dgw.RowCount;
             }
+            else return 0;
         }
 
         internal static void Update_datagridview_number_act_curator(DataGridView dgw, string city, string numberAct)
@@ -1541,11 +1545,36 @@ namespace ServiceTelecomConnect
 
         #region изменить номер акта у радиостанции
 
-        internal static void ChangeNumberAct(DataGridView dgw)
+        internal static void ChangeNumberAct(DataGridView dgw, string txB_pnl_ChangeNumberActTOFull, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
+                foreach (DataGridViewRow row in dgw.SelectedRows)
+                {
+                    dgw.Rows[row.Index].Cells[41].Value = RowState.Change;
+                }
 
+                for (int index = 0; index < dgw.Rows.Count; index++)
+                {
+                    var rowState = (RowState)dgw.Rows[index].Cells[41].Value;//проверить индекс
+
+                    if (rowState == RowState.Change)
+                    {
+                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        var numberAct = dgw.Rows[index].Cells[9].Value;
+                        //UPDATE radiostantion SET numberAct = '51/1' WHERE numberAct = '53/1'
+                        var changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_pnl_ChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
+                            $"AND city = '{city}' AND road = '{road}' AND id = '{id}'";
+
+                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            command.ExecuteNonQuery();
+                            DB.GetInstance.CloseConnection();
+
+                        }
+                    }
+                }
             }
         }
 
