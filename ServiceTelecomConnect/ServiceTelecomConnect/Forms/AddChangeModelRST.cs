@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect.Forms
@@ -27,17 +28,22 @@ namespace ServiceTelecomConnect.Forms
         {
             if (Internet_check.CheackSkyNET())
             {
-                var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
-
-                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                if(!CheacModelRST(cmB_model.Text))
                 {
-                    DB.GetInstance.OpenConnection();
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Модель радиостанции успешно добавлена!");
-                    DB.GetInstance.CloseConnection();
-                }
+                    var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
 
-                QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Модель радиостанции успешно добавлена!");
+                        DB.GetInstance.CloseConnection();
+                    }
+
+                    QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                }
+                else MessageBox.Show("Такая модель присутсвует в БД");
+
             }
         }
 
@@ -76,6 +82,33 @@ namespace ServiceTelecomConnect.Forms
                 MessageBox.Show("Модель радиостанции успешно удалена!");
                 DB.GetInstance.CloseConnection();
             }
+        }
+
+        public Boolean CheacModelRST(string model)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                string querystring = $"SELECT model_radiostation_name FROM model_radiostation WHERE model_radiostation_name = '{model}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
