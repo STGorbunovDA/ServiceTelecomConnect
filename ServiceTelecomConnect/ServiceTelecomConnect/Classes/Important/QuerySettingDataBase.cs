@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -2332,23 +2333,26 @@ namespace ServiceTelecomConnect
 
         internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
-
-            string querystring2 = $"SELECT DISTINCT DATE(dateTO) FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY DATE(dateTO) DESC";
+            List<string> newList = new List<string>();
+            string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO DESC";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
 
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    adapter.Fill(act_table_unique);
-
-                    cmb_number_unique_acts.DataSource = act_table_unique;
-                    cmb_number_unique_acts.DisplayMember = "DATE(dateTO)";
-                    cmb_number_unique_acts.ValueMember = "DATE(dateTO)";
-
-                    DB.GetInstance.CloseConnection();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            newList.Add(reader.GetDateTime(0).ToString("dd.MM.yyyy"));
+                        }
+                        reader.Close();
+                    }
                 }
+                DB.GetInstance.CloseConnection();
+                var result = newList.Distinct().Reverse().Reverse().ToList();
+                cmb_number_unique_acts.DataSource = result;
             }
         }
 
