@@ -757,23 +757,7 @@ namespace ServiceTelecomConnect
         }
         void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
-                cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
-                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
-                cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
-                cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
-                cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
-            {
-                txB_price.Text = "1411.18";
-                chB_analog.CheckState = CheckState.Checked;
-                chB_digital.CheckState = CheckState.Unchecked;
-            }
-            else
-            {
-                txB_price.Text = "1919.57";
-                chB_digital.CheckState = CheckState.Checked;
-                chB_analog.CheckState = CheckState.Unchecked;
-            }
+            ChoosingAnalogDigital();
         }
 
         void TextBox_location_Click(object sender, EventArgs e)
@@ -829,46 +813,50 @@ namespace ServiceTelecomConnect
                         txB_numberIdentification.Text = table.Rows[0].ItemArray[14].ToString();
                         txB_dateIssue.Text = table.Rows[0].ItemArray[15].ToString();
                         txB_phoneNumber.Text = table.Rows[0].ItemArray[16].ToString();
+                        ChoosingAnalogDigital();
                     }
                 }
             }
-
 
             if (e.KeyCode == Keys.Return)
             {
-                if (txB_serialNumber.Text != "")
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+        }
+        void SeachRSTReturn()
+        {
+            if (txB_serialNumber.Text != "")
+            {
+                var serialNumber = txB_serialNumber.Text;
+
+                string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND road = '{lbL_road.Text}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
                 {
-                    var serialNumber = txB_serialNumber.Text;
-
-                    string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
-                    MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
-                    DataTable table = new DataTable();
-
-                    adapter.Fill(table);
-
-                    if (table.Rows.Count > 0)
-                    {
-                        cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                        txB_company.Text = table.Rows[0].ItemArray[2].ToString();
-                        txB_location.Text = table.Rows[0].ItemArray[3].ToString();
-                        cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
-                        txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                        txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                        txB_city.Text = table.Rows[0].ItemArray[10].ToString();
-                    }
-                    else
-                    {
-                        txB_inventoryNumber.Text = "";
-                        txB_networkNumber.Text = "";
-                    }
+                    cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
+                    txB_company.Text = table.Rows[0].ItemArray[2].ToString();
+                    txB_location.Text = table.Rows[0].ItemArray[3].ToString();
+                    cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
+                    txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
+                    txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
+                    txB_city.Text = table.Rows[0].ItemArray[10].ToString();
+                }
+                else
+                {
+                    txB_inventoryNumber.Text = "";
+                    txB_networkNumber.Text = "";
                 }
             }
         }
-
         void TextBox_serialNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             #region проверка ввода
@@ -1718,6 +1706,30 @@ namespace ServiceTelecomConnect
                 {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola P080");
                 }
+
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+        }
+
+        void ChoosingAnalogDigital()
+        {
+            if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
+                cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+                cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+                cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex-261" || cmB_model.Text == "РА-160")
+            {
+                txB_price.Text = "1411.18";
+                chB_analog.CheckState = CheckState.Checked;
+                chB_digital.CheckState = CheckState.Unchecked;
+            }
+            else
+            {
+                txB_price.Text = "1919.57";
+                chB_digital.CheckState = CheckState.Checked;
+                chB_analog.CheckState = CheckState.Unchecked;
             }
         }
     }
