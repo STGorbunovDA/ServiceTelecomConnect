@@ -542,11 +542,11 @@ namespace ServiceTelecomConnect
                 if (Application.OpenForms["AddRadioStationParametersForm"] == null)
                 {
                     addParameters.DoubleBufferedForm(true);
-                    addParameters.lbL_serialNumber.Text = txB_serialNumber.Text;
-                    addParameters.lbL_model.Text = cmB_model.Text;
+                    addParameters.txB_serialNumber.Text = txB_serialNumber.Text;
+                    addParameters.txB_model.Text = cmB_model.Text;
                     String dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("dd.MM.yyyy");
                     addParameters.txB_dateTO.Text = dateTO;
-                    addParameters.lbL_numberAct.Text = txB_numberAct.Text;
+                    addParameters.txB_numberAct.Text = txB_numberAct.Text;
                     addParameters.lbL_AKB.Text = txB_AKB.Text;
                     addParameters.Show();
                 }
