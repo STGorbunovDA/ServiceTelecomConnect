@@ -54,10 +54,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txB_DeviationTransmitter = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txB_TransmitterFrequencies = new System.Windows.Forms.TextBox();
             this.pnl_transmitter = new System.Windows.Forms.Panel();
             this.pnl_frequencies = new System.Windows.Forms.Panel();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.txB_ReceiverFrequencies = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -86,6 +86,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.pnl_Accessories = new System.Windows.Forms.Panel();
+            this.lbL_ManipulatorAccessories = new System.Windows.Forms.Label();
+            this.lbL_BatteryChargerAccessories = new System.Windows.Forms.Label();
             this.cmB_ManipulatorAccessories = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.cmB_BatteryChargerAccessories = new System.Windows.Forms.ComboBox();
@@ -97,11 +99,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.lbL_BatteryChargerAccessories = new System.Windows.Forms.Label();
-            this.lbL_ManipulatorAccessories = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.btn_LookFrequencies = new System.Windows.Forms.Button();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -390,19 +388,21 @@
             this.label9.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.Location = new System.Drawing.Point(759, 114);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(180, 27);
+            this.label9.Size = new System.Drawing.Size(194, 27);
             this.label9.TabIndex = 178;
-            this.label9.Text = "Частоты(МГц)";
+            this.label9.Text = "Частоты (МГц)";
             // 
-            // textBox7
+            // txB_TransmitterFrequencies
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(29, 27);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(152, 21);
-            this.textBox7.TabIndex = 179;
-            this.textBox7.TabStop = false;
+            this.txB_TransmitterFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_TransmitterFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_TransmitterFrequencies.Location = new System.Drawing.Point(15, 23);
+            this.txB_TransmitterFrequencies.Multiline = true;
+            this.txB_TransmitterFrequencies.Name = "txB_TransmitterFrequencies";
+            this.txB_TransmitterFrequencies.Size = new System.Drawing.Size(163, 192);
+            this.txB_TransmitterFrequencies.TabIndex = 179;
+            this.txB_TransmitterFrequencies.TabStop = false;
+            this.txB_TransmitterFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmitterFrequencies_KeyPress);
             // 
             // pnl_transmitter
             // 
@@ -429,35 +429,34 @@
             // 
             this.pnl_frequencies.BackColor = System.Drawing.Color.Transparent;
             this.pnl_frequencies.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_frequencies.Controls.Add(this.label34);
-            this.pnl_frequencies.Controls.Add(this.label33);
-            this.pnl_frequencies.Controls.Add(this.label32);
-            this.pnl_frequencies.Controls.Add(this.textBox18);
+            this.pnl_frequencies.Controls.Add(this.btn_LookFrequencies);
+            this.pnl_frequencies.Controls.Add(this.txB_ReceiverFrequencies);
             this.pnl_frequencies.Controls.Add(this.label26);
             this.pnl_frequencies.Controls.Add(this.label25);
-            this.pnl_frequencies.Controls.Add(this.textBox7);
+            this.pnl_frequencies.Controls.Add(this.txB_TransmitterFrequencies);
             this.pnl_frequencies.Location = new System.Drawing.Point(663, 144);
             this.pnl_frequencies.Name = "pnl_frequencies";
             this.pnl_frequencies.Size = new System.Drawing.Size(380, 256);
             this.pnl_frequencies.TabIndex = 181;
             // 
-            // textBox18
+            // txB_ReceiverFrequencies
             // 
-            this.textBox18.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox18.Location = new System.Drawing.Point(201, 23);
-            this.textBox18.Multiline = true;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(163, 26);
-            this.textBox18.TabIndex = 181;
-            this.textBox18.TabStop = false;
+            this.txB_ReceiverFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_ReceiverFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_ReceiverFrequencies.Location = new System.Drawing.Point(201, 23);
+            this.txB_ReceiverFrequencies.Multiline = true;
+            this.txB_ReceiverFrequencies.Name = "txB_ReceiverFrequencies";
+            this.txB_ReceiverFrequencies.Size = new System.Drawing.Size(163, 192);
+            this.txB_ReceiverFrequencies.TabIndex = 181;
+            this.txB_ReceiverFrequencies.TabStop = false;
+            this.txB_ReceiverFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceiverFrequencies_KeyPress);
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(257, 2);
+            this.label26.Location = new System.Drawing.Point(255, 2);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(54, 18);
             this.label26.TabIndex = 180;
@@ -468,7 +467,7 @@
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.Color.Transparent;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(61, 2);
+            this.label25.Location = new System.Drawing.Point(60, 2);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(76, 18);
             this.label25.TabIndex = 178;
@@ -770,6 +769,30 @@
             this.pnl_Accessories.Size = new System.Drawing.Size(380, 104);
             this.pnl_Accessories.TabIndex = 186;
             // 
+            // lbL_ManipulatorAccessories
+            // 
+            this.lbL_ManipulatorAccessories.AutoSize = true;
+            this.lbL_ManipulatorAccessories.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_ManipulatorAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_ManipulatorAccessories.Location = new System.Drawing.Point(332, 61);
+            this.lbL_ManipulatorAccessories.Name = "lbL_ManipulatorAccessories";
+            this.lbL_ManipulatorAccessories.Size = new System.Drawing.Size(16, 18);
+            this.lbL_ManipulatorAccessories.TabIndex = 190;
+            this.lbL_ManipulatorAccessories.Text = "2";
+            this.lbL_ManipulatorAccessories.Visible = false;
+            // 
+            // lbL_BatteryChargerAccessories
+            // 
+            this.lbL_BatteryChargerAccessories.AutoSize = true;
+            this.lbL_BatteryChargerAccessories.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_BatteryChargerAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_BatteryChargerAccessories.Location = new System.Drawing.Point(332, 27);
+            this.lbL_BatteryChargerAccessories.Name = "lbL_BatteryChargerAccessories";
+            this.lbL_BatteryChargerAccessories.Size = new System.Drawing.Size(16, 18);
+            this.lbL_BatteryChargerAccessories.TabIndex = 189;
+            this.lbL_BatteryChargerAccessories.Text = "1";
+            this.lbL_BatteryChargerAccessories.Visible = false;
+            // 
             // cmB_ManipulatorAccessories
             // 
             this.cmB_ManipulatorAccessories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -905,62 +928,17 @@
             this.label31.TabIndex = 185;
             this.label31.Text = "Примечание:";
             // 
-            // lbL_BatteryChargerAccessories
+            // btn_LookFrequencies
             // 
-            this.lbL_BatteryChargerAccessories.AutoSize = true;
-            this.lbL_BatteryChargerAccessories.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_BatteryChargerAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_BatteryChargerAccessories.Location = new System.Drawing.Point(332, 27);
-            this.lbL_BatteryChargerAccessories.Name = "lbL_BatteryChargerAccessories";
-            this.lbL_BatteryChargerAccessories.Size = new System.Drawing.Size(16, 18);
-            this.lbL_BatteryChargerAccessories.TabIndex = 189;
-            this.lbL_BatteryChargerAccessories.Text = "1";
-            this.lbL_BatteryChargerAccessories.Visible = false;
-            // 
-            // lbL_ManipulatorAccessories
-            // 
-            this.lbL_ManipulatorAccessories.AutoSize = true;
-            this.lbL_ManipulatorAccessories.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_ManipulatorAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_ManipulatorAccessories.Location = new System.Drawing.Point(332, 61);
-            this.lbL_ManipulatorAccessories.Name = "lbL_ManipulatorAccessories";
-            this.lbL_ManipulatorAccessories.Size = new System.Drawing.Size(16, 18);
-            this.lbL_ManipulatorAccessories.TabIndex = 190;
-            this.lbL_ManipulatorAccessories.Text = "2";
-            this.lbL_ManipulatorAccessories.Visible = false;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label32.Location = new System.Drawing.Point(6, 29);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(17, 16);
-            this.label32.TabIndex = 178;
-            this.label32.Text = "1:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.BackColor = System.Drawing.Color.Transparent;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label33.Location = new System.Drawing.Point(6, 57);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(17, 16);
-            this.label33.TabIndex = 182;
-            this.label33.Text = "2:";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.Transparent;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label34.Location = new System.Drawing.Point(181, 119);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(17, 16);
-            this.label34.TabIndex = 183;
-            this.label34.Text = "2:";
+            this.btn_LookFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_LookFrequencies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LookFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_LookFrequencies.Location = new System.Drawing.Point(112, 220);
+            this.btn_LookFrequencies.Name = "btn_LookFrequencies";
+            this.btn_LookFrequencies.Size = new System.Drawing.Size(153, 30);
+            this.btn_LookFrequencies.TabIndex = 192;
+            this.btn_LookFrequencies.Text = "Показать частоты";
+            this.btn_LookFrequencies.UseVisualStyleBackColor = false;
             // 
             // AddRadioStationParametersForm
             // 
@@ -1036,7 +1014,7 @@
         private System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox txB_DeviationTransmitter;
         private System.Windows.Forms.Label label9;
-        internal System.Windows.Forms.TextBox textBox7;
+        internal System.Windows.Forms.TextBox txB_TransmitterFrequencies;
         private System.Windows.Forms.Panel pnl_transmitter;
         private System.Windows.Forms.Panel pnl_frequencies;
         private System.Windows.Forms.Label label10;
@@ -1061,7 +1039,7 @@
         private System.Windows.Forms.Label label23;
         internal System.Windows.Forms.TextBox txB_ReceptionModeCurrentConsumption;
         private System.Windows.Forms.Label label20;
-        internal System.Windows.Forms.TextBox textBox18;
+        internal System.Windows.Forms.TextBox txB_ReceiverFrequencies;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
         internal System.Windows.Forms.TextBox txB_BatteryDischargeAlarmCurrentConsumption;
@@ -1081,8 +1059,6 @@
         private System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
         internal System.Windows.Forms.Label lbL_BatteryChargerAccessories;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Button btn_LookFrequencies;
     }
 }
