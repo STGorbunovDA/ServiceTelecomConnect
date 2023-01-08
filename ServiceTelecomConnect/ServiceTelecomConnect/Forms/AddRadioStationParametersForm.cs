@@ -32,12 +32,12 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
             if(String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
             {
-                lbL_AKB.Visible = false;
-                txB_AKB.Visible = false;
+                pnl_AKB.Visible= false;
             }
             else
             {
                 txB_AKB.Size = lbL_AKB.Size;
+                txB_AKB.Select();
             }
         }
 
