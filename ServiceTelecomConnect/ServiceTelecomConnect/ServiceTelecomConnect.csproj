@@ -294,6 +294,12 @@
     <Compile Include="Forms\AddChangeModelRST.Designer.cs">
       <DependentUpon>AddChangeModelRST.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddRadioStationParametersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddRadioStationParametersForm.Designer.cs">
+      <DependentUpon>AddRadioStationParametersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ChangeToProblemRST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,6 +400,9 @@
     <Compile Include="Classes\Print\PrintDocWord.cs" />
     <EmbeddedResource Include="Forms\AddChangeModelRST.resx">
       <DependentUpon>AddChangeModelRST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddRadioStationParametersForm.resx">
+      <DependentUpon>AddRadioStationParametersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeToProblemRST.resx">
       <DependentUpon>ChangeToProblemRST.cs</DependentUpon>

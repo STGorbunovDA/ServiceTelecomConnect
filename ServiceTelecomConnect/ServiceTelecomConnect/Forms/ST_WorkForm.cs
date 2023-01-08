@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using ServiceTelecomConnect.Classes.Other;
+using ServiceTelecomConnect.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -487,6 +488,22 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region Параметры радиостанции
+
+        void AddRadioStationParameters()
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                AddRadioStationParametersForm addParameters = new AddRadioStationParametersForm();
+                if (Application.OpenForms["AddRadioStationParametersForm"] == null)
+                {
+                    addParameters.DoubleBufferedForm(true);
+                }
+            }
+        }
+
+        #endregion
+
         #region Форма добавления РСТ
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
@@ -915,6 +932,7 @@ namespace ServiceTelecomConnect
                         var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                         if (txB_serialNumber.Text != "")
                         {
+                            m.MenuItems.Add(new MenuItem("Параметры радиостанции", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
