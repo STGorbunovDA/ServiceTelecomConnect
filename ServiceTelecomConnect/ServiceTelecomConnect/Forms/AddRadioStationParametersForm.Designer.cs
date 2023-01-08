@@ -62,17 +62,17 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.pnl_Receiver = new System.Windows.Forms.Panel();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txB_SuppressorReceiver = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txB_SelectivityReceiver = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txB_OutputPowerWattReceiver = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txB_OutputPowerVoltReceiver = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txB_SensitivityReceiver = new System.Windows.Forms.TextBox();
+            this.txB_KNIReceiver = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pnl_CurrentConsumption = new System.Windows.Forms.Panel();
@@ -490,33 +490,33 @@
             // 
             this.pnl_Receiver.BackColor = System.Drawing.Color.Transparent;
             this.pnl_Receiver.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_Receiver.Controls.Add(this.textBox13);
+            this.pnl_Receiver.Controls.Add(this.txB_SuppressorReceiver);
             this.pnl_Receiver.Controls.Add(this.label17);
-            this.pnl_Receiver.Controls.Add(this.textBox12);
+            this.pnl_Receiver.Controls.Add(this.txB_SelectivityReceiver);
             this.pnl_Receiver.Controls.Add(this.label14);
-            this.pnl_Receiver.Controls.Add(this.textBox8);
+            this.pnl_Receiver.Controls.Add(this.txB_OutputPowerWattReceiver);
             this.pnl_Receiver.Controls.Add(this.label13);
             this.pnl_Receiver.Controls.Add(this.label11);
-            this.pnl_Receiver.Controls.Add(this.textBox9);
+            this.pnl_Receiver.Controls.Add(this.txB_OutputPowerVoltReceiver);
             this.pnl_Receiver.Controls.Add(this.label12);
-            this.pnl_Receiver.Controls.Add(this.textBox10);
-            this.pnl_Receiver.Controls.Add(this.textBox11);
+            this.pnl_Receiver.Controls.Add(this.txB_SensitivityReceiver);
+            this.pnl_Receiver.Controls.Add(this.txB_KNIReceiver);
             this.pnl_Receiver.Controls.Add(this.label15);
             this.pnl_Receiver.Location = new System.Drawing.Point(13, 296);
             this.pnl_Receiver.Name = "pnl_Receiver";
             this.pnl_Receiver.Size = new System.Drawing.Size(644, 104);
             this.pnl_Receiver.TabIndex = 181;
             // 
-            // textBox13
+            // txB_SuppressorReceiver
             // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox13.Location = new System.Drawing.Point(566, 53);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(72, 26);
-            this.textBox13.TabIndex = 181;
-            this.textBox13.TabStop = false;
+            this.txB_SuppressorReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_SuppressorReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_SuppressorReceiver.Location = new System.Drawing.Point(566, 53);
+            this.txB_SuppressorReceiver.Name = "txB_SuppressorReceiver";
+            this.txB_SuppressorReceiver.ReadOnly = true;
+            this.txB_SuppressorReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_SuppressorReceiver.TabIndex = 181;
+            this.txB_SuppressorReceiver.TabStop = false;
             // 
             // label17
             // 
@@ -529,16 +529,16 @@
             this.label17.TabIndex = 180;
             this.label17.Text = "ШУМ, мкВ:";
             // 
-            // textBox12
+            // txB_SelectivityReceiver
             // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox12.Location = new System.Drawing.Point(405, 19);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(72, 26);
-            this.textBox12.TabIndex = 179;
-            this.textBox12.TabStop = false;
+            this.txB_SelectivityReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_SelectivityReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_SelectivityReceiver.Location = new System.Drawing.Point(405, 19);
+            this.txB_SelectivityReceiver.Name = "txB_SelectivityReceiver";
+            this.txB_SelectivityReceiver.ReadOnly = true;
+            this.txB_SelectivityReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_SelectivityReceiver.TabIndex = 179;
+            this.txB_SelectivityReceiver.TabStop = false;
             // 
             // label14
             // 
@@ -551,16 +551,16 @@
             this.label14.TabIndex = 178;
             this.label14.Text = "Избирательн., дБ:";
             // 
-            // textBox8
+            // txB_OutputPowerWattReceiver
             // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox8.Location = new System.Drawing.Point(164, 53);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(72, 26);
-            this.textBox8.TabIndex = 177;
-            this.textBox8.TabStop = false;
+            this.txB_OutputPowerWattReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_OutputPowerWattReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_OutputPowerWattReceiver.Location = new System.Drawing.Point(164, 53);
+            this.txB_OutputPowerWattReceiver.Name = "txB_OutputPowerWattReceiver";
+            this.txB_OutputPowerWattReceiver.ReadOnly = true;
+            this.txB_OutputPowerWattReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_OutputPowerWattReceiver.TabIndex = 177;
+            this.txB_OutputPowerWattReceiver.TabStop = false;
             // 
             // label13
             // 
@@ -584,16 +584,16 @@
             this.label11.TabIndex = 166;
             this.label11.Text = "Вых. мощность, В:";
             // 
-            // textBox9
+            // txB_OutputPowerVoltReceiver
             // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox9.Location = new System.Drawing.Point(164, 19);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(72, 26);
-            this.textBox9.TabIndex = 167;
-            this.textBox9.TabStop = false;
+            this.txB_OutputPowerVoltReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_OutputPowerVoltReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_OutputPowerVoltReceiver.Location = new System.Drawing.Point(164, 19);
+            this.txB_OutputPowerVoltReceiver.Name = "txB_OutputPowerVoltReceiver";
+            this.txB_OutputPowerVoltReceiver.ReadOnly = true;
+            this.txB_OutputPowerVoltReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_OutputPowerVoltReceiver.TabIndex = 167;
+            this.txB_OutputPowerVoltReceiver.TabStop = false;
             // 
             // label12
             // 
@@ -606,27 +606,27 @@
             this.label12.TabIndex = 168;
             this.label12.Text = "Чувствительн., мкВ:";
             // 
-            // textBox10
+            // txB_SensitivityReceiver
             // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox10.Location = new System.Drawing.Point(405, 53);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(72, 26);
-            this.textBox10.TabIndex = 169;
-            this.textBox10.TabStop = false;
+            this.txB_SensitivityReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_SensitivityReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_SensitivityReceiver.Location = new System.Drawing.Point(405, 53);
+            this.txB_SensitivityReceiver.Name = "txB_SensitivityReceiver";
+            this.txB_SensitivityReceiver.ReadOnly = true;
+            this.txB_SensitivityReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_SensitivityReceiver.TabIndex = 169;
+            this.txB_SensitivityReceiver.TabStop = false;
             // 
-            // textBox11
+            // txB_KNIReceiver
             // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox11.Location = new System.Drawing.Point(566, 19);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(72, 26);
-            this.textBox11.TabIndex = 175;
-            this.textBox11.TabStop = false;
+            this.txB_KNIReceiver.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_KNIReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_KNIReceiver.Location = new System.Drawing.Point(566, 19);
+            this.txB_KNIReceiver.Name = "txB_KNIReceiver";
+            this.txB_KNIReceiver.ReadOnly = true;
+            this.txB_KNIReceiver.Size = new System.Drawing.Size(72, 26);
+            this.txB_KNIReceiver.TabIndex = 175;
+            this.txB_KNIReceiver.TabStop = false;
             // 
             // label15
             // 
@@ -1001,16 +1001,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel pnl_Receiver;
         private System.Windows.Forms.Label label11;
-        internal System.Windows.Forms.TextBox textBox9;
+        internal System.Windows.Forms.TextBox txB_OutputPowerVoltReceiver;
         private System.Windows.Forms.Label label12;
-        internal System.Windows.Forms.TextBox textBox10;
-        internal System.Windows.Forms.TextBox textBox11;
+        internal System.Windows.Forms.TextBox txB_SensitivityReceiver;
+        internal System.Windows.Forms.TextBox txB_KNIReceiver;
         private System.Windows.Forms.Label label15;
-        internal System.Windows.Forms.TextBox textBox13;
+        internal System.Windows.Forms.TextBox txB_SuppressorReceiver;
         private System.Windows.Forms.Label label17;
-        internal System.Windows.Forms.TextBox textBox12;
+        internal System.Windows.Forms.TextBox txB_SelectivityReceiver;
         private System.Windows.Forms.Label label14;
-        internal System.Windows.Forms.TextBox textBox8;
+        internal System.Windows.Forms.TextBox txB_OutputPowerWattReceiver;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel pnl_CurrentConsumption;
