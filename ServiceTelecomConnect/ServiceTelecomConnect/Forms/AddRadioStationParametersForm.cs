@@ -58,6 +58,24 @@ namespace ServiceTelecomConnect.Forms
             monthCalendar1.Visible = false;
         }
 
+        void TxB_TransmitterFrequencies_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b')
+            {
+                e.Handled = true;
+            }
+        }
+
+        void TxB_ReceiverFrequencies_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b')
+            {
+                e.Handled = true;
+            }
+        }
+
         //void TxB_AKB_TextChanged(object sender, EventArgs e)
         //{
         //    if (!Regex.IsMatch(txB_AKB.Text, "^[0-9]{2,2}$"))
