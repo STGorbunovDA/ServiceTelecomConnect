@@ -30,15 +30,16 @@ namespace ServiceTelecomConnect.Forms
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            if(String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
-            {
-                pnl_AKB.Visible= false;
-            }
+            if (String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
+                txB_AKB.Enabled = false;
             else
             {
                 txB_AKB.Size = lbL_AKB.Size;
-                txB_AKB.Select();
             }
+            if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
+                cmB_BatteryChargerAccessories.Enabled = false;
+            if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
+                cmB_ManipulatorAccessories.Enabled = false;
         }
 
         void PicB_clear_dataTO_Click(object sender, EventArgs e)
