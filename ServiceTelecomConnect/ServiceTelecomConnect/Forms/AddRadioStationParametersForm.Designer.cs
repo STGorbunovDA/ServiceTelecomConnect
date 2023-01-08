@@ -76,13 +76,13 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pnl_CurrentConsumption = new System.Windows.Forms.Panel();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txB_BatteryDischargeAlarmCurrentConsumption = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.txB_TransmissionModeCurrentConsumption = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.txB_ReceptionModeCurrentConsumption = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txB_StandbyModeCurrentConsumption = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.pnl_Accessories = new System.Windows.Forms.Panel();
@@ -95,7 +95,7 @@
             this.pnl_AKB = new System.Windows.Forms.Panel();
             this.btn_save_add_rst_remont = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
@@ -654,29 +654,29 @@
             // 
             this.pnl_CurrentConsumption.BackColor = System.Drawing.Color.Transparent;
             this.pnl_CurrentConsumption.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_CurrentConsumption.Controls.Add(this.textBox17);
+            this.pnl_CurrentConsumption.Controls.Add(this.txB_BatteryDischargeAlarmCurrentConsumption);
             this.pnl_CurrentConsumption.Controls.Add(this.label24);
-            this.pnl_CurrentConsumption.Controls.Add(this.textBox16);
+            this.pnl_CurrentConsumption.Controls.Add(this.txB_TransmissionModeCurrentConsumption);
             this.pnl_CurrentConsumption.Controls.Add(this.label23);
-            this.pnl_CurrentConsumption.Controls.Add(this.textBox15);
+            this.pnl_CurrentConsumption.Controls.Add(this.txB_ReceptionModeCurrentConsumption);
             this.pnl_CurrentConsumption.Controls.Add(this.label20);
-            this.pnl_CurrentConsumption.Controls.Add(this.textBox14);
+            this.pnl_CurrentConsumption.Controls.Add(this.txB_StandbyModeCurrentConsumption);
             this.pnl_CurrentConsumption.Controls.Add(this.label19);
             this.pnl_CurrentConsumption.Location = new System.Drawing.Point(13, 432);
             this.pnl_CurrentConsumption.Name = "pnl_CurrentConsumption";
             this.pnl_CurrentConsumption.Size = new System.Drawing.Size(644, 104);
             this.pnl_CurrentConsumption.TabIndex = 184;
             // 
-            // textBox17
+            // txB_BatteryDischargeAlarmCurrentConsumption
             // 
-            this.textBox17.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox17.Location = new System.Drawing.Point(566, 57);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ReadOnly = true;
-            this.textBox17.Size = new System.Drawing.Size(72, 26);
-            this.textBox17.TabIndex = 184;
-            this.textBox17.TabStop = false;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_BatteryDischargeAlarmCurrentConsumption.Location = new System.Drawing.Point(566, 57);
+            this.txB_BatteryDischargeAlarmCurrentConsumption.Name = "txB_BatteryDischargeAlarmCurrentConsumption";
+            this.txB_BatteryDischargeAlarmCurrentConsumption.ReadOnly = true;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.Size = new System.Drawing.Size(72, 26);
+            this.txB_BatteryDischargeAlarmCurrentConsumption.TabIndex = 184;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.TabStop = false;
             // 
             // label24
             // 
@@ -689,16 +689,16 @@
             this.label24.TabIndex = 183;
             this.label24.Text = "Сигнализация разряда АКБ, В:";
             // 
-            // textBox16
+            // txB_TransmissionModeCurrentConsumption
             // 
-            this.textBox16.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox16.Location = new System.Drawing.Point(566, 23);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ReadOnly = true;
-            this.textBox16.Size = new System.Drawing.Size(72, 26);
-            this.textBox16.TabIndex = 182;
-            this.textBox16.TabStop = false;
+            this.txB_TransmissionModeCurrentConsumption.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_TransmissionModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_TransmissionModeCurrentConsumption.Location = new System.Drawing.Point(566, 23);
+            this.txB_TransmissionModeCurrentConsumption.Name = "txB_TransmissionModeCurrentConsumption";
+            this.txB_TransmissionModeCurrentConsumption.ReadOnly = true;
+            this.txB_TransmissionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
+            this.txB_TransmissionModeCurrentConsumption.TabIndex = 182;
+            this.txB_TransmissionModeCurrentConsumption.TabStop = false;
             // 
             // label23
             // 
@@ -711,16 +711,16 @@
             this.label23.TabIndex = 181;
             this.label23.Text = "Режим передачи (высокая мощность), А:";
             // 
-            // textBox15
+            // txB_ReceptionModeCurrentConsumption
             // 
-            this.textBox15.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox15.Location = new System.Drawing.Point(172, 57);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(72, 26);
-            this.textBox15.TabIndex = 179;
-            this.textBox15.TabStop = false;
+            this.txB_ReceptionModeCurrentConsumption.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_ReceptionModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_ReceptionModeCurrentConsumption.Location = new System.Drawing.Point(172, 57);
+            this.txB_ReceptionModeCurrentConsumption.Name = "txB_ReceptionModeCurrentConsumption";
+            this.txB_ReceptionModeCurrentConsumption.ReadOnly = true;
+            this.txB_ReceptionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
+            this.txB_ReceptionModeCurrentConsumption.TabIndex = 179;
+            this.txB_ReceptionModeCurrentConsumption.TabStop = false;
             // 
             // label20
             // 
@@ -733,16 +733,16 @@
             this.label20.TabIndex = 180;
             this.label20.Text = "Режим приём, мА";
             // 
-            // textBox14
+            // txB_StandbyModeCurrentConsumption
             // 
-            this.textBox14.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox14.Location = new System.Drawing.Point(172, 23);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.ReadOnly = true;
-            this.textBox14.Size = new System.Drawing.Size(72, 26);
-            this.textBox14.TabIndex = 178;
-            this.textBox14.TabStop = false;
+            this.txB_StandbyModeCurrentConsumption.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_StandbyModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_StandbyModeCurrentConsumption.Location = new System.Drawing.Point(172, 23);
+            this.txB_StandbyModeCurrentConsumption.Name = "txB_StandbyModeCurrentConsumption";
+            this.txB_StandbyModeCurrentConsumption.ReadOnly = true;
+            this.txB_StandbyModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
+            this.txB_StandbyModeCurrentConsumption.TabIndex = 178;
+            this.txB_StandbyModeCurrentConsumption.TabStop = false;
             // 
             // label19
             // 
@@ -891,24 +891,24 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBox19);
+            this.panel1.Controls.Add(this.txB_NoteRadioStationParameters);
             this.panel1.Controls.Add(this.label31);
             this.panel1.Location = new System.Drawing.Point(13, 546);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(644, 73);
             this.panel1.TabIndex = 191;
             // 
-            // textBox19
+            // txB_NoteRadioStationParameters
             // 
-            this.textBox19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox19.Location = new System.Drawing.Point(106, 10);
-            this.textBox19.Multiline = true;
-            this.textBox19.Name = "textBox19";
-            this.textBox19.ReadOnly = true;
-            this.textBox19.Size = new System.Drawing.Size(532, 54);
-            this.textBox19.TabIndex = 185;
-            this.textBox19.TabStop = false;
+            this.txB_NoteRadioStationParameters.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_NoteRadioStationParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_NoteRadioStationParameters.Location = new System.Drawing.Point(106, 10);
+            this.txB_NoteRadioStationParameters.Multiline = true;
+            this.txB_NoteRadioStationParameters.Name = "txB_NoteRadioStationParameters";
+            this.txB_NoteRadioStationParameters.ReadOnly = true;
+            this.txB_NoteRadioStationParameters.Size = new System.Drawing.Size(532, 54);
+            this.txB_NoteRadioStationParameters.TabIndex = 185;
+            this.txB_NoteRadioStationParameters.TabStop = false;
             // 
             // label31
             // 
@@ -1014,16 +1014,16 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel pnl_CurrentConsumption;
-        internal System.Windows.Forms.TextBox textBox14;
+        internal System.Windows.Forms.TextBox txB_StandbyModeCurrentConsumption;
         private System.Windows.Forms.Label label19;
-        internal System.Windows.Forms.TextBox textBox16;
+        internal System.Windows.Forms.TextBox txB_TransmissionModeCurrentConsumption;
         private System.Windows.Forms.Label label23;
-        internal System.Windows.Forms.TextBox textBox15;
+        internal System.Windows.Forms.TextBox txB_ReceptionModeCurrentConsumption;
         private System.Windows.Forms.Label label20;
         internal System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
-        internal System.Windows.Forms.TextBox textBox17;
+        internal System.Windows.Forms.TextBox txB_BatteryDischargeAlarmCurrentConsumption;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Panel pnl_Accessories;
@@ -1036,7 +1036,7 @@
         private System.Windows.Forms.Panel pnl_AKB;
         private System.Windows.Forms.Button btn_save_add_rst_remont;
         private System.Windows.Forms.Panel panel1;
-        internal System.Windows.Forms.TextBox textBox19;
+        internal System.Windows.Forms.TextBox txB_NoteRadioStationParameters;
         private System.Windows.Forms.Label label31;
     }
 }
