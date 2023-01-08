@@ -530,7 +530,7 @@ namespace ServiceTelecomConnect
         {
             if (String.IsNullOrEmpty(txB_serialNumber.Text))
                 return;
-            if(!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 MessageBox.Show("Нельзя добавить параметры на радиостанцию, есть списание");
                 return;
@@ -2499,6 +2499,11 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region MenuTrip
+
+        void MTrip_AddRadioStationParameters_Click(object sender, EventArgs e)
+        {
+            AddRadioStationParameters(sender, e);
+        }
         void MTrip_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
         {
             ChangeNumberAct(sender, e);
@@ -2731,6 +2736,7 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
 
     }
 }
