@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txB_serialNumber = new System.Windows.Forms.Label();
-            this.txB_model = new System.Windows.Forms.Label();
+            this.lbL_serialNumber = new System.Windows.Forms.Label();
+            this.lbL_model = new System.Windows.Forms.Label();
             this.picB_clear_dataTO = new System.Windows.Forms.PictureBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.txB_dateTO = new System.Windows.Forms.TextBox();
-            this.txB_numberAct = new System.Windows.Forms.Label();
+            this.lbL_numberAct = new System.Windows.Forms.Label();
+            this.lbL_AKB = new System.Windows.Forms.Label();
+            this.txB_AKB = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,27 +51,27 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Параметры радиостанции";
             // 
-            // txB_serialNumber
+            // lbL_serialNumber
             // 
-            this.txB_serialNumber.AutoSize = true;
-            this.txB_serialNumber.BackColor = System.Drawing.Color.Transparent;
-            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_serialNumber.Location = new System.Drawing.Point(393, 66);
-            this.txB_serialNumber.Name = "txB_serialNumber";
-            this.txB_serialNumber.Size = new System.Drawing.Size(113, 20);
-            this.txB_serialNumber.TabIndex = 67;
-            this.txB_serialNumber.Text = "672TTTM099";
+            this.lbL_serialNumber.AutoSize = true;
+            this.lbL_serialNumber.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_serialNumber.Location = new System.Drawing.Point(393, 66);
+            this.lbL_serialNumber.Name = "lbL_serialNumber";
+            this.lbL_serialNumber.Size = new System.Drawing.Size(113, 20);
+            this.lbL_serialNumber.TabIndex = 67;
+            this.lbL_serialNumber.Text = "672TTTM099";
             // 
-            // txB_model
+            // lbL_model
             // 
-            this.txB_model.AutoSize = true;
-            this.txB_model.BackColor = System.Drawing.Color.Transparent;
-            this.txB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_model.Location = new System.Drawing.Point(26, 66);
-            this.txB_model.Name = "txB_model";
-            this.txB_model.Size = new System.Drawing.Size(145, 20);
-            this.txB_model.TabIndex = 68;
-            this.txB_model.Text = "Motorola GP-340";
+            this.lbL_model.AutoSize = true;
+            this.lbL_model.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_model.Location = new System.Drawing.Point(26, 66);
+            this.lbL_model.Name = "lbL_model";
+            this.lbL_model.Size = new System.Drawing.Size(145, 20);
+            this.lbL_model.TabIndex = 68;
+            this.lbL_model.Text = "Motorola GP-340";
             // 
             // picB_clear_dataTO
             // 
@@ -102,29 +104,53 @@
             this.txB_dateTO.TabStop = false;
             this.txB_dateTO.Click += new System.EventHandler(this.TxB_dateTO_Click);
             // 
-            // txB_numberAct
+            // lbL_numberAct
             // 
-            this.txB_numberAct.AutoSize = true;
-            this.txB_numberAct.BackColor = System.Drawing.Color.Transparent;
-            this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_numberAct.Location = new System.Drawing.Point(246, 66);
-            this.txB_numberAct.Name = "txB_numberAct";
-            this.txB_numberAct.Size = new System.Drawing.Size(80, 20);
-            this.txB_numberAct.TabIndex = 72;
-            this.txB_numberAct.Text = "№53/250";
+            this.lbL_numberAct.AutoSize = true;
+            this.lbL_numberAct.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_numberAct.Location = new System.Drawing.Point(246, 66);
+            this.lbL_numberAct.Name = "lbL_numberAct";
+            this.lbL_numberAct.Size = new System.Drawing.Size(80, 20);
+            this.lbL_numberAct.TabIndex = 72;
+            this.lbL_numberAct.Text = "№53/250";
+            // 
+            // lbL_AKB
+            // 
+            this.lbL_AKB.AutoSize = true;
+            this.lbL_AKB.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_AKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_AKB.Location = new System.Drawing.Point(610, 467);
+            this.lbL_AKB.Name = "lbL_AKB";
+            this.lbL_AKB.Size = new System.Drawing.Size(60, 20);
+            this.lbL_AKB.TabIndex = 73;
+            this.lbL_AKB.Text = "№ АКБ";
+            // 
+            // txB_AKB
+            // 
+            this.txB_AKB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_AKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_AKB.Location = new System.Drawing.Point(691, 464);
+            this.txB_AKB.MaxLength = 19;
+            this.txB_AKB.Name = "txB_AKB";
+            this.txB_AKB.Size = new System.Drawing.Size(82, 26);
+            this.txB_AKB.TabIndex = 74;
+            this.txB_AKB.TabStop = false;
             // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txB_numberAct);
+            this.ClientSize = new System.Drawing.Size(800, 537);
+            this.Controls.Add(this.txB_AKB);
+            this.Controls.Add(this.lbL_AKB);
+            this.Controls.Add(this.lbL_numberAct);
             this.Controls.Add(this.picB_clear_dataTO);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.txB_dateTO);
-            this.Controls.Add(this.txB_model);
-            this.Controls.Add(this.txB_serialNumber);
+            this.Controls.Add(this.lbL_model);
+            this.Controls.Add(this.lbL_serialNumber);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddRadioStationParametersForm";
@@ -142,8 +168,10 @@
         private System.Windows.Forms.PictureBox picB_clear_dataTO;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         internal System.Windows.Forms.TextBox txB_dateTO;
-        internal System.Windows.Forms.Label txB_serialNumber;
-        internal System.Windows.Forms.Label txB_model;
-        internal System.Windows.Forms.Label txB_numberAct;
+        internal System.Windows.Forms.Label lbL_serialNumber;
+        internal System.Windows.Forms.Label lbL_model;
+        internal System.Windows.Forms.Label lbL_numberAct;
+        internal System.Windows.Forms.Label lbL_AKB;
+        internal System.Windows.Forms.TextBox txB_AKB;
     }
 }

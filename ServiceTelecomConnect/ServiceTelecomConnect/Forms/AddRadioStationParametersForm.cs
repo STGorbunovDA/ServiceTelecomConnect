@@ -28,6 +28,11 @@ namespace ServiceTelecomConnect.Forms
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            if(String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
+            {
+                lbL_AKB.Visible = false;
+                txB_AKB.Visible = false;
+            }
         }
 
         void PicB_clear_dataTO_Click(object sender, EventArgs e)
