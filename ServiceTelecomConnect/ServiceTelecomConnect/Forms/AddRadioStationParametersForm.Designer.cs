@@ -43,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(217, 9);
+            this.label1.Location = new System.Drawing.Point(245, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(320, 27);
             this.label1.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             this.txB_serialNumber.AutoSize = true;
             this.txB_serialNumber.BackColor = System.Drawing.Color.Transparent;
-            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_serialNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_serialNumber.Location = new System.Drawing.Point(393, 66);
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(113, 20);
@@ -64,8 +64,8 @@
             // 
             this.txB_model.AutoSize = true;
             this.txB_model.BackColor = System.Drawing.Color.Transparent;
-            this.txB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_model.Location = new System.Drawing.Point(32, 66);
+            this.txB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_model.Location = new System.Drawing.Point(26, 66);
             this.txB_model.Name = "txB_model";
             this.txB_model.Size = new System.Drawing.Size(145, 20);
             this.txB_model.TabIndex = 68;
@@ -80,6 +80,7 @@
             this.picB_clear_dataTO.Size = new System.Drawing.Size(30, 30);
             this.picB_clear_dataTO.TabIndex = 69;
             this.picB_clear_dataTO.TabStop = false;
+            this.picB_clear_dataTO.Click += new System.EventHandler(this.PicB_clear_dataTO_Click);
             // 
             // monthCalendar1
             // 
@@ -87,6 +88,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(573, 89);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 71;
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
             // 
             // txB_dateTO
             // 
@@ -97,12 +99,14 @@
             this.txB_dateTO.Name = "txB_dateTO";
             this.txB_dateTO.Size = new System.Drawing.Size(164, 26);
             this.txB_dateTO.TabIndex = 70;
+            this.txB_dateTO.TabStop = false;
+            this.txB_dateTO.Click += new System.EventHandler(this.TxB_dateTO_Click);
             // 
             // txB_numberAct
             // 
             this.txB_numberAct.AutoSize = true;
             this.txB_numberAct.BackColor = System.Drawing.Color.Transparent;
-            this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_numberAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_numberAct.Location = new System.Drawing.Point(246, 66);
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(80, 20);

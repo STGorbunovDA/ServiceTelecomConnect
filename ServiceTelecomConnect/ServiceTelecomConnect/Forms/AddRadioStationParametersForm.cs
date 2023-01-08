@@ -29,5 +29,21 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
         }
+
+        void PicB_clear_dataTO_Click(object sender, EventArgs e)
+        {
+            txB_dateTO.Text = "";
+        }
+
+        void TxB_dateTO_Click(object sender, EventArgs e)
+        {
+            monthCalendar1.Visible = true;
+        }
+
+        void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
+            monthCalendar1.Visible = false;
+        }
     }
 }
