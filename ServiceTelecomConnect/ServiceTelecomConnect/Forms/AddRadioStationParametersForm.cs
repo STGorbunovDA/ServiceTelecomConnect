@@ -6,9 +6,11 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ServiceTelecomConnect.Forms
 {
@@ -33,6 +35,10 @@ namespace ServiceTelecomConnect.Forms
                 lbL_AKB.Visible = false;
                 txB_AKB.Visible = false;
             }
+            else
+            {
+                txB_AKB.Size = lbL_AKB.Size;
+            }
         }
 
         void PicB_clear_dataTO_Click(object sender, EventArgs e)
@@ -50,5 +56,13 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
+
+        //void TxB_AKB_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (!Regex.IsMatch(txB_AKB.Text, "^[0-9]{2,2}$"))
+        //    {
+        //        txB_AKB.Text = txB_AKB.Text.Remove(txB_AKB.Text.Length - 1);
+        //    }
+        //}
     }
 }
