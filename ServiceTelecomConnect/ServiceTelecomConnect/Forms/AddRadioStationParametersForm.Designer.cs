@@ -42,17 +42,17 @@
             this.label40 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txB_LowPowerLevelTransmitter = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txB_HighPowerLevelTransmitter = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txB_FrequencyDeviationTransmitter = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txB_SensitivityTransmitter = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txB_KNITransmitter = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txB_DeviationTransmitter = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.pnl_transmitter = new System.Windows.Forms.Panel();
@@ -95,8 +95,8 @@
             this.pnl_AKB = new System.Windows.Forms.Panel();
             this.btn_save_add_rst_remont = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label31 = new System.Windows.Forms.Label();
             this.textBox19 = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -263,16 +263,16 @@
             this.label3.TabIndex = 166;
             this.label3.Text = "Низкий, Вт:";
             // 
-            // textBox1
+            // txB_LowPowerLevelTransmitter
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(107, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(72, 26);
-            this.textBox1.TabIndex = 167;
-            this.textBox1.TabStop = false;
+            this.txB_LowPowerLevelTransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_LowPowerLevelTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_LowPowerLevelTransmitter.Location = new System.Drawing.Point(107, 23);
+            this.txB_LowPowerLevelTransmitter.Name = "txB_LowPowerLevelTransmitter";
+            this.txB_LowPowerLevelTransmitter.ReadOnly = true;
+            this.txB_LowPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_LowPowerLevelTransmitter.TabIndex = 167;
+            this.txB_LowPowerLevelTransmitter.TabStop = false;
             // 
             // label4
             // 
@@ -285,16 +285,16 @@
             this.label4.TabIndex = 168;
             this.label4.Text = "Высокий, Вт:";
             // 
-            // textBox2
+            // txB_HighPowerLevelTransmitter
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(107, 57);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(72, 26);
-            this.textBox2.TabIndex = 169;
-            this.textBox2.TabStop = false;
+            this.txB_HighPowerLevelTransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_HighPowerLevelTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_HighPowerLevelTransmitter.Location = new System.Drawing.Point(107, 57);
+            this.txB_HighPowerLevelTransmitter.Name = "txB_HighPowerLevelTransmitter";
+            this.txB_HighPowerLevelTransmitter.ReadOnly = true;
+            this.txB_HighPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_HighPowerLevelTransmitter.TabIndex = 169;
+            this.txB_HighPowerLevelTransmitter.TabStop = false;
             // 
             // label5
             // 
@@ -307,16 +307,16 @@
             this.label5.TabIndex = 170;
             this.label5.Text = "Отклоние, Гц:";
             // 
-            // textBox3
+            // txB_FrequencyDeviationTransmitter
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(359, 23);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(72, 26);
-            this.textBox3.TabIndex = 171;
-            this.textBox3.TabStop = false;
+            this.txB_FrequencyDeviationTransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_FrequencyDeviationTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_FrequencyDeviationTransmitter.Location = new System.Drawing.Point(359, 23);
+            this.txB_FrequencyDeviationTransmitter.Name = "txB_FrequencyDeviationTransmitter";
+            this.txB_FrequencyDeviationTransmitter.ReadOnly = true;
+            this.txB_FrequencyDeviationTransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_FrequencyDeviationTransmitter.TabIndex = 171;
+            this.txB_FrequencyDeviationTransmitter.TabStop = false;
             // 
             // label6
             // 
@@ -329,16 +329,16 @@
             this.label6.TabIndex = 172;
             this.label6.Text = "Чувствительность, мВ:";
             // 
-            // textBox4
+            // txB_SensitivityTransmitter
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(359, 57);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(72, 26);
-            this.textBox4.TabIndex = 173;
-            this.textBox4.TabStop = false;
+            this.txB_SensitivityTransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_SensitivityTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_SensitivityTransmitter.Location = new System.Drawing.Point(359, 57);
+            this.txB_SensitivityTransmitter.Name = "txB_SensitivityTransmitter";
+            this.txB_SensitivityTransmitter.ReadOnly = true;
+            this.txB_SensitivityTransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_SensitivityTransmitter.TabIndex = 173;
+            this.txB_SensitivityTransmitter.TabStop = false;
             // 
             // label7
             // 
@@ -351,16 +351,16 @@
             this.label7.TabIndex = 174;
             this.label7.Text = "КНИ, %:";
             // 
-            // textBox5
+            // txB_KNITransmitter
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(567, 23);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(72, 26);
-            this.textBox5.TabIndex = 175;
-            this.textBox5.TabStop = false;
+            this.txB_KNITransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_KNITransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_KNITransmitter.Location = new System.Drawing.Point(567, 23);
+            this.txB_KNITransmitter.Name = "txB_KNITransmitter";
+            this.txB_KNITransmitter.ReadOnly = true;
+            this.txB_KNITransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_KNITransmitter.TabIndex = 175;
+            this.txB_KNITransmitter.TabStop = false;
             // 
             // label8
             // 
@@ -373,16 +373,16 @@
             this.label8.TabIndex = 176;
             this.label8.Text = "Девиация, кГЦ:";
             // 
-            // textBox6
+            // txB_DeviationTransmitter
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(567, 57);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(72, 26);
-            this.textBox6.TabIndex = 177;
-            this.textBox6.TabStop = false;
+            this.txB_DeviationTransmitter.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_DeviationTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_DeviationTransmitter.Location = new System.Drawing.Point(567, 57);
+            this.txB_DeviationTransmitter.Name = "txB_DeviationTransmitter";
+            this.txB_DeviationTransmitter.ReadOnly = true;
+            this.txB_DeviationTransmitter.Size = new System.Drawing.Size(72, 26);
+            this.txB_DeviationTransmitter.TabIndex = 177;
+            this.txB_DeviationTransmitter.TabStop = false;
             // 
             // label9
             // 
@@ -403,7 +403,7 @@
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(163, 210);
+            this.textBox7.Size = new System.Drawing.Size(163, 26);
             this.textBox7.TabIndex = 179;
             this.textBox7.TabStop = false;
             // 
@@ -411,17 +411,17 @@
             // 
             this.pnl_transmitter.BackColor = System.Drawing.Color.Transparent;
             this.pnl_transmitter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_transmitter.Controls.Add(this.textBox6);
+            this.pnl_transmitter.Controls.Add(this.txB_DeviationTransmitter);
             this.pnl_transmitter.Controls.Add(this.label3);
-            this.pnl_transmitter.Controls.Add(this.textBox1);
+            this.pnl_transmitter.Controls.Add(this.txB_LowPowerLevelTransmitter);
             this.pnl_transmitter.Controls.Add(this.label4);
             this.pnl_transmitter.Controls.Add(this.label8);
-            this.pnl_transmitter.Controls.Add(this.textBox2);
-            this.pnl_transmitter.Controls.Add(this.textBox5);
+            this.pnl_transmitter.Controls.Add(this.txB_HighPowerLevelTransmitter);
+            this.pnl_transmitter.Controls.Add(this.txB_KNITransmitter);
             this.pnl_transmitter.Controls.Add(this.label5);
             this.pnl_transmitter.Controls.Add(this.label7);
-            this.pnl_transmitter.Controls.Add(this.textBox3);
-            this.pnl_transmitter.Controls.Add(this.textBox4);
+            this.pnl_transmitter.Controls.Add(this.txB_FrequencyDeviationTransmitter);
+            this.pnl_transmitter.Controls.Add(this.txB_SensitivityTransmitter);
             this.pnl_transmitter.Controls.Add(this.label6);
             this.pnl_transmitter.Location = new System.Drawing.Point(10, 144);
             this.pnl_transmitter.Name = "pnl_transmitter";
@@ -449,7 +449,7 @@
             this.textBox18.Multiline = true;
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
-            this.textBox18.Size = new System.Drawing.Size(163, 210);
+            this.textBox18.Size = new System.Drawing.Size(163, 26);
             this.textBox18.TabIndex = 181;
             this.textBox18.TabStop = false;
             // 
@@ -898,17 +898,6 @@
             this.panel1.Size = new System.Drawing.Size(644, 73);
             this.panel1.TabIndex = 191;
             // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label31.Location = new System.Drawing.Point(4, 30);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(98, 18);
-            this.label31.TabIndex = 185;
-            this.label31.Text = "Примечание:";
-            // 
             // textBox19
             // 
             this.textBox19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -920,6 +909,17 @@
             this.textBox19.Size = new System.Drawing.Size(532, 54);
             this.textBox19.TabIndex = 185;
             this.textBox19.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label31.Location = new System.Drawing.Point(4, 30);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(98, 18);
+            this.label31.TabIndex = 185;
+            this.label31.Text = "Примечание:";
             // 
             // AddRadioStationParametersForm
             // 
@@ -983,17 +983,17 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        internal System.Windows.Forms.TextBox textBox1;
+        internal System.Windows.Forms.TextBox txB_LowPowerLevelTransmitter;
         private System.Windows.Forms.Label label4;
-        internal System.Windows.Forms.TextBox textBox2;
+        internal System.Windows.Forms.TextBox txB_HighPowerLevelTransmitter;
         private System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.TextBox textBox3;
+        internal System.Windows.Forms.TextBox txB_FrequencyDeviationTransmitter;
         private System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.TextBox textBox4;
+        internal System.Windows.Forms.TextBox txB_SensitivityTransmitter;
         private System.Windows.Forms.Label label7;
-        internal System.Windows.Forms.TextBox textBox5;
+        internal System.Windows.Forms.TextBox txB_KNITransmitter;
         private System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.TextBox textBox6;
+        internal System.Windows.Forms.TextBox txB_DeviationTransmitter;
         private System.Windows.Forms.Label label9;
         internal System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Panel pnl_transmitter;
