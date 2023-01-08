@@ -488,8 +488,6 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-
-
         #region Форма добавления РСТ
         void Button_new_add_rst_form_Click(object sender, EventArgs e)
         {
@@ -548,6 +546,8 @@ namespace ServiceTelecomConnect
                     addParameters.txB_dateTO.Text = dateTO;
                     addParameters.txB_numberAct.Text = txB_numberAct.Text;
                     addParameters.lbL_AKB.Text = txB_AKB.Text;
+                    addParameters.lbL_BatteryChargerAccessories.Text = txB_batteryСharger.Text;
+                    addParameters.lbL_ManipulatorAccessories.Text = txB_manipulator.Text;
                     addParameters.Show();
                 }
             }
