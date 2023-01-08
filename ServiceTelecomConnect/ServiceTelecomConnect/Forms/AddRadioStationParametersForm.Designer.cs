@@ -99,6 +99,9 @@
             this.label31 = new System.Windows.Forms.Label();
             this.lbL_BatteryChargerAccessories = new System.Windows.Forms.Label();
             this.lbL_ManipulatorAccessories = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -271,7 +274,6 @@
             this.txB_LowPowerLevelTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_LowPowerLevelTransmitter.Location = new System.Drawing.Point(107, 23);
             this.txB_LowPowerLevelTransmitter.Name = "txB_LowPowerLevelTransmitter";
-            this.txB_LowPowerLevelTransmitter.ReadOnly = true;
             this.txB_LowPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_LowPowerLevelTransmitter.TabIndex = 167;
             this.txB_LowPowerLevelTransmitter.TabStop = false;
@@ -293,7 +295,6 @@
             this.txB_HighPowerLevelTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_HighPowerLevelTransmitter.Location = new System.Drawing.Point(107, 57);
             this.txB_HighPowerLevelTransmitter.Name = "txB_HighPowerLevelTransmitter";
-            this.txB_HighPowerLevelTransmitter.ReadOnly = true;
             this.txB_HighPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_HighPowerLevelTransmitter.TabIndex = 169;
             this.txB_HighPowerLevelTransmitter.TabStop = false;
@@ -315,7 +316,6 @@
             this.txB_FrequencyDeviationTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_FrequencyDeviationTransmitter.Location = new System.Drawing.Point(359, 23);
             this.txB_FrequencyDeviationTransmitter.Name = "txB_FrequencyDeviationTransmitter";
-            this.txB_FrequencyDeviationTransmitter.ReadOnly = true;
             this.txB_FrequencyDeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_FrequencyDeviationTransmitter.TabIndex = 171;
             this.txB_FrequencyDeviationTransmitter.TabStop = false;
@@ -337,7 +337,6 @@
             this.txB_SensitivityTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_SensitivityTransmitter.Location = new System.Drawing.Point(359, 57);
             this.txB_SensitivityTransmitter.Name = "txB_SensitivityTransmitter";
-            this.txB_SensitivityTransmitter.ReadOnly = true;
             this.txB_SensitivityTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityTransmitter.TabIndex = 173;
             this.txB_SensitivityTransmitter.TabStop = false;
@@ -359,7 +358,6 @@
             this.txB_KNITransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_KNITransmitter.Location = new System.Drawing.Point(567, 23);
             this.txB_KNITransmitter.Name = "txB_KNITransmitter";
-            this.txB_KNITransmitter.ReadOnly = true;
             this.txB_KNITransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_KNITransmitter.TabIndex = 175;
             this.txB_KNITransmitter.TabStop = false;
@@ -381,7 +379,6 @@
             this.txB_DeviationTransmitter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_DeviationTransmitter.Location = new System.Drawing.Point(567, 57);
             this.txB_DeviationTransmitter.Name = "txB_DeviationTransmitter";
-            this.txB_DeviationTransmitter.ReadOnly = true;
             this.txB_DeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_DeviationTransmitter.TabIndex = 177;
             this.txB_DeviationTransmitter.TabStop = false;
@@ -400,12 +397,10 @@
             // textBox7
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox7.Location = new System.Drawing.Point(18, 23);
-            this.textBox7.Multiline = true;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox7.Location = new System.Drawing.Point(29, 27);
             this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(163, 26);
+            this.textBox7.Size = new System.Drawing.Size(152, 21);
             this.textBox7.TabIndex = 179;
             this.textBox7.TabStop = false;
             // 
@@ -434,6 +429,9 @@
             // 
             this.pnl_frequencies.BackColor = System.Drawing.Color.Transparent;
             this.pnl_frequencies.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_frequencies.Controls.Add(this.label34);
+            this.pnl_frequencies.Controls.Add(this.label33);
+            this.pnl_frequencies.Controls.Add(this.label32);
             this.pnl_frequencies.Controls.Add(this.textBox18);
             this.pnl_frequencies.Controls.Add(this.label26);
             this.pnl_frequencies.Controls.Add(this.label25);
@@ -450,7 +448,6 @@
             this.textBox18.Location = new System.Drawing.Point(201, 23);
             this.textBox18.Multiline = true;
             this.textBox18.Name = "textBox18";
-            this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(163, 26);
             this.textBox18.TabIndex = 181;
             this.textBox18.TabStop = false;
@@ -515,7 +512,6 @@
             this.txB_SuppressorReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_SuppressorReceiver.Location = new System.Drawing.Point(566, 53);
             this.txB_SuppressorReceiver.Name = "txB_SuppressorReceiver";
-            this.txB_SuppressorReceiver.ReadOnly = true;
             this.txB_SuppressorReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SuppressorReceiver.TabIndex = 181;
             this.txB_SuppressorReceiver.TabStop = false;
@@ -537,7 +533,6 @@
             this.txB_SelectivityReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_SelectivityReceiver.Location = new System.Drawing.Point(405, 19);
             this.txB_SelectivityReceiver.Name = "txB_SelectivityReceiver";
-            this.txB_SelectivityReceiver.ReadOnly = true;
             this.txB_SelectivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SelectivityReceiver.TabIndex = 179;
             this.txB_SelectivityReceiver.TabStop = false;
@@ -559,7 +554,6 @@
             this.txB_OutputPowerWattReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_OutputPowerWattReceiver.Location = new System.Drawing.Point(164, 53);
             this.txB_OutputPowerWattReceiver.Name = "txB_OutputPowerWattReceiver";
-            this.txB_OutputPowerWattReceiver.ReadOnly = true;
             this.txB_OutputPowerWattReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerWattReceiver.TabIndex = 177;
             this.txB_OutputPowerWattReceiver.TabStop = false;
@@ -592,7 +586,6 @@
             this.txB_OutputPowerVoltReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_OutputPowerVoltReceiver.Location = new System.Drawing.Point(164, 19);
             this.txB_OutputPowerVoltReceiver.Name = "txB_OutputPowerVoltReceiver";
-            this.txB_OutputPowerVoltReceiver.ReadOnly = true;
             this.txB_OutputPowerVoltReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerVoltReceiver.TabIndex = 167;
             this.txB_OutputPowerVoltReceiver.TabStop = false;
@@ -614,7 +607,6 @@
             this.txB_SensitivityReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_SensitivityReceiver.Location = new System.Drawing.Point(405, 53);
             this.txB_SensitivityReceiver.Name = "txB_SensitivityReceiver";
-            this.txB_SensitivityReceiver.ReadOnly = true;
             this.txB_SensitivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityReceiver.TabIndex = 169;
             this.txB_SensitivityReceiver.TabStop = false;
@@ -625,7 +617,6 @@
             this.txB_KNIReceiver.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_KNIReceiver.Location = new System.Drawing.Point(566, 19);
             this.txB_KNIReceiver.Name = "txB_KNIReceiver";
-            this.txB_KNIReceiver.ReadOnly = true;
             this.txB_KNIReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_KNIReceiver.TabIndex = 175;
             this.txB_KNIReceiver.TabStop = false;
@@ -675,7 +666,6 @@
             this.txB_BatteryDischargeAlarmCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_BatteryDischargeAlarmCurrentConsumption.Location = new System.Drawing.Point(566, 57);
             this.txB_BatteryDischargeAlarmCurrentConsumption.Name = "txB_BatteryDischargeAlarmCurrentConsumption";
-            this.txB_BatteryDischargeAlarmCurrentConsumption.ReadOnly = true;
             this.txB_BatteryDischargeAlarmCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabIndex = 184;
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabStop = false;
@@ -697,7 +687,6 @@
             this.txB_TransmissionModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_TransmissionModeCurrentConsumption.Location = new System.Drawing.Point(566, 23);
             this.txB_TransmissionModeCurrentConsumption.Name = "txB_TransmissionModeCurrentConsumption";
-            this.txB_TransmissionModeCurrentConsumption.ReadOnly = true;
             this.txB_TransmissionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_TransmissionModeCurrentConsumption.TabIndex = 182;
             this.txB_TransmissionModeCurrentConsumption.TabStop = false;
@@ -719,7 +708,6 @@
             this.txB_ReceptionModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_ReceptionModeCurrentConsumption.Location = new System.Drawing.Point(172, 57);
             this.txB_ReceptionModeCurrentConsumption.Name = "txB_ReceptionModeCurrentConsumption";
-            this.txB_ReceptionModeCurrentConsumption.ReadOnly = true;
             this.txB_ReceptionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_ReceptionModeCurrentConsumption.TabIndex = 179;
             this.txB_ReceptionModeCurrentConsumption.TabStop = false;
@@ -741,7 +729,6 @@
             this.txB_StandbyModeCurrentConsumption.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_StandbyModeCurrentConsumption.Location = new System.Drawing.Point(172, 23);
             this.txB_StandbyModeCurrentConsumption.Name = "txB_StandbyModeCurrentConsumption";
-            this.txB_StandbyModeCurrentConsumption.ReadOnly = true;
             this.txB_StandbyModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_StandbyModeCurrentConsumption.TabIndex = 178;
             this.txB_StandbyModeCurrentConsumption.TabStop = false;
@@ -903,7 +890,6 @@
             this.txB_NoteRadioStationParameters.Location = new System.Drawing.Point(106, 10);
             this.txB_NoteRadioStationParameters.Multiline = true;
             this.txB_NoteRadioStationParameters.Name = "txB_NoteRadioStationParameters";
-            this.txB_NoteRadioStationParameters.ReadOnly = true;
             this.txB_NoteRadioStationParameters.Size = new System.Drawing.Size(532, 54);
             this.txB_NoteRadioStationParameters.TabIndex = 185;
             this.txB_NoteRadioStationParameters.TabStop = false;
@@ -929,6 +915,7 @@
             this.lbL_BatteryChargerAccessories.Size = new System.Drawing.Size(16, 18);
             this.lbL_BatteryChargerAccessories.TabIndex = 189;
             this.lbL_BatteryChargerAccessories.Text = "1";
+            this.lbL_BatteryChargerAccessories.Visible = false;
             // 
             // lbL_ManipulatorAccessories
             // 
@@ -940,6 +927,40 @@
             this.lbL_ManipulatorAccessories.Size = new System.Drawing.Size(16, 18);
             this.lbL_ManipulatorAccessories.TabIndex = 190;
             this.lbL_ManipulatorAccessories.Text = "2";
+            this.lbL_ManipulatorAccessories.Visible = false;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label32.Location = new System.Drawing.Point(6, 29);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(17, 16);
+            this.label32.TabIndex = 178;
+            this.label32.Text = "1:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.Transparent;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label33.Location = new System.Drawing.Point(6, 57);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(17, 16);
+            this.label33.TabIndex = 182;
+            this.label33.Text = "2:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.Transparent;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label34.Location = new System.Drawing.Point(181, 119);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(17, 16);
+            this.label34.TabIndex = 183;
+            this.label34.Text = "2:";
             // 
             // AddRadioStationParametersForm
             // 
@@ -1060,5 +1081,8 @@
         private System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
         internal System.Windows.Forms.Label lbL_BatteryChargerAccessories;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
     }
 }
