@@ -86,9 +86,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.pnl_Accessories = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmB_ManipulatorAccessories = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.cmB_сategory = new System.Windows.Forms.ComboBox();
+            this.cmB_BatteryChargerAccessories = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.pnl_info_rst = new System.Windows.Forms.Panel();
@@ -97,6 +97,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
+            this.lbL_BatteryChargerAccessories = new System.Windows.Forms.Label();
+            this.lbL_ManipulatorAccessories = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -770,31 +772,30 @@
             // 
             this.pnl_Accessories.BackColor = System.Drawing.Color.Transparent;
             this.pnl_Accessories.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_Accessories.Controls.Add(this.comboBox1);
+            this.pnl_Accessories.Controls.Add(this.lbL_ManipulatorAccessories);
+            this.pnl_Accessories.Controls.Add(this.lbL_BatteryChargerAccessories);
+            this.pnl_Accessories.Controls.Add(this.cmB_ManipulatorAccessories);
             this.pnl_Accessories.Controls.Add(this.label29);
-            this.pnl_Accessories.Controls.Add(this.cmB_сategory);
+            this.pnl_Accessories.Controls.Add(this.cmB_BatteryChargerAccessories);
             this.pnl_Accessories.Controls.Add(this.label28);
             this.pnl_Accessories.Location = new System.Drawing.Point(663, 432);
             this.pnl_Accessories.Name = "pnl_Accessories";
             this.pnl_Accessories.Size = new System.Drawing.Size(380, 104);
             this.pnl_Accessories.TabIndex = 186;
             // 
-            // comboBox1
+            // cmB_ManipulatorAccessories
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.comboBox1.Location = new System.Drawing.Point(248, 57);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(78, 28);
-            this.comboBox1.TabIndex = 188;
+            this.cmB_ManipulatorAccessories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_ManipulatorAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_ManipulatorAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_ManipulatorAccessories.FormattingEnabled = true;
+            this.cmB_ManipulatorAccessories.Items.AddRange(new object[] {
+            "испр.",
+            "неиспр."});
+            this.cmB_ManipulatorAccessories.Location = new System.Drawing.Point(248, 57);
+            this.cmB_ManipulatorAccessories.Name = "cmB_ManipulatorAccessories";
+            this.cmB_ManipulatorAccessories.Size = new System.Drawing.Size(78, 28);
+            this.cmB_ManipulatorAccessories.TabIndex = 188;
             // 
             // label29
             // 
@@ -807,22 +808,19 @@
             this.label29.TabIndex = 187;
             this.label29.Text = "Манипулятор: испр./неиспр.:";
             // 
-            // cmB_сategory
+            // cmB_BatteryChargerAccessories
             // 
-            this.cmB_сategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_сategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmB_сategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_сategory.FormattingEnabled = true;
-            this.cmB_сategory.Items.AddRange(new object[] {
-            "",
-            "3",
-            "4",
-            "5",
-            "6"});
-            this.cmB_сategory.Location = new System.Drawing.Point(248, 23);
-            this.cmB_сategory.Name = "cmB_сategory";
-            this.cmB_сategory.Size = new System.Drawing.Size(78, 28);
-            this.cmB_сategory.TabIndex = 186;
+            this.cmB_BatteryChargerAccessories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_BatteryChargerAccessories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_BatteryChargerAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_BatteryChargerAccessories.FormattingEnabled = true;
+            this.cmB_BatteryChargerAccessories.Items.AddRange(new object[] {
+            "испр.",
+            "неиспр."});
+            this.cmB_BatteryChargerAccessories.Location = new System.Drawing.Point(248, 23);
+            this.cmB_BatteryChargerAccessories.Name = "cmB_BatteryChargerAccessories";
+            this.cmB_BatteryChargerAccessories.Size = new System.Drawing.Size(78, 28);
+            this.cmB_BatteryChargerAccessories.TabIndex = 186;
             // 
             // label28
             // 
@@ -920,6 +918,28 @@
             this.label31.Size = new System.Drawing.Size(98, 18);
             this.label31.TabIndex = 185;
             this.label31.Text = "Примечание:";
+            // 
+            // lbL_BatteryChargerAccessories
+            // 
+            this.lbL_BatteryChargerAccessories.AutoSize = true;
+            this.lbL_BatteryChargerAccessories.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_BatteryChargerAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_BatteryChargerAccessories.Location = new System.Drawing.Point(332, 27);
+            this.lbL_BatteryChargerAccessories.Name = "lbL_BatteryChargerAccessories";
+            this.lbL_BatteryChargerAccessories.Size = new System.Drawing.Size(16, 18);
+            this.lbL_BatteryChargerAccessories.TabIndex = 189;
+            this.lbL_BatteryChargerAccessories.Text = "1";
+            // 
+            // lbL_ManipulatorAccessories
+            // 
+            this.lbL_ManipulatorAccessories.AutoSize = true;
+            this.lbL_ManipulatorAccessories.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_ManipulatorAccessories.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_ManipulatorAccessories.Location = new System.Drawing.Point(332, 61);
+            this.lbL_ManipulatorAccessories.Name = "lbL_ManipulatorAccessories";
+            this.lbL_ManipulatorAccessories.Size = new System.Drawing.Size(16, 18);
+            this.lbL_ManipulatorAccessories.TabIndex = 190;
+            this.lbL_ManipulatorAccessories.Text = "2";
             // 
             // AddRadioStationParametersForm
             // 
@@ -1028,9 +1048,9 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Panel pnl_Accessories;
         private System.Windows.Forms.Label label28;
-        internal System.Windows.Forms.ComboBox comboBox1;
+        internal System.Windows.Forms.ComboBox cmB_ManipulatorAccessories;
         private System.Windows.Forms.Label label29;
-        internal System.Windows.Forms.ComboBox cmB_сategory;
+        internal System.Windows.Forms.ComboBox cmB_BatteryChargerAccessories;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel pnl_info_rst;
         private System.Windows.Forms.Panel pnl_AKB;
@@ -1038,5 +1058,7 @@
         private System.Windows.Forms.Panel panel1;
         internal System.Windows.Forms.TextBox txB_NoteRadioStationParameters;
         private System.Windows.Forms.Label label31;
+        internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
+        internal System.Windows.Forms.Label lbL_BatteryChargerAccessories;
     }
 }
