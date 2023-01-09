@@ -42,11 +42,7 @@ namespace ServiceTelecomConnect.Forms
                 cmB_ManipulatorAccessories.Enabled = false;
         }
 
-        void PicB_clear_dataTO_Click(object sender, EventArgs e)
-        {
-            txB_dateTO.Text = "";
-        }
-
+        #region Дата проверки
         void TxB_dateTO_Click(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
@@ -57,11 +53,13 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
+        #endregion
 
+        #region Частоты
         void TxB_TransmitterFrequencies_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != '\b')
+            if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
             {
                 e.Handled = true;
             }
@@ -70,11 +68,36 @@ namespace ServiceTelecomConnect.Forms
         void TxB_ReceiverFrequencies_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != '\b')
+            if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
             {
                 e.Handled = true;
             }
         }
+
+        void CmB_frequency_MouseLeave(object sender, EventArgs e)
+        {
+            cmB_frequency.Visible = false;
+        }
+
+        void TxB_TransmitterFrequencies_Click(object sender, EventArgs e)
+        {
+            cmB_frequency.Visible = true;
+        }
+
+        void CmB_frequency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txB_TransmitterFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
+
+            txB_ReceiverFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
+        }
+
+        void TxB_ReceiverFrequencies_Click(object sender, EventArgs e)
+        {
+            cmB_frequency.Visible = true;
+        }
+
+        #endregion
+
 
         //void TxB_AKB_TextChanged(object sender, EventArgs e)
         //{
