@@ -521,7 +521,6 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-
         #region Параметры радиостанции
 
         void AddRadioStationParameters(object sender, EventArgs e)
@@ -587,35 +586,28 @@ namespace ServiceTelecomConnect
                         changeRSTForm.lbL_road.Text = cmB_road.Text;
 
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
-                        {
                             changeRSTForm.txB_decommissionSerialNumber.Text = txB_decommissionSerialNumber.Text;
-                        }
 
                         if (txB_dateIssue.Text == "")
-                        {
                             txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                        }
+
                         changeRSTForm.txB_dateIssue.Text = txB_dateIssue.Text;
 
                         if (txB_antenna.Text == "")
-                        {
                             txB_antenna.Text = "-";
-                        }
+
                         changeRSTForm.txB_antenna.Text = txB_antenna.Text;
                         if (txB_manipulator.Text == "")
-                        {
                             txB_manipulator.Text = "-";
-                        }
+
                         changeRSTForm.txB_manipulator.Text = txB_manipulator.Text;
                         if (txB_batteryСharger.Text == "")
-                        {
                             txB_batteryСharger.Text = "-";
-                        }
+
                         changeRSTForm.txB_batteryСharger.Text = txB_batteryСharger.Text;
                         if (txB_AKB.Text == "")
-                        {
                             txB_AKB.Text = "-";
-                        }
+
                         changeRSTForm.txB_AKB.Text = txB_AKB.Text;
                         changeRSTForm.Show();
                     }
@@ -685,14 +677,12 @@ namespace ServiceTelecomConnect
             dataGridView1.ClearSelection();
 
             if (dataGridView1.CurrentCell.RowIndex >= 0)
-            {
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            }
+
             Refresh_values_TXB_CMB(currRowIndex);
             if (txB_numberAct.Text != "")
-            {
                 dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
-            }
+
             PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                 lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                 lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
