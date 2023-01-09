@@ -1874,9 +1874,7 @@ namespace ServiceTelecomConnect
         void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
-            {
                 FunctionalPanel.Loading_json_file_BD(dataGridView1, cmB_city.Text);
-            }
         }
         #endregion
 
@@ -1897,17 +1895,13 @@ namespace ServiceTelecomConnect
             Mesage = "Вы действительно хотите скопировать всю базу данных?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             string Mesage2;
             Mesage2 = "Данное действие нужно делать к концу года, для следующего года, действительно хотите продолжить?";
 
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             FunctionalPanel.Copying_current_BD_end_of_the_year();
 
@@ -2128,9 +2122,7 @@ namespace ServiceTelecomConnect
                 Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
 
                 QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text, cmB_road.Text);
                 panel1.Enabled = false;
@@ -2141,14 +2133,8 @@ namespace ServiceTelecomConnect
                 panel_decommissionSerialNumber.Enabled = true;
                 txB1_decommissionSerialNumber.Text = txB_numberAct.Text + "C";
                 if (cmB_model.Text == "Comrade R5")
-                {
                     txB_reason_decommission.Text = "Выходная мощность несущей передатчика: номинальная – 5 Вт, максимальная – 9 Вт, что не соответствует нормам ГОСТ 12252 – 86г, для радиостанций третьего типа и техническим параметрам изготовителя, указанных в паспорте.";
-                }
-                else
-                {
-                    txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
-                }
-
+                else txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
             }
         }
 
@@ -2157,7 +2143,6 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrEmpty(txB1_decommissionSerialNumber.Text) && !String.IsNullOrEmpty(txB_reason_decommission.Text))
             {
-
                 if (!Regex.IsMatch(txB1_decommissionSerialNumber.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                 {
                     MessageBox.Show("Введите корректно \"№ Акта списания\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -2172,9 +2157,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 var re = new Regex(Environment.NewLine);
                 txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
@@ -2195,8 +2178,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Enabled = true;
                 txB1_decommissionSerialNumber.Text = "";
             }
-            else { MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); }
-
+            else MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); 
         }
 
         #region Удаление списания
@@ -2432,7 +2414,6 @@ namespace ServiceTelecomConnect
             }
 
             else MessageBox.Show("Заполни дату!");
-
         }
 
 
@@ -2448,9 +2429,7 @@ namespace ServiceTelecomConnect
                 Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             else
             {
@@ -2458,9 +2437,7 @@ namespace ServiceTelecomConnect
                 Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             ContextMenu m = new ContextMenu();
             m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Январь")));
@@ -2476,8 +2453,6 @@ namespace ServiceTelecomConnect
             m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Ноябрь")));
             m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
-
-
         }
 
         #endregion
@@ -2676,26 +2651,20 @@ namespace ServiceTelecomConnect
                 return;
             if (dataGridView1.Rows.Count == 0)
                 return;
-
             if (dataGridView1.SelectedRows.Count == 0)
                 return;
             if (dataGridView1.SelectedRows.Count > 20)
             {
                 string Mesage = $"Вы выбрали более 20 радиостанций. В Акте не должно быть более 20 радиостанций.";
-
                 MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                 return;
-
             }
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string Mesage = $"Вы действительно хотите изменить текущий номер акта {txB_numberAct.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             txB_pnl_ChangeNumberActTOFull.Text = txB_numberAct.Text;
             pnl_ChangeNumberActTOFull.Visible = true;
@@ -2727,9 +2696,7 @@ namespace ServiceTelecomConnect
             dataGridView1.ClearSelection();
 
             if (dataGridView1.RowCount - currRowIndex > 0)
-            {
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            }
             txB_pnl_ChangeNumberActTOFull.Clear();
             Counters();
             Btn_close_pnl_ChangeNumberActTOFull_Click(sender, e);
