@@ -31,10 +31,7 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
             if (String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
                 txB_AKB.Enabled = false;
-            else
-            {
-                txB_AKB.Size = lbL_AKB.Size;
-            }
+            else txB_AKB.Size = lbL_AKB.Size;
             if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                 cmB_BatteryChargerAccessories.Enabled = false;
             if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
@@ -54,23 +51,19 @@ namespace ServiceTelecomConnect.Forms
         }
         #endregion
 
-        #region Частоты
+        #region Частоты KeyPress
         void TxB_TransmitterFrequencies_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
-            {
                 e.Handled = true;
-            }
         }
 
         void TxB_ReceiverFrequencies_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
-            {
                 e.Handled = true;
-            }
         }
 
         void CmB_frequency_MouseLeave(object sender, EventArgs e)
@@ -95,10 +88,53 @@ namespace ServiceTelecomConnect.Forms
             cmB_frequency.Visible = true;
         }
 
-
-
         #endregion
 
+        #region Передатчик KeyPress
+
+        void TxB_LowPowerLevelTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_HighPowerLevelTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_FrequencyDeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_SensitivityTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_KNITransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_DeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        #endregion
 
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
@@ -113,6 +149,9 @@ namespace ServiceTelecomConnect.Forms
                         control.Select();
                         return;
                     }
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
                 }
             }
             foreach (Control control in pnl_Receiver.Controls)
@@ -125,6 +164,9 @@ namespace ServiceTelecomConnect.Forms
                         control.Select();
                         return;
                     }
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
                 }
             }
             foreach (Control control in pnl_CurrentConsumption.Controls)
@@ -137,6 +179,9 @@ namespace ServiceTelecomConnect.Forms
                         control.Select();
                         return;
                     }
+                    var re = new Regex(Environment.NewLine);
+                    control.Text = re.Replace(control.Text, " ");
+                    control.Text.Trim();
                 }
             }
             foreach (Control control in pnl_frequencies.Controls)
@@ -149,9 +194,10 @@ namespace ServiceTelecomConnect.Forms
                         control.Select();
                         return;
                     }
+                    control.Text.Trim();
                 }
             }
-            if(cmB_BatteryChargerAccessories.Enabled || cmB_ManipulatorAccessories.Enabled)
+            if (cmB_BatteryChargerAccessories.Enabled || cmB_ManipulatorAccessories.Enabled)
             {
                 foreach (Control control in pnl_Accessories.Controls)
                 {
@@ -178,12 +224,30 @@ namespace ServiceTelecomConnect.Forms
                             control.Select();
                             return;
                         }
+                        var re = new Regex(Environment.NewLine);
+                        control.Text = re.Replace(control.Text, " ");
+                        control.Text.Trim();
+                    }
+                }
+            }
+
+            if (!String.IsNullOrEmpty(txB_NoteRadioStationParameters.Text))
+            {
+                foreach (Control control in pnl_NoteRadioStationParameters.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        var re = new Regex(Environment.NewLine);
+                        control.Text = re.Replace(control.Text, " ");
+                        control.Text.Trim();
                     }
                 }
             }
 
         }
         #endregion
+
+
         //void TxB_AKB_TextChanged(object sender, EventArgs e)
         //{
         //    if (!Regex.IsMatch(txB_AKB.Text, "^[0-9]{2,2}$"))
