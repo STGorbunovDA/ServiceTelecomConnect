@@ -523,6 +523,7 @@
             this.txB_SuppressorReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SuppressorReceiver.TabIndex = 181;
             this.txB_SuppressorReceiver.TabStop = false;
+            this.txB_SuppressorReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SuppressorReceiver_KeyPress);
             // 
             // label17
             // 
@@ -544,6 +545,7 @@
             this.txB_SelectivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SelectivityReceiver.TabIndex = 179;
             this.txB_SelectivityReceiver.TabStop = false;
+            this.txB_SelectivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SelectivityReceiver_KeyPress);
             // 
             // label14
             // 
@@ -565,6 +567,7 @@
             this.txB_OutputPowerWattReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerWattReceiver.TabIndex = 177;
             this.txB_OutputPowerWattReceiver.TabStop = false;
+            this.txB_OutputPowerWattReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerWattReceiver_KeyPress);
             // 
             // label13
             // 
@@ -597,6 +600,7 @@
             this.txB_OutputPowerVoltReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerVoltReceiver.TabIndex = 167;
             this.txB_OutputPowerVoltReceiver.TabStop = false;
+            this.txB_OutputPowerVoltReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerVoltReceiver_KeyPress);
             // 
             // label12
             // 
@@ -618,6 +622,7 @@
             this.txB_SensitivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityReceiver.TabIndex = 169;
             this.txB_SensitivityReceiver.TabStop = false;
+            this.txB_SensitivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityReceiver_KeyPress);
             // 
             // txB_KNIReceiver
             // 
@@ -628,6 +633,7 @@
             this.txB_KNIReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_KNIReceiver.TabIndex = 175;
             this.txB_KNIReceiver.TabStop = false;
+            this.txB_KNIReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNIReceiver_KeyPress);
             // 
             // label15
             // 
