@@ -91,7 +91,6 @@ namespace ServiceTelecomConnect.Forms
         #endregion
 
         #region Передатчик KeyPress
-
         void TxB_LowPowerLevelTransmitter_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -128,6 +127,51 @@ namespace ServiceTelecomConnect.Forms
         }
 
         void TxB_DeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+        #endregion
+
+        #region Приёмник KeyPress
+
+        void TxB_OutputPowerVoltReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_OutputPowerWattReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_SelectivityReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_SensitivityReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_KNIReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_SuppressorReceiver_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
@@ -246,6 +290,10 @@ namespace ServiceTelecomConnect.Forms
 
         }
         #endregion
+
+
+        
+
 
 
         //void TxB_AKB_TextChanged(object sender, EventArgs e)
