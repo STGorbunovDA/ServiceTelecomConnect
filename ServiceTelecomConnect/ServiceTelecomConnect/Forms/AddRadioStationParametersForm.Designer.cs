@@ -100,6 +100,8 @@
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.cmB_frequency = new System.Windows.Forms.ComboBox();
+            this.lbL_city = new System.Windows.Forms.Label();
+            this.lbL_road = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -719,9 +721,9 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label20.Location = new System.Drawing.Point(3, 61);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(131, 18);
+            this.label20.Size = new System.Drawing.Size(135, 18);
             this.label20.TabIndex = 180;
-            this.label20.Text = "Режим приём, мА";
+            this.label20.Text = "Режим приём, мА:";
             // 
             // txB_StandbyModeCurrentConsumption
             // 
@@ -978,7 +980,7 @@
             "155.325",
             "155.400",
             "155.450"});
-            this.cmB_frequency.Location = new System.Drawing.Point(716, 406);
+            this.cmB_frequency.Location = new System.Drawing.Point(716, 100);
             this.cmB_frequency.Name = "cmB_frequency";
             this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
             this.cmB_frequency.TabIndex = 193;
@@ -986,12 +988,38 @@
             this.cmB_frequency.SelectedIndexChanged += new System.EventHandler(this.CmB_frequency_SelectedIndexChanged);
             this.cmB_frequency.MouseLeave += new System.EventHandler(this.CmB_frequency_MouseLeave);
             // 
+            // lbL_city
+            // 
+            this.lbL_city.AutoSize = true;
+            this.lbL_city.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_city.Location = new System.Drawing.Point(975, 14);
+            this.lbL_city.Name = "lbL_city";
+            this.lbL_city.Size = new System.Drawing.Size(52, 18);
+            this.lbL_city.TabIndex = 182;
+            this.lbL_city.Text = "Город";
+            this.lbL_city.Visible = false;
+            // 
+            // lbL_road
+            // 
+            this.lbL_road.AutoSize = true;
+            this.lbL_road.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_road.Location = new System.Drawing.Point(975, 48);
+            this.lbL_road.Name = "lbL_road";
+            this.lbL_road.Size = new System.Drawing.Size(60, 18);
+            this.lbL_road.TabIndex = 194;
+            this.lbL_road.Text = "Дорога";
+            this.lbL_road.Visible = false;
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.lbL_road);
+            this.Controls.Add(this.lbL_city);
             this.Controls.Add(this.cmB_frequency);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_save_add_rst_remont);
@@ -1107,5 +1135,7 @@
         internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
         internal System.Windows.Forms.Label lbL_BatteryChargerAccessories;
         internal System.Windows.Forms.ComboBox cmB_frequency;
+        internal System.Windows.Forms.Label lbL_road;
+        internal System.Windows.Forms.Label lbL_city;
     }
 }
