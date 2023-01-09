@@ -2362,7 +2362,7 @@
             this.picB_clear.Size = new System.Drawing.Size(47, 50);
             this.picB_clear.TabIndex = 1;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
+            this.picB_clear.Click += new System.EventHandler(this.PictureBox1_clear_Click);
             // 
             // txB_numberActRemont
             // 

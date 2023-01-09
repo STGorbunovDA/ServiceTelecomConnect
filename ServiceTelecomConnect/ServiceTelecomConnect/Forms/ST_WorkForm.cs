@@ -15,10 +15,9 @@ using WinForms = System.Windows.Forms;
 
 namespace ServiceTelecomConnect
 {
+
     #region состояние Rows
-    /// <summary>
-    /// для значений к базе данных, по данному статусу будем или удалять или редактировать
-    /// </summary>
+
     enum RowState
     {
         Existed,
@@ -65,9 +64,7 @@ namespace ServiceTelecomConnect
                 panel_remont_information_company.Enabled = false;
 
                 foreach (Control element in panel1.Controls)
-                {
                     element.Enabled = false;
-                }
 
                 cmB_city.Enabled = true;
                 btn_seach_BD_city.Enabled = true;
@@ -90,9 +87,8 @@ namespace ServiceTelecomConnect
                 button_save_in_file.Enabled = true;
             }
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
-            {
                 mTrip_funcionalpanel.Visible = false;
-            }
+
             if (_user.IsAdmin == "Начальник участка")
             {
                 mTrip_Curator.Visible = false;
@@ -114,8 +110,6 @@ namespace ServiceTelecomConnect
             }
 
         }
-
-
 
         private void ST_WorkForm_Load(object sender, EventArgs e)
         {
@@ -199,9 +193,8 @@ namespace ServiceTelecomConnect
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             if (dataGridView1.Rows.Count == 0)
-            {
                 return;
-            }
+
             var taskCity = cmB_city.Text;
             var road = cmB_road.Text;
             QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, road);
@@ -221,9 +214,8 @@ namespace ServiceTelecomConnect
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
-                {
                     colRemont++;
-                }
+
                 sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                 sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
             }
@@ -359,28 +351,21 @@ namespace ServiceTelecomConnect
             foreach (Control control in panel1.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
             foreach (Control control in panel2.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
         }
 
-        void pictureBox1_clear_Click(object sender, EventArgs e)
+        void PictureBox1_clear_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите очистить все введенные вами поля?";
+            string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             ClearFields();
         }
@@ -392,44 +377,32 @@ namespace ServiceTelecomConnect
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             else
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
-                string Mesage;
-                Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание. Точно удалить?";
+                string Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание. Точно удалить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!String.IsNullOrEmpty(txB_numberActRemont.Text))
             {
-                string Mesage;
-                Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть ремонт. Точно удалить?";
+                string Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть ремонт. Точно удалить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             QuerySettingDataBase.DeleteRowCell(dataGridView1);
@@ -445,9 +418,7 @@ namespace ServiceTelecomConnect
             dataGridView1.ClearSelection();
 
             if (dataGridView1.RowCount - currRowIndex > 0)
-            {
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            }
             Counters();
         }
 
@@ -469,7 +440,6 @@ namespace ServiceTelecomConnect
                 if (currRowIndex >= 0)
                 {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-
                     dataGridView1.FirstDisplayedScrollingRowIndex = index;
                 }
             }
@@ -500,9 +470,8 @@ namespace ServiceTelecomConnect
                     addRSTForm.txB_numberAct.Text = lbL_numberPrintDocument.Text + "/";
                     addRSTForm.lbL_city.Text = cmB_city.Text;
                     if (String.IsNullOrEmpty(txB_city.Text))
-                    {
                         addRSTForm.txB_city.Text = cmB_city.Text;
-                    }
+
                     else addRSTForm.txB_city.Text = txB_city.Text;
                     addRSTForm.cmB_poligon.Text = cmB_poligon.Text;
                     addRSTForm.txB_company.Text = txB_company.Text;
@@ -2668,7 +2637,6 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
-
 
     }
 }
