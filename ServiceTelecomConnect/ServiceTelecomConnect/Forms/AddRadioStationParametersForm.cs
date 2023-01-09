@@ -10,7 +10,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ServiceTelecomConnect.Forms
 {
@@ -96,9 +95,95 @@ namespace ServiceTelecomConnect.Forms
             cmB_frequency.Visible = true;
         }
 
+
+
         #endregion
 
 
+        #region Добавляем параметры в БД
+        void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
+        {
+            foreach (Control control in pnl_transmitter.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrEmpty(control.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Передатчика\"");
+                        control.Select();
+                        return;
+                    }
+                }
+            }
+            foreach (Control control in pnl_Receiver.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrEmpty(control.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Приёмника\"");
+                        control.Select();
+                        return;
+                    }
+                }
+            }
+            foreach (Control control in pnl_CurrentConsumption.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrEmpty(control.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Потребляемый ток\"");
+                        control.Select();
+                        return;
+                    }
+                }
+            }
+            foreach (Control control in pnl_frequencies.Controls)
+            {
+                if (control is TextBox)
+                {
+                    if (String.IsNullOrEmpty(control.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Частоты\"");
+                        control.Select();
+                        return;
+                    }
+                }
+            }
+            if(cmB_BatteryChargerAccessories.Enabled || cmB_ManipulatorAccessories.Enabled)
+            {
+                foreach (Control control in pnl_Accessories.Controls)
+                {
+                    if (control is ComboBox)
+                    {
+                        if (String.IsNullOrEmpty(control.Text))
+                        {
+                            MessageBox.Show("Заполните параметры \"Аксессуары\"");
+                            control.Select();
+                            return;
+                        }
+                    }
+                }
+            }
+            if (txB_AKB.Enabled)
+            {
+                foreach (Control control in pnl_AKB.Controls)
+                {
+                    if (control is TextBox)
+                    {
+                        if (String.IsNullOrEmpty(control.Text))
+                        {
+                            MessageBox.Show("Заполните параметры \"АКБ\"");
+                            control.Select();
+                            return;
+                        }
+                    }
+                }
+            }
+
+        }
+        #endregion
         //void TxB_AKB_TextChanged(object sender, EventArgs e)
         //{
         //    if (!Regex.IsMatch(txB_AKB.Text, "^[0-9]{2,2}$"))
