@@ -99,7 +99,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.btn_LookFrequencies = new System.Windows.Forms.Button();
+            this.cmB_frequency = new System.Windows.Forms.ComboBox();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -395,13 +395,14 @@
             // txB_TransmitterFrequencies
             // 
             this.txB_TransmitterFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txB_TransmitterFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_TransmitterFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_TransmitterFrequencies.Location = new System.Drawing.Point(15, 23);
             this.txB_TransmitterFrequencies.Multiline = true;
             this.txB_TransmitterFrequencies.Name = "txB_TransmitterFrequencies";
-            this.txB_TransmitterFrequencies.Size = new System.Drawing.Size(163, 192);
+            this.txB_TransmitterFrequencies.Size = new System.Drawing.Size(163, 215);
             this.txB_TransmitterFrequencies.TabIndex = 179;
             this.txB_TransmitterFrequencies.TabStop = false;
+            this.txB_TransmitterFrequencies.Click += new System.EventHandler(this.TxB_TransmitterFrequencies_Click);
             this.txB_TransmitterFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmitterFrequencies_KeyPress);
             // 
             // pnl_transmitter
@@ -429,7 +430,6 @@
             // 
             this.pnl_frequencies.BackColor = System.Drawing.Color.Transparent;
             this.pnl_frequencies.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_frequencies.Controls.Add(this.btn_LookFrequencies);
             this.pnl_frequencies.Controls.Add(this.txB_ReceiverFrequencies);
             this.pnl_frequencies.Controls.Add(this.label26);
             this.pnl_frequencies.Controls.Add(this.label25);
@@ -442,13 +442,14 @@
             // txB_ReceiverFrequencies
             // 
             this.txB_ReceiverFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txB_ReceiverFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_ReceiverFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.txB_ReceiverFrequencies.Location = new System.Drawing.Point(201, 23);
             this.txB_ReceiverFrequencies.Multiline = true;
             this.txB_ReceiverFrequencies.Name = "txB_ReceiverFrequencies";
-            this.txB_ReceiverFrequencies.Size = new System.Drawing.Size(163, 192);
+            this.txB_ReceiverFrequencies.Size = new System.Drawing.Size(163, 215);
             this.txB_ReceiverFrequencies.TabIndex = 181;
             this.txB_ReceiverFrequencies.TabStop = false;
+            this.txB_ReceiverFrequencies.Click += new System.EventHandler(this.TxB_ReceiverFrequencies_Click);
             this.txB_ReceiverFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceiverFrequencies_KeyPress);
             // 
             // label26
@@ -928,17 +929,62 @@
             this.label31.TabIndex = 185;
             this.label31.Text = "Примечание:";
             // 
-            // btn_LookFrequencies
+            // cmB_frequency
             // 
-            this.btn_LookFrequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_LookFrequencies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_LookFrequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_LookFrequencies.Location = new System.Drawing.Point(112, 220);
-            this.btn_LookFrequencies.Name = "btn_LookFrequencies";
-            this.btn_LookFrequencies.Size = new System.Drawing.Size(153, 30);
-            this.btn_LookFrequencies.TabIndex = 192;
-            this.btn_LookFrequencies.Text = "Показать частоты";
-            this.btn_LookFrequencies.UseVisualStyleBackColor = false;
+            this.cmB_frequency.BackColor = System.Drawing.SystemColors.Window;
+            this.cmB_frequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_frequency.FormattingEnabled = true;
+            this.cmB_frequency.Items.AddRange(new object[] {
+            "151.775",
+            "151.825",
+            "151.875",
+            "151.950",
+            "151.975",
+            "152.000",
+            "152.025",
+            "152.125",
+            "152.150",
+            "152.175",
+            "152.200",
+            "152.225",
+            "152.250",
+            "152.275",
+            "152.300",
+            "152.375",
+            "152.400",
+            "152.425",
+            "152.450",
+            "152.475",
+            "152.500",
+            "152.525",
+            "152.550",
+            "152.575",
+            "152.625",
+            "152.650",
+            "152.650",
+            "152.675",
+            "152.700",
+            "152.725",
+            "152.750",
+            "152.775",
+            "152.800",
+            "152.825",
+            "152.850",
+            "155.125",
+            "155.175",
+            "155.275",
+            "155.325",
+            "155.400",
+            "155.450"});
+            this.cmB_frequency.Location = new System.Drawing.Point(716, 406);
+            this.cmB_frequency.Name = "cmB_frequency";
+            this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
+            this.cmB_frequency.TabIndex = 193;
+            this.cmB_frequency.Visible = false;
+            this.cmB_frequency.SelectedIndexChanged += new System.EventHandler(this.CmB_frequency_SelectedIndexChanged);
+            this.cmB_frequency.MouseLeave += new System.EventHandler(this.CmB_frequency_MouseLeave);
             // 
             // AddRadioStationParametersForm
             // 
@@ -946,6 +992,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.cmB_frequency);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_save_add_rst_remont);
             this.Controls.Add(this.pnl_AKB);
@@ -1059,6 +1106,6 @@
         private System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
         internal System.Windows.Forms.Label lbL_BatteryChargerAccessories;
-        private System.Windows.Forms.Button btn_LookFrequencies;
+        internal System.Windows.Forms.ComboBox cmB_frequency;
     }
 }
