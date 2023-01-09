@@ -1123,13 +1123,10 @@ namespace ServiceTelecomConnect
         #region Удаление ремонта
         void Delete_rst_remont_click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+            string Mesage = $"Вы действительно хотите удалить ремонт у радиостанции: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
             QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
             Button_update_Click(sender, e);
         }
@@ -1261,7 +1258,6 @@ namespace ServiceTelecomConnect
                     }
                 }
             }
-
         }
 
         void Button_close_remont_panel_Click(object sender, EventArgs e)
@@ -1893,14 +1889,12 @@ namespace ServiceTelecomConnect
 
         void Button_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите скопировать всю базу данных?";
+            string Mesage = "Вы действительно хотите скопировать всю базу данных?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            string Mesage2;
-            Mesage2 = "Данное действие нужно делать к концу года, для следующего года, действительно хотите продолжить?";
+            string Mesage2 = "Данное действие нужно делать к концу года, для следующего года, действительно хотите продолжить?";
 
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
@@ -1911,16 +1905,13 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region функцональная панель ручное-резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
-
         void Manual_backup_current_BD_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите скопировать всю базу данных?";
+            string Mesage = "Вы действительно хотите скопировать всю базу данных?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
+
             FunctionalPanel.Manual_backup_current_BD();
         }
         #endregion
@@ -1929,21 +1920,15 @@ namespace ServiceTelecomConnect
 
         void Clear_BD_current_year_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
+            string Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
-            string Mesage2;
-            Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
+            string Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
 
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             FunctionalPanel.Clear_BD_current_year();
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
@@ -1959,7 +1944,6 @@ namespace ServiceTelecomConnect
             Close_Functional_loading_panel_Click(sender, e);
             FunctionalPanel.Show_DB_radiostantion_last_year(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
-
         }
 
 
