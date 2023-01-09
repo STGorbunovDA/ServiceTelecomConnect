@@ -897,6 +897,7 @@
             this.btn_save_add_rst_remont.TabIndex = 190;
             this.btn_save_add_rst_remont.Text = "Добавить";
             this.btn_save_add_rst_remont.UseVisualStyleBackColor = false;
+            this.btn_save_add_rst_remont.Click += new System.EventHandler(this.Btn_save_add_rst_remont_Click);
             // 
             // panel1
             // 
