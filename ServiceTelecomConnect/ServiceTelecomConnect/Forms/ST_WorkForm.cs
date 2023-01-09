@@ -841,9 +841,7 @@ namespace ServiceTelecomConnect
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
         #endregion
 
@@ -896,7 +894,7 @@ namespace ServiceTelecomConnect
                         ContextMenu m = new ContextMenu();
 
                         var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        if (txB_serialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -909,14 +907,13 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                         }
-                        if (txB_decommissionSerialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -938,9 +935,7 @@ namespace ServiceTelecomConnect
                         m2.Show(dataGridView1, new Point(e.X, e.Y));
 
                         if (e.Button == MouseButtons.Left)
-                        {
                             dataGridView1.ClearSelection();
-                        }
                     }
                 }
                 else if (_user.IsAdmin == "Инженер")
@@ -950,7 +945,7 @@ namespace ServiceTelecomConnect
                         ContextMenu m = new ContextMenu();
 
                         var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        if (txB_serialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -981,9 +976,7 @@ namespace ServiceTelecomConnect
                         m2.Show(dataGridView1, new Point(e.X, e.Y));
 
                         if (e.Button == MouseButtons.Left)
-                        {
                             dataGridView1.ClearSelection();
-                        }
                     }
                 }
                 else if (_user.IsAdmin == "Начальник участка")
@@ -993,7 +986,7 @@ namespace ServiceTelecomConnect
                         ContextMenu m = new ContextMenu();
 
                         var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        if (txB_serialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -1007,7 +1000,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                         }
-                        if (txB_decommissionSerialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
@@ -1036,9 +1029,7 @@ namespace ServiceTelecomConnect
                         m2.Show(dataGridView1, new Point(e.X, e.Y));
 
                         if (e.Button == MouseButtons.Left)
-                        {
                             dataGridView1.ClearSelection();
-                        }
                     }
                 }
                 else if (_user.IsAdmin == "Admin")
@@ -1048,7 +1039,7 @@ namespace ServiceTelecomConnect
                         ContextMenu m = new ContextMenu();
 
                         var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        if (txB_serialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
@@ -1063,7 +1054,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                         }
-                        if (txB_decommissionSerialNumber.Text != "")
+                        if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
@@ -1092,9 +1083,7 @@ namespace ServiceTelecomConnect
                         m2.Show(dataGridView1, new Point(e.X, e.Y));
 
                         if (e.Button == MouseButtons.Left)
-                        {
                             dataGridView1.ClearSelection();
-                        }
                     }
                 }
             }
