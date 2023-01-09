@@ -499,7 +499,7 @@ namespace ServiceTelecomConnect
                     addRSTForm.DoubleBufferedForm(true);
                     addRSTForm.txB_numberAct.Text = lbL_numberPrintDocument.Text + "/";
                     addRSTForm.lbL_city.Text = cmB_city.Text;
-                    if (txB_city.Text == "")
+                    if (String.IsNullOrEmpty(txB_city.Text))
                     {
                         addRSTForm.txB_city.Text = cmB_city.Text;
                     }
@@ -548,6 +548,8 @@ namespace ServiceTelecomConnect
                     addParameters.lbL_AKB.Text = txB_AKB.Text;
                     addParameters.lbL_BatteryChargerAccessories.Text = txB_batteryСharger.Text;
                     addParameters.lbL_ManipulatorAccessories.Text = txB_manipulator.Text;
+                    addParameters.lbL_city.Text = txB_city.Text;
+                    addParameters.lbL_road.Text = cmB_road.Text;
                     addParameters.Show();
                 }
             }
