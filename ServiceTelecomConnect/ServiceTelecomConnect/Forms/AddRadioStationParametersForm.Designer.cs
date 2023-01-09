@@ -96,7 +96,7 @@
             this.pnl_info_rst = new System.Windows.Forms.Panel();
             this.pnl_AKB = new System.Windows.Forms.Panel();
             this.btn_save_add_rst_remont = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_NoteRadioStationParameters = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.cmB_frequency = new System.Windows.Forms.ComboBox();
@@ -109,7 +109,7 @@
             this.pnl_Accessories.SuspendLayout();
             this.pnl_info_rst.SuspendLayout();
             this.pnl_AKB.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnl_NoteRadioStationParameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // monthCalendar1
@@ -277,6 +277,7 @@
             this.txB_LowPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_LowPowerLevelTransmitter.TabIndex = 167;
             this.txB_LowPowerLevelTransmitter.TabStop = false;
+            this.txB_LowPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_LowPowerLevelTransmitter_KeyPress);
             // 
             // label4
             // 
@@ -298,6 +299,7 @@
             this.txB_HighPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_HighPowerLevelTransmitter.TabIndex = 169;
             this.txB_HighPowerLevelTransmitter.TabStop = false;
+            this.txB_HighPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_HighPowerLevelTransmitter_KeyPress);
             // 
             // label5
             // 
@@ -319,6 +321,7 @@
             this.txB_FrequencyDeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_FrequencyDeviationTransmitter.TabIndex = 171;
             this.txB_FrequencyDeviationTransmitter.TabStop = false;
+            this.txB_FrequencyDeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_FrequencyDeviationTransmitter_KeyPress);
             // 
             // label6
             // 
@@ -340,6 +343,7 @@
             this.txB_SensitivityTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityTransmitter.TabIndex = 173;
             this.txB_SensitivityTransmitter.TabStop = false;
+            this.txB_SensitivityTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityTransmitter_KeyPress);
             // 
             // label7
             // 
@@ -361,6 +365,7 @@
             this.txB_KNITransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_KNITransmitter.TabIndex = 175;
             this.txB_KNITransmitter.TabStop = false;
+            this.txB_KNITransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNITransmitter_KeyPress);
             // 
             // label8
             // 
@@ -382,6 +387,7 @@
             this.txB_DeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_DeviationTransmitter.TabIndex = 177;
             this.txB_DeviationTransmitter.TabStop = false;
+            this.txB_DeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_DeviationTransmitter_KeyPress);
             // 
             // label9
             // 
@@ -899,16 +905,16 @@
             this.btn_save_add_rst_remont.UseVisualStyleBackColor = false;
             this.btn_save_add_rst_remont.Click += new System.EventHandler(this.Btn_save_add_rst_remont_Click);
             // 
-            // panel1
+            // pnl_NoteRadioStationParameters
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.txB_NoteRadioStationParameters);
-            this.panel1.Controls.Add(this.label31);
-            this.panel1.Location = new System.Drawing.Point(13, 546);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(644, 73);
-            this.panel1.TabIndex = 191;
+            this.pnl_NoteRadioStationParameters.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_NoteRadioStationParameters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_NoteRadioStationParameters.Controls.Add(this.txB_NoteRadioStationParameters);
+            this.pnl_NoteRadioStationParameters.Controls.Add(this.label31);
+            this.pnl_NoteRadioStationParameters.Location = new System.Drawing.Point(13, 546);
+            this.pnl_NoteRadioStationParameters.Name = "pnl_NoteRadioStationParameters";
+            this.pnl_NoteRadioStationParameters.Size = new System.Drawing.Size(644, 73);
+            this.pnl_NoteRadioStationParameters.TabIndex = 191;
             // 
             // txB_NoteRadioStationParameters
             // 
@@ -1022,7 +1028,7 @@
             this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.lbL_city);
             this.Controls.Add(this.cmB_frequency);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnl_NoteRadioStationParameters);
             this.Controls.Add(this.btn_save_add_rst_remont);
             this.Controls.Add(this.pnl_AKB);
             this.Controls.Add(this.pnl_info_rst);
@@ -1056,8 +1062,8 @@
             this.pnl_info_rst.PerformLayout();
             this.pnl_AKB.ResumeLayout(false);
             this.pnl_AKB.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnl_NoteRadioStationParameters.ResumeLayout(false);
+            this.pnl_NoteRadioStationParameters.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1130,7 +1136,7 @@
         private System.Windows.Forms.Panel pnl_info_rst;
         private System.Windows.Forms.Panel pnl_AKB;
         private System.Windows.Forms.Button btn_save_add_rst_remont;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnl_NoteRadioStationParameters;
         internal System.Windows.Forms.TextBox txB_NoteRadioStationParameters;
         private System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label lbL_ManipulatorAccessories;
