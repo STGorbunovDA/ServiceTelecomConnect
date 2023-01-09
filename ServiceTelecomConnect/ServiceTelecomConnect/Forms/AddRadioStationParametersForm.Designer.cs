@@ -683,6 +683,7 @@
             this.txB_BatteryDischargeAlarmCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabIndex = 184;
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabStop = false;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_BatteryDischargeAlarmCurrentConsumption_KeyPress);
             // 
             // label24
             // 
@@ -704,6 +705,7 @@
             this.txB_TransmissionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_TransmissionModeCurrentConsumption.TabIndex = 182;
             this.txB_TransmissionModeCurrentConsumption.TabStop = false;
+            this.txB_TransmissionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmissionModeCurrentConsumption_KeyPress);
             // 
             // label23
             // 
@@ -725,6 +727,7 @@
             this.txB_ReceptionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_ReceptionModeCurrentConsumption.TabIndex = 179;
             this.txB_ReceptionModeCurrentConsumption.TabStop = false;
+            this.txB_ReceptionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceptionModeCurrentConsumption_KeyPress);
             // 
             // label20
             // 
@@ -746,6 +749,7 @@
             this.txB_StandbyModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_StandbyModeCurrentConsumption.TabIndex = 178;
             this.txB_StandbyModeCurrentConsumption.TabStop = false;
+            this.txB_StandbyModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_StandbyModeCurrentConsumption_KeyPress);
             // 
             // label19
             // 

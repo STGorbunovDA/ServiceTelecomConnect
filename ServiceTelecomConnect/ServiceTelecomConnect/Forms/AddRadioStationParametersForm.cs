@@ -180,6 +180,38 @@ namespace ServiceTelecomConnect.Forms
 
         #endregion
 
+        #region Потребляемый ток KeyPress
+
+        void TxB_StandbyModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_ReceptionModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_TransmissionModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        void TxB_BatteryDischargeAlarmCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        #endregion
+
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
         {
@@ -291,8 +323,10 @@ namespace ServiceTelecomConnect.Forms
         }
         #endregion
 
-
         
+
+
+
 
 
 
