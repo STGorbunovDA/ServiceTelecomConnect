@@ -37,14 +37,10 @@ namespace ServiceTelecomConnect
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
-                {
                     return true;
-                }
 
                 else
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -65,14 +61,10 @@ namespace ServiceTelecomConnect
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
-                {
                     return true;
-                }
 
                 else
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -92,14 +84,10 @@ namespace ServiceTelecomConnect
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
-                {
                     return true;
-                }
 
                 else
-                {
                     return false;
-                }
             }
             return true;
         }
@@ -119,13 +107,9 @@ namespace ServiceTelecomConnect
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
-                {
                     return true;
-                }
                 else
-                {
                     return false;
-                }
             }
             return false;
         }
@@ -145,13 +129,9 @@ namespace ServiceTelecomConnect
                 adapter.Fill(table);
 
                 if (table.Rows.Count < 20)
-                {
                     return false;
-                }
                 else
-                {
                     return true;
-                }
             }
             return true;
         }
@@ -171,14 +151,10 @@ namespace ServiceTelecomConnect
                         adapter.Fill(table);
 
                         if (table.Rows.Count > 0)
-                        {
                             return true;
-                        }
 
                         else
-                        {
                             return false;
-                        }
                     }
                 }
             }
@@ -186,7 +162,6 @@ namespace ServiceTelecomConnect
         }
         public Boolean CheacSerialNumber_radiostantion_last_year(string serialNumber)
         {
-
             string querystring = $"SELECT serialNumber FROM radiostantion_last_year WHERE serialNumber = '{serialNumber}'";
 
             using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
@@ -196,16 +171,12 @@ namespace ServiceTelecomConnect
                     DataTable table = new DataTable();
                     adapter.Fill(table);
                     if (table.Rows.Count > 0)
-                    {
                         return true;
-                    }
                     else
-                    {
                         return false;
-                    }
                 }
             }
         }
-       
+
     }
 }

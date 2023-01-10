@@ -1,12 +1,12 @@
 ﻿namespace ServiceTelecomConnect
 {
-    public class cheakUser
+    public class CheakUser
     {
         public string Login { get; set; }
 
         public string IsAdmin { get; }
 
-        public cheakUser(string login, string isAdmin)
+        public CheakUser(string login, string isAdmin)
         {
             Login = login.Trim();
             IsAdmin = isAdmin;
