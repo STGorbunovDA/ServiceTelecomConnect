@@ -288,6 +288,12 @@
     <Compile Include="Classes\Other\MyTwoColumnComparer.cs" />
     <Compile Include="Classes\Print\PrintDocExcel.cs" />
     <Compile Include="Classes\Print\PrintExcel.cs" />
+    <Compile Include="Forms\AddFrequencies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddFrequencies.Designer.cs">
+      <DependentUpon>AddFrequencies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddChangeModelRST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +404,9 @@
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Print\PrintDocWord.cs" />
+    <EmbeddedResource Include="Forms\AddFrequencies.resx">
+      <DependentUpon>AddFrequencies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddChangeModelRST.resx">
       <DependentUpon>AddChangeModelRST.cs</DependentUpon>
     </EmbeddedResource>
