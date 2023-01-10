@@ -13,7 +13,6 @@ namespace ServiceTelecomConnect
 {
     class QuerySettingDataBase
     {
-
         #region состояние Rows
 
         enum RowState
@@ -128,9 +127,8 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
+
                                 reader.Close();
                             }
                         }
@@ -156,7 +154,6 @@ namespace ServiceTelecomConnect
                 dgw.Columns[17].Width = 120;
                 dgw.Columns[39].Width = 300;
 
-                //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
                 if (dgw.Rows.Count > 1)
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
@@ -180,7 +177,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (city != "")
+                if (!String.IsNullOrEmpty(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -202,9 +199,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRowTimerEventProcessor(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -229,7 +224,6 @@ namespace ServiceTelecomConnect
                 dgw.Columns[17].Width = 120;
                 dgw.Columns[39].Width = 300;
 
-                //dgw.Sort(dgw.Columns["numberAct"], ListSortDirection.Ascending);
                 dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
         }
@@ -281,17 +275,13 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowEnginer(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
                     command.ExecuteNonQuery();
                     DB.GetInstance.CloseConnection();
                 }
-                //dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                //dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.DisplayedCells);
 
                 dgw.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dgw.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -305,9 +295,8 @@ namespace ServiceTelecomConnect
                 dgw.Columns[5].Width = 142;
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
-                {
                     dgw.Rows[i].Height = 140;
-                }
+
             }
         }
 
@@ -337,9 +326,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowEnginer(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -358,9 +345,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[5].Width = 142;
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
-                {
                     dgw.Rows[i].Height = 140;
-                }
             }
         }
 
@@ -384,9 +369,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowEnginer(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -405,9 +388,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[5].Width = 142;
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
-                {
                     dgw.Rows[i].Height = 140;
-                }
             }
         }
 
@@ -431,9 +412,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowEnginer(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -452,9 +431,7 @@ namespace ServiceTelecomConnect
                 dgw.Columns[5].Width = 142;
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
-                {
                     dgw.Rows[i].Height = 140;
-                }
             }
         }
 
@@ -519,9 +496,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRowСurator(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -530,7 +505,6 @@ namespace ServiceTelecomConnect
                     }
                 }
                 else dgw.Rows.Clear();
-
 
                 dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -548,7 +522,6 @@ namespace ServiceTelecomConnect
                 dgw.Columns[17].Width = 120;
                 if (dgw.Rows.Count > 1)
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
-
             }
         }
 
@@ -576,9 +549,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRowСurator(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -587,7 +558,6 @@ namespace ServiceTelecomConnect
                     }
                 }
                 else dgw.Rows.Clear();
-
 
                 dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -632,9 +602,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRowСurator(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -643,7 +611,6 @@ namespace ServiceTelecomConnect
                     }
                 }
                 else dgw.Rows.Clear();
-
 
                 dgw.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgw.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
@@ -696,9 +663,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRowСuratorTimerEventProcessor(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -721,7 +686,6 @@ namespace ServiceTelecomConnect
                 dgw.Columns[10].Width = 100;
                 dgw.Columns[11].Width = 100;
                 dgw.Columns[17].Width = 120;
-                //dgw.Columns[39].Width = 300;
                 if (dgw.Rows.Count > 1)
                     dgw.CurrentCell = dgw.Rows[dgw.Rows.Count - 1].Cells[0];
             }
@@ -756,9 +720,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRow(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -807,9 +769,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowСurator(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -847,36 +807,22 @@ namespace ServiceTelecomConnect
                 dgw.Rows.Clear();
 
                 if (cmb_unique == "Модель")
-                {
                     perem_comboBox = "model";
-                }
                 else if (cmb_unique == "Неисправность")
-                {
                     perem_comboBox = "problem";
-                }
                 else if (cmb_unique == "Автор")
-                {
                     perem_comboBox = "author";
-                }
                 else if (cmb_unique == "Описание неисправности")
-                {
                     perem_comboBox = "info";
-                }
 
                 txB_search = txB_search.ToUpper();
 
                 if (txB_search == "ВСЕ" || txB_search == "ВСЁ")
-                {
                     searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer";
-                }
                 else if (perem_comboBox == "model" || perem_comboBox == "problem" || perem_comboBox == "author")
-                {
                     searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                }
                 else if (perem_comboBox == "info")
-                {
                     searchString = $"SELECT id, model, problem, info, actions, author FROM problem_engineer WHERE CONCAT ({perem_comboBox}) LIKE '%" + txB_search + "%'";
-                }
 
                 using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                 {
@@ -887,9 +833,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowEnginer(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -908,13 +852,9 @@ namespace ServiceTelecomConnect
                 dgw.Columns[5].Width = 142;
 
                 for (int i = 0; i < dgw.Rows.Count; i++)
-                {
                     dgw.Rows[i].Height = 140;
-                }
             }
         }
-
-
         internal static void Search(DataGridView dgw, string comboBox_seach, string city, string textBox_search,
             string cmb_number_unique, string road, string txb_flag_all_BD)
         {
@@ -928,78 +868,55 @@ namespace ServiceTelecomConnect
                     dgw.Rows.Clear();
 
                     if (comboBox_seach == "Предприятие")
-                    {
                         perem_comboBox = "company";
-                    }
                     else if (comboBox_seach == "Модель")
-                    {
                         perem_comboBox = "model";
-                    }
                     else if (comboBox_seach == "Станция")
-                    {
                         perem_comboBox = "location";
-                    }
                     else if (comboBox_seach == "Заводской номер")
-                    {
                         perem_comboBox = "serialNumber";
-                    }
                     else if (comboBox_seach == "Дата ТО")
-                    {
                         perem_comboBox = "dateTO";
-                    }
                     else if (comboBox_seach == "Номер акта ТО")
-                    {
                         perem_comboBox = "numberAct";
-                    }
                     else if (comboBox_seach == "Номер акта Ремонта")
-                    {
                         perem_comboBox = "numberActRemont";
-                    }
                     else if (comboBox_seach == "Представитель ПП")
-                    {
                         perem_comboBox = "representative";
-                    }
                     else if (comboBox_seach == "Номер Акта списания")
-                    {
                         perem_comboBox = "decommissionSerialNumber";
-                    }
 
                     var provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox})";
-                    }
+
                     else if (perem_comboBox == "numberAct")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                    }
+
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }
                     else
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                    }
+
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -1009,18 +926,14 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
                         DB.GetInstance.CloseConnection();
                     }
                     if (perem_comboBox == "numberActRemont")
-                    {
                         dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-                    }
                 }
                 else
                 {
@@ -1029,70 +942,47 @@ namespace ServiceTelecomConnect
                     dgw.Rows.Clear();
 
                     if (comboBox_seach == "Предприятие")
-                    {
                         perem_comboBox = "company";
-                    }
                     else if (comboBox_seach == "Модель")
-                    {
                         perem_comboBox = "model";
-                    }
                     else if (comboBox_seach == "Станция")
-                    {
                         perem_comboBox = "location";
-                    }
                     else if (comboBox_seach == "Заводской номер")
-                    {
                         perem_comboBox = "serialNumber";
-                    }
                     else if (comboBox_seach == "Дата ТО")
-                    {
                         perem_comboBox = "dateTO";
-                    }
                     else if (comboBox_seach == "Номер акта ТО")
-                    {
                         perem_comboBox = "numberAct";
-                    }
                     else if (comboBox_seach == "Номер акта Ремонта")
-                    {
                         perem_comboBox = "numberActRemont";
-                    }
                     else if (comboBox_seach == "Представитель ПП")
-                    {
                         perem_comboBox = "representative";
-                    }
                     else if (comboBox_seach == "Номер Акта списания")
-                    {
                         perem_comboBox = "decommissionSerialNumber";
-                    }
 
                     var provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
-                    }
                     else if (perem_comboBox == "numberAct")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                    }
+
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                    }
                     else if (perem_comboBox == "dateTO")
                     {
                         cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
@@ -1103,13 +993,12 @@ namespace ServiceTelecomConnect
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
-                    {
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
                             $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                    }
+
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -1119,18 +1008,14 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
                         DB.GetInstance.CloseConnection();
                     }
                     if (perem_comboBox == "numberActRemont")
-                    {
                         dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-                    }
                 }
             }
         }
@@ -1145,67 +1030,43 @@ namespace ServiceTelecomConnect
                 dgw.Rows.Clear();
 
                 if (comboBox_seach == "Предприятие")
-                {
                     perem_comboBox = "company";
-                }
                 else if (comboBox_seach == "Станция")
-                {
                     perem_comboBox = "location";
-                }
                 else if (comboBox_seach == "Заводской номер")
-                {
                     perem_comboBox = "serialNumber";
-                }
                 else if (comboBox_seach == "Дата ТО")
-                {
                     perem_comboBox = "dateTO";
-                }
                 else if (comboBox_seach == "Номер акта ТО")
-                {
                     perem_comboBox = "numberAct";
-                }
                 else if (comboBox_seach == "Номер акта Ремонта")
-                {
                     perem_comboBox = "numberActRemont";
-                }
                 else if (comboBox_seach == "Номер Акта списания")
-                {
                     perem_comboBox = "decommissionSerialNumber";
-                }
                 else if (comboBox_seach == "Месяц")
-                {
                     perem_comboBox = "month";
-                }
                 else if (comboBox_seach == "Модель")
-                {
                     perem_comboBox = "model";
-                }
 
                 var provSeach = textBox_search;
                 provSeach = provSeach.ToUpper();
 
                 if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
-                {
                     searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                         $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
                         $"FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
-                }
                 else if (perem_comboBox == "numberAct")
-                {
                     searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                         $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
                         $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
-                }
                 else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "numberActRemont"
                     || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "month" || perem_comboBox == "model")
-                {
                     searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                         $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
                         $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
-                }
                 else if (perem_comboBox == "dateTO")
                 {
                     cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
@@ -1215,12 +1076,10 @@ namespace ServiceTelecomConnect
                         $" FROM radiostantion_сomparison WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                 }
                 else
-                {
                     searchString = $"SELECT id, poligon, company, location, model, serialNumber, " +
                         $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                         $"category, priceRemont, decommissionSerialNumber, comment, month, road " +
                         $" FROM radiostantion_сomparison WHERE city = '{city}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
-                }
 
                 using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                 {
@@ -1231,18 +1090,14 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowСurator(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
                     DB.GetInstance.CloseConnection();
                 }
                 if (perem_comboBox == "numberActRemont")
-                {
                     dgw.Sort(dgw.Columns["numberActRemont"], ListSortDirection.Ascending);
-                }
             }
         }
 
