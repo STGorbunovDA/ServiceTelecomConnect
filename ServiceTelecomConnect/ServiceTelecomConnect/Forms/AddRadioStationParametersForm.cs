@@ -36,6 +36,8 @@ namespace ServiceTelecomConnect.Forms
                 cmB_BatteryChargerAccessories.Enabled = false;
             if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
                 cmB_ManipulatorAccessories.Enabled = false;
+
+            QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
         }
 
         #region Дата проверки
@@ -76,12 +78,13 @@ namespace ServiceTelecomConnect.Forms
             cmB_frequency.Visible = true;
         }
 
-        void CmB_frequency_SelectedIndexChanged(object sender, EventArgs e)
+        void CmB_frequency_SelectionChangeCommitted(object sender, EventArgs e)
         {
             txB_TransmitterFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
 
             txB_ReceiverFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
         }
+
 
         void TxB_ReceiverFrequencies_Click(object sender, EventArgs e)
         {
@@ -212,6 +215,17 @@ namespace ServiceTelecomConnect.Forms
 
         #endregion
 
+        #region АКБ KeyPress
+
+        void TxB_AKB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+                e.Handled = true;
+        }
+
+        #endregion
+
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
         {
@@ -323,7 +337,30 @@ namespace ServiceTelecomConnect.Forms
         }
         #endregion
 
-        
+        #region добавляем частоту
+
+        void Btn_Frequencies_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                AddFrequencies addFrequencies = new AddFrequencies();
+                if (Application.OpenForms["AddFrequencies"] == null)
+                {
+                    string Mesage = "Вы действительно хотите добавить частоту?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                    addFrequencies.ShowDialog();
+                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+                }
+            }
+        }
+
+        #endregion
+
+
+
+
 
 
 

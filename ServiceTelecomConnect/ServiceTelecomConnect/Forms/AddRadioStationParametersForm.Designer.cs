@@ -95,13 +95,14 @@
             this.label30 = new System.Windows.Forms.Label();
             this.pnl_info_rst = new System.Windows.Forms.Panel();
             this.pnl_AKB = new System.Windows.Forms.Panel();
-            this.btn_save_add_rst_remont = new System.Windows.Forms.Button();
+            this.btn_Save_add_rst_remont = new System.Windows.Forms.Button();
             this.pnl_NoteRadioStationParameters = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.cmB_frequency = new System.Windows.Forms.ComboBox();
             this.lbL_city = new System.Windows.Forms.Label();
             this.lbL_road = new System.Windows.Forms.Label();
+            this.btn_Frequencies = new System.Windows.Forms.Button();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -115,7 +116,7 @@
             // monthCalendar1
             // 
             this.monthCalendar1.FirstDayOfWeek = System.Windows.Forms.Day.Monday;
-            this.monthCalendar1.Location = new System.Drawing.Point(8, 9);
+            this.monthCalendar1.Location = new System.Drawing.Point(140, 60);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 71;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
@@ -153,6 +154,7 @@
             this.txB_AKB.Name = "txB_AKB";
             this.txB_AKB.Size = new System.Drawing.Size(93, 26);
             this.txB_AKB.TabIndex = 74;
+            this.txB_AKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_AKB_KeyPress);
             // 
             // label1
             // 
@@ -902,18 +904,18 @@
             this.pnl_AKB.Size = new System.Drawing.Size(161, 77);
             this.pnl_AKB.TabIndex = 189;
             // 
-            // btn_save_add_rst_remont
+            // btn_Save_add_rst_remont
             // 
-            this.btn_save_add_rst_remont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_save_add_rst_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save_add_rst_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save_add_rst_remont.Location = new System.Drawing.Point(877, 571);
-            this.btn_save_add_rst_remont.Name = "btn_save_add_rst_remont";
-            this.btn_save_add_rst_remont.Size = new System.Drawing.Size(129, 30);
-            this.btn_save_add_rst_remont.TabIndex = 190;
-            this.btn_save_add_rst_remont.Text = "Добавить";
-            this.btn_save_add_rst_remont.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst_remont.Click += new System.EventHandler(this.Btn_save_add_rst_remont_Click);
+            this.btn_Save_add_rst_remont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Save_add_rst_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Save_add_rst_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Save_add_rst_remont.Location = new System.Drawing.Point(883, 589);
+            this.btn_Save_add_rst_remont.Name = "btn_Save_add_rst_remont";
+            this.btn_Save_add_rst_remont.Size = new System.Drawing.Size(129, 30);
+            this.btn_Save_add_rst_remont.TabIndex = 190;
+            this.btn_Save_add_rst_remont.Text = "Добавить";
+            this.btn_Save_add_rst_remont.UseVisualStyleBackColor = false;
+            this.btn_Save_add_rst_remont.Click += new System.EventHandler(this.Btn_save_add_rst_remont_Click);
             // 
             // pnl_NoteRadioStationParameters
             // 
@@ -955,54 +957,12 @@
             this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_frequency.FormattingEnabled = true;
-            this.cmB_frequency.Items.AddRange(new object[] {
-            "151.775",
-            "151.825",
-            "151.875",
-            "151.950",
-            "151.975",
-            "152.000",
-            "152.025",
-            "152.125",
-            "152.150",
-            "152.175",
-            "152.200",
-            "152.225",
-            "152.250",
-            "152.275",
-            "152.300",
-            "152.375",
-            "152.400",
-            "152.425",
-            "152.450",
-            "152.475",
-            "152.500",
-            "152.525",
-            "152.550",
-            "152.575",
-            "152.625",
-            "152.650",
-            "152.650",
-            "152.675",
-            "152.700",
-            "152.725",
-            "152.750",
-            "152.775",
-            "152.800",
-            "152.825",
-            "152.850",
-            "155.125",
-            "155.175",
-            "155.275",
-            "155.325",
-            "155.400",
-            "155.450"});
-            this.cmB_frequency.Location = new System.Drawing.Point(716, 100);
+            this.cmB_frequency.Location = new System.Drawing.Point(716, 385);
             this.cmB_frequency.Name = "cmB_frequency";
             this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
             this.cmB_frequency.TabIndex = 193;
             this.cmB_frequency.Visible = false;
-            this.cmB_frequency.SelectedIndexChanged += new System.EventHandler(this.CmB_frequency_SelectedIndexChanged);
+            this.cmB_frequency.SelectionChangeCommitted += new System.EventHandler(this.CmB_frequency_SelectionChangeCommitted);
             this.cmB_frequency.MouseLeave += new System.EventHandler(this.CmB_frequency_MouseLeave);
             // 
             // lbL_city
@@ -1029,6 +989,19 @@
             this.lbL_road.Text = "Дорога";
             this.lbL_road.Visible = false;
             // 
+            // btn_Frequencies
+            // 
+            this.btn_Frequencies.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Frequencies.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Frequencies.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Frequencies.Location = new System.Drawing.Point(883, 553);
+            this.btn_Frequencies.Name = "btn_Frequencies";
+            this.btn_Frequencies.Size = new System.Drawing.Size(129, 30);
+            this.btn_Frequencies.TabIndex = 195;
+            this.btn_Frequencies.Text = "Добавить Частоты";
+            this.btn_Frequencies.UseVisualStyleBackColor = false;
+            this.btn_Frequencies.Click += new System.EventHandler(this.Btn_Frequencies_Click);
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1038,8 +1011,10 @@
             this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.lbL_city);
             this.Controls.Add(this.cmB_frequency);
+            this.Controls.Add(this.btn_Frequencies);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.pnl_NoteRadioStationParameters);
-            this.Controls.Add(this.btn_save_add_rst_remont);
+            this.Controls.Add(this.btn_Save_add_rst_remont);
             this.Controls.Add(this.pnl_AKB);
             this.Controls.Add(this.pnl_info_rst);
             this.Controls.Add(this.pnl_Accessories);
@@ -1052,7 +1027,6 @@
             this.Controls.Add(this.pnl_transmitter);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddRadioStationParametersForm";
@@ -1145,7 +1119,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Panel pnl_info_rst;
         private System.Windows.Forms.Panel pnl_AKB;
-        private System.Windows.Forms.Button btn_save_add_rst_remont;
+        private System.Windows.Forms.Button btn_Save_add_rst_remont;
         private System.Windows.Forms.Panel pnl_NoteRadioStationParameters;
         internal System.Windows.Forms.TextBox txB_NoteRadioStationParameters;
         private System.Windows.Forms.Label label31;
@@ -1154,5 +1128,6 @@
         internal System.Windows.Forms.ComboBox cmB_frequency;
         internal System.Windows.Forms.Label lbL_road;
         internal System.Windows.Forms.Label lbL_city;
+        private System.Windows.Forms.Button btn_Frequencies;
     }
 }
