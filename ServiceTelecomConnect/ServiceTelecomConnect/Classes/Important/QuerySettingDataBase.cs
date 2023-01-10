@@ -2936,5 +2936,32 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+        #region Получение моделей радиостанций 
+
+        internal static void GettingFrequenciesRST_CMB(ComboBox cmB_frequency)
+        {
+            string querystring = $"SELECT id, frequency FROM frequencies";
+            using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                DataTable table = new DataTable();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(command2))
+                {
+                    adapter.Fill(table);
+                    if (table.Rows.Count > 0)
+                    {
+                        cmB_frequency.DataSource = table;
+                        cmB_frequency.ValueMember = "id";
+                        cmB_frequency.DisplayMember = "frequency";
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+            }
+        }
+
+        #endregion
+
     }
 }
