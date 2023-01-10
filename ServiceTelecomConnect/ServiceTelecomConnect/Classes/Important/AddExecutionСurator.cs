@@ -12,11 +12,10 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var AddExecutionQuery = "";
+                var AddExecutionQuery = String.Empty;
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                {
                     dgw.Rows[row.Index].Cells[41].Value = months;
-                }
+
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
                     var rowState = dgw.Rows[index].Cells[41].Value.ToString();//проверить индекс
@@ -48,13 +47,10 @@ namespace ServiceTelecomConnect
                                 || string.IsNullOrEmpty(inventoryNumber) || string.IsNullOrEmpty(networkNumber) || inventoryNumber == "НЕТ"
                                 || networkNumber == "НЕТ")
                             {
-                                string Mesage;
-                                Mesage = $"У радиостанции {serialNumber} предприятия {company} нет подтверждения ОЦОР или она списанна. Вы действительно хотите её добавить в выполнение?";
+                                string Mesage = $"У радиостанции {serialNumber} предприятия {company} нет подтверждения ОЦОР или она списанна. Вы действительно хотите её добавить в выполнение?";
 
                                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                {
                                     continue;
-                                }
                             }
 
                             AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
@@ -82,16 +78,15 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                {
                     dgw.Rows[row.Index].Cells[19].Value = month;
-                }
+
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
                     var rowState = dgw.Rows[index].Cells[19].Value.ToString();//проверить индекс
 
                     if (rowState == month)
-                    { 
-                        var company = dgw.Rows[index].Cells[2].Value.ToString();          
+                    {
+                        var company = dgw.Rows[index].Cells[2].Value.ToString();
                         var serialNumber = dgw.Rows[index].Cells[5].Value.ToString();
                         var inventoryNumber = dgw.Rows[index].Cells[6].Value.ToString();
                         var networkNumber = dgw.Rows[index].Cells[7].Value.ToString();
@@ -101,13 +96,10 @@ namespace ServiceTelecomConnect
                             || string.IsNullOrEmpty(inventoryNumber) || string.IsNullOrEmpty(networkNumber) || inventoryNumber == "НЕТ"
                             || networkNumber == "НЕТ")
                         {
-                            string Mesage;
-                            Mesage = $"У радиостанции {serialNumber} предприятия {company} нет подтверждения ОЦОР или она списанна. Вы действительно хотите её добавить в выполнение?";
+                            string Mesage = $"У радиостанции {serialNumber} предприятия {company} нет подтверждения ОЦОР или она списанна. Вы действительно хотите её добавить в выполнение?";
 
                             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
                                 continue;
-                            }
                         }
 
                         var AddExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}' AND road = '{road.Text}'";
@@ -127,10 +119,7 @@ namespace ServiceTelecomConnect
                 dgw.ClearSelection();
 
                 if (dgw.RowCount - currRowIndex > 0)
-                {
                     dgw.CurrentCell = dgw[0, currRowIndex];
-                }
-
             }
         }
 

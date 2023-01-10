@@ -42,9 +42,8 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     QuerySettingDataBase.ReedSingleRow(dgw, reader);
-                                }
+
                                 reader.Close();
                             }
                         }
@@ -101,9 +100,8 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     QuerySettingDataBase.ReedSingleRow(dgw, reader);
-                                }
+
                                 reader.Close();
                             }
                         }
@@ -297,9 +295,7 @@ namespace ServiceTelecomConnect
             string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\БазаДанныхJson.json";
 
             if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхJson\{city}\"))
-            {
                 Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхJson\{city}\");
-            }
 
             File.WriteAllText(fileNamePath, json);
         }
@@ -340,11 +336,9 @@ namespace ServiceTelecomConnect
             string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\БазаДанныхJsonCurator.json";
 
             if (!File.Exists($@"С:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\"))
-            {
                 Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\");
-            }
+
             File.WriteAllText(fileNamePath, json);
-            //MessageBox.Show("Успешно!");
         }
 
         #endregion
@@ -362,9 +356,7 @@ namespace ServiceTelecomConnect
                 dgw.Rows.Clear();
                 string result;
                 using (var reader = new StreamReader(fileNamePath))
-                {
                     result = reader.ReadToEnd();
-                }
 
                 JArray fetch = JArray.Parse(result);
 
@@ -476,11 +468,10 @@ namespace ServiceTelecomConnect
                         DB_2.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
                         DB_2.GetInstance.CloseConnection();
-
                     }
                 }
             }
-            else { MessageBox.Show("Отсутствует файл JSON"); };
+            else MessageBox.Show("Отсутствует файл JSON");
 
             MessageBox.Show("Радиостанции успешно загруженны из JSON");
         }
@@ -494,9 +485,7 @@ namespace ServiceTelecomConnect
                 dgw.Rows.Clear();
                 string result;
                 using (var reader = new StreamReader(fileNamePath))
-                {
                     result = reader.ReadToEnd();
-                }
 
                 JArray fetch = JArray.Parse(result);
 
@@ -559,12 +548,10 @@ namespace ServiceTelecomConnect
                         DB_2.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
                         DB_2.GetInstance.CloseConnection();
-
                     }
                 }
             }
-            else { MessageBox.Show("Отсутствует файл JSON"); };
-
+            else MessageBox.Show("Отсутствует файл JSON");
             MessageBox.Show("Радиостанции успешно загруженны из JSON");
         }
 
@@ -585,7 +572,6 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-                   // string text = File.ReadAllText(filename);
 
                     var lineNumber = 0;
 
@@ -624,32 +610,19 @@ namespace ServiceTelecomConnect
                                         DB.GetInstance.CloseConnection();
                                     }
                                 }
-                                else
-                                {
-                                    continue;
-                                }
+                                else continue;
                             }
                             lineNumber++;
                         }
-                        if (reader.EndOfStream)
-                        {
-                            MessageBox.Show("Радиостанции успешно добавлены!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                        }
+                        if (reader.EndOfStream) MessageBox.Show("Радиостанции успешно добавлены!");
+                        else MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
                     }
                 }
                 else
                 {
-                    string Mesage;
-                    Mesage = "Вы не выбрали файл .csv который нужно добавить";
-
+                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
                     if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
                         return;
-                    }
                 }
             }
         }
@@ -668,7 +641,6 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-                    //string text = File.ReadAllText(filename);
 
                     var lineNumber = 0;
 
@@ -698,32 +670,20 @@ namespace ServiceTelecomConnect
                                         DB.GetInstance.CloseConnection();
                                     }
                                 }
-                                else
-                                {
-                                    continue;
-                                }
+                                else continue;
                             }
                             lineNumber++;
                         }
-                        if (reader.EndOfStream)
-                        {
-                            MessageBox.Show("Радиостанции успешно добавлены!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка");
-                        }
+                        if (reader.EndOfStream) MessageBox.Show("Радиостанции успешно добавлены!");
+                        else MessageBox.Show("Радиостанции не добавленны.Системная ошибка");
                     }
                 }
                 else
                 {
-                    string Mesage;
-                    Mesage = "Вы не выбрали файл .csv который нужно добавить";
+                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
 
                     if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
                         return;
-                    }
                 }
             }
         }
@@ -742,7 +702,6 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-                    string text = File.ReadAllText(filename);
 
                     var lineNumber = 0;
 
@@ -779,32 +738,21 @@ namespace ServiceTelecomConnect
                                         DB.GetInstance.CloseConnection();
                                     }
                                 }
-                                else
-                                {
-                                    continue;
-                                }
+                                else continue;
+
                             }
                             lineNumber++;
                         }
-                        if (reader.EndOfStream)
-                        {
-                            MessageBox.Show("Радиостанции успешно добавлены!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                        }
+                        if (reader.EndOfStream) MessageBox.Show("Радиостанции успешно добавлены!");
+                        else MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
                     }
                 }
                 else
                 {
-                    string Mesage;
-                    Mesage = "Вы не выбрали файл .csv который нужно добавить";
+                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
 
                     if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
                         return;
-                    }
                 }
             }
         }
@@ -813,7 +761,6 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-
                 OpenFileDialog openFile = new OpenFileDialog
                 {
                     Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*"
@@ -851,32 +798,20 @@ namespace ServiceTelecomConnect
                                         DB.GetInstance.CloseConnection();
                                     }
                                 }
-                                else
-                                {
-                                    continue;
-                                }
+                                else continue;
                             }
                             lineNumber++;
                         }
-                        if (reader.EndOfStream)
-                        {
-                            MessageBox.Show("Радиостанции успешно добавлены!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
-                        }
+                        if (reader.EndOfStream) MessageBox.Show("Радиостанции успешно добавлены!");
+                        else MessageBox.Show("Радиостанции не добавленны.Системная ошибка ");
                     }
                 }
                 else
                 {
-                    string Mesage;
-                    Mesage = "Вы не выбрали файл .csv который нужно добавить";
+                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
 
                     if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                    {
                         return;
-                    }
                 }
             }
         }

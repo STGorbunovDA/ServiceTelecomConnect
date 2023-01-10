@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -2820,7 +2819,7 @@ namespace ServiceTelecomConnect
         #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
 
         //private readonly cheakUser _user;
-        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, cheakUser _user, ComboBox cmB_road)
+        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, CheakUser _user, ComboBox cmB_road)
         {
             if (_user.Login == "Admin" || _user.IsAdmin == "Руководитель")
             {
