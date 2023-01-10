@@ -11,7 +11,7 @@ namespace ServiceTelecomConnect.Forms
     public partial class DirectorForm : Form
     {
         int selectedRow;
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
         #region состояние Rows
         /// <summary>
@@ -26,7 +26,7 @@ namespace ServiceTelecomConnect.Forms
             Deleted
         }
         #endregion
-        public DirectorForm(cheakUser user)
+        public DirectorForm(CheakUser user)
         {
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();

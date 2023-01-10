@@ -343,7 +343,7 @@ namespace ServiceTelecomConnect.Forms
         {
             if (Internet_check.CheackSkyNET())
             {
-                AddFrequencies addFrequencies = new AddFrequencies();
+                AddFrequenciesForm addFrequencies = new AddFrequenciesForm();
                 if (Application.OpenForms["AddFrequencies"] == null)
                 {
                     string Mesage = "Вы действительно хотите добавить частоту?";

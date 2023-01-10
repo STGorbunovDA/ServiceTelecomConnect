@@ -10,11 +10,11 @@ namespace ServiceTelecomConnect.Forms
 {
     public partial class TutorialForm : Form
     {
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
         int selectedRow;
 
-        public TutorialForm(cheakUser user)
+        public TutorialForm(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

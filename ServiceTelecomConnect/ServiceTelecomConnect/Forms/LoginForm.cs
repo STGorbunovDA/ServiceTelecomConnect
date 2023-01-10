@@ -71,7 +71,7 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count == 1)
                         {
-                            var user = new cheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
+                            var user = new CheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
                             using (Menu menu = new Menu(user))
                             {
                                 RegistryKey currentUserKey = Registry.CurrentUser;

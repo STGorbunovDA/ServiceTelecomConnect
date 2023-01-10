@@ -8,9 +8,9 @@ namespace ServiceTelecomConnect
 {
     public partial class AddToProblemRST : Form
     {
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
-        public AddToProblemRST(cheakUser user)
+        public AddToProblemRST(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

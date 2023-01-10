@@ -36,11 +36,11 @@ namespace ServiceTelecomConnect
 
         int selectedRow;
 
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
         #endregion
 
-        public ST_WorkForm(cheakUser user)
+        public ST_WorkForm(CheakUser user)
         {
             InitializeComponent();
 

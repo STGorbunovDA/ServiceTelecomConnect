@@ -20,11 +20,11 @@ namespace ServiceTelecomConnect
 
         int selectedRow;
 
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
         #endregion
 
-        public ComparisonForm(cheakUser user)
+        public ComparisonForm(CheakUser user)
         {
             InitializeComponent();
 

@@ -274,10 +274,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Important\AddExecutionСurator.cs" />
-    <Compile Include="Classes\Cheac\CheacForm.cs" />
     <Compile Include="Classes\Cheac\CheacSerialNumber.cs" />
     <Compile Include="Classes\DataBase\DB_2.cs" />
-    <Compile Include="Classes\DataBase\DB_3.cs" />
     <Compile Include="Classes\DataBase\DB_4.cs" />
     <Compile Include="Classes\Important\QuerySettingDataBase.cs" />
     <Compile Include="Classes\Other\FormClose.cs" />
@@ -288,11 +286,11 @@
     <Compile Include="Classes\Other\MyTwoColumnComparer.cs" />
     <Compile Include="Classes\Print\PrintDocExcel.cs" />
     <Compile Include="Classes\Print\PrintExcel.cs" />
-    <Compile Include="Forms\AddFrequencies.cs">
+    <Compile Include="Forms\AddFrequenciesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddFrequencies.Designer.cs">
-      <DependentUpon>AddFrequencies.cs</DependentUpon>
+    <Compile Include="Forms\AddFrequenciesForm.Designer.cs">
+      <DependentUpon>AddFrequenciesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddChangeModelRST.cs">
       <SubType>Form</SubType>
@@ -404,8 +402,8 @@
       <DependentUpon>ST_WorkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Print\PrintDocWord.cs" />
-    <EmbeddedResource Include="Forms\AddFrequencies.resx">
-      <DependentUpon>AddFrequencies.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddFrequenciesForm.resx">
+      <DependentUpon>AddFrequenciesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddChangeModelRST.resx">
       <DependentUpon>AddChangeModelRST.cs</DependentUpon>

@@ -8,9 +8,9 @@ namespace ServiceTelecomConnect
 {
     public partial class ChangeToProblemRST : Form
     {
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
-        public ChangeToProblemRST(cheakUser user)
+        public ChangeToProblemRST(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

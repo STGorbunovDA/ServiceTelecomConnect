@@ -10,9 +10,9 @@ namespace ServiceTelecomConnect
 {
     public partial class Menu : Form
     {
-        private readonly cheakUser _user;
+        private readonly CheakUser _user;
 
-        public Menu(cheakUser user)
+        public Menu(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
