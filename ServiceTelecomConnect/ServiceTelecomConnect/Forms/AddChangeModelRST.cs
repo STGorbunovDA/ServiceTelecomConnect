@@ -49,6 +49,9 @@ namespace ServiceTelecomConnect.Forms
 
         void Btn_change_modelRST_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(cmB_model.Text))
+                return;
+
             if (Internet_check.CheackSkyNET())
             {
                 var addQuery = $"UPDATE model_radiostation SET model_radiostation_name = '{cmB_model.Text}' WHERE model_radiostation_name = '{selectedItem_cmB_model}'";
@@ -66,6 +69,9 @@ namespace ServiceTelecomConnect.Forms
 
         void Btn_delete_modelRST_Click(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(cmB_model.Text))
+                return;
+
             string Mesage;
             Mesage = $"Вы действительно хотите удалить модель радиостанции?\n Модель: {cmB_model.GetItemText(cmB_model.SelectedItem)}";
 
