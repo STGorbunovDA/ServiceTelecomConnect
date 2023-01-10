@@ -1055,14 +1055,14 @@ namespace ServiceTelecomConnect
                 AddChangeModelRST addChangeModel = new AddChangeModelRST();
                 if (Application.OpenForms["AddChangeModelRST"] == null)
                 {
-                    string Mesage;
-                    Mesage = "Вы действительно хотите добавить модель радиостанции?";
+                    string Mesage = "Вы действительно хотите добавить модель радиостанции?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     {
                         return;
                     }
-                    addChangeModel.Show();
+                    addChangeModel.ShowDialog();
+                    QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
                 }
             }
         }
