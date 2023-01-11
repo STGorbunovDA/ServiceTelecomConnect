@@ -357,11 +357,39 @@ namespace ServiceTelecomConnect.Forms
                 Regex re = new Regex(@"^[+?-][0-9]{1,3}$");
                 Match result = re.Match(txB_FrequencyDeviationTransmitter.Text);
 
-                var x1 = Convert.ToInt32(result.Groups[1].Value);
+                var intFrequency = Convert.ToInt32(result.Groups[1].Value);
 
+                if (intFrequency > 350 || intFrequency < -350)
+                {
+                    MessageBox.Show("Введите парметры отклонения частоты корректно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_FrequencyDeviationTransmitter.Select();
+                }
             }
+            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
+            {
+                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
+                {
+                    MessageBox.Show("Введите корректно поле: \"Отклоние, Гц\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SensitivityTransmitter.Select();
+                    return;
+                }
+                else
+                {
+                    Regex re = new Regex(@"^([0-9]{1,2})[.][0-9]{1,1}$");
+                    Match result = re.Match(txB_SensitivityTransmitter.Text);
 
+                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (intSensitivityTransmitter > 10.0 || intSensitivityTransmitter < 9.0)
+                    {
+                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_SensitivityTransmitter.Select();
+                    }
+                }
+            }
         }
+
+
+
         #endregion
 
         #region добавляем частоту
