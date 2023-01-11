@@ -1123,9 +1123,8 @@ namespace ServiceTelecomConnect
                     if (reader.HasRows)
                     {
                         while (reader.Read())
-                        {
                             ReedSingleRow(dgw, reader);
-                        }
+
                         reader.Close();
                     }
                 }
@@ -1160,9 +1159,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -1205,9 +1202,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
@@ -1263,9 +1258,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRow(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -1308,9 +1301,8 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRowСurator(dgw, reader);
-                            }
+
                             reader.Close();
                         }
                     }
@@ -1405,9 +1397,7 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                {
                     dgw.Rows[row.Index].Cells[41].Value = RowState.Change;
-                }
 
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
@@ -1417,7 +1407,6 @@ namespace ServiceTelecomConnect
                     {
                         var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                         var numberAct = dgw.Rows[index].Cells[9].Value;
-                        //UPDATE radiostantion SET numberAct = '51/1' WHERE numberAct = '53/1'
                         var changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_pnl_ChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
                             $"AND city = '{city}' AND road = '{road}' AND id = '{id}'";
 
@@ -1442,9 +1431,7 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                {
                     dgw.Rows[row.Index].Cells[41].Value = RowState.Deleted;
-                }
 
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
@@ -1472,9 +1459,7 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                {
                     dgw.Rows[row.Index].Cells[19].Value = RowState.Deleted;
-                }
 
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
@@ -1503,7 +1488,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (numberActRemont != "")
+                if (!String.IsNullOrEmpty(numberActRemont))
                 {
                     if (CheacknumberActRemont_radiostantion(numberActRemont))
                     {
@@ -1568,7 +1553,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (serialNumber != "")
+                if (String.IsNullOrEmpty(serialNumber))
                 {
                     var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
@@ -1586,7 +1571,6 @@ namespace ServiceTelecomConnect
 
                     if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(serialNumber))
                     {
-
                         var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
@@ -1639,23 +1623,17 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var price = "";
+                var price = String.Empty;
                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
                 {
-
                     if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                         cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
                         cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
                         cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
                         cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
                         cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
-                    {
                         price = "1411.18";
-                    }
-                    else
-                    {
-                        price = "1919.57";
-                    }
+                    else price = "1919.57";
 
                     var reg = new Regex("C");
                     txB_numberAct.Text = reg.Replace(txB_numberAct.Text, "");
@@ -1712,9 +1690,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
                                 reader.Close();
                             }
                         }
