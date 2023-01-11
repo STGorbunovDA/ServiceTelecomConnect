@@ -111,7 +111,7 @@ namespace ServiceTelecomConnect.Forms
         void TxB_FrequencyDeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.' && ch != '+' && ch != '-')
                 e.Handled = true;
         }
 
@@ -332,6 +332,33 @@ namespace ServiceTelecomConnect.Forms
                         control.Text.Trim();
                     }
                 }
+            }
+
+            if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-9]{1,2}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_LowPowerLevelTransmitter.Select();
+                return;
+            }
+            if (!Regex.IsMatch(txB_HighPowerLevelTransmitter.Text, @"^[2-5]{1,1}[.][0-9]{1,2}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Высокий, Вт\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_LowPowerLevelTransmitter.Select();
+                return;
+            }
+            if (!Regex.IsMatch(txB_FrequencyDeviationTransmitter.Text, @"^[+?-][0-9]{1,3}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Отклоние, Гц\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_FrequencyDeviationTransmitter.Select();
+                return;
+            }
+            else
+            {
+                Regex re = new Regex(@"^[+?-][0-9]{1,3}$");
+                Match result = re.Match(txB_FrequencyDeviationTransmitter.Text);
+
+                var x1 = Convert.ToInt32(result.Groups[1].Value);
+
             }
 
         }

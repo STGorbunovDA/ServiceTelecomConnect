@@ -1008,6 +1008,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.pnl_transmitter);
             this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.lbL_city);
             this.Controls.Add(this.cmB_frequency);
@@ -1024,7 +1025,6 @@
             this.Controls.Add(this.pnl_Receiver);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pnl_frequencies);
-            this.Controls.Add(this.pnl_transmitter);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
