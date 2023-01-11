@@ -2174,9 +2174,8 @@ namespace ServiceTelecomConnect
                     if (reader.HasRows)
                     {
                         while (reader.Read())
-                        {
                             newList.Add(reader.GetDateTime(0).ToString("dd.MM.yyyy"));
-                        }
+
                         reader.Close();
                     }
                 }
