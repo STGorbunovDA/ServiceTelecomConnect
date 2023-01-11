@@ -229,6 +229,28 @@ namespace ServiceTelecomConnect.Forms
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
         {
+            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
+            {
+                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
+                {
+                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SensitivityTransmitter.Select();
+                    return;
+                }
+                else
+                {
+                    Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
+                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+
+                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (intSensitivityTransmitter > 10.0 || intSensitivityTransmitter < 9.0)
+                    {
+                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_SensitivityTransmitter.Select();
+                    }
+                }
+            }
+
             foreach (Control control in pnl_transmitter.Controls)
             {
                 if (control is TextBox)
@@ -369,17 +391,38 @@ namespace ServiceTelecomConnect.Forms
             {
                 if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
                 {
-                    MessageBox.Show("Введите корректно поле: \"Отклоние, Гц\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_SensitivityTransmitter.Select();
                     return;
                 }
                 else
                 {
-                    Regex re = new Regex(@"^([0-9]{1,2})[.][0-9]{1,1}$");
+                    Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                     var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
                     if (intSensitivityTransmitter > 10.0 || intSensitivityTransmitter < 9.0)
+                    {
+                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_SensitivityTransmitter.Select();
+                    }
+                }
+            }
+            if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11")
+            {
+                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{2,2}[.][0-9]{1,1}$"))
+                {
+                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SensitivityTransmitter.Select();
+                    return;
+                }
+                else
+                {
+                    Regex re = new Regex(@"^[0-9]{2,2}[.][0-9]{1,1}$");
+                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+
+                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (intSensitivityTransmitter > 18.0 || intSensitivityTransmitter < 15.0)
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
