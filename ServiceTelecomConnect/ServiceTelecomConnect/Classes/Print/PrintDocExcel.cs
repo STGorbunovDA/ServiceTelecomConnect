@@ -18,9 +18,7 @@ namespace ServiceTelecomConnect
                     lock (SyncObject)
                     {
                         if (Class == null)
-                        {
                             Class = new PrintDocExcel("documents\\TAG.xls");
-                        }
                     }
                 return Class;
             }
@@ -35,22 +33,17 @@ namespace ServiceTelecomConnect
             if (officeType != null)
             {
                 if (File.Exists(filename))
-                {
                     _fileInfo = new FileInfo(filename);
-                }
-                else
-                {
-                    throw new ArgumentException("File not found!");
-                }
+                else throw new ArgumentException("File not found!");
+
             }
             else
             {
                 string Mesage2 = "У Вас не установлен пакет Office(Excel + Word)!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
+
             }
         }
 
@@ -90,7 +83,6 @@ namespace ServiceTelecomConnect
                     try
                     {
                         Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Бирки");
-
                         wb.SaveAs($@"C:\Documents_ServiceTelekom\Бирки\" + word_file);
                         app.Visible = true;
                     }
@@ -115,16 +107,13 @@ namespace ServiceTelecomConnect
             catch (Exception ex)
             {
                 if (app != null)
-                {
                     app = null;
-                }
+
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 MessageBox.Show(ex.ToString());
                 Environment.Exit(0);
             }
-
-
         }
     }
 }
