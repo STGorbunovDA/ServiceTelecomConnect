@@ -23,7 +23,6 @@ namespace ServiceTelecomConnect
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-
             txB_dateIssue.Text = DateTime.Now.ToString("dd.MM.yyyy");
             cmB_poligon.Text = cmB_poligon.Items[0].ToString();
         }
@@ -78,7 +77,6 @@ namespace ServiceTelecomConnect
 
             if (Internet_check.CheackSkyNET())
             {
-
                 var city = txB_city.Text;
 
                 if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
@@ -89,9 +87,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var poligon = cmB_poligon.Text;
@@ -105,9 +101,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var location = txB_location.Text;
@@ -119,15 +113,13 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var model = cmB_model.GetItemText(cmB_model.SelectedItem);
 
                 var serialNumber = txB_serialNumber.Text;
-                
+
                 #region
                 if (model == "Motorola GP-340")
                 {
@@ -162,7 +154,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Comrade R5 - \"2010R5107867\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -174,11 +165,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F3GT")
@@ -189,11 +177,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F16")
@@ -204,11 +189,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F11")
@@ -219,11 +201,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Альтавия-301М")
@@ -234,11 +213,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Элодия-351М")
@@ -249,11 +225,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Комбат T-44")
@@ -264,11 +237,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Шеврон T-44 V2")
@@ -279,11 +249,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РН311М")
@@ -294,11 +261,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Motorola DP-4400")
@@ -325,7 +289,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -335,7 +298,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -345,7 +307,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -355,7 +316,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -367,11 +327,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Гранит Р-43")
@@ -382,11 +339,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Радий-301")
@@ -397,11 +351,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РНД-500")
@@ -412,11 +363,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РНД-512")
@@ -427,11 +375,8 @@ namespace ServiceTelecomConnect
                         txB_serialNumber.Select();
 
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 #endregion
@@ -446,9 +391,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var networkNumber = txB_networkNumber.Text;
@@ -461,9 +404,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var numberAct = txB_numberAct.Text;
@@ -518,9 +459,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 var dateIssue = txB_dateIssue.Text;
                 if (String.IsNullOrEmpty(dateIssue))
@@ -538,9 +477,8 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
+
                 }
                 var antenna = txB_antenna.Text;
                 var manipulator = txB_manipulator.Text;
@@ -606,20 +544,11 @@ namespace ServiceTelecomConnect
                                 }
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
-                        }
+                        else MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
                     }
-                    else
-                    {
-                        MessageBox.Show("Данная радиостанция с таким заводским номером уже присутствует в базе данных");
-                    }
+                    else MessageBox.Show("Данная радиостанция с таким заводским номером уже присутствует в базе данных");
                 }
-                else
-                {
-                    MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                }
+                else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
             }
         }
         #endregion
@@ -627,20 +556,15 @@ namespace ServiceTelecomConnect
         #region очистка Control-ов
         void PictureBox4_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите очистить все введенные вами поля?";
+            string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
             txB_antenna.Text = "-";
             txB_manipulator.Text = "-";
@@ -684,9 +608,8 @@ namespace ServiceTelecomConnect
 
                             DB.GetInstance.OpenConnection();
                             using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
-                            {
                                 command5.ExecuteNonQuery();
-                            }
+
                             DB.GetInstance.CloseConnection();
 
                             return true;
@@ -736,9 +659,7 @@ namespace ServiceTelecomConnect
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
-            {
                 e.Handled = true;
-            }
         }
         void TextBox_price_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -751,9 +672,7 @@ namespace ServiceTelecomConnect
             }
 
             if (!Char.IsDigit(ch) && ch != 8 && ch != decimalSeparatorChar)
-            {
                 e.Handled = true;
-            }
         }
         void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -767,7 +686,6 @@ namespace ServiceTelecomConnect
                 txB_location.Text = $"ст. {txB_city.Text}";
                 txB_location.SelectionStart = txB_location.Text.Length;
                 txB_location.SelectionLength = 0;
-
             }
         }
         void ComboBox_model_Click(object sender, EventArgs e)
@@ -784,7 +702,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
-                if (txB_serialNumber.Text != "")
+                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
                     var serialNumber = txB_serialNumber.Text;
 
@@ -826,7 +744,7 @@ namespace ServiceTelecomConnect
         }
         void SeachRSTReturn()
         {
-            if (txB_serialNumber.Text != "")
+            if (!String.IsNullOrEmpty(txB_serialNumber.Text))
             {
                 var serialNumber = txB_serialNumber.Text;
 
@@ -869,10 +787,7 @@ namespace ServiceTelecomConnect
                 {
 
                 }
-                else
-                {
-                    e.Handled = true;
-                }
+                else e.Handled = true;
             }
 
             if (cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" || cmB_model.Text == "Motorola DP-1400" ||
@@ -884,10 +799,7 @@ namespace ServiceTelecomConnect
                 {
 
                 }
-                else
-                {
-                    e.Handled = true;
-                }
+                else e.Handled = true;
 
             }
 
@@ -897,10 +809,7 @@ namespace ServiceTelecomConnect
                 {
 
                 }
-                else
-                {
-                    e.Handled = true;
-                }
+                else e.Handled = true;
             }
 
             if (cmB_model.Text == "Комбат T-44")
@@ -909,10 +818,7 @@ namespace ServiceTelecomConnect
                 {
 
                 }
-                else
-                {
-                    e.Handled = true;
-                }
+                else e.Handled = true;
             }
             #endregion
         }
@@ -959,16 +865,12 @@ namespace ServiceTelecomConnect
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
-            {
                 e.Handled = true;
-            }
         }
         void TextBox_antenna_Leave(object sender, EventArgs e)
         {
             if (txB_antenna.Text == "")
-            {
                 txB_antenna.Text = "-";
-            }
         }
         void TextBox_manipulator_Click(object sender, EventArgs e)
         {
@@ -982,24 +884,18 @@ namespace ServiceTelecomConnect
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
-            {
                 e.Handled = true;
-            }
         }
         void TextBox_manipulator_Leave(object sender, EventArgs e)
         {
             if (txB_manipulator.Text == "")
-            {
                 txB_manipulator.Text = "-";
-            }
         }
 
         void TextBox_AKB_Leave(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "")
-            {
                 txB_AKB.Text = "-";
-            }
         }
         void TextBox_batteryСharger_Click(object sender, EventArgs e)
         {
@@ -1013,24 +909,18 @@ namespace ServiceTelecomConnect
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
-            {
                 e.Handled = true;
-            }
         }
         void TextBox_batteryСharger_Leave(object sender, EventArgs e)
         {
             if (txB_batteryСharger.Text == "")
-            {
                 txB_batteryСharger.Text = "-";
-            }
         }
 
         void TxB_AKB_Click(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "-")
-            {
                 txB_AKB.Text = "";
-            }
         }
 
         #endregion
@@ -1058,9 +948,8 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить модель радиостанции?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
+
                     addChangeModel.ShowDialog();
                     QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
                 }
@@ -1075,9 +964,7 @@ namespace ServiceTelecomConnect
             string MesageTwo = $"Вы действительно хотите добавить уникально-повторяющуюся радиостанцию?\n Номер: {txB_serialNumber.Text}\n от предприятия {txB_company.Text}";
 
             if (MessageBox.Show(MesageTwo, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             if (String.IsNullOrEmpty(txB_serialNumber.Text))
             {
@@ -1114,9 +1001,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var poligon = cmB_poligon.Text;
@@ -1130,9 +1015,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var location = txB_location.Text;
@@ -1144,9 +1027,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var model = cmB_model.GetItemText(cmB_model.SelectedItem);
@@ -1200,9 +1081,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F3GT")
@@ -1215,9 +1094,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F16")
@@ -1230,9 +1107,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Icom IC-F11")
@@ -1245,9 +1120,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Альтавия-301М")
@@ -1260,9 +1133,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Элодия-351М")
@@ -1275,9 +1146,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Комбат T-44")
@@ -1290,9 +1159,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Шеврон T-44 V2")
@@ -1305,9 +1172,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РН311М")
@@ -1320,9 +1185,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Motorola DP-4400")
@@ -1349,7 +1212,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-320 - \"000TTD0000 или 000TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -1359,7 +1221,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola GP-300 - \"174TTD0000 или 174TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -1369,7 +1230,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P080 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -1379,7 +1239,6 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola P040 - \"452TTD0000 или 452TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
-
                         return;
                     }
                 }
@@ -1393,9 +1252,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Гранит Р-43")
@@ -1408,9 +1265,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "Радий-301")
@@ -1423,9 +1278,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РНД-500")
@@ -1438,9 +1291,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 else if (model == "РНД-512")
@@ -1453,9 +1304,7 @@ namespace ServiceTelecomConnect
                         string Mesage = "Вы действительно хотите добавить радиостанцию?";
 
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                 }
                 #endregion
@@ -1470,9 +1319,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var networkNumber = txB_networkNumber.Text;
@@ -1485,9 +1332,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
 
                 var numberAct = txB_numberAct.Text;
@@ -1542,9 +1387,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 var dateIssue = txB_dateIssue.Text;
                 if (String.IsNullOrEmpty(dateIssue))
@@ -1562,9 +1405,7 @@ namespace ServiceTelecomConnect
                     string Mesage = "Вы действительно хотите продолжить?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 var antenna = txB_antenna.Text;
                 var manipulator = txB_manipulator.Text;
@@ -1630,15 +1471,9 @@ namespace ServiceTelecomConnect
                             }
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
-                    }
+                    else MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
                 }
-                else
-                {
-                    MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                }
+                else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
             }
         }
         #endregion
@@ -1672,40 +1507,24 @@ namespace ServiceTelecomConnect
 
         void TxB_serialNumber_TextChanged(object sender, EventArgs e)
         {
-            if(txB_serialNumber.Text.Length == 10)
+            if (txB_serialNumber.Text.Length == 10)
             {
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-340");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][3][8]([A-Z]{3,3}[0-9]{4,4}))?([6][3][8][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-320");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([7][4][9]([A-Z]{3,3}[0-9]{4,4}))?([7][4][9][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-360");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][4][6]([A-Z]{3,3}[0-9]{4,4}))?([4][4][6][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-2400е");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-4400");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-1400");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-300");
-                }
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
-                {
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola P080");
-                }
 
                 SeachRSTReturn();
                 ChoosingAnalogDigital();
