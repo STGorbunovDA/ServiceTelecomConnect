@@ -42,9 +42,7 @@ namespace ServiceTelecomConnect.Classes.Other
                 string fileNamePath = $@"C:\Documents_ServiceTelekom\Log\Ошибка-{today.ToString("dd.MM.yyyy")}.txt";
 
                 if (!File.Exists($@"C:\Documents_ServiceTelekom\Log\"))
-                {
                     Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Log\");
-                }
 
                 using (StreamWriter sw = new StreamWriter(fileNamePath, true, Encoding.Unicode))
                 {

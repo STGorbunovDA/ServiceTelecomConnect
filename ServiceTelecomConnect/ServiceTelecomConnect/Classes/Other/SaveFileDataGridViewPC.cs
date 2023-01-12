@@ -142,9 +142,8 @@ namespace ServiceTelecomConnect
                             if (j == dgw.ColumnCount - 1)
                             {
                                 if (priceRemont == "0.00")
-                                {
                                     priceRemont = "";
-                                }
+                                
                                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
                                 {
                                     numberAct = "списание"; dateTO = "списание";
@@ -165,10 +164,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Файл успешно сохранен");
                 }
             }
-            else
-            {
-                MessageBox.Show("Вы не указали путь сохранения!");
-            }
+            else MessageBox.Show("Вы не указали путь сохранения!");            
         }
 
         internal static void UserSaveFileCuratorPC(DataGridView dgw, string cmb_road)
