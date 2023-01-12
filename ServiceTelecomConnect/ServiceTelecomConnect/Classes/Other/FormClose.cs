@@ -46,7 +46,6 @@ namespace ServiceTelecomConnect
                         }
                     }                    
                 }
-
                 return false;
             }
             else return true;
