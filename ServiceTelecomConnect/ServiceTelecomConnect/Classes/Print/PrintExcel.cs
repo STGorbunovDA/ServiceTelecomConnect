@@ -17,18 +17,14 @@ namespace ServiceTelecomConnect
 
             try
             {
-                if (numberAct != "")
+                if (!String.IsNullOrEmpty(numberAct))
                 {
                     if (dgw.Rows.Count > 21)
                     {
-                        string Mesage2;
-
-                        Mesage2 = "В акте может быть только 20-ать радиостанций! Нажмите \"Enter\" или \"два раза мышью\" на панель в графе \"Акт №:\"";
+                        string Mesage2 = "В акте может быть только 20-ать радиостанций! Нажмите \"Enter\" или \"два раза мышью\" на панель в графе \"Акт №:\"";
 
                         if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        {
                             return;
-                        }
                     }
                     else
                     {
@@ -39,9 +35,7 @@ namespace ServiceTelecomConnect
                             string Mesage2 = "У Вас не установлен Excel!";
 
                             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                            {
                                 return;
-                            }
                         }
                         else
                         {
@@ -1047,13 +1041,11 @@ namespace ServiceTelecomConnect
                                 Excel.Range _excelCells236 = (Excel.Range)workSheet2.get_Range($"V{j3}").Cells;
                                 _excelCells236.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
-
                                 Excel.Range _excelCells237 = (Excel.Range)workSheet2.get_Range($"W{j3}", $"Y{j3}").Cells;
                                 _excelCells237.Merge(Type.Missing);
 
                                 s3++;
                                 j3++;
-
                             }
                             int j4 = 20;
                             int s4 = 1;
@@ -1093,6 +1085,7 @@ namespace ServiceTelecomConnect
                             #endregion
 
                             #region АКТ ТО 3 Item
+
                             workSheet3.PageSetup.Zoom = false;
                             workSheet3.PageSetup.FitToPagesWide = 1;
                             workSheet3.PageSetup.FitToPagesTall = 1;
@@ -1261,20 +1254,17 @@ namespace ServiceTelecomConnect
 
                             _excelCells103.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                             _excelCells104.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
-
                             _excelCells108.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells111.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells112.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells113.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells117.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
-
                             _excelCells127.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells127.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells127.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells127.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells127.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDot;
                             _excelCells127.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDot;
-
                             _excelCells138.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                             _excelCells139.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                             _excelCells140.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -1494,7 +1484,6 @@ namespace ServiceTelecomConnect
                                 try
                                 {
                                     Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Акты ТО\{city}\");
-
                                     workSheet3.SaveAs($@"C:\Documents_ServiceTelekom\Акты ТО\{city}\" + file);
                                 }
                                 catch (Exception ex)
@@ -1526,17 +1515,14 @@ namespace ServiceTelecomConnect
                     Mesage2 = "Выберете акт, который хотите напечатать!";
 
                     if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
             }
             catch (Exception ex)
             {
                 if (exApp != null)
-                {
                     exApp = null;
-                }
+
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 Environment.Exit(0);
@@ -1568,9 +1554,7 @@ namespace ServiceTelecomConnect
                     string Mesage2 = "У Вас не установлен Excel!";
 
                     if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
                 }
                 else
                 {
@@ -1941,45 +1925,38 @@ namespace ServiceTelecomConnect
                     workSheet.Cells[17, 5] = $"\n{сompleted_works_1}\n";
                     workSheet.Cells[17, 7] = $"\n{parts_1}\n";
                     if (сompleted_works_1 != "" || parts_1 != "")
-                    {
                         workSheet.Cells[17, 9] = $"1";
-                    }
+
                     workSheet.Cells[18, 5] = $"\n{сompleted_works_2}\n";
                     workSheet.Cells[18, 7] = $"\n{parts_2}\n";
                     if (сompleted_works_2 != "" || parts_2 != "")
-                    {
                         workSheet.Cells[18, 9] = $"1";
-                    }
+
                     workSheet.Cells[19, 5] = $"\n{сompleted_works_3}\n";
                     workSheet.Cells[19, 7] = $"\n{parts_3}\n";
                     if (сompleted_works_3 != "" || parts_3 != "")
-                    {
                         workSheet.Cells[19, 9] = $"1";
-                    }
+
                     workSheet.Cells[20, 5] = $"\n{сompleted_works_4}\n";
                     workSheet.Cells[20, 7] = $"\n{parts_4}\n";
                     if (сompleted_works_4 != "" || parts_4 != "")
-                    {
                         workSheet.Cells[20, 9] = $"1";
-                    }
+
                     workSheet.Cells[21, 5] = $"\n{сompleted_works_5}\n";
                     workSheet.Cells[21, 7] = $"\n{parts_5}\n";
                     if (сompleted_works_5 != "" || parts_5 != "")
-                    {
                         workSheet.Cells[21, 9] = $"1";
-                    }
+
                     workSheet.Cells[22, 5] = $"\n{сompleted_works_6}\n";
                     workSheet.Cells[22, 7] = $"\n{parts_6}\n";
                     if (сompleted_works_6 != "" || parts_6 != "")
-                    {
                         workSheet.Cells[22, 9] = $"1";
-                    }
+
                     workSheet.Cells[23, 5] = $"\n{сompleted_works_7}\n";
                     workSheet.Cells[23, 7] = $"\n{parts_7}\n";
                     if (сompleted_works_7 != "" || parts_7 != "")
-                    {
                         workSheet.Cells[23, 9] = $"1";
-                    }
+
                     workSheet.Cells[24, 1] = $"Системы радиосвязи работоспособны, технические характеристики вышеперечисленных соответствуют нормам.\n" +
                                              $"Представитель эксплуатирующей организации по качеству выполненных работ претензий к исполнителю не имеет.";
 
@@ -2169,7 +2146,6 @@ namespace ServiceTelecomConnect
                     _excelCells186.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells187.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
 
-
                     _excelCells100.Merge(Type.Missing);
                     _excelCells101.Merge(Type.Missing);
                     _excelCells102.Merge(Type.Missing);
@@ -2304,7 +2280,6 @@ namespace ServiceTelecomConnect
                     _excelCells188.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells189.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-
                     Excel.Range rowHeight100 = workSheet2.get_Range("A9", "I9");
                     rowHeight100.EntireRow.RowHeight = 40;
 
@@ -2380,7 +2355,6 @@ namespace ServiceTelecomConnect
                     Excel.Range rowHeight123 = workSheet2.get_Range("A63", "K63");
                     rowHeight123.EntireRow.RowHeight = 10;
 
-
                     Excel.Range range_Consolidated100 = workSheet2.Rows.get_Range("F1", "K2");
                     Excel.Range range_Consolidated101 = workSheet2.Rows.get_Range("A7", "I7");
                     Excel.Range range_Consolidated102 = workSheet2.Rows.get_Range("A9", "I9");
@@ -2411,7 +2385,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated127 = workSheet2.Rows.get_Range("K5", "K9");
                     Excel.Range range_Consolidated128 = workSheet2.Rows.get_Range("B41", "C41");
 
-                    if (mainMeans != "")
+                    if (!String.IsNullOrEmpty(mainMeans))
                     {
                         if (mainMeans.Length > 35)
                         {
@@ -2467,8 +2441,6 @@ namespace ServiceTelecomConnect
                     range_Consolidated127.NumberFormat = "@";
                     range_Consolidated128.NumberFormat = "@";
 
-
-
                     workSheet2.Cells[1, 7] = $"Специализированная форма № ФОУ-18";
                     workSheet2.Cells[2, 6] = $"Утверждена распоряжением ОАО «РЖД» от 29.01.2015 № 190р";
                     workSheet2.Cells[4, 11] = $"Код";
@@ -2497,7 +2469,7 @@ namespace ServiceTelecomConnect
 
                     workSheet2.Cells[19, 7] = $"{dateTO}";
                     workSheet2.Cells[21, 1] = $"Основное средство (здание, оборудование):";
-                    if (mainMeans == "")
+                    if (String.IsNullOrEmpty(mainMeans))
                         workSheet2.Cells[21, 5] = $"{model}";
                     else workSheet2.Cells[21, 5] = $"{mainMeans}";
                     workSheet2.Cells[21, 9] = $"Заводской № {serialNumber}";
@@ -2539,13 +2511,13 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[45, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"7";
-                    if (nameProductRepaired == "")
+                    if (String.IsNullOrEmpty(nameProductRepaired))
                         workSheet2.Cells[40, 2] = $"{model}";
                     else workSheet2.Cells[40, 2] = $"\n{nameProductRepaired}\n";
                     workSheet2.Cells[41, 2] = $"{serialNumber}";
                     workSheet2.Cells[40, 4] = $"\n{parts_1}\n";
                     workSheet2.Cells[40, 6] = $"\n{сompleted_works_1}\n";
-                    if (parts_1 != "" || сompleted_works_1 != "")
+                    if (!String.IsNullOrEmpty(parts_1) ||String.IsNullOrEmpty(сompleted_works_1))
                     {
                         workSheet2.Cells[40, 8] = $"шт.";
                         workSheet2.Cells[40, 9] = $"1";
@@ -2553,7 +2525,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[41, 4] = $"\n{parts_2}\n";
                     workSheet2.Cells[41, 6] = $"\n{сompleted_works_2}\n";
-                    if (parts_2 != "" || сompleted_works_2 != "")
+                    if (!String.IsNullOrEmpty(parts_2) || String.IsNullOrEmpty(сompleted_works_2))
                     {
                         workSheet2.Cells[41, 8] = $"шт.";
                         workSheet2.Cells[41, 9] = $"1";
@@ -2561,7 +2533,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[42, 4] = $"\n{parts_3}\n";
                     workSheet2.Cells[42, 6] = $"\n{сompleted_works_3}\n";
-                    if (parts_3 != "" || сompleted_works_3 != "")
+                    if (!String.IsNullOrEmpty(parts_3) || String.IsNullOrEmpty(сompleted_works_3))
                     {
                         workSheet2.Cells[42, 8] = $"шт.";
                         workSheet2.Cells[42, 9] = $"1";
@@ -2569,7 +2541,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[43, 4] = $"\n{parts_4}\n";
                     workSheet2.Cells[43, 6] = $"\n{сompleted_works_4}\n";
-                    if (parts_4 != "" || сompleted_works_4 != "")
+                    if (!String.IsNullOrEmpty(parts_4) || String.IsNullOrEmpty(сompleted_works_4))
                     {
                         workSheet2.Cells[43, 8] = $"шт.";
                         workSheet2.Cells[43, 9] = $"1";
@@ -2577,7 +2549,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[44, 4] = $"\n{parts_5}\n";
                     workSheet2.Cells[44, 6] = $"\n{сompleted_works_5}\n";
-                    if (parts_5 != "" || сompleted_works_5 != "")
+                    if (!String.IsNullOrEmpty(parts_5) || String.IsNullOrEmpty(сompleted_works_5))
                     {
                         workSheet2.Cells[44, 8] = $"шт.";
                         workSheet2.Cells[44, 9] = $"1";
@@ -2585,7 +2557,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[45, 4] = $"\n{parts_6}\n";
                     workSheet2.Cells[45, 6] = $"\n{сompleted_works_6}\n";
-                    if (parts_6 != "" || сompleted_works_6 != "")
+                    if (!String.IsNullOrEmpty(parts_6) || String.IsNullOrEmpty(сompleted_works_6))
                     {
                         workSheet2.Cells[45, 8] = $"шт.";
                         workSheet2.Cells[45, 9] = $"1";
@@ -2593,7 +2565,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[46, 4] = $"\n{parts_7}\n";
                     workSheet2.Cells[46, 6] = $"\n{сompleted_works_7}\n";
-                    if (parts_7 != "" || сompleted_works_7 != "")
+                    if (!String.IsNullOrEmpty(parts_7) || String.IsNullOrEmpty(сompleted_works_7))
                     {
                         workSheet2.Cells[46, 8] = $"шт.";
                         workSheet2.Cells[46, 9] = $"1";
@@ -2658,18 +2630,15 @@ namespace ServiceTelecomConnect
                         }
 
                     }
-
                     exApp.Visible = true;
                 }
-
                 dgw.Enabled = true;
             }
             catch (Exception ex)
             {
                 if (exApp != null)
-                {
                     exApp = null;
-                }
+                
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
 
