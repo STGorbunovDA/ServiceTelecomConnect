@@ -9,10 +9,9 @@ namespace ServiceTelecomConnect
         public static bool CheackSkyNET()
         {
             try
-            {//if(new Ping().Send("yandex.ru").Status == IPStatus.Success)
+            {
                 Dns.GetHostEntry("dotnet.beget.tech");
-                    return true;
-                
+                    return true;               
             }
             catch (Exception)
             {
