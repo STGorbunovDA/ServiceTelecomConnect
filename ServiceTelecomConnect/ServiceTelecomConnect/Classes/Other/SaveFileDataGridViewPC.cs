@@ -400,16 +400,12 @@ namespace ServiceTelecomConnect
             DateTime today = DateTime.Today;
 
             if (File.Exists($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv"))
-            {
                 File.Delete($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv");
-            }
 
             string fileNamePath = $@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\БазаДанных-{city}-{today.ToString("dd.MM.yyyy")}.csv";
 
             if (!File.Exists($@"С:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\"))
-            {
                 Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\БазаДанныхExcel\{city}\");
-            }
 
             using (StreamWriter sw = new StreamWriter(fileNamePath, false, Encoding.Unicode))
             {
@@ -437,13 +433,9 @@ namespace ServiceTelecomConnect
 
                         }
                         else if (dgw.Columns[j].HeaderText.ToString() == "Дата ТО")
-                        {
                             sw.Write(Convert.ToDateTime(value).ToString("dd.MM.yyyy") + "\t");
-                        }
                         else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
-                        {
                             sw.Write(value);
-                        }
                         else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
                         {
 
@@ -460,16 +452,12 @@ namespace ServiceTelecomConnect
             DateTime today = DateTime.Today;
 
             if (File.Exists($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхExcel\{road}\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv"))
-            {
                 File.Delete($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхExcel\{road}\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv");
-            }
 
             string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхExcel\{road}\БазаДанных-{road}-{today.ToString("dd.MM.yyyy")}.csv";
 
             if (!File.Exists($@"С:\Documents_ServiceTelekom\Куратор\БазаДанныхExcel\{road}\"))
-            {
                 Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхExcel\{road}\");
-            }
 
             using (StreamWriter sw = new StreamWriter(fileNamePath, false, Encoding.Unicode))
             {
@@ -493,13 +481,9 @@ namespace ServiceTelecomConnect
 
                         }
                         else if (dgw.Columns[j].HeaderText.ToString() == "Дата ТО")
-                        {
                             sw.Write(Convert.ToDateTime(value).ToString("dd.MM.yyyy") + "\t");
-                        }
                         else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
-                        {
                             sw.Write(value);
-                        }
                         else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
                         {
 
