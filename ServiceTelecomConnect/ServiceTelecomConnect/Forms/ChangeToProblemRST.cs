@@ -92,20 +92,15 @@ namespace ServiceTelecomConnect
 
         void PictureBox4_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите очистить все введенные вами поля?";
+            string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
         }
 
@@ -137,11 +132,9 @@ namespace ServiceTelecomConnect
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
                         adapter.Fill(model_RSR_table);
-
                         cmB_model.DataSource = model_RSR_table;
                         cmB_model.ValueMember = "id";
                         cmB_model.DisplayMember = "model_radiostation_name";
-
                         DB.GetInstance.CloseConnection();
                     }
                 }
