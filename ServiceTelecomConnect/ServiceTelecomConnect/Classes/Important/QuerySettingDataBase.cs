@@ -2297,9 +2297,8 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
+
                                 reader.Close();
                             }
                         }
@@ -2337,9 +2336,8 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                {
                                     ReedSingleRow(dgw, reader);
-                                }
+
                                 reader.Close();
                             }
                         }
@@ -2402,10 +2400,8 @@ namespace ServiceTelecomConnect
                             cmB_month.DataSource = table;
                             cmB_month.DisplayMember = "month";
                         }
-                        else
-                        {
-                            cmB_month.DataSource = null;
-                        }
+                        else cmB_month.DataSource = null;
+
                         DB.GetInstance.CloseConnection();
                     }
                 }
@@ -2430,10 +2426,7 @@ namespace ServiceTelecomConnect
                             cmB_month.DataSource = table;
                             cmB_month.DisplayMember = "month";
                         }
-                        else
-                        {
-                            cmB_month.DataSource = null;
-                        }
+                        else cmB_month.DataSource = null;
                         DB.GetInstance.CloseConnection();
                     }
                 }
@@ -2458,10 +2451,7 @@ namespace ServiceTelecomConnect
                             cmB_problem.DataSource = table;
                             cmB_problem.DisplayMember = "problem";
                         }
-                        else
-                        {
-                            cmB_problem.DataSource = null;
-                        }
+                        else cmB_problem.DataSource = null;
                         DB.GetInstance.CloseConnection();
                     }
                 }
@@ -2486,10 +2476,7 @@ namespace ServiceTelecomConnect
                             cmB_model.DataSource = table;
                             cmB_model.DisplayMember = "model";
                         }
-                        else
-                        {
-                            cmB_model.DataSource = null;
-                        }
+                        else cmB_model.DataSource = null;
                         DB.GetInstance.CloseConnection();
                     }
                 }
@@ -2514,10 +2501,7 @@ namespace ServiceTelecomConnect
                             cmB_city.DataSource = city_table;
                             cmB_city.DisplayMember = "city";
                         }
-                        else
-                        {
-                            cmB_city.DataSource = null;
-                        }
+                        else cmB_city.DataSource = null;
                         DB.GetInstance.CloseConnection();
                     }
                 }
