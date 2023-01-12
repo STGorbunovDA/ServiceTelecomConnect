@@ -72,13 +72,11 @@ namespace ServiceTelecomConnect.Forms
             if (String.IsNullOrEmpty(cmB_model.Text))
                 return;
 
-            string Mesage;
-            Mesage = $"Вы действительно хотите удалить модель радиостанции?\n Модель: {cmB_model.GetItemText(cmB_model.SelectedItem)}";
+            string Mesage = $"Вы действительно хотите удалить модель радиостанции?\n Модель: {cmB_model.GetItemText(cmB_model.SelectedItem)}";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
+
             var deleteQuery = $"delete from model_radiostation where model_radiostation_name = '{cmB_model.GetItemText(cmB_model.SelectedItem)}'";
             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
             {
@@ -105,14 +103,8 @@ namespace ServiceTelecomConnect.Forms
                 adapter.Fill(table);
 
                 if (table.Rows.Count > 0)
-                {
                     return true;
-                }
-
-                else
-                {
-                    return false;
-                }
+                else return false;
             }
             return true;
         }
