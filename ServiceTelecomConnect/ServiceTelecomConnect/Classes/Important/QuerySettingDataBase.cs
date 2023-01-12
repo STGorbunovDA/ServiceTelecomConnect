@@ -2559,9 +2559,7 @@ namespace ServiceTelecomConnect
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
-                        {
                             lbL_last_act_remont.Text = reader[0].ToString();
-                        }
                         reader.Close();
                     }
                     DB.GetInstance.CloseConnection();
@@ -2573,7 +2571,6 @@ namespace ServiceTelecomConnect
                 lbL_last_act_remont.Text = "Пустой";
             }
         }
-
         internal static void LoadingLastDecommissionSerialNumber(Label lbL_last_decommission, string cmB_city, string road)
         {
             try
@@ -2585,9 +2582,7 @@ namespace ServiceTelecomConnect
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
-                        {
                             lbL_last_decommission.Text = reader[0].ToString();
-                        }
                         reader.Close();
                     }
                     DB.GetInstance.CloseConnection();
@@ -2612,9 +2607,7 @@ namespace ServiceTelecomConnect
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
-                            {
                                 lbL_last_act.Text = reader[0].ToString();
-                            }
                             reader.Close();
                         }
                         DB.GetInstance.CloseConnection();
@@ -2636,9 +2629,7 @@ namespace ServiceTelecomConnect
         internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, CheakUser _user, ComboBox cmB_road)
         {
             if (_user.Login == "Admin" || _user.IsAdmin == "Руководитель")
-            {
                 cmB_road.Text = cmB_road.Items[0].ToString();
-            }
             else
             {
                 string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
@@ -2710,14 +2701,8 @@ namespace ServiceTelecomConnect
 
                 adapter.Fill(table);
 
-                if (table.Rows.Count > 0)
-                {
-                    return Convert.ToDateTime(table.Rows[table.Rows.Count - 1].ItemArray[0]);
-                }
-                else
-                {
-                    return DateTime.MinValue;
-                }
+                if (table.Rows.Count > 0) return Convert.ToDateTime(table.Rows[table.Rows.Count - 1].ItemArray[0]);
+                else return DateTime.MinValue;
             }
             return DateTime.MinValue;
         }
