@@ -281,7 +281,7 @@
     <Compile Include="Classes\Other\FormClose.cs" />
     <Compile Include="Classes\Important\FunctionPanel.cs" />
     <Compile Include="Classes\Other\InstanceChecker.cs" />
-    <Compile Include="Classes\Other\internet_check.cs" />
+    <Compile Include="Classes\Other\Internet_check.cs" />
     <Compile Include="Classes\Other\LogUser.cs" />
     <Compile Include="Classes\Other\MyTwoColumnComparer.cs" />
     <Compile Include="Classes\Print\PrintDocExcel.cs" />

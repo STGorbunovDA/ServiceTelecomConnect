@@ -143,7 +143,7 @@ namespace ServiceTelecomConnect
                             {
                                 if (priceRemont == "0.00")
                                     priceRemont = "";
-                                
+
                                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
                                 {
                                     numberAct = "списание"; dateTO = "списание";
@@ -164,7 +164,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Файл успешно сохранен");
                 }
             }
-            else MessageBox.Show("Вы не указали путь сохранения!");            
+            else MessageBox.Show("Вы не указали путь сохранения!");
         }
 
         internal static void UserSaveFileCuratorPC(DataGridView dgw, string cmb_road)
@@ -311,9 +311,8 @@ namespace ServiceTelecomConnect
                             if (j == dgw.ColumnCount - 1)
                             {
                                 if (priceRemont == "0.00")
-                                {
                                     priceRemont = "";
-                                }
+
                                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
                                 {
                                     numberAct = "списание"; dateTO = "списание"; month = "списание";
@@ -335,10 +334,8 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Файл успешно сохранен");
                 }
             }
-            else
-            {
-                MessageBox.Show("Вы не указали путь сохранения!");
-            }
+            else MessageBox.Show("Вы не указали путь сохранения!");
+
         }
 
         internal static void SaveFullBasePC(DataGridView dgw, string cmB_city)
@@ -377,13 +374,9 @@ namespace ServiceTelecomConnect
 
                             }
                             else if (dgw.Columns[j].HeaderText.ToString() == "Дата ТО")
-                            {
                                 sw.Write(Convert.ToDateTime(value).ToString("dd.MM.yyyy") + "\t");
-                            }
                             else if (dgw.Columns[j].HeaderText.ToString() == "Дорога")
-                            {
                                 sw.Write(value);
-                            }
                             else if (dgw.Columns[j].HeaderText.ToString() == "RowState")
                             {
 
