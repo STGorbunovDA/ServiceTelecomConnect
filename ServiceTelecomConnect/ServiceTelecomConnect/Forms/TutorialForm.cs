@@ -101,9 +101,7 @@ namespace ServiceTelecomConnect.Forms
         private void TxB_search_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
-            {
                 QuerySettingDataBase.SearchEngineer(dataGridView1, cmB_seach.Text, txB_search.Text, cmb_unique.Text);
-            }
         }
 
         void Btn_brief_info_Click(object sender, EventArgs e)
@@ -168,21 +166,16 @@ namespace ServiceTelecomConnect.Forms
             }
             if (dataGridView1.SelectedRows.Count > 1)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить неисправность у модели: {txB_model.Text}?";
+                string Mesage = $"Вы действительно хотите удалить неисправность у модели: {txB_model.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
                     dataGridView1.Rows[row.Index].Cells[6].Value = RowState.Deleted;
-                }
 
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
@@ -198,7 +191,6 @@ namespace ServiceTelecomConnect.Forms
                             DB.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
                             DB.GetInstance.CloseConnection();
-
                         }
                     }
                 }
@@ -207,18 +199,14 @@ namespace ServiceTelecomConnect.Forms
                 dataGridView1.ClearSelection();
 
                 if (dataGridView1.RowCount - currRowIndex > 0)
-                {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                }
             }
         }
 
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
 
         void DataGridView1_MouseClick(object sender, MouseEventArgs e)
@@ -282,9 +270,7 @@ namespace ServiceTelecomConnect.Forms
 
                             //}
                             if (dataGridView1.Columns[j].HeaderText.ToString() == "Автор")
-                            {
                                 sw.Write(value);
-                            }
                             else if (dataGridView1.Columns[j].HeaderText.ToString() == "RowState")
                             {
 
