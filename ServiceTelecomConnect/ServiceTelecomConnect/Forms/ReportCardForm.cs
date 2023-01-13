@@ -67,9 +67,7 @@ namespace ServiceTelecomConnect.Forms
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRow(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -108,7 +106,6 @@ namespace ServiceTelecomConnect.Forms
                 CmB_dateTimeInput_SelectionChangeCommitted(sender, e);
             }
 
-
             this.dataGridView1.Sort(this.dataGridView1.Columns["dateTimeInput"], ListSortDirection.Ascending);
         }
 
@@ -131,9 +128,7 @@ namespace ServiceTelecomConnect.Forms
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
 
         void PicB_Update_Click(object sender, EventArgs e)
@@ -188,9 +183,7 @@ namespace ServiceTelecomConnect.Forms
         {
             dataGridView1.Rows.Clear();
             if (cmB_dateTimeInput.Items.Count == 0)
-            {
                 return;
-            }
 
             var date = Convert.ToDateTime(cmB_dateTimeInput.Text).ToString("yyyy-MM-dd");
 
@@ -204,9 +197,7 @@ namespace ServiceTelecomConnect.Forms
                     if (reader.HasRows)
                     {
                         while (reader.Read())
-                        {
                             ReedSingleRow(dataGridView1, reader);
-                        }
                         reader.Close();
                     }
                 }
@@ -219,9 +210,7 @@ namespace ServiceTelecomConnect.Forms
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
                     dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
-                }
 
                 DB.GetInstance.OpenConnection();
 
@@ -235,9 +224,7 @@ namespace ServiceTelecomConnect.Forms
                         var deleteQuery = $"delete from logUserDB where id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                        {
                             command.ExecuteNonQuery();
-                        }
                     }
                 }
                 DB.GetInstance.CloseConnection();
