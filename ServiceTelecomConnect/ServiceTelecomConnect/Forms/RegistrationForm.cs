@@ -85,23 +85,14 @@ namespace ServiceTelecomConnect
                                 MessageBox.Show("Аккаунт успешно создан!");
                                 this.Close();
                             }
-                            else
-                            {
-                                MessageBox.Show("Аккаунт не создан! Ошибка соединения");
-                            }
+                            else MessageBox.Show("Аккаунт не создан! Ошибка соединения");
                             DB.GetInstance.CloseConnection();
                         }
                     }
 
-                    if (cmB_post.Text == "")
-                    {
-                        MessageBox.Show("Вы не указали должность!");
-                    }
+                    if (!String.IsNullOrEmpty(cmB_post.Text)) MessageBox.Show("Вы не указали должность!");
                 }
-                else
-                {
-                    MessageBox.Show("Такой пользователь уже существует!");
-                }
+                else MessageBox.Show("Такой пользователь уже существует!");
             }
         }
         Boolean CheackUser(string loginUser, string passUser)
@@ -119,14 +110,9 @@ namespace ServiceTelecomConnect
                         adapter.Fill(table);
 
                         if (table.Rows.Count > 0)
-                        {
                             return true;
-                        }
-
                         else
-                        {
                             return false;
-                        }
                     }
                 }
             }
