@@ -3,7 +3,6 @@ using ServiceTelecomConnect.Forms;
 using System;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect
@@ -31,9 +30,7 @@ namespace ServiceTelecomConnect
                 lbL_director.Visible = true;
             }
             if (_user.IsAdmin == "Руководитель")
-            {
                 lbL_director.Visible = true;
-            }
         }
         void Menu_Load(object sender, EventArgs e)
         {
@@ -43,7 +40,7 @@ namespace ServiceTelecomConnect
                 var inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
                 var dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(_user.Login);
-               
+
                 if (Date.ToString("yyyy-MM-dd") != dateTimeInput.ToString("yyyy-MM-dd"))
                 {
                     var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
@@ -54,7 +51,7 @@ namespace ServiceTelecomConnect
                         command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
-                }    
+                }
 
 
                 if (_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
@@ -74,9 +71,7 @@ namespace ServiceTelecomConnect
                             adapter.Fill(table);
 
                             if (table.Rows.Count >= 1)
-                            {
                                 lbL_сomparison.Enabled = false;
-                            }
                             else
                             {
                                 lbL_сomparison.Enabled = false;
@@ -101,9 +96,7 @@ namespace ServiceTelecomConnect
                             adapter.Fill(table);
 
                             if (table.Rows.Count >= 1)
-                            {
                                 lbL_сomparison.Enabled = false;
-                            }
                             else
                             {
                                 lbL_сomparison.Enabled = false;
@@ -128,9 +121,7 @@ namespace ServiceTelecomConnect
                             adapter.Fill(table);
 
                             if (table.Rows.Count >= 1)
-                            {
                                 lbL_TutorialEngineers.Enabled = false;
-                            }
                             else
                             {
                                 lbL_сomparison.Enabled = false;
@@ -272,6 +263,5 @@ namespace ServiceTelecomConnect
         {
             lbL_director.ForeColor = Color.Black;
         }
-
     }
 }
