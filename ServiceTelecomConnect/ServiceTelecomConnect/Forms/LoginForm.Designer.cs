@@ -194,7 +194,7 @@
             this.lbL_clear.Text = "очистить";
             this.lbL_clear.Click += new System.EventHandler(this.Clear_Click);
             this.lbL_clear.MouseEnter += new System.EventHandler(this.Clear_MouseEnter);
-            this.lbL_clear.MouseLeave += new System.EventHandler(this.clear_MouseLeave);
+            this.lbL_clear.MouseLeave += new System.EventHandler(this.Clear_MouseLeave);
             // 
             // LoginForm
             // 

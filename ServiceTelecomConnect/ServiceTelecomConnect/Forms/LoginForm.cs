@@ -158,7 +158,7 @@ namespace ServiceTelecomConnect
             lbL_clear.ForeColor = Color.White;
         }
 
-        void clear_MouseLeave(object sender, EventArgs e)
+        void Clear_MouseLeave(object sender, EventArgs e)
         {
             lbL_clear.ForeColor = Color.Black;
         }
