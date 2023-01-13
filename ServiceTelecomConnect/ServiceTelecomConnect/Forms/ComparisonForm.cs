@@ -53,9 +53,7 @@ namespace ServiceTelecomConnect
         void IsAdmin()
         {
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
-            {
                 mTrip_funcionalpanel.Visible = false;
-            }
             else if (_user.IsAdmin == "Admin")
             {
 
@@ -97,7 +95,7 @@ namespace ServiceTelecomConnect
             dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
             dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
-            Counters();   
+            Counters();
 
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
@@ -134,9 +132,7 @@ namespace ServiceTelecomConnect
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
-                {
                     colRemont++;
-                }
                 sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                 sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
             }
@@ -238,16 +234,12 @@ namespace ServiceTelecomConnect
             foreach (Control control in panel1.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
             foreach (Control control in panel2.Controls)
             {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
             }
         }
 
@@ -271,23 +263,17 @@ namespace ServiceTelecomConnect
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             else
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             QuerySettingDataBase.DeleteRowСellCurator(dataGridView1);
@@ -299,9 +285,7 @@ namespace ServiceTelecomConnect
             dataGridView1.ClearSelection();
 
             if (dataGridView1.RowCount - currRowIndex > 0)
-            {
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            }
             Counters();
         }
 
@@ -321,7 +305,6 @@ namespace ServiceTelecomConnect
                 if (currRowIndex >= 0)
                 {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-
                     dataGridView1.FirstDisplayedScrollingRowIndex = index;
                 }
             }
@@ -332,7 +315,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void pictureBox2_update_Click(object sender, EventArgs e)
+        void PictureBox2_update_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -529,9 +512,7 @@ namespace ServiceTelecomConnect
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
         #endregion
 
@@ -599,23 +580,17 @@ namespace ServiceTelecomConnect
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             else
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             ContextMenu m = new ContextMenu();
             m.MenuItems.Add(new MenuItem("Январь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Январь", cmB_road, cmB_month)));
@@ -631,7 +606,6 @@ namespace ServiceTelecomConnect
             m.MenuItems.Add(new MenuItem("Ноябрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Ноябрь", cmB_road, cmB_month)));
             m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСellCurator(dataGridView1, "Декабрь", cmB_road, cmB_month)));
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
-
         }
 
         #endregion
@@ -641,7 +615,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (txB_serialNumber.Text != "")
+                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
@@ -693,9 +667,7 @@ namespace ServiceTelecomConnect
             }
             // открываем функциональную панель
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
-            {
                 Button_Functional_loading_panel(sender, e);
-            }
         }
 
         void Seach_datagrid_curator()
@@ -727,14 +699,10 @@ namespace ServiceTelecomConnect
             }
             else
             {
-                string Mesage2;
-
-                Mesage2 = "Поле поиска не должно быть пустым!";
+                string Mesage2 = "Поле поиска не должно быть пустым!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
         }
@@ -750,9 +718,7 @@ namespace ServiceTelecomConnect
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
-            {
                 Seach_datagrid_curator();
-            }
         }
 
         void TextBox_seach_panel_seach_datagrid_KeyPress(object sender, KeyPressEventArgs e)
@@ -761,9 +727,7 @@ namespace ServiceTelecomConnect
 
             char ch = e.KeyChar;
             if ((ch < 'A' || ch > 'Z') && (ch <= 47 || ch >= 58) && ch != '/' && ch != '\b' && ch != '.')
-            {
                 e.Handled = true;
-            }
         }
 
         void TextBox_seach_panel_seach_datagrid_KeyUp(object sender, KeyEventArgs e)
@@ -841,17 +805,12 @@ namespace ServiceTelecomConnect
             Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
-            string Mesage2;
-            Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
+            string Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
 
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             FunctionalPanel.Clear_BD_current_year_Curator();
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
@@ -893,9 +852,7 @@ namespace ServiceTelecomConnect
         void Btn_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
-            {
                 FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView1, cmB_city.Text);
-            }
         }
 
         #endregion
