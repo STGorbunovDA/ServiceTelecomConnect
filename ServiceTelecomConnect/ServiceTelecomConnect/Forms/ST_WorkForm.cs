@@ -108,7 +108,6 @@ namespace ServiceTelecomConnect
                 mTrip_funcionalpanel.Visible = false;
                 panel4.Visible = false;
             }
-
         }
 
         private void ST_WorkForm_Load(object sender, EventArgs e)
@@ -152,10 +151,8 @@ namespace ServiceTelecomConnect
                 string[] split = registry.Split(new Char[] { ';' });
 
                 foreach (string s in split)
-                {
                     if (s != "")
                         cmB_add_Fill_Full_ActTO.Items.Add(s);
-                }
                 helloKey.Close();
                 cmB_add_Signature.Sorted = true;
                 if (cmB_add_Fill_Full_ActTO.Items.Count > 0)
@@ -171,10 +168,9 @@ namespace ServiceTelecomConnect
                 string[] split = registry2.Split(new Char[] { ';' });
 
                 foreach (string s in split)
-                {
                     if (s != "")
                         cmB_add_Signature.Items.Add(s);
-                }
+
                 helloKey.Close();
                 cmB_add_Signature.Sorted = true;
                 if (cmB_add_Signature.Items.Count > 0)
@@ -349,15 +345,12 @@ namespace ServiceTelecomConnect
         void ClearFields()
         {
             foreach (Control control in panel1.Controls)
-            {
                 if (control is TextBox)
                     control.Text = "";
-            }
+
             foreach (Control control in panel2.Controls)
-            {
                 if (control is TextBox)
                     control.Text = "";
-            }
         }
 
         void PictureBox1_clear_Click(object sender, EventArgs e)
@@ -378,14 +371,12 @@ namespace ServiceTelecomConnect
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             else
             {
                 string Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -393,14 +384,12 @@ namespace ServiceTelecomConnect
             if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 string Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание. Точно удалить?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             if (!String.IsNullOrEmpty(txB_numberActRemont.Text))
             {
                 string Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть ремонт. Точно удалить?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -1118,19 +1107,16 @@ namespace ServiceTelecomConnect
                         remontRSTForm.lbL_road.Text = cmB_road.Text;
 
                         if (String.IsNullOrEmpty(txB_dateTO.Text))
-                        {
                             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                        }
 
                         remontRSTForm.txB_data_remont.Text = txB_dateTO.Text;
                         remontRSTForm.txB_model.Text = cmB_model.Text;
                         remontRSTForm.label_company.Text = txB_company.Text;
                         remontRSTForm.txB_serialNumber.Text = txB_serialNumber.Text;
 
-                        if (txB_numberActRemont.Text == "")
-                        {
+                        if (String.IsNullOrEmpty(txB_numberActRemont.Text))
                             remontRSTForm.txB_numberActRemont.Text = lbL_numberPrintDocument.Text + "/";
-                        }
+
                         else remontRSTForm.txB_numberActRemont.Text = txB_numberActRemont.Text;
                         remontRSTForm.Show();
                     }
@@ -1182,9 +1168,8 @@ namespace ServiceTelecomConnect
                             && txB_chairman_FIO_remont_company.Text != "" && txB_chairman_post_remont_company.Text != ""
                             && txB_1_FIO_remont_company.Text != "" && txB_1_post_remont_company.Text != ""
                             && txB_2_FIO_remont_company.Text != "" && txB_2_post_remont_company.Text != "")
-                        {
                             btn_Continue_remont_act_excel.Enabled = true;
-                        }
+
                         helloKey.Close();
                     }
                     else
@@ -1219,121 +1204,89 @@ namespace ServiceTelecomConnect
         void Button_information_remont_company_regedit_Click(object sender, EventArgs e)
         {
             #region проверка пустых строк
-            if (txB_Full_name_company.Text == "")
+            if (String.IsNullOrEmpty(txB_Full_name_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"Полное наименование предприятия\"!";
+                string Mesage2 = "Вы не заполнили поле \"Полное наименование предприятия\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
-            if (txB_OKPO_remont.Text == "")
+            if (String.IsNullOrEmpty(txB_OKPO_remont.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"ОКПО\"!";
+                string Mesage2 = "Вы не заполнили поле \"ОКПО\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
-            if (txB_BE_remont.Text == "")
+            if (String.IsNullOrEmpty(txB_BE_remont.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"БЕ\"!";
+                string Mesage2 = "Вы не заполнили поле \"БЕ\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
-            if (txB_director_FIO_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_director_FIO_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"Руководитель ФИО\"!";
+                string Mesage2 = "Вы не заполнили поле \"Руководитель ФИО\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
 
-            if (txB_director_post_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_director_post_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"Руководитель Должность\"!";
+                string Mesage2 = "Вы не заполнили поле \"Руководитель Должность\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
 
-            if (txB_chairman_FIO_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_chairman_FIO_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"Председатель ФИО\"!";
+                string Mesage2 = "Вы не заполнили поле \"Председатель ФИО\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
 
-            if (txB_chairman_post_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_chairman_post_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"Председатель Должность\"!";
+                string Mesage2 = "Вы не заполнили поле \"Председатель Должность\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
 
-            if (txB_1_FIO_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_1_FIO_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"1 член комиссии ФИО\"!";
+                string Mesage2 = "Вы не заполнили поле \"1 член комиссии ФИО\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
 
-            if (txB_1_post_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_1_post_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"1 член комиссии Должность\"!";
+                string Mesage2 = "Вы не заполнили поле \"1 член комиссии Должность\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
-            if (txB_2_FIO_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_2_FIO_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"2 член комиссии ФИО\"!";
+                string Mesage2 = "Вы не заполнили поле \"2 член комиссии ФИО\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
+
             }
 
-            if (txB_2_post_remont_company.Text == "")
+            if (String.IsNullOrEmpty(txB_2_post_remont_company.Text))
             {
-                string Mesage2;
-                Mesage2 = "Вы не заполнили поле \"2 член комиссии Должность\"!";
+                string Mesage2 = "Вы не заполнили поле \"2 член комиссии Должность\"!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                {
                     return;
-                }
             }
             #endregion
 
@@ -1344,9 +1297,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_BE_remont.Text, @"^[0-9]{4,}$"))
             {
@@ -1355,9 +1306,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_Full_name_company.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
@@ -1366,9 +1315,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             if (!txB_director_FIO_remont_company.Text.Contains("-"))
@@ -1473,9 +1420,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_chairman_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
@@ -1484,9 +1429,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_1_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
@@ -1495,9 +1438,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_2_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
@@ -1506,9 +1447,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
             if (!Regex.IsMatch(txB_3_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
@@ -1517,9 +1456,7 @@ namespace ServiceTelecomConnect
                 string Mesage = "Вы действительно хотите продолжить?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
             RegistryKey currentUserKey = Registry.CurrentUser;
@@ -1545,9 +1482,7 @@ namespace ServiceTelecomConnect
                         && txB_chairman_FIO_remont_company.Text != "" && txB_chairman_post_remont_company.Text != ""
                         && txB_1_FIO_remont_company.Text != "" && txB_1_post_remont_company.Text != ""
                         && txB_2_FIO_remont_company.Text != "" && txB_2_post_remont_company.Text != "")
-            {
                 btn_Continue_remont_act_excel.Enabled = true;
-            }
         }
 
         #endregion
@@ -1634,9 +1569,7 @@ namespace ServiceTelecomConnect
                 }
                 // открываем функциональную панель
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
-                {
                     Button_Functional_loading_panel(sender, e);
-                }
                 // открываем панель инфы о ФИО и номере баланосдержателя
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
                 {
@@ -1707,14 +1640,11 @@ namespace ServiceTelecomConnect
             }
             else
             {
-                string Mesage2;
 
-                Mesage2 = "Поле поиска не должно быть пустым!";
+                string Mesage2 = "Поле поиска не должно быть пустым!";
 
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
                     return;
-                }
             }
 
         }
@@ -1730,9 +1660,7 @@ namespace ServiceTelecomConnect
         void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
-            {
                 Seach_datagrid();
-            }
         }
 
         void TextBox_seach_panel_seach_datagrid_KeyPress(object sender, KeyPressEventArgs e)
@@ -1741,9 +1669,7 @@ namespace ServiceTelecomConnect
 
             char ch = e.KeyChar;
             if ((ch < 'A' || ch > 'Z') && (ch <= 47 || ch >= 58) && ch != '/' && ch != '\b' && ch != '.')
-            {
                 e.Handled = true;
-            }
         }
 
         void TextBox_seach_panel_seach_datagrid_KeyUp(object sender, KeyEventArgs e)
@@ -1930,7 +1856,7 @@ namespace ServiceTelecomConnect
 
         void Add_Fill_Full_ActTO(object sender, EventArgs e)
         {
-            if (txB_numberAct.Text != "")
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
                 if (!cmB_add_Fill_Full_ActTO.Items.Contains(txB_numberAct.Text))
                 {
@@ -1985,7 +1911,7 @@ namespace ServiceTelecomConnect
 
         void Add_Signature_ActTO(object sender, EventArgs e)
         {
-            if (txB_numberAct.Text != "")
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
                 if (!cmB_add_Signature.Items.Contains(txB_numberAct.Text))
                 {
@@ -2045,15 +1971,14 @@ namespace ServiceTelecomConnect
 
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
-            if (txB_serialNumber.Text != "")
+            if (!String.IsNullOrEmpty(txB_serialNumber.Text))
             {
                 if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                 {
                     MessageBox.Show($"На радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, уже есть списание!");
                     return;
                 }
-                string Mesage;
-                Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
+                string Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
@@ -2112,7 +2037,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Enabled = true;
                 txB1_decommissionSerialNumber.Text = "";
             }
-            else MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!"); 
+            else MessageBox.Show("Вы не заполнили поле Номер Акта Списания или поле Причина!");
         }
 
         #region Удаление списания
@@ -2359,16 +2284,14 @@ namespace ServiceTelecomConnect
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             else
             {
-                string Mesage;
-                Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
+                string Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
 
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
