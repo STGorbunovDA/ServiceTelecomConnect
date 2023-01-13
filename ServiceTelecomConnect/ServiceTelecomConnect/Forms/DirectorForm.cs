@@ -73,7 +73,6 @@ namespace ServiceTelecomConnect.Forms
                 txB_numberPrintDocument.Text = row.Cells[5].Value.ToString();
                 cmB_curator.Text = row.Cells[6].Value.ToString();
                 cmB_departmentCommunications.Text = row.Cells[7].Value.ToString();
-
             }
         }
 
@@ -97,9 +96,8 @@ namespace ServiceTelecomConnect.Forms
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRow(dgw, reader);
-                            }
+
                             reader.Close();
                         }
                     }
@@ -129,10 +127,7 @@ namespace ServiceTelecomConnect.Forms
                             cmB_section_foreman_FIO.ValueMember = "id";
                             cmB_section_foreman_FIO.DisplayMember = "login";
                         }
-                        else
-                        {
-                            cmB_section_foreman_FIO.Text = "";
-                        }
+                        else cmB_section_foreman_FIO.Text = "";
                     }
                 }
 
@@ -150,10 +145,7 @@ namespace ServiceTelecomConnect.Forms
                             cmB_engineers_FIO.ValueMember = "id";
                             cmB_engineers_FIO.DisplayMember = "login";
                         }
-                        else
-                        {
-                            cmB_engineers_FIO.Text = "";
-                        }
+                        else cmB_engineers_FIO.Text = "";
                     }
                 }
                 string querystring3 = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Куратор'";
@@ -170,10 +162,8 @@ namespace ServiceTelecomConnect.Forms
                             cmB_curator.ValueMember = "id";
                             cmB_curator.DisplayMember = "login";
                         }
-                        else
-                        {
-                            cmB_curator.Text = "";
-                        }
+                        else cmB_curator.Text = "";
+
                     }
                 }
                 string querystring4 = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Дирекция связи'";
@@ -190,32 +180,20 @@ namespace ServiceTelecomConnect.Forms
                             cmB_departmentCommunications.ValueMember = "id";
                             cmB_departmentCommunications.DisplayMember = "login";
                         }
-                        else
-                        {
-                            cmB_departmentCommunications.Text = "";
-                        }
+                        else cmB_departmentCommunications.Text = "";
+
                     }
                 }
                 if (String.IsNullOrEmpty(cmB_departmentCommunications.Text))
-                {
                     MessageBox.Show("Добавьте представителя дирекции связи!");
-                }
                 if (String.IsNullOrEmpty(cmB_curator.Text))
-                {
                     MessageBox.Show("Добавьте куратора!");
-                }
                 if (String.IsNullOrEmpty(cmB_road.Text))
-                {
                     cmB_road.Text = cmB_road.Items[0].ToString();
-                }
                 if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
-                {
                     MessageBox.Show("Добавьте инженера!");
-                }
                 if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
-                {
                     MessageBox.Show("Добавьте начальника участка!");
-                }
 
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
@@ -287,9 +265,7 @@ namespace ServiceTelecomConnect.Forms
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
 
         void Btn_change_registrationEmployees_Click(object sender, EventArgs e)
@@ -362,9 +338,7 @@ namespace ServiceTelecomConnect.Forms
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
                     dataGridView1.Rows[row.Index].Cells[8].Value = RowState.Deleted;
-                }
 
                 DB.GetInstance.OpenConnection();
 
@@ -378,9 +352,7 @@ namespace ServiceTelecomConnect.Forms
                         var deleteQuery = $"delete from сharacteristics_вrigade where id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                        {
                             command.ExecuteNonQuery();
-                        }
                     }
                 }
                 DB.GetInstance.CloseConnection();
@@ -438,7 +410,6 @@ namespace ServiceTelecomConnect.Forms
                 reportCard.ShowDialog();
                 this.Show();
             }
-
         }
     }
 }
