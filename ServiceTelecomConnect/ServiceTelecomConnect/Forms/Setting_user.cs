@@ -68,9 +68,7 @@ namespace ServiceTelecomConnect
                         if (reader.HasRows)
                         {
                             while (reader.Read())
-                            {
                                 ReedSingleRow(dgw, reader);
-                            }
                             reader.Close();
                         }
                     }
@@ -109,17 +107,13 @@ namespace ServiceTelecomConnect
         void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
-            {
                 e.Cancel = true;
-            }
         }
 
         private void Button_update_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
-            {
                 RefreshDataGrid(dataGridView1);
-            }
         }
 
         void Button_delete_Click(object sender, EventArgs e)
@@ -127,12 +121,10 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
                     dataGridView1.Rows[row.Index].Cells[4].Value = RowState.Deleted;
-                }
+
                 if (Internet_check.CheackSkyNET())
                 {
-
                     DB.GetInstance.OpenConnection();
 
                     for (int index = 0; index < dataGridView1.Rows.Count; index++)
@@ -151,14 +143,9 @@ namespace ServiceTelecomConnect
                                 $"OR departmentCommunications = '{login}'";
 
                             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
-                            {
                                 command.ExecuteNonQuery();
-                            }
                             using (MySqlCommand command2 = new MySqlCommand(update_сharacteristics_вrigade, DB.GetInstance.GetConnection()))
-                            {
                                 command2.ExecuteNonQuery();
-                            }
-
                         }
                     }
                     DB.GetInstance.CloseConnection();
@@ -191,12 +178,8 @@ namespace ServiceTelecomConnect
         void PicB_clear_Click(object sender, EventArgs e)
         {
             foreach (Control control in panel2.Controls)
-            {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
-            }
         }
 
         void Btn_add_Click(object sender, EventArgs e)
@@ -223,7 +206,6 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-
                 var passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                 if (!CheackUser(loginUser, passUser))
                 {
@@ -241,19 +223,13 @@ namespace ServiceTelecomConnect
                                 MessageBox.Show("Аккаунт успешно создан!");
                                 RefreshDataGrid(dataGridView1);
                             }
-                            else
-                            {
-                                MessageBox.Show("Аккаунт не создан! Ошибка соединения");
-                            }
+                            else MessageBox.Show("Аккаунт не создан! Ошибка соединения");
                             DB.GetInstance.CloseConnection();
                         }
                     }
-                    else { MessageBox.Show("Должность и Дорога не должны быть пустыми!"); }
+                    else MessageBox.Show("Должность и Дорога не должны быть пустыми!"); 
                 }
-                else
-                {
-                    MessageBox.Show("Такой пользователь уже существует!");
-                }
+                else MessageBox.Show("Такой пользователь уже существует!");
             }
         }
 
@@ -272,14 +248,9 @@ namespace ServiceTelecomConnect
                         adapter.Fill(table);
 
                         if (table.Rows.Count > 0)
-                        {
                             return true;
-                        }
-
                         else
-                        {
                             return false;
-                        }
                     }
                 }
             }
