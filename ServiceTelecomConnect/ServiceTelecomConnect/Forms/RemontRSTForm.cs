@@ -360,17 +360,13 @@ namespace ServiceTelecomConnect
             }
 
             for (int i = 0; i < listBox1.Items.Count; i++)
-            {
                 list.Add(listBox1.Items[i].ToString());
-            }
 
             for (int i = 0; i < listBox2.Items.Count; i++)
-            {
                 list2.Add(listBox2.Items[i].ToString());
-            }
 
             QuerySettingDataBase.LoadingLastNumberActRemont(lbL_last_act_remont, lbL_city.Text, lbL_road.Text);
-            
+
             //if (Regex.IsMatch(lbL_last_act_remont.Text, @"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
             //{
             //    Regex re = new Regex(@"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$");
@@ -399,13 +395,11 @@ namespace ServiceTelecomConnect
             {
                 if (!String.IsNullOrEmpty(txB_сompleted_works_1.Text) && !String.IsNullOrEmpty(txB_parts_1.Text))
                 {
-                    string Mesage;
-                    Mesage = "Вы действительно хотите добавить ремонт?";
+                    string Mesage = "Вы действительно хотите добавить ремонт?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    {
                         return;
-                    }
+
                     foreach (Control control in panel1.Controls)
                     {
                         if (control is TextBox && !String.IsNullOrEmpty(control.Text))
@@ -426,7 +420,6 @@ namespace ServiceTelecomConnect
                     }
 
                     var numberActRemont = txB_numberActRemont.Text;
-
 
                     if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                     {
@@ -498,40 +491,26 @@ namespace ServiceTelecomConnect
                         this.Close();
 
                     }
-                    else
-                    {
-                        MessageBox.Show("Вы не заполнили нужные поля со (*)!");
-                    }
+                    else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
                 }
-                else { MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей"); }
+                else MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей"); 
             }
         }
         void PictureBox4_Click(object sender, EventArgs e)
         {
-            string Mesage;
-            Mesage = "Вы действительно хотите очистить все введенные вами поля?";
+            string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
             txB_numberActRemont.Text = "";
 
             foreach (Control control in panel1.Controls)
-            {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
-            }
             foreach (Control control in panel2.Controls)
-            {
                 if (control is TextBox)
-                {
                     control.Text = "";
-                }
-            }
         }
 
         void ComboBox_сategory_SelectionChangeCommitted(object sender, EventArgs e)
@@ -545,13 +524,8 @@ namespace ServiceTelecomConnect
                 || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Comrade R5" || txB_model.Text == "Гранит Р33П-1"
                 || txB_model.Text == "Гранит Р-43" || txB_model.Text == "Радий-301" || txB_model.Text == "Kenwood ТК-2107"
                 || txB_model.Text == "Vertex - 261")
-                {
                     txB_priceRemont.Text = "887.94";
-                }
-                else
-                {
-                    txB_priceRemont.Text = "895.86";
-                }
+                else txB_priceRemont.Text = "895.86";
             }
             if (cmB_сategory.Text == "4")
             {
@@ -562,13 +536,8 @@ namespace ServiceTelecomConnect
                 || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Comrade R5" || txB_model.Text == "Гранит Р33П-1"
                 || txB_model.Text == "Гранит Р-43" || txB_model.Text == "Радий-301" || txB_model.Text == "Kenwood ТК-2107"
                 || txB_model.Text == "Vertex - 261")
-                {
                     txB_priceRemont.Text = "1267.49";
-                }
-                else
-                {
-                    txB_priceRemont.Text = "1280.37";
-                }
+                else txB_priceRemont.Text = "1280.37";
             }
             if (cmB_сategory.Text == "5")
             {
@@ -579,13 +548,8 @@ namespace ServiceTelecomConnect
                 || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Comrade R5" || txB_model.Text == "Гранит Р33П-1"
                 || txB_model.Text == "Гранит Р-43" || txB_model.Text == "Радий-301" || txB_model.Text == "Kenwood ТК-2107"
                 || txB_model.Text == "Vertex - 261")
-                {
                     txB_priceRemont.Text = "2535.97";
-                }
-                else
-                {
-                    txB_priceRemont.Text = "2559.75";
-                }
+                else txB_priceRemont.Text = "2559.75";
             }
             if (cmB_сategory.Text == "6")
             {
@@ -596,13 +560,9 @@ namespace ServiceTelecomConnect
                 || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Comrade R5" || txB_model.Text == "Гранит Р33П-1"
                 || txB_model.Text == "Гранит Р-43" || txB_model.Text == "Радий-301" || txB_model.Text == "Kenwood ТК-2107"
                 || txB_model.Text == "Vertex - 261")
-                {
                     txB_priceRemont.Text = "5071.94";
-                }
                 else
-                {
                     txB_priceRemont.Text = "5119.51";
-                }
             }
         }
 
@@ -5178,7 +5138,6 @@ namespace ServiceTelecomConnect
                         this.listBox2.Items.Clear();
                         for (int i = 0; i < list2.Count; i++)
                             this.listBox2.Items.Add(list2[i]);
-
                     }
                 }
             }
@@ -5677,7 +5636,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5697,7 +5655,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5717,7 +5674,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5737,7 +5693,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5757,7 +5712,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5777,7 +5731,6 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
@@ -5797,13 +5750,10 @@ namespace ServiceTelecomConnect
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
-
             }
         }
 
         #endregion
-
-
     }
 }
 
