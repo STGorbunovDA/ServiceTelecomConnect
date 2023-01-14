@@ -509,9 +509,24 @@ namespace ServiceTelecomConnect.Forms
                     Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
 
                     var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (intSensitivityTransmitter > 5.00 || intSensitivityTransmitter < 3.99)
+                    if (intSensitivityTransmitter > 5.01 || intSensitivityTransmitter < 3.99)
                     {
                         MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 4.00 В. до 5.00 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_OutputPowerVoltReceiver.Select();
+                        return;
+                    }
+                }
+                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
+                    txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Comrade R5")
+                {
+
+                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
+                    Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
+
+                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (intSensitivityTransmitter > 3.51 || intSensitivityTransmitter < 2.60)
+                    {
+                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 2.60 В. до 3.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_OutputPowerVoltReceiver.Select();
                         return;
                     }
