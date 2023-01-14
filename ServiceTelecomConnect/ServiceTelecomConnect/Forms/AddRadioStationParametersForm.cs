@@ -229,6 +229,7 @@ namespace ServiceTelecomConnect.Forms
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
         {
+
             foreach (Control control in pnl_transmitter.Controls)
             {
                 if (control is TextBox)
@@ -354,7 +355,7 @@ namespace ServiceTelecomConnect.Forms
             }
             else
             {
-                Regex re = new Regex(@"^[+?-][0-9]{1,3}$");
+                Regex re = new Regex(@"^[+?-]([0-9]{1,3})$");
                 Match result = re.Match(txB_FrequencyDeviationTransmitter.Text);
 
                 var intFrequency = Convert.ToInt32(result.Groups[1].Value);
@@ -363,18 +364,20 @@ namespace ServiceTelecomConnect.Forms
                 {
                     MessageBox.Show("Введите парметры отклонения частоты корректно\nПример: от -350 Гц. до 350 Гц.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_FrequencyDeviationTransmitter.Select();
-                }
-            }
-            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
-            {
-                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
-                {
-                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SensitivityTransmitter.Select();
                     return;
                 }
-                else
+            }
+            if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример для Motorola серии GP: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_SensitivityTransmitter.Select();
+                return;
+            }
+            else
+            {
+                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
                 {
+
                     Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
@@ -383,20 +386,14 @@ namespace ServiceTelecomConnect.Forms
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
+                        return;
                     }
+
                 }
-            }
-            if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" 
-                || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
-            {
-                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{2,2}[.][0-9]{1,1}$"))
+                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
+                txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
                 {
-                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример: от 15.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SensitivityTransmitter.Select();
-                    return;
-                }
-                else
-                {
+
                     Regex re = new Regex(@"^[0-9]{2,2}[.][0-9]{1,1}$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
@@ -405,19 +402,13 @@ namespace ServiceTelecomConnect.Forms
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 15.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
+                        return;
                     }
+
                 }
-            }
-            if (txB_model.Text == "Comrade R5")
-            {
-                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,1}[.][0-9]{1,1}$"))
+                else if (txB_model.Text == "Comrade R5")
                 {
-                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример: от 7.0 мВ. до 8.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SensitivityTransmitter.Select();
-                    return;
-                }
-                else
-                {
+
                     Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
@@ -426,19 +417,13 @@ namespace ServiceTelecomConnect.Forms
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 7.0 мВ. до 8.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
+                        return;
                     }
+
                 }
-            }
-            if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" || txB_model.Text == "Motorola DP-1400")
-            {
-                if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,1}[.][0-9]{1,1}$"))
+                else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" || txB_model.Text == "Motorola DP-1400")
                 {
-                    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример: от 6.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SensitivityTransmitter.Select();
-                    return;
-                }
-                else
-                {
+
                     Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
@@ -447,13 +432,28 @@ namespace ServiceTelecomConnect.Forms
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
+                        return;
+                    }
+                }
+                else
+                {
+                    Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
+                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+
+                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (intSensitivityTransmitter > 18.1 || intSensitivityTransmitter < 5.9)
+                    {
+                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_SensitivityTransmitter.Select();
+                        return;
                     }
                 }
             }
+
             if (!Regex.IsMatch(txB_KNITransmitter.Text, @"^[0-9]{1,1}[.][0-9]{1,2}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_FrequencyDeviationTransmitter.Select();
+                txB_KNITransmitter.Select();
                 return;
             }
             else
@@ -461,14 +461,36 @@ namespace ServiceTelecomConnect.Forms
                 Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2}$)");
                 Match result = re.Match(txB_KNITransmitter.Text);
 
-                var intKNITransmitter = Convert.ToDouble    (result.Groups[1].Value);
+                var intKNITransmitter = Convert.ToDouble(result.Groups[1].Value);
 
                 if (intKNITransmitter > 5.00 || intKNITransmitter < 0.30)
                 {
                     MessageBox.Show("Введите параметры КНИ передатчика корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_FrequencyDeviationTransmitter.Select();
+                    txB_KNITransmitter.Select();
+                    return;
                 }
             }
+            if (!Regex.IsMatch(txB_DeviationTransmitter.Text, @"^[0-9]{1,1}[.][0-9]{1,2}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Девиация, кГЦ\"\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_DeviationTransmitter.Select();
+                return;
+            }
+            else
+            {
+                Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2}$)");
+                Match result = re.Match(txB_DeviationTransmitter.Text);
+
+                var intDeviationTransmitter = Convert.ToDouble(result.Groups[1].Value);
+
+                if (intDeviationTransmitter > 5.01 || intDeviationTransmitter < 3.99)
+                {
+                    MessageBox.Show("Введите параметры Девиации передатчика корректно\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_DeviationTransmitter.Select();
+                    return;
+                }
+            }
+            MessageBox.Show("Test");
         }
 
 
