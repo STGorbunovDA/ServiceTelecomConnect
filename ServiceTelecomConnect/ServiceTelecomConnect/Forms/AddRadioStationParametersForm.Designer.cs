@@ -1000,6 +1000,7 @@
             this.btn_Frequencies.TabIndex = 195;
             this.btn_Frequencies.Text = "Добавить Частоты";
             this.btn_Frequencies.UseVisualStyleBackColor = false;
+            this.btn_Frequencies.Click += new System.EventHandler(this.Btn_Frequencies_Click);
             // 
             // AddRadioStationParametersForm
             // 
