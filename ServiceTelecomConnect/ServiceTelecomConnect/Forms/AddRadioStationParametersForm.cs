@@ -229,7 +229,7 @@ namespace ServiceTelecomConnect.Forms
         #region Добавляем параметры в БД
         void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
         {
-
+            #region проверка на пустные control-ы
             foreach (Control control in pnl_transmitter.Controls)
             {
                 if (control is TextBox)
@@ -321,7 +321,6 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
             }
-
             if (!String.IsNullOrEmpty(txB_NoteRadioStationParameters.Text))
             {
                 foreach (Control control in pnl_NoteRadioStationParameters.Controls)
@@ -334,7 +333,9 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
             }
+            #endregion
 
+            #region передатчик
             if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-9]{1,2}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"\nПример: от 2.0 Вт. до 2.9 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -449,7 +450,6 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
             }
-
             if (!Regex.IsMatch(txB_KNITransmitter.Text, @"^[0-9]{1,1}[.][0-9]{1,2}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -490,6 +490,12 @@ namespace ServiceTelecomConnect.Forms
                     return;
                 }
             }
+            #endregion
+
+            #region приёмник
+
+            #endregion
+
             MessageBox.Show("Test");
         }
 
