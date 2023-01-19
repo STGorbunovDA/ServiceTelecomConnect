@@ -737,7 +737,7 @@ namespace ServiceTelecomConnect.Forms
 
                 if (doubleSensitivityReceiver > 0.28 || doubleSensitivityReceiver < 0.11)
                 {
-                    MessageBox.Show("Введите параметры чувствительности приёмника корректно\nример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Введите параметры чувствительности приёмника корректно\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_SensitivityReceiver.Select();
                     return;
                 }
@@ -758,7 +758,7 @@ namespace ServiceTelecomConnect.Forms
 
                 if (doubleSuppressorReceiver > 0.22 || doubleSuppressorReceiver < 0.11)
                 {
-                    MessageBox.Show("Введите параметры КНИ приёмника корректно\nример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Поправь параметры шумоподавителя приёмника в программе Tuner\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_SuppressorReceiver.Select();
                     return;
                 }
