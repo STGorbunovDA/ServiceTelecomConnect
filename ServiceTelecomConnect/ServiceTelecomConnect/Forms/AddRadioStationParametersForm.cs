@@ -733,9 +733,9 @@ namespace ServiceTelecomConnect.Forms
                 Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-7]{1,1})$");
                 Match result = re.Match(txB_SensitivityReceiver.Text);
 
-                var doubleensitivityReceiver = Convert.ToDouble(result.Groups[1].Value);
+                var doubleSensitivityReceiver = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleensitivityReceiver > 0.28 || doubleensitivityReceiver < 0.11)
+                if (doubleSensitivityReceiver > 0.28 || doubleSensitivityReceiver < 0.11)
                 {
                     MessageBox.Show("Введите параметры КНИ приёмника корректно\nример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_SensitivityReceiver.Select();
