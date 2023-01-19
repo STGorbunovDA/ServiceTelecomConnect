@@ -783,8 +783,27 @@ namespace ServiceTelecomConnect.Forms
             if (!Regex.IsMatch(txB_TransmissionModeCurrentConsumption.Text, @"^[1][.][1-9]{1,1}[0-9]{1,1}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"Режим передачи (высокая мощность), А.\"\nПример: 1.64 A.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_BatteryDischargeAlarmCurrentConsumption.Select();
+                txB_TransmissionModeCurrentConsumption.Select();
                 return;
+            }
+
+            if(txB_model.Text == "РН311М")
+            {
+                if (!Regex.IsMatch(txB_StandbyModeCurrentConsumption.Text, @"^[1][1-5]{1,1}[0]$"))
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Дежурный режим, мА.\" для {txB_model.Text}\nПример: 110 мA.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_StandbyModeCurrentConsumption.Select();
+                    return;
+                }
+            }
+            else
+            {
+                if (!Regex.IsMatch(txB_StandbyModeCurrentConsumption.Text, @"^[4-8]{1,1}[0]$"))
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Дежурный режим, мА.\" для {txB_model.Text}\nПример: от 40 мA. до 80 мA.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_StandbyModeCurrentConsumption.Select();
+                    return;
+                }
             }
 
             #endregion
