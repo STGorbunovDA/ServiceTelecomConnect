@@ -39,6 +39,8 @@ namespace ServiceTelecomConnect.Forms
 
             QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
 
+            #region заполнение избирательности
+
             if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
                 txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
                 txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
@@ -47,14 +49,21 @@ namespace ServiceTelecomConnect.Forms
             else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
                 txB_SelectivityReceiver.Text = "76";
             else txB_SelectivityReceiver.Text = String.Empty;
+            #endregion
+
+            #region заполнение Вых. мощность, Вт
 
             if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
                txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
                txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-               txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+               txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Motorola DP-2400е" || 
+               txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "РН311М" || txB_model.Text == "Motorola DP-4400" || 
+               txB_model.Text == "Motorola DP-1400" || txB_model.Text == "РНД-500" || txB_model.Text == "РНД-512" || txB_model.Text == "Шеврон T-44 V2")
                 txB_OutputPowerWattReceiver.Text = ">0.5";
             else if (txB_model.Text == "Comrade R5")
                 txB_OutputPowerWattReceiver.Text = ">=0.4";
+
+            #endregion
 
 
 
@@ -176,7 +185,7 @@ namespace ServiceTelecomConnect.Forms
         void TxB_SelectivityReceiver_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
+            if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.' && ch != '-')
                 e.Handled = true;
         }
 
