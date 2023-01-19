@@ -48,6 +48,16 @@ namespace ServiceTelecomConnect.Forms
                 txB_SelectivityReceiver.Text = "76";
             else txB_SelectivityReceiver.Text = String.Empty;
 
+            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
+               txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
+               txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
+               txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+                txB_OutputPowerWattReceiver.Text = ">0.5";
+            else if (txB_model.Text == "Comrade R5")
+                txB_OutputPowerWattReceiver.Text = ">=0.4";
+
+
+
         }
 
         #region Дата проверки
@@ -367,7 +377,7 @@ namespace ServiceTelecomConnect.Forms
             #endregion
 
             #region передатчик
-            if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}[0-9]{1,1}$"))
+            if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"\nПример: от 2.0 Вт. до 2.2 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_LowPowerLevelTransmitter.Select();
@@ -441,7 +451,7 @@ namespace ServiceTelecomConnect.Forms
                 else if (txB_model.Text == "Comrade R5")
                 {
 
-                    Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
+                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                     var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
@@ -579,30 +589,39 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
 
-            if (!Regex.IsMatch(txB_OutputPowerWattReceiver.Text, @"^[>][0][.][4-9]{1,1}$"))
+            if(txB_model.Text == "Comrade R5")
             {
-                MessageBox.Show("Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: от >0.4 Вт.(для Comrade R5) или >0.5 Вт.(для остальных)", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_OutputPowerWattReceiver.Select();
-                return;
-            }
-            else
-            {
-                if (txB_model.Text == "Comrade R5")
+                try
                 {
-                    Regex re = new Regex(@"[>]([0][.][4-9]{1,1})$");
+                    Regex re = new Regex(@"[>][=]([0][.][4])$");
                     Match result = re.Match(txB_OutputPowerWattReceiver.Text);
 
                     var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
                     if (doubleOutputPowerWattReceiver != 0.4)
                     {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >0.4", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >=0.4", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_OutputPowerWattReceiver.Select();
                         return;
                     }
                 }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: от >=0.4 Вт.(для {txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_OutputPowerWattReceiver.Select();
+                    return;
+                }
+            }
+            else
+            {
+                if (!Regex.IsMatch(txB_OutputPowerWattReceiver.Text, @"^[>][0][.][5]{1,1}$"))
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: >0.5 Вт. ({txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_OutputPowerWattReceiver.Select();
+                    return;
+                }
                 else
                 {
-                    Regex re = new Regex(@"[>]([0][.][4-9]{1,1})$");
+                    Regex re = new Regex(@"[>]([0][.][5])$");
                     Match result = re.Match(txB_OutputPowerWattReceiver.Text);
 
                     var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
@@ -614,6 +633,7 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
             }
+
 
             if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[7][1-9]{1,1}$"))
             {
@@ -653,7 +673,6 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
             }
-
 
             if (!Regex.IsMatch(txB_KNIReceiver.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
             {
