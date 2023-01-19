@@ -38,6 +38,16 @@ namespace ServiceTelecomConnect.Forms
                 cmB_ManipulatorAccessories.Enabled = false;
 
             QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+
+            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || 
+                txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" || 
+                txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" || 
+                txB_model.Text == "Радий-301")
+                txB_SelectivityReceiver.Text = "71";
+            else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" )
+                txB_SelectivityReceiver.Text = "76";
+            else txB_SelectivityReceiver.Text = String.Empty;
+
         }
 
         #region Дата проверки
@@ -222,6 +232,27 @@ namespace ServiceTelecomConnect.Forms
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
+        }
+
+        #endregion
+
+        #region добавляем частоту
+
+        void Btn_Frequencies_Click(object sender, EventArgs e)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                AddFrequenciesForm addFrequencies = new AddFrequenciesForm();
+                if (Application.OpenForms["AddFrequencies"] == null)
+                {
+                    string Mesage = "Вы действительно хотите добавить частоту?";
+
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                    addFrequencies.ShowDialog();
+                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+                }
+            }
         }
 
         #endregion
@@ -585,6 +616,8 @@ namespace ServiceTelecomConnect.Forms
             }
 
 
+
+
             #endregion
 
             MessageBox.Show("Test");
@@ -594,26 +627,7 @@ namespace ServiceTelecomConnect.Forms
 
         #endregion
 
-        #region добавляем частоту
-
-        void Btn_Frequencies_Click(object sender, EventArgs e)
-        {
-            if (Internet_check.CheackSkyNET())
-            {
-                AddFrequenciesForm addFrequencies = new AddFrequenciesForm();
-                if (Application.OpenForms["AddFrequencies"] == null)
-                {
-                    string Mesage = "Вы действительно хотите добавить частоту?";
-
-                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                        return;
-                    addFrequencies.ShowDialog();
-                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
-                }
-            }
-        }
-
-        #endregion
+      
 
 
 
