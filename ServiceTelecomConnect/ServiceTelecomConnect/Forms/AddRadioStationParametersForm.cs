@@ -413,8 +413,8 @@ namespace ServiceTelecomConnect.Forms
                     Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (intSensitivityTransmitter > 10.1 || intSensitivityTransmitter < 8.9)
+                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 8.9)
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
@@ -429,8 +429,8 @@ namespace ServiceTelecomConnect.Forms
                     Regex re = new Regex(@"^[0-9]{2,2}[.][0-9]{1,1}$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (intSensitivityTransmitter > 18.1 || intSensitivityTransmitter < 14.9)
+                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 14.9)
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 15.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
@@ -472,8 +472,8 @@ namespace ServiceTelecomConnect.Forms
                     Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var intSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (intSensitivityTransmitter > 18.1 || intSensitivityTransmitter < 5.9)
+                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                    if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 5.9)
                     {
                         MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SensitivityTransmitter.Select();
@@ -512,9 +512,9 @@ namespace ServiceTelecomConnect.Forms
                 Regex re = new Regex(@"^([4]{1,1}[.][0-9]{1,2}$)");
                 Match result = re.Match(txB_DeviationTransmitter.Text);
 
-                var intDeviationTransmitter = Convert.ToDouble(result.Groups[1].Value);
+                var doubleDeviationTransmitter = Convert.ToDouble(result.Groups[1].Value);
 
-                if (intDeviationTransmitter > 5.01 || intDeviationTransmitter < 3.99)
+                if (doubleDeviationTransmitter > 5.01 || doubleDeviationTransmitter < 3.99)
                 {
                     MessageBox.Show("Введите параметры Девиации передатчика корректно\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_DeviationTransmitter.Select();
@@ -666,9 +666,9 @@ namespace ServiceTelecomConnect.Forms
                 Regex re = new Regex(@"^([0-4]{1,1}[.][0-9]{1,2}$)");
                 Match result = re.Match(txB_KNIReceiver.Text);
 
-                var doubleKNITransmitter = Convert.ToDouble(result.Groups[1].Value);
+                var doubleKNIReceiver = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleKNITransmitter > 5.00 || doubleKNITransmitter < 0.30)
+                if (doubleKNIReceiver > 5.00 || doubleKNIReceiver < 0.30)
                 {
                     MessageBox.Show("Введите параметры КНИ приёмника корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_KNIReceiver.Select();
