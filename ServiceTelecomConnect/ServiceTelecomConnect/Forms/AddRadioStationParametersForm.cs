@@ -722,7 +722,7 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
 
-            if (!Regex.IsMatch(txB_SensitivityReceiver.Text, @"^[0][.][1-2]{1,1}[0-7]{1,1}$"))
+            if (!Regex.IsMatch(txB_SensitivityReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
             {
                 MessageBox.Show("Введите корректно поле: \"Чувствительн., мкВ.\"\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_SensitivityReceiver.Select();
@@ -730,15 +730,36 @@ namespace ServiceTelecomConnect.Forms
             }
             else
             {
-                Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-7]{1,1})$");
+                Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
                 Match result = re.Match(txB_SensitivityReceiver.Text);
 
                 var doubleSensitivityReceiver = Convert.ToDouble(result.Groups[1].Value);
 
                 if (doubleSensitivityReceiver > 0.28 || doubleSensitivityReceiver < 0.11)
                 {
-                    MessageBox.Show("Введите параметры КНИ приёмника корректно\nример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Введите параметры чувствительности приёмника корректно\nример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_SensitivityReceiver.Select();
+                    return;
+                }
+            }
+
+            if (!Regex.IsMatch(txB_SuppressorReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"ШУМ, мкВ.\"\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_SuppressorReceiver.Select();
+                return;
+            }
+            else
+            {
+                Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
+                Match result = re.Match(txB_SuppressorReceiver.Text);
+
+                var doubleSuppressorReceiver = Convert.ToDouble(result.Groups[1].Value);
+
+                if (doubleSuppressorReceiver > 0.22 || doubleSuppressorReceiver < 0.11)
+                {
+                    MessageBox.Show("Введите параметры КНИ приёмника корректно\nример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SuppressorReceiver.Select();
                     return;
                 }
             }
