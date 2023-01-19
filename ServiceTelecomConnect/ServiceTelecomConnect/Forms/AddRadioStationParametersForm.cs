@@ -780,6 +780,13 @@ namespace ServiceTelecomConnect.Forms
                 return;
             }
 
+            if (!Regex.IsMatch(txB_TransmissionModeCurrentConsumption.Text, @"^[1][.][1-9]{1,1}[0-9]{1,1}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Режим передачи (высокая мощность), А.\"\nПример: 1.64 A.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_BatteryDischargeAlarmCurrentConsumption.Select();
+                return;
+            }
+
             #endregion
 
             MessageBox.Show("Test");
