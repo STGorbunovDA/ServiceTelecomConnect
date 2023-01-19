@@ -436,7 +436,7 @@ namespace ServiceTelecomConnect.Forms
                 txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
                 {
 
-                    Regex re = new Regex(@"^[0-9]{2,2}[.][0-9]{1,1}$");
+                    Regex re = new Regex(@"^([0-9]{2,2}[.][0-9]{1,1})$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                     var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
@@ -466,7 +466,7 @@ namespace ServiceTelecomConnect.Forms
                 else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" || txB_model.Text == "Motorola DP-1400")
                 {
 
-                    Regex re = new Regex(@"^[0-9]{1,2}[.][0-9]{1,1}$");
+                    Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1})$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                     var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
@@ -479,7 +479,7 @@ namespace ServiceTelecomConnect.Forms
                 }
                 else
                 {
-                    Regex re = new Regex(@"^[0-9]{1,1}[.][0-9]{1,1}$");
+                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
                     Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                     var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
@@ -635,18 +635,12 @@ namespace ServiceTelecomConnect.Forms
             }
 
 
-            if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[7][1-9]{1,1}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_SelectivityReceiver.Select();
-                return;
-            }
-            else
-            {
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
+            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
                  txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
                  txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
                  txB_model.Text == "Радий-301")
+            {
+                try
                 {
                     Regex re = new Regex(@"^([7][1])$");
                     Match result = re.Match(txB_SelectivityReceiver.Text);
@@ -659,7 +653,16 @@ namespace ServiceTelecomConnect.Forms
                         return;
                     }
                 }
-                else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+                catch (Exception)
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SelectivityReceiver.Select();
+                    return;
+                } 
+            }
+            else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+            {
+                try
                 {
                     Regex re = new Regex(@"^([7][6])$");
                     Match result = re.Match(txB_SelectivityReceiver.Text);
@@ -671,6 +674,21 @@ namespace ServiceTelecomConnect.Forms
                         txB_SelectivityReceiver.Select();
                         return;
                     }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 76 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SelectivityReceiver.Select();
+                    return;
+                }
+            }
+            else
+            {
+                if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[-]$"))
+                {
+                    MessageBox.Show("Введите корректно поле: \"Избирательн., дБ.\"\nДля цифровых радиостанций\nПример: \"-\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_SelectivityReceiver.Select();
+                    return;
                 }
             }
 
