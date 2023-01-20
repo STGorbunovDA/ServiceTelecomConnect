@@ -29,9 +29,12 @@ namespace ServiceTelecomConnect.Forms
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-            if (String.IsNullOrEmpty(lbL_AKB.Text) || lbL_AKB.Text == "-")
-                txB_AKB.Enabled = false;
-            else txB_AKB.Size = lbL_AKB.Size;
+            if (String.IsNullOrEmpty(lbL_nameAKB.Text) || lbL_nameAKB.Text == "-")
+            {
+                lbL_nameAKB.Visible = false;
+                txB_percentAKB.Enabled = false;
+            }
+            else txB_percentAKB.Size = lbL_nameAKB.Size;
             if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                 cmB_BatteryChargerAccessories.Enabled = false;
             if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
@@ -804,6 +807,16 @@ namespace ServiceTelecomConnect.Forms
                     txB_StandbyModeCurrentConsumption.Select();
                     return;
                 }
+            }
+
+            #endregion
+
+
+            #region AKB
+
+            if(txB_percentAKB.Enabled)
+            {
+
             }
 
             #endregion
