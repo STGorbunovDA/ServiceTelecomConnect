@@ -22,11 +22,11 @@ namespace ServiceTelecomConnect
             }
         }
 
-        public Boolean CheacSerialNumber_radiostantion_decommission(string serialNumber)
+        public Boolean CheacSerialNumber_radiostantion_decommission(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string querystring = $"SELECT serialNumber FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
+                string querystring = $"SELECT serialNumber FROM radiostantion_decommission WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
 
@@ -90,12 +90,12 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumber_radiostantionCurator(string serialNumber)
+        public Boolean CheacSerialNumber_radiostantionCurator(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
 
-                string querystring = $"SELECT serialNumber FROM radiostantion_сomparison WHERE serialNumber = '{serialNumber}'";
+                string querystring = $"SELECT serialNumber FROM radiostantion_сomparison WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
 
@@ -114,11 +114,11 @@ namespace ServiceTelecomConnect
             return true;
         }
 
-        public Boolean CheackNumberAct_radiostantion_changeForm_2(string numberAct)
+        public Boolean CheackNumberAct_radiostantion_changeForm_2(string road, string city, string numberAct)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
+                string querystring = $"SELECT numberAct FROM radiostantion WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}'";
 
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
 
@@ -136,11 +136,11 @@ namespace ServiceTelecomConnect
             return false;
         }
 
-        public Boolean CheackNumberAct_radiostantion(string numberAct)
+        public Boolean CheackNumberAct_radiostantion(string road, string city, string numberAct)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string querystring = $"SELECT numberAct FROM radiostantion WHERE numberAct = '{numberAct}'";
+                string querystring = $"SELECT numberAct FROM radiostantion WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}'";
 
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
 
@@ -157,11 +157,11 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
+        public Boolean CheacSerialNumber_radiostantion_full(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
+                string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
@@ -174,7 +174,6 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count > 0)
                             return true;
-
                         else
                             return false;
                     }
@@ -182,9 +181,9 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumber_radiostantion_last_year(string serialNumber)
+        public Boolean CheacSerialNumber_radiostantion_last_year(string road, string city, string serialNumber)
         {
-            string querystring = $"SELECT serialNumber FROM radiostantion_last_year WHERE serialNumber = '{serialNumber}'";
+            string querystring = $"SELECT serialNumber FROM radiostantion_last_year WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
             using (MySqlCommand command = new MySqlCommand(querystring, DB_2.GetInstance.GetConnection()))
             {
