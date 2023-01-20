@@ -236,6 +236,7 @@
             this.txB_numberAct.Size = new System.Drawing.Size(94, 26);
             this.txB_numberAct.TabIndex = 164;
             this.txB_numberAct.TabStop = false;
+            this.txB_numberAct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label40
             // 

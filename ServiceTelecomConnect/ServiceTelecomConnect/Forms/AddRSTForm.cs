@@ -495,7 +495,7 @@ namespace ServiceTelecomConnect
                 && !(phoneNumber == "") && !(antenna == "")
                 && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
                 {
-                    if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
+                    if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumber))
                     {
                         if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
                         {

@@ -51,7 +51,7 @@ namespace ServiceTelecomConnect.Forms
                 txB_SelectivityReceiver.Text = "71";
             else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
                 txB_SelectivityReceiver.Text = "76";
-            else txB_SelectivityReceiver.Text = String.Empty;
+            else txB_SelectivityReceiver.Text = "-";
             #endregion
 
             #region заполнение Вых. мощность, Вт
@@ -874,7 +874,14 @@ namespace ServiceTelecomConnect.Forms
 
                 string noteRadioStationParameters = txB_NoteRadioStationParameters.Text;
 
-
+                if(CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+                {
+                    //Update
+                }
+                else
+                {
+                    //insert
+                }
 
             }
 

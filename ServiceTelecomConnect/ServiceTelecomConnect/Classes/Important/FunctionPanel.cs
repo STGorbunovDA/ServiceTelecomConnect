@@ -585,7 +585,10 @@ namespace ServiceTelecomConnect
                             {
                                 var values = line.Split('\t');
 
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(values[4]))
+                                string serialNumbers = values[4];
+                                string city = values[9];
+                                string road = values[39];
+                                if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumbers))
                                 {
                                     var dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
 

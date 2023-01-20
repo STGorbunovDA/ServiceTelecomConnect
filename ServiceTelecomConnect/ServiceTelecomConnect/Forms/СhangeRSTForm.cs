@@ -616,7 +616,7 @@ namespace ServiceTelecomConnect
                 && !(dateIssue == "") && !(phoneNumber == "") && !(antenna == "")
                 && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
                 {
-                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(serialNumber))
+                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumber))
                     {
                         var changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
                              $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
