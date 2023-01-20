@@ -497,7 +497,7 @@ namespace ServiceTelecomConnect
                 {
                     if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumber))
                     {
-                        if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
+                        if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(road, city, numberAct))
                         {
                             var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                 $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
@@ -1423,7 +1423,7 @@ namespace ServiceTelecomConnect
                 && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
                 {
 
-                    if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(numberAct))
+                    if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(road, city, numberAct))
                     {
                         var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
