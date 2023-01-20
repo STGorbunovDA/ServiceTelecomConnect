@@ -45,12 +45,34 @@ namespace ServiceTelecomConnect
             return true;
         }
 
-
-        public Boolean CheacSerialNumber_radiostantion(string serialNumber)
+        public Boolean CheacSerialNumber_radiostation_parameters(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
-                string querystring = $"SELECT serialNumber FROM radiostantion WHERE serialNumber = '{serialNumber}'";
+                string querystring = $"SELECT serialNumber FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                if (table.Rows.Count > 0)
+                    return true;
+
+                else
+                    return false;
+            }
+            return true;
+        }
+
+        public Boolean CheacSerialNumber_radiostantion(string road, string city, string serialNumber)
+        {
+            if (Internet_check.CheackSkyNET())
+            {
+                string querystring = $"SELECT serialNumber FROM radiostantion WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
 
