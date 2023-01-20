@@ -811,12 +811,16 @@ namespace ServiceTelecomConnect.Forms
 
             #endregion
 
-
             #region AKB
 
             if(txB_percentAKB.Enabled)
             {
-
+                if (!Regex.IsMatch(txB_percentAKB.Text, @"^[5-9]{1,1}[0-9]{1,1}$"))
+                {
+                    MessageBox.Show($"Введите корректно поле: \"АКБ, %\" для {lbL_nameAKB.Text}\nПример: 75", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_percentAKB.Select();
+                    return;
+                }
             }
 
             #endregion
