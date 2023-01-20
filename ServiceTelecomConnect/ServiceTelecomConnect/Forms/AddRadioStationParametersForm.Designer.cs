@@ -30,8 +30,8 @@
         {
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.txB_dateTO = new System.Windows.Forms.TextBox();
-            this.lbL_AKB = new System.Windows.Forms.Label();
-            this.txB_AKB = new System.Windows.Forms.TextBox();
+            this.lbL_nameAKB = new System.Windows.Forms.Label();
+            this.txB_percentAKB = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -134,27 +134,27 @@
             this.txB_dateTO.TabStop = false;
             this.txB_dateTO.Click += new System.EventHandler(this.TxB_dateTO_Click);
             // 
-            // lbL_AKB
+            // lbL_nameAKB
             // 
-            this.lbL_AKB.AutoSize = true;
-            this.lbL_AKB.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_AKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_AKB.Location = new System.Drawing.Point(48, 7);
-            this.lbL_AKB.Name = "lbL_AKB";
-            this.lbL_AKB.Size = new System.Drawing.Size(97, 20);
-            this.lbL_AKB.TabIndex = 73;
-            this.lbL_AKB.Text = "1815 AKL7";
+            this.lbL_nameAKB.AutoSize = true;
+            this.lbL_nameAKB.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_nameAKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_nameAKB.Location = new System.Drawing.Point(48, 7);
+            this.lbL_nameAKB.Name = "lbL_nameAKB";
+            this.lbL_nameAKB.Size = new System.Drawing.Size(97, 20);
+            this.lbL_nameAKB.TabIndex = 73;
+            this.lbL_nameAKB.Text = "1815 AKL7";
             // 
-            // txB_AKB
+            // txB_percentAKB
             // 
-            this.txB_AKB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.txB_AKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_AKB.Location = new System.Drawing.Point(49, 30);
-            this.txB_AKB.MaxLength = 19;
-            this.txB_AKB.Name = "txB_AKB";
-            this.txB_AKB.Size = new System.Drawing.Size(93, 26);
-            this.txB_AKB.TabIndex = 74;
-            this.txB_AKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_AKB_KeyPress);
+            this.txB_percentAKB.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.txB_percentAKB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txB_percentAKB.Location = new System.Drawing.Point(49, 30);
+            this.txB_percentAKB.MaxLength = 19;
+            this.txB_percentAKB.Name = "txB_percentAKB";
+            this.txB_percentAKB.Size = new System.Drawing.Size(93, 26);
+            this.txB_percentAKB.TabIndex = 74;
+            this.txB_percentAKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_AKB_KeyPress);
             // 
             // label1
             // 
@@ -896,8 +896,8 @@
             // 
             this.pnl_AKB.BackColor = System.Drawing.Color.Transparent;
             this.pnl_AKB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_AKB.Controls.Add(this.txB_AKB);
-            this.pnl_AKB.Controls.Add(this.lbL_AKB);
+            this.pnl_AKB.Controls.Add(this.txB_percentAKB);
+            this.pnl_AKB.Controls.Add(this.lbL_nameAKB);
             this.pnl_AKB.Controls.Add(this.label30);
             this.pnl_AKB.Location = new System.Drawing.Point(663, 542);
             this.pnl_AKB.Name = "pnl_AKB";
@@ -957,7 +957,7 @@
             this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_frequency.FormattingEnabled = true;
-            this.cmB_frequency.Location = new System.Drawing.Point(716, 385);
+            this.cmB_frequency.Location = new System.Drawing.Point(716, 38);
             this.cmB_frequency.Name = "cmB_frequency";
             this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
             this.cmB_frequency.TabIndex = 193;
@@ -1056,8 +1056,8 @@
         #endregion
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         internal System.Windows.Forms.TextBox txB_dateTO;
-        internal System.Windows.Forms.Label lbL_AKB;
-        internal System.Windows.Forms.TextBox txB_AKB;
+        internal System.Windows.Forms.Label lbL_nameAKB;
+        internal System.Windows.Forms.TextBox txB_percentAKB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label21;
