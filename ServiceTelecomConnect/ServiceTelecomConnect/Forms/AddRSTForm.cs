@@ -511,18 +511,13 @@ namespace ServiceTelecomConnect
                                 $"'{antenna}', '{manipulator}', '{AKB}', '{batteryСharger}', '{""}', '{""}', " +
                                 $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{comment}', '{road}')";
 
-
                             using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();
-                                MessageBox.Show("Радиостанция успешно добавлена!");
-                                txB_serialNumber.Text = "";
-                                txB_inventoryNumber.Text = "";
-                                txB_networkNumber.Text = "";
+                                DB.GetInstance.CloseConnection();                               
                             }
-                            if (CheacSerialNumber_radiostantion_full(serialNumber) == false)
+                            if (!CheacSerialNumber_radiostantion_full(serialNumber))
                             {
                                 var addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                                 $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
@@ -543,6 +538,10 @@ namespace ServiceTelecomConnect
                                     DB.GetInstance.CloseConnection();
                                 }
                             }
+                            txB_serialNumber.Text = "";
+                            txB_inventoryNumber.Text = "";
+                            txB_networkNumber.Text = "";
+                            MessageBox.Show("Радиостанция успешно добавлена!");
                         }
                         else MessageBox.Show("В акте более 20 радиостанций. Создайте другой номер акта");
                     }
