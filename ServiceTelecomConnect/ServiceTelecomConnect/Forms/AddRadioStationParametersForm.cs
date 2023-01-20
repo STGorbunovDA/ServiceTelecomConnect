@@ -771,7 +771,16 @@ namespace ServiceTelecomConnect.Forms
 
             #endregion
 
+            #region Потребляемый ток
 
+            if (!Regex.IsMatch(txB_BatteryDischargeAlarmCurrentConsumption.Text, @"^[6][.][0]$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Сигнализация разряда АКБ, В.\"\nПример: 6.0 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txB_BatteryDischargeAlarmCurrentConsumption.Select();
+                return;
+            }
+
+            #endregion
 
             MessageBox.Show("Test");
         }
