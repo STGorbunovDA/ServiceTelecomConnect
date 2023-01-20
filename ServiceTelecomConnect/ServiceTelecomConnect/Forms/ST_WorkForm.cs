@@ -502,7 +502,7 @@ namespace ServiceTelecomConnect
                     String dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("dd.MM.yyyy");
                     addParameters.txB_dateTO.Text = dateTO;
                     addParameters.txB_numberAct.Text = txB_numberAct.Text;
-                    addParameters.lbL_AKB.Text = txB_AKB.Text;
+                    addParameters.lbL_nameAKB.Text = txB_AKB.Text;
                     addParameters.lbL_BatteryChargerAccessories.Text = txB_batteryСharger.Text;
                     addParameters.lbL_ManipulatorAccessories.Text = txB_manipulator.Text;
                     addParameters.lbL_city.Text = txB_city.Text;
