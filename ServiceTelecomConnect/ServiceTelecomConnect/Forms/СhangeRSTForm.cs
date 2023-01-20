@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
         #region изменяем рст по номеру акта
         void Btn_change_rst_act_Click(object sender, EventArgs e)
         {
-            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(txB_numberAct.Text))
+            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(lbL_road.Text, txB_city.Text, txB_numberAct.Text))
             {
                 MessageBox.Show($"В данном акте: {txB_numberAct.Text} уже есть 20-ать радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_numberAct.Select();
@@ -1067,11 +1067,13 @@ namespace ServiceTelecomConnect
                 return;
             }
             var road = lbL_road.Text;
-            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(txB_numberAct.Text))
+            var city = txB_city.Text;
+            var numberAct = txB_numberAct.Text;
+            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(road, city, numberAct))
             {
                 var queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
                 $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' " +
-                $"WHERE numberAct = '{txB_numberAct.Text}' AND road = '{road}'";
+                $"WHERE numberAct = '{numberAct}' AND road = '{road}'";
 
                 using (MySqlCommand command = new MySqlCommand(queryUpdateClient, DB.GetInstance.GetConnection()))
                 {
