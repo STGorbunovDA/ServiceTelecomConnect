@@ -65,7 +65,11 @@ namespace ServiceTelecomConnect.Forms
 
             #endregion
 
+            #region заполнение Сигнализация разряда АКБ, В
 
+            txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+
+            #endregion
 
         }
 
@@ -386,386 +390,388 @@ namespace ServiceTelecomConnect.Forms
             #endregion
 
             #region передатчик
-            if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"\nПример: от 2.0 Вт. до 2.2 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_LowPowerLevelTransmitter.Select();
-                return;
-            }
-            if (!Regex.IsMatch(txB_HighPowerLevelTransmitter.Text, @"^[2-5]{1,1}[.][0-9]{1,2}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Высокий, Вт\"Пример: от 2.0 Вт. до 5.9 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_LowPowerLevelTransmitter.Select();
-                return;
-            }
-            if (!Regex.IsMatch(txB_FrequencyDeviationTransmitter.Text, @"^[+?-][0-9]{1,3}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Отклоние, Гц\"\nПример: от -350 Гц. до +350 Гц.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_FrequencyDeviationTransmitter.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^[+?-]([0-9]{1,3})$");
-                Match result = re.Match(txB_FrequencyDeviationTransmitter.Text);
+            //if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"\nПример: от 2.0 Вт. до 2.2 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_LowPowerLevelTransmitter.Select();
+            //    return;
+            //}
+            //if (!Regex.IsMatch(txB_HighPowerLevelTransmitter.Text, @"^[2-5]{1,1}[.][0-9]{1,2}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Высокий, Вт\"Пример: от 2.0 Вт. до 5.9 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_LowPowerLevelTransmitter.Select();
+            //    return;
+            //}
+            //if (!Regex.IsMatch(txB_FrequencyDeviationTransmitter.Text, @"^[+?-][0-9]{1,3}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Отклоние, Гц\"\nПример: от -350 Гц. до +350 Гц.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_FrequencyDeviationTransmitter.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^[+?-]([0-9]{1,3})$");
+            //    Match result = re.Match(txB_FrequencyDeviationTransmitter.Text);
 
-                var intFrequency = Convert.ToInt32(result.Groups[1].Value);
+            //    var intFrequency = Convert.ToInt32(result.Groups[1].Value);
 
-                if (intFrequency > 350 || intFrequency < -350)
-                {
-                    MessageBox.Show("Введите парметры отклонения частоты корректно\nПример: от -350 Гц. до 350 Гц.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_FrequencyDeviationTransmitter.Select();
-                    return;
-                }
-            }
-            if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример для Motorola серии GP: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_SensitivityTransmitter.Select();
-                return;
-            }
-            else
-            {
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
-                {
+            //    if (intFrequency > 350 || intFrequency < -350)
+            //    {
+            //        MessageBox.Show("Введите парметры отклонения частоты корректно\nПример: от -350 Гц. до 350 Гц.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_FrequencyDeviationTransmitter.Select();
+            //        return;
+            //    }
+            //}
+            //if (!Regex.IsMatch(txB_SensitivityTransmitter.Text, @"^[0-9]{1,2}[.][0-9]{1,1}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Чувствительность, мВ\"\nПример для Motorola серии GP: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_SensitivityTransmitter.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
-                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+            //        Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1}$)");
+            //        Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 8.9)
-                    {
-                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SensitivityTransmitter.Select();
-                        return;
-                    }
+            //        var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 8.9)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 9.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SensitivityTransmitter.Select();
+            //            return;
+            //        }
 
-                }
-                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
-                txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
-                {
+            //    }
+            //    else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
+            //    txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{2,2}[.][0-9]{1,1})$");
-                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+            //        Regex re = new Regex(@"^([0-9]{2,2}[.][0-9]{1,1})$");
+            //        Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 14.9)
-                    {
-                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 15.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SensitivityTransmitter.Select();
-                        return;
-                    }
+            //        var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 14.9)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 15.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SensitivityTransmitter.Select();
+            //            return;
+            //        }
 
-                }
-                else if (txB_model.Text == "Comrade R5")
-                {
+            //    }
+            //    else if (txB_model.Text == "Comrade R5")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
-                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+            //        Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
+            //        Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleSensitivityTransmitter > 8.1 || doubleSensitivityTransmitter < 6.9)
-                    {
-                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 7.0 мВ. до 8.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SensitivityTransmitter.Select();
-                        return;
-                    }
+            //        var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleSensitivityTransmitter > 8.1 || doubleSensitivityTransmitter < 6.9)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 7.0 мВ. до 8.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SensitivityTransmitter.Select();
+            //            return;
+            //        }
 
-                }
-                else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" || txB_model.Text == "Motorola DP-1400")
-                {
+            //    }
+            //    else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" || txB_model.Text == "Motorola DP-1400")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1})$");
-                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+            //        Regex re = new Regex(@"^([0-9]{1,2}[.][0-9]{1,1})$");
+            //        Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 5.9)
-                    {
-                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SensitivityTransmitter.Select();
-                        return;
-                    }
-                }
-                else
-                {
-                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
-                    Match result = re.Match(txB_SensitivityTransmitter.Text);
+            //        var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 5.9)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SensitivityTransmitter.Select();
+            //            return;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,1})$");
+            //        Match result = re.Match(txB_SensitivityTransmitter.Text);
 
-                    var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 5.9)
-                    {
-                        MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SensitivityTransmitter.Select();
-                        return;
-                    }
-                }
-            }
-            if (!Regex.IsMatch(txB_KNITransmitter.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_KNITransmitter.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^([0-4]{1,1}[.][0-9]{1,2}$)");
-                Match result = re.Match(txB_KNITransmitter.Text);
+            //        var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleSensitivityTransmitter > 18.1 || doubleSensitivityTransmitter < 5.9)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 18.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SensitivityTransmitter.Select();
+            //            return;
+            //        }
+            //    }
+            //}
+            //if (!Regex.IsMatch(txB_KNITransmitter.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_KNITransmitter.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^([0-4]{1,1}[.][0-9]{1,2}$)");
+            //    Match result = re.Match(txB_KNITransmitter.Text);
 
-                var doubleKNITransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //    var doubleKNITransmitter = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleKNITransmitter > 5.00 || doubleKNITransmitter < 0.30)
-                {
-                    MessageBox.Show("Введите параметры КНИ передатчика корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_KNITransmitter.Select();
-                    return;
-                }
-            }
-            if (!Regex.IsMatch(txB_DeviationTransmitter.Text, @"^[4]{1,1}[.][0-9]{1,2}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Девиация, кГЦ\"\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_DeviationTransmitter.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^([4]{1,1}[.][0-9]{1,2}$)");
-                Match result = re.Match(txB_DeviationTransmitter.Text);
+            //    if (doubleKNITransmitter > 5.00 || doubleKNITransmitter < 0.30)
+            //    {
+            //        MessageBox.Show("Введите параметры КНИ передатчика корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_KNITransmitter.Select();
+            //        return;
+            //    }
+            //}
+            //if (!Regex.IsMatch(txB_DeviationTransmitter.Text, @"^[4]{1,1}[.][0-9]{1,2}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Девиация, кГЦ\"\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_DeviationTransmitter.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^([4]{1,1}[.][0-9]{1,2}$)");
+            //    Match result = re.Match(txB_DeviationTransmitter.Text);
 
-                var doubleDeviationTransmitter = Convert.ToDouble(result.Groups[1].Value);
+            //    var doubleDeviationTransmitter = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleDeviationTransmitter > 5.01 || doubleDeviationTransmitter < 3.99)
-                {
-                    MessageBox.Show("Введите параметры Девиации передатчика корректно\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_DeviationTransmitter.Select();
-                    return;
-                }
-            }
+            //    if (doubleDeviationTransmitter > 5.01 || doubleDeviationTransmitter < 3.99)
+            //    {
+            //        MessageBox.Show("Введите параметры Девиации передатчика корректно\nПример: от 4.00 кГЦ. до 5.00 кГЦ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_DeviationTransmitter.Select();
+            //        return;
+            //    }
+            //}
             #endregion
 
             #region приёмник
 
-            if (!Regex.IsMatch(txB_OutputPowerVoltReceiver.Text, @"^[0-9]{1,1}[.][0-9]{1,2}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Вых. мощность, В\"\nПример для Motorola серии GP: от 4.00 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_OutputPowerVoltReceiver.Select();
-                return;
-            }
-            else
-            {
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360" ||
-                    txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" ||
-                    txB_model.Text == "Motorola DP-1400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "Комбат T-54")
-                {
+            //if (!Regex.IsMatch(txB_OutputPowerVoltReceiver.Text, @"^[0-9]{1,1}[.][0-9]{1,2}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Вых. мощность, В\"\nПример для Motorola серии GP: от 4.00 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_OutputPowerVoltReceiver.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320" || txB_model.Text == "Motorola GP-360" ||
+            //        txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Motorola DP-4400" ||
+            //        txB_model.Text == "Motorola DP-1400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "Комбат T-54")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
-                    Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
+            //        Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
+            //        Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
 
-                    var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleOutputPowerVoltReceiver > 5.51 || doubleOutputPowerVoltReceiver < 3.99)
-                    {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 4.00 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_OutputPowerVoltReceiver.Select();
-                        return;
-                    }
-                }
-                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
-                    txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Comrade R5")
-                {
+            //        var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleOutputPowerVoltReceiver > 5.51 || doubleOutputPowerVoltReceiver < 3.99)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 4.00 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_OutputPowerVoltReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //    else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11" ||
+            //        txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Comrade R5")
+            //    {
 
-                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
-                    Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
+            //        Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
+            //        Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
 
-                    var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleOutputPowerVoltReceiver > 3.51 || doubleOutputPowerVoltReceiver < 2.60)
-                    {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 2.60 В. до 3.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_OutputPowerVoltReceiver.Select();
-                        return;
-                    }
-                }
-                else
-                {
-                    Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
-                    Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
+            //        var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleOutputPowerVoltReceiver > 3.51 || doubleOutputPowerVoltReceiver < 2.60)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 2.60 В. до 3.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_OutputPowerVoltReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Regex re = new Regex(@"^([0-9]{1,1}[.][0-9]{1,2})$");
+            //        Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
 
-                    var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleOutputPowerVoltReceiver > 5.51 || doubleOutputPowerVoltReceiver < 2.59)
-                    {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника В., модели {txB_model.Text}\nПример: от 2.60 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_OutputPowerVoltReceiver.Select();
-                        return;
-                    }
-                }
-            }
+            //        var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleOutputPowerVoltReceiver > 5.51 || doubleOutputPowerVoltReceiver < 2.59)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры выходной мощности приёмника В., модели {txB_model.Text}\nПример: от 2.60 В. до 5.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_OutputPowerVoltReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //}
 
-            if(txB_model.Text == "Comrade R5")
-            {
-                try
-                {
-                    Regex re = new Regex(@"[>][=]([0][.][4])$");
-                    Match result = re.Match(txB_OutputPowerWattReceiver.Text);
+            //if(txB_model.Text == "Comrade R5")
+            //{
+            //    try
+            //    {
+            //        Regex re = new Regex(@"[>][=]([0][.][4])$");
+            //        Match result = re.Match(txB_OutputPowerWattReceiver.Text);
 
-                    var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleOutputPowerWattReceiver != 0.4)
-                    {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >=0.4", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_OutputPowerWattReceiver.Select();
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: от >=0.4 Вт.(для {txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_OutputPowerWattReceiver.Select();
-                    return;
-                }
-            }
-            else
-            {
-                if (!Regex.IsMatch(txB_OutputPowerWattReceiver.Text, @"^[>][0][.][5]{1,1}$"))
-                {
-                    MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: >0.5 Вт. ({txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_OutputPowerWattReceiver.Select();
-                    return;
-                }
-                else
-                {
-                    Regex re = new Regex(@"[>]([0][.][5])$");
-                    Match result = re.Match(txB_OutputPowerWattReceiver.Text);
+            //        var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleOutputPowerWattReceiver != 0.4)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >=0.4", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_OutputPowerWattReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: от >=0.4 Вт.(для {txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_OutputPowerWattReceiver.Select();
+            //        return;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!Regex.IsMatch(txB_OutputPowerWattReceiver.Text, @"^[>][0][.][5]{1,1}$"))
+            //    {
+            //        MessageBox.Show($"Введите корректно поле: \"Вых. мощность, Вт.\"\nПример: >0.5 Вт. ({txB_model.Text})", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_OutputPowerWattReceiver.Select();
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        Regex re = new Regex(@"[>]([0][.][5])$");
+            //        Match result = re.Match(txB_OutputPowerWattReceiver.Text);
 
-                    var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
-                    if (doubleOutputPowerWattReceiver != 0.5)
-                    {
-                        MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >0.5", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_OutputPowerWattReceiver.Select();
-                        return;
-                    }
-                }
-            }
+            //        var doubleOutputPowerWattReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //        if (doubleOutputPowerWattReceiver != 0.5)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры выходной мощности приёмника Вт., модели {txB_model.Text}\nПример: >0.5", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_OutputPowerWattReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //}
 
 
-            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-                 txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-                 txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-                 txB_model.Text == "Радий-301")
-            {
-                try
-                {
-                    Regex re = new Regex(@"^([7][1])$");
-                    Match result = re.Match(txB_SelectivityReceiver.Text);
+            //if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
+            //     txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
+            //     txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
+            //     txB_model.Text == "Радий-301")
+            //{
+            //    try
+            //    {
+            //        Regex re = new Regex(@"^([7][1])$");
+            //        Match result = re.Match(txB_SelectivityReceiver.Text);
 
-                    var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
-                    if (intOutpuSelectivityReceiver != 71)
-                    {
-                        MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 71", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SelectivityReceiver.Select();
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SelectivityReceiver.Select();
-                    return;
-                } 
-            }
-            else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
-            {
-                try
-                {
-                    Regex re = new Regex(@"^([7][6])$");
-                    Match result = re.Match(txB_SelectivityReceiver.Text);
+            //        var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
+            //        if (intOutpuSelectivityReceiver != 71)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 71", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SelectivityReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_SelectivityReceiver.Select();
+            //        return;
+            //    } 
+            //}
+            //else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+            //{
+            //    try
+            //    {
+            //        Regex re = new Regex(@"^([7][6])$");
+            //        Match result = re.Match(txB_SelectivityReceiver.Text);
 
-                    var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
-                    if (intOutpuSelectivityReceiver != 76)
-                    {
-                        MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 76", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SelectivityReceiver.Select();
-                        return;
-                    }
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 76 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SelectivityReceiver.Select();
-                    return;
-                }
-            }
-            else
-            {
-                if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[-]$"))
-                {
-                    MessageBox.Show("Введите корректно поле: \"Избирательн., дБ.\"\nДля цифровых радиостанций\nПример: \"-\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SelectivityReceiver.Select();
-                    return;
-                }
-            }
+            //        var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
+            //        if (intOutpuSelectivityReceiver != 76)
+            //        {
+            //            MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 76", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txB_SelectivityReceiver.Select();
+            //            return;
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 76 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_SelectivityReceiver.Select();
+            //        return;
+            //    }
+            //}
+            //else
+            //{
+            //    if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[-]$"))
+            //    {
+            //        MessageBox.Show("Введите корректно поле: \"Избирательн., дБ.\"\nДля цифровых радиостанций\nПример: \"-\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_SelectivityReceiver.Select();
+            //        return;
+            //    }
+            //}
 
-            if (!Regex.IsMatch(txB_KNIReceiver.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_KNIReceiver.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^([0-4]{1,1}[.][0-9]{1,2}$)");
-                Match result = re.Match(txB_KNIReceiver.Text);
+            //if (!Regex.IsMatch(txB_KNIReceiver.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_KNIReceiver.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^([0-4]{1,1}[.][0-9]{1,2}$)");
+            //    Match result = re.Match(txB_KNIReceiver.Text);
 
-                var doubleKNIReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //    var doubleKNIReceiver = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleKNIReceiver > 5.00 || doubleKNIReceiver < 0.30)
-                {
-                    MessageBox.Show("Введите параметры КНИ приёмника корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_KNIReceiver.Select();
-                    return;
-                }
-            }
+            //    if (doubleKNIReceiver > 5.00 || doubleKNIReceiver < 0.30)
+            //    {
+            //        MessageBox.Show("Введите параметры КНИ приёмника корректно\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_KNIReceiver.Select();
+            //        return;
+            //    }
+            //}
 
-            if (!Regex.IsMatch(txB_SensitivityReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"Чувствительн., мкВ.\"\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_SensitivityReceiver.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
-                Match result = re.Match(txB_SensitivityReceiver.Text);
+            //if (!Regex.IsMatch(txB_SensitivityReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"Чувствительн., мкВ.\"\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_SensitivityReceiver.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
+            //    Match result = re.Match(txB_SensitivityReceiver.Text);
 
-                var doubleSensitivityReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //    var doubleSensitivityReceiver = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleSensitivityReceiver > 0.28 || doubleSensitivityReceiver < 0.11)
-                {
-                    MessageBox.Show("Введите параметры чувствительности приёмника корректно\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SensitivityReceiver.Select();
-                    return;
-                }
-            }
+            //    if (doubleSensitivityReceiver > 0.28 || doubleSensitivityReceiver < 0.11)
+            //    {
+            //        MessageBox.Show("Введите параметры чувствительности приёмника корректно\nПример: от 0.11 мкВ. до 0.27 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_SensitivityReceiver.Select();
+            //        return;
+            //    }
+            //}
 
-            if (!Regex.IsMatch(txB_SuppressorReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
-            {
-                MessageBox.Show("Введите корректно поле: \"ШУМ, мкВ.\"\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_SuppressorReceiver.Select();
-                return;
-            }
-            else
-            {
-                Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
-                Match result = re.Match(txB_SuppressorReceiver.Text);
+            //if (!Regex.IsMatch(txB_SuppressorReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
+            //{
+            //    MessageBox.Show("Введите корректно поле: \"ШУМ, мкВ.\"\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    txB_SuppressorReceiver.Select();
+            //    return;
+            //}
+            //else
+            //{
+            //    Regex re = new Regex(@"^([0][.][1-2]{1,1}[0-9]{1,1})$");
+            //    Match result = re.Match(txB_SuppressorReceiver.Text);
 
-                var doubleSuppressorReceiver = Convert.ToDouble(result.Groups[1].Value);
+            //    var doubleSuppressorReceiver = Convert.ToDouble(result.Groups[1].Value);
 
-                if (doubleSuppressorReceiver > 0.22 || doubleSuppressorReceiver < 0.11)
-                {
-                    MessageBox.Show("Поправь параметры шумоподавителя приёмника в программе Tuner\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_SuppressorReceiver.Select();
-                    return;
-                }
-            }
+            //    if (doubleSuppressorReceiver > 0.22 || doubleSuppressorReceiver < 0.11)
+            //    {
+            //        MessageBox.Show("Поправь параметры шумоподавителя приёмника в программе Tuner\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        txB_SuppressorReceiver.Select();
+            //        return;
+            //    }
+            //}
 
 
             #endregion
+
+
 
             MessageBox.Show("Test");
         }
