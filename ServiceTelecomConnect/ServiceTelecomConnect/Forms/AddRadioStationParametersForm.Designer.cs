@@ -132,6 +132,7 @@
             this.txB_dateTO.Size = new System.Drawing.Size(113, 26);
             this.txB_dateTO.TabIndex = 70;
             this.txB_dateTO.TabStop = false;
+            this.txB_dateTO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_dateTO.Click += new System.EventHandler(this.TxB_dateTO_Click);
             // 
             // lbL_nameAKB
@@ -154,6 +155,7 @@
             this.txB_percentAKB.Name = "txB_percentAKB";
             this.txB_percentAKB.Size = new System.Drawing.Size(93, 26);
             this.txB_percentAKB.TabIndex = 74;
+            this.txB_percentAKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_percentAKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_AKB_KeyPress);
             // 
             // label1
@@ -200,6 +202,7 @@
             this.txB_model.Size = new System.Drawing.Size(170, 28);
             this.txB_model.TabIndex = 160;
             this.txB_model.TabStop = false;
+            this.txB_model.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txB_serialNumber
             // 
@@ -280,6 +283,7 @@
             this.txB_LowPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_LowPowerLevelTransmitter.TabIndex = 167;
             this.txB_LowPowerLevelTransmitter.TabStop = false;
+            this.txB_LowPowerLevelTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_LowPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_LowPowerLevelTransmitter_KeyPress);
             // 
             // label4
@@ -302,6 +306,7 @@
             this.txB_HighPowerLevelTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_HighPowerLevelTransmitter.TabIndex = 169;
             this.txB_HighPowerLevelTransmitter.TabStop = false;
+            this.txB_HighPowerLevelTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_HighPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_HighPowerLevelTransmitter_KeyPress);
             // 
             // label5
@@ -324,6 +329,7 @@
             this.txB_FrequencyDeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_FrequencyDeviationTransmitter.TabIndex = 171;
             this.txB_FrequencyDeviationTransmitter.TabStop = false;
+            this.txB_FrequencyDeviationTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_FrequencyDeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_FrequencyDeviationTransmitter_KeyPress);
             // 
             // label6
@@ -346,6 +352,7 @@
             this.txB_SensitivityTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityTransmitter.TabIndex = 173;
             this.txB_SensitivityTransmitter.TabStop = false;
+            this.txB_SensitivityTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_SensitivityTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityTransmitter_KeyPress);
             // 
             // label7
@@ -368,6 +375,7 @@
             this.txB_KNITransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_KNITransmitter.TabIndex = 175;
             this.txB_KNITransmitter.TabStop = false;
+            this.txB_KNITransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_KNITransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNITransmitter_KeyPress);
             // 
             // label8
@@ -390,6 +398,7 @@
             this.txB_DeviationTransmitter.Size = new System.Drawing.Size(72, 26);
             this.txB_DeviationTransmitter.TabIndex = 177;
             this.txB_DeviationTransmitter.TabStop = false;
+            this.txB_DeviationTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_DeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_DeviationTransmitter_KeyPress);
             // 
             // label9
@@ -526,6 +535,7 @@
             this.txB_SuppressorReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SuppressorReceiver.TabIndex = 181;
             this.txB_SuppressorReceiver.TabStop = false;
+            this.txB_SuppressorReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_SuppressorReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SuppressorReceiver_KeyPress);
             // 
             // label17
@@ -548,6 +558,7 @@
             this.txB_SelectivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SelectivityReceiver.TabIndex = 179;
             this.txB_SelectivityReceiver.TabStop = false;
+            this.txB_SelectivityReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_SelectivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SelectivityReceiver_KeyPress);
             // 
             // label14
@@ -570,6 +581,7 @@
             this.txB_OutputPowerWattReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerWattReceiver.TabIndex = 177;
             this.txB_OutputPowerWattReceiver.TabStop = false;
+            this.txB_OutputPowerWattReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_OutputPowerWattReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerWattReceiver_KeyPress);
             // 
             // label13
@@ -603,6 +615,7 @@
             this.txB_OutputPowerVoltReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_OutputPowerVoltReceiver.TabIndex = 167;
             this.txB_OutputPowerVoltReceiver.TabStop = false;
+            this.txB_OutputPowerVoltReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_OutputPowerVoltReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerVoltReceiver_KeyPress);
             // 
             // label12
@@ -625,6 +638,7 @@
             this.txB_SensitivityReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_SensitivityReceiver.TabIndex = 169;
             this.txB_SensitivityReceiver.TabStop = false;
+            this.txB_SensitivityReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_SensitivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityReceiver_KeyPress);
             // 
             // txB_KNIReceiver
@@ -636,6 +650,7 @@
             this.txB_KNIReceiver.Size = new System.Drawing.Size(72, 26);
             this.txB_KNIReceiver.TabIndex = 175;
             this.txB_KNIReceiver.TabStop = false;
+            this.txB_KNIReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_KNIReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNIReceiver_KeyPress);
             // 
             // label15
@@ -686,6 +701,7 @@
             this.txB_BatteryDischargeAlarmCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabIndex = 184;
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabStop = false;
+            this.txB_BatteryDischargeAlarmCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_BatteryDischargeAlarmCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_BatteryDischargeAlarmCurrentConsumption_KeyPress);
             // 
             // label24
@@ -708,6 +724,7 @@
             this.txB_TransmissionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_TransmissionModeCurrentConsumption.TabIndex = 182;
             this.txB_TransmissionModeCurrentConsumption.TabStop = false;
+            this.txB_TransmissionModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_TransmissionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmissionModeCurrentConsumption_KeyPress);
             // 
             // label23
@@ -730,6 +747,7 @@
             this.txB_ReceptionModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_ReceptionModeCurrentConsumption.TabIndex = 179;
             this.txB_ReceptionModeCurrentConsumption.TabStop = false;
+            this.txB_ReceptionModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_ReceptionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceptionModeCurrentConsumption_KeyPress);
             // 
             // label20
@@ -752,6 +770,7 @@
             this.txB_StandbyModeCurrentConsumption.Size = new System.Drawing.Size(72, 26);
             this.txB_StandbyModeCurrentConsumption.TabIndex = 178;
             this.txB_StandbyModeCurrentConsumption.TabStop = false;
+            this.txB_StandbyModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_StandbyModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_StandbyModeCurrentConsumption_KeyPress);
             // 
             // label19
