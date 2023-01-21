@@ -106,16 +106,6 @@ namespace ServiceTelecomConnect.Forms
                 e.Handled = true;
         }
 
-        void CmB_frequency_MouseLeave(object sender, EventArgs e)
-        {
-            cmB_frequency.Visible = false;
-        }
-
-        void TxB_TransmitterFrequencies_Click(object sender, EventArgs e)
-        {
-            cmB_frequency.Visible = true;
-        }
-
         void CmB_frequency_SelectionChangeCommitted(object sender, EventArgs e)
         {
             txB_TransmitterFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
@@ -828,9 +818,18 @@ namespace ServiceTelecomConnect.Forms
                 string receptionModeCurrentConsumption = txB_ReceptionModeCurrentConsumption.Text;
                 string transmissionModeCurrentConsumption = txB_TransmissionModeCurrentConsumption.Text;
                 string batteryDischargeAlarmCurrentConsumption = txB_BatteryDischargeAlarmCurrentConsumption.Text;
-                string transmitterFrequencies = txB_TransmitterFrequencies.Text;
-                string receiverFrequencies = txB_ReceiverFrequencies.Text;
                 
+                string transmitterFrequencies = txB_TransmitterFrequencies.Text;
+                var regex = new Regex(Environment.NewLine);
+                transmitterFrequencies = regex.Replace(transmitterFrequencies, " ");
+                transmitterFrequencies.Trim();
+
+
+                string receiverFrequencies = txB_ReceiverFrequencies.Text;
+                var regex2 = new Regex(Environment.NewLine);
+                receiverFrequencies = regex2.Replace(receiverFrequencies, " ");
+                receiverFrequencies.Trim();
+
                 string batteryChargerAccessories = String.Empty;
                 if (cmB_BatteryChargerAccessories.Enabled)
                     batteryChargerAccessories = cmB_BatteryChargerAccessories.Text;
@@ -852,19 +851,22 @@ namespace ServiceTelecomConnect.Forms
                 else percentAKB = "-";
 
                 string noteRadioStationParameters = txB_NoteRadioStationParameters.Text;
-                var regex = new Regex(Environment.NewLine);
-                noteRadioStationParameters = regex.Replace(noteRadioStationParameters, " ");
+                var regex3 = new Regex(Environment.NewLine);
+                noteRadioStationParameters = regex3.Replace(noteRadioStationParameters, " ");
 
                 if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    var changeQuery = $"UPDATE radiostation_parameters SET road = '{road}', city = '{city}', company = '{company}', " +
-                             $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
-                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
-                             $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
-                             $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
-                             $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                             $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
-                             $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+                    var changeQuery = $"UPDATE radiostation_parameters SET dateTO = '{dateTO}', model = '{model}', lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
+                             $"highPowerLevelTransmitter = '{highPowerLevelTransmitter}', frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', " +
+                             $"sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
+                             $"outputPowerVoltReceiver = '{outputPowerVoltReceiver}', outputPowerWattReceiver = '{outputPowerWattReceiver}', " +
+                             $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
+                             $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
+                             $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
+                             $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
+                             $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
+                             $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
+                             $"WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}' AND serialNumber = '{serialNumber}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -901,32 +903,9 @@ namespace ServiceTelecomConnect.Forms
                 }
 
             }
-
-
             MessageBox.Show("Test");
         }
 
-
-
         #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-        //void TxB_AKB_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!Regex.IsMatch(txB_AKB.Text, "^[0-9]{2,2}$"))
-        //    {
-        //        txB_AKB.Text = txB_AKB.Text.Remove(txB_AKB.Text.Length - 1);
-        //    }
-        //}
     }
 }

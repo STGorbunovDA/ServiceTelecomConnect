@@ -406,7 +406,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(759, 114);
+            this.label9.Location = new System.Drawing.Point(658, 114);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(194, 27);
             this.label9.TabIndex = 178;
@@ -422,7 +422,6 @@
             this.txB_TransmitterFrequencies.Size = new System.Drawing.Size(163, 215);
             this.txB_TransmitterFrequencies.TabIndex = 179;
             this.txB_TransmitterFrequencies.TabStop = false;
-            this.txB_TransmitterFrequencies.Click += new System.EventHandler(this.TxB_TransmitterFrequencies_Click);
             this.txB_TransmitterFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmitterFrequencies_KeyPress);
             // 
             // pnl_transmitter
@@ -973,17 +972,15 @@
             // cmB_frequency
             // 
             this.cmB_frequency.BackColor = System.Drawing.SystemColors.Window;
-            this.cmB_frequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cmB_frequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_frequency.FormattingEnabled = true;
-            this.cmB_frequency.Location = new System.Drawing.Point(716, 38);
+            this.cmB_frequency.Location = new System.Drawing.Point(848, 112);
             this.cmB_frequency.Name = "cmB_frequency";
-            this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
+            this.cmB_frequency.Size = new System.Drawing.Size(195, 28);
             this.cmB_frequency.TabIndex = 193;
-            this.cmB_frequency.Visible = false;
             this.cmB_frequency.SelectionChangeCommitted += new System.EventHandler(this.CmB_frequency_SelectionChangeCommitted);
-            this.cmB_frequency.MouseLeave += new System.EventHandler(this.CmB_frequency_MouseLeave);
             // 
             // lbL_city
             // 
