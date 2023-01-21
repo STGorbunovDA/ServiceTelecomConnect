@@ -1025,12 +1025,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.pnl_transmitter);
             this.Controls.Add(this.lbL_road);
             this.Controls.Add(this.lbL_city);
             this.Controls.Add(this.cmB_frequency);
             this.Controls.Add(this.btn_Frequencies);
-            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.pnl_NoteRadioStationParameters);
             this.Controls.Add(this.btn_Save_add_rst_remont);
             this.Controls.Add(this.pnl_AKB);

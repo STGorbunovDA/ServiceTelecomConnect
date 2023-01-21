@@ -31,51 +31,104 @@ namespace ServiceTelecomConnect.Forms
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+
+            if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+            {
+                var queryLastNumberActRemont = $"SELECT dateTO, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
+               $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
+               $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
+               $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
+               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters FROM radiostation_parameters " +
+               $"WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' AND serialNumber = '{txB_serialNumber.Text}'";
+                using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            txB_dateTO.Text = Convert.ToDateTime(reader[0].ToString()).ToString("dd.MM.yyyy");
+                            txB_LowPowerLevelTransmitter.Text = reader[1].ToString();
+                            txB_HighPowerLevelTransmitter.Text = reader[2].ToString();
+                            txB_FrequencyDeviationTransmitter.Text = reader[3].ToString();
+                            txB_SensitivityTransmitter.Text = reader[4].ToString();
+                            txB_KNITransmitter.Text = reader[5].ToString();
+                            txB_DeviationTransmitter.Text = reader[6].ToString();
+                            txB_OutputPowerVoltReceiver.Text = reader[7].ToString();
+                            txB_OutputPowerWattReceiver.Text = reader[8].ToString();
+                            txB_SelectivityReceiver.Text = reader[9].ToString();
+                            txB_SensitivityReceiver.Text = reader[10].ToString();
+                            txB_KNIReceiver.Text = reader[11].ToString();
+                            txB_SuppressorReceiver.Text = reader[12].ToString();
+                            txB_StandbyModeCurrentConsumption.Text = reader[13].ToString();
+                            txB_ReceptionModeCurrentConsumption.Text = reader[14].ToString();
+                            txB_TransmissionModeCurrentConsumption.Text = reader[15].ToString();
+                            txB_BatteryDischargeAlarmCurrentConsumption.Text = reader[16].ToString();
+                            txB_TransmitterFrequencies.Text = reader[17].ToString();
+                            txB_ReceiverFrequencies.Text = reader[18].ToString();
+                            cmB_BatteryChargerAccessories.Text = reader[19].ToString();
+                            cmB_ManipulatorAccessories.Text = reader[20].ToString();
+                            lbL_nameAKB.Text = reader[21].ToString();
+                            txB_percentAKB.Text = reader[22].ToString();
+                            txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                        }
+                        reader.Close();                       
+                    }
+                    DB.GetInstance.CloseConnection();
+
+                    if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
+                        cmB_BatteryChargerAccessories.Enabled = false;
+                    if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
+                        cmB_ManipulatorAccessories.Enabled = false;
+                }
+            }
+            else
+            {
+                #region заполнение избирательности
+
+                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
+                    txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
+                    txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
+                    txB_model.Text == "Радий-301")
+                    txB_SelectivityReceiver.Text = "71";
+                else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+                    txB_SelectivityReceiver.Text = "76";
+                else txB_SelectivityReceiver.Text = "-";
+                #endregion
+
+                #region заполнение Вых. мощность, Вт
+
+                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
+                   txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
+                   txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
+                   txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Motorola DP-2400е" ||
+                   txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "РН311М" || txB_model.Text == "Motorola DP-4400" ||
+                   txB_model.Text == "Motorola DP-1400" || txB_model.Text == "РНД-500" || txB_model.Text == "РНД-512" || txB_model.Text == "Шеврон T-44 V2")
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                else if (txB_model.Text == "Comrade R5")
+                    txB_OutputPowerWattReceiver.Text = ">=0.4";
+
+                #endregion
+
+                #region заполнение Сигнализация разряда АКБ, В
+
+                txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+
+                #endregion
+
+                if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
+                    cmB_BatteryChargerAccessories.Enabled = false;
+                if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
+                    cmB_ManipulatorAccessories.Enabled = false;
+            }
+
             if (String.IsNullOrEmpty(lbL_nameAKB.Text) || lbL_nameAKB.Text == "-")
             {
                 lbL_nameAKB.Visible = false;
                 txB_percentAKB.Enabled = false;
             }
             else txB_percentAKB.Size = lbL_nameAKB.Size;
-            if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
-                cmB_BatteryChargerAccessories.Enabled = false;
-            if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
-                cmB_ManipulatorAccessories.Enabled = false;
-
-            QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
-
-            #region заполнение избирательности
-
-            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-                txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-                txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-                txB_model.Text == "Радий-301")
-                txB_SelectivityReceiver.Text = "71";
-            else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
-                txB_SelectivityReceiver.Text = "76";
-            else txB_SelectivityReceiver.Text = "-";
-            #endregion
-
-            #region заполнение Вых. мощность, Вт
-
-            if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-               txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-               txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-               txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Motorola DP-2400е" ||
-               txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "РН311М" || txB_model.Text == "Motorola DP-4400" ||
-               txB_model.Text == "Motorola DP-1400" || txB_model.Text == "РНД-500" || txB_model.Text == "РНД-512" || txB_model.Text == "Шеврон T-44 V2")
-                txB_OutputPowerWattReceiver.Text = ">0.5";
-            else if (txB_model.Text == "Comrade R5")
-                txB_OutputPowerWattReceiver.Text = ">=0.4";
-
-            #endregion
-
-            #region заполнение Сигнализация разряда АКБ, В
-
-            txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
-
-            #endregion
-
         }
 
         #region Дата проверки
@@ -330,9 +383,9 @@ namespace ServiceTelecomConnect.Forms
                         control.Text.Trim();
                     }
                 }
-                if(cmB_BatteryChargerAccessories.Enabled)
+                if (cmB_BatteryChargerAccessories.Enabled)
                 {
-                    if(String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text))
+                    if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text))
                     {
                         MessageBox.Show("Заполните параметры \"Аксессуары\"\n\"Зарядное устройство\"");
                         return;
@@ -800,7 +853,7 @@ namespace ServiceTelecomConnect.Forms
                 string city = lbL_city.Text;
                 string numberAct = txB_numberAct.Text;
                 string serialNumber = txB_serialNumber.Text;
-                string dateTO = txB_dateTO.Text;
+                string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
                 string model = txB_model.Text;
                 string lowPowerLevelTransmitter = txB_LowPowerLevelTransmitter.Text;
                 string highPowerLevelTransmitter = txB_HighPowerLevelTransmitter.Text;
@@ -818,28 +871,28 @@ namespace ServiceTelecomConnect.Forms
                 string receptionModeCurrentConsumption = txB_ReceptionModeCurrentConsumption.Text;
                 string transmissionModeCurrentConsumption = txB_TransmissionModeCurrentConsumption.Text;
                 string batteryDischargeAlarmCurrentConsumption = txB_BatteryDischargeAlarmCurrentConsumption.Text;
-                
+
                 string transmitterFrequencies = txB_TransmitterFrequencies.Text;
-                var regex = new Regex(Environment.NewLine);
-                transmitterFrequencies = regex.Replace(transmitterFrequencies, " ");
+                //var regex = new Regex(Environment.NewLine);
+                //transmitterFrequencies = regex.Replace(transmitterFrequencies, " ");
                 transmitterFrequencies.Trim();
 
 
                 string receiverFrequencies = txB_ReceiverFrequencies.Text;
-                var regex2 = new Regex(Environment.NewLine);
-                receiverFrequencies = regex2.Replace(receiverFrequencies, " ");
+                //var regex2 = new Regex(Environment.NewLine);
+                //receiverFrequencies = regex2.Replace(receiverFrequencies, " ");
                 receiverFrequencies.Trim();
 
                 string batteryChargerAccessories = String.Empty;
                 if (cmB_BatteryChargerAccessories.Enabled)
                     batteryChargerAccessories = cmB_BatteryChargerAccessories.Text;
                 else batteryChargerAccessories = "-";
-                
+
                 string manipulatorAccessories = String.Empty;
                 if (cmB_ManipulatorAccessories.Enabled)
-                    batteryChargerAccessories = cmB_ManipulatorAccessories.Text;
-                else batteryChargerAccessories = "-";
-               
+                    manipulatorAccessories = cmB_ManipulatorAccessories.Text;
+                else manipulatorAccessories = "-";
+
                 string nameAKB = String.Empty;
                 if (lbL_nameAKB.Visible)
                     nameAKB = lbL_nameAKB.Text;
