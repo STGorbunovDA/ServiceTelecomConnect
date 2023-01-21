@@ -977,7 +977,7 @@
             this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_frequency.FormattingEnabled = true;
-            this.cmB_frequency.Location = new System.Drawing.Point(716, 385);
+            this.cmB_frequency.Location = new System.Drawing.Point(716, 38);
             this.cmB_frequency.Name = "cmB_frequency";
             this.cmB_frequency.Size = new System.Drawing.Size(264, 228);
             this.cmB_frequency.TabIndex = 193;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 
 namespace ServiceTelecomConnect.Forms
 {
@@ -299,9 +301,6 @@ namespace ServiceTelecomConnect.Forms
                             control.Select();
                             return;
                         }
-                        var re = new Regex(Environment.NewLine);
-                        control.Text = re.Replace(control.Text, " ");
-                        control.Text.Trim();
                     }
                 }
                 foreach (Control control in pnl_Receiver.Controls)
@@ -314,9 +313,6 @@ namespace ServiceTelecomConnect.Forms
                             control.Select();
                             return;
                         }
-                        var re = new Regex(Environment.NewLine);
-                        control.Text = re.Replace(control.Text, " ");
-                        control.Text.Trim();
                     }
                 }
                 foreach (Control control in pnl_CurrentConsumption.Controls)
@@ -329,9 +325,6 @@ namespace ServiceTelecomConnect.Forms
                             control.Select();
                             return;
                         }
-                        var re = new Regex(Environment.NewLine);
-                        control.Text = re.Replace(control.Text, " ");
-                        control.Text.Trim();
                     }
                 }
                 foreach (Control control in pnl_frequencies.Controls)
@@ -347,19 +340,20 @@ namespace ServiceTelecomConnect.Forms
                         control.Text.Trim();
                     }
                 }
-                if (cmB_BatteryChargerAccessories.Enabled || cmB_ManipulatorAccessories.Enabled)
+                if(cmB_BatteryChargerAccessories.Enabled)
                 {
-                    foreach (Control control in pnl_Accessories.Controls)
+                    if(String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text))
                     {
-                        if (control is ComboBox)
-                        {
-                            if (String.IsNullOrEmpty(control.Text))
-                            {
-                                MessageBox.Show("Заполните параметры \"Аксессуары\"");
-                                control.Select();
-                                return;
-                            }
-                        }
+                        MessageBox.Show("Заполните параметры \"Аксессуары\"\n\"Зарядное устройство\"");
+                        return;
+                    }
+                }
+                if (cmB_ManipulatorAccessories.Enabled)
+                {
+                    if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Аксессуары\"\n\"Манипулятор\"");
+                        return;
                     }
                 }
                 if (txB_percentAKB.Enabled)
@@ -374,21 +368,6 @@ namespace ServiceTelecomConnect.Forms
                                 control.Select();
                                 return;
                             }
-                            var re = new Regex(Environment.NewLine);
-                            control.Text = re.Replace(control.Text, " ");
-                            control.Text.Trim();
-                        }
-                    }
-                }
-                if (!String.IsNullOrEmpty(txB_NoteRadioStationParameters.Text))
-                {
-                    foreach (Control control in pnl_NoteRadioStationParameters.Controls)
-                    {
-                        if (control is TextBox)
-                        {
-                            var re = new Regex(Environment.NewLine);
-                            control.Text = re.Replace(control.Text, " ");
-                            control.Text.Trim();
                         }
                     }
                 }
@@ -873,14 +852,52 @@ namespace ServiceTelecomConnect.Forms
                 else percentAKB = "-";
 
                 string noteRadioStationParameters = txB_NoteRadioStationParameters.Text;
+                var regex = new Regex(Environment.NewLine);
+                noteRadioStationParameters = regex.Replace(noteRadioStationParameters, " ");
 
-                if(CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+                if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    //Update
+                    var changeQuery = $"UPDATE radiostation_parameters SET road = '{road}', city = '{city}', company = '{company}', " +
+                             $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
+                             $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
+                             $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
+                             $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
+                             $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                             $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+
                 }
                 else
                 {
-                    //insert
+                    var addQuery = $"INSERT INTO radiostation_parameters (road, city, numberAct, serialNumber, dateTO," +
+                               $"model, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter, " +
+                               $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
+                               $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
+                               $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
+                               $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, " +
+                               $"nameAKB, percentAKB, noteRadioStationParameters) VALUES ('{road}', '{city}', '{numberAct}'," +
+                               $"'{serialNumber}','{dateTO}', '{model}', '{lowPowerLevelTransmitter}', " +
+                               $"'{highPowerLevelTransmitter}','{frequencyDeviationTransmitter}','{sensitivityTransmitter}', " +
+                               $"'{kniTransmitter}', '{deviationTransmitter}', '{outputPowerVoltReceiver}', " +
+                               $"'{outputPowerWattReceiver}', '{selectivityReceiver}', '{sensitivityReceiver}', '{kniReceiver}', " +
+                               $"'{suppressorReceiver}', '{standbyModeCurrentConsumption}', '{receptionModeCurrentConsumption}', " +
+                               $"'{transmissionModeCurrentConsumption}', '{batteryDischargeAlarmCurrentConsumption}', " +
+                               $"'{transmitterFrequencies}', '{receiverFrequencies}', '{batteryChargerAccessories}', " +
+                               $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}')";
+
+                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
                 }
 
             }
