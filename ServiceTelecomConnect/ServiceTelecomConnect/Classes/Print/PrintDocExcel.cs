@@ -71,12 +71,12 @@ namespace ServiceTelecomConnect
                     bool success = (bool)r.Replace(
                    item.Key,
                    item.Value,
-                   Excel.XlLookAt.xlWhole,
+                  Excel.XlLookAt.xlWhole,
                    Excel.XlSearchOrder.xlByRows,
-                   true, m, m, m);
+                   true);
                 }
 
-                var word_file = $"Бирка_{date_Tag}";
+                var word_file = $"Бирка_{date_Tag}.xls";
 
                 if (!File.Exists($@"С:\Documents_ServiceTelekom\Бирки\"))
                 {
