@@ -76,7 +76,7 @@ namespace ServiceTelecomConnect
                    true);
                 }
 
-                var word_file = $"Бирка_{date_Tag}.xls";
+                string word_file = $"Бирка_{date_Tag}.xls";
 
                 if (!File.Exists($@"С:\Documents_ServiceTelekom\Бирки\"))
                 {
