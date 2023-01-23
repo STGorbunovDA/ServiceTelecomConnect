@@ -608,6 +608,50 @@ namespace ServiceTelecomConnect
 
         #endregion
 
+        #region Печать ведомости с параметрами => excel
+
+        void PrintStatementParameters(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            {
+                MessageBox.Show($"Нельзя напечатать акт ТО, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
+                return;
+            }
+            if (String.IsNullOrEmpty(txB_numberAct.Text))
+            {
+                MessageBox.Show("Нельзя напечатать \"Ведомость с параметрами\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            var dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            if (dgwRowsCount == 0)
+                return;
+            if (dgwRowsCount > 20)
+            {
+                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! В Акте более 20 радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+            dataGridView1.ClearSelection();
+
+            if (dataGridView1.CurrentCell.RowIndex >= 0)
+                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+
+            Refresh_values_TXB_CMB(currRowIndex);
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
+                dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
+
+            PrintExcel.PrintExcelStatementParameters(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+               lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+               lbL_doverennost.Text, lbL_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
+
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+
+        }
+
+
+        #endregion
+
         #region АКТ => excel
 
         void Button_actTO_print_Click(object sender, EventArgs e)
@@ -638,7 +682,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
 
             Refresh_values_TXB_CMB(currRowIndex);
-            if (txB_numberAct.Text != "")
+            if (!String.IsNullOrEmpty(txB_numberAct.Text))
                 dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
 
             PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
@@ -1001,6 +1045,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
+                            m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
@@ -2254,7 +2299,7 @@ namespace ServiceTelecomConnect
                 string month2;
 
                 DateTime dateTag = Convert.ToDateTime(txB_Date_panel_Tag.Text);
-                DateTime mothCheackTag = dateTag.AddMonths(0).AddDays(0); 
+                DateTime mothCheackTag = dateTag.AddMonths(0).AddDays(0);
 
                 if (dateTag == mothCheackTag)
                     month2 = dateTag.AddMonths(1).ToString("MM");
@@ -2569,6 +2614,8 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
+
+
 
     }
 }
