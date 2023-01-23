@@ -224,6 +224,7 @@
             this.mTrip_change_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_new_add_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_pnl_ChangeNumberActTOFull = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_AddRadioStationParameters = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_delete_rst_remont = new System.Windows.Forms.ToolStripMenuItem();
@@ -263,7 +264,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.mTrip_AddRadioStationParameters = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -2635,6 +2635,13 @@
             this.mTrip_pnl_ChangeNumberActTOFull.Text = "Изменить номер акта";
             this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTrip_pnl_ChangeNumberActTOFull_Click);
             // 
+            // mTrip_AddRadioStationParameters
+            // 
+            this.mTrip_AddRadioStationParameters.Name = "mTrip_AddRadioStationParameters";
+            this.mTrip_AddRadioStationParameters.Size = new System.Drawing.Size(288, 22);
+            this.mTrip_AddRadioStationParameters.Text = "Добавить параметры радиостанции";
+            this.mTrip_AddRadioStationParameters.Click += new System.EventHandler(this.MTrip_AddRadioStationParameters_Click);
+            // 
             // mTrip_delete
             // 
             this.mTrip_delete.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2957,13 +2964,6 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
-            // mTrip_AddRadioStationParameters
-            // 
-            this.mTrip_AddRadioStationParameters.Name = "mTrip_AddRadioStationParameters";
-            this.mTrip_AddRadioStationParameters.Size = new System.Drawing.Size(288, 22);
-            this.mTrip_AddRadioStationParameters.Text = "Добавить параметры радиостанции";
-            this.mTrip_AddRadioStationParameters.Click += new System.EventHandler(this.MTrip_AddRadioStationParameters_Click);
-            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2971,14 +2971,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.pnl_ChangeNumberActTOFull);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_info_phone_FIO);
-            this.Controls.Add(this.panel_Tag);
-            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
