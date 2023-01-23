@@ -1,17 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 
 namespace ServiceTelecomConnect.Forms
 {
@@ -30,7 +22,6 @@ namespace ServiceTelecomConnect.Forms
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
-            txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
             QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
 
             if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
@@ -116,6 +107,8 @@ namespace ServiceTelecomConnect.Forms
                 txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
 
                 #endregion
+
+                txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
                 if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
@@ -909,17 +902,18 @@ namespace ServiceTelecomConnect.Forms
 
                 if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    var changeQuery = $"UPDATE radiostation_parameters SET dateTO = '{dateTO}', model = '{model}', lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
-                             $"highPowerLevelTransmitter = '{highPowerLevelTransmitter}', frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', " +
-                             $"sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
-                             $"outputPowerVoltReceiver = '{outputPowerVoltReceiver}', outputPowerWattReceiver = '{outputPowerWattReceiver}', " +
-                             $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
-                             $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
-                             $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
-                             $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
-                             $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
-                             $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
-                             $"WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}' AND serialNumber = '{serialNumber}'";
+                    var changeQuery = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
+                        $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
+                        $"highPowerLevelTransmitter = '{highPowerLevelTransmitter}', frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', " +
+                        $"sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
+                        $"outputPowerVoltReceiver = '{outputPowerVoltReceiver}', outputPowerWattReceiver = '{outputPowerWattReceiver}', " +
+                        $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
+                        $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
+                        $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
+                        $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
+                        $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
+                        $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
+                        $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -956,7 +950,7 @@ namespace ServiceTelecomConnect.Forms
                 }
 
             }
-            MessageBox.Show("Test");
+            MessageBox.Show("Готовченко");
         }
 
         #endregion
