@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -2071,7 +2072,57 @@ namespace ServiceTelecomConnect
                         _excelCells270.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells270.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                        workSheet.Cells[19 + s4, 1] = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+                        string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+
+                        var queryLastNumberActRemont = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
+                            $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
+                            $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
+                            $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
+                            $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters FROM radiostation_parameters " +
+                            $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    txB_LowPowerLevelTransmitter.Text = reader[0].ToString();
+                                    txB_HighPowerLevelTransmitter.Text = reader[1].ToString();
+                                    txB_FrequencyDeviationTransmitter.Text = reader[3].ToString();
+                                    txB_SensitivityTransmitter.Text = reader[4].ToString();
+                                    txB_KNITransmitter.Text = reader[5].ToString();
+                                    txB_DeviationTransmitter.Text = reader[6].ToString();
+                                    txB_OutputPowerVoltReceiver.Text = reader[7].ToString();
+                                    txB_OutputPowerWattReceiver.Text = reader[8].ToString();
+                                    txB_SelectivityReceiver.Text = reader[9].ToString();
+                                    txB_SensitivityReceiver.Text = reader[10].ToString();
+                                    txB_KNIReceiver.Text = reader[11].ToString();
+                                    txB_SuppressorReceiver.Text = reader[12].ToString();
+                                    txB_StandbyModeCurrentConsumption.Text = reader[13].ToString();
+                                    txB_ReceptionModeCurrentConsumption.Text = reader[14].ToString();
+                                    txB_TransmissionModeCurrentConsumption.Text = reader[15].ToString();
+                                    txB_BatteryDischargeAlarmCurrentConsumption.Text = reader[16].ToString();
+                                    txB_TransmitterFrequencies.Text = reader[17].ToString();
+                                    txB_ReceiverFrequencies.Text = reader[18].ToString();
+                                    cmB_BatteryChargerAccessories.Text = reader[19].ToString();
+                                    cmB_ManipulatorAccessories.Text = reader[20].ToString();
+                                    lbL_nameAKB.Text = reader[21].ToString();
+                                    txB_percentAKB.Text = reader[22].ToString();
+                                    txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                                }
+                                reader.Close();
+                            }
+                            DB.GetInstance.CloseConnection();
+
+                            if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
+                                cmB_BatteryChargerAccessories.Enabled = false;
+                            if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
+                                cmB_ManipulatorAccessories.Enabled = false;
+                        }
+
+                        workSheet.Cells[19 + s4, 1] = serialNumber;
                         workSheet.Cells[19 + s4, 2] = dgw.Rows[i].Cells["AKB"].Value.ToString();
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
@@ -2083,10 +2134,10 @@ namespace ServiceTelecomConnect
                     }
                     while (s4 <= 20)
                     {
-                        Excel.Range _excelCells242 = (Excel.Range)workSheet2.get_Range($"A{j4}").Cells;
+                        Excel.Range _excelCells242 = (Excel.Range)workSheet.get_Range($"A{j4}").Cells;
                         _excelCells242.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                        Excel.Range _excelCells239 = (Excel.Range)workSheet2.get_Range($"V{j4}", $"Y{j4}").Cells;
+                        Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
                         _excelCells239.Merge(Type.Missing);
 
                         s4++;
