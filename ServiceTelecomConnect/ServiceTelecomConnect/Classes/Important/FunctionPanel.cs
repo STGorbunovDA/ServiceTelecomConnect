@@ -133,7 +133,7 @@ namespace ServiceTelecomConnect
         #region Копирование текущей Бд в резервную radiostantion в radiostantion_copy
         internal static void Manual_backup_current_BD()
         {
-            var clearBD = "TRUNCATE TABLE radiostantion_copy";
+            string clearBD = "TRUNCATE TABLE radiostantion_copy";
 
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
@@ -142,7 +142,7 @@ namespace ServiceTelecomConnect
                 DB_2.GetInstance.CloseConnection();
             }
 
-            var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
+            string copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
@@ -154,7 +154,7 @@ namespace ServiceTelecomConnect
         }
         internal static void Manual_backup_current_BD_curator()
         {
-            var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
+            string clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
 
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
@@ -163,7 +163,7 @@ namespace ServiceTelecomConnect
                 DB_2.GetInstance.CloseConnection();
             }
 
-            var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
+            string copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
 
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
@@ -179,7 +179,7 @@ namespace ServiceTelecomConnect
         #region очистка текущей БД
         internal static void Clear_BD_current_year()
         {
-            var clearBD = "TRUNCATE TABLE radiostantion";
+            string clearBD = "TRUNCATE TABLE radiostantion";
 
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
@@ -194,7 +194,7 @@ namespace ServiceTelecomConnect
 
         internal static void Clear_BD_current_year_Curator()
         {
-            var clearBD = "TRUNCATE TABLE radiostantion_сomparison";
+            string clearBD = "TRUNCATE TABLE radiostantion_сomparison";
 
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
@@ -212,7 +212,7 @@ namespace ServiceTelecomConnect
         #region копирование текущей БД в БД прошлого года для следующего года
         internal static void Copying_current_BD_end_of_the_year()
         {
-            var clearBD = "TRUNCATE TABLE radiostantion_last_year";
+            string clearBD = "TRUNCATE TABLE radiostantion_last_year";
 
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
@@ -221,7 +221,7 @@ namespace ServiceTelecomConnect
                 DB_2.GetInstance.CloseConnection();
             }
 
-            var copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
+            string copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
 
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
@@ -411,46 +411,46 @@ namespace ServiceTelecomConnect
                 for (int i = 0; i < dgw.Rows.Count; i++)
                 {
                     var id = dgw.Rows[i].Cells["id"].Value;
-                    var poligon = dgw.Rows[i].Cells["poligon"].Value.ToString();
-                    var company = dgw.Rows[i].Cells["company"].Value.ToString();
-                    var location = dgw.Rows[i].Cells["location"].Value.ToString();
-                    var model = dgw.Rows[i].Cells["model"].Value.ToString();
-                    var serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
-                    var inventoryNumber = dgw.Rows[i].Cells["inventoryNumber"].Value.ToString();
-                    var networkNumber = dgw.Rows[i].Cells["networkNumber"].Value.ToString();
-                    var dateTO = dgw.Rows[i].Cells["dateTO"].Value.ToString();
-                    var numberAct = dgw.Rows[i].Cells["numberAct"].Value.ToString();
-                    var cityDGW = dgw.Rows[i].Cells["city"].Value.ToString();
+                    string poligon = dgw.Rows[i].Cells["poligon"].Value.ToString();
+                    string company = dgw.Rows[i].Cells["company"].Value.ToString();
+                    string location = dgw.Rows[i].Cells["location"].Value.ToString();
+                    string model = dgw.Rows[i].Cells["model"].Value.ToString();
+                    string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+                    string inventoryNumber = dgw.Rows[i].Cells["inventoryNumber"].Value.ToString();
+                    string networkNumber = dgw.Rows[i].Cells["networkNumber"].Value.ToString();
+                    string dateTO = dgw.Rows[i].Cells["dateTO"].Value.ToString();
+                    string numberAct = dgw.Rows[i].Cells["numberAct"].Value.ToString();
+                    string cityDGW = dgw.Rows[i].Cells["city"].Value.ToString();
                     var price = dgw.Rows[i].Cells["price"].Value;
-                    var representative = dgw.Rows[i].Cells["representative"].Value.ToString();
-                    var post = dgw.Rows[i].Cells["post"].Value.ToString();
-                    var numberIdentification = dgw.Rows[i].Cells["numberIdentification"].Value.ToString();
-                    var dateIssue = dgw.Rows[i].Cells["dateIssue"].Value.ToString();
-                    var phoneNumber = dgw.Rows[i].Cells["phoneNumber"].Value.ToString();
-                    var numberActRemont = dgw.Rows[i].Cells["numberActRemont"].Value.ToString();
-                    var category = dgw.Rows[i].Cells["category"].Value.ToString();
+                    string representative = dgw.Rows[i].Cells["representative"].Value.ToString();
+                    string post = dgw.Rows[i].Cells["post"].Value.ToString();
+                    string numberIdentification = dgw.Rows[i].Cells["numberIdentification"].Value.ToString();
+                    string dateIssue = dgw.Rows[i].Cells["dateIssue"].Value.ToString();
+                    string phoneNumber = dgw.Rows[i].Cells["phoneNumber"].Value.ToString();
+                    string numberActRemont = dgw.Rows[i].Cells["numberActRemont"].Value.ToString();
+                    string category = dgw.Rows[i].Cells["category"].Value.ToString();
                     var priceRemont = dgw.Rows[i].Cells["priceRemont"].Value;
-                    var antenna = dgw.Rows[i].Cells["antenna"].Value.ToString();
-                    var manipulator = dgw.Rows[i].Cells["antenna"].Value.ToString();
-                    var AKB = dgw.Rows[i].Cells["AKB"].Value.ToString();
-                    var batteryСharger = dgw.Rows[i].Cells["batteryСharger"].Value.ToString();
-                    var completed_works_1 = dgw.Rows[i].Cells["completed_works_1"].Value.ToString();
-                    var completed_works_2 = dgw.Rows[i].Cells["completed_works_2"].Value.ToString();
-                    var completed_works_3 = dgw.Rows[i].Cells["completed_works_3"].Value.ToString();
-                    var completed_works_4 = dgw.Rows[i].Cells["completed_works_4"].Value.ToString();
-                    var completed_works_5 = dgw.Rows[i].Cells["completed_works_5"].Value.ToString();
-                    var completed_works_6 = dgw.Rows[i].Cells["completed_works_6"].Value.ToString();
-                    var completed_works_7 = dgw.Rows[i].Cells["completed_works_7"].Value.ToString();
-                    var parts_1 = dgw.Rows[i].Cells["parts_1"].Value.ToString();
-                    var parts_2 = dgw.Rows[i].Cells["parts_2"].Value.ToString();
-                    var parts_3 = dgw.Rows[i].Cells["parts_3"].Value.ToString();
-                    var parts_4 = dgw.Rows[i].Cells["parts_4"].Value.ToString();
-                    var parts_5 = dgw.Rows[i].Cells["parts_5"].Value.ToString();
-                    var parts_6 = dgw.Rows[i].Cells["parts_6"].Value.ToString();
-                    var parts_7 = dgw.Rows[i].Cells["parts_7"].Value.ToString();
-                    var decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
-                    var comment = dgw.Rows[i].Cells["comment"].Value.ToString();
-                    var road = dgw.Rows[i].Cells["road"].Value.ToString();
+                    string antenna = dgw.Rows[i].Cells["antenna"].Value.ToString();
+                    string manipulator = dgw.Rows[i].Cells["antenna"].Value.ToString();
+                    string AKB = dgw.Rows[i].Cells["AKB"].Value.ToString();
+                    string batteryСharger = dgw.Rows[i].Cells["batteryСharger"].Value.ToString();
+                    string completed_works_1 = dgw.Rows[i].Cells["completed_works_1"].Value.ToString();
+                    string completed_works_2 = dgw.Rows[i].Cells["completed_works_2"].Value.ToString();
+                    string completed_works_3 = dgw.Rows[i].Cells["completed_works_3"].Value.ToString();
+                    string completed_works_4 = dgw.Rows[i].Cells["completed_works_4"].Value.ToString();
+                    string completed_works_5 = dgw.Rows[i].Cells["completed_works_5"].Value.ToString();
+                    string completed_works_6 = dgw.Rows[i].Cells["completed_works_6"].Value.ToString();
+                    string completed_works_7 = dgw.Rows[i].Cells["completed_works_7"].Value.ToString();
+                    string parts_1 = dgw.Rows[i].Cells["parts_1"].Value.ToString();
+                    string parts_2 = dgw.Rows[i].Cells["parts_2"].Value.ToString();
+                    string parts_3 = dgw.Rows[i].Cells["parts_3"].Value.ToString();
+                    string parts_4 = dgw.Rows[i].Cells["parts_4"].Value.ToString();
+                    string parts_5 = dgw.Rows[i].Cells["parts_5"].Value.ToString();
+                    string parts_6 = dgw.Rows[i].Cells["parts_6"].Value.ToString();
+                    string parts_7 = dgw.Rows[i].Cells["parts_7"].Value.ToString();
+                    string decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
+                    string comment = dgw.Rows[i].Cells["comment"].Value.ToString();
+                    string road = dgw.Rows[i].Cells["road"].Value.ToString();
 
                     string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                         $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
@@ -518,24 +518,24 @@ namespace ServiceTelecomConnect
                 for (int i = 0; i < dgw.Rows.Count; i++)
                 {
                     var id = dgw.Rows[i].Cells["id"].Value;
-                    var poligon = dgw.Rows[i].Cells["poligon"].Value.ToString();
-                    var company = dgw.Rows[i].Cells["company"].Value.ToString();
-                    var location = dgw.Rows[i].Cells["location"].Value.ToString();
-                    var model = dgw.Rows[i].Cells["model"].Value.ToString();
-                    var serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
-                    var inventoryNumber = dgw.Rows[i].Cells["inventoryNumber"].Value.ToString();
-                    var networkNumber = dgw.Rows[i].Cells["networkNumber"].Value.ToString();
-                    var dateTO = dgw.Rows[i].Cells["dateTO"].Value.ToString();
-                    var numberAct = dgw.Rows[i].Cells["numberAct"].Value.ToString();
-                    var cityDGW = dgw.Rows[i].Cells["city"].Value.ToString();
+                    string poligon = dgw.Rows[i].Cells["poligon"].Value.ToString();
+                    string company = dgw.Rows[i].Cells["company"].Value.ToString();
+                    string location = dgw.Rows[i].Cells["location"].Value.ToString();
+                    string model = dgw.Rows[i].Cells["model"].Value.ToString();
+                    string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+                    string inventoryNumber = dgw.Rows[i].Cells["inventoryNumber"].Value.ToString();
+                    string networkNumber = dgw.Rows[i].Cells["networkNumber"].Value.ToString();
+                    string dateTO = dgw.Rows[i].Cells["dateTO"].Value.ToString();
+                    string numberAct = dgw.Rows[i].Cells["numberAct"].Value.ToString();
+                    string cityDGW = dgw.Rows[i].Cells["city"].Value.ToString();
                     var price = dgw.Rows[i].Cells["price"].Value;
-                    var numberActRemont = dgw.Rows[i].Cells["numberActRemont"].Value.ToString();
-                    var category = dgw.Rows[i].Cells["category"].Value.ToString();
+                    string numberActRemont = dgw.Rows[i].Cells["numberActRemont"].Value.ToString();
+                    string category = dgw.Rows[i].Cells["category"].Value.ToString();
                     var priceRemont = dgw.Rows[i].Cells["priceRemont"].Value;
-                    var decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
-                    var comment = dgw.Rows[i].Cells["comment"].Value.ToString();
-                    var month = dgw.Rows[i].Cells["month"].Value.ToString();
-                    var road = dgw.Rows[i].Cells["road"].Value.ToString();
+                    string decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
+                    string comment = dgw.Rows[i].Cells["comment"].Value.ToString();
+                    string month = dgw.Rows[i].Cells["month"].Value.ToString();
+                    string road = dgw.Rows[i].Cells["road"].Value.ToString();
 
                     string queryString = $"UPDATE radiostantion_сomparison SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                         $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
@@ -573,26 +573,26 @@ namespace ServiceTelecomConnect
                 {
                     string filename = openFile.FileName;
 
-                    var lineNumber = 0;
+                    int lineNumber = 0;
 
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
                         {
-                            var line = reader.ReadLine();
+                            string line = reader.ReadLine();
 
                             if (lineNumber != 0)
                             {
-                                var values = line.Split('\t');
+                                string[] values = line.Split('\t');
 
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[39];
                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumbers))
                                 {
-                                    var dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
+                                    string dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
 
-                                    var mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                                    string mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -623,9 +623,8 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
-                    if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        return;
+                    MessageBox.Show("Вы не выбрали файл .csv который нужно добавить", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
         }
@@ -645,23 +644,23 @@ namespace ServiceTelecomConnect
                 {
                     string filename = openFile.FileName;
 
-                    var lineNumber = 0;
+                    int lineNumber = 0;
 
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
                         {
-                            var line = reader.ReadLine();
+                            string line = reader.ReadLine();
 
                             if (lineNumber != 0)
                             {
-                                var values = line.Split('\t');
+                                string[] values = line.Split('\t');
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[17];
                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantionCurator(road, city, serialNumbers))
                                 {
-                                    var mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                                    string mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
                                     $"category, priceRemont, decommissionSerialNumber, comment, month, road) VALUES " +
                                     $"('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}','{values[4]}', '{values[5]}', '{values[6]}', " +
@@ -708,24 +707,24 @@ namespace ServiceTelecomConnect
                 {
                     string filename = openFile.FileName;
 
-                    var lineNumber = 0;
+                    int lineNumber = 0;
 
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
                         {
-                            var line = reader.ReadLine();
+                            string line = reader.ReadLine();
 
                             if (lineNumber != 0)
                             {
-                                var values = line.Split('\t');
+                                string[] values = line.Split('\t');
 
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[39];
                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_last_year(road, city, serialNumbers))
                                 {
-                                    var mySql = $"INSERT INTO radiostantion_last_year (poligon, company, location, model, serialNumber," +
+                                    string mySql = $"INSERT INTO radiostantion_last_year (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -757,10 +756,8 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    string Mesage = "Вы не выбрали файл .csv который нужно добавить";
-
-                    if (MessageBox.Show(Mesage, "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                        return;
+                    MessageBox.Show("Вы не выбрали файл .csv который нужно добавить", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
             }
         }
@@ -780,24 +777,24 @@ namespace ServiceTelecomConnect
                 {
                     string filename = openFile.FileName;
 
-                    var lineNumber = 0;
+                    int lineNumber = 0;
 
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
                         {
-                            var line = reader.ReadLine();
+                            string line = reader.ReadLine();
 
                             if (lineNumber != 0)
                             {
-                                var values = line.Split(';');
+                                string[] values = line.Split(';');
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[11];
-                                var dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
+                                string dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
                                 if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(road, city, serialNumbers))
                                 {
-                                    var mySql = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
+                                    string mySql = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, road) VALUES " +
                                     $"('{values[0].Trim()}', '{values[1].Trim()}', '{values[2].Trim()}', '{values[3].Trim()}','{values[4].Trim()}', '{values[5].Trim()}', '{values[6].Trim()}', " +
                                     $"'{dateTO.Trim()}','{values[8].Trim()}','{values[9].Trim()}','{values[10].Trim()}', '{values[11].Trim()}')";
