@@ -129,11 +129,11 @@ namespace ServiceTelecomConnect
             dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
             dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
 
-            RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\");
+            RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\City");
             if (reg1 != null)
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
-                RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\");
+                RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\City");
                 cmB_city.Text = helloKey.GetValue("Город проведения проверки").ToString();
 
                 helloKey.Close();
@@ -744,7 +744,7 @@ namespace ServiceTelecomConnect
                 return;
             }
             RegistryKey currentUserKey = Registry.CurrentUser;
-            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
+            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
             helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
             helloKey.Close();
 
@@ -752,11 +752,11 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
             Counters();
 
-            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\");
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
             if (reg != null)
             {
                 RegistryKey currentUserKey2 = Registry.CurrentUser;
-                RegistryKey helloKey2 = currentUserKey2.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting");
+                RegistryKey helloKey2 = currentUserKey2.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
                 cmB_city.Text = helloKey2.GetValue("Город проведения проверки").ToString();
             }
         }
@@ -2251,21 +2251,30 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrEmpty(txB_Date_panel_Tag.Text))
             {
-                DateTime dateTime = Convert.ToDateTime(txB_Date_panel_Tag.Text);
+                string month2;
 
-                string day = dateTime.ToString("dd");
-                string month = dateTime.ToString("MM");
-                string year = dateTime.ToString("yyyy");
-                string day2 = dateTime.AddDays(1).ToString("dd");
-                string year2 = dateTime.AddYears(1).ToString("yyyy");
+                DateTime dateTag = Convert.ToDateTime(txB_Date_panel_Tag.Text);
+                DateTime mothCheackTag = dateTag.AddMonths(0).AddDays(0); 
+
+                if (dateTag == mothCheackTag)
+                    month2 = dateTag.AddMonths(1).ToString("MM");
+                else month2 = dateTag.ToString("MM");
+
+                string month = dateTag.ToString("MM");
+                string day = dateTag.ToString("dd");
+                string year = dateTag.ToString("yyyy");
+                string day2 = dateTag.AddDays(1).ToString("dd");
+                string year2 = dateTag.AddYears(1).ToString("yyyy");
 
                 var items2 = new Dictionary<string, string>
                 {
                     {"day", day },
                     {"month", month },
+                    {"month2", month2 },
                     {"year", year },
                     {"day2", day2 },
                     {"year2", year2 },
+                    {"Engineer", lbL_FIO_Engineer.Text },
                     {"road", cmB_road.Text }
 
                 };
