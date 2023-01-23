@@ -1469,7 +1469,7 @@ namespace ServiceTelecomConnect
                         }
                         #endregion
 
-                        var file = $"{numberAct.Replace('/', '.')}-{company}_Акт.xlsx";
+                        string file = $"{numberAct.Replace('/', '.')}-{company}_Акт.xlsx";
 
                         if (!File.Exists($@"С:\Documents_ServiceTelekom\Акты ТО\{city}\"))
                         {
@@ -2074,12 +2074,13 @@ namespace ServiceTelecomConnect
 
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
-                        var queryLastNumberActRemont = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
-                            $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
-                            $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
-                            $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
-                            $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters FROM radiostation_parameters " +
-                            $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+                        string queryLastNumberActRemont = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
+                            $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
+                            $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
+                            $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
+                            $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, " +
+                            $"noteRadioStationParameters FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
+                            $"AND serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                         {
@@ -2088,38 +2089,34 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                 {
-                                    txB_LowPowerLevelTransmitter.Text = reader[0].ToString();
-                                    txB_HighPowerLevelTransmitter.Text = reader[1].ToString();
-                                    txB_FrequencyDeviationTransmitter.Text = reader[3].ToString();
-                                    txB_SensitivityTransmitter.Text = reader[4].ToString();
-                                    txB_KNITransmitter.Text = reader[5].ToString();
-                                    txB_DeviationTransmitter.Text = reader[6].ToString();
-                                    txB_OutputPowerVoltReceiver.Text = reader[7].ToString();
-                                    txB_OutputPowerWattReceiver.Text = reader[8].ToString();
-                                    txB_SelectivityReceiver.Text = reader[9].ToString();
-                                    txB_SensitivityReceiver.Text = reader[10].ToString();
-                                    txB_KNIReceiver.Text = reader[11].ToString();
-                                    txB_SuppressorReceiver.Text = reader[12].ToString();
-                                    txB_StandbyModeCurrentConsumption.Text = reader[13].ToString();
-                                    txB_ReceptionModeCurrentConsumption.Text = reader[14].ToString();
-                                    txB_TransmissionModeCurrentConsumption.Text = reader[15].ToString();
-                                    txB_BatteryDischargeAlarmCurrentConsumption.Text = reader[16].ToString();
-                                    txB_TransmitterFrequencies.Text = reader[17].ToString();
-                                    txB_ReceiverFrequencies.Text = reader[18].ToString();
-                                    cmB_BatteryChargerAccessories.Text = reader[19].ToString();
-                                    cmB_ManipulatorAccessories.Text = reader[20].ToString();
-                                    lbL_nameAKB.Text = reader[21].ToString();
-                                    txB_percentAKB.Text = reader[22].ToString();
-                                    txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                                    string LowPowerLevelTransmitter= reader[0].ToString();
+                                    string HighPowerLevelTransmitter = reader[1].ToString();
+                                    string FrequencyDeviationTransmitter = reader[2].ToString();
+                                    string SensitivityTransmitter  = reader[3].ToString();
+                                    string KNITransmitter = reader[4].ToString();
+                                    string DeviationTransmitter = reader[5].ToString();
+                                    string OutputPowerVoltReceiver = reader[6].ToString();
+                                    string OutputPowerWattReceiver = reader[7].ToString();
+                                    string SelectivityReceiver= reader[8].ToString();
+                                    string SensitivityReceiver = reader[9].ToString();
+                                    string KNIReceiver = reader[10].ToString();
+                                    string SuppressorReceiver = reader[11].ToString();
+                                    string StandbyModeCurrentConsumption = reader[12].ToString();
+                                    string ReceptionModeCurrentConsumption = reader[13].ToString();
+                                    string TransmissionModeCurrentConsumption = reader[14].ToString();
+                                    string BatteryDischargeAlarmCurrentConsumption = reader[15].ToString();
+                                    string TransmitterFrequencies = reader[16].ToString();
+                                    string ReceiverFrequencies = reader[17].ToString();
+                                    string BatteryChargerAccessories = reader[18].ToString();
+                                    string ManipulatorAccessories = reader[19].ToString();
+                                    string nameAKB = reader[20].ToString();
+                                    string percentAKB= reader[21].ToString();
+                                    string NoteRadioStationParameterst = reader[22].ToString();
                                 }
                                 reader.Close();
                             }
                             DB.GetInstance.CloseConnection();
 
-                            if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
-                                cmB_BatteryChargerAccessories.Enabled = false;
-                            if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
-                                cmB_ManipulatorAccessories.Enabled = false;
                         }
 
                         workSheet.Cells[19 + s4, 1] = serialNumber;
@@ -2147,7 +2144,7 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    var file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
+                    string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
 
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\Ведомости\{city}\"))
                     {
@@ -3261,7 +3258,7 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    var file = $"{numberActRemont.Replace('/', '.')}-{company}_Акт.xlsx";
+                    string file = $"{numberActRemont.Replace('/', '.')}-{company}_Акт.xlsx";
 
                     if (!File.Exists($@"C:\Documents_ServiceTelekom\Акты_ремонта\{city}\{company}\"))
                     {
