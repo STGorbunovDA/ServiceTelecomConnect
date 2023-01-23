@@ -81,7 +81,7 @@ namespace ServiceTelecomConnect
                         ReplaceWith: missing, Replace: replace);
                 }
 
-                var word_file = $"{txB_decommissionSerialNumber_company.Replace('/', '.')}-{dateDecommission}_АКТ-Дефектовки.doc";
+                string word_file = $"{txB_decommissionSerialNumber_company.Replace('/', '.')}-{dateDecommission}_АКТ-Дефектовки.doc";
 
                 if (!File.Exists($@"С:\Documents_ServiceTelekom\Списания\{city}\"))
                 {
