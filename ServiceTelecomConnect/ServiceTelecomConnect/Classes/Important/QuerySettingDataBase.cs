@@ -802,7 +802,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var searchString = string.Empty;
+                string searchString = string.Empty;
                 string perem_comboBox = string.Empty;
                 dgw.Rows.Clear();
 
@@ -860,7 +860,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var searchString = string.Empty;
+                string searchString = string.Empty;
                 if (txb_flag_all_BD == "Вся БД")
                 {
                     string perem_comboBox = "serialNumber";
@@ -886,7 +886,7 @@ namespace ServiceTelecomConnect
                     else if (comboBox_seach == "Номер Акта списания")
                         perem_comboBox = "decommissionSerialNumber";
 
-                    var provSeach = textBox_search;
+                    string provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
@@ -960,7 +960,7 @@ namespace ServiceTelecomConnect
                     else if (comboBox_seach == "Номер Акта списания")
                         perem_comboBox = "decommissionSerialNumber";
 
-                    var provSeach = textBox_search;
+                    string provSeach = textBox_search;
                     provSeach = provSeach.ToUpper();
 
                     if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
@@ -1024,7 +1024,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var searchString = string.Empty;
+                string searchString = string.Empty;
                 string perem_comboBox = "serialNumber";
 
                 dgw.Rows.Clear();
@@ -1048,7 +1048,7 @@ namespace ServiceTelecomConnect
                 else if (comboBox_seach == "Модель")
                     perem_comboBox = "model";
 
-                var provSeach = textBox_search;
+                string provSeach = textBox_search;
                 provSeach = provSeach.ToUpper();
 
                 if (provSeach == "ВСЕ" || provSeach == "ВСЁ")
@@ -1107,7 +1107,7 @@ namespace ServiceTelecomConnect
         internal static void SearchNumberActCombobox(DataGridView dgw, string city, string road, string numberAct)
         {
             dgw.Rows.Clear();
-            var searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
+            string searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
@@ -1331,7 +1331,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var clearBD = "TRUNCATE TABLE radiostantion_copy";
+                string clearBD = "TRUNCATE TABLE radiostantion_copy";
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
@@ -1343,7 +1343,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                var copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
+                string copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";  
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
@@ -1361,7 +1361,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
+                string clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
@@ -1373,7 +1373,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                var copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
+                string copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
@@ -1405,9 +1405,9 @@ namespace ServiceTelecomConnect
 
                     if (rowState == RowState.Change)
                     {
-                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        int id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                         var numberAct = dgw.Rows[index].Cells[9].Value;
-                        var changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_pnl_ChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
+                        string changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_pnl_ChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
                             $"AND city = '{city}' AND road = '{road}' AND id = '{id}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
@@ -1439,8 +1439,8 @@ namespace ServiceTelecomConnect
 
                     if (rowState == RowState.Deleted)
                     {
-                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
-                        var deleteQuery = $"DELETE FROM radiostantion WHERE id = {id}";
+                        int id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        string deleteQuery = $"DELETE FROM radiostantion WHERE id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
@@ -1467,8 +1467,8 @@ namespace ServiceTelecomConnect
 
                     if (rowState == RowState.Deleted)
                     {
-                        var id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
-                        var deleteQuery = $"DELETE FROM radiostantion_сomparison WHERE id = {id}";
+                        int id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
+                        string deleteQuery = $"DELETE FROM radiostantion_сomparison WHERE id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB_4.GetInstance.GetConnection()))
                         {
@@ -1493,7 +1493,7 @@ namespace ServiceTelecomConnect
                     if (CheacknumberActRemont_radiostantion(numberActRemont))
                     {
 
-                        var changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
+                        string changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
                             $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
                             $"completed_works_3 = '', completed_works_4 = '', " +
                             $"completed_works_5 = '', completed_works_6 = '', " +
@@ -1555,7 +1555,7 @@ namespace ServiceTelecomConnect
             {
                 if (String.IsNullOrEmpty(serialNumber))
                 {
-                    var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                    string changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
                         $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                         $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
@@ -1571,7 +1571,7 @@ namespace ServiceTelecomConnect
 
                     if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(road, city, serialNumber))
                     {
-                        var changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                        string changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
@@ -1589,7 +1589,7 @@ namespace ServiceTelecomConnect
                     if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(road, city, serialNumber))
                     {
                         dateTO = Convert.ToDateTime(dateTO).ToString("yyyy-MM-dd");
-                        var addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
+                        string addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -1623,7 +1623,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var price = String.Empty;
+                string price = String.Empty;
                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
                 {
                     if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
@@ -1635,10 +1635,10 @@ namespace ServiceTelecomConnect
                         price = "1411.18";
                     else price = "1919.57";
 
-                    var reg = new Regex("C");
+                    Regex reg = new Regex("C");
                     txB_numberAct.Text = reg.Replace(txB_numberAct.Text, "");
 
-                    var changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'Измени', networkNumber = 'Измени', " +
+                    string changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'Измени', networkNumber = 'Измени', " +
                         $"price = '{price}', numberAct = '{txB_numberAct.Text}', decommissionSerialNumber = '', comment = '' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}' ";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
@@ -1649,7 +1649,7 @@ namespace ServiceTelecomConnect
                         MessageBox.Show("Списание удалено! Заполни \"номер акта\", \"инвентарный и сетевой номер\" заново!");
                     }
 
-                    var deleteQuery = $"DELETE FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
+                    string deleteQuery = $"DELETE FROM radiostantion_decommission WHERE serialNumber = '{serialNumber}'";
 
                     using (MySqlCommand command2 = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                     {
@@ -2552,7 +2552,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                var queryLastNumberActRemont = $"SELECT numberActRemont FROM radiostantion WHERE city = '{city}' AND road = '{road}' ORDER BY numberActRemont DESC LIMIT 1";
+                string queryLastNumberActRemont = $"SELECT numberActRemont FROM radiostantion WHERE city = '{city}' AND road = '{road}' ORDER BY numberActRemont DESC LIMIT 1";
                 using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -2575,7 +2575,7 @@ namespace ServiceTelecomConnect
         {
             try
             {
-                var queryLastNumberActRemont = $"SELECT decommissionSerialNumber FROM (SELECT decommissionSerialNumber FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY decommissionSerialNumber DESC LIMIT 1";
+                string queryLastNumberActRemont = $"SELECT decommissionSerialNumber FROM (SELECT decommissionSerialNumber FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY decommissionSerialNumber DESC LIMIT 1";
                 using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -2600,7 +2600,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    var queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY numberAct DESC LIMIT 1";
+                    string queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY numberAct DESC LIMIT 1";
                     using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
