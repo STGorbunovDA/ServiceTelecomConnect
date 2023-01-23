@@ -24,19 +24,19 @@ namespace ServiceTelecomConnect
 
         public bool FClose(string login)
         {
-            var result = MessageBox.Show("Вы действительно хотите закрыть программу?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            DialogResult result = MessageBox.Show("Вы действительно хотите закрыть программу?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
                 if (Internet_check.CheackSkyNET())
                 {
                     DateTime Date = DateTime.Now;
-                    var exitDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
+                    string exitDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-                    var dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(login);
+                    DateTime dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(login);
 
                     if (Date.ToString("yyyy-MM-dd") == dateTimeInput.ToString("yyyy-MM-dd"))
                     {
-                        var addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}' AND dateTimeInput = '{dateTimeInput.ToString("yyyy-MM-dd HH:mm:ss")}'";
+                        string addQuery = $"UPDATE logUserDB SET dateTimeExit = '{exitDate}' WHERE user = '{login}' AND dateTimeInput = '{dateTimeInput.ToString("yyyy-MM-dd HH:mm:ss")}'";
 
                         using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                         {
