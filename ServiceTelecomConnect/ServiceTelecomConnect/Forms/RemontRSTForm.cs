@@ -404,7 +404,7 @@ namespace ServiceTelecomConnect
                     {
                         if (control is TextBox && !String.IsNullOrEmpty(control.Text))
                         {
-                            var regex = new Regex(Environment.NewLine);
+                            Regex regex = new Regex(Environment.NewLine);
                             control.Text = regex.Replace(control.Text, "");
                             control.Text.Trim();
                         }
@@ -413,13 +413,13 @@ namespace ServiceTelecomConnect
                     {
                         if (control is TextBox && !String.IsNullOrEmpty(control.Text))
                         {
-                            var regex2 = new Regex(Environment.NewLine);
+                            Regex regex2 = new Regex(Environment.NewLine);
                             control.Text = regex2.Replace(control.Text, "");
                             control.Text.Trim();
                         }
                     }
 
-                    var numberActRemont = txB_numberActRemont.Text;
+                    string numberActRemont = txB_numberActRemont.Text;
 
                     if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                     {
@@ -427,44 +427,44 @@ namespace ServiceTelecomConnect
                         txB_numberActRemont.Select();
                         return;
                     }
-                    var сategory = cmB_сategory.Text;
+                    string сategory = cmB_сategory.Text;
                     if (String.IsNullOrEmpty(сategory))
                     {
                         MessageBox.Show("Заполните поле категория ремонта");
                         return;
                     }
-                    var priceRemont = txB_priceRemont.Text;
-                    var сompleted_works_1 = txB_сompleted_works_1.Text;
-                    var сompleted_works_2 = txB_сompleted_works_2.Text;
-                    var сompleted_works_3 = txB_сompleted_works_3.Text;
-                    var сompleted_works_4 = txB_сompleted_works_4.Text;
-                    var сompleted_works_5 = txB_сompleted_works_5.Text;
-                    var сompleted_works_6 = txB_сompleted_works_6.Text;
-                    var сompleted_works_7 = txB_сompleted_works_7.Text;
-                    var parts_1 = txB_parts_1.Text;
-                    var parts_2 = txB_parts_2.Text;
-                    var parts_3 = txB_parts_3.Text;
-                    var parts_4 = txB_parts_4.Text;
-                    var parts_5 = txB_parts_5.Text;
-                    var parts_6 = txB_parts_6.Text;
-                    var parts_7 = txB_parts_7.Text;
-                    var serialNumber = txB_serialNumber.Text;
-                    var road = lbL_road.Text;
-                    var city = lbL_city.Text;
+                    string priceRemont = txB_priceRemont.Text;
+                    string сompleted_works_1 = txB_сompleted_works_1.Text;
+                    string сompleted_works_2 = txB_сompleted_works_2.Text;
+                    string сompleted_works_3 = txB_сompleted_works_3.Text;
+                    string сompleted_works_4 = txB_сompleted_works_4.Text;
+                    string сompleted_works_5 = txB_сompleted_works_5.Text;
+                    string сompleted_works_6 = txB_сompleted_works_6.Text;
+                    string сompleted_works_7 = txB_сompleted_works_7.Text;
+                    string parts_1 = txB_parts_1.Text;
+                    string parts_2 = txB_parts_2.Text;
+                    string parts_3 = txB_parts_3.Text;
+                    string parts_4 = txB_parts_4.Text;
+                    string parts_5 = txB_parts_5.Text;
+                    string parts_6 = txB_parts_6.Text;
+                    string parts_7 = txB_parts_7.Text;
+                    string serialNumber = txB_serialNumber.Text;
+                    string road = lbL_road.Text;
+                    string city = lbL_city.Text;
 
-                    var regex3 = new Regex(Environment.NewLine);
+                    Regex regex3 = new Regex(Environment.NewLine);
                     txB_MainMeans.Text = regex3.Replace(txB_MainMeans.Text, "");
-                    var mainMeans = txB_MainMeans.Text;
+                    string mainMeans = txB_MainMeans.Text;
 
-                    var regex4 = new Regex(Environment.NewLine);
+                    Regex regex4 = new Regex(Environment.NewLine);
                     txB_NameProductRepaired.Text = regex4.Replace(txB_NameProductRepaired.Text, "");
-                    var nameProductRepaired = txB_NameProductRepaired.Text;
+                    string nameProductRepaired = txB_NameProductRepaired.Text;
 
 
 
                     if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
                     {
-                        var changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
+                        string changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
                             $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1}', completed_works_2 = '{сompleted_works_2}', " +
                             $"completed_works_3 = '{сompleted_works_3}', completed_works_4 = '{сompleted_works_4}', " +
                             $"completed_works_5 = '{сompleted_works_5}', completed_works_6 = '{сompleted_works_6}', " +
@@ -472,7 +472,7 @@ namespace ServiceTelecomConnect
                             $"parts_3 = '{parts_3}', parts_4 = '{parts_4}', parts_5 = '{parts_5}', parts_6 = '{parts_6}', " +
                             $"parts_7 = '{parts_7}' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
-                        var changeQuery2 = $"UPDATE radiostantion_full SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
+                        string changeQuery2 = $"UPDATE radiostantion_full SET mainMeans = '{mainMeans}', nameProductRepaired = '{nameProductRepaired}'" +
                             $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
@@ -493,7 +493,7 @@ namespace ServiceTelecomConnect
                     }
                     else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
                 }
-                else MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей"); 
+                else MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей");
             }
         }
         void PictureBox4_Click(object sender, EventArgs e)
