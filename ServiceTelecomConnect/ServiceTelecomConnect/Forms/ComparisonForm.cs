@@ -113,8 +113,8 @@ namespace ServiceTelecomConnect
 
         void TimerEventProcessorCurator(Object myObject, EventArgs myEventArgs)
         {
-            var taskCity = cmB_city.Text;
-            var road = cmB_road.Text;
+            string taskCity = cmB_city.Text;
+            string road = cmB_road.Text;
             QuerySettingDataBase.RefreshDataGridСuratorTimerEventProcessor(dataGridView2, taskCity, road);
             new Thread(() => { FunctionalPanel.Get_date_save_datagridview_сurator_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFileCurator(dataGridView2, road); }) { IsBackground = true }.Start();
