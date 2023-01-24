@@ -36,7 +36,7 @@ namespace ServiceTelecomConnect
             {
                 Regex re = new Regex(@"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$");
                 Match result = re.Match(lbL_last_act.Text);
-                var y1 = Convert.ToDouble(result.Groups[2].Value);
+                double y1 = Convert.ToDouble(result.Groups[2].Value);
                 y1++;
                 txB_numberAct.Text += y1.ToString();
             }
@@ -58,7 +58,7 @@ namespace ServiceTelecomConnect
             {
                 if (control is TextBox)
                 {
-                    var re = new Regex(Environment.NewLine);
+                    Regex re = new Regex(Environment.NewLine);
                     control.Text = re.Replace(control.Text, " ");
                     control.Text.Trim();
                 }
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect
 
             if (Internet_check.CheackSkyNET())
             {
-                var city = txB_city.Text;
+                string city = txB_city.Text;
 
                 if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
                 {
@@ -90,8 +90,8 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var poligon = cmB_poligon.Text;
-                var company = txB_company.Text;
+                string poligon = cmB_poligon.Text;
+                string company = txB_company.Text;
 
                 if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
                 {
@@ -104,7 +104,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var location = txB_location.Text;
+                string location = txB_location.Text;
                 if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -116,9 +116,9 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var model = cmB_model.GetItemText(cmB_model.SelectedItem);
+                string model = cmB_model.GetItemText(cmB_model.SelectedItem);
 
-                var serialNumber = txB_serialNumber.Text;
+                string serialNumber = txB_serialNumber.Text;
 
                 #region
                 if (model == "Motorola GP-340")
@@ -381,7 +381,7 @@ namespace ServiceTelecomConnect
                 }
                 #endregion
 
-                var inventoryNumber = txB_inventoryNumber.Text;
+                string inventoryNumber = txB_inventoryNumber.Text;
 
                 if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
@@ -394,7 +394,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var networkNumber = txB_networkNumber.Text;
+                string networkNumber = txB_networkNumber.Text;
 
                 if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
@@ -407,22 +407,22 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var numberAct = txB_numberAct.Text;
-                var dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
+                string numberAct = txB_numberAct.Text;
+                string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
                 if (String.IsNullOrEmpty(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateTO.Select();
                     return;
                 }
-                var price = txB_price.Text;
+                string price = txB_price.Text;
                 if (String.IsNullOrEmpty(price))
                 {
                     MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_price.Select();
                     return;
                 }
-                var representative = txB_representative.Text;
+                string representative = txB_representative.Text;
 
                 if (!representative.Contains("-"))
                 {
@@ -443,14 +443,14 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                var post = txB_post.Text;
+                string post = txB_post.Text;
                 if (String.IsNullOrEmpty(post))
                 {
                     MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_post.Select();
                     return;
                 }
-                var numberIdentification = txB_numberIdentification.Text;
+                string numberIdentification = txB_numberIdentification.Text;
 
                 if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
                 {
@@ -461,7 +461,7 @@ namespace ServiceTelecomConnect
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-                var dateIssue = txB_dateIssue.Text;
+                string dateIssue = txB_dateIssue.Text;
                 if (String.IsNullOrEmpty(dateIssue))
                 {
                     MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -469,7 +469,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
 
-                var phoneNumber = txB_phoneNumber.Text;
+                string phoneNumber = txB_phoneNumber.Text;
                 if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -480,12 +480,12 @@ namespace ServiceTelecomConnect
                         return;
 
                 }
-                var antenna = txB_antenna.Text;
-                var manipulator = txB_manipulator.Text;
-                var AKB = txB_AKB.Text;
-                var batteryСharger = txB_batteryСharger.Text;
-                var comment = txB_comment.Text;
-                var road = lbL_road.Text;
+                string antenna = txB_antenna.Text;
+                string manipulator = txB_manipulator.Text;
+                string AKB = txB_AKB.Text;
+                string batteryСharger = txB_batteryСharger.Text;
+                string comment = txB_comment.Text;
+                string road = lbL_road.Text;
 
                 //var x = DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
 
@@ -499,7 +499,7 @@ namespace ServiceTelecomConnect
                     {
                         if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(road, city, numberAct))
                         {
-                            var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                            string addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                 $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                 $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                 $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -515,11 +515,11 @@ namespace ServiceTelecomConnect
                             {
                                 DB.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
-                                DB.GetInstance.CloseConnection();                               
+                                DB.GetInstance.CloseConnection();
                             }
                             if (!CheacSerialNumber_radiostantion_full(serialNumber))
                             {
-                                var addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
+                                string addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                                 $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                                 $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                                 $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -589,18 +589,18 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count > 0)
                         {
-                            var model = cmB_model.Text;
-                            var inventoryNumber = txB_inventoryNumber.Text;
-                            var networkNumber = txB_networkNumber.Text;
-                            var dateTO = txB_dateTO.Text;
-                            var numberAct = txB_numberAct.Text;
-                            var representative = txB_representative.Text;
-                            var numberIdentification = txB_numberIdentification.Text;
-                            var phoneNumber = txB_phoneNumber.Text;
-                            var post = txB_post.Text;
-                            var dateIssue = txB_dateIssue.Text;
+                            string model = cmB_model.Text;
+                            string inventoryNumber = txB_inventoryNumber.Text;
+                            string networkNumber = txB_networkNumber.Text;
+                            string dateTO = txB_dateTO.Text;
+                            string numberAct = txB_numberAct.Text;
+                            string representative = txB_representative.Text;
+                            string numberIdentification = txB_numberIdentification.Text;
+                            string phoneNumber = txB_phoneNumber.Text;
+                            string post = txB_post.Text;
+                            string dateIssue = txB_dateIssue.Text;
 
-                            var updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                            string updateQuery = $"UPDATE radiostantion_full SET model = '{model}', inventoryNumber = '{inventoryNumber}', " +
                                 $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', representative = '{representative}', " +
                                 $"numberIdentification = '{numberIdentification}', phoneNumber = '{phoneNumber}', post = '{post}', dateIssue = '{dateIssue}'" +
                                 $" WHERE serialNumber = '{serialNumber}'";
@@ -703,7 +703,7 @@ namespace ServiceTelecomConnect
             {
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
-                    var serialNumber = txB_serialNumber.Text;
+                    string serialNumber = txB_serialNumber.Text;
 
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
 
@@ -745,7 +745,7 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrEmpty(txB_serialNumber.Text))
             {
-                var serialNumber = txB_serialNumber.Text;
+                string serialNumber = txB_serialNumber.Text;
 
                 string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND road = '{lbL_road.Text}'";
 
@@ -975,7 +975,7 @@ namespace ServiceTelecomConnect
             {
                 if (control is TextBox)
                 {
-                    var re = new Regex(Environment.NewLine);
+                    Regex re = new Regex(Environment.NewLine);
                     control.Text = re.Replace(control.Text, " ");
                     control.Text.Trim();
                 }
@@ -990,7 +990,7 @@ namespace ServiceTelecomConnect
 
             if (Internet_check.CheackSkyNET())
             {
-                var city = txB_city.Text;
+                string city = txB_city.Text;
 
                 if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
                 {
@@ -1003,8 +1003,8 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var poligon = cmB_poligon.Text;
-                var company = txB_company.Text;
+                string poligon = cmB_poligon.Text;
+                string company = txB_company.Text;
 
                 if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
                 {
@@ -1017,7 +1017,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var location = txB_location.Text;
+                string location = txB_location.Text;
                 if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1029,9 +1029,9 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var model = cmB_model.GetItemText(cmB_model.SelectedItem);
+                string model = cmB_model.GetItemText(cmB_model.SelectedItem);
 
-                var serialNumber = txB_serialNumber.Text;
+                string serialNumber = txB_serialNumber.Text;
                 #region
                 if (model == "Motorola GP-340")
                 {
@@ -1308,7 +1308,7 @@ namespace ServiceTelecomConnect
                 }
                 #endregion
 
-                var inventoryNumber = txB_inventoryNumber.Text;
+                string inventoryNumber = txB_inventoryNumber.Text;
 
                 if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
@@ -1321,7 +1321,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var networkNumber = txB_networkNumber.Text;
+                string networkNumber = txB_networkNumber.Text;
 
                 if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
@@ -1334,22 +1334,22 @@ namespace ServiceTelecomConnect
                         return;
                 }
 
-                var numberAct = txB_numberAct.Text;
-                var dateTO = txB_dateTO.Text;
+                string numberAct = txB_numberAct.Text;
+                string dateTO = txB_dateTO.Text;
                 if (String.IsNullOrEmpty(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateTO.Select();
                     return;
                 }
-                var price = txB_price.Text;
+                string price = txB_price.Text;
                 if (String.IsNullOrEmpty(price))
                 {
                     MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_price.Select();
                     return;
                 }
-                var representative = txB_representative.Text;
+                string representative = txB_representative.Text;
 
                 if (!representative.Contains("-"))
                 {
@@ -1370,14 +1370,14 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                var post = txB_post.Text;
+                string post = txB_post.Text;
                 if (String.IsNullOrEmpty(post))
                 {
                     MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_post.Select();
                     return;
                 }
-                var numberIdentification = txB_numberIdentification.Text;
+                string numberIdentification = txB_numberIdentification.Text;
 
                 if (!Regex.IsMatch(numberIdentification, @"^[V][\s]([0-9]{6,})$"))
                 {
@@ -1388,7 +1388,7 @@ namespace ServiceTelecomConnect
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-                var dateIssue = txB_dateIssue.Text;
+                string dateIssue = txB_dateIssue.Text;
                 if (String.IsNullOrEmpty(dateIssue))
                 {
                     MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1396,7 +1396,7 @@ namespace ServiceTelecomConnect
                     return;
                 }
 
-                var phoneNumber = txB_phoneNumber.Text;
+                string phoneNumber = txB_phoneNumber.Text;
                 if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1406,12 +1406,12 @@ namespace ServiceTelecomConnect
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-                var antenna = txB_antenna.Text;
-                var manipulator = txB_manipulator.Text;
-                var AKB = txB_AKB.Text;
-                var batteryСharger = txB_batteryСharger.Text;
-                var comment = txB_comment.Text;
-                var road = lbL_road.Text;
+                string antenna = txB_antenna.Text;
+                string manipulator = txB_manipulator.Text;
+                string AKB = txB_AKB.Text;
+                string batteryСharger = txB_batteryСharger.Text;
+                string comment = txB_comment.Text;
+                string road = lbL_road.Text;
 
                 //var x = DateTime.Parse(dateIssue).ToString("dd.MM.yyyy");
 
@@ -1424,7 +1424,7 @@ namespace ServiceTelecomConnect
 
                     if (!CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(road, city, numberAct))
                     {
-                        var addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
+                        string addQuery = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                             $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
@@ -1450,7 +1450,7 @@ namespace ServiceTelecomConnect
 
                         if (CheacSerialNumber_radiostantion_full(serialNumber) == false)
                         {
-                            var addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
+                            string addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
                                             $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                             $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
