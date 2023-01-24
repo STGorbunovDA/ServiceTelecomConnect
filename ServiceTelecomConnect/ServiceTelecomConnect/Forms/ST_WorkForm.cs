@@ -192,8 +192,8 @@ namespace ServiceTelecomConnect
             if (dataGridView1.Rows.Count == 0)
                 return;
 
-            var taskCity = cmB_city.Text;
-            var road = cmB_road.Text;
+            string taskCity = cmB_city.Text;
+            string road = cmB_road.Text;
             QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, road);
             new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
@@ -623,7 +623,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя напечатать \"Ведомость с параметрами\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            int dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
             if (dgwRowsCount == 0)
                 return;
             if (dgwRowsCount > 20)
@@ -667,7 +667,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            int dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
             if (dgwRowsCount == 0)
                 return;
             if (dgwRowsCount > 20)
@@ -886,7 +886,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
@@ -937,7 +937,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
@@ -979,7 +979,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
@@ -1033,7 +1033,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        var add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
@@ -2066,7 +2066,7 @@ namespace ServiceTelecomConnect
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-                var re = new Regex(Environment.NewLine);
+                Regex re = new Regex(Environment.NewLine);
                 txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
                 txB_reason_decommission.Text.Trim();
                 txB1_decommissionSerialNumber.Text.Trim();
