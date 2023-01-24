@@ -37,13 +37,13 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 DateTime Date = DateTime.Now;
-                var inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
+                string inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-                var dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(_user.Login);
+                DateTime dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(_user.Login);
 
                 if (Date.ToString("yyyy-MM-dd") != dateTimeInput.ToString("yyyy-MM-dd"))
                 {
-                    var addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
+                    string addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
