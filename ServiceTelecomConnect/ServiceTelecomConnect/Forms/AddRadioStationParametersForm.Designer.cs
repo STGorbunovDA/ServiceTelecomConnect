@@ -1046,6 +1046,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximumSize = new System.Drawing.Size(1071, 670);
+            this.MinimumSize = new System.Drawing.Size(1071, 670);
             this.Name = "AddRadioStationParametersForm";
             this.Text = "Добавление параметров радиостанции";
             this.Load += new System.EventHandler(this.AddRadioStationParametersForm_Load);
