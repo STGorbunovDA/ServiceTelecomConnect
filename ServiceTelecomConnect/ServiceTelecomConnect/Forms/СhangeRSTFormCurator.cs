@@ -83,13 +83,13 @@ namespace ServiceTelecomConnect
             {
                 if (control is TextBox)
                 {
-                    var re = new Regex(Environment.NewLine);
+                    Regex re = new Regex(Environment.NewLine);
                     control.Text = re.Replace(control.Text, " ");
                     control.Text.Trim();
                 }
             }
 
-            var city = txB_city.Text;
+            string city = txB_city.Text;
 
             if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
             {
@@ -100,8 +100,8 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            var poligon = cmB_poligon.Text;
-            var company = txB_company.Text;
+            string poligon = cmB_poligon.Text;
+            string company = txB_company.Text;
 
             if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
             {
@@ -113,7 +113,7 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            var location = txB_location.Text;
+            string location = txB_location.Text;
             if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
             {
                 MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -124,8 +124,8 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            var model = cmB_model.GetItemText(cmB_model.SelectedItem);
-            var serialNumber = txB_serialNumber.Text;
+            string model = cmB_model.GetItemText(cmB_model.SelectedItem);
+            string serialNumber = txB_serialNumber.Text;
             #region
             if (model == "Motorola GP-340")
             {
@@ -387,7 +387,7 @@ namespace ServiceTelecomConnect
             }
             #endregion
 
-            var inventoryNumber = txB_inventoryNumber.Text;
+            string inventoryNumber = txB_inventoryNumber.Text;
 
             if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
             {
@@ -399,7 +399,7 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            var networkNumber = txB_networkNumber.Text;
+            string networkNumber = txB_networkNumber.Text;
 
             if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
             {
@@ -411,7 +411,7 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            var numberAct = txB_numberAct.Text;
+            string numberAct = txB_numberAct.Text;
             if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
             {
                 MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -419,14 +419,14 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            var dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
+            string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
             if (String.IsNullOrEmpty(dateTO))
             {
                 MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_dateTO.Select();
                 return;
             }
-            var price = txB_price.Text;
+            string price = txB_price.Text;
             if (String.IsNullOrEmpty(price))
             {
                 MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -434,8 +434,8 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            var numberActRemont = txB_numberActRemont.Text;
-            var сategory = cmB_сategory.Text;
+            string numberActRemont = txB_numberActRemont.Text;
+            string сategory = cmB_сategory.Text;
             if (!String.IsNullOrEmpty(numberActRemont))
             {
                 if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
@@ -451,10 +451,10 @@ namespace ServiceTelecomConnect
                 }
             }
 
-            var priceRemont = txB_priceRemont.Text;
-            var decommission = txB_decommission.Text;
-            var month = cmB_month.Text;
-            var road = lbL_road.Text;
+            string priceRemont = txB_priceRemont.Text;
+            string decommission = txB_decommission.Text;
+            string month = cmB_month.Text;
+            string road = lbL_road.Text;
 
 
             if ((city != "") && (poligon != "") && (company != "") && (location != "")
@@ -648,7 +648,7 @@ namespace ServiceTelecomConnect
 
                 #endregion
 
-                var changeQuery = $"UPDATE radiostantion_сomparison SET poligon = '{poligon}', company = '{company}', " +
+                string changeQuery = $"UPDATE radiostantion_сomparison SET poligon = '{poligon}', company = '{company}', " +
                     $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
                     $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', numberAct = '{numberAct}', " +
                     $"city = '{city}', price = '{Convert.ToDecimal(price)}', numberActRemont = '{numberActRemont}', " +
