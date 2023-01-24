@@ -326,6 +326,12 @@ namespace ServiceTelecomConnect.Forms
         {
             if (Internet_check.CheackSkyNET())
             {
+                if(txB_TransmitterFrequencies.TextLength != txB_ReceiverFrequencies.TextLength)
+                {
+                    MessageBox.Show($"Пропущена частота.\nP.s. приём и передача не могут существовать без друг друга\n как \"Инь Ян\"");
+                    return;
+                }
+
                 #region проверка на пустные control-ы
                 foreach (Control control in pnl_transmitter.Controls)
                 {
@@ -910,8 +916,8 @@ namespace ServiceTelecomConnect.Forms
                         $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
                         $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
                         $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
-                        $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
-                        $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
+                        $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies.TrimEnd()}', " +
+                        $"receiverFrequencies = '{receiverFrequencies.TrimEnd()}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
                         $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
                         $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
