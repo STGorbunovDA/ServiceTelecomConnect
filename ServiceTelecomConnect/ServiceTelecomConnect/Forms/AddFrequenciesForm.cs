@@ -30,7 +30,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 if (!CheackFrequencies(cmB_Frequencies.Text))
                 {
-                    var addQuery = $"insert into frequencies (frequency) VALUES ('{cmB_Frequencies.Text}')";
+                    string addQuery = $"insert into frequencies (frequency) VALUES ('{cmB_Frequencies.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
@@ -53,7 +53,7 @@ namespace ServiceTelecomConnect.Forms
 
             if (Internet_check.CheackSkyNET())
             {
-                var addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItem_cmB_Frequencies}'";
+                string addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItem_cmB_Frequencies}'";
 
                 using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                 {
@@ -76,7 +76,7 @@ namespace ServiceTelecomConnect.Forms
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            var deleteQuery = $"delete from frequencies where frequency = '{cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem)}'";
+            string deleteQuery = $"delete from frequencies where frequency = '{cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem)}'";
 
             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
             {
