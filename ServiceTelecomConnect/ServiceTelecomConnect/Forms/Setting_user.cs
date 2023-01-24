@@ -133,11 +133,11 @@ namespace ServiceTelecomConnect
 
                         if (rowState == RowState.Deleted)
                         {
-                            var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                            int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                             var login = dataGridView1.Rows[index].Cells[1].Value;
-                            var deleteQuery = $"delete from users where id = {id}";
+                            string deleteQuery = $"delete from users where id = {id}";
 
-                            var update_сharacteristics_вrigade = $"UPDATE сharacteristics_вrigade SET section_foreman_FIO = '' " +
+                            string update_сharacteristics_вrigade = $"UPDATE сharacteristics_вrigade SET section_foreman_FIO = '' " +
                                 $"OR engineers_FIO = '' OR curator = '' OR departmentCommunications = '' " +
                                 $"WHERE section_foreman_FIO = '{login}' OR engineers_FIO = '{login}' OR curator = '{login}' " +
                                 $"OR departmentCommunications = '{login}'";
@@ -157,12 +157,12 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var id = txB_id.Text;
-                var login = txB_login.Text;
-                var pass = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
-                var is_admin = cmB_is_admin_post.Text;
+                string id = txB_id.Text;
+                string login = txB_login.Text;
+                string pass = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
+                string is_admin = cmB_is_admin_post.Text;
 
-                var changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
+                string changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
 
                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                 {
@@ -186,7 +186,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var loginUser = txB_login.Text;
+                string loginUser = txB_login.Text;
                 if (!loginUser.Contains("-"))
                 {
                     if (!Regex.IsMatch(loginUser, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -206,7 +206,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                var passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
+                string passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                 if (!CheackUser(loginUser, passUser))
                 {
                     if (!String.IsNullOrEmpty(cmB_is_admin_post.Text))
