@@ -85,6 +85,7 @@ namespace ServiceTelecomConnect
                 mTrip_file.Visible = false;
                 txB_serialNumber.Enabled = true;
                 button_save_in_file.Enabled = true;
+                mTrip_PrintStatementParameters.Visible = false;
             }
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
                 mTrip_funcionalpanel.Visible = false;
@@ -943,6 +944,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
@@ -991,6 +993,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
+                            m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
@@ -2386,6 +2389,11 @@ namespace ServiceTelecomConnect
 
         #region MenuTrip
 
+        void MTrip_PrintStatementParameters_Click(object sender, EventArgs e)
+        {
+            PrintStatementParameters(sender, e);
+        }
+
         void MTrip_AddRadioStationParameters_Click(object sender, EventArgs e)
         {
             AddRadioStationParameters(sender, e);
@@ -2613,10 +2621,11 @@ namespace ServiceTelecomConnect
             Btn_close_pnl_ChangeNumberActTOFull_Click(sender, e);
         }
 
+
+
         #endregion
 
-
-
+        
     }
 }
 
