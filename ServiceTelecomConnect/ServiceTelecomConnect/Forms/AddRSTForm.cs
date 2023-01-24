@@ -1506,7 +1506,17 @@ namespace ServiceTelecomConnect
 
         void TxB_serialNumber_TextChanged(object sender, EventArgs e)
         {
-            if (txB_serialNumber.Text.Length == 10)
+            if(txB_serialNumber.Text.Length == 7)
+            {
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+            else if(txB_serialNumber.Text.Length == 9)
+            {
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+            else if (txB_serialNumber.Text.Length == 10)
             {
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([6][7][2]([A-Z]{3,3}[0-9]{4,4}))?([6][7][2][A-Z]{4,4}[0-9]{3,3})*$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-340");
@@ -1525,6 +1535,16 @@ namespace ServiceTelecomConnect
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola P080");
 
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+            else if(txB_serialNumber.Text.Length == 12)
+            {
+                SeachRSTReturn();
+                ChoosingAnalogDigital();
+            }
+            else if(txB_serialNumber.Text.Length == 14)
+            {
                 SeachRSTReturn();
                 ChoosingAnalogDigital();
             }
