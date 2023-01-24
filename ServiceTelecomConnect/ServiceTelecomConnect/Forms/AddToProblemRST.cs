@@ -74,24 +74,24 @@ namespace ServiceTelecomConnect
             {
                 if (control is TextBox)
                 {
-                    var re = new Regex(Environment.NewLine);
+                    Regex re = new Regex(Environment.NewLine);
                     control.Text = re.Replace(control.Text, " ");
                     control.Text.Trim();
                 }
             }
             if (Internet_check.CheackSkyNET())
             {
-                var problem = String.Empty;
-                var model = cmB_model.Text;
+                string problem = String.Empty;
+                string model = cmB_model.Text;
                 if (chB_problem_Enable.Checked)
                     problem = txB_problem.Text;
                 else problem = cmB_problem.Text;
 
-                var info = txB_info.Text;
-                var actions = txB_actions.Text;
-                var author = lbL_Author.Text;
+                string info = txB_info.Text;
+                string actions = txB_actions.Text;
+                string author = lbL_Author.Text;
 
-                var addQuery = $"INSERT INTO problem_engineer (model, problem, info, actions, author) " +
+                string addQuery = $"INSERT INTO problem_engineer (model, problem, info, actions, author) " +
                     $"VALUES ('{model}', '{problem}', '{info}', '{actions}', '{author}')";
 
                 using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
