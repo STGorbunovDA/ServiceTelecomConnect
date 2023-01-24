@@ -183,8 +183,8 @@ namespace ServiceTelecomConnect.Forms
 
                     if (rowState == RowState.Deleted)
                     {
-                        var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-                        var deleteQuery = $"DELETE FROM problem_engineer WHERE id = {id}";
+                        int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                        string deleteQuery = $"DELETE FROM problem_engineer WHERE id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
@@ -262,8 +262,8 @@ namespace ServiceTelecomConnect.Forms
                     {
                         for (int j = 0; j < dataGridView1.ColumnCount; j++)
                         {
-                            var re = new Regex(Environment.NewLine);
-                            var value = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            Regex re = new Regex(Environment.NewLine);
+                            string value = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
                             //if (dataGridView1.Columns[j].HeaderText.ToString() == "№")
                             //{
