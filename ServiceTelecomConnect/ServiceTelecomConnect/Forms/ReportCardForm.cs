@@ -158,8 +158,8 @@ namespace ServiceTelecomConnect.Forms
                     {
                         for (int j = 0; j < dataGridView1.ColumnCount; j++)
                         {
-                            var re = new Regex(Environment.NewLine);
-                            var value = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            Regex re = new Regex(Environment.NewLine);
+                            string value = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
                             if (dataGridView1.Columns[j].HeaderText.ToString() == "№")
                             {
@@ -185,9 +185,9 @@ namespace ServiceTelecomConnect.Forms
             if (cmB_dateTimeInput.Items.Count == 0)
                 return;
 
-            var date = Convert.ToDateTime(cmB_dateTimeInput.Text).ToString("yyyy-MM-dd");
+            string date = Convert.ToDateTime(cmB_dateTimeInput.Text).ToString("yyyy-MM-dd");
 
-            var searchString = $"SELECT id, user, dateTimeInput, dateTimeExit FROM logUserDB WHERE dateTimeInput LIKE '%" + date + "%'";
+            string searchString = $"SELECT id, user, dateTimeInput, dateTimeExit FROM logUserDB WHERE dateTimeInput LIKE '%" + date + "%'";
             using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
@@ -220,8 +220,8 @@ namespace ServiceTelecomConnect.Forms
 
                     if (rowState == RowState.Deleted)
                     {
-                        var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
-                        var deleteQuery = $"delete from logUserDB where id = {id}";
+                        int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
+                        string deleteQuery = $"delete from logUserDB where id = {id}";
 
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                             command.ExecuteNonQuery();
