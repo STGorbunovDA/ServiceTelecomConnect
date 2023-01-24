@@ -30,7 +30,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 if(!CheacModelRST(cmB_model.Text))
                 {
-                    var addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
+                    string addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
@@ -54,7 +54,7 @@ namespace ServiceTelecomConnect.Forms
 
             if (Internet_check.CheackSkyNET())
             {
-                var addQuery = $"UPDATE model_radiostation SET model_radiostation_name = '{cmB_model.Text}' WHERE model_radiostation_name = '{selectedItem_cmB_model}'";
+                string addQuery = $"UPDATE model_radiostation SET model_radiostation_name = '{cmB_model.Text}' WHERE model_radiostation_name = '{selectedItem_cmB_model}'";
 
                 using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                 {
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect.Forms
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            var deleteQuery = $"delete from model_radiostation where model_radiostation_name = '{cmB_model.GetItemText(cmB_model.SelectedItem)}'";
+            string deleteQuery = $"delete from model_radiostation where model_radiostation_name = '{cmB_model.GetItemText(cmB_model.SelectedItem)}'";
             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
