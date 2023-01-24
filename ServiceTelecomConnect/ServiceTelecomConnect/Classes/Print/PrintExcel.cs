@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -1634,6 +1636,7 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells267 = (Excel.Range)workSheet.get_Range("T2", "U39").Cells;
                     Excel.Range _excelCells268 = (Excel.Range)workSheet.get_Range("V2", "Y39").Cells;
                     Excel.Range _excelCells269 = (Excel.Range)workSheet.get_Range("A20", "U39").Cells;
+                    Excel.Range _excelCells271 = (Excel.Range)workSheet.get_Range("X4", "Y19").Cells;
 
                     _excelCells200.Merge(Type.Missing);
                     _excelCells201.Merge(Type.Missing);
@@ -1757,6 +1760,8 @@ namespace ServiceTelecomConnect
                     _excelCells268.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
 
                     _excelCells269.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                    _excelCells271.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                    _excelCells271.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
 
                     _excelCells200.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
                     _excelCells201.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
@@ -1881,6 +1886,8 @@ namespace ServiceTelecomConnect
                     _excelCells259.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells260.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells261.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells269.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells271.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                     Excel.Range rowHeight200 = workSheet.get_Range("A1", "G1");
                     rowHeight200.EntireRow.RowHeight = 15; //
@@ -1912,9 +1919,6 @@ namespace ServiceTelecomConnect
                     Excel.Range rowColum207 = workSheet.get_Range("I3", "I14");
                     rowColum207.EntireColumn.ColumnWidth = 8;
 
-                    Excel.Range rowColum208 = workSheet.get_Range("V4", "V19");
-                    rowColum208.EntireColumn.ColumnWidth = 8;
-
                     Excel.Range rowColum209 = workSheet.get_Range("X3", "Y3");
                     rowColum209.EntireColumn.ColumnWidth = 15;
 
@@ -1933,6 +1937,9 @@ namespace ServiceTelecomConnect
                     Excel.Range rowColum214 = workSheet.get_Range("V3", "W3");
                     rowColum214.EntireColumn.ColumnWidth = 2;
 
+                    Excel.Range rowColum208 = workSheet.get_Range("V4", "W19");
+                    rowColum208.EntireColumn.ColumnWidth = 0.8;
+
                     Excel.Range rowHeight215 = workSheet.get_Range("V4", "V19");
                     rowHeight215.EntireRow.RowHeight = 20;
 
@@ -1947,6 +1954,9 @@ namespace ServiceTelecomConnect
 
                     Excel.Range rowHeight219 = workSheet.get_Range("A20", "A39");
                     rowHeight219.EntireRow.RowHeight = 25;
+
+                    Excel.Range rowColum220 = workSheet.get_Range("Y4", "Y19");
+                    rowColum220.EntireColumn.ColumnWidth = 16;
 
                     Excel.Range range_Consolidated200 = workSheet.Rows.get_Range("H1", "I1");
                     Excel.Range range_Consolidated201 = workSheet.Rows.get_Range("L1", "M1");
@@ -1963,6 +1973,8 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated212 = workSheet.Rows.get_Range("T41", "Y41");
                     Excel.Range range_Consolidated213 = workSheet.Rows.get_Range("A20", "A39");
                     Excel.Range range_Consolidated243 = workSheet.Rows.get_Range("B20", "B39");
+                    Excel.Range range_Consolidated244 = workSheet.Rows.get_Range("C20", "Y40");
+                    Excel.Range range_Consolidated245 = workSheet.Rows.get_Range("X4", "Y19");
 
                     range_Consolidated200.Font.Size = 18;
                     range_Consolidated200.Font.Bold = true;
@@ -1985,6 +1997,11 @@ namespace ServiceTelecomConnect
                     range_Consolidated213.NumberFormat = "@";
                     range_Consolidated243.Font.Size = 10;
                     range_Consolidated243.NumberFormat = "@";
+                    range_Consolidated244.Font.Size = 11;
+                    range_Consolidated244.NumberFormat = "@";
+                    range_Consolidated245.Font.Size = 11;
+                    range_Consolidated245.NumberFormat = "@";
+
 
                     String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
 
@@ -2051,36 +2068,61 @@ namespace ServiceTelecomConnect
                     for (int i = 0; i < 16; i++)
                     {
                         workSheet.Cells[3 + s3, 22] = s3;
-                        Excel.Range _excelCells236 = (Excel.Range)workSheet.get_Range($"V{j3}").Cells;
+                        Excel.Range _excelCells236 = (Excel.Range)workSheet.get_Range($"V{j3}", $"W{j3}").Cells;
                         _excelCells236.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-
-                        Excel.Range _excelCells237 = (Excel.Range)workSheet.get_Range($"W{j3}", $"Y{j3}").Cells;
-                        _excelCells237.Merge(Type.Missing);
+                        _excelCells236.Merge(Type.Missing);
 
                         s3++;
                         j3++;
                     }
                     int j4 = 20;
                     int s4 = 1;
+                    string lowPowerLevelTransmitter = String.Empty;
+                    string highPowerLevelTransmitter = String.Empty;
+                    string frequencyDeviationTransmitter = String.Empty;
+                    string sensitivityTransmitter = String.Empty;
+                    string KNITransmitter = String.Empty;
+                    string deviationTransmitter = String.Empty;
+                    string outputPowerVoltReceiver = String.Empty;
+                    string outputPowerWattReceiver = String.Empty;
+                    string selectivityReceiver = String.Empty;
+                    string sensitivityReceiver = String.Empty;
+                    string KNIReceiver = String.Empty;
+                    string suppressorReceiver = String.Empty;
+                    string standbyModeCurrentConsumption = String.Empty;
+                    string receptionModeCurrentConsumption = String.Empty;
+                    string transmissionModeCurrentConsumption = String.Empty;
+                    string batteryDischargeAlarmCurrentConsumption = String.Empty;
+                    string transmitterFrequencies = String.Empty;
+                    string receiverFrequencies = String.Empty;
+                    string batteryChargerAccessories = String.Empty;
+                    string manipulatorAccessories = String.Empty;
+                    string nameAKB = String.Empty;
+                    string percentAKB = String.Empty;
+                    List<string> fList = new List<string>();
+                    string[] frequencyTransmitter = fList.ToArray();
+                    string[] frequencyReceiver = fList.ToArray();
+                    string[] temporaryArrayFrequencyTransmitter = fList.ToArray();
+                    string[] temporaryArrayFrequencyReceiver = fList.ToArray();
+
                     for (int i = 0; i < dgw.Rows.Count; i++)
                     {
-                        Excel.Range _excelCells242 = (Excel.Range)workSheet.get_Range($"A{j4}").Cells;
+                        Excel.Range _excelCells242 = (Excel.Range)workSheet.get_Range($"A{j4}", $"Y{j4}").Cells;
                         _excelCells242.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells242.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                        Excel.Range _excelCells270 = (Excel.Range)workSheet.get_Range($"B{j4}").Cells;
-                        _excelCells270.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                        _excelCells270.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        //Excel.Range _excelCells270 = (Excel.Range)workSheet.get_Range($"B{j4}").Cells;
+                        //_excelCells270.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        //_excelCells270.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
                         string queryLastNumberActRemont = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
-                            $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
-                            $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
-                            $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
-                            $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, " +
-                            $"noteRadioStationParameters FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
-                            $"AND serialNumber = '{serialNumber}'";
+                           $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
+                           $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
+                           $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
+                           $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB " +
+                           $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                         using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                         {
@@ -2089,29 +2131,28 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                 {
-                                    string LowPowerLevelTransmitter= reader[0].ToString();
-                                    string HighPowerLevelTransmitter = reader[1].ToString();
-                                    string FrequencyDeviationTransmitter = reader[2].ToString();
-                                    string SensitivityTransmitter  = reader[3].ToString();
-                                    string KNITransmitter = reader[4].ToString();
-                                    string DeviationTransmitter = reader[5].ToString();
-                                    string OutputPowerVoltReceiver = reader[6].ToString();
-                                    string OutputPowerWattReceiver = reader[7].ToString();
-                                    string SelectivityReceiver= reader[8].ToString();
-                                    string SensitivityReceiver = reader[9].ToString();
-                                    string KNIReceiver = reader[10].ToString();
-                                    string SuppressorReceiver = reader[11].ToString();
-                                    string StandbyModeCurrentConsumption = reader[12].ToString();
-                                    string ReceptionModeCurrentConsumption = reader[13].ToString();
-                                    string TransmissionModeCurrentConsumption = reader[14].ToString();
-                                    string BatteryDischargeAlarmCurrentConsumption = reader[15].ToString();
-                                    string TransmitterFrequencies = reader[16].ToString();
-                                    string ReceiverFrequencies = reader[17].ToString();
-                                    string BatteryChargerAccessories = reader[18].ToString();
-                                    string ManipulatorAccessories = reader[19].ToString();
-                                    string nameAKB = reader[20].ToString();
-                                    string percentAKB= reader[21].ToString();
-                                    string NoteRadioStationParameterst = reader[22].ToString();
+                                    lowPowerLevelTransmitter = reader[0].ToString();
+                                    highPowerLevelTransmitter = reader[1].ToString();
+                                    frequencyDeviationTransmitter = reader[2].ToString();
+                                    sensitivityTransmitter = reader[3].ToString();
+                                    KNITransmitter = reader[4].ToString();
+                                    deviationTransmitter = reader[5].ToString();
+                                    outputPowerVoltReceiver = reader[6].ToString();
+                                    outputPowerWattReceiver = reader[7].ToString();
+                                    selectivityReceiver = reader[8].ToString();
+                                    sensitivityReceiver = reader[9].ToString();
+                                    KNIReceiver = reader[10].ToString();
+                                    suppressorReceiver = reader[11].ToString();
+                                    standbyModeCurrentConsumption = reader[12].ToString();
+                                    receptionModeCurrentConsumption = reader[13].ToString();
+                                    transmissionModeCurrentConsumption = reader[14].ToString();
+                                    batteryDischargeAlarmCurrentConsumption = reader[15].ToString();
+                                    transmitterFrequencies = reader[16].ToString();
+                                    receiverFrequencies = reader[17].ToString();
+                                    batteryChargerAccessories = reader[18].ToString();
+                                    manipulatorAccessories = reader[19].ToString();
+                                    nameAKB = reader[20].ToString();
+                                    percentAKB = reader[21].ToString();
                                 }
                                 reader.Close();
                             }
@@ -2119,12 +2160,53 @@ namespace ServiceTelecomConnect
 
                         }
 
+
                         workSheet.Cells[19 + s4, 1] = serialNumber;
-                        workSheet.Cells[19 + s4, 2] = dgw.Rows[i].Cells["AKB"].Value.ToString();
+                        workSheet.Cells[19 + s4, 2] = nameAKB;
+                        workSheet.Cells[19 + s4, 3] = percentAKB;
+                        workSheet.Cells[19 + s4, 4] = lowPowerLevelTransmitter;
+                        workSheet.Cells[19 + s4, 5] = highPowerLevelTransmitter;
+                        workSheet.Cells[19 + s4, 6] = frequencyDeviationTransmitter;
+                        workSheet.Cells[19 + s4, 7] = KNITransmitter;
+                        workSheet.Cells[19 + s4, 8] = sensitivityTransmitter;
+                        workSheet.Cells[19 + s4, 9] = deviationTransmitter;
+                        workSheet.Cells[19 + s4, 10] = sensitivityReceiver;
+                        workSheet.Cells[19 + s4, 11] = outputPowerVoltReceiver;
+                        workSheet.Cells[19 + s4, 12] = outputPowerWattReceiver;
+                        workSheet.Cells[19 + s4, 13] = selectivityReceiver;
+                        workSheet.Cells[19 + s4, 14] = KNIReceiver;
+                        workSheet.Cells[19 + s4, 15] = suppressorReceiver;
+                        workSheet.Cells[19 + s4, 16] = standbyModeCurrentConsumption;
+                        workSheet.Cells[19 + s4, 17] = receptionModeCurrentConsumption;
+                        workSheet.Cells[19 + s4, 18] = transmissionModeCurrentConsumption;
+                        workSheet.Cells[19 + s4, 19] = batteryDischargeAlarmCurrentConsumption;
+                        workSheet.Cells[19 + s4, 20] = batteryChargerAccessories;
+                        workSheet.Cells[19 + s4, 21] = manipulatorAccessories;
+
+                        if (i == 0)
+                        {
+                            frequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+                            frequencyReceiver = receiverFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+                            workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
+                        }
+                        else
+                        {
+                            Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
+                            Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+
+                            temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+                            temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+
+                            frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
+
+                            frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
+
+                            if (frequencyReceiver.Length > 15)
+                                workSheet.Cells[19 + s4, 22] = $"1 - {16}";
+                        }
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
                         _excelCells239.Merge(Type.Missing);
-
                         s4++;
                         j4++;
 
@@ -2136,10 +2218,19 @@ namespace ServiceTelecomConnect
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
                         _excelCells239.Merge(Type.Missing);
-
                         s4++;
                         j4++;
                     }
+
+                    int count = 1;
+                    for (int u = 0; u < frequencyTransmitter.Length && u < frequencyReceiver.Length && u < 16; u++)
+                    {
+                        workSheet.Cells[3 + count, 24] = frequencyTransmitter[u];
+                        workSheet.Cells[3 + count, 25] = frequencyReceiver[u];
+                        count++;
+                    }
+
+
 
 
                     #endregion
