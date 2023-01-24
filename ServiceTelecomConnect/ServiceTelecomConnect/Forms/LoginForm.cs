@@ -55,8 +55,8 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                var loginUser = txB_loginField.Text;
-                var passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
+                string loginUser = txB_loginField.Text;
+                string passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
 
                 string querystring = $"SELECT id, login, pass, is_admin	FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
 
@@ -71,7 +71,7 @@ namespace ServiceTelecomConnect
 
                         if (table.Rows.Count == 1)
                         {
-                            var user = new CheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
+                            CheakUser user = new CheakUser(table.Rows[0].ItemArray[1].ToString(), table.Rows[0].ItemArray[3].ToString());
                             using (Menu menu = new Menu(user))
                             {
                                 RegistryKey currentUserKey = Registry.CurrentUser;
