@@ -64,7 +64,7 @@ namespace ServiceTelecomConnect.Forms
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
                         }
-                        reader.Close();                       
+                        reader.Close();
                     }
                     DB.GetInstance.CloseConnection();
 
@@ -76,37 +76,167 @@ namespace ServiceTelecomConnect.Forms
             }
             else
             {
-                #region заполнение избирательности
+                #region заполнение парметров РСТ
 
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-                    txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-                    txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-                    txB_model.Text == "Радий-301")
-                    txB_SelectivityReceiver.Text = "71";
-                else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
-                    txB_SelectivityReceiver.Text = "76";
-                else txB_SelectivityReceiver.Text = "-";
-                #endregion
-
-                #region заполнение Вых. мощность, Вт
-
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-                   txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-                   txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-                   txB_model.Text == "Радий-301" || txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М" || txB_model.Text == "Motorola DP-2400е" ||
-                   txB_model.Text == "Motorola DP-2400" || txB_model.Text == "Комбат T-44" || txB_model.Text == "РН311М" || txB_model.Text == "Motorola DP-4400" ||
-                   txB_model.Text == "Motorola DP-1400" || txB_model.Text == "РНД-500" || txB_model.Text == "РНД-512" || txB_model.Text == "Шеврон T-44 V2")
+                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-320")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.88";
+                    txB_FrequencyDeviationTransmitter.Text = "+55";
+                    txB_SensitivityTransmitter.Text = "9.5";
+                    txB_KNITransmitter.Text = "0.87";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "5.10";
                     txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "71";
+                    txB_SensitivityReceiver.Text = "0.21";
+                    txB_KNIReceiver.Text = "0.87";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "50";
+                    txB_ReceptionModeCurrentConsumption.Text = "340";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.55";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
+                else if (txB_model.Text == "Motorola GP-360")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.88";
+                    txB_FrequencyDeviationTransmitter.Text = "+55";
+                    txB_SensitivityTransmitter.Text = "9.5";
+                    txB_KNITransmitter.Text = "0.87";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "5.10";
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "71";
+                    txB_SensitivityReceiver.Text = "0.21";
+                    txB_KNIReceiver.Text = "0.87";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "70";
+                    txB_ReceptionModeCurrentConsumption.Text = "340";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.55";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
+                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || 
+                    txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.12";
+                    txB_HighPowerLevelTransmitter.Text = "4.75";
+                    txB_FrequencyDeviationTransmitter.Text = "+120";
+                    txB_SensitivityTransmitter.Text = "15.5";
+                    txB_KNITransmitter.Text = "1.50";
+                    txB_DeviationTransmitter.Text = "4.65";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "2.71";
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "71";
+                    txB_SensitivityReceiver.Text = "0.23";
+                    txB_KNIReceiver.Text = "1.62";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "70";
+                    txB_ReceptionModeCurrentConsumption.Text = "180";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.45";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
+                else if(txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || 
+                    txB_model.Text == "Motorola DP-1400" || txB_model.Text == "Motorola DP-4400")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.88";
+                    txB_FrequencyDeviationTransmitter.Text = "+55";
+                    txB_SensitivityTransmitter.Text = "9.5";
+                    txB_KNITransmitter.Text = "1.35";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "5.10";
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "-";
+                    txB_SensitivityReceiver.Text = "0.21";
+                    txB_KNIReceiver.Text = "1.55";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "70";
+                    txB_ReceptionModeCurrentConsumption.Text = "400";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.55";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
+                else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.88";
+                    txB_FrequencyDeviationTransmitter.Text = "+55";
+                    txB_SensitivityTransmitter.Text = "15.5";
+                    txB_KNITransmitter.Text = "1.35";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "5.10";
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "76";
+                    txB_SensitivityReceiver.Text = "0.21";
+                    txB_KNIReceiver.Text = "1.55";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "40";
+                    txB_ReceptionModeCurrentConsumption.Text = "190";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.55";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
                 else if (txB_model.Text == "Comrade R5")
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.88";
+                    txB_FrequencyDeviationTransmitter.Text = "+55";
+                    txB_SensitivityTransmitter.Text = "7.5";
+                    txB_KNITransmitter.Text = "1.35";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "5.10";
                     txB_OutputPowerWattReceiver.Text = ">=0.4";
+                    txB_SelectivityReceiver.Text = "71";
+                    txB_SensitivityReceiver.Text = "0.21";
+                    txB_KNIReceiver.Text = "1.55";
+                    txB_SuppressorReceiver.Text = "0.15";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "70";
+                    txB_ReceptionModeCurrentConsumption.Text = "350";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.55";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
+                else
+                {
+                    // Передатчик
+                    txB_LowPowerLevelTransmitter.Text = "2.15";
+                    txB_HighPowerLevelTransmitter.Text = "4.75";
+                    txB_FrequencyDeviationTransmitter.Text = "+105";
+                    txB_SensitivityTransmitter.Text = "9.5";
+                    txB_KNITransmitter.Text = "1.35";
+                    txB_DeviationTransmitter.Text = "4.55";
+                    //Приёмник
+                    txB_OutputPowerVoltReceiver.Text = "4.5";
+                    txB_OutputPowerWattReceiver.Text = ">0.5";
+                    txB_SelectivityReceiver.Text = "71";
+                    txB_SensitivityReceiver.Text = "0.24";
+                    txB_KNIReceiver.Text = "1.55";
+                    txB_SuppressorReceiver.Text = "0.17";
+                    //Потребляемый ток
+                    txB_StandbyModeCurrentConsumption.Text = "50";
+                    txB_ReceptionModeCurrentConsumption.Text = "350";
+                    txB_TransmissionModeCurrentConsumption.Text = "1.60";
+                    txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
+                }
 
                 #endregion
-
-                #region заполнение Сигнализация разряда АКБ, В
-
-                txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
-
-                #endregion
+               
 
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
@@ -326,7 +456,7 @@ namespace ServiceTelecomConnect.Forms
         {
             if (Internet_check.CheackSkyNET())
             {
-                if(txB_TransmitterFrequencies.TextLength != txB_ReceiverFrequencies.TextLength)
+                if (txB_TransmitterFrequencies.TextLength != txB_ReceiverFrequencies.TextLength)
                 {
                     MessageBox.Show($"Пропущена частота.\nP.s. приём и передача не могут существовать без друг друга\n как \"Инь Ян\"");
                     return;
@@ -416,7 +546,7 @@ namespace ServiceTelecomConnect.Forms
                 #endregion
 
                 #region передатчик
-                if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}$"))
+                if (!Regex.IsMatch(txB_LowPowerLevelTransmitter.Text, @"^[2-2]{1,1}[.][0-2]{1,1}[0-9]$"))
                 {
                     MessageBox.Show("Введите корректно поле: \"Низкий, Вт\"\nПример: от 2.0 Вт. до 2.2 Вт.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_LowPowerLevelTransmitter.Select();
@@ -916,8 +1046,8 @@ namespace ServiceTelecomConnect.Forms
                         $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
                         $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
                         $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
-                        $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies.TrimEnd()}', " +
-                        $"receiverFrequencies = '{receiverFrequencies.TrimEnd()}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
+                        $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
+                        $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
                         $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
                         $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
