@@ -2060,6 +2060,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated243 = workSheet.Rows.get_Range("B20", "B39");
                     Excel.Range range_Consolidated244 = workSheet.Rows.get_Range("C20", "Y40");
                     Excel.Range range_Consolidated245 = workSheet.Rows.get_Range("X4", "Y19");
+                    Excel.Range range_Consolidated246 = workSheet.Rows.get_Range("V20", "Y39");
 
                     #endregion
 
@@ -2082,12 +2083,14 @@ namespace ServiceTelecomConnect
                     range_Consolidated211.Font.Bold = true;
                     range_Consolidated212.Font.Bold = true;
                     range_Consolidated213.NumberFormat = "@";
-                    range_Consolidated243.Font.Size = 10;
+                    range_Consolidated243.Font.Size = 12;
                     range_Consolidated243.NumberFormat = "@";
-                    range_Consolidated244.Font.Size = 11;
+                    range_Consolidated244.Font.Size = 13;
                     range_Consolidated244.NumberFormat = "@";
-                    range_Consolidated245.Font.Size = 11;
+                    range_Consolidated245.Font.Size = 14;
                     range_Consolidated245.NumberFormat = "@";
+                    range_Consolidated246.Font.Size = 14;
+                    range_Consolidated246.NumberFormat = "@";
 
 
                     String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
@@ -2247,7 +2250,6 @@ namespace ServiceTelecomConnect
 
                         }
 
-
                         workSheet.Cells[19 + s4, 1] = serialNumber;
                         workSheet.Cells[19 + s4, 2] = nameAKB;
                         workSheet.Cells[19 + s4, 3] = percentAKB;
@@ -2285,15 +2287,16 @@ namespace ServiceTelecomConnect
 
                             temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                             temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
                             temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                             temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
                             frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
 
-                            if (frequencyReceiver.Length > 15)
-                                workSheet.Cells[19 + s4, 22] = $"1 - {16}";
-                            else workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
+                            //if (frequencyReceiver.Length > 15)
+                            //    workSheet.Cells[19 + s4, 22] = $"1 - {16}";
+                            //else workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
                         }
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
@@ -2321,8 +2324,69 @@ namespace ServiceTelecomConnect
                         count++;
                     }
 
+                    string transmitterFrequenciesRST = String.Empty;
+                    string receiverFrequenciesRST = String.Empty;
+                    int count2 = 1;
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+
+                        string queryLastNumberActRemont = $"SELECT transmitterFrequencies, receiverFrequencies " +
+                            $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+
+                                while (reader.Read())
+                                {
+                                    transmitterFrequenciesRST = reader[0].ToString();
+                                    receiverFrequenciesRST = reader[1].ToString();
+                                }
+                                reader.Close();
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                        Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
+                        Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+
+                        temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                        temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
 
+                        string frequency = String.Empty;
+                        int p = 0;
+                        for (int k = 0; k < frequencyTransmitter.Length;)
+                        {
+                            if (frequencyTransmitter[k] == temporaryArrayFrequencyTransmitter[p])
+                            {
+                                if (k > 17)
+                                    frequency = "1 - 16";
+                                else
+                                {
+                                    if (p == temporaryArrayFrequencyTransmitter.Length - 1)
+                                    {
+                                        frequency += $"{k + 1}";
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        frequency += $"{k + 1}, ";
+                                        k = 0;
+                                        p++;
+                                    }
+                                }
+                            }
+                            else k++;
+                        }
+                        workSheet.Cells[19 + count2, 22] = frequency;
+                        count2++;
+                    }
 
                     #endregion
 
