@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ServiceTelecomConnect
@@ -1544,13 +1545,83 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    exApp.SheetsInNewWorkbook = 1;
+                    exApp.SheetsInNewWorkbook = 2;
                     exApp.Workbooks.Add();
                     exApp.DisplayAlerts = false;
 
                     Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
+                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
 
-                    workSheet.Name = $"Ведомость №{numberAct.Replace('/', '.')}";
+                    workSheet.Name = $"Ведомость № {numberAct.Replace('/', '.')}";
+
+                    workSheet2.Name = $"Все частоты ведомости № {numberAct.Replace('/', '.')}";
+
+
+                    #region Частоты
+
+                    workSheet2.PageSetup.Zoom = false;
+                    workSheet2.PageSetup.FitToPagesWide = 1;
+                    workSheet2.PageSetup.FitToPagesTall = 1;
+
+                    workSheet2.Rows.Font.Size = 15;
+                    workSheet2.Rows.Font.Name = "Times New Roman";
+
+                    workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                    workSheet2.PageSetup.TopMargin = 0;
+                    workSheet2.PageSetup.BottomMargin = 0;
+                    workSheet2.PageSetup.LeftMargin = 0;
+                    workSheet2.PageSetup.RightMargin = 0;
+
+                    Excel.Range _excelCells500 = (Excel.Range)workSheet2.get_Range("B1", "H1").Cells;
+                    Excel.Range _excelCells501 = (Excel.Range)workSheet2.get_Range("I1", "J1").Cells;
+                    Excel.Range _excelCells502 = (Excel.Range)workSheet2.get_Range("K1", "L1").Cells;
+                    Excel.Range _excelCells503 = (Excel.Range)workSheet2.get_Range("M1", "N1").Cells;
+                    Excel.Range _excelCells504 = (Excel.Range)workSheet2.get_Range("T1", "Y1").Cells;
+                    Excel.Range _excelCells505 = (Excel.Range)workSheet2.get_Range("A3", "D3").Cells;
+                    Excel.Range _excelCells506 = (Excel.Range)workSheet2.get_Range("B3", "D3").Cells;
+
+
+                    _excelCells500.Merge(Type.Missing);
+                    _excelCells501.Merge(Type.Missing);
+                    _excelCells502.Merge(Type.Missing);
+                    _excelCells503.Merge(Type.Missing);
+                    _excelCells504.Merge(Type.Missing);
+                    _excelCells505.Merge(Type.Missing);
+                    _excelCells506.Merge(Type.Missing);
+
+                    _excelCells500.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    _excelCells501.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    _excelCells502.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    _excelCells503.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    _excelCells504.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells505.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells506.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    Excel.Range range_Consolidated500 = workSheet2.Rows.get_Range("I1", "J1");
+                    Excel.Range range_Consolidated501 = workSheet2.Rows.get_Range("M1", "N1");
+                    Excel.Range range_Consolidated502 = workSheet2.Rows.get_Range("T1", "V1");
+
+                    range_Consolidated500.Font.Size = 18;
+                    range_Consolidated500.Font.Bold = true;
+                    range_Consolidated501.Font.Size = 18;
+                    range_Consolidated501.Font.Bold = true;
+                    range_Consolidated502.Font.Size = 18;
+                    range_Consolidated502.Font.Bold = true;
+
+                    Excel.Range rowColum500 = workSheet2.get_Range("A1");
+                    rowColum500.EntireColumn.ColumnWidth = 2; //
+
+                    workSheet2.Cells[1, 2] = $"Приложение № 2 (Все частоты) к ведомости №:";
+                    workSheet2.Cells[1, 9] = $"{numberAct}";
+                    workSheet2.Cells[1, 11] = $"Предприятие:";
+                    workSheet2.Cells[1, 13] = $"{company}";
+                    workSheet2.Cells[1, 20] = $"{location}";
+                    workSheet2.Cells[3, 1] = $"Частоты (МГц)";
+                    workSheet2.Cells[4, 2] = $"передача / приём";
+
+
+
+                    #endregion
 
                     #region Ведомость То 2 Item
 
@@ -1569,6 +1640,8 @@ namespace ServiceTelecomConnect
                     workSheet.PageSetup.BottomMargin = 0;
                     workSheet.PageSetup.LeftMargin = 0;
                     workSheet.PageSetup.RightMargin = 0;
+
+                    #region 1
 
                     Excel.Range _excelCells200 = (Excel.Range)workSheet.get_Range("A1", "G1").Cells;
                     Excel.Range _excelCells201 = (Excel.Range)workSheet.get_Range("H1", "I1").Cells;
@@ -1638,6 +1711,10 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells269 = (Excel.Range)workSheet.get_Range("A20", "U39").Cells;
                     Excel.Range _excelCells271 = (Excel.Range)workSheet.get_Range("X4", "Y19").Cells;
 
+                    #endregion
+
+                    #region
+
                     _excelCells200.Merge(Type.Missing);
                     _excelCells201.Merge(Type.Missing);
                     _excelCells202.Merge(Type.Missing);
@@ -1690,6 +1767,10 @@ namespace ServiceTelecomConnect
                     _excelCells259.Merge(Type.Missing);
                     _excelCells260.Merge(Type.Missing);
                     _excelCells261.Merge(Type.Missing);
+
+                    #endregion
+
+                    #region
 
                     _excelCells238.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells238.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -1889,6 +1970,10 @@ namespace ServiceTelecomConnect
                     _excelCells269.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells271.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
+                    #endregion
+
+                    #region
+
                     Excel.Range rowHeight200 = workSheet.get_Range("A1", "G1");
                     rowHeight200.EntireRow.RowHeight = 15; //
 
@@ -1975,6 +2060,8 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated243 = workSheet.Rows.get_Range("B20", "B39");
                     Excel.Range range_Consolidated244 = workSheet.Rows.get_Range("C20", "Y40");
                     Excel.Range range_Consolidated245 = workSheet.Rows.get_Range("X4", "Y19");
+
+                    #endregion
 
                     range_Consolidated200.Font.Size = 18;
                     range_Consolidated200.Font.Bold = true;
@@ -2185,8 +2272,10 @@ namespace ServiceTelecomConnect
 
                         if (i == 0)
                         {
-                            frequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
-                            frequencyReceiver = receiverFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+                            frequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            frequencyTransmitter = frequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            frequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            frequencyReceiver = frequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
                             workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
                         }
                         else
@@ -2194,15 +2283,17 @@ namespace ServiceTelecomConnect
                             Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                             Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
-                            temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
-                            temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n" }, StringSplitOptions.None);
+                            temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
-
                             frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
 
                             if (frequencyReceiver.Length > 15)
                                 workSheet.Cells[19 + s4, 22] = $"1 - {16}";
+                            else workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
                         }
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
@@ -2234,6 +2325,7 @@ namespace ServiceTelecomConnect
 
 
                     #endregion
+
 
                     string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
 
