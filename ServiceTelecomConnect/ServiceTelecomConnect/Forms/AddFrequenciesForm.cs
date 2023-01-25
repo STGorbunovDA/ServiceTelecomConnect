@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ServiceTelecomConnect.Forms
@@ -26,6 +27,19 @@ namespace ServiceTelecomConnect.Forms
 
         void Btn_add_Frequencies_Click(object sender, EventArgs e)
         {
+            if(String.IsNullOrEmpty(cmB_Frequencies.Text))
+            {
+                MessageBox.Show("Нельзя добавить пустую частоту!");
+                return;
+            }
+
+            if (!Regex.IsMatch(cmB_Frequencies.Text, @"^[1][0-9]{1,1}[0-9]{1,1}[.][0-9]{1,1}[0-9]{1,1}[0-9]{1,1}$"))
+            {
+                MessageBox.Show("Введите корректно поле: \"Частота\"\nПример: 151.825", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cmB_Frequencies.Select();
+                return;
+            }
+
             if (Internet_check.CheackSkyNET())
             {
                 if (!CheackFrequencies(cmB_Frequencies.Text))
