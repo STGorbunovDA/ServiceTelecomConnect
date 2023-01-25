@@ -1556,73 +1556,6 @@ namespace ServiceTelecomConnect
 
                     workSheet2.Name = $"Все частоты ведомости № {numberAct.Replace('/', '.')}";
 
-
-                    #region Частоты
-
-                    workSheet2.PageSetup.Zoom = false;
-                    workSheet2.PageSetup.FitToPagesWide = 1;
-                    workSheet2.PageSetup.FitToPagesTall = 1;
-
-                    workSheet2.Rows.Font.Size = 15;
-                    workSheet2.Rows.Font.Name = "Times New Roman";
-
-                    workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
-                    workSheet2.PageSetup.TopMargin = 0;
-                    workSheet2.PageSetup.BottomMargin = 0;
-                    workSheet2.PageSetup.LeftMargin = 0;
-                    workSheet2.PageSetup.RightMargin = 0;
-
-                    Excel.Range _excelCells500 = (Excel.Range)workSheet2.get_Range("B1", "H1").Cells;
-                    Excel.Range _excelCells501 = (Excel.Range)workSheet2.get_Range("I1", "J1").Cells;
-                    Excel.Range _excelCells502 = (Excel.Range)workSheet2.get_Range("K1", "L1").Cells;
-                    Excel.Range _excelCells503 = (Excel.Range)workSheet2.get_Range("M1", "N1").Cells;
-                    Excel.Range _excelCells504 = (Excel.Range)workSheet2.get_Range("T1", "Y1").Cells;
-                    Excel.Range _excelCells505 = (Excel.Range)workSheet2.get_Range("A3", "D3").Cells;
-                    Excel.Range _excelCells506 = (Excel.Range)workSheet2.get_Range("B3", "D3").Cells;
-
-
-                    _excelCells500.Merge(Type.Missing);
-                    _excelCells501.Merge(Type.Missing);
-                    _excelCells502.Merge(Type.Missing);
-                    _excelCells503.Merge(Type.Missing);
-                    _excelCells504.Merge(Type.Missing);
-                    _excelCells505.Merge(Type.Missing);
-                    _excelCells506.Merge(Type.Missing);
-
-                    _excelCells500.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    _excelCells501.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                    _excelCells502.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-                    _excelCells503.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                    _excelCells504.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                    _excelCells505.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                    _excelCells506.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
-                    Excel.Range range_Consolidated500 = workSheet2.Rows.get_Range("I1", "J1");
-                    Excel.Range range_Consolidated501 = workSheet2.Rows.get_Range("M1", "N1");
-                    Excel.Range range_Consolidated502 = workSheet2.Rows.get_Range("T1", "V1");
-
-                    range_Consolidated500.Font.Size = 18;
-                    range_Consolidated500.Font.Bold = true;
-                    range_Consolidated501.Font.Size = 18;
-                    range_Consolidated501.Font.Bold = true;
-                    range_Consolidated502.Font.Size = 18;
-                    range_Consolidated502.Font.Bold = true;
-
-                    Excel.Range rowColum500 = workSheet2.get_Range("A1");
-                    rowColum500.EntireColumn.ColumnWidth = 2; //
-
-                    workSheet2.Cells[1, 2] = $"Приложение № 2 (Все частоты) к ведомости №:";
-                    workSheet2.Cells[1, 9] = $"{numberAct}";
-                    workSheet2.Cells[1, 11] = $"Предприятие:";
-                    workSheet2.Cells[1, 13] = $"{company}";
-                    workSheet2.Cells[1, 20] = $"{location}";
-                    workSheet2.Cells[3, 1] = $"Частоты (МГц)";
-                    workSheet2.Cells[4, 2] = $"передача / приём";
-
-
-
-                    #endregion
-
                     #region Ведомость То 2 Item
 
 
@@ -2089,7 +2022,7 @@ namespace ServiceTelecomConnect
                     range_Consolidated244.NumberFormat = "@";
                     range_Consolidated245.Font.Size = 14;
                     range_Consolidated245.NumberFormat = "@";
-                    range_Consolidated246.Font.Size = 14;
+                    range_Consolidated246.Font.Size = 10;
                     range_Consolidated246.NumberFormat = "@";
 
 
@@ -2387,6 +2320,258 @@ namespace ServiceTelecomConnect
                         workSheet.Cells[19 + count2, 22] = frequency;
                         count2++;
                     }
+
+                    #endregion
+
+                    #region Частоты
+
+                    workSheet2.PageSetup.Zoom = false;
+                    workSheet2.PageSetup.FitToPagesWide = 1;
+                    workSheet2.PageSetup.FitToPagesTall = 1;
+
+                    workSheet2.Rows.Font.Size = 15;
+                    workSheet2.Rows.Font.Name = "Times New Roman";
+
+                    workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                    workSheet2.PageSetup.TopMargin = 0;
+                    workSheet2.PageSetup.BottomMargin = 0;
+                    workSheet2.PageSetup.LeftMargin = 0;
+                    workSheet2.PageSetup.RightMargin = 0;
+
+                    Excel.Range _excelCells500 = (Excel.Range)workSheet2.get_Range("A1", "H1").Cells;
+                    Excel.Range _excelCells501 = (Excel.Range)workSheet2.get_Range("I1", "J1").Cells;
+                    Excel.Range _excelCells502 = (Excel.Range)workSheet2.get_Range("K1", "L1").Cells;
+                    Excel.Range _excelCells503 = (Excel.Range)workSheet2.get_Range("M1", "N1").Cells;
+                    Excel.Range _excelCells504 = (Excel.Range)workSheet2.get_Range("T1", "Y1").Cells;
+                    Excel.Range _excelCells505 = (Excel.Range)workSheet2.get_Range("A3", "A39").Cells;
+                    Excel.Range _excelCells507 = (Excel.Range)workSheet2.get_Range("B3", "F3").Cells;
+                    Excel.Range _excelCells508 = (Excel.Range)workSheet2.get_Range("B3", "F39").Cells;
+                    Excel.Range _excelCells509 = (Excel.Range)workSheet2.get_Range("B4", "F4").Cells;
+                    
+
+                    _excelCells500.Merge(Type.Missing);
+                    _excelCells501.Merge(Type.Missing);
+                    _excelCells502.Merge(Type.Missing);
+                    _excelCells503.Merge(Type.Missing);
+                    _excelCells504.Merge(Type.Missing);
+                    _excelCells505.Merge(Type.Missing);
+                    _excelCells507.Merge(Type.Missing);
+                    _excelCells509.Merge(Type.Missing);
+
+                    _excelCells500.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    _excelCells501.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    _excelCells502.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
+                    _excelCells503.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                    _excelCells504.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells505.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells505.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells507.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells507.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    _excelCells508.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells508.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    _excelCells509.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells509.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    _excelCells505.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells505.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells505.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells505.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
+
+                    _excelCells507.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                    _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDouble;
+                    _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
+                    
+                    _excelCells509.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+
+
+                    Excel.Range range_Consolidated500 = workSheet2.Rows.get_Range("I1", "J1");
+                    Excel.Range range_Consolidated501 = workSheet2.Rows.get_Range("M1", "N1");
+                    Excel.Range range_Consolidated502 = workSheet2.Rows.get_Range("T1", "V1");
+                    Excel.Range range_Consolidated503 = workSheet2.Rows.get_Range("A2", "A39");
+                    Excel.Range range_Consolidated504 = workSheet2.Rows.get_Range("B5", "B39");
+                    Excel.Range range_Consolidated505 = workSheet2.Rows.get_Range("C5", "F39");
+                    Excel.Range range_Consolidated512 = workSheet2.Rows.get_Range("A40", "A59");
+                    Excel.Range range_Consolidated513 = workSheet2.Rows.get_Range("B40", "F59");
+
+                    range_Consolidated500.Font.Size = 18;
+                    range_Consolidated500.Font.Bold = true;
+                    range_Consolidated501.Font.Size = 18;
+                    range_Consolidated501.Font.Bold = true;
+                    range_Consolidated502.Font.Size = 18;
+                    range_Consolidated502.Font.Bold = true;
+                    range_Consolidated503.Font.Size = 18;
+                    range_Consolidated503.Font.Bold = true;
+                    range_Consolidated504.Font.Size = 10;
+                    range_Consolidated505.Font.Size = 13;
+                    range_Consolidated505.NumberFormat = "@";
+
+                    range_Consolidated512.Font.Size = 13;
+                    range_Consolidated512.Font.Bold = true;
+                    range_Consolidated512.NumberFormat = "@";
+
+                    range_Consolidated513.Font.Size = 10;
+                    range_Consolidated513.NumberFormat = "@";
+
+                    Excel.Range rowHeight500 = workSheet2.get_Range("B2", "A36");
+                    rowHeight500.EntireRow.RowHeight = 15; //
+
+                    Excel.Range rowColum501 = workSheet2.get_Range("B2", "A36");
+                    rowColum501.EntireColumn.ColumnWidth = 25; //
+
+                    Excel.Range rowColum503 = workSheet2.get_Range("B1");
+                    rowColum503.EntireColumn.ColumnWidth = 4; //
+
+                    Excel.Range rowColum504 = workSheet2.get_Range("A1");
+                    rowColum504.EntireColumn.ColumnWidth = 25; //
+
+                    workSheet2.Cells[1, 1] = $"Приложение № 2 (Все частоты) к ведомости №:";
+                    workSheet2.Cells[1, 9] = $"{numberAct}";
+                    workSheet2.Cells[1, 11] = $"Предприятие:";
+                    workSheet2.Cells[1, 13] = $"{company}";
+                    workSheet2.Cells[1, 20] = $"{location}";
+                    workSheet2.Cells[3, 1] = $"№ р/с";
+                    workSheet2.Cells[3, 2] = $"Частоты (МГц)";
+                    workSheet2.Cells[4, 2] = $"передача / приём";
+
+                    int ss3 = 1;
+                    int jj3 = 5;
+
+                    for (int i = 0; i < 35; i++)
+                    {
+                        workSheet2.Cells[4 + ss3, 2] = ss3;
+                        Excel.Range _excelCells506 = (Excel.Range)workSheet2.get_Range($"B{jj3}").Cells;
+                        _excelCells506.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        Excel.Range _excelCells510 = (Excel.Range)workSheet2.get_Range($"C{jj3}", $"D{jj3}").Cells;
+                        _excelCells510.Merge(Type.Missing);
+                        _excelCells510.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        _excelCells510.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells510.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+
+                        Excel.Range _excelCells511 = (Excel.Range)workSheet2.get_Range($"E{jj3}", $"F{jj3}").Cells;
+                        _excelCells511.Merge(Type.Missing);
+                        _excelCells511.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        if (i < 34)
+                        {
+                            _excelCells506.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                            _excelCells510.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                            _excelCells511.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        }
+
+                        ss3++;
+                        jj3++;
+                    }
+
+                    int countDop = 1;
+                    for (int u = 0; u < frequencyTransmitter.Length && u < frequencyReceiver.Length; u++)
+                    {
+                        workSheet2.Cells[4 + countDop, 3] = frequencyTransmitter[u];
+                        workSheet2.Cells[4 + countDop, 5] = frequencyReceiver[u];
+                        countDop++;
+                    }
+                    s4 = 1;
+                    jj3 = 40;
+
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+
+                        workSheet2.Cells[39 + s4, 1] = serialNumber;
+
+                        Excel.Range _excelCells512 = (Excel.Range)workSheet2.get_Range($"A{jj3}", $"F{jj3}").Cells;
+
+                        _excelCells512.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDouble;
+                        _excelCells512.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDouble;
+                        _excelCells512.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDouble;
+                        _excelCells512.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
+
+                        Excel.Range _excelCells513 = (Excel.Range)workSheet2.get_Range($"B{jj3}", $"F{jj3}").Cells;
+                        _excelCells513.Merge(Type.Missing);
+                        _excelCells513.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells513.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        
+
+                        Excel.Range _excelCells514 = (Excel.Range)workSheet2.get_Range($"A{jj3}").Cells;
+                        _excelCells514.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                       
+
+                        if(i < dgw.Rows.Count - 1)
+                        {
+                            _excelCells513.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                            _excelCells514.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        }
+
+                        s4++;
+                        jj3++;
+                    }
+
+
+                    transmitterFrequenciesRST = String.Empty;
+                    receiverFrequenciesRST = String.Empty;
+                    count2 = 1;
+                    for (int i = 0; i < dgw.Rows.Count; i++)
+                    {
+                        string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+
+                        string queryLastNumberActRemont = $"SELECT transmitterFrequencies, receiverFrequencies " +
+                            $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+
+                                while (reader.Read())
+                                {
+                                    transmitterFrequenciesRST = reader[0].ToString();
+                                    receiverFrequenciesRST = reader[1].ToString();
+                                }
+                                reader.Close();
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                        Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
+                        Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+
+                        temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+                        temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+
+                        string frequency = String.Empty;
+                        int p = 0;
+                        for (int k = 0; k < frequencyTransmitter.Length;)
+                        {
+                            if (frequencyTransmitter[k] == temporaryArrayFrequencyTransmitter[p])
+                            {
+                                if (p == temporaryArrayFrequencyTransmitter.Length - 1)
+                                {
+                                    frequency += $"{k + 1}";
+                                    break;
+                                }
+                                else
+                                {
+                                    frequency += $"{k + 1}, ";
+                                    k = 0;
+                                    p++;
+                                }
+                            }
+                            else k++;
+                        }
+                        workSheet2.Cells[39 + count2, 2] = frequency;
+                        count2++;
+                    }
+
 
                     #endregion
 
