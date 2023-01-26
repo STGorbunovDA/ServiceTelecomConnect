@@ -276,7 +276,7 @@ namespace ServiceTelecomConnect
                 }
                 else if (model == "Motorola DP-1400")
                 {
-                    if (!Regex.IsMatch(serialNumber, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                    if (!Regex.IsMatch(serialNumber, @"^[7][5][2][A-Z]{3,3}[0-9]{1,1}[A-Z]{1,1}[0-9]{2,2}$"))
                     {
                         MessageBox.Show("Введите корректно поле \"Заводской номер\"\n P.s. пример: Motorola DP-1400 - \"752TTD0000 или 752TTDE000\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_serialNumber.Select();
@@ -1518,7 +1518,7 @@ namespace ServiceTelecomConnect
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-2400е");
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([8][0][7]([A-Z]{3,3}[0-9]{4,4}))?([8][0][7][A-Z]{4,4}[0-9]{3,3})*$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-4400");
-                if (Regex.IsMatch(txB_serialNumber.Text, @"^([7][5][2]([A-Z]{3,3}[0-9]{4,4}))?([7][5][2][A-Z]{4,4}[0-9]{3,3})*$"))
+                if (Regex.IsMatch(txB_serialNumber.Text, @"^[7][5][2][A-Z]{3,3}[0-9]{1,1}[A-Z]{1,1}[0-9]{2,2}$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola DP-1400");
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([1][7][4]([A-Z]{3,3}[0-9]{4,4}))?([1][7][4][A-Z]{4,4}[0-9]{3,3})*$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola GP-300");
