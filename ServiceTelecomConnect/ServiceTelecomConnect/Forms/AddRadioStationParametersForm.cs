@@ -664,7 +664,7 @@ namespace ServiceTelecomConnect.Forms
                         Match result = re.Match(txB_SensitivityTransmitter.Text);
 
                         var doubleSensitivityTransmitter = Convert.ToDouble(result.Groups[1].Value);
-                        if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 5.9)
+                        if (doubleSensitivityTransmitter > 10.1 || doubleSensitivityTransmitter < 4.4)
                         {
                             MessageBox.Show($"Введите корректно параметры чувствительности модуляционного входа передатчика, модели {txB_model.Text}\nПример: от 6.0 мВ. до 10.0 мВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_SensitivityTransmitter.Select();
