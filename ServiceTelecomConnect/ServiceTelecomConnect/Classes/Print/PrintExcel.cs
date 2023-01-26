@@ -979,7 +979,7 @@ namespace ServiceTelecomConnect
                         workSheet2.Cells[3, 2] = $"серия, № АКБ";
                         workSheet2.Cells[3, 3] = $"Остаточная ёмкость АКБ, %";
                         workSheet2.Cells[2, 4] = $"Параметры передатчика";
-                        workSheet2.Cells[3, 4] = $"Выходная\n мощность\n передатчика, Вт";
+                        workSheet2.Cells[3, 4] = $"Выходная\n мощность передатчика, Вт";
                         workSheet2.Cells[7, 4] = $"Низкий уровень";
                         workSheet2.Cells[7, 5] = $"Высокий уровень";
                         workSheet2.Cells[3, 6] = $"Отклонение частоты\n от номинала, Гц";
@@ -1553,19 +1553,15 @@ namespace ServiceTelecomConnect
                     Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
 
                     workSheet.Name = $"Ведомость № {numberAct.Replace('/', '.')}";
-
                     workSheet2.Name = $"Все частоты ведомости № {numberAct.Replace('/', '.')}";
 
                     #region Ведомость То 2 Item
 
-
                     workSheet.PageSetup.Zoom = false;
                     workSheet.PageSetup.FitToPagesWide = 1;
                     workSheet.PageSetup.FitToPagesTall = 1;
-
                     workSheet.Rows.Font.Size = 15;
                     workSheet.Rows.Font.Name = "Times New Roman";
-
                     workSheet.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
                     workSheet.PageSetup.CenterHorizontally = true;
                     workSheet.PageSetup.CenterVertically = true;
@@ -1573,8 +1569,6 @@ namespace ServiceTelecomConnect
                     workSheet.PageSetup.BottomMargin = 0;
                     workSheet.PageSetup.LeftMargin = 0;
                     workSheet.PageSetup.RightMargin = 0;
-
-                    #region 1
 
                     Excel.Range _excelCells200 = (Excel.Range)workSheet.get_Range("A1", "G1").Cells;
                     Excel.Range _excelCells201 = (Excel.Range)workSheet.get_Range("H1", "I1").Cells;
@@ -1644,10 +1638,6 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells269 = (Excel.Range)workSheet.get_Range("A20", "U39").Cells;
                     Excel.Range _excelCells271 = (Excel.Range)workSheet.get_Range("X4", "Y19").Cells;
 
-                    #endregion
-
-                    #region
-
                     _excelCells200.Merge(Type.Missing);
                     _excelCells201.Merge(Type.Missing);
                     _excelCells202.Merge(Type.Missing);
@@ -1700,10 +1690,6 @@ namespace ServiceTelecomConnect
                     _excelCells259.Merge(Type.Missing);
                     _excelCells260.Merge(Type.Missing);
                     _excelCells261.Merge(Type.Missing);
-
-                    #endregion
-
-                    #region
 
                     _excelCells238.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells238.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -1903,10 +1889,6 @@ namespace ServiceTelecomConnect
                     _excelCells269.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells271.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
-                    #endregion
-
-                    #region
-
                     Excel.Range rowHeight200 = workSheet.get_Range("A1", "G1");
                     rowHeight200.EntireRow.RowHeight = 15; //
 
@@ -1995,8 +1977,6 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated245 = workSheet.Rows.get_Range("X4", "Y19");
                     Excel.Range range_Consolidated246 = workSheet.Rows.get_Range("V20", "Y39");
 
-                    #endregion
-
                     range_Consolidated200.Font.Size = 18;
                     range_Consolidated200.Font.Bold = true;
                     range_Consolidated201.Font.Size = 18;
@@ -2025,7 +2005,6 @@ namespace ServiceTelecomConnect
                     range_Consolidated246.Font.Size = 10;
                     range_Consolidated246.NumberFormat = "@";
 
-
                     String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
 
                     workSheet.Cells[1, 1] = $"Ведомость проверки параметров радиостанций №:";
@@ -2038,7 +2017,7 @@ namespace ServiceTelecomConnect
                     workSheet.Cells[3, 2] = $"серия, № АКБ";
                     workSheet.Cells[3, 3] = $"Остаточная ёмкость АКБ, %";
                     workSheet.Cells[2, 4] = $"Параметры передатчика";
-                    workSheet.Cells[3, 4] = $"Выходная\n мощность\n передатчика, Вт";
+                    workSheet.Cells[3, 4] = $"Выходная\n мощность передатчика, Вт";
                     workSheet.Cells[7, 4] = $"Низкий уровень";
                     workSheet.Cells[7, 5] = $"Высокий уровень";
                     workSheet.Cells[3, 6] = $"Отклонение частоты\n от номинала, Гц";
@@ -2098,6 +2077,7 @@ namespace ServiceTelecomConnect
                         s3++;
                         j3++;
                     }
+
                     int j4 = 20;
                     int s4 = 1;
                     string lowPowerLevelTransmitter = String.Empty;
@@ -2133,10 +2113,6 @@ namespace ServiceTelecomConnect
                         Excel.Range _excelCells242 = (Excel.Range)workSheet.get_Range($"A{j4}", $"Y{j4}").Cells;
                         _excelCells242.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells242.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
-                        //Excel.Range _excelCells270 = (Excel.Range)workSheet.get_Range($"B{j4}").Cells;
-                        //_excelCells270.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                        //_excelCells270.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
@@ -2180,7 +2156,6 @@ namespace ServiceTelecomConnect
                                 reader.Close();
                             }
                             DB.GetInstance.CloseConnection();
-
                         }
 
                         workSheet.Cells[19 + s4, 1] = serialNumber;
@@ -2226,10 +2201,6 @@ namespace ServiceTelecomConnect
 
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
                             frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
-
-                            //if (frequencyReceiver.Length > 15)
-                            //    workSheet.Cells[19 + s4, 22] = $"1 - {16}";
-                            //else workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
                         }
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
@@ -2260,6 +2231,7 @@ namespace ServiceTelecomConnect
                     string transmitterFrequenciesRST = String.Empty;
                     string receiverFrequenciesRST = String.Empty;
                     int count2 = 1;
+
                     for (int i = 0; i < dgw.Rows.Count; i++)
                     {
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
@@ -2290,7 +2262,6 @@ namespace ServiceTelecomConnect
 
                         temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                         temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-
 
                         string frequency = String.Empty;
                         int p = 0;
@@ -2348,7 +2319,6 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells508 = (Excel.Range)workSheet2.get_Range("B3", "F39").Cells;
                     Excel.Range _excelCells509 = (Excel.Range)workSheet2.get_Range("B4", "F4").Cells;
                     
-
                     _excelCells500.Merge(Type.Missing);
                     _excelCells501.Merge(Type.Missing);
                     _excelCells502.Merge(Type.Missing);
@@ -2387,7 +2357,6 @@ namespace ServiceTelecomConnect
                     _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
                     
                     _excelCells509.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
-
 
                     Excel.Range range_Consolidated500 = workSheet2.Rows.get_Range("I1", "J1");
                     Excel.Range range_Consolidated501 = workSheet2.Rows.get_Range("M1", "N1");
@@ -2512,7 +2481,6 @@ namespace ServiceTelecomConnect
                         jj3++;
                     }
 
-
                     transmitterFrequenciesRST = String.Empty;
                     receiverFrequenciesRST = String.Empty;
                     count2 = 1;
@@ -2547,7 +2515,6 @@ namespace ServiceTelecomConnect
                         temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                         temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-
                         string frequency = String.Empty;
                         int p = 0;
                         for (int k = 0; k < frequencyTransmitter.Length;)
@@ -2572,9 +2539,7 @@ namespace ServiceTelecomConnect
                         count2++;
                     }
 
-
                     #endregion
-
 
                     string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
 
