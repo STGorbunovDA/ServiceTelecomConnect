@@ -103,6 +103,7 @@
             this.lbL_city = new System.Windows.Forms.Label();
             this.lbL_road = new System.Windows.Forms.Label();
             this.btn_Frequencies = new System.Windows.Forms.Button();
+            this.chB_Faulty = new System.Windows.Forms.CheckBox();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -915,12 +916,13 @@
             // 
             this.pnl_AKB.BackColor = System.Drawing.Color.Transparent;
             this.pnl_AKB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_AKB.Controls.Add(this.chB_Faulty);
             this.pnl_AKB.Controls.Add(this.txB_percentAKB);
             this.pnl_AKB.Controls.Add(this.lbL_nameAKB);
             this.pnl_AKB.Controls.Add(this.label30);
             this.pnl_AKB.Location = new System.Drawing.Point(663, 542);
             this.pnl_AKB.Name = "pnl_AKB";
-            this.pnl_AKB.Size = new System.Drawing.Size(161, 77);
+            this.pnl_AKB.Size = new System.Drawing.Size(214, 77);
             this.pnl_AKB.TabIndex = 189;
             // 
             // btn_Save_add_rst_remont
@@ -1018,6 +1020,17 @@
             this.btn_Frequencies.Text = "Добавить Частоты";
             this.btn_Frequencies.UseVisualStyleBackColor = false;
             this.btn_Frequencies.Click += new System.EventHandler(this.Btn_Frequencies_Click);
+            // 
+            // chB_Faulty
+            // 
+            this.chB_Faulty.AutoSize = true;
+            this.chB_Faulty.Location = new System.Drawing.Point(148, 34);
+            this.chB_Faulty.Name = "chB_Faulty";
+            this.chB_Faulty.Size = new System.Drawing.Size(65, 17);
+            this.chB_Faulty.TabIndex = 188;
+            this.chB_Faulty.Text = "неиспр.";
+            this.chB_Faulty.UseVisualStyleBackColor = true;
+            this.chB_Faulty.Click += new System.EventHandler(this.ChB_Faulty_Click);
             // 
             // AddRadioStationParametersForm
             // 
@@ -1148,5 +1161,6 @@
         internal System.Windows.Forms.Label lbL_road;
         internal System.Windows.Forms.Label lbL_city;
         private System.Windows.Forms.Button btn_Frequencies;
+        private System.Windows.Forms.CheckBox chB_Faulty;
     }
 }
