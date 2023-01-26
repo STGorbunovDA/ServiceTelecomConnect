@@ -73,6 +73,17 @@ namespace ServiceTelecomConnect.Forms
                     if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
                         cmB_ManipulatorAccessories.Enabled = false;
                 }
+
+                if (txB_percentAKB.Text == "неиспр.")
+                {
+                    chB_Faulty.Checked = true;
+                    txB_percentAKB.Enabled = false;
+                }
+                else
+                {
+                    txB_percentAKB.Enabled = true;
+                    chB_Faulty.Checked = false;
+                }
             }
             else
             {
@@ -122,7 +133,7 @@ namespace ServiceTelecomConnect.Forms
                     txB_TransmissionModeCurrentConsumption.Text = "1.55";
                     txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
                 }
-                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || 
+                else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" ||
                     txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11")
                 {
                     // Передатчик
@@ -145,7 +156,7 @@ namespace ServiceTelecomConnect.Forms
                     txB_TransmissionModeCurrentConsumption.Text = "1.45";
                     txB_BatteryDischargeAlarmCurrentConsumption.Text = "6.0";
                 }
-                else if(txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" || 
+                else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400" ||
                     txB_model.Text == "Motorola DP-1400" || txB_model.Text == "Motorola DP-4400")
                 {
                     // Передатчик
@@ -236,7 +247,7 @@ namespace ServiceTelecomConnect.Forms
                 }
 
                 #endregion
-               
+
 
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
 
@@ -419,7 +430,21 @@ namespace ServiceTelecomConnect.Forms
 
         #endregion
 
-        #region АКБ KeyPress
+        #region АКБ KeyPress and click cheackbox 
+
+        void ChB_Faulty_Click(object sender, EventArgs e)
+        {
+            if (chB_Faulty.Checked)
+            {
+                txB_percentAKB.Enabled = false;
+                txB_percentAKB.Text = "неиспр.";
+            }
+            else
+            {
+                txB_percentAKB.Enabled = true;
+                txB_percentAKB.Text = String.Empty;
+            }
+        }
 
         void TxB_AKB_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -968,13 +993,28 @@ namespace ServiceTelecomConnect.Forms
 
                 if (txB_percentAKB.Enabled)
                 {
-                    if (!Regex.IsMatch(txB_percentAKB.Text, @"^[5-9]{1,1}[0-9]{1,1}$"))
+                    if (!chB_Faulty.Checked)
                     {
-                        MessageBox.Show($"Введите корректно поле: \"АКБ, %\" для {lbL_nameAKB.Text}\nПример: 75", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_percentAKB.Select();
-                        return;
+                        if (!Regex.IsMatch(txB_percentAKB.Text, @"^[5-9]{1,1}[0-9]{1,1}$"))
+                        {
+                            MessageBox.Show($"Введите корректно поле: \"АКБ, %\" для {lbL_nameAKB.Text}\nПример: 75", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_percentAKB.Select();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        if (!Regex.IsMatch(txB_percentAKB.Text, @"^[н][е][и][с][п][р][.]$"))
+                        {
+                            MessageBox.Show($"Введите корректно поле: \"АКБ, %\" для {lbL_nameAKB.Text}\nПример: 75", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_percentAKB.Select();
+                            return;
+                        }
                     }
                 }
+
+
+
 
                 #endregion
 
@@ -1090,5 +1130,7 @@ namespace ServiceTelecomConnect.Forms
         }
 
         #endregion
+
+
     }
 }
