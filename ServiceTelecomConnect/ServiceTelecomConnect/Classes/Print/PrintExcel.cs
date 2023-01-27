@@ -2244,7 +2244,6 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
-
                                 while (reader.Read())
                                 {
                                     transmitterFrequenciesRST = reader[0].ToString();
@@ -2254,6 +2253,13 @@ namespace ServiceTelecomConnect
                             }
                             DB.GetInstance.CloseConnection();
                         }
+                        if (String.IsNullOrEmpty(transmitterFrequenciesRST) || String.IsNullOrEmpty(receiverFrequenciesRST))
+                        {
+                            count2++;
+                            continue;
+                        }
+                            
+
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                         Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
@@ -2506,6 +2512,13 @@ namespace ServiceTelecomConnect
                             }
                             DB.GetInstance.CloseConnection();
                         }
+                        if (String.IsNullOrEmpty(transmitterFrequenciesRST) || String.IsNullOrEmpty(receiverFrequenciesRST))
+                        {
+                            count2++;
+                            continue;
+                        }
+                            
+
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                         Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
