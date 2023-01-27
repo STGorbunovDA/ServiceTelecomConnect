@@ -1381,6 +1381,7 @@ namespace ServiceTelecomConnect
                         range_Consolidated132.NumberFormat = "@";
                         range_Consolidated133.Font.Size = 9;
 
+
                         workSheet3.Cells[1, 1] = $"ПЕРВИЧНЫЙ ТЕХНИЧЕСКИЙ АКТ № {numberAct}";
                         workSheet3.Cells[2, 1] = $"ОКАЗАННЫХ УСЛУГ ПО ТЕХНИЧЕСКОМУ ОБСЛУЖИВАНИЮ СИСТЕМ РАДИОСВЯЗИ";
                         workSheet3.Cells[4, 1] = $"{city}";
@@ -1392,8 +1393,19 @@ namespace ServiceTelecomConnect
                         workSheet3.Cells[8, 8] = $"фамилия, инициалы";
                         workSheet3.Cells[9, 1] = $"действующий по доверенности № {doverennost} с одной стороны и представитель Заказчика";
                         workSheet3.Cells[10, 1] = $"(эксплуатирующей организации):             {company}             {road} (полигон {poligon})";
-                        if(post.Length > 80)
-                            workSheet3.Cells[11, 1] = $"\r\n{post}\r\n";
+                        if (post.Length > 80)
+                        {
+                            var result = post.Split(new[] { ' ', });
+                            string postPrint = String.Empty;
+                            for (int i = 0; i < result.Length; i++)
+                            {
+                                if (i == result.Length / 2 + 2)
+                                    postPrint += result[i] + "\n" + " ";
+                                else postPrint += result[i] + " ";
+
+                            }
+                            workSheet3.Cells[11, 1] = $"{postPrint}";
+                        }
                         else workSheet3.Cells[11, 1] = $"\n{post}\n";
                         workSheet3.Cells[11, 7] = $"{representative}";
                         workSheet3.Cells[12, 1] = $"должность";
