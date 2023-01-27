@@ -262,7 +262,6 @@ namespace ServiceTelecomConnect.Forms
                 lbL_nameAKB.Visible = false;
                 txB_percentAKB.Enabled = false;
             }
-            else txB_percentAKB.Size = lbL_nameAKB.Size;
         }
 
         #region Дата проверки
@@ -434,16 +433,19 @@ namespace ServiceTelecomConnect.Forms
 
         void ChB_Faulty_Click(object sender, EventArgs e)
         {
-            if (chB_Faulty.Checked)
+            if (lbL_nameAKB.Visible)
             {
-                txB_percentAKB.Enabled = false;
-                txB_percentAKB.Text = "неиспр.";
-            }
-            else
-            {
-                txB_percentAKB.Enabled = true;
-                txB_percentAKB.Text = String.Empty;
-            }
+                if (chB_Faulty.Checked)
+                {
+                    txB_percentAKB.Enabled = false;
+                    txB_percentAKB.Text = "неиспр.";
+                }
+                else
+                {
+                    txB_percentAKB.Enabled = true;
+                    txB_percentAKB.Text = String.Empty;
+                }
+            } 
         }
 
         void TxB_AKB_KeyPress(object sender, KeyPressEventArgs e)
