@@ -197,7 +197,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Введите корректно поле \"Город\".\n P.s. название города должно быть с большой буквы.\nпример: \"Нижний-Новгород\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_city.Select();
 
-                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
+                    string Mesage = "Вы действительно хотите изменить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
@@ -211,7 +211,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_company.Select();
 
-                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
+                    string Mesage = "Вы действительно хотите изменить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
@@ -223,7 +223,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_location.Select();
 
-                    string Mesage = "Вы действительно хотите добавить радиостанцию?";
+                    string Mesage = "Вы действительно хотите изменить радиостанцию?";
 
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
@@ -616,43 +616,39 @@ namespace ServiceTelecomConnect
                 && !(dateIssue == "") && !(phoneNumber == "") && !(antenna == "")
                 && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
                 {
-                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion(road, city, serialNumber))
+
+                    string changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
+                         $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                         $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
+                         $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
+                         $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
+                         $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
+                         $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                         $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+
+                    string changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
+                        $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
+                        $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
+                        $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
+                        $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
+                        $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
+                        $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
+                        $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
+
+                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
-                        string changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
-                             $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
-                             $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
-                             $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
-                             $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
-                             $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                             $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
-                             $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
-
-                        string changeQuery2 = $"UPDATE radiostantion_full SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
-                            $"location = '{location}', model = '{model}', inventoryNumber = '{inventoryNumber}', " +
-                            $"networkNumber = '{networkNumber}', dateTO = '{dateTO}', " +
-                            $"price = '{Convert.ToDecimal(price)}', representative = '{representative}', " +
-                            $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}', " +
-                            $"phoneNumber = '{phoneNumber}', post = '{post}', antenna = '{antenna}', manipulator = '{manipulator}', AKB = '{AKB}', " +
-                            $"batteryСharger = '{batteryСharger}', decommissionSerialNumber ='{decommission}', comment = '{comment}' " +
-                            $"WHERE serialNumber = '{serialNumber}' AND road = '{road}'";
-
-                        using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            command.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
-
-                        using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
-                        {
-                            DB.GetInstance.OpenConnection();
-                            command2.ExecuteNonQuery();
-                            DB.GetInstance.CloseConnection();
-                        }
-                        MessageBox.Show("Радиостанция успешно изменена!");
+                        DB.GetInstance.OpenConnection();
+                        command.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
                     }
-                    else MessageBox.Show("Данная радиостанция с таким заводским номером не присутствует в базе данных");
 
+                    using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
+                    {
+                        DB.GetInstance.OpenConnection();
+                        command2.ExecuteNonQuery();
+                        DB.GetInstance.CloseConnection();
+                    }
+                    MessageBox.Show("Радиостанция успешно изменена!");
                 }
                 else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
             }
