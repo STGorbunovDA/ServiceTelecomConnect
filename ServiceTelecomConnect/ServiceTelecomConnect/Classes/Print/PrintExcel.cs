@@ -1392,7 +1392,9 @@ namespace ServiceTelecomConnect
                         workSheet3.Cells[8, 8] = $"фамилия, инициалы";
                         workSheet3.Cells[9, 1] = $"действующий по доверенности № {doverennost} с одной стороны и представитель Заказчика";
                         workSheet3.Cells[10, 1] = $"(эксплуатирующей организации):             {company}             {road} (полигон {poligon})";
-                        workSheet3.Cells[11, 1] = $"\n{post}\n";
+                        if(post.Length > 80)
+                            workSheet3.Cells[11, 1] = $"\r\n{post}\r\n";
+                        else workSheet3.Cells[11, 1] = $"\n{post}\n";
                         workSheet3.Cells[11, 7] = $"{representative}";
                         workSheet3.Cells[12, 1] = $"должность";
                         workSheet3.Cells[12, 7] = $"фамилия, инициалы";
@@ -1975,7 +1977,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated243 = workSheet.Rows.get_Range("B20", "B39");
                     Excel.Range range_Consolidated244 = workSheet.Rows.get_Range("C20", "Y40");
                     Excel.Range range_Consolidated245 = workSheet.Rows.get_Range("X4", "Y19");
-                    Excel.Range range_Consolidated246 = workSheet.Rows.get_Range("V20", "Y39");
+
 
                     range_Consolidated200.Font.Size = 18;
                     range_Consolidated200.Font.Bold = true;
@@ -2002,8 +2004,7 @@ namespace ServiceTelecomConnect
                     range_Consolidated244.NumberFormat = "@";
                     range_Consolidated245.Font.Size = 14;
                     range_Consolidated245.NumberFormat = "@";
-                    range_Consolidated246.Font.Size = 10;
-                    range_Consolidated246.NumberFormat = "@";
+
 
                     String dateTO = (Convert.ToDateTime(date)).ToString("dd.MM.yyyy");
 
@@ -2270,35 +2271,38 @@ namespace ServiceTelecomConnect
 
                         string frequency = String.Empty;
                         int p = 0;
+                        //for (int k = 0; k < 16;)
                         for (int k = 0; k < frequencyTransmitter.Length;)
                         {
                             if (frequencyTransmitter[k] == temporaryArrayFrequencyTransmitter[p])
                             {
-                                if (k > 17)
-                                    frequency = "1 - 16";
+                                if (p == temporaryArrayFrequencyTransmitter.Length - 1)
+                                {
+                                    frequency += $"{k + 1}";
+                                    break;
+                                }
                                 else
                                 {
-                                    if (p == temporaryArrayFrequencyTransmitter.Length - 1)
-                                    {
-                                        frequency += $"{k + 1}";
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        frequency += $"{k + 1}, ";
-                                        k = 0;
-                                        p++;
-                                    }
+                                    frequency += $"{k + 1}, ";
+                                    k = 0;
+                                    p++;
                                 }
                             }
                             else k++;
                         }
+                        Excel.Range range_Consolidated246 = workSheet.Rows.get_Range($"V{19 + count2}");
+                        range_Consolidated246.NumberFormat = "@";
+                        if (frequency.Length > 53)
+                            range_Consolidated246.Font.Size = 7.5;
+                        else range_Consolidated246.Font.Size = 10;
                         workSheet.Cells[19 + count2, 22] = frequency;
                         count2++;
                     }
 
+
                     #endregion
 
+                    #region
                     #region Частоты
 
                     workSheet2.PageSetup.Zoom = false;
@@ -2323,7 +2327,7 @@ namespace ServiceTelecomConnect
                     Excel.Range _excelCells507 = (Excel.Range)workSheet2.get_Range("B3", "F3").Cells;
                     Excel.Range _excelCells508 = (Excel.Range)workSheet2.get_Range("B3", "F39").Cells;
                     Excel.Range _excelCells509 = (Excel.Range)workSheet2.get_Range("B4", "F4").Cells;
-                    
+
                     _excelCells500.Merge(Type.Missing);
                     _excelCells501.Merge(Type.Missing);
                     _excelCells502.Merge(Type.Missing);
@@ -2360,7 +2364,7 @@ namespace ServiceTelecomConnect
                     _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDouble;
                     _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDouble;
                     _excelCells508.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDouble;
-                    
+
                     _excelCells509.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
 
                     Excel.Range range_Consolidated500 = workSheet2.Rows.get_Range("I1", "J1");
@@ -2470,13 +2474,13 @@ namespace ServiceTelecomConnect
                         _excelCells513.Merge(Type.Missing);
                         _excelCells513.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells513.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
-                        
+
 
                         Excel.Range _excelCells514 = (Excel.Range)workSheet2.get_Range($"A{jj3}").Cells;
                         _excelCells514.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                       
 
-                        if(i < dgw.Rows.Count - 1)
+
+                        if (i < dgw.Rows.Count - 1)
                         {
                             _excelCells513.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                             _excelCells514.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -2516,7 +2520,7 @@ namespace ServiceTelecomConnect
                             count2++;
                             continue;
                         }
-                            
+
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                         Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
@@ -2550,6 +2554,7 @@ namespace ServiceTelecomConnect
                         count2++;
                     }
 
+                    #endregion
                     #endregion
 
                     string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
