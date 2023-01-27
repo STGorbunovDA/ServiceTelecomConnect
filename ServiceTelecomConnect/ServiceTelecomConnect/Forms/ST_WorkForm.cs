@@ -891,8 +891,8 @@ namespace ServiceTelecomConnect
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
@@ -902,7 +902,7 @@ namespace ServiceTelecomConnect
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
-                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                            m.MenuItems.Add(new MenuItem("Печатать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
@@ -942,13 +942,13 @@ namespace ServiceTelecomConnect
                         {
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                        m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
+                        m.MenuItems.Add(new MenuItem("Печатать бирки", FormTag));
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
 
@@ -985,8 +985,8 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
@@ -997,7 +997,7 @@ namespace ServiceTelecomConnect
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
-                            m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
+                            m.MenuItems.Add(new MenuItem("Печатать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
                         m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
@@ -1039,8 +1039,8 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт ТО", Button_actTO_print_Click));
-                            m.MenuItems.Add(new MenuItem("Сформировать акт Ремонта", Button_remont_act_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
+                            m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
