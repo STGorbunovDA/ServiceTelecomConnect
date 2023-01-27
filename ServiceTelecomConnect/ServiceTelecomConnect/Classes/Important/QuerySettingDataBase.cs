@@ -2600,7 +2600,7 @@ namespace ServiceTelecomConnect
             {
                 try
                 {
-                    string queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 100) t ORDER BY numberAct DESC LIMIT 1";
+                    string queryLastNumberActRemont = $"SELECT numberAct FROM (SELECT numberAct FROM radiostantion WHERE city = '{cmB_city}' AND road = '{road}' ORDER BY id DESC LIMIT 25) t ORDER BY numberAct DESC LIMIT 1";
                     using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -2739,7 +2739,7 @@ namespace ServiceTelecomConnect
 
         internal static void GettingFrequenciesRST_CMB(ComboBox cmB_frequency)
         {
-            string querystring = $"SELECT id, frequency FROM frequencies";
+            string querystring = $"SELECT id, frequency FROM frequencies ORDER BY frequency ASC;";
             using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
