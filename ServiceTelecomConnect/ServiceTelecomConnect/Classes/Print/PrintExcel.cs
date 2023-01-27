@@ -2116,14 +2116,14 @@ namespace ServiceTelecomConnect
 
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
-                        string queryLastNumberActRemont = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
+                        string queryParametersRadiostantion = $"SELECT lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
                            $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
                            $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
                            $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
                            $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB " +
                            $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        using (MySqlCommand command = new MySqlCommand(queryParametersRadiostantion, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
@@ -2236,10 +2236,10 @@ namespace ServiceTelecomConnect
                     {
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
-                        string queryLastNumberActRemont = $"SELECT transmitterFrequencies, receiverFrequencies " +
+                        string queryFrequencies = $"SELECT transmitterFrequencies, receiverFrequencies " +
                             $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        using (MySqlCommand command = new MySqlCommand(queryFrequencies, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
@@ -2258,7 +2258,6 @@ namespace ServiceTelecomConnect
                             count2++;
                             continue;
                         }
-                            
 
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                         Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
@@ -2494,10 +2493,10 @@ namespace ServiceTelecomConnect
                     {
                         string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
 
-                        string queryLastNumberActRemont = $"SELECT transmitterFrequencies, receiverFrequencies " +
+                        string queryFrequencies = $"SELECT transmitterFrequencies, receiverFrequencies " +
                             $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                        using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
+                        using (MySqlCommand command = new MySqlCommand(queryFrequencies, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
@@ -2518,7 +2517,6 @@ namespace ServiceTelecomConnect
                             continue;
                         }
                             
-
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
                         Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
