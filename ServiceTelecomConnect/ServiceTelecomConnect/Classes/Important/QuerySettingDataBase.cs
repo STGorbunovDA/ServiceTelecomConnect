@@ -1553,7 +1553,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (String.IsNullOrEmpty(serialNumber))
+                if (!String.IsNullOrEmpty(serialNumber))
                 {
                     string changeQuery = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
