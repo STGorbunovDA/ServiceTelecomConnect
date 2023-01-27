@@ -238,6 +238,7 @@
             this.mTrip_Button_actTO_print = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_remont_act = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PrintWord_Act_decommission = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_PrintStatementParameters = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_expansion = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_FormTag = new System.Windows.Forms.ToolStripMenuItem();
@@ -264,7 +265,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.mTrip_PrintStatementParameters = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -2743,6 +2743,13 @@
             this.mTrip_PrintWord_Act_decommission.Text = "Печать акта Списания";
             this.mTrip_PrintWord_Act_decommission.Click += new System.EventHandler(this.MTrip_PrintWord_Act_decommission_Click);
             // 
+            // mTrip_PrintStatementParameters
+            // 
+            this.mTrip_PrintStatementParameters.Name = "mTrip_PrintStatementParameters";
+            this.mTrip_PrintStatementParameters.Size = new System.Drawing.Size(277, 22);
+            this.mTrip_PrintStatementParameters.Text = "Печать ведомость с параметрами";
+            this.mTrip_PrintStatementParameters.Click += new System.EventHandler(this.MTrip_PrintStatementParameters_Click);
+            // 
             // mTrip_expansion
             // 
             this.mTrip_expansion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2966,13 +2973,6 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
-            // mTrip_PrintStatementParameters
-            // 
-            this.mTrip_PrintStatementParameters.Name = "mTrip_PrintStatementParameters";
-            this.mTrip_PrintStatementParameters.Size = new System.Drawing.Size(277, 22);
-            this.mTrip_PrintStatementParameters.Text = "Печать ведомость с параметрами";
-            this.mTrip_PrintStatementParameters.Click += new System.EventHandler(this.MTrip_PrintStatementParameters_Click);
-            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2980,13 +2980,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.Functional_loading_panel);
             this.Controls.Add(this.pnl_ChangeNumberActTOFull);
             this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.pnL_printBase);
-            this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
