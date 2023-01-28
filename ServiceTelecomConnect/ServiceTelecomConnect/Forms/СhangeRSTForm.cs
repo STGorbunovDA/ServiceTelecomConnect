@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
         #region изменяем рст по номеру акта
         void Btn_change_rst_act_Click(object sender, EventArgs e)
         {
-            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion(lbL_road.Text, txB_city.Text, txB_numberAct.Text))
+            if (CheacSerialNumber.GetInstance.CheackNumberActRadiostantion(lbL_road.Text, txB_city.Text, txB_numberAct.Text))
             {
                 MessageBox.Show($"В данном акте: {txB_numberAct.Text} уже есть 20-ать радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_numberAct.Select();
@@ -493,6 +493,10 @@ namespace ServiceTelecomConnect
                 }
                 #endregion
                 string inventoryNumber = txB_inventoryNumber.Text;
+
+                if (inventoryNumber.Contains("\\"))
+                    inventoryNumber = inventoryNumber.Replace("\\", "\\\\");
+
                 if (String.IsNullOrEmpty(decommission))
                 {
                     if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
@@ -1065,7 +1069,7 @@ namespace ServiceTelecomConnect
             string road = lbL_road.Text;
             string city = txB_city.Text;
             string numberAct = txB_numberAct.Text;
-            if (CheacSerialNumber.GetInstance.CheackNumberAct_radiostantion_changeForm_2(road, city, numberAct))
+            if (CheacSerialNumber.GetInstance.CheackNumberActRadiostantionChangeForm2(road, city, numberAct))
             {
                 string queryUpdateClient = $"UPDATE radiostantion SET representative = '{representative}', post = '{post}', " +
                 $"numberIdentification = '{numberIdentification}', dateIssue = '{dateIssue}',  phoneNumber = '{phoneNumber}' " +
