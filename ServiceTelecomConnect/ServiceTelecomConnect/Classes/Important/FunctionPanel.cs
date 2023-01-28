@@ -130,10 +130,9 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Копирование текущей Бд в резервную radiostantion в radiostantion_copy
-        internal static void Manual_backup_current_BD()
+        internal static void ManualBackupCurrent()
         {
             string clearBD = "TRUNCATE TABLE radiostantion_copy";
-
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();
@@ -142,7 +141,6 @@ namespace ServiceTelecomConnect
             }
 
             string copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
-
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();
@@ -151,10 +149,9 @@ namespace ServiceTelecomConnect
             }
             MessageBox.Show("База данных успешно скопирована!");
         }
-        internal static void Manual_backup_current_BD_curator()
+        internal static void ManualBackupCurrentCurator()
         {
             string clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
-
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();
@@ -163,7 +160,6 @@ namespace ServiceTelecomConnect
             }
 
             string copyBD = "INSERT INTO radiostantion_сomparison_copy SELECT * FROM radiostantion_сomparison";
-
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();
