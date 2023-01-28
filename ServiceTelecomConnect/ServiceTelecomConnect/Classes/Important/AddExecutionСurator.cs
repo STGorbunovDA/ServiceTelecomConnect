@@ -41,7 +41,7 @@ namespace ServiceTelecomConnect
                         string comment = dgw.Rows[index].Cells[39].Value.ToString();
                         string road = dgw.Rows[index].Cells[40].Value.ToString();
 
-                        if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantionCurator(road, city, serialNumber))
+                        if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionCurator(road, city, serialNumber))
                         {
                             if (inventoryNumber == "списание" || networkNumber == "списание" || !string.IsNullOrEmpty(decommissionSerialNumber)
                                 || string.IsNullOrEmpty(inventoryNumber) || string.IsNullOrEmpty(networkNumber) || inventoryNumber == "НЕТ"
