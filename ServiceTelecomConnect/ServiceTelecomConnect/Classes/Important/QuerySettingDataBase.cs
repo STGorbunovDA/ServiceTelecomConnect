@@ -1569,7 +1569,7 @@ namespace ServiceTelecomConnect
                         DB.GetInstance.CloseConnection();
                     }
 
-                    if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_full(road, city, serialNumber))
+                    if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionFull(road, city, serialNumber))
                     {
                         string changeQuery2 = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
@@ -1586,7 +1586,7 @@ namespace ServiceTelecomConnect
                         }
                     }
 
-                    if (!CheacSerialNumber.GetInstance.CheacSerialNumber_radiostantion_decommission(road, city, serialNumber))
+                    if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionDecommission(road, city, serialNumber))
                     {
                         dateTO = Convert.ToDateTime(dateTO).ToString("yyyy-MM-dd");
                         string addQuery = $"INSERT INTO radiostantion_decommission (poligon, company, location, model, serialNumber," +
