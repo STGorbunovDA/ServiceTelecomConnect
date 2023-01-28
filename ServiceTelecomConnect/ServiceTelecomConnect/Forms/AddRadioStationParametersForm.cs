@@ -24,7 +24,7 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.ReadOnly = true;
             QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
 
-            if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+            if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
             {
                 var queryLastNumberActRemont = $"SELECT dateTO, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
@@ -1078,7 +1078,7 @@ namespace ServiceTelecomConnect.Forms
                 var regex3 = new Regex(Environment.NewLine);
                 noteRadioStationParameters = regex3.Replace(noteRadioStationParameters, " ");
 
-                if (CheacSerialNumber.GetInstance.CheacSerialNumber_radiostation_parameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+                if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
                     var changeQuery = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
                         $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
