@@ -1864,7 +1864,7 @@ namespace ServiceTelecomConnect
         void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
             Close_Functional_loading_panel_Click(sender, e);
-            FunctionalPanel.Show_DB_radiostantion_last_year(dataGridView1, cmB_city.Text, cmB_road.Text);
+            FunctionalPanel.ShowRadiostantionLastYear(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
 
