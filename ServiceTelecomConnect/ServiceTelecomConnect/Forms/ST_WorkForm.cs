@@ -1876,7 +1876,7 @@ namespace ServiceTelecomConnect
         void Btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
             Close_Functional_loading_panel_Click(sender, e);
-            FunctionalPanel.Show_DB_radiostantion_full(dataGridView1, cmB_city.Text, cmB_road.Text);
+            FunctionalPanel.ShowRadiostantionFull(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
         #endregion
