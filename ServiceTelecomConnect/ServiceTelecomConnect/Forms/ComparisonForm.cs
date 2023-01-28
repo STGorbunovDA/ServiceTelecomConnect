@@ -821,7 +821,7 @@ namespace ServiceTelecomConnect
         #region Ручное-резервное копирование текущей БД
         void Btn_manual_backup_current_DB_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Manual_backup_current_BD_curator();
+            FunctionalPanel.ManualBackupCurrentCurator();
         }
 
 
