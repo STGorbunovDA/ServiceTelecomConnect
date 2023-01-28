@@ -73,7 +73,7 @@ namespace ServiceTelecomConnect
 
         #region загрузка БД прошлого года
 
-        internal static void Show_DB_radiostantion_last_year(DataGridView dgw, string city, string road)
+        internal static void ShowRadiostantionLastYear(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
