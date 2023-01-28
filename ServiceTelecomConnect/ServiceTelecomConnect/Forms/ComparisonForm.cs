@@ -812,7 +812,7 @@ namespace ServiceTelecomConnect
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            FunctionalPanel.Clear_BD_current_year_Curator();
+            FunctionalPanel.ClearCurrentYearCurator();
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
         }
 
