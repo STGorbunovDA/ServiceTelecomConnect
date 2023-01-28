@@ -199,10 +199,9 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region копирование текущей БД в БД прошлого года для следующего года
-        internal static void Copying_current_BD_end_of_the_year()
+        internal static void CopyingCurrentLastYear()
         {
             string clearBD = "TRUNCATE TABLE radiostantion_last_year";
-
             using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();
@@ -211,7 +210,6 @@ namespace ServiceTelecomConnect
             }
 
             string copyBD = "INSERT INTO radiostantion_last_year SELECT * FROM radiostantion";
-
             using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
             {
                 DB_2.GetInstance.OpenConnection();

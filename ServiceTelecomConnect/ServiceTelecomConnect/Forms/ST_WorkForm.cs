@@ -1821,7 +1821,7 @@ namespace ServiceTelecomConnect
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            FunctionalPanel.Copying_current_BD_end_of_the_year();
+            FunctionalPanel.CopyingCurrentLastYear();
 
         }
         #endregion
