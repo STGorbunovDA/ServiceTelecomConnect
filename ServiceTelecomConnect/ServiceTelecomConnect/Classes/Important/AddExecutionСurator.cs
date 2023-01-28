@@ -11,8 +11,7 @@ namespace ServiceTelecomConnect
         internal static void AddExecutionRowСell(DataGridView dgw, string months)
         {
             if (Internet_check.CheackSkyNET())
-            {
-                string AddExecutionQuery = String.Empty;
+            { 
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[41].Value = months;
 
@@ -53,14 +52,14 @@ namespace ServiceTelecomConnect
                                     continue;
                             }
 
-                            AddExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
+                            string addExecutionQuery = $"INSERT INTO radiostantion_сomparison (poligon, company, location, model," +
                                     $"serialNumber, inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont," +
                                     $"category, priceRemont, decommissionSerialNumber, comment, month, road) VALUES ('{poligon.Trim()}', '{company.Trim()}'," +
                                     $"'{location.Trim()}', '{model.Trim()}', '{serialNumber.Trim()}', '{inventoryNumber.Trim()}', '{networkNumber.Trim()}'," +
                                     $"'{dateTO.Trim()}', '{numberAct.Trim()}', '{city.Trim()}', '{price.Trim()}', '{numberActRemont.Trim()}', '{category.Trim()}', '{priceRemont.Trim()}'," +
                                     $"'{decommissionSerialNumber.Trim()}', '{comment.Trim()}', '{months.Trim()}', '{road.Trim()}')";
 
-                            using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
+                            using (MySqlCommand command = new MySqlCommand(addExecutionQuery, DB_4.GetInstance.GetConnection()))
                             {
                                 DB_4.GetInstance.OpenConnection();
                                 command.ExecuteNonQuery();
@@ -102,9 +101,9 @@ namespace ServiceTelecomConnect
                                 continue;
                         }
 
-                        string AddExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}' AND road = '{road.Text}'";
+                        string addExecutionQuery = $"UPDATE radiostantion_сomparison SET month = '{month}' WHERE serialNumber = '{serialNumber}' AND road = '{road.Text}'";
 
-                        using (MySqlCommand command = new MySqlCommand(AddExecutionQuery, DB_4.GetInstance.GetConnection()))
+                        using (MySqlCommand command = new MySqlCommand(addExecutionQuery, DB_4.GetInstance.GetConnection()))
                         {
                             DB_4.GetInstance.OpenConnection();
                             command.ExecuteNonQuery();
