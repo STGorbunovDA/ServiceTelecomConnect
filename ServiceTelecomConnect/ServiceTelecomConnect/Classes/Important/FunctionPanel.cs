@@ -16,7 +16,7 @@ namespace ServiceTelecomConnect
 
         #region загрузка общей БД всех радиостанций по городу и дороге
 
-        internal static void Show_DB_radiostantion_full(DataGridView dgw, string city, string road)
+        internal static void ShowRadiostantionFull(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -43,7 +43,6 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                     QuerySettingDataBase.ReedSingleRow(dgw, reader);
-
                                 reader.Close();
                             }
                         }
