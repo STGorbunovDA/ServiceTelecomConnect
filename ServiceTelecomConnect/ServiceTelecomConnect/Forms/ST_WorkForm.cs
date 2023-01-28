@@ -1834,7 +1834,7 @@ namespace ServiceTelecomConnect
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            FunctionalPanel.Manual_backup_current_BD();
+            FunctionalPanel.ManualBackupCurrent();
         }
         #endregion
 
