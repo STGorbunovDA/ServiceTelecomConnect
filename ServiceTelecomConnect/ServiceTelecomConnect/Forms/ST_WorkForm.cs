@@ -140,7 +140,7 @@ namespace ServiceTelecomConnect
                 helloKey.Close();
             }
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-           // QuerySettingDataBase.LightDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+
 
             Counters();
             /// получение актов который не заполенны из реестра, которые указал пользователь
@@ -209,16 +209,23 @@ namespace ServiceTelecomConnect
             decimal sumTO = 0;
             int colRemont = 0;
             decimal sumRemont = 0;
+            int inRepair = 0;
+            int verified = 0;
 
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
                 if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
                     colRemont++;
-
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "+"))
+                    verified++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "?"))
+                    inRepair++;
                 sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                 sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
             }
 
+            lbl_verified.Text = verified.ToString();
+            lbl_inRepair.Text = inRepair.ToString();
             lbL_count.Text = dataGridView1.Rows.Count.ToString();
             lbL_summ.Text = sumTO.ToString();
             lbL_count_remont.Text = colRemont.ToString();
@@ -510,6 +517,7 @@ namespace ServiceTelecomConnect
                     addParameters.lbL_ManipulatorAccessories.Text = txB_manipulator.Text;
                     addParameters.lbL_city.Text = txB_city.Text;
                     addParameters.lbL_road.Text = cmB_road.Text;
+                    addParameters.lbL_company.Text = txB_company.Text;
                     addParameters.Show();
                 }
             }
