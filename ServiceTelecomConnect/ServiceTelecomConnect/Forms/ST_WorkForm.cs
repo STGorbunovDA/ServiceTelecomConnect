@@ -197,7 +197,7 @@ namespace ServiceTelecomConnect
             string taskCity = cmB_city.Text;
             string road = cmB_road.Text;
             QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, road);
-            new Thread(() => { FunctionalPanel.Get_date_save_datagridview_json(dataGridView2, taskCity); }) { IsBackground = true }.Start();
+            new Thread(() => { FunctionalPanel.GetSaveDataGridViewInJson(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
         }
@@ -1812,7 +1812,7 @@ namespace ServiceTelecomConnect
 
         void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Get_date_save_datagridview_json(dataGridView1, cmB_city.Text);
+            FunctionalPanel.GetSaveDataGridViewInJson(dataGridView1, cmB_city.Text);
         }
 
         #endregion
