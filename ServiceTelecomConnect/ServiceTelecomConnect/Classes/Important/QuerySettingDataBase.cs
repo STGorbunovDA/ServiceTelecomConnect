@@ -183,8 +183,9 @@ namespace ServiceTelecomConnect
                      record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
                      record.GetString(40), record.GetString(41), RowState.ModifieldNew)));
         }
+       
         #region для списаний
-        internal static void ReedSingleRowDecommission(DataGridView dgw, IDataRecord record)
+        internal static void ReedSingleRowTwo(DataGridView dgw, IDataRecord record)
         {
             dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
                      record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
@@ -212,7 +213,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion " +
                         $"WHERE city = '{city.Trim()}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -263,7 +264,7 @@ namespace ServiceTelecomConnect
                      record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                      record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
                      record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
-                     record.GetString(40), RowState.ModifieldNew)));
+                     record.GetString(40), record.GetString(41), RowState.ModifieldNew)));
         }
         #endregion
 
@@ -1743,7 +1744,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                    ReedSingleRowDecommission(dgw, reader);
+                                    ReedSingleRowTwo(dgw, reader);
                                 reader.Close();
                             }
                         }
