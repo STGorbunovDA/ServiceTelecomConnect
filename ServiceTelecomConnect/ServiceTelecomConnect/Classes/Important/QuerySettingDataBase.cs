@@ -141,8 +141,6 @@ namespace ServiceTelecomConnect
                                         dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
                                     i++;
                                 }
-                                    
-
                                 reader.Close();
                             }
                         }
@@ -185,6 +183,20 @@ namespace ServiceTelecomConnect
                      record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
                      record.GetString(40), record.GetString(41), RowState.ModifieldNew)));
         }
+        #region для списаний
+        internal static void ReedSingleRowDecommission(DataGridView dgw, IDataRecord record)
+        {
+            dgw.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1), record.GetString(2), record.GetString(3), record.GetString(4),
+                     record.GetString(5), record.GetString(6), record.GetString(7), Convert.ToDateTime(record.GetString(8)), record.GetString(9),
+                     record.GetString(10), record.GetDecimal(11), record.GetString(12), record.GetString(13), record.GetString(14),
+                     record.GetString(15), record.GetString(16), record.GetString(17), record.GetString(18), record.GetDecimal(19),
+                     record.GetString(20), record.GetString(21), record.GetString(22), record.GetString(23), record.GetString(24),
+                     record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
+                     record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
+                     record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
+                     record.GetString(40), RowState.ModifieldNew)));
+        }
+        #endregion
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
         {
@@ -721,7 +733,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST " +
                         $"FROM radiostantion WHERE road = '{road.Trim()}'";
 
                 using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -907,14 +919,14 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox})";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox})";
 
                     else if (perem_comboBox == "numberAct")
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
 
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "dateTO" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
@@ -922,13 +934,13 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     else
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
@@ -938,8 +950,18 @@ namespace ServiceTelecomConnect
                         {
                             if (reader.HasRows)
                             {
+                                int i = 0;
                                 while (reader.Read())
+                                {
                                     ReedSingleRow(dgw, reader);
+                                    if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Yellow;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
+                                    i++;
+                                }
                                 reader.Close();
                             }
                         }
@@ -981,13 +1003,13 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox})";
                     else if (perem_comboBox == "numberAct")
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '" + cmb_number_unique + "'";
 
                     else if (perem_comboBox == "location" || perem_comboBox == "company" || perem_comboBox == "numberActRemont"
                         || perem_comboBox == "representative" || perem_comboBox == "decommissionSerialNumber" || perem_comboBox == "model" || perem_comboBox == "numberAct")
@@ -995,7 +1017,7 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     else if (perem_comboBox == "dateTO")
                     {
                         cmb_number_unique = Convert.ToDateTime(cmb_number_unique).ToString("yyyy-MM-dd");
@@ -1003,14 +1025,14 @@ namespace ServiceTelecomConnect
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + cmb_number_unique + "%'";
                     }
                     else
                         searchString = $"SELECT id, poligon, company, location, model, serialNumber, inventoryNumber, " +
                             $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                             $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                             $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
+                            $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE city = '{city}' AND road = '{road}' AND CONCAT ({perem_comboBox}) LIKE '%" + textBox_search + "%'";
 
                     using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
                     {
@@ -1020,8 +1042,18 @@ namespace ServiceTelecomConnect
                         {
                             if (reader.HasRows)
                             {
+                                int i = 0;
                                 while (reader.Read())
+                                {
                                     ReedSingleRow(dgw, reader);
+                                    if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Yellow;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
+                                    i++;
+                                }
                                 reader.Close();
                             }
                         }
@@ -1032,7 +1064,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void SearchCurator(DataGridView dgw, string comboBox_seach, string city, string textBox_search, string cmb_number_unique, string road)
         {
             if (Internet_check.CheackSkyNET())
@@ -1124,7 +1155,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion WHERE " +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion WHERE " +
                         $"numberAct = '{numberAct}' AND city = '{city}' AND road = '{road}'";
 
             using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
@@ -1135,9 +1166,18 @@ namespace ServiceTelecomConnect
                 {
                     if (reader.HasRows)
                     {
+                        int i = 0;
                         while (reader.Read())
+                        {
                             ReedSingleRow(dgw, reader);
-
+                            if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")
+                                dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+                            else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")
+                                dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Yellow;
+                            else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")
+                                dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
+                            i++;
+                        }
                         reader.Close();
                     }
                 }
@@ -1259,7 +1299,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion " +
                         $"WHERE city = '{city.Trim()}' AND numberAct = '{numberAct.Trim()}' AND road = '{road}'";
 
                 using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -1444,7 +1484,7 @@ namespace ServiceTelecomConnect
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
-                    dgw.Rows[row.Index].Cells[41].Value = RowState.Deleted;
+                    dgw.Rows[row.Index].Cells[42].Value = RowState.Deleted;
 
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
@@ -1703,7 +1743,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                    ReedSingleRow(dgw, reader);
+                                    ReedSingleRowDecommission(dgw, reader);
                                 reader.Close();
                             }
                         }
@@ -2298,7 +2338,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST " +
                         $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber != '' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -2311,7 +2351,6 @@ namespace ServiceTelecomConnect
                             {
                                 while (reader.Read())
                                     ReedSingleRow(dgw, reader);
-
                                 reader.Close();
                             }
                         }
@@ -2337,7 +2376,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road " +
+                        $"parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST " +
                         $"FROM radiostantion WHERE city LIKE N'%{city.Trim()}%' AND decommissionSerialNumber = '' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -2348,9 +2387,18 @@ namespace ServiceTelecomConnect
                         {
                             if (reader.HasRows)
                             {
+                                int i = 0;
                                 while (reader.Read())
+                                {
                                     ReedSingleRow(dgw, reader);
-
+                                    if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Yellow;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
+                                    i++;
+                                }
                                 reader.Close();
                             }
                         }
