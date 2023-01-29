@@ -118,7 +118,7 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.RefreshDataGridСuratorTimerEventProcessor(dataGridView2, taskCity, road);
             new Thread(() => { FunctionalPanel.GetSaveDataGridViewInJsonCurator(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFileCurator(dataGridView2, road); }) { IsBackground = true }.Start();
-            new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy(); }) { IsBackground = true }.Start();
+            new Thread(() => { QuerySettingDataBase.CopyDataBaseRadiostantionComparisonInRadiostantionComparisonCopy(); }) { IsBackground = true }.Start();
         }
 
         #region Счётчики
