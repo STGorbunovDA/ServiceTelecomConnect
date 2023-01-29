@@ -106,6 +106,7 @@
             this.btn_Frequencies = new System.Windows.Forms.Button();
             this.lbl_verifiedRST = new System.Windows.Forms.Label();
             this.chB_InRepair = new System.Windows.Forms.CheckBox();
+            this.btn_DecommissionRadiostantion = new System.Windows.Forms.Button();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -1002,7 +1003,7 @@
             this.lbL_city.AutoSize = true;
             this.lbL_city.BackColor = System.Drawing.Color.Transparent;
             this.lbL_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_city.Location = new System.Drawing.Point(18, 13);
+            this.lbL_city.Location = new System.Drawing.Point(10, 112);
             this.lbL_city.Name = "lbL_city";
             this.lbL_city.Size = new System.Drawing.Size(52, 18);
             this.lbL_city.TabIndex = 182;
@@ -1014,7 +1015,7 @@
             this.lbL_road.AutoSize = true;
             this.lbL_road.BackColor = System.Drawing.Color.Transparent;
             this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_road.Location = new System.Drawing.Point(92, 14);
+            this.lbL_road.Location = new System.Drawing.Point(68, 114);
             this.lbL_road.Name = "lbL_road";
             this.lbL_road.Size = new System.Drawing.Size(60, 18);
             this.lbL_road.TabIndex = 194;
@@ -1059,12 +1060,26 @@
             this.chB_InRepair.Text = "В ремонт";
             this.chB_InRepair.UseVisualStyleBackColor = false;
             // 
+            // btn_DecommissionRadiostantion
+            // 
+            this.btn_DecommissionRadiostantion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_DecommissionRadiostantion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DecommissionRadiostantion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_DecommissionRadiostantion.Location = new System.Drawing.Point(10, 57);
+            this.btn_DecommissionRadiostantion.Name = "btn_DecommissionRadiostantion";
+            this.btn_DecommissionRadiostantion.Size = new System.Drawing.Size(67, 30);
+            this.btn_DecommissionRadiostantion.TabIndex = 197;
+            this.btn_DecommissionRadiostantion.Text = "Списать";
+            this.btn_DecommissionRadiostantion.UseVisualStyleBackColor = false;
+            this.btn_DecommissionRadiostantion.Click += new System.EventHandler(this.Btn_DecommissionRadiostantion_Click);
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.btn_DecommissionRadiostantion);
             this.Controls.Add(this.chB_InRepair);
             this.Controls.Add(this.lbl_verifiedRST);
             this.Controls.Add(this.monthCalendar1);
@@ -1193,5 +1208,6 @@
         private System.Windows.Forms.CheckBox chB_Faulty;
         private System.Windows.Forms.Label lbl_verifiedRST;
         private System.Windows.Forms.CheckBox chB_InRepair;
+        private System.Windows.Forms.Button btn_DecommissionRadiostantion;
     }
 }

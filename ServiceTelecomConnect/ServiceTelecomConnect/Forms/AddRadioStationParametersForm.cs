@@ -262,6 +262,8 @@ namespace ServiceTelecomConnect.Forms
 
                 #endregion
 
+                btn_DecommissionRadiostantion.Enabled = false;
+
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                 if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
@@ -1171,8 +1173,34 @@ namespace ServiceTelecomConnect.Forms
         }
 
 
+
         #endregion
 
+        void Btn_DecommissionRadiostantion_Click(object sender, EventArgs e)
+        {
+            string road = lbL_road.Text;
+            string city = lbL_city.Text;
+            string serialNumber = txB_serialNumber.Text;
 
+            string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = 'd' " +
+                   $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+            using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                command.ExecuteNonQuery();
+                DB.GetInstance.CloseConnection();
+            }
+
+            string deleteQueryParameters = $"DELETE FROM radiostation_parameters WHERE serialNumber = '{serialNumber}'";
+
+            using (MySqlCommand command = new MySqlCommand(deleteQueryParameters, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                command.ExecuteNonQuery();
+                DB.GetInstance.CloseConnection();
+            }
+            MessageBox.Show("Радиостанция списана (удалена)!");
+        }
     }
 }
