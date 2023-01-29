@@ -1785,17 +1785,17 @@ namespace ServiceTelecomConnect
 
         void Loading_file_current_BD_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Loading_file_current_BD();
+            FunctionalPanel.LoadingFileCurrentDatabase();
         }
 
         void Button_Loading_file_last_year_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Loading_file_last_year();
+            FunctionalPanel.LoadingFileLastYear();
         }
 
         void Loading_file_full_BD_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Loading_file_full_BD();
+            FunctionalPanel.LoadingFileFullDatabase();
         }
 
         #endregion
@@ -1804,7 +1804,7 @@ namespace ServiceTelecomConnect
         void Loading_json_file_BD_Click(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
-                FunctionalPanel.Loading_json_file_BD(dataGridView1, cmB_city.Text);
+                FunctionalPanel.LoadingJsonFileInDatabase(dataGridView1, cmB_city.Text);
         }
         #endregion
 

@@ -830,7 +830,7 @@ namespace ServiceTelecomConnect
         #region Загрузка из файла для текущей БД
         void Btn_loading_file_current_DB_Click(object sender, EventArgs e)
         {
-            FunctionalPanel.Loading_file_current_BD_curator();
+            FunctionalPanel.LoadingFileCurrentDatabaseCurator();
         }
 
         #region Загрузка и обновление резервного файла JSON
@@ -838,7 +838,7 @@ namespace ServiceTelecomConnect
         {
             if (Internet_check.CheackSkyNET())
             {
-                FunctionalPanel.Loading_json_file_BD_curator(dataGridView1, cmB_city.Text);
+                FunctionalPanel.LoadingJsonFileInDatabaseCurator(dataGridView1, cmB_city.Text);
             }
         }
 
