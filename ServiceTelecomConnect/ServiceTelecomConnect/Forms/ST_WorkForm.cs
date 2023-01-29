@@ -140,6 +140,8 @@ namespace ServiceTelecomConnect
                 helloKey.Close();
             }
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+           // QuerySettingDataBase.LightDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+
             Counters();
             /// получение актов который не заполенны из реестра, которые указал пользователь
             RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
@@ -2625,7 +2627,7 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        
+
     }
 }
 
