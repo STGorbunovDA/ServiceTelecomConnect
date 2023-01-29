@@ -42,7 +42,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                    QuerySettingDataBase.ReedSingleRow(dgw, reader);
+                                    QuerySettingDataBase.ReedSingleRowTwo(dgw, reader);
                                 reader.Close();
                             }
                         }
@@ -99,7 +99,7 @@ namespace ServiceTelecomConnect
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
-                                    QuerySettingDataBase.ReedSingleRow(dgw, reader);
+                                    QuerySettingDataBase.ReedSingleRowTwo(dgw, reader);
 
                                 reader.Close();
                             }
@@ -272,7 +272,8 @@ namespace ServiceTelecomConnect
                     parts_7 = row.Cells[37].Value,
                     decommissionSerialNumber = row.Cells[38].Value,
                     comment = row.Cells[39].Value,
-                    road = row.Cells[40].Value
+                    road = row.Cells[40].Value,
+                    verifiedRST = row.Cells[41].Value
                 });
                 products.Add(product);
             }
@@ -332,7 +333,7 @@ namespace ServiceTelecomConnect
 
         #region загрузка и обновление json в radiostantion
 
-        internal static void Loading_json_file_BD(DataGridView dgw, string city)
+        internal static void LoadingJsonFileInDatabase(DataGridView dgw, string city)
         {
             QuerySettingDataBase.CreateColums(dgw);
 
@@ -393,6 +394,7 @@ namespace ServiceTelecomConnect
                         dgw.Rows[n].Cells[38].Value = fetch[i]["decommissionSerialNumber"].ToString();
                         dgw.Rows[n].Cells[39].Value = fetch[i]["comment"].ToString();
                         dgw.Rows[n].Cells[40].Value = fetch[i]["road"].ToString();
+                        dgw.Rows[n].Cells[41].Value = fetch[i]["verifiedRST"].ToString();
                     }
                 }
                 for (int i = 0; i < dgw.Rows.Count; i++)
@@ -438,6 +440,7 @@ namespace ServiceTelecomConnect
                     string decommissionSerialNumber = dgw.Rows[i].Cells["decommissionSerialNumber"].Value.ToString();
                     string comment = dgw.Rows[i].Cells["comment"].Value.ToString();
                     string road = dgw.Rows[i].Cells["road"].Value.ToString();
+                    string verifiedRST = dgw.Rows[i].Cells["verifiedRST"].Value.ToString();
 
                     string queryString = $"UPDATE radiostantion SET poligon = '{poligon}', company = '{company}', location = '{location}', " +
                         $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
@@ -448,7 +451,8 @@ namespace ServiceTelecomConnect
                         $"completed_works_2 = '{completed_works_2}', completed_works_3 = '{completed_works_3}', completed_works_4 = '{completed_works_4}', " +
                         $"completed_works_5 = '{completed_works_5}', completed_works_6 = '{completed_works_6}', completed_works_7 = '{completed_works_7}', " +
                         $"parts_1 = '{parts_1}', parts_2 = '{parts_2}', parts_3 = '{parts_3}',  parts_4 = '{parts_4}',  parts_5 = '{parts_5}', parts_6 = '{parts_6}',  " +
-                        $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}', comment = '{comment}', road = '{road}'  WHERE id = '{id}'";
+                        $"parts_7 = '{parts_7}', decommissionSerialNumber = '{decommissionSerialNumber}', comment = '{comment}', road = '{road}', " +
+                        $"verifiedRST = {verifiedRST}  WHERE id = '{id}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                     {
@@ -463,7 +467,7 @@ namespace ServiceTelecomConnect
             MessageBox.Show("Радиостанции успешно загруженны из JSON");
         }
 
-        internal static void Loading_json_file_BD_curator(DataGridView dgw, string city)
+        internal static void LoadingJsonFileInDatabaseCurator(DataGridView dgw, string city)
         {
             string fileNamePath = $@"C:\Documents_ServiceTelekom\Куратор\БазаДанныхJson_{city}\БазаДанныхJsonCurator.json";
 
@@ -528,7 +532,7 @@ namespace ServiceTelecomConnect
                         $"model = '{model}', serialNumber = '{serialNumber}', inventoryNumber = '{inventoryNumber}', networkNumber = '{networkNumber}', " +
                         $"dateTO = '{dateTO}', numberAct = '{numberAct}', city = '{cityDGW}', price = '{price}', numberActRemont = '{numberActRemont}', " +
                         $"category = '{category}', priceRemont = '{priceRemont}', decommissionSerialNumber = '{decommissionSerialNumber}', " +
-                        $"comment = '{comment}', month = '{month}', road = '{road}'  WHERE id = '{id}'";
+                        $"comment = '{comment}', month = '{month}', road = '{road}' WHERE id = '{id}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB_2.GetInstance.GetConnection()))
                     {
@@ -544,8 +548,8 @@ namespace ServiceTelecomConnect
 
         #endregion
 
-        #region добавление из файла
-        internal static void Loading_file_current_BD()
+        #region добавление из файла для текущей БД
+        internal static void LoadingFileCurrentDatabase()
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -559,9 +563,7 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-
                     int lineNumber = 0;
-
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
@@ -584,14 +586,14 @@ namespace ServiceTelecomConnect
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                     $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES " +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST) VALUES " +
                                     $"('{values[0]}', '{values[1]}', '{values[2]}', '{values[3]}','{values[4]}', '{values[5]}', '{values[6]}', " +
                                     $"'{dateTO}','{values[8]}','{values[9]}','{values[10]}', '{values[11]}', '{values[12]}', " +
                                     $"'{values[13]}', '{values[14]}', '{values[15]}', '{values[16]}', '{values[17]}', '{values[18]}'," +
                                     $"'{values[19]}', '{values[20]}', '{values[21]}', '{values[22]}', '{values[23]}', '{values[24]}', " +
                                     $"'{values[25]}', '{values[26]}', '{values[27]}', '{values[28]}', '{values[29]}', '{values[30]}', " +
                                     $"'{values[31]}', '{values[32]}', '{values[33]}', '{values[34]}', '{values[35]}', '{values[36]}', " +
-                                    $"'{values[37]}', '{values[38]}', '{values[39]}')";
+                                    $"'{values[37]}', '{values[38]}', '{values[39]}', '{values[40]}')";
 
                                     using (MySqlCommand command = new MySqlCommand(mySql, DB.GetInstance.GetConnection()))
                                     {
@@ -616,7 +618,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Loading_file_current_BD_curator()
+        internal static void LoadingFileCurrentDatabaseCurator()
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -630,9 +632,7 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-
                     int lineNumber = 0;
-
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
@@ -679,7 +679,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Loading_file_last_year()
+        internal static void LoadingFileLastYear()
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -693,9 +693,7 @@ namespace ServiceTelecomConnect
                 if (!String.IsNullOrEmpty(openFile.FileName))
                 {
                     string filename = openFile.FileName;
-
                     int lineNumber = 0;
-
                     using (StreamReader reader = new StreamReader(filename))
                     {
                         while (!reader.EndOfStream)
@@ -705,7 +703,6 @@ namespace ServiceTelecomConnect
                             if (lineNumber != 0)
                             {
                                 string[] values = line.Split('\t');
-
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[39];
@@ -749,7 +746,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Loading_file_full_BD()
+        internal static void LoadingFileFullDatabase()
         {
             if (Internet_check.CheackSkyNET())
             {
