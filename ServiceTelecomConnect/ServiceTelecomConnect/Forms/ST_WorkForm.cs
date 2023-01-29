@@ -199,7 +199,7 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.RefreshDataGridTimerEventProcessor(dataGridView2, taskCity, road);
             new Thread(() => { FunctionalPanel.GetSaveDataGridViewInJson(dataGridView2, taskCity); }) { IsBackground = true }.Start();
             new Thread(() => { SaveFileDataGridViewPC.AutoSaveFilePC(dataGridView2, taskCity); }) { IsBackground = true }.Start();
-            new Thread(() => { QuerySettingDataBase.Copy_BD_radiostantion_in_radiostantion_copy(); }) { IsBackground = true }.Start();
+            new Thread(() => { QuerySettingDataBase.CopyDataBaseRadiostantionInRadiostantionCopy(); }) { IsBackground = true }.Start();
         }
 
         #region Счётчики
@@ -1122,7 +1122,7 @@ namespace ServiceTelecomConnect
 
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-            QuerySettingDataBase.Delete_rst_remont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.DeleteRadiostantionRemont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
             Button_update_Click(sender, e);
         }
 
@@ -2080,7 +2080,7 @@ namespace ServiceTelecomConnect
                 txB_reason_decommission.Text = re.Replace(txB_reason_decommission.Text, " ");//удаление новой строки
                 txB_reason_decommission.Text.Trim();
                 txB1_decommissionSerialNumber.Text.Trim();
-                QuerySettingDataBase.Record_decommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
+                QuerySettingDataBase.RecordDecommissionSerialNumber(txB_serialNumber.Text, txB1_decommissionSerialNumber.Text,
                     txB_city.Text, cmB_poligon.Text, txB_company.Text, txB_location.Text, cmB_model.Text, txB_dateTO.Text,
                     txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
                     txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
@@ -2108,7 +2108,7 @@ namespace ServiceTelecomConnect
             {
                 return;
             }
-            QuerySettingDataBase.Delete_decommissionSerialNumber_radiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
+            QuerySettingDataBase.DeleteDecommissionSerialNumberRadiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
                 txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
             Button_update_Click(sender, e);
         }
