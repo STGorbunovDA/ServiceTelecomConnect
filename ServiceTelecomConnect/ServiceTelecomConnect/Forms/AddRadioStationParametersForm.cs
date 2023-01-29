@@ -65,6 +65,7 @@ namespace ServiceTelecomConnect.Forms
                             lbL_nameAKB.Text = reader[21].ToString();
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                            
                             if (reader[24].ToString() == "+")
                             {
                                 lbl_verifiedRST.Visible = true;
@@ -1084,7 +1085,10 @@ namespace ServiceTelecomConnect.Forms
                 else nameAKB = "-";
 
                 string percentAKB = String.Empty;
+
                 if (txB_percentAKB.Enabled)
+                    percentAKB = txB_percentAKB.Text;
+                else if (!String.IsNullOrEmpty(txB_percentAKB.Text))
                     percentAKB = txB_percentAKB.Text;
                 else percentAKB = "-";
 
@@ -1182,7 +1186,7 @@ namespace ServiceTelecomConnect.Forms
             string city = lbL_city.Text;
             string serialNumber = txB_serialNumber.Text;
 
-            string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = 'd' " +
+            string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = '0' " +
                    $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
             using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB.GetInstance.GetConnection()))
