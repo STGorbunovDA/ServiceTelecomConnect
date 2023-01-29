@@ -1346,7 +1346,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
-        internal static void Copy_BD_radiostantion_in_radiostantion_copy()
+        internal static void CopyDataBaseRadiostantionInRadiostantionCopy()
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1376,7 +1376,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Copy_BD_radiostantion_сomparison_in_radiostantion_сomparison_copy()
+        internal static void CopyDataBaseRadiostantionComparisonInRadiostantionComparisonCopy()
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1411,7 +1411,7 @@ namespace ServiceTelecomConnect
 
         #region изменить номер акта у радиостанции
 
-        internal static void ChangeNumberAct(DataGridView dgw, string txB_pnl_ChangeNumberActTOFull, string city, string road)
+        internal static void ChangeNumberAct(DataGridView dgw, string txB_PnlChangeNumberActTOFull, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1426,7 +1426,7 @@ namespace ServiceTelecomConnect
                     {
                         int id = Convert.ToInt32(dgw.Rows[index].Cells[0].Value);
                         var numberAct = dgw.Rows[index].Cells[9].Value;
-                        string changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_pnl_ChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
+                        string changeQuery = $"UPDATE radiostantion SET numberAct = '{txB_PnlChangeNumberActTOFull}' WHERE numberAct = '{numberAct}' " +
                             $"AND city = '{city}' AND road = '{road}' AND id = '{id}'";
 
                         using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
@@ -1503,15 +1503,14 @@ namespace ServiceTelecomConnect
 
         #region Удаление ремонта
 
-        internal static void Delete_rst_remont(string numberActRemont, string serialNumber, string city, string road)
+        internal static void DeleteRadiostantionRemont(string numberActRemont, string serialNumber, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(numberActRemont))
                 {
-                    if (CheacknumberActRemont_radiostantion(numberActRemont))
+                    if (CheacknumberActRemontRadiostantion(numberActRemont))
                     {
-
                         string changeQuery = $"UPDATE radiostantion SET numberActRemont = '', category = '', " +
                             $"priceRemont = '', completed_works_1 = '', completed_works_2 = '', " +
                             $"completed_works_3 = '', completed_works_4 = '', " +
@@ -1531,7 +1530,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        static Boolean CheacknumberActRemont_radiostantion(string numberActRemont)
+        static Boolean CheacknumberActRemontRadiostantion(string numberActRemont)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1541,20 +1540,10 @@ namespace ServiceTelecomConnect
                 {
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-
                         DataTable table = new DataTable();
-
                         adapter.Fill(table);
-
-                        if (table.Rows.Count > 0)
-                        {
-                            return true;
-                        }
-
-                        else
-                        {
-                            return false;
-                        }
+                        if (table.Rows.Count > 0) return true;
+                        else return false;
                     }
                 }
             }
@@ -1565,10 +1554,10 @@ namespace ServiceTelecomConnect
 
         #region списание рст
 
-        internal static void Record_decommissionSerialNumber(string serialNumber, string decommissionSerialNumber,
-            string city, string poligon, string company, string location, string model, string dateTO, string price, string representative, string post,
-            string numberIdentification, string dateIssue, string phoneNumber, string antenna, string manipulator,
-            string AKB, string batteryСharger, string txB_reason_decommission, string road)
+        internal static void RecordDecommissionSerialNumber(string serialNumber, string decommissionSerialNumber,
+            string city, string poligon, string company, string location, string model, string dateTO, string price, 
+            string representative, string post, string numberIdentification, string dateIssue, string phoneNumber, 
+            string antenna, string manipulator, string AKB, string batteryСharger, string txB_ReasonDecommission, string road)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1578,7 +1567,7 @@ namespace ServiceTelecomConnect
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
                         $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                         $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                        $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' " +
+                        $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_ReasonDecommission}' " +
                         $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
@@ -1594,7 +1583,8 @@ namespace ServiceTelecomConnect
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
-                            $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_reason_decommission}' WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                            $"parts_4 = '', parts_5 = '', parts_6 = '', parts_7 = '', comment = '{txB_ReasonDecommission}' " +
+                            $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
 
                         using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
@@ -1613,13 +1603,13 @@ namespace ServiceTelecomConnect
                                     $"post, numberIdentification, dateIssue, phoneNumber, numberActRemont, category, priceRemont, " +
                                     $"antenna, manipulator, AKB, batteryСharger, completed_works_1, completed_works_2, completed_works_3, " +
                                     $"completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1, parts_2, parts_3, parts_4, " +
-                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon.Trim()}', '{company.Trim()}', '{location.Trim()}'," +
-                                    $"'{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
+                                    $"parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road) VALUES ('{poligon.Trim()}', " +
+                                    $"'{company.Trim()}', '{location.Trim()}', '{model.Trim()}','{serialNumber.Trim()}', 'списание', 'списание', " +
                                     $"'{dateTO.Trim()}','списание','{city.Trim()}','{price.Trim()}', '{representative.Trim()}', '{post.Trim()}', " +
                                     $"'{numberIdentification.Trim()}', '{dateIssue.Trim()}', '{phoneNumber.Trim()}', '{""}', '{""}', '{0.00}'," +
                                     $"'{antenna.Trim()}', '{manipulator.Trim()}', '{AKB.Trim()}', '{batteryСharger.Trim()}', '{""}', '{""}', " +
                                     $"'{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', '{""}', " +
-                                    $"'{decommissionSerialNumber}', '{txB_reason_decommission}', '{road}')";
+                                    $"'{decommissionSerialNumber}', '{txB_ReasonDecommission}', '{road}')";
 
                         using (MySqlCommand command3 = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                         {
@@ -1628,7 +1618,6 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.CloseConnection();
                         }
                     }
-
                 }
             }
         }
@@ -1637,7 +1626,7 @@ namespace ServiceTelecomConnect
 
         #region Удалить номер списание из таблицы radiostantion
 
-        internal static void Delete_decommissionSerialNumber_radiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber,
+        internal static void DeleteDecommissionSerialNumberRadiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber,
             string city, ComboBox cmB_model, TextBox txB_numberAct, string road)
         {
             if (Internet_check.CheackSkyNET())
