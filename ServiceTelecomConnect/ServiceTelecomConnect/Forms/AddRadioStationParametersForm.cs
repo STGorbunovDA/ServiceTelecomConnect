@@ -30,8 +30,9 @@ namespace ServiceTelecomConnect.Forms
                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
                $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
                $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
-               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters FROM radiostation_parameters " +
-               $"WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' AND serialNumber = '{txB_serialNumber.Text}'";
+               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST " +
+               $"FROM radiostation_parameters WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' " +
+               $"AND serialNumber = '{txB_serialNumber.Text}'";
                 using (MySqlCommand command = new MySqlCommand(queryLastNumberActRemont, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -63,6 +64,8 @@ namespace ServiceTelecomConnect.Forms
                             lbL_nameAKB.Text = reader[21].ToString();
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                            if (reader[24].ToString() == "+")
+                                lbl_verifiedRST.Visible = true;
                         }
                         reader.Close();
                     }
@@ -445,7 +448,7 @@ namespace ServiceTelecomConnect.Forms
                     txB_percentAKB.Enabled = true;
                     txB_percentAKB.Text = String.Empty;
                 }
-            } 
+            }
         }
 
         void TxB_AKB_KeyPress(object sender, KeyPressEventArgs e)
@@ -1090,8 +1093,8 @@ namespace ServiceTelecomConnect.Forms
                         $"receptionModeCurrentConsumption = '{receptionModeCurrentConsumption}', transmissionModeCurrentConsumption = '{transmissionModeCurrentConsumption}', " +
                         $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
                         $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
-                        $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}'" +
-                        $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+                        $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}', " +
+                        $"verifiedRST = '+' WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
                     using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                     {
@@ -1109,7 +1112,7 @@ namespace ServiceTelecomConnect.Forms
                                $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
                                $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
                                $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, " +
-                               $"nameAKB, percentAKB, noteRadioStationParameters) VALUES ('{road}', '{city}', '{numberAct}'," +
+                               $"nameAKB, percentAKB, noteRadioStationParameters, verifiedRST) VALUES ('{road}', '{city}', '{numberAct}'," +
                                $"'{serialNumber}','{dateTO}', '{model}', '{lowPowerLevelTransmitter}', " +
                                $"'{highPowerLevelTransmitter}','{frequencyDeviationTransmitter}','{sensitivityTransmitter}', " +
                                $"'{kniTransmitter}', '{deviationTransmitter}', '{outputPowerVoltReceiver}', " +
@@ -1117,7 +1120,7 @@ namespace ServiceTelecomConnect.Forms
                                $"'{suppressorReceiver}', '{standbyModeCurrentConsumption}', '{receptionModeCurrentConsumption}', " +
                                $"'{transmissionModeCurrentConsumption}', '{batteryDischargeAlarmCurrentConsumption}', " +
                                $"'{transmitterFrequencies}', '{receiverFrequencies}', '{batteryChargerAccessories}', " +
-                               $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}')";
+                               $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}', '+')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {

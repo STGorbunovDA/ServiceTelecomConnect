@@ -95,6 +95,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.pnl_info_rst = new System.Windows.Forms.Panel();
             this.pnl_AKB = new System.Windows.Forms.Panel();
+            this.chB_Faulty = new System.Windows.Forms.CheckBox();
             this.btn_Save_add_rst_remont = new System.Windows.Forms.Button();
             this.pnl_NoteRadioStationParameters = new System.Windows.Forms.Panel();
             this.txB_NoteRadioStationParameters = new System.Windows.Forms.TextBox();
@@ -103,7 +104,7 @@
             this.lbL_city = new System.Windows.Forms.Label();
             this.lbL_road = new System.Windows.Forms.Label();
             this.btn_Frequencies = new System.Windows.Forms.Button();
-            this.chB_Faulty = new System.Windows.Forms.CheckBox();
+            this.lbl_verifiedRST = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -925,6 +926,17 @@
             this.pnl_AKB.Size = new System.Drawing.Size(214, 77);
             this.pnl_AKB.TabIndex = 189;
             // 
+            // chB_Faulty
+            // 
+            this.chB_Faulty.AutoSize = true;
+            this.chB_Faulty.Location = new System.Drawing.Point(148, 34);
+            this.chB_Faulty.Name = "chB_Faulty";
+            this.chB_Faulty.Size = new System.Drawing.Size(65, 17);
+            this.chB_Faulty.TabIndex = 188;
+            this.chB_Faulty.Text = "неиспр.";
+            this.chB_Faulty.UseVisualStyleBackColor = true;
+            this.chB_Faulty.Click += new System.EventHandler(this.ChB_Faulty_Click);
+            // 
             // btn_Save_add_rst_remont
             // 
             this.btn_Save_add_rst_remont.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -989,7 +1001,7 @@
             this.lbL_city.AutoSize = true;
             this.lbL_city.BackColor = System.Drawing.Color.Transparent;
             this.lbL_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_city.Location = new System.Drawing.Point(975, 14);
+            this.lbL_city.Location = new System.Drawing.Point(18, 13);
             this.lbL_city.Name = "lbL_city";
             this.lbL_city.Size = new System.Drawing.Size(52, 18);
             this.lbL_city.TabIndex = 182;
@@ -1001,7 +1013,7 @@
             this.lbL_road.AutoSize = true;
             this.lbL_road.BackColor = System.Drawing.Color.Transparent;
             this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_road.Location = new System.Drawing.Point(975, 48);
+            this.lbL_road.Location = new System.Drawing.Point(92, 14);
             this.lbL_road.Name = "lbL_road";
             this.lbL_road.Size = new System.Drawing.Size(60, 18);
             this.lbL_road.TabIndex = 194;
@@ -1021,16 +1033,18 @@
             this.btn_Frequencies.UseVisualStyleBackColor = false;
             this.btn_Frequencies.Click += new System.EventHandler(this.Btn_Frequencies_Click);
             // 
-            // chB_Faulty
+            // lbl_verifiedRST
             // 
-            this.chB_Faulty.AutoSize = true;
-            this.chB_Faulty.Location = new System.Drawing.Point(148, 34);
-            this.chB_Faulty.Name = "chB_Faulty";
-            this.chB_Faulty.Size = new System.Drawing.Size(65, 17);
-            this.chB_Faulty.TabIndex = 188;
-            this.chB_Faulty.Text = "неиспр.";
-            this.chB_Faulty.UseVisualStyleBackColor = true;
-            this.chB_Faulty.Click += new System.EventHandler(this.ChB_Faulty_Click);
+            this.lbl_verifiedRST.AutoSize = true;
+            this.lbl_verifiedRST.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_verifiedRST.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_verifiedRST.ForeColor = System.Drawing.Color.ForestGreen;
+            this.lbl_verifiedRST.Location = new System.Drawing.Point(934, 10);
+            this.lbl_verifiedRST.Name = "lbl_verifiedRST";
+            this.lbl_verifiedRST.Size = new System.Drawing.Size(109, 22);
+            this.lbl_verifiedRST.TabIndex = 196;
+            this.lbl_verifiedRST.Text = "Проверена";
+            this.lbl_verifiedRST.Visible = false;
             // 
             // AddRadioStationParametersForm
             // 
@@ -1038,6 +1052,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.lbl_verifiedRST);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.pnl_transmitter);
             this.Controls.Add(this.lbL_road);
@@ -1162,5 +1177,6 @@
         internal System.Windows.Forms.Label lbL_city;
         private System.Windows.Forms.Button btn_Frequencies;
         private System.Windows.Forms.CheckBox chB_Faulty;
+        private System.Windows.Forms.Label lbl_verifiedRST;
     }
 }
