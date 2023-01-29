@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -101,6 +102,33 @@ namespace ServiceTelecomConnect
             dgw.Columns[41].Visible = false;
         }
 
+        internal static void LightDataGrid(DataGridView dgw, string city, string road)
+        {
+            for (int i = 0; i < dgw.Rows.Count; i++)
+            {
+                string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
+
+                var queryRadiostantionParameters = $"SELECT verifiedRST FROM radiostation_parameters " +
+                $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                string verifiedRST = String.Empty;
+                using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                            verifiedRST = reader[0].ToString();
+                        reader.Close();
+                    }
+                    DB.GetInstance.CloseConnection();
+                }
+
+                if (verifiedRST == "+")
+                    dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+            }        
+        }
+
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
             if (Internet_check.CheackSkyNET())
@@ -170,7 +198,6 @@ namespace ServiceTelecomConnect
                      record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
                      record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
                      record.GetString(40), RowState.ModifieldNew)));
-
         }
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
@@ -1343,7 +1370,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                string copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";  
+                string copyBD = "INSERT INTO radiostantion_copy SELECT * FROM radiostantion";
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
