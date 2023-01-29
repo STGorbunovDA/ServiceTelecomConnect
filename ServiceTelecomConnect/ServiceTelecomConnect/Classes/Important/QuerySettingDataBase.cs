@@ -74,6 +74,7 @@ namespace ServiceTelecomConnect
             dgw.Columns.Add("decommissionSerialNumber", "№ акта списания");
             dgw.Columns.Add("comment", "Примечание");
             dgw.Columns.Add("road", "Дорога");
+            dgw.Columns.Add("verifiedRST", "Состояние РСТ");
             dgw.Columns.Add("IsNew", "RowState");
             dgw.Columns[12].Visible = true;
             dgw.Columns[13].Visible = false;
@@ -100,33 +101,7 @@ namespace ServiceTelecomConnect
             dgw.Columns[37].Visible = false;
             dgw.Columns[40].Visible = false;
             dgw.Columns[41].Visible = false;
-        }
-
-        internal static void LightDataGrid(DataGridView dgw, string city, string road)
-        {
-            for (int i = 0; i < dgw.Rows.Count; i++)
-            {
-                string serialNumber = dgw.Rows[i].Cells["serialNumber"].Value.ToString();
-
-                var queryRadiostantionParameters = $"SELECT verifiedRST FROM radiostation_parameters " +
-                $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
-
-                string verifiedRST = String.Empty;
-                using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB.GetInstance.GetConnection()))
-                {
-                    DB.GetInstance.OpenConnection();
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                            verifiedRST = reader[0].ToString();
-                        reader.Close();
-                    }
-                    DB.GetInstance.CloseConnection();
-                }
-
-                if (verifiedRST == "+")
-                    dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
-            }        
+            dgw.Columns[42].Visible = false;
         }
 
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
@@ -143,7 +118,7 @@ namespace ServiceTelecomConnect
                         $"networkNumber, dateTO, numberAct, city, price, representative, post, numberIdentification, dateIssue, " +
                         $"phoneNumber, numberActRemont, category, priceRemont, antenna, manipulator, AKB, batteryСharger, completed_works_1, " +
                         $"completed_works_2, completed_works_3, completed_works_4, completed_works_5, completed_works_6, completed_works_7, parts_1," +
-                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road FROM radiostantion " +
+                        $" parts_2, parts_3, parts_4, parts_5, parts_6, parts_7, decommissionSerialNumber, comment, road, verifiedRST FROM radiostantion " +
                         $"WHERE city = '{city.Trim()}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
@@ -154,8 +129,19 @@ namespace ServiceTelecomConnect
                         {
                             if (reader.HasRows)
                             {
+                                int i = 0;
                                 while (reader.Read())
+                                {
                                     ReedSingleRow(dgw, reader);
+                                    if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.LightGreen;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Yellow;
+                                    else if (dgw.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")
+                                        dgw.Rows[i].Cells["serialNumber"].Style.BackColor = Color.Red;
+                                    i++;
+                                }
+                                    
 
                                 reader.Close();
                             }
@@ -197,7 +183,7 @@ namespace ServiceTelecomConnect
                      record.GetString(25), record.GetString(26), record.GetString(27), record.GetString(28), record.GetString(29),
                      record.GetString(30), record.GetString(31), record.GetString(32), record.GetString(33), record.GetString(34),
                      record.GetString(35), record.GetString(36), record.GetString(37), record.GetString(38), record.GetString(39),
-                     record.GetString(40), RowState.ModifieldNew)));
+                     record.GetString(40), record.GetString(41), RowState.ModifieldNew)));
         }
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
@@ -1462,7 +1448,7 @@ namespace ServiceTelecomConnect
 
                 for (int index = 0; index < dgw.Rows.Count; index++)
                 {
-                    var rowState = (RowState)dgw.Rows[index].Cells[41].Value;//проверить индекс
+                    var rowState = (RowState)dgw.Rows[index].Cells[42].Value;//проверить индекс
 
                     if (rowState == RowState.Deleted)
                     {
