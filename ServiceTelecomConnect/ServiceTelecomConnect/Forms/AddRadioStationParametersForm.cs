@@ -65,7 +65,7 @@ namespace ServiceTelecomConnect.Forms
                             lbL_nameAKB.Text = reader[21].ToString();
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
-                            
+
                             if (reader[24].ToString() == "+")
                             {
                                 lbl_verifiedRST.Visible = true;
@@ -1104,7 +1104,7 @@ namespace ServiceTelecomConnect.Forms
                     lbl_verifiedRST.Text = "В ремонте";
                     lbl_verifiedRST.ForeColor = Color.Red;
                     inRepairBool = "?";
-                }   
+                }
                 else
                 {
                     chB_InRepair.Checked = false;
@@ -1112,8 +1112,8 @@ namespace ServiceTelecomConnect.Forms
                     lbl_verifiedRST.ForeColor = Color.ForestGreen;
                     inRepairBool = "+";
                 }
-                    
 
+                lbl_verifiedRST.Visible = true;
                 if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
                     string changeQueryParameters = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
