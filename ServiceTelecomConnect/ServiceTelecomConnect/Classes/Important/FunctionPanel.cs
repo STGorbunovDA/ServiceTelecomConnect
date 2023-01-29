@@ -224,7 +224,7 @@ namespace ServiceTelecomConnect
 
         #region Выгрузить резервынй файл JSON
 
-        internal static void Get_date_save_datagridview_json(DataGridView dgw, string city)
+        internal static void GetSaveDataGridViewInJson(DataGridView dgw, string city)
         {
             JArray products = new JArray();
 
@@ -287,7 +287,7 @@ namespace ServiceTelecomConnect
             File.WriteAllText(fileNamePath, json);
         }
 
-        internal static void Get_date_save_datagridview_сurator_json(DataGridView dgw, string city)
+        internal static void GetSaveDataGridViewInJsonCurator(DataGridView dgw, string city)
         {
             JArray products = new JArray();
 
