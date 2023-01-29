@@ -105,6 +105,7 @@
             this.lbL_road = new System.Windows.Forms.Label();
             this.btn_Frequencies = new System.Windows.Forms.Button();
             this.lbl_verifiedRST = new System.Windows.Forms.Label();
+            this.chB_InRepair = new System.Windows.Forms.CheckBox();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -1046,12 +1047,25 @@
             this.lbl_verifiedRST.Text = "Проверена";
             this.lbl_verifiedRST.Visible = false;
             // 
+            // chB_InRepair
+            // 
+            this.chB_InRepair.AutoSize = true;
+            this.chB_InRepair.BackColor = System.Drawing.Color.Transparent;
+            this.chB_InRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chB_InRepair.Location = new System.Drawing.Point(938, 63);
+            this.chB_InRepair.Name = "chB_InRepair";
+            this.chB_InRepair.Size = new System.Drawing.Size(107, 24);
+            this.chB_InRepair.TabIndex = 189;
+            this.chB_InRepair.Text = "В ремонт";
+            this.chB_InRepair.UseVisualStyleBackColor = false;
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.chB_InRepair);
             this.Controls.Add(this.lbl_verifiedRST);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.pnl_transmitter);
@@ -1178,5 +1192,6 @@
         private System.Windows.Forms.Button btn_Frequencies;
         private System.Windows.Forms.CheckBox chB_Faulty;
         private System.Windows.Forms.Label lbl_verifiedRST;
+        private System.Windows.Forms.CheckBox chB_InRepair;
     }
 }

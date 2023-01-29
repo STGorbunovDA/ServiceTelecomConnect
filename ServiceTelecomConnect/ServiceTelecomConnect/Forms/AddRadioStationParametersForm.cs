@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -65,7 +66,17 @@ namespace ServiceTelecomConnect.Forms
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
                             if (reader[24].ToString() == "+")
+                            {
                                 lbl_verifiedRST.Visible = true;
+                            }
+                            else if (reader[24].ToString() == "?")
+                            {
+                                chB_InRepair.Checked = true;
+                                lbl_verifiedRST.Text = "В ремонте";
+                                lbl_verifiedRST.ForeColor = Color.Red;
+                                lbl_verifiedRST.Visible = true;
+                            }
+
                         }
                         reader.Close();
                     }
@@ -251,9 +262,7 @@ namespace ServiceTelecomConnect.Forms
 
                 #endregion
 
-
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-
                 if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
                 if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
@@ -1081,9 +1090,27 @@ namespace ServiceTelecomConnect.Forms
                 var regex3 = new Regex(Environment.NewLine);
                 noteRadioStationParameters = regex3.Replace(noteRadioStationParameters, " ");
 
+                string inRepairBool = String.Empty;
+
+                if (chB_InRepair.Checked)
+                {
+                    chB_InRepair.Checked = true;
+                    lbl_verifiedRST.Text = "В ремонте";
+                    lbl_verifiedRST.ForeColor = Color.Red;
+                    inRepairBool = "?";
+                }   
+                else
+                {
+                    chB_InRepair.Checked = false;
+                    lbl_verifiedRST.Text = "Проверена";
+                    lbl_verifiedRST.ForeColor = Color.ForestGreen;
+                    inRepairBool = "+";
+                }
+                    
+
                 if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    var changeQuery = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
+                    string changeQueryParameters = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
                         $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
                         $"highPowerLevelTransmitter = '{highPowerLevelTransmitter}', frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', " +
                         $"sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
@@ -1094,19 +1121,18 @@ namespace ServiceTelecomConnect.Forms
                         $"batteryDischargeAlarmCurrentConsumption = '{batteryDischargeAlarmCurrentConsumption}', transmitterFrequencies = '{transmitterFrequencies}', " +
                         $"receiverFrequencies = '{receiverFrequencies}', batteryChargerAccessories = '{batteryChargerAccessories}', manipulatorAccessories = '{manipulatorAccessories}', " +
                         $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}', " +
-                        $"verifiedRST = '+' WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+                        $"verifiedRST = '{inRepairBool}' WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                    using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(changeQueryParameters, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
-
                 }
                 else
                 {
-                    var addQuery = $"INSERT INTO radiostation_parameters (road, city, numberAct, serialNumber, dateTO," +
+                    string addQueryParameters = $"INSERT INTO radiostation_parameters (road, city, numberAct, serialNumber, dateTO," +
                                $"model, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter, " +
                                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
                                $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
@@ -1120,9 +1146,9 @@ namespace ServiceTelecomConnect.Forms
                                $"'{suppressorReceiver}', '{standbyModeCurrentConsumption}', '{receptionModeCurrentConsumption}', " +
                                $"'{transmissionModeCurrentConsumption}', '{batteryDischargeAlarmCurrentConsumption}', " +
                                $"'{transmitterFrequencies}', '{receiverFrequencies}', '{batteryChargerAccessories}', " +
-                               $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}', '+')";
+                               $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}', '{inRepairBool}')";
 
-                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(addQueryParameters, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
@@ -1130,9 +1156,20 @@ namespace ServiceTelecomConnect.Forms
                     }
                 }
 
+                string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = '{inRepairBool}' " +
+                   $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
+
+                using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB.GetInstance.GetConnection()))
+                {
+                    DB.GetInstance.OpenConnection();
+                    command.ExecuteNonQuery();
+                    DB.GetInstance.CloseConnection();
+                }
+
             }
             MessageBox.Show("Готовченко");
         }
+
 
         #endregion
 
