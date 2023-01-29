@@ -107,6 +107,7 @@
             this.lbl_verifiedRST = new System.Windows.Forms.Label();
             this.chB_InRepair = new System.Windows.Forms.CheckBox();
             this.btn_DecommissionRadiostantion = new System.Windows.Forms.Button();
+            this.lbL_company = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -167,7 +168,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(394, 9);
+            this.label1.Location = new System.Drawing.Point(301, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(320, 27);
             this.label1.TabIndex = 1;
@@ -1073,12 +1074,24 @@
             this.btn_DecommissionRadiostantion.UseVisualStyleBackColor = false;
             this.btn_DecommissionRadiostantion.Click += new System.EventHandler(this.Btn_DecommissionRadiostantion_Click);
             // 
+            // lbL_company
+            // 
+            this.lbL_company.AutoSize = true;
+            this.lbL_company.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_company.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_company.Location = new System.Drawing.Point(627, 10);
+            this.lbL_company.Name = "lbL_company";
+            this.lbL_company.Size = new System.Drawing.Size(82, 27);
+            this.lbL_company.TabIndex = 198;
+            this.lbL_company.Text = "ПЧМ-4";
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.lbL_company);
             this.Controls.Add(this.btn_DecommissionRadiostantion);
             this.Controls.Add(this.chB_InRepair);
             this.Controls.Add(this.lbl_verifiedRST);
@@ -1209,5 +1222,6 @@
         private System.Windows.Forms.Label lbl_verifiedRST;
         private System.Windows.Forms.CheckBox chB_InRepair;
         private System.Windows.Forms.Button btn_DecommissionRadiostantion;
+        internal System.Windows.Forms.Label lbL_company;
     }
 }
