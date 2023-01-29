@@ -242,7 +242,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            QuerySettingDataBase.Full_BD(dataGridView1, cmB_road.Text);
+            QuerySettingDataBase.FullDataBase(dataGridView1, cmB_road.Text);
             Counters();
             txb_flag_all_BD.Text = "Вся БД";
         }
@@ -633,7 +633,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя напечатать \"Ведомость с параметрами\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            int dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            int dgwRowsCount = QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
             if (dgwRowsCount == 0)
                 return;
             if (dgwRowsCount > 20)
@@ -677,7 +677,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            int dgwRowsCount = QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            int dgwRowsCount = QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
             if (dgwRowsCount == 0)
                 return;
             if (dgwRowsCount > 20)
@@ -825,7 +825,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Добавь радиостанцию в выполнение!");
                     return;
                 }
-                QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
+                QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
                 Counters();
             }
         }
@@ -837,7 +837,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Добавь радиостанцию в выполнение!");
                 return;
             }
-            QuerySettingDataBase.Update_datagridview_number_act(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
             Counters();
         }
 
@@ -872,7 +872,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = false;
             panel3.Enabled = false;
             menuStrip1.Enabled = false;
-            QuerySettingDataBase.Seach_DataGrid_Replay_RST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.SeachDataGridReplayRST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
             Counters();
         }
 
