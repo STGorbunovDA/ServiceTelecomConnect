@@ -490,7 +490,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Добавь радиостанцию в выполнение!");
                     return;
                 }
-                QuerySettingDataBase.Update_datagridview_number_act_curator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.UpdateDataGridViewNumberActCurator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
@@ -504,7 +504,7 @@ namespace ServiceTelecomConnect
             }
             if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
-                QuerySettingDataBase.Update_datagridview_number_act_curator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
+                QuerySettingDataBase.UpdateDataGridViewNumberActCurator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
             }
         }
