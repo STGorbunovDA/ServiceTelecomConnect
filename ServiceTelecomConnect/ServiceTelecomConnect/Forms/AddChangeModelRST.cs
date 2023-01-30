@@ -21,7 +21,7 @@ namespace ServiceTelecomConnect.Forms
 
         void AddChangeModelRST_Load(object sender, EventArgs e)
         {
-            QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+            QuerySettingDataBase.CmbGettingModelRST(cmB_model);
         }
 
         void Btn_add_modelRST_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect.Forms
                         DB.GetInstance.CloseConnection();
                     }
 
-                    QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                    QuerySettingDataBase.CmbGettingModelRST(cmB_model);
                 }
                 else MessageBox.Show("Такая модель присутсвует в БД");
 
@@ -60,7 +60,7 @@ namespace ServiceTelecomConnect.Forms
                 {
                     DB.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                    QuerySettingDataBase.CmbGettingModelRST(cmB_model);
                     MessageBox.Show("Модель радиостанции успешно изменена!");
                     DB.GetInstance.CloseConnection();
                 }
@@ -82,7 +82,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 DB.GetInstance.OpenConnection();
                 command.ExecuteNonQuery();
-                QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                QuerySettingDataBase.CmbGettingModelRST(cmB_model);
                 MessageBox.Show("Модель радиостанции успешно удалена!");
                 DB.GetInstance.CloseConnection();
             }
