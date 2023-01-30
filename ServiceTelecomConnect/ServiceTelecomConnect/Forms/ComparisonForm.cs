@@ -388,56 +388,56 @@ namespace ServiceTelecomConnect
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_company_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueCompanyCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 1)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_location_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueLocationCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 3)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_dateTO_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueDateTOCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 4)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_numberAct_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueNumberActCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 5)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_numberActRemont_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueNumberActRemontCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 6)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_decommissionActs_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueDecommissionActsCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 7)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_month_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueMonthCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 8)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
 
-                QuerySettingDataBase.Number_unique_model_curator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                QuerySettingDataBase.NumberUniqueModelCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else
             {
