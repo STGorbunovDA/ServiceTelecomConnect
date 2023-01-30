@@ -375,8 +375,8 @@ namespace ServiceTelecomConnect
             //    y1++;
             //    txB_numberActRemont.Text += y1.ToString();
             //}
-            txB_MainMeans.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item1;
-            txB_NameProductRepaired.Text = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item2;
+            txB_MainMeans.Text = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item1;
+            txB_NameProductRepaired.Text = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item2;
             if (txB_numberActRemont.Text != "53/")
             {
                 lbL_AddRemontRST.Text = "Изменение ремонта";
