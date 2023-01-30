@@ -2172,8 +2172,8 @@ namespace ServiceTelecomConnect
                 textBox_search.Visible = false;
                 textBox_search.Clear();
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_company_full_BD(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_company(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueCompanyFullDataBase(cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueCompany(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 1)
             {
@@ -2182,7 +2182,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_location_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueLocationFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 2)
@@ -2197,7 +2197,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_dateTO_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueDateTOFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 4)
@@ -2207,7 +2207,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_numberAct_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueNumberActFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 5)
@@ -2217,7 +2217,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_numberActRemont_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueNumberActRemontFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 6)
@@ -2227,7 +2227,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_representative_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueRepresentativeFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 7)
@@ -2237,7 +2237,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
 
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_decommissionActs_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueDecommissionActsFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 8)
@@ -2246,7 +2246,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Visible = false;
                 textBox_search.Clear();
                 if (txb_flag_all_BD.Text == "Вся БД")
-                    QuerySettingDataBase.Number_unique_model_full_BD(cmb_number_unique_acts, cmB_road.Text);
+                    QuerySettingDataBase.NumberUniqueModelFullDataBase(cmb_number_unique_acts, cmB_road.Text);
                 else QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else
