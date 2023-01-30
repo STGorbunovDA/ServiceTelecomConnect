@@ -65,21 +65,21 @@ namespace ServiceTelecomConnect.Forms
                 cmb_unique.Visible = true;
                 txB_search.Visible = false;
                 txB_search.Clear();
-                QuerySettingDataBase.Cmb_unique_model_engineer(cmb_unique);
+                QuerySettingDataBase.CmbUniqueModelEngineer(cmb_unique);
             }
             if (cmB_seach.SelectedIndex == 1)
             {
                 cmb_unique.Visible = true;
                 txB_search.Visible = false;
                 txB_search.Clear();
-                QuerySettingDataBase.Cmb_unique_problem_engineer(cmb_unique);
+                QuerySettingDataBase.CmbUniqueProblemEngineer(cmb_unique);
             }
             if (cmB_seach.SelectedIndex == 2)
             {
                 cmb_unique.Visible = true;
                 txB_search.Visible = false;
                 txB_search.Clear();
-                QuerySettingDataBase.Cmb_unique_author_engineer(cmb_unique);
+                QuerySettingDataBase.CmbUniqueAuthorEngineer(cmb_unique);
             }
             if (cmB_seach.SelectedIndex == 3)
             {
