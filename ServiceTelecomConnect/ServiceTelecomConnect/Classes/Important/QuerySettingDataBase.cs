@@ -2337,7 +2337,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region заполнение cmB_city из таблицы
-
         internal static void SelectCityGropByCurator(ComboBox cmB_city, ComboBox cmB_road)
         {
             if (Internet_check.CheackSkyNET())
@@ -2367,7 +2366,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void SelectCityGropByMonthRoad(ComboBox cmB_road, ComboBox cmB_month)
         {
             if (Internet_check.CheackSkyNET())
@@ -2393,7 +2391,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void SelectCityGropByMonthCity(ComboBox cmB_city, ComboBox cmB_road, ComboBox cmB_month)
         {
             if (Internet_check.CheackSkyNET())
@@ -2418,7 +2415,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void ProblemGetEngineerAuthor(ComboBox cmB_problem, string author)
         {
             if (Internet_check.CheackSkyNET())
@@ -2443,7 +2439,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void ModelGetEngineerAuthor(ComboBox cmB_model, string author)
         {
             if (Internet_check.CheackSkyNET())
@@ -2468,7 +2463,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
             if (Internet_check.CheackSkyNET())
@@ -2496,16 +2490,16 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region OC-6 для ремонтов
-
-        internal static Tuple<string, string> Loading_OC_6_values(string serialNumber, string city, string road)
+        internal static Tuple<string, string> LoadingValuesOC6(string serialNumber, string city, string road)
         {
-            string mainMeans = "";
-            string nameProductRepaired = "";
+            string mainMeans = String.Empty;
+            string nameProductRepaired = String.Empty;
             try
             {
                 if (Internet_check.CheackSkyNET())
                 {
-                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
+                    string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM radiostantion_full " +
+                        $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
 
                     using (MySqlCommand command = new MySqlCommand(querySelectOC, DB.GetInstance.GetConnection()))
                     {
@@ -2527,13 +2521,10 @@ namespace ServiceTelecomConnect
             {
                 return Tuple.Create(mainMeans, nameProductRepaired);
             }
-
         }
-
         #endregion
 
         #region получ. крайнего номера акта ремонта из БД
-
         internal static void LoadingLastNumberActRemont(Label lbL_last_act_remont, string city, string road)
         {
             try
@@ -2606,13 +2597,10 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         #endregion
 
         #region получение данных о бриагде ФИО Начальника и Инженера, Доверенность, № печати, Дорога
-
-        //private readonly cheakUser _user;
-        internal static void GettingTeamData(Label lbL_FIO_chief, Label lbL_FIO_Engineer, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, CheakUser _user, ComboBox cmB_road)
+        internal static void GettingTeamData(Label lbL_ChiefFIO, Label lbL_EngineerFIO, Label lbL_doverennost, Label lbL_road, Label lbL_numberPrintDocument, CheakUser _user, ComboBox cmB_road)
         {
             if (_user.Login == "Admin" || _user.IsAdmin == "Руководитель")
                 cmB_road.Text = cmB_road.Items[0].ToString();
@@ -2631,8 +2619,8 @@ namespace ServiceTelecomConnect
                         {
                             while (reader.Read())
                             {
-                                lbL_FIO_chief.Text = reader[1].ToString();
-                                lbL_FIO_Engineer.Text = reader[2].ToString();
+                                lbL_ChiefFIO.Text = reader[1].ToString();
+                                lbL_EngineerFIO.Text = reader[2].ToString();
                                 lbL_doverennost.Text = reader[3].ToString();
                                 lbL_road.Text = reader[4].ToString();
                                 lbL_numberPrintDocument.Text = reader[5].ToString();
@@ -2664,29 +2652,23 @@ namespace ServiceTelecomConnect
                         }
                     }
                 }
-
             }
         }
 
         #endregion
 
         #region получение Даты регистрации входа в программу для табеля
-
         public static DateTime CheacDateTimeInput_logUserDB(string user)
         {
             if (Internet_check.CheackSkyNET())
             {
                 DateTime Date = DateTime.Now;
-                string querystring = $"SELECT dateTimeInput FROM logUserDB WHERE user = '{user}' AND dateTimeInput LIKE '%{Date.ToString("yyyy-MM-dd")}%'";
-
+                string querystring = $"SELECT dateTimeInput FROM logUserDB WHERE user = '{user}' " +
+                    $"AND dateTimeInput LIKE '%{Date.ToString("yyyy-MM-dd")}%'";
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                 DataTable table = new DataTable();
-
                 adapter.Fill(table);
-
                 if (table.Rows.Count > 0) return Convert.ToDateTime(table.Rows[table.Rows.Count - 1].ItemArray[0]);
                 else return DateTime.MinValue;
             }
@@ -2696,8 +2678,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Получение моделей радиостанций 
-
-        internal static void GettingModelRST_CMB(ComboBox cmB_model)
+        internal static void CmbGettingModelRST(ComboBox cmB_model)
         {
             string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
             using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2723,7 +2704,7 @@ namespace ServiceTelecomConnect
 
         #region Получение моделей радиостанций 
 
-        internal static void GettingFrequenciesRST_CMB(ComboBox cmB_frequency)
+        internal static void CmbGettingFrequenciesRST(ComboBox cmB_frequency)
         {
             string querystring = $"SELECT id, frequency FROM frequencies ORDER BY frequency ASC;";
             using (MySqlCommand command2 = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2744,7 +2725,6 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
         #endregion
 
     }
