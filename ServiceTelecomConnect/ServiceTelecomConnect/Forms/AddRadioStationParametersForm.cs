@@ -23,7 +23,7 @@ namespace ServiceTelecomConnect.Forms
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
-            QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+            QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_frequency);
 
             if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
             {
@@ -486,7 +486,7 @@ namespace ServiceTelecomConnect.Forms
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                     addFrequencies.ShowDialog();
-                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_frequency);
+                    QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_frequency);
                 }
             }
         }
