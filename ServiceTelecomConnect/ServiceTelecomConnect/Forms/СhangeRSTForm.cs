@@ -89,7 +89,7 @@ namespace ServiceTelecomConnect
 
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+            QuerySettingDataBase.CmbGettingModelRST(cmB_model);
         }
 
         #region изменяем рст по номеру акта
