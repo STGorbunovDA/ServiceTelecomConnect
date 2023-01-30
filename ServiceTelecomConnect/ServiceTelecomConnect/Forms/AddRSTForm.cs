@@ -29,7 +29,7 @@ namespace ServiceTelecomConnect
 
         void AddRSTForm_Load(object sender, EventArgs e)
         {
-            QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+            QuerySettingDataBase.CmbGettingModelRST(cmB_model);
             QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
 
             if (Regex.IsMatch(lbL_last_act.Text, @"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
@@ -950,7 +950,7 @@ namespace ServiceTelecomConnect
                         return;
 
                     addChangeModel.ShowDialog();
-                    QuerySettingDataBase.GettingModelRST_CMB(cmB_model);
+                    QuerySettingDataBase.CmbGettingModelRST(cmB_model);
                 }
             }
         }
