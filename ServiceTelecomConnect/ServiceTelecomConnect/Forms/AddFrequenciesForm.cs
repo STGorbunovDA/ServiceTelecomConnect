@@ -22,7 +22,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void AddFrequencies_Load(object sender, EventArgs e)
         {
-            QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_Frequencies);
+            QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
         }
 
         void Btn_add_Frequencies_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace ServiceTelecomConnect.Forms
                         DB.GetInstance.CloseConnection();
                     }
 
-                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_Frequencies);
+                    QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
                 }
                 else MessageBox.Show("Такая частота присутсвует в БД");
 
@@ -73,7 +73,7 @@ namespace ServiceTelecomConnect.Forms
                 {
                     DB.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_Frequencies);
+                    QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
                     MessageBox.Show("Частота успешно изменена!");
                     DB.GetInstance.CloseConnection();
                 }
@@ -96,7 +96,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 DB.GetInstance.OpenConnection();
                 command.ExecuteNonQuery(); 
-                QuerySettingDataBase.GettingFrequenciesRST_CMB(cmB_Frequencies);
+                QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
                 MessageBox.Show("Частота успешно удалена!");
                 DB.GetInstance.CloseConnection();
             }
