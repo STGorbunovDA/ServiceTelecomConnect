@@ -714,8 +714,8 @@ namespace ServiceTelecomConnect
                 panel_remont_information_company.Visible = false;
                 panel_remont_information_company.Enabled = false;
 
-                string mainMeans = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
-                string nameProductRepaired = QuerySettingDataBase.Loading_OC_6_values(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
+                string mainMeans = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
+                string nameProductRepaired = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
                      lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
                      lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
