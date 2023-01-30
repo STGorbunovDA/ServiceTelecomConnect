@@ -2120,7 +2120,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = false;
             panel3.Enabled = false;
             menuStrip1.Enabled = false;
-            QuerySettingDataBase.Show_radiostantion_decommission(dataGridView1, txB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.ShowRadiostantionDecommission(dataGridView1, txB_city.Text, cmB_road.Text);
             Counters();
         }
 
