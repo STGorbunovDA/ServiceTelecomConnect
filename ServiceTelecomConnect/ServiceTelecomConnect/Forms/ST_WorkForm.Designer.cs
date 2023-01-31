@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -205,6 +205,10 @@
             this.picB_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbl_inRepair = new System.Windows.Forms.Label();
+            this.lbl_121 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.lbl_verified = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.lbL_sum_TO_selection = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -265,10 +269,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.lbl_verified = new System.Windows.Forms.Label();
-            this.lbl_121 = new System.Windows.Forms.Label();
-            this.lbl_inRepair = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -310,44 +310,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
@@ -2407,6 +2407,62 @@
             this.panel3.Size = new System.Drawing.Size(1426, 63);
             this.panel3.TabIndex = 29;
             // 
+            // lbl_inRepair
+            // 
+            this.lbl_inRepair.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_inRepair.AutoSize = true;
+            this.lbl_inRepair.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_inRepair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_inRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_inRepair.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_inRepair.Location = new System.Drawing.Point(426, 36);
+            this.lbl_inRepair.Name = "lbl_inRepair";
+            this.lbl_inRepair.Size = new System.Drawing.Size(39, 16);
+            this.lbl_inRepair.TabIndex = 34;
+            this.lbl_inRepair.Text = "7500";
+            // 
+            // lbl_121
+            // 
+            this.lbl_121.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_121.AutoSize = true;
+            this.lbl_121.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_121.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_121.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_121.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_121.Location = new System.Drawing.Point(254, 33);
+            this.lbl_121.Name = "lbl_121";
+            this.lbl_121.Size = new System.Drawing.Size(153, 20);
+            this.lbl_121.TabIndex = 33;
+            this.lbl_121.Text = "В ремонт инженер:";
+            // 
+            // label35
+            // 
+            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.Transparent;
+            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label35.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label35.Location = new System.Drawing.Point(254, 11);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(166, 20);
+            this.label35.TabIndex = 32;
+            this.label35.Text = "Проверено инженер:";
+            // 
+            // lbl_verified
+            // 
+            this.lbl_verified.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbl_verified.AutoSize = true;
+            this.lbl_verified.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_verified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_verified.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_verified.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_verified.Location = new System.Drawing.Point(426, 14);
+            this.lbl_verified.Name = "lbl_verified";
+            this.lbl_verified.Size = new System.Drawing.Size(39, 16);
+            this.lbl_verified.TabIndex = 31;
+            this.lbl_verified.Text = "7500";
+            // 
             // label32
             // 
             this.label32.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -2981,62 +3037,6 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
-            // label35
-            // 
-            this.label35.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label35.AutoSize = true;
-            this.label35.BackColor = System.Drawing.Color.Transparent;
-            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label35.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label35.Location = new System.Drawing.Point(254, 11);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(166, 20);
-            this.label35.TabIndex = 32;
-            this.label35.Text = "Проверено инженер:";
-            // 
-            // lbl_verified
-            // 
-            this.lbl_verified.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_verified.AutoSize = true;
-            this.lbl_verified.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_verified.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_verified.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_verified.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_verified.Location = new System.Drawing.Point(426, 14);
-            this.lbl_verified.Name = "lbl_verified";
-            this.lbl_verified.Size = new System.Drawing.Size(39, 16);
-            this.lbl_verified.TabIndex = 31;
-            this.lbl_verified.Text = "7500";
-            // 
-            // lbl_121
-            // 
-            this.lbl_121.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_121.AutoSize = true;
-            this.lbl_121.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_121.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_121.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_121.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_121.Location = new System.Drawing.Point(254, 33);
-            this.lbl_121.Name = "lbl_121";
-            this.lbl_121.Size = new System.Drawing.Size(153, 20);
-            this.lbl_121.TabIndex = 33;
-            this.lbl_121.Text = "В ремонт инженер:";
-            // 
-            // lbl_inRepair
-            // 
-            this.lbl_inRepair.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_inRepair.AutoSize = true;
-            this.lbl_inRepair.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_inRepair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_inRepair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_inRepair.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_inRepair.Location = new System.Drawing.Point(426, 36);
-            this.lbl_inRepair.Name = "lbl_inRepair";
-            this.lbl_inRepair.Size = new System.Drawing.Size(39, 16);
-            this.lbl_inRepair.TabIndex = 34;
-            this.lbl_inRepair.Text = "7500";
-            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3044,11 +3044,11 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
-            this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_decommissionSerialNumber);
+            this.Controls.Add(this.pnl_ChangeNumberActTOFull);
+            this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.Functional_loading_panel);
-            this.Controls.Add(this.pnl_ChangeNumberActTOFull);
             this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
