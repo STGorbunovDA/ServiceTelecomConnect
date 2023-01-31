@@ -53,7 +53,6 @@
             this.txB_KNITransmitter = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txB_DeviationTransmitter = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.txB_TransmitterFrequencies = new System.Windows.Forms.TextBox();
             this.pnl_transmitter = new System.Windows.Forms.Panel();
             this.pnl_frequencies = new System.Windows.Forms.Panel();
@@ -108,6 +107,7 @@
             this.chB_InRepair = new System.Windows.Forms.CheckBox();
             this.btn_DecommissionRadiostantion = new System.Windows.Forms.Button();
             this.lbL_company = new System.Windows.Forms.Label();
+            this.chb_repeater = new System.Windows.Forms.CheckBox();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -405,17 +405,6 @@
             this.txB_DeviationTransmitter.TabStop = false;
             this.txB_DeviationTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txB_DeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_DeviationTransmitter_KeyPress);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(658, 114);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(194, 27);
-            this.label9.TabIndex = 178;
-            this.label9.Text = "Частоты (МГц)";
             // 
             // txB_TransmitterFrequencies
             // 
@@ -993,9 +982,9 @@
             this.cmB_frequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmB_frequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_frequency.FormattingEnabled = true;
-            this.cmB_frequency.Location = new System.Drawing.Point(848, 112);
+            this.cmB_frequency.Location = new System.Drawing.Point(679, 110);
             this.cmB_frequency.Name = "cmB_frequency";
-            this.cmB_frequency.Size = new System.Drawing.Size(195, 28);
+            this.cmB_frequency.Size = new System.Drawing.Size(163, 28);
             this.cmB_frequency.TabIndex = 193;
             this.cmB_frequency.SelectionChangeCommitted += new System.EventHandler(this.CmB_frequency_SelectionChangeCommitted);
             // 
@@ -1085,12 +1074,26 @@
             this.lbL_company.TabIndex = 198;
             this.lbL_company.Text = "ПЧМ-4";
             // 
+            // chb_repeater
+            // 
+            this.chb_repeater.AutoSize = true;
+            this.chb_repeater.BackColor = System.Drawing.Color.Transparent;
+            this.chb_repeater.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chb_repeater.Location = new System.Drawing.Point(872, 110);
+            this.chb_repeater.Name = "chb_repeater";
+            this.chb_repeater.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chb_repeater.Size = new System.Drawing.Size(149, 24);
+            this.chb_repeater.TabIndex = 199;
+            this.chb_repeater.Text = "Ретранслятор";
+            this.chb_repeater.UseVisualStyleBackColor = false;
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.chb_repeater);
             this.Controls.Add(this.lbL_company);
             this.Controls.Add(this.btn_DecommissionRadiostantion);
             this.Controls.Add(this.chB_InRepair);
@@ -1112,7 +1115,6 @@
             this.Controls.Add(this.pnl_Receiver);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pnl_frequencies);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -1168,7 +1170,6 @@
         internal System.Windows.Forms.TextBox txB_KNITransmitter;
         private System.Windows.Forms.Label label8;
         internal System.Windows.Forms.TextBox txB_DeviationTransmitter;
-        private System.Windows.Forms.Label label9;
         internal System.Windows.Forms.TextBox txB_TransmitterFrequencies;
         private System.Windows.Forms.Panel pnl_transmitter;
         private System.Windows.Forms.Panel pnl_frequencies;
@@ -1223,5 +1224,6 @@
         private System.Windows.Forms.CheckBox chB_InRepair;
         private System.Windows.Forms.Button btn_DecommissionRadiostantion;
         internal System.Windows.Forms.Label lbL_company;
+        private System.Windows.Forms.CheckBox chb_repeater;
     }
 }
