@@ -577,7 +577,7 @@ namespace ServiceTelecomConnect
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[39];
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantion(road, city, serialNumbers))
+                                if (!CheacSerialNumber.GetInstance.CheackSerialNumberRadiostantion(road, city, serialNumbers))
                                 {
                                     string dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
 
@@ -645,7 +645,7 @@ namespace ServiceTelecomConnect
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[17];
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionCurator(road, city, serialNumbers))
+                                if (!CheacSerialNumber.GetInstance.CheackSerialNumberRadiostantionCurator(road, city, serialNumbers))
                                 {
                                     string mySql = $"INSERT INTO radiostantion (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, numberActRemont, " +
@@ -706,7 +706,7 @@ namespace ServiceTelecomConnect
                                 string serialNumbers = values[4];
                                 string city = values[9];
                                 string road = values[39];
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionLastYear(road, city, serialNumbers))
+                                if (!CheacSerialNumber.GetInstance.CheackSerialNumberRadiostantionLastYear(road, city, serialNumbers))
                                 {
                                     string mySql = $"INSERT INTO radiostantion_last_year (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
@@ -776,7 +776,7 @@ namespace ServiceTelecomConnect
                                 string city = values[9];
                                 string road = values[11];
                                 string dateTO = Convert.ToDateTime(values[7]).ToString("yyyy-MM-dd");
-                                if (!CheacSerialNumber.GetInstance.CheacSerialNumberRadiostantionFull(road, city, serialNumbers))
+                                if (!CheacSerialNumber.GetInstance.CheackSerialNumberRadiostantionFull(road, city, serialNumbers))
                                 {
                                     string mySql = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                     $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, road) VALUES " +
