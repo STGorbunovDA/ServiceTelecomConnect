@@ -22,7 +22,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        public Boolean CheacSerialNumberRadiostantionDecommission(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostantionDecommission(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect
             return true;
         }
 
-        public Boolean CheacSerialNumberRadiostationParameters(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostationParameters(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -58,7 +58,7 @@ namespace ServiceTelecomConnect
             return true;
         }
 
-        public Boolean CheacSerialNumberRadiostantion(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostantion(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -75,7 +75,7 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumberRadiostantionCurator(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostantionCurator(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -128,7 +128,7 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumberRadiostantionFull(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostantionFull(string road, string city, string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -149,7 +149,7 @@ namespace ServiceTelecomConnect
             }
             return true;
         }
-        public Boolean CheacSerialNumberRadiostantionLastYear(string road, string city, string serialNumber)
+        public Boolean CheackSerialNumberRadiostantionLastYear(string road, string city, string serialNumber)
         {
             string querystring = $"SELECT serialNumber FROM radiostantion_last_year " +
                 $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
