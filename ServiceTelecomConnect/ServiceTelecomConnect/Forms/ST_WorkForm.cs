@@ -11,8 +11,6 @@ using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
 
 
-
-
 namespace ServiceTelecomConnect
 {
 
@@ -404,7 +402,7 @@ namespace ServiceTelecomConnect
                     return;
             }
 
-            QuerySettingDataBase.DeleteRowCell(dataGridView1);
+            QuerySettingDataBase.DeleteRowCellRadiostantion(dataGridView1);
             txB_serialNumber.Clear();
             txB_numberAct.Clear();
             txB_numberActRemont.Clear();
@@ -412,7 +410,7 @@ namespace ServiceTelecomConnect
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
 
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-            txB_numberAct.Text = "";
+            txB_numberAct.Text = String.Empty;
 
             dataGridView1.ClearSelection();
 
@@ -1290,7 +1288,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     return;
             }
-
             if (String.IsNullOrEmpty(txB_director_post_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"Руководитель Должность\"!";
@@ -1298,7 +1295,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     return;
             }
-
             if (String.IsNullOrEmpty(txB_chairman_FIO_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"Председатель ФИО\"!";
@@ -1306,7 +1302,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     return;
             }
-
             if (String.IsNullOrEmpty(txB_chairman_post_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"Председатель Должность\"!";
@@ -1314,7 +1309,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     return;
             }
-
             if (String.IsNullOrEmpty(txB_1_FIO_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"1 член комиссии ФИО\"!";
@@ -1322,7 +1316,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                     return;
             }
-
             if (String.IsNullOrEmpty(txB_1_post_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"1 член комиссии Должность\"!";
@@ -1338,7 +1331,6 @@ namespace ServiceTelecomConnect
                     return;
 
             }
-
             if (String.IsNullOrEmpty(txB_2_post_remont_company.Text))
             {
                 string Mesage2 = "Вы не заполнили поле \"2 член комиссии Должность\"!";
@@ -1375,7 +1367,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-
             if (!txB_director_FIO_remont_company.Text.Contains("-"))
             {
                 if (!Regex.IsMatch(txB_director_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -1394,7 +1385,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (!txB_chairman_FIO_remont_company.Text.Contains("-"))
             {
                 if (!Regex.IsMatch(txB_chairman_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -1413,7 +1403,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (!txB_1_FIO_remont_company.Text.Contains("-"))
             {
                 if (!Regex.IsMatch(txB_1_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -1432,7 +1421,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (!txB_2_FIO_remont_company.Text.Contains("-"))
             {
                 if (!Regex.IsMatch(txB_2_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -1451,7 +1439,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (!txB_3_FIO_remont_company.Text.Contains("-"))
             {
                 if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
@@ -1470,7 +1457,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (!Regex.IsMatch(txB_director_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
                 MessageBox.Show("Введите корректно поле \"Должность руководителя\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1591,6 +1577,7 @@ namespace ServiceTelecomConnect
             txB_decommissionSerialNumber.Text = row.Cells[38].Value.ToString();
             txB_comment.Text = row.Cells[39].Value.ToString();
         }
+
         #endregion
 
         #region поиск по dataGrid без запроса к БД и открытие функциональной панели Control + K
@@ -2288,23 +2275,19 @@ namespace ServiceTelecomConnect
             panel_Tag.Enabled = true;
             txB_Date_panel_Tag.Select();
         }
-
         void TxB_Date_panel_Tag_Click(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
         }
-
         void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
             txB_Date_panel_Tag.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
-
         void Btn_close_panel_Tag_Click(object sender, EventArgs e)
         {
             panel_Tag.Visible = false;
         }
-
         void Btn_FormTag_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_Date_panel_Tag.Text))
@@ -2393,7 +2376,6 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_add_Fill_Full_ActTO.Text);
             Counters();
         }
-
 
         #endregion
 
@@ -2634,7 +2616,6 @@ namespace ServiceTelecomConnect
 
 
         #endregion
-
 
     }
 }
