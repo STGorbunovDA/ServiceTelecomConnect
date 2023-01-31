@@ -2234,11 +2234,27 @@ namespace ServiceTelecomConnect
                     }
 
                     int count = 1;
-                    for (int u = 0; u < frequencyTransmitter.Length && u < frequencyReceiver.Length && u < 16; u++)
+                    int countCell = 4;
+                    for (int u = 0; u < frequencyTransmitter.Length && u < 16; u++)
                     {
-                        workSheet.Cells[3 + count, 24] = frequencyTransmitter[u];
-                        workSheet.Cells[3 + count, 25] = frequencyReceiver[u];
-                        count++;
+                        try
+                        {
+                            if(frequencyTransmitter[u].Contains("/"))
+                            {
+                                Excel.Range _excelCells300 = (Excel.Range)workSheet.get_Range($"X{countCell}", $"Y{countCell}").Cells;
+                                _excelCells300.Merge(Type.Missing);
+                            }
+                            workSheet.Cells[3 + count, 24] = frequencyTransmitter[u];
+                            workSheet.Cells[3 + count, 25] = frequencyReceiver[u];
+                            count++;
+                            countCell++;
+                        }
+                        catch
+                        {
+                            count++;
+                            countCell++;
+                            continue;
+                        }    
                     }
 
                     string transmitterFrequenciesRST = String.Empty;
@@ -2460,11 +2476,27 @@ namespace ServiceTelecomConnect
                     }
 
                     int countDop = 1;
-                    for (int u = 0; u < frequencyTransmitter.Length && u < frequencyReceiver.Length; u++)
+                    int countCellTwo = 5;
+                    for (int u = 0; u < frequencyTransmitter.Length; u++)
                     {
-                        workSheet2.Cells[4 + countDop, 3] = frequencyTransmitter[u];
-                        workSheet2.Cells[4 + countDop, 5] = frequencyReceiver[u];
-                        countDop++;
+                        try
+                        {
+                            if (frequencyTransmitter[u].Contains("/"))
+                            {
+                                Excel.Range _excelCells301 = (Excel.Range)workSheet2.get_Range($"C{countCellTwo}", $"F{countCellTwo}").Cells;
+                                _excelCells301.Merge(Type.Missing);
+                            }
+                            workSheet2.Cells[4 + countDop, 3] = frequencyTransmitter[u];
+                            workSheet2.Cells[4 + countDop, 5] = frequencyReceiver[u];
+                            countDop++;
+                            countCellTwo++;
+                        }
+                        catch 
+                        {
+                            countCellTwo++;
+                            countDop++;
+                            continue;
+                        }                      
                     }
                     s4 = 1;
                     jj3 = 40;
