@@ -46,12 +46,12 @@ namespace ServiceTelecomConnect.Forms
                 {
                     string addQuery = $"insert into frequencies (frequency) VALUES ('{cmB_Frequencies.Text}')";
 
-                    using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(addQuery, DB_3.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.OpenConnection();
+                        DB_3.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
                         MessageBox.Show("Частота успешно добавлена!");
-                        DB.GetInstance.CloseConnection();
+                        DB_3.GetInstance.CloseConnection();
                     }
 
                     QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
@@ -69,13 +69,13 @@ namespace ServiceTelecomConnect.Forms
             {
                 string addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItem_cmB_Frequencies}'";
 
-                using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
+                using (MySqlCommand command = new MySqlCommand(addQuery, DB_3.GetInstance.GetConnection()))
                 {
-                    DB.GetInstance.OpenConnection();
+                    DB_3.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
                     QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
                     MessageBox.Show("Частота успешно изменена!");
-                    DB.GetInstance.CloseConnection();
+                    DB_3.GetInstance.CloseConnection();
                 }
             }
         }
@@ -92,13 +92,13 @@ namespace ServiceTelecomConnect.Forms
 
             string deleteQuery = $"delete from frequencies where frequency = '{cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem)}'";
 
-            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
+            using (MySqlCommand command = new MySqlCommand(deleteQuery, DB_3.GetInstance.GetConnection()))
             {
-                DB.GetInstance.OpenConnection();
+                DB_3.GetInstance.OpenConnection();
                 command.ExecuteNonQuery(); 
                 QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
                 MessageBox.Show("Частота успешно удалена!");
-                DB.GetInstance.CloseConnection();
+                DB_3.GetInstance.CloseConnection();
             }
         }
 
@@ -108,7 +108,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 string querystring = $"SELECT frequency FROM frequencies WHERE frequency = '{frequency}'";
 
-                MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
+                MySqlCommand command = new MySqlCommand(querystring, DB_3.GetInstance.GetConnection());
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
 
