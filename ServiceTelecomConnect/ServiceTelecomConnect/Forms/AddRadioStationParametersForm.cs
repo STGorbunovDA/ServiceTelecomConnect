@@ -25,7 +25,7 @@ namespace ServiceTelecomConnect.Forms
             txB_dateTO.ReadOnly = true;
             QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_frequency);
 
-            if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+            if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
             {
                 var queryRadiostantionParameters = $"SELECT dateTO, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
@@ -34,9 +34,9 @@ namespace ServiceTelecomConnect.Forms
                $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST " +
                $"FROM radiostation_parameters WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' " +
                $"AND serialNumber = '{txB_serialNumber.Text}'";
-                using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB.GetInstance.GetConnection()))
+                using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB_3.GetInstance.GetConnection()))
                 {
-                    DB.GetInstance.OpenConnection();
+                    DB_3.GetInstance.OpenConnection();
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -81,7 +81,7 @@ namespace ServiceTelecomConnect.Forms
                         }
                         reader.Close();
                     }
-                    DB.GetInstance.CloseConnection();
+                    DB_3.GetInstance.CloseConnection();
 
                     if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
                         cmB_BatteryChargerAccessories.Enabled = false;
@@ -296,7 +296,7 @@ namespace ServiceTelecomConnect.Forms
         void TxB_TransmitterFrequencies_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
-            if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
+            if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.' && ch != '/')
                 e.Handled = true;
         }
 
@@ -309,9 +309,12 @@ namespace ServiceTelecomConnect.Forms
 
         void CmB_frequency_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            txB_TransmitterFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
-
-            txB_ReceiverFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
+            if(!chb_repeater.Checked)
+            {
+                txB_TransmitterFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
+                txB_ReceiverFrequencies.Text += cmB_frequency.Text + Environment.NewLine;
+            }
+            else txB_TransmitterFrequencies.Text += cmB_frequency.Text + "/" + cmB_frequency.Text + Environment.NewLine;
         }
 
 
@@ -498,10 +501,13 @@ namespace ServiceTelecomConnect.Forms
         {
             if (Internet_check.CheackSkyNET())
             {
-                if (txB_TransmitterFrequencies.TextLength != txB_ReceiverFrequencies.TextLength)
+                if(!chb_repeater.Checked)
                 {
-                    MessageBox.Show($"Пропущена частота.\nP.s. приём и передача не могут существовать без друг друга\n как \"Инь Ян\"");
-                    return;
+                    if (txB_TransmitterFrequencies.TextLength != txB_ReceiverFrequencies.TextLength)
+                    {
+                        MessageBox.Show($"Пропущена частота.\nP.s. приём и передача не могут существовать без друг друга\n как \"Инь Ян\"");
+                        return;
+                    }
                 }
 
                 #region проверка на пустные control-ы
@@ -541,19 +547,31 @@ namespace ServiceTelecomConnect.Forms
                         }
                     }
                 }
-                foreach (Control control in pnl_frequencies.Controls)
+                if(!chb_repeater.Checked)
                 {
-                    if (control is TextBox)
+                    foreach (Control control in pnl_frequencies.Controls)
                     {
-                        if (String.IsNullOrEmpty(control.Text))
+                        if (control is TextBox)
                         {
-                            MessageBox.Show("Заполните параметры \"Частоты\"");
-                            control.Select();
-                            return;
+                            if (String.IsNullOrEmpty(control.Text))
+                            {
+                                MessageBox.Show("Заполните параметры \"Частоты\"");
+                                control.Select();
+                                return;
+                            }
+                            control.Text.Trim();
                         }
-                        control.Text.Trim();
                     }
                 }
+                else
+                {
+                    if(String.IsNullOrEmpty(txB_TransmitterFrequencies.Text))
+                    {
+                        MessageBox.Show("Заполните параметры \"Частоты (передатчик).\"");
+                        return;
+                    }
+                }
+
                 if (cmB_BatteryChargerAccessories.Enabled)
                 {
                     if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text))
@@ -778,7 +796,7 @@ namespace ServiceTelecomConnect.Forms
                         Match result = re.Match(txB_OutputPowerVoltReceiver.Text);
 
                         var doubleOutputPowerVoltReceiver = Convert.ToDouble(result.Groups[1].Value);
-                        if (doubleOutputPowerVoltReceiver > 3.51 || doubleOutputPowerVoltReceiver < 2.60)
+                        if (doubleOutputPowerVoltReceiver > 3.01 || doubleOutputPowerVoltReceiver < 2.19)
                         {
                             MessageBox.Show($"Введите корректно параметры выходной мощности приёмника, модели {txB_model.Text}\nПример: от 2.60 В. до 3.50 В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txB_OutputPowerVoltReceiver.Select();
@@ -1114,7 +1132,7 @@ namespace ServiceTelecomConnect.Forms
                 }
 
                 lbl_verifiedRST.Visible = true;
-                if (CheacSerialNumber.GetInstance.CheacSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
+                if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
                     string changeQueryParameters = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
                         $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
@@ -1129,11 +1147,11 @@ namespace ServiceTelecomConnect.Forms
                         $"nameAKB = '{nameAKB}', percentAKB = '{percentAKB}', noteRadioStationParameters = '{noteRadioStationParameters}', " +
                         $"verifiedRST = '{inRepairBool}' WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                    using (MySqlCommand command = new MySqlCommand(changeQueryParameters, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(changeQueryParameters, DB_3.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.OpenConnection();
+                        DB_3.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
+                        DB_3.GetInstance.CloseConnection();
                     }
                 }
                 else
@@ -1154,22 +1172,22 @@ namespace ServiceTelecomConnect.Forms
                                $"'{transmitterFrequencies}', '{receiverFrequencies}', '{batteryChargerAccessories}', " +
                                $"'{manipulatorAccessories}', '{nameAKB}', '{percentAKB}', '{noteRadioStationParameters}', '{inRepairBool}')";
 
-                    using (MySqlCommand command = new MySqlCommand(addQueryParameters, DB.GetInstance.GetConnection()))
+                    using (MySqlCommand command = new MySqlCommand(addQueryParameters, DB_3.GetInstance.GetConnection()))
                     {
-                        DB.GetInstance.OpenConnection();
+                        DB_3.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
-                        DB.GetInstance.CloseConnection();
+                        DB_3.GetInstance.CloseConnection();
                     }
                 }
 
                 string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = '{inRepairBool}' " +
                    $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-                using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB.GetInstance.GetConnection()))
+                using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB_3.GetInstance.GetConnection()))
                 {
-                    DB.GetInstance.OpenConnection();
+                    DB_3.GetInstance.OpenConnection();
                     command.ExecuteNonQuery();
-                    DB.GetInstance.CloseConnection();
+                    DB_3.GetInstance.CloseConnection();
                 }
 
             }
@@ -1189,20 +1207,20 @@ namespace ServiceTelecomConnect.Forms
             string changeQueryRadiostantion = $"UPDATE radiostantion SET verifiedRST = '0' " +
                    $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
 
-            using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB.GetInstance.GetConnection()))
+            using (MySqlCommand command = new MySqlCommand(changeQueryRadiostantion, DB_3.GetInstance.GetConnection()))
             {
-                DB.GetInstance.OpenConnection();
+                DB_3.GetInstance.OpenConnection();
                 command.ExecuteNonQuery();
-                DB.GetInstance.CloseConnection();
+                DB_3.GetInstance.CloseConnection();
             }
 
             string deleteQueryParameters = $"DELETE FROM radiostation_parameters WHERE serialNumber = '{serialNumber}'";
 
-            using (MySqlCommand command = new MySqlCommand(deleteQueryParameters, DB.GetInstance.GetConnection()))
+            using (MySqlCommand command = new MySqlCommand(deleteQueryParameters, DB_3.GetInstance.GetConnection()))
             {
-                DB.GetInstance.OpenConnection();
+                DB_3.GetInstance.OpenConnection();
                 command.ExecuteNonQuery();
-                DB.GetInstance.CloseConnection();
+                DB_3.GetInstance.CloseConnection();
             }
             MessageBox.Show("Радиостанция списана (удалена)!");
         }
