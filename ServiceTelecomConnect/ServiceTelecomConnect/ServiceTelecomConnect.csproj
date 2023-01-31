@@ -273,6 +273,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DataBase\DB_3.cs" />
     <Compile Include="Classes\Important\AddExecutionСurator.cs" />
     <Compile Include="Classes\Cheac\CheacSerialNumber.cs" />
     <Compile Include="Classes\DataBase\DB_2.cs" />
