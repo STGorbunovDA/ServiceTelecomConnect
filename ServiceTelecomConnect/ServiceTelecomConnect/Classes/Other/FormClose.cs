@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
                     DateTime Date = DateTime.Now;
                     string exitDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
 
-                    DateTime dateTimeInput = QuerySettingDataBase.CheacDateTimeInput_logUserDB(login);
+                    DateTime dateTimeInput = QuerySettingDataBase.CheacDateTimeInputLogUserDatabase(login);
 
                     if (Date.ToString("yyyy-MM-dd") == dateTimeInput.ToString("yyyy-MM-dd"))
                     {
