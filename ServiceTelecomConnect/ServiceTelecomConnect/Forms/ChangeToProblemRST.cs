@@ -9,22 +9,18 @@ namespace ServiceTelecomConnect
     public partial class ChangeToProblemRST : Form
     {
         private readonly CheakUser _user;
-
         public ChangeToProblemRST(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             _user = user;
         }
-
-
-        void AddToProblemRST_Load(object sender, EventArgs e)
+        void AddToProblemRadiostantionLoad(object sender, EventArgs e)
         {
             lbL_Author.Text = _user.Login;
             cmB_model.Text = cmB_model.Items[0].ToString();
         }
-
-        void Btn_save_add_rst_problem_Click(object sender, EventArgs e)
+        void BtnChangeRadiostantionProblemClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_model.Text))
             {
@@ -41,7 +37,6 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
             if (String.IsNullOrEmpty(txB_info.Text))
             {
                 MessageBox.Show("Не заполнено поле \"Описание дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,8 +84,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void PictureBox4_Click(object sender, EventArgs e)
+        void ClearControlForm(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
@@ -100,11 +94,10 @@ namespace ServiceTelecomConnect
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
             }
         }
-
-        void ChB_problem_Enable_Click(object sender, EventArgs e)
+        void ChbProblemEnableClick(object sender, EventArgs e)
         {
             if (chB_problem_Enable.Checked)
             {
@@ -119,8 +112,7 @@ namespace ServiceTelecomConnect
                 txB_problem.Select();
             }
         }
-
-        void CmB_model_Click(object sender, EventArgs e)
+        void CmbModelClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -128,11 +120,11 @@ namespace ServiceTelecomConnect
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
-                    DataTable model_RSR_table = new DataTable();
+                    DataTable modelRadiostantionTable = new DataTable();
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        adapter.Fill(model_RSR_table);
-                        cmB_model.DataSource = model_RSR_table;
+                        adapter.Fill(modelRadiostantionTable);
+                        cmB_model.DataSource = modelRadiostantionTable;
                         cmB_model.ValueMember = "id";
                         cmB_model.DisplayMember = "model_radiostation_name";
                         DB.GetInstance.CloseConnection();
