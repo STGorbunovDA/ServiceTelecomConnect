@@ -86,7 +86,7 @@
             this.txB_antenna = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.txB_batteryСharger = new System.Windows.Forms.TextBox();
-            this.btn_model_radiostation_name = new System.Windows.Forms.Button();
+            this.btnModelRadiostationNameAdd = new System.Windows.Forms.Button();
             this.monthCalendar2 = new System.Windows.Forms.MonthCalendar();
             this.txB_comment = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@
             this.btn_save_add_rst.TabIndex = 28;
             this.btn_save_add_rst.Text = "Добавить";
             this.btn_save_add_rst.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst.Click += new System.EventHandler(this.btnSaveAddRadiostantionClick);
+            this.btn_save_add_rst.Click += new System.EventHandler(this.BtnSaveAddRadiostantionClick);
             // 
             // label2
             // 
@@ -219,8 +219,8 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
-            this.txB_serialNumber.Click += new System.EventHandler(this.TxB_serialNumber_Click);
-            this.txB_serialNumber.TextChanged += new System.EventHandler(this.TxB_serialNumber_TextChanged);
+            this.txB_serialNumber.Click += new System.EventHandler(this.TxbSerialNumberClick);
+            this.txB_serialNumber.TextChanged += new System.EventHandler(this.TxbSerialNumberTextChanged);
             this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyDown);
             this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSerialNumberKeyPress);
             this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyUp);
@@ -401,7 +401,7 @@
             this.lbL_ExceptionsSerialNumbers.Size = new System.Drawing.Size(18, 24);
             this.lbL_ExceptionsSerialNumbers.TabIndex = 60;
             this.lbL_ExceptionsSerialNumbers.Text = "*";
-            this.lbL_ExceptionsSerialNumbers.DoubleClick += new System.EventHandler(this.LbL_ExceptionsSerialNumbers_DoubleClick);
+            this.lbL_ExceptionsSerialNumbers.DoubleClick += new System.EventHandler(this.LbLExceptionsSerialNumbersDoubleClick);
             // 
             // label17
             // 
@@ -778,17 +778,17 @@
             this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbBatteryСhargerKeyUp);
             this.txB_batteryСharger.Leave += new System.EventHandler(this.TxbBatteryСhargerLeave);
             // 
-            // btn_model_radiostation_name
+            // btnModelRadiostationNameAdd
             // 
-            this.btn_model_radiostation_name.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_model_radiostation_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_model_radiostation_name.Location = new System.Drawing.Point(818, 213);
-            this.btn_model_radiostation_name.Name = "btn_model_radiostation_name";
-            this.btn_model_radiostation_name.Size = new System.Drawing.Size(23, 28);
-            this.btn_model_radiostation_name.TabIndex = 98;
-            this.btn_model_radiostation_name.Text = "+";
-            this.btn_model_radiostation_name.UseVisualStyleBackColor = false;
-            this.btn_model_radiostation_name.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Button_model_radiostation_name_MouseClick);
+            this.btnModelRadiostationNameAdd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModelRadiostationNameAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnModelRadiostationNameAdd.Location = new System.Drawing.Point(818, 213);
+            this.btnModelRadiostationNameAdd.Name = "btnModelRadiostationNameAdd";
+            this.btnModelRadiostationNameAdd.Size = new System.Drawing.Size(23, 28);
+            this.btnModelRadiostationNameAdd.TabIndex = 98;
+            this.btnModelRadiostationNameAdd.Text = "+";
+            this.btnModelRadiostationNameAdd.UseVisualStyleBackColor = false;
+            this.btnModelRadiostationNameAdd.Click += new System.EventHandler(this.BtnModelRadiostationNameAddClick);
             // 
             // monthCalendar2
             // 
@@ -878,7 +878,7 @@
             this.chB_digital.TabIndex = 106;
             this.chB_digital.Text = "Цифр.";
             this.chB_digital.UseVisualStyleBackColor = false;
-            this.chB_digital.Click += new System.EventHandler(this.ChB_digital_Click);
+            this.chB_digital.Click += new System.EventHandler(this.ChbDigitalClick);
             // 
             // chB_analog
             // 
@@ -892,7 +892,7 @@
             this.chB_analog.TabIndex = 107;
             this.chB_analog.Text = ".Аналог";
             this.chB_analog.UseVisualStyleBackColor = false;
-            this.chB_analog.Click += new System.EventHandler(this.ChB_analog_Click);
+            this.chB_analog.Click += new System.EventHandler(this.ChbAnalogClick);
             // 
             // AddRSTForm
             // 
@@ -910,7 +910,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txB_comment);
             this.Controls.Add(this.monthCalendar2);
-            this.Controls.Add(this.btn_model_radiostation_name);
+            this.Controls.Add(this.btnModelRadiostationNameAdd);
             this.Controls.Add(this.picB_clear);
             this.Controls.Add(this.txB_batteryСharger);
             this.Controls.Add(this.label35);
@@ -1044,7 +1044,7 @@
         internal System.Windows.Forms.TextBox txB_antenna;
         private System.Windows.Forms.Label label35;
         internal System.Windows.Forms.TextBox txB_batteryСharger;
-        private System.Windows.Forms.Button btn_model_radiostation_name;
+        private System.Windows.Forms.Button btnModelRadiostationNameAdd;
         private System.Windows.Forms.MonthCalendar monthCalendar2;
         internal System.Windows.Forms.TextBox txB_comment;
         private System.Windows.Forms.Label label14;
