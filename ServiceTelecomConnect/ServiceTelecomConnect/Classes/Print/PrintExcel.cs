@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 using Excel = Microsoft.Office.Interop.Excel;
+//using System.Text.RegularExpressions;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace ServiceTelecomConnect
 {
