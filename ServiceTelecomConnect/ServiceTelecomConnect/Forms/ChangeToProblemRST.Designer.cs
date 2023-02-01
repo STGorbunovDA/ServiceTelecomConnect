@@ -34,15 +34,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.lbL_Author = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.picB_clearControl = new System.Windows.Forms.PictureBox();
             this.cmB_model = new System.Windows.Forms.ComboBox();
             this.txB_info = new System.Windows.Forms.TextBox();
             this.txB_actions = new System.Windows.Forms.TextBox();
-            this.btn_save_add_rst_problem = new System.Windows.Forms.Button();
+            this.btn_ChageRadiostantionProblem = new System.Windows.Forms.Button();
             this.cmB_problem = new System.Windows.Forms.ComboBox();
             this.chB_problem_Enable = new System.Windows.Forms.CheckBox();
             this.txB_id = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clearControl)).BeginInit();
             this.SuspendLayout();
             // 
             // txB_problem
@@ -109,16 +109,16 @@
             this.lbL_Author.TabIndex = 45;
             this.lbL_Author.Text = "Горбунов Д.А.";
             // 
-            // pictureBox4
+            // picB_clearControl
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
-            this.pictureBox4.Location = new System.Drawing.Point(759, 12);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(33, 32);
-            this.pictureBox4.TabIndex = 53;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.picB_clearControl.BackColor = System.Drawing.Color.Transparent;
+            this.picB_clearControl.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.gui_eraser_icon_157160__1_;
+            this.picB_clearControl.Location = new System.Drawing.Point(759, 12);
+            this.picB_clearControl.Name = "picB_clearControl";
+            this.picB_clearControl.Size = new System.Drawing.Size(33, 32);
+            this.picB_clearControl.TabIndex = 53;
+            this.picB_clearControl.TabStop = false;
+            this.picB_clearControl.Click += new System.EventHandler(this.ClearControlForm);
             // 
             // cmB_model
             // 
@@ -130,7 +130,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(293, 28);
             this.cmB_model.TabIndex = 84;
-            this.cmB_model.Click += new System.EventHandler(this.CmB_model_Click);
+            this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // txB_info
             // 
@@ -150,18 +150,18 @@
             this.txB_actions.Size = new System.Drawing.Size(377, 198);
             this.txB_actions.TabIndex = 87;
             // 
-            // btn_save_add_rst_problem
+            // btn_ChageRadiostantionProblem
             // 
-            this.btn_save_add_rst_problem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_save_add_rst_problem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_save_add_rst_problem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_save_add_rst_problem.Location = new System.Drawing.Point(661, 441);
-            this.btn_save_add_rst_problem.Name = "btn_save_add_rst_problem";
-            this.btn_save_add_rst_problem.Size = new System.Drawing.Size(119, 30);
-            this.btn_save_add_rst_problem.TabIndex = 88;
-            this.btn_save_add_rst_problem.Text = "Изменить";
-            this.btn_save_add_rst_problem.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst_problem.Click += new System.EventHandler(this.Btn_save_add_rst_problem_Click);
+            this.btn_ChageRadiostantionProblem.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_ChageRadiostantionProblem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ChageRadiostantionProblem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_ChageRadiostantionProblem.Location = new System.Drawing.Point(661, 441);
+            this.btn_ChageRadiostantionProblem.Name = "btn_ChageRadiostantionProblem";
+            this.btn_ChageRadiostantionProblem.Size = new System.Drawing.Size(119, 30);
+            this.btn_ChageRadiostantionProblem.TabIndex = 88;
+            this.btn_ChageRadiostantionProblem.Text = "Изменить";
+            this.btn_ChageRadiostantionProblem.UseVisualStyleBackColor = false;
+            this.btn_ChageRadiostantionProblem.Click += new System.EventHandler(this.BtnChangeRadiostantionProblemClick);
             // 
             // cmB_problem
             // 
@@ -192,7 +192,7 @@
             this.chB_problem_Enable.Size = new System.Drawing.Size(15, 14);
             this.chB_problem_Enable.TabIndex = 117;
             this.chB_problem_Enable.UseVisualStyleBackColor = false;
-            this.chB_problem_Enable.Click += new System.EventHandler(this.ChB_problem_Enable_Click);
+            this.chB_problem_Enable.Click += new System.EventHandler(this.ChbProblemEnableClick);
             // 
             // txB_id
             // 
@@ -213,11 +213,11 @@
             this.Controls.Add(this.txB_id);
             this.Controls.Add(this.chB_problem_Enable);
             this.Controls.Add(this.cmB_problem);
-            this.Controls.Add(this.btn_save_add_rst_problem);
+            this.Controls.Add(this.btn_ChageRadiostantionProblem);
             this.Controls.Add(this.txB_actions);
             this.Controls.Add(this.txB_info);
             this.Controls.Add(this.cmB_model);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.picB_clearControl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -230,8 +230,8 @@
             this.Name = "ChangeToProblemRST";
             this.ShowIcon = false;
             this.Text = "Добавление неисправности радиостанции";
-            this.Load += new System.EventHandler(this.AddToProblemRST_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.Load += new System.EventHandler(this.AddToProblemRadiostantionLoad);
+            ((System.ComponentModel.ISupportInitialize)(this.picB_clearControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,8 +242,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Button btn_save_add_rst_problem;
+        private System.Windows.Forms.PictureBox picB_clearControl;
+        private System.Windows.Forms.Button btn_ChageRadiostantionProblem;
         private System.Windows.Forms.CheckBox chB_problem_Enable;
         internal System.Windows.Forms.TextBox txB_problem;
         internal System.Windows.Forms.ComboBox cmB_model;
