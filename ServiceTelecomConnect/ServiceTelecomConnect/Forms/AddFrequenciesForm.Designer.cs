@@ -45,7 +45,7 @@
             this.cmB_Frequencies.Name = "cmB_Frequencies";
             this.cmB_Frequencies.Size = new System.Drawing.Size(264, 228);
             this.cmB_Frequencies.TabIndex = 53;
-            this.cmB_Frequencies.SelectionChangeCommitted += new System.EventHandler(this.CmB_frequencies_SelectionChangeCommitted);
+            this.cmB_Frequencies.SelectionChangeCommitted += new System.EventHandler(this.CmbFrequenciesSelectionChangeCommitted);
             // 
             // btn_add_Frequencies
             // 
@@ -58,7 +58,7 @@
             this.btn_add_Frequencies.TabIndex = 54;
             this.btn_add_Frequencies.Text = "Добавить";
             this.btn_add_Frequencies.UseVisualStyleBackColor = false;
-            this.btn_add_Frequencies.Click += new System.EventHandler(this.Btn_add_Frequencies_Click);
+            this.btn_add_Frequencies.Click += new System.EventHandler(this.BtnAddFrequenciesClick);
             // 
             // btn_change_Frequencies
             // 
@@ -71,7 +71,7 @@
             this.btn_change_Frequencies.TabIndex = 55;
             this.btn_change_Frequencies.Text = "Изменить";
             this.btn_change_Frequencies.UseVisualStyleBackColor = false;
-            this.btn_change_Frequencies.Click += new System.EventHandler(this.Btn_change_Frequencies_Click);
+            this.btn_change_Frequencies.Click += new System.EventHandler(this.BtnChangeFrequenciesClick);
             // 
             // btn_delete_Frequencies
             // 
@@ -84,7 +84,7 @@
             this.btn_delete_Frequencies.TabIndex = 56;
             this.btn_delete_Frequencies.Text = "Удалить";
             this.btn_delete_Frequencies.UseVisualStyleBackColor = false;
-            this.btn_delete_Frequencies.Click += new System.EventHandler(this.Btn_delete_Frequencies_Click);
+            this.btn_delete_Frequencies.Click += new System.EventHandler(this.BtnDeleteFrequenciesClick);
             // 
             // AddFrequencies
             // 
@@ -99,7 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddFrequencies";
             this.Text = "Добавить/Изменить модель";
-            this.Load += new System.EventHandler(this.AddFrequencies_Load);
+            this.Load += new System.EventHandler(this.AddFrequenciesLoad);
             this.ResumeLayout(false);
 
         }
