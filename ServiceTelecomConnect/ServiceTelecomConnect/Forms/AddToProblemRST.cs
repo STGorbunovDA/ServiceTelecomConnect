@@ -9,7 +9,6 @@ namespace ServiceTelecomConnect
     public partial class AddToProblemRST : Form
     {
         private readonly CheakUser _user;
-
         public AddToProblemRST(CheakUser user)
         {
             InitializeComponent();
@@ -18,7 +17,7 @@ namespace ServiceTelecomConnect
             cmB_problem.Text = cmB_problem.Items[0].ToString();
         }
 
-        void AddToProblemRST_Load(object sender, EventArgs e)
+        void AddToProblemRadiostantionLoad(object sender, EventArgs e)
         {
             lbL_Author.Text = _user.Login;
             if (Internet_check.CheackSkyNET())
@@ -39,8 +38,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void Btn_save_add_rst_problem_Click(object sender, EventArgs e)
+        void BtnSaveAddRadiostantionProblemClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_model.Text))
             {
@@ -103,8 +101,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void PictureBox4_Click(object sender, EventArgs e)
+        void ClearControlForm(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
@@ -114,11 +111,10 @@ namespace ServiceTelecomConnect
             foreach (Control control in this.Controls)
             {
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
             }
         }
-
-        void ChB_problem_Enable_Click(object sender, EventArgs e)
+        void ChbProblemEnableClick(object sender, EventArgs e)
         {
             if (chB_problem_Enable.Checked)
             {
