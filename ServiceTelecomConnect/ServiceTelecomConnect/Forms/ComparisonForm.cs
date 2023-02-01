@@ -8,8 +8,6 @@ using System.Windows.Forms;
 using WinForms = System.Windows.Forms;
 
 
-
-
 namespace ServiceTelecomConnect
 {
     public partial class ComparisonForm : Form
@@ -27,10 +25,8 @@ namespace ServiceTelecomConnect
         public ComparisonForm(CheakUser user)
         {
             InitializeComponent();
-
             StartPosition = FormStartPosition.CenterScreen;
             cmB_seach.Items.Clear();
-
             cmB_seach.Items.Add("Предприятие");
             cmB_seach.Items.Add("Станция");
             cmB_seach.Items.Add("Заводской номер");
@@ -40,9 +36,7 @@ namespace ServiceTelecomConnect
             cmB_seach.Items.Add("Номер Акта списания");
             cmB_seach.Items.Add("Месяц");
             cmB_seach.Items.Add("Модель");
-
             cmB_seach.Text = cmB_seach.Items[2].ToString();
-
             dataGridView1.DoubleBuffered(true);
             this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
@@ -68,9 +62,7 @@ namespace ServiceTelecomConnect
 
         private void ComparisonForm_Load(object sender, EventArgs e)
         {
-
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
-
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
@@ -78,7 +70,6 @@ namespace ServiceTelecomConnect
 
             QuerySettingDataBase.SelectCityGropByCurator(cmB_city, cmB_road);
             QuerySettingDataBase.SelectCityGropByMonthRoad(cmB_road, cmB_month);
-
             QuerySettingDataBase.CreateColumsСurator(dataGridView1);
             QuerySettingDataBase.CreateColumsСurator(dataGridView2);
             RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Куратор\\");
@@ -96,7 +87,6 @@ namespace ServiceTelecomConnect
             dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             Counters();
-
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
             timer.Interval = (30 * 60 * 1000); // 15 mins
@@ -139,14 +129,14 @@ namespace ServiceTelecomConnect
 
             lbL_count.Text = dataGridView1.Rows.Count.ToString();
             lbL_summ.Text = sumTO.ToString();
-            lbL_count_remont.Text = colRemont.ToString();
-            lbL_summ_remont.Text = sumRemont.ToString();
+            lbL_countRemont.Text = colRemont.ToString();
+            lbL_summRemont.Text = sumRemont.ToString();
         }
 
         #endregion
 
         #region Сохранение поля город проведения проверки
-        void Button_add_city_Click(object sender, EventArgs e)
+        void BtnAddCityClick(object sender, EventArgs e)
         {
             RegistryKey currentUserKey = Registry.CurrentUser;
             RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\Куратор");
@@ -156,7 +146,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region загрузка городов в cmB_road
-        void CmB_road_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbRoadSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             QuerySettingDataBase.SelectCityGropByCurator(cmB_city, cmB_road);
@@ -166,7 +156,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region загрузка базы согласно месяцам по дороге
-        void CmB_month_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbMonthSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -180,7 +170,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region загрузка базы согласно городу
-        void CmB_city_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbCitySelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -196,7 +186,7 @@ namespace ServiceTelecomConnect
 
         #region получение данных в Control-ы, button right mouse
 
-        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
             selectedRow = e.RowIndex;
@@ -229,31 +219,19 @@ namespace ServiceTelecomConnect
 
         #region Clear contorl-ы
 
-        void ClearFields()
-        {
-            foreach (Control control in panel1.Controls)
-            {
-                if (control is TextBox)
-                    control.Text = "";
-            }
-            foreach (Control control in panel2.Controls)
-            {
-                if (control is TextBox)
-                    control.Text = "";
-            }
-        }
-
-        void pictureBox1_clear_Click(object sender, EventArgs e)
+        void ClearControlForm(object sender, EventArgs e)
         {
             string Mesage;
             Mesage = "Вы действительно хотите очистить все введенные вами поля?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
 
-            ClearFields();
+            foreach (Control control in panel1.Controls)
+                if (control is TextBox)
+                    control.Text = "";
+            foreach (Control control in panel2.Controls)
+                if (control is TextBox)
+                    control.Text = "";
         }
         #endregion
 
