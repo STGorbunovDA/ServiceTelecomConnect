@@ -67,9 +67,7 @@ namespace ServiceTelecomConnect.Forms
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
 
                             if (reader[24].ToString() == "+")
-                            {
                                 lbl_verifiedRST.Visible = true;
-                            }
                             else if (reader[24].ToString() == "?")
                             {
                                 chB_InRepair.Checked = true;
@@ -264,7 +262,6 @@ namespace ServiceTelecomConnect.Forms
                 #endregion
 
                 btn_DecommissionRadiostantion.Enabled = false;
-
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                 if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
@@ -280,12 +277,11 @@ namespace ServiceTelecomConnect.Forms
         }
 
         #region Дата проверки
-        void TxB_dateTO_Click(object sender, EventArgs e)
+        void TxBDateTOClick(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
         }
-
-        void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        void MonthCalendarDateSelected(object sender, DateRangeEventArgs e)
         {
             txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
@@ -293,21 +289,19 @@ namespace ServiceTelecomConnect.Forms
         #endregion
 
         #region Частоты KeyPress
-        void TxB_TransmitterFrequencies_KeyPress(object sender, KeyPressEventArgs e)
+        void TxBTransmitterFrequenciesKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.' && ch != '/')
                 e.Handled = true;
         }
-
-        void TxB_ReceiverFrequencies_KeyPress(object sender, KeyPressEventArgs e)
+        void TxBReceiverFrequenciesKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != (char)Keys.Enter && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void CmB_frequency_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbFrequencySelectionChangeCommitted(object sender, EventArgs e)
         {
             if(!chb_repeater.Checked)
             {
@@ -316,9 +310,7 @@ namespace ServiceTelecomConnect.Forms
             }
             else txB_TransmitterFrequencies.Text += cmB_frequency.Text + "/" + cmB_frequency.Text + Environment.NewLine;
         }
-
-
-        void TxB_ReceiverFrequencies_Click(object sender, EventArgs e)
+        void TxBReceiverFrequenciesClick(object sender, EventArgs e)
         {
             cmB_frequency.Visible = true;
         }
@@ -326,42 +318,37 @@ namespace ServiceTelecomConnect.Forms
         #endregion
 
         #region Передатчик KeyPress
-        void TxB_LowPowerLevelTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbLowPowerLevelTransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_HighPowerLevelTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbHighPowerLevelTransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_FrequencyDeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbFrequencyDeviationTransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.' && ch != '+' && ch != '-')
                 e.Handled = true;
         }
-
-        void TxB_SensitivityTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSensitivityTransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_KNITransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbKNITransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_DeviationTransmitter_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbDeviationTransmitterKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
@@ -371,42 +358,37 @@ namespace ServiceTelecomConnect.Forms
 
         #region Приёмник KeyPress
 
-        void TxB_OutputPowerVoltReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbOutputPowerVoltReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_OutputPowerWattReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbOutputPowerWattReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.' && ch != '>')
                 e.Handled = true;
         }
-
-        void TxB_SelectivityReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSelectivityReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.' && ch != '-')
                 e.Handled = true;
         }
-
-        void TxB_SensitivityReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSensitivityReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_KNIReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbKNIReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_SuppressorReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSuppressorReceiverKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
@@ -417,28 +399,25 @@ namespace ServiceTelecomConnect.Forms
 
         #region Потребляемый ток KeyPress
 
-        void TxB_StandbyModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbStandbyModeCurrentConsumptionKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_ReceptionModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbReceptionModeCurrentConsumptionKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_TransmissionModeCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbTransmissionModeCurrentConsumptionKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TxB_BatteryDischargeAlarmCurrentConsumption_KeyPress(object sender, KeyPressEventArgs e)
+        void TxBBatteryDischargeAlarmCurrentConsumptionKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
@@ -449,7 +428,7 @@ namespace ServiceTelecomConnect.Forms
 
         #region АКБ KeyPress and click cheackbox 
 
-        void ChB_Faulty_Click(object sender, EventArgs e)
+        void ChbFaultyClick(object sender, EventArgs e)
         {
             if (lbL_nameAKB.Visible)
             {
@@ -465,8 +444,7 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
         }
-
-        void TxB_AKB_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbAKBKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
@@ -477,7 +455,7 @@ namespace ServiceTelecomConnect.Forms
 
         #region добавляем частоту
 
-        void Btn_Frequencies_Click(object sender, EventArgs e)
+        void BtnFrequenciesClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -497,7 +475,7 @@ namespace ServiceTelecomConnect.Forms
         #endregion
 
         #region Добавляем параметры в БД
-        void Btn_save_add_rst_remont_Click(object sender, EventArgs e)
+        void BtnSaveAddRadiostantionRemontClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -1081,7 +1059,6 @@ namespace ServiceTelecomConnect.Forms
                 //transmitterFrequencies = regex.Replace(transmitterFrequencies, " ");
                 transmitterFrequencies.Trim();
 
-
                 string receiverFrequencies = txB_ReceiverFrequencies.Text;
                 //var regex2 = new Regex(Environment.NewLine);
                 //receiverFrequencies = regex2.Replace(receiverFrequencies, " ");
@@ -1194,11 +1171,10 @@ namespace ServiceTelecomConnect.Forms
             MessageBox.Show("Готовченко");
         }
 
-
-
         #endregion
 
-        void Btn_DecommissionRadiostantion_Click(object sender, EventArgs e)
+        #region удаление рст из таблицы с параметрами и update в основной таблице
+        void BtnDecommissionRadiostantionClick(object sender, EventArgs e)
         {
             string road = lbL_road.Text;
             string city = lbL_city.Text;
@@ -1224,5 +1200,6 @@ namespace ServiceTelecomConnect.Forms
             }
             MessageBox.Show("Радиостанция списана (удалена)!");
         }
+        #endregion
     }
 }
