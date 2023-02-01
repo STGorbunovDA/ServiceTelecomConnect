@@ -46,7 +46,7 @@ namespace ServiceTelecomConnect
         }
 
         #region добавление РСТ
-        void btnSaveAddRadiostantionClick(object sender, EventArgs e)
+        void BtnSaveAddRadiostantionClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_serialNumber.Text))
             {
@@ -908,7 +908,8 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region добавление модели радиостанции в БД
-        void Button_model_radiostation_name_MouseClick(object sender, MouseEventArgs e)
+
+        void BtnModelRadiostationNameAddClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -926,10 +927,11 @@ namespace ServiceTelecomConnect
             }
         }
 
+
         #endregion
 
         #region добавление радиостанции без проверки на повтор serialnumbers
-        void LbL_ExceptionsSerialNumbers_DoubleClick(object sender, EventArgs e)
+        void LbLExceptionsSerialNumbersDoubleClick(object sender, EventArgs e)
         {
             string MesageTwo = $"Вы действительно хотите добавить уникально-повторяющуюся радиостанцию?\n Номер: {txB_serialNumber.Text}\n от предприятия {txB_company.Text}";
 
@@ -1454,7 +1456,8 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        void ChB_analog_Click(object sender, EventArgs e)
+        #region хотелки при добавлении авто подгрузка из бд и выставление типа рст аналог/цифра
+        void ChbAnalogClick(object sender, EventArgs e)
         {
             chB_digital.CheckState = CheckState.Unchecked;
             txB_price.Text = "1411.18";
@@ -1464,8 +1467,7 @@ namespace ServiceTelecomConnect
                 txB_price.Text = "1919.57";
             }
         }
-
-        void ChB_digital_Click(object sender, EventArgs e)
+        void ChbDigitalClick(object sender, EventArgs e)
         {
             chB_analog.CheckState = CheckState.Unchecked;
             txB_price.Text = "1919.57";
@@ -1475,13 +1477,11 @@ namespace ServiceTelecomConnect
                 txB_price.Text = "1411.18";
             }
         }
-
-        void TxB_serialNumber_Click(object sender, EventArgs e)
+        void TxbSerialNumberClick(object sender, EventArgs e)
         {
             Application.CurrentInputLanguage = InputLanguage.FromCulture(new CultureInfo("en-us"));
         }
-
-        void TxB_serialNumber_TextChanged(object sender, EventArgs e)
+        void TxbSerialNumberTextChanged(object sender, EventArgs e)
         {
             if (txB_serialNumber.Text.Length == 10)
             {
@@ -1504,9 +1504,8 @@ namespace ServiceTelecomConnect
 
                 SeachRadiostantionFullReturn();
                 ChoosingAnalogDigital();
-            }    
+            }
         }
-
         void ChoosingAnalogDigital()
         {
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
@@ -1527,5 +1526,7 @@ namespace ServiceTelecomConnect
                 chB_analog.CheckState = CheckState.Unchecked;
             }
         }
+
+        #endregion
     }
 }
