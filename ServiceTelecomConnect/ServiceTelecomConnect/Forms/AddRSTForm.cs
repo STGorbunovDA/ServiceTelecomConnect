@@ -27,7 +27,7 @@ namespace ServiceTelecomConnect
             cmB_poligon.Text = cmB_poligon.Items[0].ToString();
         }
 
-        void AddRSTForm_Load(object sender, EventArgs e)
+        void AddRSTFormLoad(object sender, EventArgs e)
         {
             QuerySettingDataBase.CmbGettingModelRST(cmB_model);
             QuerySettingDataBase.LoadingLastNumberActTO(lbL_last_act, lbL_city.Text, lbL_road.Text);
@@ -46,7 +46,7 @@ namespace ServiceTelecomConnect
         }
 
         #region добавление РСТ
-        void Button_save_add_rst_Click(object sender, EventArgs e)
+        void btnSaveAddRadiostantionClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_serialNumber.Text))
             {
@@ -63,10 +63,10 @@ namespace ServiceTelecomConnect
                     control.Text.Trim();
                 }
             }
-            Add_rst_radiostantion();
+            AddRadiostantion();
         }
 
-        void Add_rst_radiostantion()
+        void AddRadiostantion()
         {
             if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
             {
@@ -517,7 +517,7 @@ namespace ServiceTelecomConnect
                                 command.ExecuteNonQuery();
                                 DB.GetInstance.CloseConnection();
                             }
-                            if (!CheacSerialNumber_radiostantion_full(serialNumber))
+                            if (!CheacSerialNumberRadiostantionFull(serialNumber))
                             {
                                 string addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                                 $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
@@ -553,7 +553,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region очистка Control-ов
-        void PictureBox4_Click(object sender, EventArgs e)
+        void ControlFormClick(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
 
@@ -573,20 +573,17 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region проверка в таблице radiostantion_full и если есть изменение записей
-        Boolean CheacSerialNumber_radiostantion_full(string serialNumber)
+        Boolean CheacSerialNumberRadiostantionFull(string serialNumber)
         {
             if (Internet_check.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
                         DataTable table = new DataTable();
-
                         adapter.Fill(table);
-
                         if (table.Rows.Count > 0)
                         {
                             string model = cmB_model.Text;
@@ -608,15 +605,10 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.OpenConnection();
                             using (MySqlCommand command5 = new MySqlCommand(updateQuery, DB.GetInstance.GetConnection()))
                                 command5.ExecuteNonQuery();
-
                             DB.GetInstance.CloseConnection();
-
                             return true;
                         }
-                        else
-                        {
-                            return false;
-                        }
+                        else return false;
                     }
                 }
             }
@@ -625,23 +617,20 @@ namespace ServiceTelecomConnect
         #endregion 
 
         #region календарь
-        void TextBox_dateTO_Click(object sender, EventArgs e)
+        void TxbDateTOClick(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
         }
-
-        void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        void MonthCalendar1DateSelected(object sender, DateRangeEventArgs e)
         {
             txB_dateTO.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
-
-        void TextBox_dateIssue_Click(object sender, EventArgs e)
+        void TxbDateIssueClick(object sender, EventArgs e)
         {
             monthCalendar2.Visible = true;
         }
-
-        void MonthCalendar2_DateSelected(object sender, DateRangeEventArgs e)
+        void MonthCalendar2DateSelected(object sender, DateRangeEventArgs e)
         {
             txB_dateIssue.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar2.Visible = false;
@@ -650,17 +639,17 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region KeyUp KeyPress SelectedIndexChanged Click Leave для Control-ов
-        void TextBox_dateIssue_KeyUp(object sender, KeyEventArgs e)
+        void TxbDateIssueKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_dateIssue_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbDateIssueKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-        void TextBox_price_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbPriceKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             char decimalSeparatorChar = Convert.ToChar(Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
@@ -673,12 +662,11 @@ namespace ServiceTelecomConnect
             if (!Char.IsDigit(ch) && ch != 8 && ch != decimalSeparatorChar)
                 e.Handled = true;
         }
-        void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbModelSelectionChangeCommitted(object sender, EventArgs e)
         {
             ChoosingAnalogDigital();
         }
-
-        void TextBox_location_Click(object sender, EventArgs e)
+        void TxbLocationClick(object sender, EventArgs e)
         {
             if (txB_location.Text == "")
             {
@@ -687,34 +675,26 @@ namespace ServiceTelecomConnect
                 txB_location.SelectionLength = 0;
             }
         }
-        void ComboBox_model_Click(object sender, EventArgs e)
+        void CmbModelClick(object sender, EventArgs e)
         {
             cmB_model.MaxLength = 99;
         }
-
-        void TextBox_serialNumber_KeyUp(object sender, KeyEventArgs e)
+        void TxbSerialNumberKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-
-        void TextBox_serialNumber_KeyDown(object sender, KeyEventArgs e)
+        void TxbSerialNumberKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
                     string serialNumber = txB_serialNumber.Text;
-
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
                     MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                     DataTable table = new DataTable();
-
                     adapter.Fill(table);
-
                     if (table.Rows.Count > 0)
                     {
                         cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
@@ -737,44 +717,39 @@ namespace ServiceTelecomConnect
 
             if (e.KeyCode == Keys.Return)
             {
-                SeachRSTReturn();
+                SeachRadiostantionFullReturn();
                 ChoosingAnalogDigital();
             }
         }
-        void SeachRSTReturn()
+        void SeachRadiostantionFullReturn()
         {
             if (!String.IsNullOrEmpty(txB_serialNumber.Text))
             {
                 string serialNumber = txB_serialNumber.Text;
-
-                string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND road = '{lbL_road.Text}'";
-
+                string querystring = $"SELECT poligon, company, location, model, inventoryNumber, networkNumber, city " +
+                    $"FROM radiostantion_full WHERE serialNumber = '{serialNumber}' AND road = '{lbL_road.Text}'";
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                 DataTable table = new DataTable();
-
                 adapter.Fill(table);
-
                 if (table.Rows.Count > 0)
                 {
-                    cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
-                    txB_company.Text = table.Rows[0].ItemArray[2].ToString();
-                    txB_location.Text = table.Rows[0].ItemArray[3].ToString();
-                    cmB_model.Text = table.Rows[0].ItemArray[4].ToString();
-                    txB_inventoryNumber.Text = table.Rows[0].ItemArray[6].ToString();
-                    txB_networkNumber.Text = table.Rows[0].ItemArray[7].ToString();
-                    txB_city.Text = table.Rows[0].ItemArray[10].ToString();
+                    cmB_poligon.Text = table.Rows[0].ItemArray[0].ToString();
+                    txB_company.Text = table.Rows[0].ItemArray[1].ToString();
+                    txB_location.Text = table.Rows[0].ItemArray[2].ToString();
+                    cmB_model.Text = table.Rows[0].ItemArray[3].ToString();
+                    txB_inventoryNumber.Text = table.Rows[0].ItemArray[4].ToString();
+                    txB_networkNumber.Text = table.Rows[0].ItemArray[5].ToString();
+                    txB_city.Text = table.Rows[0].ItemArray[6].ToString();
                 }
                 else
                 {
-                    txB_inventoryNumber.Text = "";
-                    txB_networkNumber.Text = "";
+                    txB_inventoryNumber.Text = String.Empty;
+                    txB_networkNumber.Text = String.Empty;
                 }
             }
         }
-        void TextBox_serialNumber_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSerialNumberKeyPress(object sender, KeyPressEventArgs e)
         {
             #region проверка ввода
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16"
@@ -851,88 +826,84 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-
-        void TextBox_antenna_Click(object sender, EventArgs e)
+        void TxbAntennaClick(object sender, EventArgs e)
         {
-            txB_antenna.Text = "";
+            txB_antenna.Text = String.Empty;
         }
-        void TextBox_antenna_KeyUp(object sender, KeyEventArgs e)
+        void TxbAntennaKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_antenna_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbAntennaKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_antenna_Leave(object sender, EventArgs e)
+        void TxbAntennaLeave(object sender, EventArgs e)
         {
-            if (txB_antenna.Text == "")
+            if (txB_antenna.Text == String.Empty)
                 txB_antenna.Text = "-";
         }
-        void TextBox_manipulator_Click(object sender, EventArgs e)
+        void TxbManipulatorClick(object sender, EventArgs e)
         {
-            txB_manipulator.Text = "";
+            txB_manipulator.Text = String.Empty;
         }
-        void TextBox_manipulator_KeyUp(object sender, KeyEventArgs e)
+        void TxbManipulatorKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_manipulator_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbManipulatorKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_manipulator_Leave(object sender, EventArgs e)
+        void TxbManipulatorLeave(object sender, EventArgs e)
         {
-            if (txB_manipulator.Text == "")
+            if (txB_manipulator.Text == String.Empty)
                 txB_manipulator.Text = "-";
         }
-
-        void TextBox_AKB_Leave(object sender, EventArgs e)
+        void TxbAKBLeave(object sender, EventArgs e)
         {
-            if (txB_AKB.Text == "")
+            if (txB_AKB.Text == String.Empty)
                 txB_AKB.Text = "-";
         }
-        void TextBox_batteryСharger_Click(object sender, EventArgs e)
+        void TxbBatteryСhargerClick(object sender, EventArgs e)
         {
-            txB_batteryСharger.Text = "";
+            txB_batteryСharger.Text = String.Empty;
         }
-        void TextBox_batteryСharger_KeyUp(object sender, KeyEventArgs e)
+        void TxbBatteryСhargerKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_batteryСharger_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbBatteryСhargerKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_batteryСharger_Leave(object sender, EventArgs e)
+        void TxbBatteryСhargerLeave(object sender, EventArgs e)
         {
-            if (txB_batteryСharger.Text == "")
+            if (txB_batteryСharger.Text == String.Empty)
                 txB_batteryСharger.Text = "-";
         }
-
-        void TxB_AKB_Click(object sender, EventArgs e)
+        void TxbAKBClick(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "-")
-                txB_AKB.Text = "";
+                txB_AKB.Text = String.Empty;
         }
 
         #endregion
 
         #region очистка дат
-        void PictureBox5_Click(object sender, EventArgs e)
+        void PicbClearDateTO(object sender, EventArgs e)
         {
-            txB_dateTO.Text = "";
+            txB_dateTO.Text = String.Empty;
         }
-
-        void PictureBox6_Click(object sender, EventArgs e)
+        void PicbClearDateIssueClick(object sender, EventArgs e)
         {
-            txB_dateIssue.Text = "";
+            txB_dateIssue.Text = String.Empty;
         }
         #endregion
 
@@ -1454,7 +1425,7 @@ namespace ServiceTelecomConnect
                             txB_networkNumber.Text = "";
                         }
 
-                        if (CheacSerialNumber_radiostantion_full(serialNumber) == false)
+                        if (CheacSerialNumberRadiostantionFull(serialNumber) == false)
                         {
                             string addQuery2 = $"INSERT INTO radiostantion_full (poligon, company, location, model, serialNumber," +
                                             $"inventoryNumber, networkNumber, dateTO, numberAct, city, price, representative, " +
@@ -1531,7 +1502,7 @@ namespace ServiceTelecomConnect
                 if (Regex.IsMatch(txB_serialNumber.Text, @"^([4][2][2]([A-Z]{3,3}[0-9]{4,4}))?([4][2][2][A-Z]{4,4}[0-9]{3,3})*$"))
                     cmB_model.SelectedIndex = cmB_model.FindStringExact("Motorola P080");
 
-                SeachRSTReturn();
+                SeachRadiostantionFullReturn();
                 ChoosingAnalogDigital();
             }    
         }
