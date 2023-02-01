@@ -1122,7 +1122,7 @@
             this.MinimumSize = new System.Drawing.Size(1071, 670);
             this.Name = "AddRadioStationParametersForm";
             this.Text = "Добавление параметров радиостанции";
-            this.Load += new System.EventHandler(this.AddRadioStationParametersForm_Load);
+            this.Load += new System.EventHandler(this.AddRadioStationParametersFormLoad);
             this.pnl_transmitter.ResumeLayout(false);
             this.pnl_transmitter.PerformLayout();
             this.pnl_frequencies.ResumeLayout(false);

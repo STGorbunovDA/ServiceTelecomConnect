@@ -15,7 +15,7 @@ namespace ServiceTelecomConnect.Forms
             InitializeComponent();
         }
 
-        void AddRadioStationParametersForm_Load(object sender, EventArgs e)
+        void AddRadioStationParametersFormLoad(object sender, EventArgs e)
         {
             StartPosition = FormStartPosition.CenterScreen;
             monthCalendar1.Visible = false;

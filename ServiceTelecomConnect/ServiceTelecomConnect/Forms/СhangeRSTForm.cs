@@ -511,7 +511,8 @@ namespace ServiceTelecomConnect
                 }
 
                 string networkNumber = txB_networkNumber.Text;
-
+                if (networkNumber.Contains("\\"))
+                    networkNumber = networkNumber.Replace("\\", "\\\\");
                 if (String.IsNullOrEmpty(decommission))
                 {
                     if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))

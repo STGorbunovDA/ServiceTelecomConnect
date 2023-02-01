@@ -1310,6 +1310,9 @@ namespace ServiceTelecomConnect
 
                 string inventoryNumber = txB_inventoryNumber.Text;
 
+                if (inventoryNumber.Contains("\\"))
+                    inventoryNumber = inventoryNumber.Replace("\\", "\\\\");
+
                 if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
                     MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1322,6 +1325,9 @@ namespace ServiceTelecomConnect
                 }
 
                 string networkNumber = txB_networkNumber.Text;
+
+                if (networkNumber.Contains("\\"))
+                    networkNumber = networkNumber.Replace("\\", "\\\\");
 
                 if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                 {
