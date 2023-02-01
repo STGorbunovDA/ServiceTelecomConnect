@@ -124,7 +124,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(140, 60);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 71;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendarDateSelected);
             // 
             // txB_dateTO
             // 
@@ -138,7 +138,7 @@
             this.txB_dateTO.TabIndex = 70;
             this.txB_dateTO.TabStop = false;
             this.txB_dateTO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_dateTO.Click += new System.EventHandler(this.TxB_dateTO_Click);
+            this.txB_dateTO.Click += new System.EventHandler(this.TxBDateTOClick);
             // 
             // lbL_nameAKB
             // 
@@ -161,7 +161,7 @@
             this.txB_percentAKB.Size = new System.Drawing.Size(93, 26);
             this.txB_percentAKB.TabIndex = 74;
             this.txB_percentAKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_percentAKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_AKB_KeyPress);
+            this.txB_percentAKB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbAKBKeyPress);
             // 
             // label1
             // 
@@ -289,7 +289,7 @@
             this.txB_LowPowerLevelTransmitter.TabIndex = 167;
             this.txB_LowPowerLevelTransmitter.TabStop = false;
             this.txB_LowPowerLevelTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_LowPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_LowPowerLevelTransmitter_KeyPress);
+            this.txB_LowPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbLowPowerLevelTransmitterKeyPress);
             // 
             // label4
             // 
@@ -312,7 +312,7 @@
             this.txB_HighPowerLevelTransmitter.TabIndex = 169;
             this.txB_HighPowerLevelTransmitter.TabStop = false;
             this.txB_HighPowerLevelTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_HighPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_HighPowerLevelTransmitter_KeyPress);
+            this.txB_HighPowerLevelTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbHighPowerLevelTransmitterKeyPress);
             // 
             // label5
             // 
@@ -335,7 +335,7 @@
             this.txB_FrequencyDeviationTransmitter.TabIndex = 171;
             this.txB_FrequencyDeviationTransmitter.TabStop = false;
             this.txB_FrequencyDeviationTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_FrequencyDeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_FrequencyDeviationTransmitter_KeyPress);
+            this.txB_FrequencyDeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbFrequencyDeviationTransmitterKeyPress);
             // 
             // label6
             // 
@@ -358,7 +358,7 @@
             this.txB_SensitivityTransmitter.TabIndex = 173;
             this.txB_SensitivityTransmitter.TabStop = false;
             this.txB_SensitivityTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_SensitivityTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityTransmitter_KeyPress);
+            this.txB_SensitivityTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSensitivityTransmitterKeyPress);
             // 
             // label7
             // 
@@ -381,7 +381,7 @@
             this.txB_KNITransmitter.TabIndex = 175;
             this.txB_KNITransmitter.TabStop = false;
             this.txB_KNITransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_KNITransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNITransmitter_KeyPress);
+            this.txB_KNITransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbKNITransmitterKeyPress);
             // 
             // label8
             // 
@@ -404,7 +404,7 @@
             this.txB_DeviationTransmitter.TabIndex = 177;
             this.txB_DeviationTransmitter.TabStop = false;
             this.txB_DeviationTransmitter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_DeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_DeviationTransmitter_KeyPress);
+            this.txB_DeviationTransmitter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbDeviationTransmitterKeyPress);
             // 
             // txB_TransmitterFrequencies
             // 
@@ -416,7 +416,7 @@
             this.txB_TransmitterFrequencies.Size = new System.Drawing.Size(163, 215);
             this.txB_TransmitterFrequencies.TabIndex = 179;
             this.txB_TransmitterFrequencies.TabStop = false;
-            this.txB_TransmitterFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmitterFrequencies_KeyPress);
+            this.txB_TransmitterFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxBTransmitterFrequenciesKeyPress);
             // 
             // pnl_transmitter
             // 
@@ -462,8 +462,8 @@
             this.txB_ReceiverFrequencies.Size = new System.Drawing.Size(163, 215);
             this.txB_ReceiverFrequencies.TabIndex = 181;
             this.txB_ReceiverFrequencies.TabStop = false;
-            this.txB_ReceiverFrequencies.Click += new System.EventHandler(this.TxB_ReceiverFrequencies_Click);
-            this.txB_ReceiverFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceiverFrequencies_KeyPress);
+            this.txB_ReceiverFrequencies.Click += new System.EventHandler(this.TxBReceiverFrequenciesClick);
+            this.txB_ReceiverFrequencies.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxBReceiverFrequenciesKeyPress);
             // 
             // label26
             // 
@@ -529,7 +529,7 @@
             this.txB_SuppressorReceiver.TabIndex = 181;
             this.txB_SuppressorReceiver.TabStop = false;
             this.txB_SuppressorReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_SuppressorReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SuppressorReceiver_KeyPress);
+            this.txB_SuppressorReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSuppressorReceiverKeyPress);
             // 
             // label17
             // 
@@ -552,7 +552,7 @@
             this.txB_SelectivityReceiver.TabIndex = 179;
             this.txB_SelectivityReceiver.TabStop = false;
             this.txB_SelectivityReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_SelectivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SelectivityReceiver_KeyPress);
+            this.txB_SelectivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSelectivityReceiverKeyPress);
             // 
             // label14
             // 
@@ -575,7 +575,7 @@
             this.txB_OutputPowerWattReceiver.TabIndex = 177;
             this.txB_OutputPowerWattReceiver.TabStop = false;
             this.txB_OutputPowerWattReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_OutputPowerWattReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerWattReceiver_KeyPress);
+            this.txB_OutputPowerWattReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbOutputPowerWattReceiverKeyPress);
             // 
             // label13
             // 
@@ -609,7 +609,7 @@
             this.txB_OutputPowerVoltReceiver.TabIndex = 167;
             this.txB_OutputPowerVoltReceiver.TabStop = false;
             this.txB_OutputPowerVoltReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_OutputPowerVoltReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_OutputPowerVoltReceiver_KeyPress);
+            this.txB_OutputPowerVoltReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbOutputPowerVoltReceiverKeyPress);
             // 
             // label12
             // 
@@ -632,7 +632,7 @@
             this.txB_SensitivityReceiver.TabIndex = 169;
             this.txB_SensitivityReceiver.TabStop = false;
             this.txB_SensitivityReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_SensitivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_SensitivityReceiver_KeyPress);
+            this.txB_SensitivityReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSensitivityReceiverKeyPress);
             // 
             // txB_KNIReceiver
             // 
@@ -644,7 +644,7 @@
             this.txB_KNIReceiver.TabIndex = 175;
             this.txB_KNIReceiver.TabStop = false;
             this.txB_KNIReceiver.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_KNIReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_KNIReceiver_KeyPress);
+            this.txB_KNIReceiver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbKNIReceiverKeyPress);
             // 
             // label15
             // 
@@ -695,7 +695,7 @@
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabIndex = 184;
             this.txB_BatteryDischargeAlarmCurrentConsumption.TabStop = false;
             this.txB_BatteryDischargeAlarmCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_BatteryDischargeAlarmCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_BatteryDischargeAlarmCurrentConsumption_KeyPress);
+            this.txB_BatteryDischargeAlarmCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxBBatteryDischargeAlarmCurrentConsumptionKeyPress);
             // 
             // label24
             // 
@@ -718,7 +718,7 @@
             this.txB_TransmissionModeCurrentConsumption.TabIndex = 182;
             this.txB_TransmissionModeCurrentConsumption.TabStop = false;
             this.txB_TransmissionModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_TransmissionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_TransmissionModeCurrentConsumption_KeyPress);
+            this.txB_TransmissionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbTransmissionModeCurrentConsumptionKeyPress);
             // 
             // label23
             // 
@@ -741,7 +741,7 @@
             this.txB_ReceptionModeCurrentConsumption.TabIndex = 179;
             this.txB_ReceptionModeCurrentConsumption.TabStop = false;
             this.txB_ReceptionModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_ReceptionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_ReceptionModeCurrentConsumption_KeyPress);
+            this.txB_ReceptionModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbReceptionModeCurrentConsumptionKeyPress);
             // 
             // label20
             // 
@@ -764,7 +764,7 @@
             this.txB_StandbyModeCurrentConsumption.TabIndex = 178;
             this.txB_StandbyModeCurrentConsumption.TabStop = false;
             this.txB_StandbyModeCurrentConsumption.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_StandbyModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_StandbyModeCurrentConsumption_KeyPress);
+            this.txB_StandbyModeCurrentConsumption.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbStandbyModeCurrentConsumptionKeyPress);
             // 
             // label19
             // 
@@ -927,7 +927,7 @@
             this.chB_Faulty.TabIndex = 188;
             this.chB_Faulty.Text = "неиспр.";
             this.chB_Faulty.UseVisualStyleBackColor = true;
-            this.chB_Faulty.Click += new System.EventHandler(this.ChB_Faulty_Click);
+            this.chB_Faulty.Click += new System.EventHandler(this.ChbFaultyClick);
             // 
             // btn_Save_add_rst_remont
             // 
@@ -940,7 +940,7 @@
             this.btn_Save_add_rst_remont.TabIndex = 190;
             this.btn_Save_add_rst_remont.Text = "Добавить";
             this.btn_Save_add_rst_remont.UseVisualStyleBackColor = false;
-            this.btn_Save_add_rst_remont.Click += new System.EventHandler(this.Btn_save_add_rst_remont_Click);
+            this.btn_Save_add_rst_remont.Click += new System.EventHandler(this.BtnSaveAddRadiostantionRemontClick);
             // 
             // pnl_NoteRadioStationParameters
             // 
@@ -986,7 +986,7 @@
             this.cmB_frequency.Name = "cmB_frequency";
             this.cmB_frequency.Size = new System.Drawing.Size(163, 28);
             this.cmB_frequency.TabIndex = 193;
-            this.cmB_frequency.SelectionChangeCommitted += new System.EventHandler(this.CmB_frequency_SelectionChangeCommitted);
+            this.cmB_frequency.SelectionChangeCommitted += new System.EventHandler(this.CmbFrequencySelectionChangeCommitted);
             // 
             // lbL_city
             // 
@@ -1023,7 +1023,7 @@
             this.btn_Frequencies.TabIndex = 195;
             this.btn_Frequencies.Text = "Добавить Частоты";
             this.btn_Frequencies.UseVisualStyleBackColor = false;
-            this.btn_Frequencies.Click += new System.EventHandler(this.Btn_Frequencies_Click);
+            this.btn_Frequencies.Click += new System.EventHandler(this.BtnFrequenciesClick);
             // 
             // lbl_verifiedRST
             // 
@@ -1061,7 +1061,7 @@
             this.btn_DecommissionRadiostantion.TabIndex = 197;
             this.btn_DecommissionRadiostantion.Text = "Списать";
             this.btn_DecommissionRadiostantion.UseVisualStyleBackColor = false;
-            this.btn_DecommissionRadiostantion.Click += new System.EventHandler(this.Btn_DecommissionRadiostantion_Click);
+            this.btn_DecommissionRadiostantion.Click += new System.EventHandler(this.BtnDecommissionRadiostantionClick);
             // 
             // lbL_company
             // 
