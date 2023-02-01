@@ -8,24 +8,21 @@ namespace ServiceTelecomConnect.Forms
 {
     public partial class AddFrequenciesForm : Form
     {
-        string selectedItem_cmB_Frequencies = String.Empty;
-
+        string selectedItemFrequenciesCmb = String.Empty;
         public AddFrequenciesForm()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
-        void CmB_frequencies_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbFrequenciesSelectionChangeCommitted(object sender, EventArgs e)
         {
-            selectedItem_cmB_Frequencies = cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem);
+            selectedItemFrequenciesCmb = cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem);
         }
-        void AddFrequencies_Load(object sender, EventArgs e)
+        void AddFrequenciesLoad(object sender, EventArgs e)
         {
             QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_Frequencies);
         }
-
-        void Btn_add_Frequencies_Click(object sender, EventArgs e)
+        void BtnAddFrequenciesClick(object sender, EventArgs e)
         {
             if(String.IsNullOrEmpty(cmB_Frequencies.Text))
             {
@@ -44,7 +41,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 if (!CheackFrequencies(cmB_Frequencies.Text))
                 {
-                    string addQuery = $"insert into frequencies (frequency) VALUES ('{cmB_Frequencies.Text}')";
+                    string addQuery = $"INSERT INTO frequencies (frequency) VALUES ('{cmB_Frequencies.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB_3.GetInstance.GetConnection()))
                     {
@@ -60,14 +57,14 @@ namespace ServiceTelecomConnect.Forms
 
             }
         }
-        void Btn_change_Frequencies_Click(object sender, EventArgs e)
+        void BtnChangeFrequenciesClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_Frequencies.Text))
                 return;
 
             if (Internet_check.CheackSkyNET())
             {
-                string addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItem_cmB_Frequencies}'";
+                string addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItemFrequenciesCmb}'";
 
                 using (MySqlCommand command = new MySqlCommand(addQuery, DB_3.GetInstance.GetConnection()))
                 {
@@ -79,8 +76,7 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
         }
-
-        void Btn_delete_Frequencies_Click(object sender, EventArgs e)
+        void BtnDeleteFrequenciesClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_Frequencies.Text))
                 return;
@@ -101,29 +97,19 @@ namespace ServiceTelecomConnect.Forms
                 DB_3.GetInstance.CloseConnection();
             }
         }
-
         public Boolean CheackFrequencies(string frequency)
         {
             if (Internet_check.CheackSkyNET())
             {
                 string querystring = $"SELECT frequency FROM frequencies WHERE frequency = '{frequency}'";
-
                 MySqlCommand command = new MySqlCommand(querystring, DB_3.GetInstance.GetConnection());
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                 DataTable table = new DataTable();
-
                 adapter.Fill(table);
-
-                if (table.Rows.Count > 0)
-                    return true;
-                else
-                    return false;
+                if (table.Rows.Count > 0) return true;
+                else return false;
             }
             return true;
-        }
-
-        
+        }       
     }
 }
