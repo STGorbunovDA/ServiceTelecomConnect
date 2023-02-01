@@ -116,9 +116,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
-            this.lbL_count_remont = new System.Windows.Forms.Label();
+            this.lbL_countRemont = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbL_summ_remont = new System.Windows.Forms.Label();
+            this.lbL_summRemont = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -235,7 +235,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1427, 535);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
@@ -770,7 +770,7 @@
             this.cmB_month.Name = "cmB_month";
             this.cmB_month.Size = new System.Drawing.Size(235, 28);
             this.cmB_month.TabIndex = 86;
-            this.cmB_month.SelectionChangeCommitted += new System.EventHandler(this.CmB_month_SelectionChangeCommitted);
+            this.cmB_month.SelectionChangeCommitted += new System.EventHandler(this.CmbMonthSelectionChangeCommitted);
             // 
             // txB_serialNumber
             // 
@@ -795,7 +795,7 @@
             this.cmB_city.Name = "cmB_city";
             this.cmB_city.Size = new System.Drawing.Size(235, 28);
             this.cmB_city.TabIndex = 84;
-            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmB_city_SelectionChangeCommitted);
+            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmbCitySelectionChangeCommitted);
             // 
             // cmB_road
             // 
@@ -825,7 +825,7 @@
             this.cmB_road.Name = "cmB_road";
             this.cmB_road.Size = new System.Drawing.Size(235, 28);
             this.cmB_road.TabIndex = 83;
-            this.cmB_road.SelectionChangeCommitted += new System.EventHandler(this.CmB_road_SelectionChangeCommitted);
+            this.cmB_road.SelectionChangeCommitted += new System.EventHandler(this.CmbRoadSelectionChangeCommitted);
             // 
             // label2
             // 
@@ -891,7 +891,7 @@
             this.btn_add_city.TabIndex = 15;
             this.btn_add_city.Text = "+";
             this.btn_add_city.UseVisualStyleBackColor = false;
-            this.btn_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
+            this.btn_add_city.Click += new System.EventHandler(this.BtnAddCityClick);
             // 
             // btn_search
             // 
@@ -970,7 +970,7 @@
             this.picB_clear.Size = new System.Drawing.Size(47, 47);
             this.picB_clear.TabIndex = 1;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.pictureBox1_clear_Click);
+            this.picB_clear.Click += new System.EventHandler(this.ClearControlForm);
             // 
             // txB_numberActRemont
             // 
@@ -1157,17 +1157,17 @@
             // 
             // lbL_count_remont
             // 
-            this.lbL_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbL_count_remont.AutoSize = true;
-            this.lbL_count_remont.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbL_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbL_count_remont.Location = new System.Drawing.Point(485, 13);
-            this.lbL_count_remont.Name = "lbL_count_remont";
-            this.lbL_count_remont.Size = new System.Drawing.Size(47, 16);
-            this.lbL_count_remont.TabIndex = 23;
-            this.lbL_count_remont.Text = "55555";
+            this.lbL_countRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_countRemont.AutoSize = true;
+            this.lbL_countRemont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_countRemont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_countRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_countRemont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_countRemont.Location = new System.Drawing.Point(485, 13);
+            this.lbL_countRemont.Name = "lbL_count_remont";
+            this.lbL_countRemont.Size = new System.Drawing.Size(47, 16);
+            this.lbL_countRemont.TabIndex = 23;
+            this.lbL_countRemont.Text = "55555";
             // 
             // label16
             // 
@@ -1185,17 +1185,17 @@
             // 
             // lbL_summ_remont
             // 
-            this.lbL_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbL_summ_remont.AutoSize = true;
-            this.lbL_summ_remont.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbL_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbL_summ_remont.Location = new System.Drawing.Point(425, 37);
-            this.lbL_summ_remont.Name = "lbL_summ_remont";
-            this.lbL_summ_remont.Size = new System.Drawing.Size(107, 16);
-            this.lbL_summ_remont.TabIndex = 25;
-            this.lbL_summ_remont.Text = "9999999999.99";
+            this.lbL_summRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_summRemont.AutoSize = true;
+            this.lbL_summRemont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_summRemont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_summRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_summRemont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_summRemont.Location = new System.Drawing.Point(425, 37);
+            this.lbL_summRemont.Name = "lbL_summ_remont";
+            this.lbL_summRemont.Size = new System.Drawing.Size(107, 16);
+            this.lbL_summRemont.TabIndex = 25;
+            this.lbL_summRemont.Text = "9999999999.99";
             // 
             // label14
             // 
@@ -1307,9 +1307,9 @@
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.label14);
-            this.panel3.Controls.Add(this.lbL_summ_remont);
+            this.panel3.Controls.Add(this.lbL_summRemont);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.lbL_count_remont);
+            this.panel3.Controls.Add(this.lbL_countRemont);
             this.panel3.Controls.Add(this.lbL_count);
             this.panel3.Controls.Add(this.lbL_summ);
             this.panel3.Location = new System.Drawing.Point(1, 716);
@@ -1813,9 +1813,9 @@
         private System.Windows.Forms.TextBox txb_flag_all_BD;
         private System.Windows.Forms.Label lbL_summ;
         private System.Windows.Forms.Label lbL_count;
-        private System.Windows.Forms.Label lbL_count_remont;
+        private System.Windows.Forms.Label lbL_countRemont;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lbL_summ_remont;
+        private System.Windows.Forms.Label lbL_summRemont;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
