@@ -38,7 +38,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-        void BtnSaveAddRadiostantionProblemClick(object sender, EventArgs e)
+        void BtnAddRadiostantionProblemClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_model.Text))
             {
