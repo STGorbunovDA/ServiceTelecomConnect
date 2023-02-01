@@ -45,7 +45,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(264, 228);
             this.cmB_model.TabIndex = 53;
-            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmbModelSelectionChangeCommitted);
             // 
             // btn_add_modelRST
             // 
@@ -58,7 +58,7 @@
             this.btn_add_modelRST.TabIndex = 54;
             this.btn_add_modelRST.Text = "Добавить";
             this.btn_add_modelRST.UseVisualStyleBackColor = false;
-            this.btn_add_modelRST.Click += new System.EventHandler(this.Btn_add_modelRST_Click);
+            this.btn_add_modelRST.Click += new System.EventHandler(this.BtnAddModelRSTClick);
             // 
             // btn_change_modelRST
             // 
@@ -71,7 +71,7 @@
             this.btn_change_modelRST.TabIndex = 55;
             this.btn_change_modelRST.Text = "Изменить";
             this.btn_change_modelRST.UseVisualStyleBackColor = false;
-            this.btn_change_modelRST.Click += new System.EventHandler(this.Btn_change_modelRST_Click);
+            this.btn_change_modelRST.Click += new System.EventHandler(this.BtnChangeModelRSTClick);
             // 
             // btn_delete_modelRST
             // 
@@ -84,7 +84,7 @@
             this.btn_delete_modelRST.TabIndex = 56;
             this.btn_delete_modelRST.Text = "Удалить";
             this.btn_delete_modelRST.UseVisualStyleBackColor = false;
-            this.btn_delete_modelRST.Click += new System.EventHandler(this.Btn_delete_modelRST_Click);
+            this.btn_delete_modelRST.Click += new System.EventHandler(this.BtnDeleteModelRSTClick);
             // 
             // AddChangeModelRST
             // 
@@ -99,7 +99,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddChangeModelRST";
             this.Text = "Добавить/Изменить модель";
-            this.Load += new System.EventHandler(this.AddChangeModelRST_Load);
+            this.Load += new System.EventHandler(this.AddChangeModelRSTLoad);
             this.ResumeLayout(false);
 
         }
