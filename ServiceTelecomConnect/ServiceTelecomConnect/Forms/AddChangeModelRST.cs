@@ -14,23 +14,23 @@ namespace ServiceTelecomConnect.Forms
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-        private void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CmbModelSelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedItem_cmB_model = cmB_model.GetItemText(cmB_model.SelectedItem);
         }
 
-        void AddChangeModelRST_Load(object sender, EventArgs e)
+        void AddChangeModelRSTLoad(object sender, EventArgs e)
         {
             QuerySettingDataBase.CmbGettingModelRST(cmB_model);
         }
 
-        void Btn_add_modelRST_Click(object sender, EventArgs e)
+        void BtnAddModelRSTClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
                 if(!CheacModelRST(cmB_model.Text))
                 {
-                    string addQuery = $"insert into model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
+                    string addQuery = $"INSERT INTO model_radiostation (model_radiostation_name) VALUES ('{cmB_model.Text}')";
 
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
@@ -47,7 +47,7 @@ namespace ServiceTelecomConnect.Forms
             }
         }
 
-        void Btn_change_modelRST_Click(object sender, EventArgs e)
+        void BtnChangeModelRSTClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_model.Text))
                 return;
@@ -67,7 +67,7 @@ namespace ServiceTelecomConnect.Forms
             }
         }
 
-        void Btn_delete_modelRST_Click(object sender, EventArgs e)
+        void BtnDeleteModelRSTClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_model.Text))
                 return;
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect.Forms
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            string deleteQuery = $"delete from model_radiostation where model_radiostation_name = '{cmB_model.GetItemText(cmB_model.SelectedItem)}'";
+            string deleteQuery = $"DELETE FROM model_radiostation WHERE model_radiostation_name = '{cmB_model.GetItemText(cmB_model.SelectedItem)}'";
             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
@@ -93,17 +93,11 @@ namespace ServiceTelecomConnect.Forms
             if (Internet_check.CheackSkyNET())
             {
                 string querystring = $"SELECT model_radiostation_name FROM model_radiostation WHERE model_radiostation_name = '{model}'";
-
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                 DataTable table = new DataTable();
-
                 adapter.Fill(table);
-
-                if (table.Rows.Count > 0)
-                    return true;
+                if (table.Rows.Count > 0) return true;
                 else return false;
             }
             return true;
