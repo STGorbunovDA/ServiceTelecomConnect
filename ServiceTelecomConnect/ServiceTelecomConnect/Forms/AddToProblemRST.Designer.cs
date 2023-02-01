@@ -160,7 +160,7 @@
             this.btn_save_add_rst_problem.TabIndex = 88;
             this.btn_save_add_rst_problem.Text = "Добавить";
             this.btn_save_add_rst_problem.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst_problem.Click += new System.EventHandler(this.BtnSaveAddRadiostantionProblemClick);
+            this.btn_save_add_rst_problem.Click += new System.EventHandler(this.BtnAddRadiostantionProblemClick);
             // 
             // cmB_problem
             // 
