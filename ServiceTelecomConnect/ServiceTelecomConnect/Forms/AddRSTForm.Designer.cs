@@ -110,7 +110,7 @@
             this.picB_clear.Size = new System.Drawing.Size(33, 30);
             this.picB_clear.TabIndex = 8;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.picB_clear.Click += new System.EventHandler(this.ControlFormClick);
             // 
             // label1
             // 
@@ -134,7 +134,7 @@
             this.btn_save_add_rst.TabIndex = 28;
             this.btn_save_add_rst.Text = "Добавить";
             this.btn_save_add_rst.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst.Click += new System.EventHandler(this.Button_save_add_rst_Click);
+            this.btn_save_add_rst.Click += new System.EventHandler(this.btnSaveAddRadiostantionClick);
             // 
             // label2
             // 
@@ -221,9 +221,9 @@
             this.txB_serialNumber.TabIndex = 23;
             this.txB_serialNumber.Click += new System.EventHandler(this.TxB_serialNumber_Click);
             this.txB_serialNumber.TextChanged += new System.EventHandler(this.TxB_serialNumber_TextChanged);
-            this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyDown);
-            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
-            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
+            this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyDown);
+            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSerialNumberKeyPress);
+            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyUp);
             // 
             // txB_inventoryNumber
             // 
@@ -252,7 +252,7 @@
             this.txB_dateTO.Name = "txB_dateTO";
             this.txB_dateTO.Size = new System.Drawing.Size(232, 26);
             this.txB_dateTO.TabIndex = 26;
-            this.txB_dateTO.Click += new System.EventHandler(this.TextBox_dateTO_Click);
+            this.txB_dateTO.Click += new System.EventHandler(this.TxbDateTOClick);
             // 
             // label8
             // 
@@ -297,7 +297,7 @@
             this.txB_price.ReadOnly = true;
             this.txB_price.Size = new System.Drawing.Size(110, 26);
             this.txB_price.TabIndex = 39;
-            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_price_KeyPress);
+            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbPriceKeyPress);
             // 
             // cmB_model
             // 
@@ -310,8 +310,8 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
-            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
-            this.cmB_model.Click += new System.EventHandler(this.ComboBox_model_Click);
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmbModelSelectionChangeCommitted);
+            this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // txB_location
             // 
@@ -321,7 +321,7 @@
             this.txB_location.Name = "txB_location";
             this.txB_location.Size = new System.Drawing.Size(232, 26);
             this.txB_location.TabIndex = 53;
-            this.txB_location.Click += new System.EventHandler(this.TextBox_location_Click);
+            this.txB_location.Click += new System.EventHandler(this.TxbLocationClick);
             // 
             // monthCalendar1
             // 
@@ -329,7 +329,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(653, 204);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 54;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1DateSelected);
             // 
             // cmB_poligon
             // 
@@ -531,9 +531,9 @@
             this.txB_dateIssue.ReadOnly = true;
             this.txB_dateIssue.Size = new System.Drawing.Size(199, 26);
             this.txB_dateIssue.TabIndex = 73;
-            this.txB_dateIssue.Click += new System.EventHandler(this.TextBox_dateIssue_Click);
-            this.txB_dateIssue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_dateIssue_KeyPress);
-            this.txB_dateIssue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_dateIssue_KeyUp);
+            this.txB_dateIssue.Click += new System.EventHandler(this.TxbDateIssueClick);
+            this.txB_dateIssue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbDateIssueKeyPress);
+            this.txB_dateIssue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbDateIssueKeyUp);
             // 
             // label24
             // 
@@ -616,7 +616,7 @@
             this.picB_clear_dataTO.Size = new System.Drawing.Size(30, 30);
             this.picB_clear_dataTO.TabIndex = 9;
             this.picB_clear_dataTO.TabStop = false;
-            this.picB_clear_dataTO.Click += new System.EventHandler(this.PictureBox5_Click);
+            this.picB_clear_dataTO.Click += new System.EventHandler(this.PicbClearDateTO);
             // 
             // picB_clear_dateIssue
             // 
@@ -627,7 +627,7 @@
             this.picB_clear_dateIssue.Size = new System.Drawing.Size(30, 30);
             this.picB_clear_dateIssue.TabIndex = 81;
             this.picB_clear_dateIssue.TabStop = false;
-            this.picB_clear_dateIssue.Click += new System.EventHandler(this.PictureBox6_Click);
+            this.picB_clear_dateIssue.Click += new System.EventHandler(this.PicbClearDateIssueClick);
             // 
             // label29
             // 
@@ -696,8 +696,8 @@
             this.txB_AKB.TabIndex = 89;
             this.txB_AKB.Text = "-";
             this.txB_AKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_AKB.Click += new System.EventHandler(this.TxB_AKB_Click);
-            this.txB_AKB.Leave += new System.EventHandler(this.TextBox_AKB_Leave);
+            this.txB_AKB.Click += new System.EventHandler(this.TxbAKBClick);
+            this.txB_AKB.Leave += new System.EventHandler(this.TxbAKBLeave);
             // 
             // label33
             // 
@@ -720,10 +720,10 @@
             this.txB_manipulator.TabIndex = 91;
             this.txB_manipulator.Text = "-";
             this.txB_manipulator.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_manipulator.Click += new System.EventHandler(this.TextBox_manipulator_Click);
-            this.txB_manipulator.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_manipulator_KeyPress);
-            this.txB_manipulator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_manipulator_KeyUp);
-            this.txB_manipulator.Leave += new System.EventHandler(this.TextBox_manipulator_Leave);
+            this.txB_manipulator.Click += new System.EventHandler(this.TxbManipulatorClick);
+            this.txB_manipulator.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbManipulatorKeyPress);
+            this.txB_manipulator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbManipulatorKeyUp);
+            this.txB_manipulator.Leave += new System.EventHandler(this.TxbManipulatorLeave);
             // 
             // label34
             // 
@@ -747,10 +747,10 @@
             this.txB_antenna.TabIndex = 93;
             this.txB_antenna.Text = "-";
             this.txB_antenna.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_antenna.Click += new System.EventHandler(this.TextBox_antenna_Click);
-            this.txB_antenna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_antenna_KeyPress);
-            this.txB_antenna.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_antenna_KeyUp);
-            this.txB_antenna.Leave += new System.EventHandler(this.TextBox_antenna_Leave);
+            this.txB_antenna.Click += new System.EventHandler(this.TxbAntennaClick);
+            this.txB_antenna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbAntennaKeyPress);
+            this.txB_antenna.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbAntennaKeyUp);
+            this.txB_antenna.Leave += new System.EventHandler(this.TxbAntennaLeave);
             // 
             // label35
             // 
@@ -773,10 +773,10 @@
             this.txB_batteryСharger.TabIndex = 95;
             this.txB_batteryСharger.Text = "-";
             this.txB_batteryСharger.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_batteryСharger.Click += new System.EventHandler(this.TextBox_batteryСharger_Click);
-            this.txB_batteryСharger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_batteryСharger_KeyPress);
-            this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_batteryСharger_KeyUp);
-            this.txB_batteryСharger.Leave += new System.EventHandler(this.TextBox_batteryСharger_Leave);
+            this.txB_batteryСharger.Click += new System.EventHandler(this.TxbBatteryСhargerClick);
+            this.txB_batteryСharger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbBatteryСhargerKeyPress);
+            this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbBatteryСhargerKeyUp);
+            this.txB_batteryСharger.Leave += new System.EventHandler(this.TxbBatteryСhargerLeave);
             // 
             // btn_model_radiostation_name
             // 
@@ -797,7 +797,7 @@
             this.monthCalendar2.Name = "monthCalendar2";
             this.monthCalendar2.TabIndex = 99;
             this.monthCalendar2.Visible = false;
-            this.monthCalendar2.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar2_DateSelected);
+            this.monthCalendar2.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar2DateSelected);
             // 
             // txB_comment
             // 
@@ -976,7 +976,7 @@
             this.Name = "AddRSTForm";
             this.ShowIcon = false;
             this.Text = "Добавление радиостанции";
-            this.Load += new System.EventHandler(this.AddRSTForm_Load);
+            this.Load += new System.EventHandler(this.AddRSTFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dataTO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear_dateIssue)).EndInit();
