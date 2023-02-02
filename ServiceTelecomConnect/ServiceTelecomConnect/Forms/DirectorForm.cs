@@ -14,9 +14,6 @@ namespace ServiceTelecomConnect.Forms
         private readonly CheakUser _user;
 
         #region состояние Rows
-        /// <summary>
-        /// для значений к базе данных, по данному статусу будем или удалять или редактировать
-        /// </summary>
         enum RowState
         {
             Existed,
@@ -46,7 +43,6 @@ namespace ServiceTelecomConnect.Forms
             dataGridView1.Columns.Add("IsNew", String.Empty);
             dataGridView1.Columns[0].Visible = false;
             dataGridView1.Columns[8].Visible = false;
-
             dataGridView1.Columns[0].Width = 45;
             dataGridView1.Columns[8].Width = 80;
         }
@@ -56,18 +52,16 @@ namespace ServiceTelecomConnect.Forms
                 record.GetString(2), record.GetString(3), record.GetString(4), record.GetString(5), record.GetString(6),
                 record.GetString(7), RowState.ModifieldNew)));
         }
-
-        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
-
             selectedRow = e.RowIndex;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
                 txB_id.Text = row.Cells[0].Value.ToString();
-                cmB_section_foreman_FIO.Text = row.Cells[1].Value.ToString();
-                cmB_engineers_FIO.Text = row.Cells[2].Value.ToString();
+                cmB_sectionForemanFIO.Text = row.Cells[1].Value.ToString();
+                cmB_EngineersFIO.Text = row.Cells[2].Value.ToString();
                 txB_attorney.Text = row.Cells[3].Value.ToString();
                 cmB_road.Text = row.Cells[4].Value.ToString();
                 txB_numberPrintDocument.Text = row.Cells[5].Value.ToString();
@@ -75,7 +69,6 @@ namespace ServiceTelecomConnect.Forms
                 cmB_departmentCommunications.Text = row.Cells[7].Value.ToString();
             }
         }
-
         void RefreshDataGrid(DataGridView dgw)
         {
             if (Internet_check.CheackSkyNET())
@@ -84,20 +77,17 @@ namespace ServiceTelecomConnect.Forms
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
                 Thread.CurrentThread.CurrentCulture = myCulture;
                 dgw.Rows.Clear();
-
-                string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, curator, departmentCommunications FROM сharacteristics_вrigade";
-
+                string queryString = $"SELECT id, section_foreman_FIO, engineers_FIO, attorney, road, numberPrintDocument, " +
+                    $"curator, departmentCommunications FROM сharacteristics_вrigade";
                 using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
-
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                                 ReedSingleRow(dgw, reader);
-
                             reader.Close();
                         }
                     }
@@ -108,8 +98,7 @@ namespace ServiceTelecomConnect.Forms
                 dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
             }
         }
-
-        void DirectorForm_Load(object sender, System.EventArgs e)
+        void DirectorFormLoad(object sender, System.EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -123,11 +112,11 @@ namespace ServiceTelecomConnect.Forms
                         adapter.Fill(table);
                         if (table.Rows.Count > 0)
                         {
-                            cmB_section_foreman_FIO.DataSource = table;
-                            cmB_section_foreman_FIO.ValueMember = "id";
-                            cmB_section_foreman_FIO.DisplayMember = "login";
+                            cmB_sectionForemanFIO.DataSource = table;
+                            cmB_sectionForemanFIO.ValueMember = "id";
+                            cmB_sectionForemanFIO.DisplayMember = "login";
                         }
-                        else cmB_section_foreman_FIO.Text = "";
+                        else cmB_sectionForemanFIO.Text = String.Empty;
                     }
                 }
 
@@ -141,11 +130,11 @@ namespace ServiceTelecomConnect.Forms
                         adapter.Fill(table);
                         if (table.Rows.Count > 0)
                         {
-                            cmB_engineers_FIO.DataSource = table;
-                            cmB_engineers_FIO.ValueMember = "id";
-                            cmB_engineers_FIO.DisplayMember = "login";
+                            cmB_EngineersFIO.DataSource = table;
+                            cmB_EngineersFIO.ValueMember = "id";
+                            cmB_EngineersFIO.DisplayMember = "login";
                         }
-                        else cmB_engineers_FIO.Text = "";
+                        else cmB_EngineersFIO.Text = "";
                     }
                 }
                 string querystring3 = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Куратор'";
@@ -190,28 +179,26 @@ namespace ServiceTelecomConnect.Forms
                     MessageBox.Show("Добавьте куратора!");
                 if (String.IsNullOrEmpty(cmB_road.Text))
                     cmB_road.Text = cmB_road.Items[0].ToString();
-                if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+                if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
                     MessageBox.Show("Добавьте инженера!");
-                if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+                if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
                     MessageBox.Show("Добавьте начальника участка!");
 
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        void Btn_add_registrationEmployeess_Click(object sender, EventArgs e)
+        void BtnAddRegistrationEmployeessClick(object sender, EventArgs e)
         {
             var re = new Regex(Environment.NewLine);
             txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
             txB_attorney.Text.Trim();
-
-            if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+            if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
             {
                 MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+            if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
             {
                 MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -243,12 +230,11 @@ namespace ServiceTelecomConnect.Forms
                 txB_numberPrintDocument.Select();
                 return;
             }
-
             if (Internet_check.CheackSkyNET())
             {
                 var addQuery = $"INSERT INTO сharacteristics_вrigade (section_foreman_FIO, engineers_FIO, attorney, " +
-                    $"road, numberPrintDocument, curator, departmentCommunications) VALUES ('{cmB_section_foreman_FIO.Text}', " +
-                    $"'{cmB_engineers_FIO.Text}', '{txB_attorney.Text}', '{cmB_road.Text}', '{txB_numberPrintDocument.Text}', " +
+                    $"road, numberPrintDocument, curator, departmentCommunications) VALUES ('{cmB_sectionForemanFIO.Text}', " +
+                    $"'{cmB_EngineersFIO.Text}', '{txB_attorney.Text}', '{cmB_road.Text}', '{txB_numberPrintDocument.Text}', " +
                     $"'{cmB_curator.Text}', '{cmB_departmentCommunications.Text}')";
 
                 using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
@@ -261,14 +247,12 @@ namespace ServiceTelecomConnect.Forms
             }
             RefreshDataGrid(dataGridView1);
         }
-
-        void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
                 e.Cancel = true;
         }
-
-        void Btn_change_registrationEmployees_Click(object sender, EventArgs e)
+        void BtnChangeRegistrationEmployeesClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -279,13 +263,12 @@ namespace ServiceTelecomConnect.Forms
                 var re2 = new Regex(Environment.NewLine);
                 txB_numberPrintDocument.Text = re2.Replace(txB_numberPrintDocument.Text, " ");
                 txB_numberPrintDocument.Text.Trim();
-
-                if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+                if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
                 {
                     MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+                if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
                 {
                     MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -318,9 +301,10 @@ namespace ServiceTelecomConnect.Forms
                     return;
                 }
 
-                var changeQuery = $"update сharacteristics_вrigade set section_foreman_FIO = '{cmB_section_foreman_FIO.Text}', " +
-                    $"engineers_FIO = '{cmB_engineers_FIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}'," +
-                    $"numberPrintDocument = '{txB_numberPrintDocument.Text}', curator = '{cmB_curator.Text}', departmentCommunications = '{cmB_departmentCommunications.Text}' where id = '{id}'";
+                var changeQuery = $"UPDATE сharacteristics_вrigade SET section_foreman_FIO = '{cmB_sectionForemanFIO.Text}', " +
+                    $"engineers_FIO = '{cmB_EngineersFIO.Text}', attorney = '{txB_attorney.Text}', road = '{cmB_road.Text}'," +
+                    $"numberPrintDocument = '{txB_numberPrintDocument.Text}', curator = '{cmB_curator.Text}', " +
+                    $"departmentCommunications = '{cmB_departmentCommunications.Text}' WHERE id = '{id}'";
 
                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                 {
@@ -332,72 +316,61 @@ namespace ServiceTelecomConnect.Forms
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        void Btn_delete_registrationEmployees_Click(object sender, EventArgs e)
+        void BtnDeleteRegistrationEmployeesClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     dataGridView1.Rows[row.Index].Cells[8].Value = RowState.Deleted;
-
                 DB.GetInstance.OpenConnection();
-
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
                     var rowState = (RowState)dataGridView1.Rows[index].Cells[8].Value;
-
                     if (rowState == RowState.Deleted)
                     {
                         var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                         var deleteQuery = $"delete from сharacteristics_вrigade where id = {id}";
-
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                             command.ExecuteNonQuery();
                     }
                 }
                 DB.GetInstance.CloseConnection();
-
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        void PicB_Update_Click(object sender, EventArgs e)
+        void UpdateClick(object sender, EventArgs e)
         {
             RefreshDataGrid(dataGridView1);
         }
-
-        void PicB_clear_Click(object sender, EventArgs e)
+        void ClearControlFormClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_section_foreman_FIO.Text))
+            if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
             {
                 MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_engineers_FIO.Text))
+            if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
             {
                 MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cmB_section_foreman_FIO.Text = cmB_section_foreman_FIO.Items[0].ToString();
-            cmB_engineers_FIO.Text = cmB_engineers_FIO.Items[0].ToString();
+            cmB_sectionForemanFIO.Text = cmB_sectionForemanFIO.Items[0].ToString();
+            cmB_EngineersFIO.Text = cmB_EngineersFIO.Items[0].ToString();
             cmB_road.Text = cmB_road.Items[0].ToString();
             cmB_curator.Text = cmB_road.Items[0].ToString();
             cmB_departmentCommunications.Text = cmB_road.Items[0].ToString();
             txB_attorney.Clear();
             txB_numberPrintDocument.Clear();
         }
-
-        void DirectorForm_FormClosed(object sender, FormClosedEventArgs e)
+        void DirectorFormFormClosed(object sender, FormClosedEventArgs e)
         {
             System.Environment.Exit(1);
         }
-
-        void DirectorForm_FormClosing(object sender, FormClosingEventArgs e)
+        void DirectorFormFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
-
-        void Btn_ReportCard_Click(object sender, EventArgs e)
+        void BtnReportCardClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
