@@ -65,7 +65,7 @@
             this.btn_enterButtonLogin.TabIndex = 25;
             this.btn_enterButtonLogin.Text = "Enter";
             this.btn_enterButtonLogin.UseVisualStyleBackColor = false;
-            this.btn_enterButtonLogin.Click += new System.EventHandler(this.EnterButtonLogin_Click);
+            this.btn_enterButtonLogin.Click += new System.EventHandler(this.EnterBtnLoginClick);
             // 
             // label4
             // 
@@ -146,9 +146,9 @@
             this.lbL_clear.Size = new System.Drawing.Size(63, 14);
             this.lbL_clear.TabIndex = 27;
             this.lbL_clear.Text = "очистить";
-            this.lbL_clear.Click += new System.EventHandler(this.Clear_Click);
-            this.lbL_clear.MouseEnter += new System.EventHandler(this.Clear_MouseEnter);
-            this.lbL_clear.MouseLeave += new System.EventHandler(this.Clear_MouseLeave);
+            this.lbL_clear.Click += new System.EventHandler(this.ClearClick);
+            this.lbL_clear.MouseEnter += new System.EventHandler(this.ClearMouseEnter);
+            this.lbL_clear.MouseLeave += new System.EventHandler(this.ClearMouseLeave);
             // 
             // lbL_hidePassword
             // 
@@ -161,9 +161,9 @@
             this.lbL_hidePassword.Size = new System.Drawing.Size(98, 14);
             this.lbL_hidePassword.TabIndex = 29;
             this.lbL_hidePassword.Text = "скрыть пароль";
-            this.lbL_hidePassword.Click += new System.EventHandler(this.HidePassword_Click);
-            this.lbL_hidePassword.MouseEnter += new System.EventHandler(this.HidePassword_MouseEnter);
-            this.lbL_hidePassword.MouseLeave += new System.EventHandler(this.HidePassword_MouseLeave);
+            this.lbL_hidePassword.Click += new System.EventHandler(this.HidePasswordClick);
+            this.lbL_hidePassword.MouseEnter += new System.EventHandler(this.HidePasswordMouseEnter);
+            this.lbL_hidePassword.MouseLeave += new System.EventHandler(this.HidePasswordMouseLeave);
             // 
             // lbL_openPassword
             // 
@@ -176,9 +176,9 @@
             this.lbL_openPassword.Size = new System.Drawing.Size(112, 14);
             this.lbL_openPassword.TabIndex = 28;
             this.lbL_openPassword.Text = "показать пароль";
-            this.lbL_openPassword.Click += new System.EventHandler(this.OpenPassword_Click);
-            this.lbL_openPassword.MouseEnter += new System.EventHandler(this.OpenPassword_MouseEnter);
-            this.lbL_openPassword.MouseLeave += new System.EventHandler(this.OpenPassword_MouseLeave);
+            this.lbL_openPassword.Click += new System.EventHandler(this.OpenPasswordClick);
+            this.lbL_openPassword.MouseEnter += new System.EventHandler(this.OpenPasswordMouseEnter);
+            this.lbL_openPassword.MouseLeave += new System.EventHandler(this.OpenPasswordMouseLeave);
             // 
             // cmB_post
             // 
@@ -227,7 +227,7 @@
             this.Name = "RegistrationForm";
             this.ShowIcon = false;
             this.Text = "Регистрация";
-            this.Load += new System.EventHandler(this.RegistrationForm_Load);
+            this.Load += new System.EventHandler(this.RegistrationFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
