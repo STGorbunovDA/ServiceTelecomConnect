@@ -237,7 +237,7 @@
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellValueChanged);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserAddedRow);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
@@ -1506,7 +1506,7 @@
             this.btn_Uploading_JSON_file.TabIndex = 85;
             this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
             this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
-            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.Btn_Uploading_JSON_file_Click);
+            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.BtnUploadingJsonFileClick);
             // 
             // btn_manual_backup_current_DB
             // 
@@ -1519,7 +1519,7 @@
             this.btn_manual_backup_current_DB.TabIndex = 81;
             this.btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
             this.btn_manual_backup_current_DB.UseVisualStyleBackColor = false;
-            this.btn_manual_backup_current_DB.Click += new System.EventHandler(this.Btn_manual_backup_current_DB_Click);
+            this.btn_manual_backup_current_DB.Click += new System.EventHandler(this.BtnManualBackupCurrentDataBaseClick);
             // 
             // btn_loading_file_current_DB
             // 
@@ -1532,7 +1532,7 @@
             this.btn_loading_file_current_DB.TabIndex = 79;
             this.btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
             this.btn_loading_file_current_DB.UseVisualStyleBackColor = false;
-            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.Btn_loading_file_current_DB_Click);
+            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.BtnLoadingFileCurrentDataBaseClick);
             // 
             // btn_clear_BD_current_year_Curator
             // 
@@ -1545,7 +1545,7 @@
             this.btn_clear_BD_current_year_Curator.TabIndex = 80;
             this.btn_clear_BD_current_year_Curator.Text = "Полная очистка БД текущего года";
             this.btn_clear_BD_current_year_Curator.UseVisualStyleBackColor = false;
-            this.btn_clear_BD_current_year_Curator.Click += new System.EventHandler(this.Btn_clear_BD_current_year_Curator_Click);
+            this.btn_clear_BD_current_year_Curator.Click += new System.EventHandler(this.BtnClearDataBaseCurrentYearCuratorClick);
             // 
             // btn_loading_json_file_BD
             // 
@@ -1558,7 +1558,7 @@
             this.btn_loading_json_file_BD.TabIndex = 78;
             this.btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
             this.btn_loading_json_file_BD.UseVisualStyleBackColor = false;
-            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.Btn_loading_json_file_BD_Click);
+            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.BtnLoadingJsonFileDataBaseClick);
             // 
             // btn_close_Functional_loading_panel
             // 
@@ -1570,7 +1570,7 @@
             this.btn_close_Functional_loading_panel.TabIndex = 37;
             this.btn_close_Functional_loading_panel.Text = "X";
             this.btn_close_Functional_loading_panel.UseVisualStyleBackColor = false;
-            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.Btn_close_Functional_loading_panel_Click);
+            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.BtnCloseFunctionalLoadingPanelClick);
             // 
             // label4
             // 
@@ -1608,35 +1608,35 @@
             this.mTrip_mTrip_AddExecutionCurator.Name = "mTrip_mTrip_AddExecutionCurator";
             this.mTrip_mTrip_AddExecutionCurator.Size = new System.Drawing.Size(179, 20);
             this.mTrip_mTrip_AddExecutionCurator.Text = "Изменить выполнение РСТ";
-            this.mTrip_mTrip_AddExecutionCurator.Click += new System.EventHandler(this.MTrip_mTrip_AddExecutionCurator_Click);
+            this.mTrip_mTrip_AddExecutionCurator.Click += new System.EventHandler(this.MTripAddExecutionCuratorClick);
             // 
             // mTrip_change_rst
             // 
             this.mTrip_change_rst.Name = "mTrip_change_rst";
             this.mTrip_change_rst.Size = new System.Drawing.Size(166, 20);
             this.mTrip_change_rst.Text = "Изменить радиостанцию";
-            this.mTrip_change_rst.Click += new System.EventHandler(this.MTrip_change_rst_Click);
+            this.mTrip_change_rst.Click += new System.EventHandler(this.MTripChangeRadiostantionClick);
             // 
             // mTrip_delete_rst
             // 
             this.mTrip_delete_rst.Name = "mTrip_delete_rst";
             this.mTrip_delete_rst.Size = new System.Drawing.Size(153, 20);
             this.mTrip_delete_rst.Text = "Убрать из выполнения";
-            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTrip_delete_rst_Click);
+            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTripDeleteRadiostantionClick);
             // 
             // mTrip_Button_update
             // 
             this.mTrip_Button_update.Name = "mTrip_Button_update";
             this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
             this.mTrip_Button_update.Text = "Обновить";
-            this.mTrip_Button_update.Click += new System.EventHandler(this.MTrip_Button_update_Click);
+            this.mTrip_Button_update.Click += new System.EventHandler(this.MTripUpdateClick);
             // 
             // mTrip_Button_save_in_file
             // 
             this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
             this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(121, 20);
             this.mTrip_Button_save_in_file.Text = "Сохранение базы";
-            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTrip_Button_save_in_file_Click);
+            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTripSaveInFileClick);
             // 
             // mTrip_funcionalpanel
             // 
@@ -1655,35 +1655,35 @@
             this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
             this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
-            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTrip_btn_clear_BD_current_year_Click);
+            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTripClearDataBaseCurrentYearClick);
             // 
             // mTrip_btn_manual_backup_current_DB
             // 
             this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
             this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
-            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTrip_btn_manual_backup_current_DB_Click);
+            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTripManualBackupCurrentDataBaseClick);
             // 
             // mTrip_btn_loading_file_current_DB
             // 
             this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
             this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
-            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTrip_btn_loading_file_current_DB_Click);
+            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTripLoadingFileCurrentDataBaseClick);
             // 
             // mTrip_btn_loading_json_file_BD
             // 
             this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
             this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
-            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTrip_btn_loading_json_file_BD_Click);
+            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTripLoadingJsonFileDataBaseClick);
             // 
             // mTrip_btn_Uploading_JSON_file
             // 
             this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
             this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(351, 22);
             this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
-            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTrip_btn_Uploading_JSON_file_Click);
+            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTripUploadingJsonFileClick);
             // 
             // ComparisonForm
             // 
@@ -1711,8 +1711,8 @@
             this.Name = "ComparisonForm";
             this.ShowIcon = false;
             this.Text = "Рабочий кабинет Куратора";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComparisonForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ComparisonForm_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComparisonFormFormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ComparisonFormFormClosed);
             this.Load += new System.EventHandler(this.ComparisonForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
