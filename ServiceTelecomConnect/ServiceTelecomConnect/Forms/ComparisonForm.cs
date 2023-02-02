@@ -237,31 +237,26 @@ namespace ServiceTelecomConnect
 
         #region Удаление из БД
 
-        void Button_delete_Click(object sender, EventArgs e)
+        void BtnDeleteClick(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage = $"Вы действительно хотите удалить радиостанции у предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             else
             {
                 string Mesage = $"Вы действительно хотите удалить радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
 
             QuerySettingDataBase.DeleteRowСellCurator(dataGridView1);
-
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-
             QuerySettingDataBase.RefreshDataGridСurator(dataGridView1, cmB_road.Text);
             txB_numberAct.Text = "";
             dataGridView1.ClearSelection();
-
             if (dataGridView1.RowCount - currRowIndex > 0)
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             Counters();
@@ -271,7 +266,7 @@ namespace ServiceTelecomConnect
 
         #region обновление БД
 
-        void Button_update_Click(object sender, EventArgs e)
+        void BtnUpdateClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
             {
@@ -293,14 +288,14 @@ namespace ServiceTelecomConnect
             }
         }
 
-        void PictureBox2_update_Click(object sender, EventArgs e)
+        void UpdateClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
                 MessageBox.Show("Добавь радиостанцию в выполнение!");
                 return;
             }
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
 
         #endregion
@@ -598,8 +593,8 @@ namespace ServiceTelecomConnect
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Сhange_rst_form_curator_Click));
-                    m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
-                    m.MenuItems.Add(new MenuItem("Убрать из выполнения", Button_delete_Click));
+                    m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
+                    m.MenuItems.Add(new MenuItem("Убрать из выполнения", BtnDeleteClick));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_curator_Click));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
@@ -851,12 +846,12 @@ namespace ServiceTelecomConnect
 
         void MTrip_delete_rst_Click(object sender, EventArgs e)
         {
-            Button_delete_Click(sender, e);
+            BtnDeleteClick(sender, e);
         }
 
         void MTrip_Button_update_Click(object sender, EventArgs e)
         {
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
 
         void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
