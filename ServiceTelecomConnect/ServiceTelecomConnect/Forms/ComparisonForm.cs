@@ -21,7 +21,6 @@ namespace ServiceTelecomConnect
         private readonly CheakUser _user;
 
         #endregion
-
         public ComparisonForm(CheakUser user)
         {
             InitializeComponent();
@@ -43,7 +42,6 @@ namespace ServiceTelecomConnect
             _user = user;
             IsAdmin();
         }
-
         void IsAdmin()
         {
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
@@ -59,7 +57,6 @@ namespace ServiceTelecomConnect
                 panel3.Enabled = false;
             }
         }
-
         private void ComparisonForm_Load(object sender, EventArgs e)
         {
             QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
@@ -100,7 +97,6 @@ namespace ServiceTelecomConnect
                 cmB_month.Text = cmB_month.Items[0].ToString();
             else MessageBox.Show("Добавь радиостанцию в выполнение!");
         }
-
         void TimerEventProcessorCurator(Object myObject, EventArgs myEventArgs)
         {
             string taskCity = cmB_city.Text;
@@ -112,7 +108,6 @@ namespace ServiceTelecomConnect
         }
 
         #region Счётчики
-
         void Counters()
         {
             decimal sumTO = 0;
@@ -132,7 +127,6 @@ namespace ServiceTelecomConnect
             lbL_countRemont.Text = colRemont.ToString();
             lbL_summRemont.Text = sumRemont.ToString();
         }
-
         #endregion
 
         #region Сохранение поля город проведения проверки
@@ -166,7 +160,6 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.RefreshDataGridСuratorMonth(dataGridView1, cmB_road.Text, cmB_month.Text);
             Counters();
         }
-
         #endregion
 
         #region загрузка базы согласно городу
@@ -185,7 +178,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region получение данных в Control-ы, button right mouse
-
         void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
@@ -218,7 +210,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Clear contorl-ы
-
         void ClearControlForm(object sender, EventArgs e)
         {
             string Mesage;
@@ -236,7 +227,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Удаление из БД
-
         void BtnDeleteClick(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 1)
@@ -261,11 +251,9 @@ namespace ServiceTelecomConnect
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             Counters();
         }
-
         #endregion
 
         #region обновление БД
-
         void BtnUpdateClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count > 0)
@@ -287,7 +275,6 @@ namespace ServiceTelecomConnect
                 Counters();
             }
         }
-
         void UpdateClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
@@ -297,11 +284,9 @@ namespace ServiceTelecomConnect
             }
             BtnUpdateClick(sender, e);
         }
-
         #endregion
 
         #region ProcessKbdCtrlShortcuts
-
         void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -334,8 +319,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Сохранение БД на PC
-
-        void Button_save_in_file_curator_Click(object sender, EventArgs e)
+        void BtnSaveInFileCuratorClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -344,11 +328,9 @@ namespace ServiceTelecomConnect
             }
             SaveFileDataGridViewPC.UserSaveFileCuratorPC(dataGridView1, cmB_road.Text);
         }
-
         #endregion
 
         #region показать кол-во уникальных записей БД в Combobox
-
         void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
@@ -360,56 +342,48 @@ namespace ServiceTelecomConnect
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueCompanyCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 1)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueLocationCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 3)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueDateTOCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 4)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueNumberActCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 5)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueNumberActRemontCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 6)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueDecommissionActsCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 7)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueMonthCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 8)
             {
                 cmb_number_unique_acts.Visible = true;
                 textBox_search.Visible = false;
-
                 QuerySettingDataBase.NumberUniqueModelCurator(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else
@@ -419,11 +393,10 @@ namespace ServiceTelecomConnect
             }
             cmb_number_unique_acts.SelectedIndex = 0;
         }
-
         #endregion
 
         #region Взаимодействие на search, cформировать на форме panel1
-        void Cmb_number_unique_acts_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbNumberUniqueActsSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -433,8 +406,7 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
             Counters();
         }
-
-        void TextBox_search_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSearchKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {
@@ -442,8 +414,7 @@ namespace ServiceTelecomConnect
                 Counters();
             }
         }
-
-        void Button_search_Click(object sender, EventArgs e)
+        void BtnSearchClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -453,8 +424,7 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.SearchCurator(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text);
             Counters();
         }
-
-        void TextBox_numberAct_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbNumberActKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
             {
@@ -467,8 +437,7 @@ namespace ServiceTelecomConnect
                 Counters();
             }
         }
-
-        void TextBox_numberAct_MouseDoubleClick(object sender, MouseEventArgs e)
+        void TxbNumberActMouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -481,8 +450,7 @@ namespace ServiceTelecomConnect
                 Counters();
             }
         }
-
-        void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
                 e.Cancel = true;
@@ -490,17 +458,15 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region dataGridView1.Update() для добавления или удаление строки
-        void DataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        void DataGridView1UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             dataGridView1.Update();
         }
-
-        void DataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        void DataGridView1UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
             dataGridView1.Update();
         }
-
-        void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Update();
         }
@@ -595,7 +561,7 @@ namespace ServiceTelecomConnect
                     m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Сhange_rst_form_curator_Click));
                     m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", BtnDeleteClick));
-                    m.MenuItems.Add(new MenuItem("Сохранение БД", Button_save_in_file_curator_Click));
+                    m.MenuItems.Add(new MenuItem("Сохранение БД", BtnSaveInFileCuratorClick));
                     m.Show(dataGridView1, new Point(e.X, e.Y));
                 }
             }
@@ -856,7 +822,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
         {
-            Button_save_in_file_curator_Click(sender, e);
+            BtnSaveInFileCuratorClick(sender, e);
         }
 
         void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
