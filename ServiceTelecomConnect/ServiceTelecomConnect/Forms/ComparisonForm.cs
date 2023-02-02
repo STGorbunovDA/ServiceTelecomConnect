@@ -663,13 +663,10 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region при выборе строк ползьзователем и их подсчёт
-        void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        void DataGridView1SelectionChanged(object sender, EventArgs e)
         {
-
             decimal sum = 0;
-
             HashSet<int> rowIndexes = new HashSet<int>();
-
             foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
             {
                 if (!rowIndexes.Contains(cell.RowIndex))
@@ -678,30 +675,25 @@ namespace ServiceTelecomConnect
                     sum += Convert.ToDecimal(dataGridView1.Rows[cell.RowIndex].Cells["price"].Value);
                 }
             }
-
             lbL_cell_rows.Text = rowIndexes.Count.ToString();
             lbL_sum_TO_selection.Text = sum.ToString();
-
         }
 
         #endregion
 
         #region close form
-
-        void ComparisonForm_FormClosed(object sender, FormClosedEventArgs e)
+        void ComparisonFormFormClosed(object sender, FormClosedEventArgs e)
         {
             System.Environment.Exit(0);
         }
-
-        void ComparisonForm_FormClosing(object sender, FormClosingEventArgs e)
+        void ComparisonFormFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
-
         #endregion
 
         #region Функциональная панель
-        void Btn_close_Functional_loading_panel_Click(object sender, EventArgs e)
+        void BtnCloseFunctionalLoadingPanelClick(object sender, EventArgs e)
         {
             Functional_loading_panel.Visible = false;
             dataGridView1.Enabled = true;
@@ -722,7 +714,7 @@ namespace ServiceTelecomConnect
         }
 
         #region Очистка текущей БД 
-        void Btn_clear_BD_current_year_Curator_Click(object sender, EventArgs e)
+        void BtnClearDataBaseCurrentYearCuratorClick(object sender, EventArgs e)
         {
             string Mesage;
             Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
@@ -742,7 +734,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Ручное-резервное копирование текущей БД
-        void Btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        void BtnManualBackupCurrentDataBaseClick(object sender, EventArgs e)
         {
             FunctionalPanel.ManualBackupCurrentCurator();
         }
@@ -751,13 +743,13 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Загрузка из файла для текущей БД
-        void Btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        void BtnLoadingFileCurrentDataBaseClick(object sender, EventArgs e)
         {
             FunctionalPanel.LoadingFileCurrentDatabaseCurator();
         }
 
         #region Загрузка и обновление резервного файла JSON
-        void Btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        void BtnLoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -772,7 +764,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Выгрузка файла JSON
-        void Btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        void BtnUploadingJsonFileClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
                 FunctionalPanel.GetSaveDataGridViewInJsonCurator(dataGridView1, cmB_city.Text);
@@ -783,55 +775,45 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region  MenuTrip
-
-        void MTrip_mTrip_AddExecutionCurator_Click(object sender, EventArgs e)
+        void MTripAddExecutionCuratorClick(object sender, EventArgs e)
         {
             AddExecutionCurator(sender, e);
         }
-
-        void MTrip_change_rst_Click(object sender, EventArgs e)
+        void MTripChangeRadiostantionClick(object sender, EventArgs e)
         {
             СhangeRadiostantionFormCuratorClick(sender, e);
         }
-
-        void MTrip_delete_rst_Click(object sender, EventArgs e)
+        void MTripDeleteRadiostantionClick(object sender, EventArgs e)
         {
             BtnDeleteClick(sender, e);
         }
-
-        void MTrip_Button_update_Click(object sender, EventArgs e)
+        void MTripUpdateClick(object sender, EventArgs e)
         {
             BtnUpdateClick(sender, e);
         }
-
-        void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
+        void MTripSaveInFileClick(object sender, EventArgs e)
         {
             BtnSaveInFileCuratorClick(sender, e);
         }
-
-        void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
+        void MTripClearDataBaseCurrentYearClick(object sender, EventArgs e)
         {
-            Btn_clear_BD_current_year_Curator_Click(sender, e);
+            BtnClearDataBaseCurrentYearCuratorClick(sender, e);
         }
-
-        void MTrip_btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        void MTripManualBackupCurrentDataBaseClick(object sender, EventArgs e)
         {
-            Btn_manual_backup_current_DB_Click(sender, e);
+            BtnManualBackupCurrentDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        void MTripLoadingFileCurrentDataBaseClick(object sender, EventArgs e)
         {
-            Btn_loading_file_current_DB_Click(sender, e);
+            BtnLoadingFileCurrentDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        void MTripLoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
-            Btn_loading_json_file_BD_Click(sender, e);
+            BtnLoadingJsonFileDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        void MTripUploadingJsonFileClick(object sender, EventArgs e)
         {
-            Btn_Uploading_JSON_file_Click(sender, e);
+            BtnUploadingJsonFileClick(sender, e);
         }
         #endregion
     }
