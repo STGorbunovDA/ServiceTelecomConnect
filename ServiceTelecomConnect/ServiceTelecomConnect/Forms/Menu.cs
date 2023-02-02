@@ -10,16 +10,14 @@ namespace ServiceTelecomConnect
     public partial class Menu : Form
     {
         private readonly CheakUser _user;
-
         public Menu(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             _user = user;
             IsAdmin();
-
             lbL_TutorialEngineers.ForeColor = Color.FromArgb(56, 56, 56);
-            lbL_section_foreman.ForeColor = Color.FromArgb(56, 56, 56);
+            lbL_sectionForeman.ForeColor = Color.FromArgb(56, 56, 56);
             lbL_сomparison.ForeColor = Color.FromArgb(56, 56, 56);
         }
         void IsAdmin()
@@ -32,19 +30,17 @@ namespace ServiceTelecomConnect
             if (_user.IsAdmin == "Руководитель")
                 lbL_director.Visible = true;
         }
-        void Menu_Load(object sender, EventArgs e)
+        void MenuLoad(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
                 DateTime Date = DateTime.Now;
                 string inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
-
                 DateTime dateTimeInput = QuerySettingDataBase.CheacDateTimeInputLogUserDatabase(_user.Login);
-
                 if (Date.ToString("yyyy-MM-dd") != dateTimeInput.ToString("yyyy-MM-dd"))
                 {
-                    string addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
-
+                    string addQuery = $"INSERT INTO logUserDB (user, dateTimeInput, dateTimeExit) " +
+                        $"VALUES ('{_user.Login}', '{inputDate}', '{inputDate}')";
                     using (MySqlCommand command = new MySqlCommand(addQuery, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -52,81 +48,74 @@ namespace ServiceTelecomConnect
                         DB.GetInstance.CloseConnection();
                     }
                 }
-
-
                 if (_user.IsAdmin == "Admin" || _user.IsAdmin == "Руководитель")
                 {
 
                 }
                 else if (_user.IsAdmin == "Начальник участка")
                 {
-                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}'";
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade " +
+                        $"WHERE section_foreman_FIO = '{_user.Login}'";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
-
                             adapter.Fill(table);
-
                             if (table.Rows.Count >= 1)
                                 lbL_сomparison.Enabled = false;
                             else
                             {
                                 lbL_сomparison.Enabled = false;
                                 lbL_TutorialEngineers.Enabled = false;
-                                lbL_section_foreman.Enabled = false;
+                                lbL_sectionForeman.Enabled = false;
                                 MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
                             }
-
                         }
                     }
                 }
                 else if (_user.IsAdmin == "Инженер")
                 {
-                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE engineers_FIO = '{_user.Login}'";
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade " +
+                        $"WHERE engineers_FIO = '{_user.Login}'";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
-
                             adapter.Fill(table);
-
                             if (table.Rows.Count >= 1)
                                 lbL_сomparison.Enabled = false;
                             else
                             {
                                 lbL_сomparison.Enabled = false;
                                 lbL_TutorialEngineers.Enabled = false;
-                                lbL_section_foreman.Enabled = false;
+                                lbL_sectionForeman.Enabled = false;
                                 MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
                             }
-
                         }
                     }
                 }
                 else if (_user.IsAdmin == "Куратор")
                 {
-                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade WHERE curator = '{_user.Login}'";
+                    string querystring = $"SELECT attorney, numberPrintDocument FROM сharacteristics_вrigade " +
+                        $"WHERE curator = '{_user.Login}'";
                     using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
-
                             adapter.Fill(table);
-
                             if (table.Rows.Count >= 1)
                                 lbL_TutorialEngineers.Enabled = false;
                             else
                             {
                                 lbL_сomparison.Enabled = false;
                                 lbL_TutorialEngineers.Enabled = false;
-                                lbL_section_foreman.Enabled = false;
+                                lbL_sectionForeman.Enabled = false;
                                 MessageBox.Show("Сообщи руководителю что-бы сформировал тебя в бригаду");
                             }
                         }
@@ -141,20 +130,18 @@ namespace ServiceTelecomConnect
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                         {
                             DataTable table = new DataTable();
-
                             adapter.Fill(table);
-
                             if (table.Rows.Count >= 1)
                             {
                                 lbL_сomparison.Enabled = false;
                                 lbL_TutorialEngineers.Enabled = false;
-                                lbL_section_foreman.Enabled = true;
+                                lbL_sectionForeman.Enabled = true;
                             }
                             else
                             {
                                 lbL_сomparison.Enabled = false;
                                 lbL_TutorialEngineers.Enabled = false;
-                                lbL_section_foreman.Enabled = false;
+                                lbL_sectionForeman.Enabled = false;
                                 MessageBox.Show("Сообщи руководителю что-бы добавил Вас в бригаду");
                             }
                         }
@@ -164,12 +151,11 @@ namespace ServiceTelecomConnect
                 {
                     lbL_сomparison.Enabled = false;
                     lbL_TutorialEngineers.Enabled = false;
-                    lbL_section_foreman.Enabled = false;
+                    lbL_sectionForeman.Enabled = false;
                 }
             }
         }
-
-        void Label_baza_Click(object sender, EventArgs e)
+        void LblBazaClick(object sender, EventArgs e)
         {
             using (ST_WorkForm sT_WorkForm = new ST_WorkForm(_user))
             {
@@ -178,17 +164,15 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-
-        void Label_section_foreman_MouseEnter(object sender, EventArgs e)
+        void LblSectionForemanMouseEnter(object sender, EventArgs e)
         {
-
-            lbL_section_foreman.ForeColor = Color.White;
+            lbL_sectionForeman.ForeColor = Color.White;
         }
-        void Label_section_foreman_MouseLeave(object sender, EventArgs e)
+        void LblSectionForemanMouseLeave(object sender, EventArgs e)
         {
-            lbL_section_foreman.ForeColor = Color.Black;
+            lbL_sectionForeman.ForeColor = Color.Black;
         }
-        void Label_TutorialEngineers_Click(object sender, EventArgs e)
+        void LblTutorialEngineersClick(object sender, EventArgs e)
         {
             using (TutorialForm tutorialForm = new TutorialForm(_user))
             {
@@ -197,15 +181,15 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-        void Label_TutorialEngineers_MouseEnter(object sender, EventArgs e)
+        void LblTutorialEngineersMouseEnter(object sender, EventArgs e)
         {
             lbL_TutorialEngineers.ForeColor = Color.White;
         }
-        void Label_TutorialEngineers_MouseLeave(object sender, EventArgs e)
+        void LblTutorialEngineersMouseLeave(object sender, EventArgs e)
         {
             lbL_TutorialEngineers.ForeColor = Color.Black;
         }
-        void Label1_Click(object sender, EventArgs e)
+        void LblComparisonFormClick(object sender, EventArgs e)
         {
             using (ComparisonForm comparisonForm = new ComparisonForm(_user))
             {
@@ -214,17 +198,17 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-        void Label_сomparison_MouseEnter(object sender, EventArgs e)
+        void LblComparisonMouseEnter(object sender, EventArgs e)
         {
             lbL_сomparison.ForeColor = Color.White;
         }
-        void Label_сomparison_MouseLeave(object sender, EventArgs e)
+        void LblComparisonMouseLeave(object sender, EventArgs e)
         {
             lbL_сomparison.ForeColor = Color.Black;
         }
 
         #region открываем форму управления правами доступа user's
-        void PictureBox1_setting_Click(object sender, EventArgs e)
+        void SettingClick(object sender, EventArgs e)
         {
             using (Setting_user setting_User = new Setting_user())
             {
@@ -235,16 +219,15 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        void MenuFormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Environment.Exit(1);
+            System.Environment.Exit(0);
         }
-        void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        void MenuFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
-
-        void LbL_director_Click(object sender, EventArgs e)
+        void LbLDirectorClick(object sender, EventArgs e)
         {
             using (DirectorForm directorForm = new DirectorForm(_user))
             {
@@ -253,13 +236,11 @@ namespace ServiceTelecomConnect
                 this.Show();
             }
         }
-
-        void LbL_director_MouseEnter(object sender, EventArgs e)
+        void LbLDirectorMouseEnter(object sender, EventArgs e)
         {
             lbL_director.ForeColor = Color.White;
         }
-
-        void LbL_director_MouseLeave(object sender, EventArgs e)
+        void LbLDirectorMouseLeave(object sender, EventArgs e)
         {
             lbL_director.ForeColor = Color.Black;
         }
