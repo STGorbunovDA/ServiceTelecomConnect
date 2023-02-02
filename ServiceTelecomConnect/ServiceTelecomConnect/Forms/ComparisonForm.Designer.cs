@@ -234,12 +234,12 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 535);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellValueChanged);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
-            this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
-            this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserDeletedRow);
+            this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserAddedRow);
+            this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
             // 
@@ -757,7 +757,7 @@
             this.button_save_in_file_curator.TabIndex = 85;
             this.button_save_in_file_curator.Text = "Сохранение базы";
             this.button_save_in_file_curator.UseVisualStyleBackColor = false;
-            this.button_save_in_file_curator.Click += new System.EventHandler(this.Button_save_in_file_curator_Click);
+            this.button_save_in_file_curator.Click += new System.EventHandler(this.BtnSaveInFileCuratorClick);
             // 
             // cmB_month
             // 
@@ -853,7 +853,7 @@
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(210, 28);
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
-            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
+            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.CmbNumberUniqueActsSelectionChangeCommitted);
             // 
             // label_act_remont
             // 
@@ -905,7 +905,7 @@
             this.btn_search.TabIndex = 13;
             this.btn_search.Text = "...";
             this.btn_search.UseVisualStyleBackColor = false;
-            this.btn_search.Click += new System.EventHandler(this.Button_search_Click);
+            this.btn_search.Click += new System.EventHandler(this.BtnSearchClick);
             // 
             // cmB_seach
             // 
@@ -932,8 +932,8 @@
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(151, 29);
             this.txB_numberAct.TabIndex = 27;
-            this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
-            this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
+            this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbNumberActKeyPress);
+            this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TxbNumberActMouseDoubleClick);
             // 
             // textBox_search
             // 
@@ -944,7 +944,7 @@
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(204, 29);
             this.textBox_search.TabIndex = 4;
-            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
+            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSearchKeyPress);
             // 
             // picB_update
             // 
