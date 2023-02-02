@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AuthorizationLabel = new System.Windows.Forms.Label();
-            this.cmB_section_foreman_FIO = new System.Windows.Forms.ComboBox();
+            this.cmB_sectionForemanFIO = new System.Windows.Forms.ComboBox();
             this.cmB_road = new System.Windows.Forms.ComboBox();
-            this.cmB_engineers_FIO = new System.Windows.Forms.ComboBox();
+            this.cmB_EngineersFIO = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txB_attorney = new System.Windows.Forms.TextBox();
@@ -73,17 +73,17 @@
             // 
             // cmB_section_foreman_FIO
             // 
-            this.cmB_section_foreman_FIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmB_sectionForemanFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmB_section_foreman_FIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_section_foreman_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmB_section_foreman_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_section_foreman_FIO.FormattingEnabled = true;
-            this.cmB_section_foreman_FIO.Location = new System.Drawing.Point(20, 344);
-            this.cmB_section_foreman_FIO.Name = "cmB_section_foreman_FIO";
-            this.cmB_section_foreman_FIO.Size = new System.Drawing.Size(223, 28);
-            this.cmB_section_foreman_FIO.TabIndex = 58;
+            this.cmB_sectionForemanFIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_sectionForemanFIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_sectionForemanFIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_sectionForemanFIO.FormattingEnabled = true;
+            this.cmB_sectionForemanFIO.Location = new System.Drawing.Point(20, 344);
+            this.cmB_sectionForemanFIO.Name = "cmB_section_foreman_FIO";
+            this.cmB_sectionForemanFIO.Size = new System.Drawing.Size(223, 28);
+            this.cmB_sectionForemanFIO.TabIndex = 58;
             // 
             // cmB_road
             // 
@@ -119,17 +119,17 @@
             // 
             // cmB_engineers_FIO
             // 
-            this.cmB_engineers_FIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.cmB_EngineersFIO.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmB_engineers_FIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_engineers_FIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmB_engineers_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_engineers_FIO.FormattingEnabled = true;
-            this.cmB_engineers_FIO.Location = new System.Drawing.Point(256, 344);
-            this.cmB_engineers_FIO.Name = "cmB_engineers_FIO";
-            this.cmB_engineers_FIO.Size = new System.Drawing.Size(223, 28);
-            this.cmB_engineers_FIO.TabIndex = 60;
+            this.cmB_EngineersFIO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_EngineersFIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmB_EngineersFIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_EngineersFIO.FormattingEnabled = true;
+            this.cmB_EngineersFIO.Location = new System.Drawing.Point(256, 344);
+            this.cmB_EngineersFIO.Name = "cmB_engineers_FIO";
+            this.cmB_EngineersFIO.Size = new System.Drawing.Size(223, 28);
+            this.cmB_EngineersFIO.TabIndex = 60;
             // 
             // label30
             // 
@@ -196,7 +196,7 @@
             this.btn_add_registrationEmployees.TabIndex = 89;
             this.btn_add_registrationEmployees.Text = "Добавить";
             this.btn_add_registrationEmployees.UseVisualStyleBackColor = false;
-            this.btn_add_registrationEmployees.Click += new System.EventHandler(this.Btn_add_registrationEmployeess_Click);
+            this.btn_add_registrationEmployees.Click += new System.EventHandler(this.BtnAddRegistrationEmployeessClick);
             // 
             // dataGridView1
             // 
@@ -231,8 +231,8 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1007, 253);
             this.dataGridView1.TabIndex = 90;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             // 
             // txB_id
             // 
@@ -256,7 +256,7 @@
             this.btn_change_registrationEmployees.TabIndex = 92;
             this.btn_change_registrationEmployees.Text = "Изменить";
             this.btn_change_registrationEmployees.UseVisualStyleBackColor = false;
-            this.btn_change_registrationEmployees.Click += new System.EventHandler(this.Btn_change_registrationEmployees_Click);
+            this.btn_change_registrationEmployees.Click += new System.EventHandler(this.BtnChangeRegistrationEmployeesClick);
             // 
             // btn_delete_registrationEmployees
             // 
@@ -269,7 +269,7 @@
             this.btn_delete_registrationEmployees.TabIndex = 93;
             this.btn_delete_registrationEmployees.Text = "Удалить";
             this.btn_delete_registrationEmployees.UseVisualStyleBackColor = false;
-            this.btn_delete_registrationEmployees.Click += new System.EventHandler(this.Btn_delete_registrationEmployees_Click);
+            this.btn_delete_registrationEmployees.Click += new System.EventHandler(this.BtnDeleteRegistrationEmployeesClick);
             // 
             // picB_clear
             // 
@@ -280,7 +280,7 @@
             this.picB_clear.Size = new System.Drawing.Size(33, 30);
             this.picB_clear.TabIndex = 95;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.PicB_clear_Click);
+            this.picB_clear.Click += new System.EventHandler(this.ClearControlFormClick);
             // 
             // label4
             // 
@@ -312,7 +312,7 @@
             this.picB_Update.Size = new System.Drawing.Size(33, 30);
             this.picB_Update.TabIndex = 98;
             this.picB_Update.TabStop = false;
-            this.picB_Update.Click += new System.EventHandler(this.PicB_Update_Click);
+            this.picB_Update.Click += new System.EventHandler(this.UpdateClick);
             // 
             // label5
             // 
@@ -375,7 +375,7 @@
             this.btn_ReportCard.TabIndex = 103;
             this.btn_ReportCard.Text = "Табель";
             this.btn_ReportCard.UseVisualStyleBackColor = false;
-            this.btn_ReportCard.Click += new System.EventHandler(this.Btn_ReportCard_Click);
+            this.btn_ReportCard.Click += new System.EventHandler(this.BtnReportCardClick);
             // 
             // DirectorForm
             // 
@@ -402,18 +402,18 @@
             this.Controls.Add(this.txB_attorney);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label30);
-            this.Controls.Add(this.cmB_engineers_FIO);
+            this.Controls.Add(this.cmB_EngineersFIO);
             this.Controls.Add(this.cmB_road);
-            this.Controls.Add(this.cmB_section_foreman_FIO);
+            this.Controls.Add(this.cmB_sectionForemanFIO);
             this.Controls.Add(this.AuthorizationLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximumSize = new System.Drawing.Size(1047, 505);
             this.MinimumSize = new System.Drawing.Size(1047, 505);
             this.Name = "DirectorForm";
             this.Text = "Главная руководитель";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DirectorForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DirectorForm_FormClosed);
-            this.Load += new System.EventHandler(this.DirectorForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DirectorFormFormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DirectorFormFormClosed);
+            this.Load += new System.EventHandler(this.DirectorFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picB_Update)).EndInit();
@@ -425,9 +425,9 @@
         #endregion
 
         private System.Windows.Forms.Label AuthorizationLabel;
-        private System.Windows.Forms.ComboBox cmB_section_foreman_FIO;
+        private System.Windows.Forms.ComboBox cmB_sectionForemanFIO;
         private System.Windows.Forms.ComboBox cmB_road;
-        private System.Windows.Forms.ComboBox cmB_engineers_FIO;
+        private System.Windows.Forms.ComboBox cmB_EngineersFIO;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.TextBox txB_attorney;
