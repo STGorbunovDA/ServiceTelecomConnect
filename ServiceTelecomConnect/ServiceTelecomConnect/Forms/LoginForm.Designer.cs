@@ -68,7 +68,7 @@
             this.btn_enterButtonLogin.TabIndex = 16;
             this.btn_enterButtonLogin.Text = "Enter";
             this.btn_enterButtonLogin.UseVisualStyleBackColor = false;
-            this.btn_enterButtonLogin.Click += new System.EventHandler(this.EnterButtonLogin_Click);
+            this.btn_enterButtonLogin.Click += new System.EventHandler(this.EnterButtonLoginClick);
             // 
             // label4
             // 
@@ -147,9 +147,9 @@
             this.lbL_registrationLoginForm.TabIndex = 18;
             this.lbL_registrationLoginForm.Text = "Еще нет аккаунта?";
             this.lbL_registrationLoginForm.Visible = false;
-            this.lbL_registrationLoginForm.Click += new System.EventHandler(this.RegistrationLoginForm_Click);
-            this.lbL_registrationLoginForm.MouseEnter += new System.EventHandler(this.RegistrationLoginForm_MouseEnter);
-            this.lbL_registrationLoginForm.MouseLeave += new System.EventHandler(this.RegistrationLoginForm_MouseLeave);
+            this.lbL_registrationLoginForm.Click += new System.EventHandler(this.RegistrationLoginFormClick);
+            this.lbL_registrationLoginForm.MouseEnter += new System.EventHandler(this.RegistrationLoginFormMouseEnter);
+            this.lbL_registrationLoginForm.MouseLeave += new System.EventHandler(this.RegistrationLoginFormMouseLeave);
             // 
             // lbL_openPassword
             // 
@@ -162,9 +162,9 @@
             this.lbL_openPassword.Size = new System.Drawing.Size(112, 14);
             this.lbL_openPassword.TabIndex = 19;
             this.lbL_openPassword.Text = "показать пароль";
-            this.lbL_openPassword.Click += new System.EventHandler(this.OpenPassword_Click);
-            this.lbL_openPassword.MouseEnter += new System.EventHandler(this.OpenPassword_MouseEnter);
-            this.lbL_openPassword.MouseLeave += new System.EventHandler(this.OpenPassword_MouseLeave);
+            this.lbL_openPassword.Click += new System.EventHandler(this.OpenPasswordClick);
+            this.lbL_openPassword.MouseEnter += new System.EventHandler(this.OpenPasswordMouseEnter);
+            this.lbL_openPassword.MouseLeave += new System.EventHandler(this.OpenPasswordMouseLeave);
             // 
             // lbL_hidePassword
             // 
@@ -177,9 +177,9 @@
             this.lbL_hidePassword.Size = new System.Drawing.Size(98, 14);
             this.lbL_hidePassword.TabIndex = 20;
             this.lbL_hidePassword.Text = "скрыть пароль";
-            this.lbL_hidePassword.Click += new System.EventHandler(this.HidePassword_Click);
-            this.lbL_hidePassword.MouseEnter += new System.EventHandler(this.HidePassword_MouseEnter);
-            this.lbL_hidePassword.MouseLeave += new System.EventHandler(this.HidePassword_MouseLeave);
+            this.lbL_hidePassword.Click += new System.EventHandler(this.HidePasswordClick);
+            this.lbL_hidePassword.MouseEnter += new System.EventHandler(this.HidePasswordMouseEnter);
+            this.lbL_hidePassword.MouseLeave += new System.EventHandler(this.HidePasswordMouseLeave);
             // 
             // lbL_clear
             // 
@@ -192,9 +192,9 @@
             this.lbL_clear.Size = new System.Drawing.Size(63, 14);
             this.lbL_clear.TabIndex = 28;
             this.lbL_clear.Text = "очистить";
-            this.lbL_clear.Click += new System.EventHandler(this.Clear_Click);
-            this.lbL_clear.MouseEnter += new System.EventHandler(this.Clear_MouseEnter);
-            this.lbL_clear.MouseLeave += new System.EventHandler(this.Clear_MouseLeave);
+            this.lbL_clear.Click += new System.EventHandler(this.ClearClick);
+            this.lbL_clear.MouseEnter += new System.EventHandler(this.ClearMouseEnter);
+            this.lbL_clear.MouseLeave += new System.EventHandler(this.ClearMouseLeave);
             // 
             // LoginForm
             // 
@@ -222,7 +222,7 @@
             this.Name = "LoginForm";
             this.ShowIcon = false;
             this.Text = "Авторизация";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.Load += new System.EventHandler(this.LoginFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
