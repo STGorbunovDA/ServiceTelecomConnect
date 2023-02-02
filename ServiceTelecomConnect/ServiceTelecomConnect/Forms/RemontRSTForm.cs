@@ -13,10 +13,8 @@ namespace ServiceTelecomConnect
     public partial class RemontRSTForm : Form
     {
         private delegate DialogResult ShowOpenFileDialogInvoker(); // делаг для invoke
-
         public List<string> list = new List<string>();
         public List<string> list2 = new List<string>();
-
         public Dictionary<string, string> dictMotorolaGP300 = new Dictionary<string, string>()
         {
             ["Замена аксессуарного разъёма"] = "0180417C01 Аксессуарный разъем для GP-300",
@@ -33,7 +31,6 @@ namespace ServiceTelecomConnect
             ["Замена уплотнителя рег. громкости"] = "3280960Y01 Уплотнитель регулятора громкости GP-300",
             ["Замена фронтальной наклейки"] = "1380992Z03 Фронтальная наклейка для GP-300",
         };
-
         public Dictionary<string, string> dictAltavia = new Dictionary<string, string>()
         {
             ["Замена фильтра"] = "Фильтр",
@@ -57,7 +54,6 @@ namespace ServiceTelecomConnect
             ["Замена фильтра"] = "Фильтр",
             ["Замена энкодера"] = "Энкодер (переключатель каналов)",
         };
-
         public Dictionary<string, string> dictMotorolaGP340 = new Dictionary<string, string>()
         {
             ["Замена антенны"] = "Антенна NAD6502 146-174Mгц",
@@ -90,7 +86,6 @@ namespace ServiceTelecomConnect
             ["Замена эл. ключа"] = "5102463J40 Электронный ключ U400",
             ["Замена элементов питания с выводом из режима хранения и проведением 3-х кратного КТЦ"] = "Аккумулятор HNN 9009 NIMH повышенной емкости",
         };
-
         public Dictionary<string, string> dictMotorolaDP2400 = new Dictionary<string, string>()
         {
             ["Замена технологического РЧ разъема"] = "MS-147 РЧ разъем технологический",
@@ -123,7 +118,6 @@ namespace ServiceTelecomConnect
             ["Замена транзистора"] = "Выходной ВЧ-Транзистор",
             ["Замена антенного разъёма"] = "Антенный разъём для DP2400",
         };
-
         public Dictionary<string, string> dictICOM = new Dictionary<string, string>()
         {
             ["Замена антенного разъема"] = "Антенный",
@@ -157,7 +151,6 @@ namespace ServiceTelecomConnect
             ["Замена шасси"] = "Шасси",
 
         };
-
         public Dictionary<string, string> dictComradeR5 = new Dictionary<string, string>()
         {
             ["Замена антенны"] = "Антенна Comrade PAC-R5",
@@ -176,12 +169,9 @@ namespace ServiceTelecomConnect
             ["Замена транзистора"] = "Выходной ВЧ-Транзистор",
             ["Замена антенного разъёма"] = "Антенный разъём для Comrade R5",
         };
-
-
         TextBox focusedTB;
         TextBox focusedTB2;
-
-        string[] motorolaGP340_work = { "Замена антенны", "Замена антенного разъёма", "Замена батарейных контактов",
+        string[] MotorolaGP340_work = { "Замена антенны", "Замена антенного разъёма", "Замена батарейных контактов",
             "Замена войлока GP-340", "Замена герметика верхней панели", "Замена держателя боковой клавиатуры",
             "Замена динамика", "Замена заглушки", "Замена катушки индуктивности",
             "Замена кварца", "Замена клавиатуры РТТ", "Замена клавиши РТТ", "Замена липкой ленты",
@@ -190,8 +180,7 @@ namespace ServiceTelecomConnect
             "Замена регулятора громкости", "Замена ручки переключателя каналов", "Замена ручки регулятора громкости",
             "Замена транзистора", "Замена уплотнителя бат. контактов", "Замена уплотнителя О-кольца", "Замена фронтальной наклейки",
             "Замена шлейфа", "Замена эл. ключа", "Замена элементов питания с выводом из режима хранения и проведением 3-х кратного КТЦ"  };
-
-        string[] motorolaGP340_part = { "Антенна NAD6502 146-174Mгц", "0180117S05 Антенный разъем для GP-340",
+        string[] MotorolaGP340_part = { "Антенна NAD6502 146-174Mгц", "0180117S05 Антенный разъем для GP-340",
             "0986237А02 Контакты для подсоед.аккум.в серии р/ст WARIS", "3586057А02 Войлок GP340", "3280533Z05 Герметик верхней панели",
             "1380528Z01 Держатель боковой клавиатуры для GP-340", "5005589U05 Динамик для GP-300/600", "HLN9820 Заглушка для GP-серии",
             "2462587Q42 Индуктивность L410, L411 для GP-340", "4802245J49 Кварц 16.8МГц", "4805875Z04 Кварц плоский 16,8 МГц",
@@ -205,20 +194,17 @@ namespace ServiceTelecomConnect
             "5105109Z67 Транзистор предв.усиления мощности", "3280534Z01 Уплотнит.резин.батар.контактов Karizma", "3280536Z01 Уплотнитель О-кольца GP340",
             "1364279В03 Фронтальная наклейка для GP-340", "8415169Н01 Шлейф динамика и микрофона для GP-серии", "5102463J40 Электронный ключ U400",
             "Аккумулятор HNN 9009 NIMH повышенной емкости"};
-
-        string[] motorolaGP300_work = { "Замена аксессуарного разъёма", "Замена держателя боковой клавиатуры", "Замена защёлки к корпусу",
+        string[] MotorolaGP300_work = { "Замена аксессуарного разъёма", "Замена держателя боковой клавиатуры", "Замена защёлки к корпусу",
             "Замена клавиши РТТ", "Замена клеммы питания", "Замена кнопки", "Замена наклейки", "Замена предохранителя",
             "Замена ручки переключателя каналов", "Замена ручки регулятора громкости", "Замена уплотнителя корпуса",
             "Замена уплотнителя рег. громкости", "Замена фронтальной наклейки" };
-
-        string[] motorolaGP300_part = {"0180417C01 Аксессуарный разъем для GP-300", "1380159S01 Держатель боковой клавиатуры GP-300",
+        string[] MotorolaGP300_part = {"0180417C01 Аксессуарный разъем для GP-300", "1380159S01 Держатель боковой клавиатуры GP-300",
             "4280190R04 Защелка к корпусу GP-300", "7580437C01 Клавиша РТТ для GP-300", "3980188R01 Клемма питания для GP-300/P110",
             "4080447U05 Кнопка для GP300", "1380507B04 Наклейка на корп. р/ст.Motorola GP300", "6505663R04 Предохранитель для GP-300",
             "3680147S07 Ручка переключателя каналов GP-300", "3680146S03 Ручка регулятора громкости GP-300",
             "3280545C01 Уплотнитель корпуса GP 300", "3280960Y01 Уплотнитель регулятора громкости GP-300",
             "1380992Z03 Фронтальная наклейка для GP-300"  };
-
-        string[] motorolaDP2400_work = { "Замена технологического РЧ разъема", "Замена кронштейна РТТ",
+        string[] MotorolaDP2400_work = { "Замена технологического РЧ разъема", "Замена кронштейна РТТ",
             "Замена держателя РТТ (Клавиатура программирования)", "Замена антенны", "Замена гибкого шлейфа динамика",
             "Замена заглушки аксессуарного разъема", "Замена уплотнителя регулятора громкости и перключателя каналов",
             "Замена основания клавиши РТТ (клавиатура)", "Замена накладки РТТ", "Замена О кольца", "Замена заглушки PЧ",
@@ -227,8 +213,7 @@ namespace ServiceTelecomConnect
             "Замена верхнего уплотнителя", "Замена регулятора громкости", "Замена переключателя каналов 16 позиций",
             "Замена наклейки аксессуарного разъёма", "Замена резиновой клавиши PTT", "Замена накладки РТТ",
             "Замена гибкого соединительного шлейфа", "Замена динамика", "Замена корпуса", "Замена транзистора", "Замена антенного разъёма"};
-
-        string[] motorolaDP2400_part = { "MS-147 РЧ разъем технологический", "75012087001 Кронштейн РТТ",
+        string[] MotorolaDP2400_part = { "MS-147 РЧ разъем технологический", "75012087001 Кронштейн РТТ",
             "42012035001 Держатель РТТ (Клавиатура программирования)", "PMAD4120 Антенна PMAD4120 (146-160мГц)",
             "PF001006A02 Гибкий шлейф динамика", "0104058J40 Заглушка аксессуарного разъема ",
             "32012269001 Уплотнитель регулятора громкости и перключателя каналов", "KP000086A01 Основание клавиши РТТ (клавиатура)",
@@ -238,24 +223,20 @@ namespace ServiceTelecomConnect
             "32012089001 Верхний уплотнитель", "1875103С04 Регулятор громкости", "40012029001 Переключатель каналов 16 позиций",
             "33012020001 Наклейка аксессуарного разъёма", "75012081001 Резиновая клавиша РТТ", "38012011001 Накладка РТТ",
             "0104045J62 Гибкий соединительный шлейф", "50012013001 Динамик", "Корпус Motorola DP2400", "Выходной ВЧ-Транзистор", "Антенный разъём для DP2400" };
-
         string[] Comrade_R5_work = { "Замена антенны", "Замена разъёма", "Замена ручки переключения каналов",
             "Замена  ручки регулятора громкости", "Замена кнопки РТТ", "Замена войлока динамика",
             "Замена уплотнителя контактов АКБ", "Замена контактов АКБ", "Замена регулятора громкости",
             "Замена переключателя каналов", "Замена резиновой клавиши PTT", "Замена динамика",
             "Замена корпуса", "Замена транзистора", "Замена антенного разъёма" };
-
         string[] Comrade_R5_part = {"Антенна Comrade PAC-R5", "Разъем гарнитуры и микрофона", "Ручка переключения каналов",
             "Ручка регулятора громкости", "Кнопка РТТ", "Войлок динамика", "Уплотнитель контактов АКБ", "Контакты АКБ",
             "Регулятор громкости", "Переключатель каналов", "Резиновая клавиша РТТ", "Динамик",
             "Корпус Comrade-R5", "Выходной ВЧ-Транзистор", "Антенный разъём для Comrade R5" };
-
         string[] Icom_work = {"Замена антенного разъема", "Замена антенны", "Замена элемента питания с выводом из режима хранения и проведением 3-х кратного КТЦ",
             "Замена болта", "Замена динамика", "Замена заглушки", "Замена защёлки", "Замена защелки АКБ", "Замена клавиатуры", "Замена клейкой ленты",
             "Замена кнопки", "Замена кнопки РТТ", "Замена контакта \"-\"", "Замена контакта \"+\"", "Замена корпуса", "Замена микросхемы",
             "Замена микрофона", "Замена панели защелки", "Замена прокладки", "Замена пружины", "Замена разъёма", "Замена регулятора громкости",
             "Замена резины", "Замена ручки", "Замена стекла", "Замена транзистора", "Замена уплотнителя", "Замена фильтра", "Замена шасси" };
-
         string[] Icom_part = {"Антенный разъем для F16 (6910015910)", "Антенный разъем для F3G (8950005260)", "Антенна FA-SC55V для IC-F3S/IC-F3GS",
             "SCREW PH BO M2X6 NI-ZK3 БОЛТ", "Элемент питания BP-210 (BP-209)", "SCREW PH BT M2X4 NI-ZC3 БОЛТ", "K036NA500-66 Динамик для IC-44088",
             "2251 JACK CAP Резиновая заглушка", "Заглушка МР37", "Защелка MP5", "2251 RELESE BUTTON Защелка для АКБ", "2251 6-KEY Клавиатура",
@@ -275,13 +256,11 @@ namespace ServiceTelecomConnect
             "Транзистор UNR911HJ (TX)", "Транзистор XP6501-(TX).AB", "2251 JACK RUBBER Уплотнитель резиновый разъема гарнитуры IC-F3/4/GT/GS",
             "2251 MAIN SEAL Уплотнительная резинка", "Фильтр S.XTRAL CR-664A 15.300 MHz", "Шасси 2251 CHASSIS-7", "Шасси 2251 CHASSIS-3",
             "Шасси для F3G (2251)  (8010017990)", "Шасси для IC-F16 (8010019695)", "Шасси для ICOM IC-F11" };
-
         string[] Altavia_work = {"Замена фильтра", "Замена микросхемы", "Замена резонатора", "Замена антенны", "Замена антенного разъема",
             "Замена генератора", "Замена гнезда", "Замена гнезда", "Замена диода", "Замена защёлки", "Замена контакта", "Замена микросхемы",
             "Замена прокладки", "Замена рамы", "Замена регулятора громкости", "Замена резистора", "Замена резонатора",
             "Замена элемента питания с выводом из режима хранения и проведением 3-х кратного КТЦ", "Замена ручки",
             "Замена световода", "Замена транзистора", "Замена фильтра", "Замена энкодера" };
-
         string[] Altavia_part = { "45Т151AF/UF-5.3S SMD 45MHz Фильтр", "Микросхема DA 10 (S-812C50AUA (S1F78101Y3BO )", "ZQ1 (44.545 МГц-UM-5S Резонатор",
             "Антенна В-242 /154МГц/", "Антенный разъем", "Генератор GEN1 (9.6 МГц VCTCXO-001)", "Гнездо XP1 (Ф3.5мм (AJ306B-5B)",
             "Гнездо XP2 (Ф2.5мм (AJ405B-5B)", "Диоды HSMS-2822-TR1G", "Защелка аккумуляторная", "Клемма МИНУС", "Клемма ПЛЮС",
@@ -291,90 +270,66 @@ namespace ServiceTelecomConnect
             "Транзистор BFS17A-SOT23", "Транзистор 2SC3019-SC75", "Транзистор BC807-40", "Транзистор BC817-40", "Транзистор BC817А",
             "Транзистор BFR93A", "Транзистор BLT50", "Транзистор RD07MVS1", "Фильтр 45T151AF/UF-5.3S SMD 45MHz", "Фильтр F4.F7 (CFUCG455E(CFUCG455RE4A)",
             "Фильтр F5 (CDBC455CLX21(CDBC455KCL.Y21)", "Фильтр SAFCH154MAL0N00(SAFC154MC70N)[MuRata]" };
-
         public RemontRSTForm()
         {
             InitializeComponent();
-
             StartPosition = FormStartPosition.CenterScreen;
             var myCulture = new CultureInfo("ru-RU");
             myCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = myCulture;
             foreach (TextBox textBox in panel1.Controls.OfType<TextBox>()) //перебираем текстбоксы
-                textBox.GotFocus += new EventHandler(TextBox_GotFocus); //подписываем обработчик к событию получения фокуса
-
+                textBox.GotFocus += new EventHandler(TxbGotFocus); //подписываем обработчик к событию получения фокуса
             foreach (TextBox textBox in panel2.Controls.OfType<TextBox>())
                 //перебираем текстбоксы
-                textBox.GotFocus += new EventHandler(TextBox_GotFocus2); //подписываем обработчик к событию получения фокуса
+                textBox.GotFocus += new EventHandler(TxbGotFocus2); //подписываем обработчик к событию получения фокуса
         }
-
-        void TextBox_GotFocus(object sender, EventArgs e)
+        void TxbGotFocus(object sender, EventArgs e)
         {
             focusedTB = (sender as TextBox); //передаем в переменную focusedTB ссылку на текстбокс, получивший фокус
         }
-
-        void TextBox_GotFocus2(object sender, EventArgs e)
+        void TxbGotFocus2(object sender, EventArgs e)
         {
             focusedTB2 = (sender as TextBox); //передаем в переменную focusedTB ссылку на текстбокс, получивший фокус
         }
-
-        void RemontRSTForm_Load(object sender, EventArgs e)
+        void RemontRSTFormLoad(object sender, EventArgs e)
         {
             txB_сompleted_works_1.Select();
-
             if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-360")
             {
-                listBox1.Items.AddRange(motorolaGP340_work);
-                listBox2.Items.AddRange(motorolaGP340_part);
+                listBox1.Items.AddRange(MotorolaGP340_work);
+                listBox2.Items.AddRange(MotorolaGP340_part);
             }
-
             else if (txB_model.Text == "Motorola GP-300")
             {
-                listBox1.Items.AddRange(motorolaGP300_work);
-                listBox2.Items.AddRange(motorolaGP300_part);
+                listBox1.Items.AddRange(MotorolaGP300_work);
+                listBox2.Items.AddRange(MotorolaGP300_part);
             }
-
             else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400")
             {
-                listBox1.Items.AddRange(motorolaDP2400_work);
-                listBox2.Items.AddRange(motorolaDP2400_part);
+                listBox1.Items.AddRange(MotorolaDP2400_work);
+                listBox2.Items.AddRange(MotorolaDP2400_part);
             }
-
             else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT"
                 || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11")
             {
                 listBox1.Items.AddRange(Icom_work);
                 listBox2.Items.AddRange(Icom_part);
             }
-
             else if (txB_model.Text == "Альтавия-301М")
             {
                 listBox1.Items.AddRange(Altavia_work);
                 listBox2.Items.AddRange(Altavia_part);
             }
-
             else if (txB_model.Text == "Comrade R5")
             {
                 listBox1.Items.AddRange(Comrade_R5_work);
                 listBox2.Items.AddRange(Comrade_R5_part);
             }
-
             for (int i = 0; i < listBox1.Items.Count; i++)
                 list.Add(listBox1.Items[i].ToString());
-
             for (int i = 0; i < listBox2.Items.Count; i++)
                 list2.Add(listBox2.Items[i].ToString());
-
             QuerySettingDataBase.LoadingLastNumberActRemont(lbL_last_act_remont, lbL_city.Text, lbL_road.Text);
-
-            //if (Regex.IsMatch(lbL_last_act_remont.Text, @"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
-            //{
-            //    Regex re = new Regex(@"[0-9]{2,2}/(([0-9]+)([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$");
-            //    Match result = re.Match(lbL_last_act_remont.Text);
-            //    var y1 = Convert.ToDouble(result.Groups[2].Value);
-            //    y1++;
-            //    txB_numberActRemont.Text += y1.ToString();
-            //}
             txB_MainMeans.Text = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item1;
             txB_NameProductRepaired.Text = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, lbL_city.Text, lbL_road.Text).Item2;
             if (txB_numberActRemont.Text != "53/")
@@ -388,18 +343,15 @@ namespace ServiceTelecomConnect
                 btn_save_add_rst_remont.Text = "Добавить";
             }
         }
-
-        void Button_save_add_rst_remont_Click(object sender, EventArgs e)
+        void BtnSaveAddRadiostantionRemontClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(txB_сompleted_works_1.Text) && !String.IsNullOrEmpty(txB_parts_1.Text))
                 {
                     string Mesage = "Вы действительно хотите добавить ремонт?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
-
                     foreach (Control control in panel1.Controls)
                     {
                         if (control is TextBox && !String.IsNullOrEmpty(control.Text))
@@ -418,9 +370,7 @@ namespace ServiceTelecomConnect
                             control.Text.Trim();
                         }
                     }
-
                     string numberActRemont = txB_numberActRemont.Text;
-
                     if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                     {
                         MessageBox.Show("Введите корректно № Акта Ремонта", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -460,9 +410,9 @@ namespace ServiceTelecomConnect
                     txB_NameProductRepaired.Text = regex4.Replace(txB_NameProductRepaired.Text, "");
                     string nameProductRepaired = txB_NameProductRepaired.Text;
 
-
-
-                    if (!(numberActRemont == "") && !(сategory == "") && !(priceRemont == "") && !(сompleted_works_1 == "") && !(parts_1 == ""))
+                    if (!String.IsNullOrEmpty(numberActRemont) && !String.IsNullOrEmpty(сategory) && 
+                        !String.IsNullOrEmpty(priceRemont) && !String.IsNullOrEmpty(сompleted_works_1) && 
+                        !String.IsNullOrEmpty(parts_1))
                     {
                         string changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
                             $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1}', completed_works_2 = '{сompleted_works_2}', " +
@@ -489,31 +439,26 @@ namespace ServiceTelecomConnect
                         }
                         MessageBox.Show("Ремонт успешно добавлен!");
                         this.Close();
-
                     }
                     else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
                 }
                 else MessageBox.Show("Невозможно добавить ремонт без выполненных работ и запчастей");
             }
         }
-        void PictureBox4_Click(object sender, EventArgs e)
+        void ClearControlPanel1AndPanel2Click(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
-            txB_numberActRemont.Text = "";
-
+            txB_numberActRemont.Text = String.Empty;
             foreach (Control control in panel1.Controls)
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
             foreach (Control control in panel2.Controls)
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
         }
-
-        void ComboBox_сategory_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbCategorySelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmB_сategory.Text == "3")
             {
@@ -565,23 +510,22 @@ namespace ServiceTelecomConnect
                     txB_priceRemont.Text = "5119.51";
             }
         }
-
-        void RemontRSTForm_KeyUp(object sender, KeyEventArgs e)
+        void RemontRadiostantionFormKeyUp(object sender, KeyEventArgs e)
         {
-            TxB_completed_works();
-            TxB_parts();
+            TxbCompletedWorks();
+            TxbParts();
         }
-        void Label_company_DoubleClick(object sender, EventArgs e)
+        void LblCompanyDoubleClick(object sender, EventArgs e)
         {
-            cmb_remont_select.Visible = true;
+            cmb_remontSelect.Visible = true;
         }
 
         #region лайфхак для ремонтов
-        void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        void CmbSelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmB_сategory.Text == "6")
             {
-                if (cmb_remont_select.Text == "1")
+                if (cmb_remontSelect.Text == "1")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -714,7 +658,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "2")
+                if (cmb_remontSelect.Text == "2")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -848,7 +792,7 @@ namespace ServiceTelecomConnect
 
                 }
 
-                if (cmb_remont_select.Text == "3")
+                if (cmb_remontSelect.Text == "3")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -981,7 +925,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "4")
+                if (cmb_remontSelect.Text == "4")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1114,7 +1058,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "5")
+                if (cmb_remontSelect.Text == "5")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1247,7 +1191,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "6")
+                if (cmb_remontSelect.Text == "6")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1380,7 +1324,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "7")
+                if (cmb_remontSelect.Text == "7")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1513,7 +1457,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "8")
+                if (cmb_remontSelect.Text == "8")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1646,7 +1590,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "9")
+                if (cmb_remontSelect.Text == "9")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1779,7 +1723,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "10")
+                if (cmb_remontSelect.Text == "10")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -1912,7 +1856,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "11")
+                if (cmb_remontSelect.Text == "11")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2046,7 +1990,7 @@ namespace ServiceTelecomConnect
 
                 }
 
-                if (cmb_remont_select.Text == "12")
+                if (cmb_remontSelect.Text == "12")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2179,7 +2123,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "13")
+                if (cmb_remontSelect.Text == "13")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2312,7 +2256,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "14")
+                if (cmb_remontSelect.Text == "14")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2446,7 +2390,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "15")
+                if (cmb_remontSelect.Text == "15")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2579,7 +2523,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "16")
+                if (cmb_remontSelect.Text == "16")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2712,7 +2656,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "17")
+                if (cmb_remontSelect.Text == "17")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2850,10 +2794,9 @@ namespace ServiceTelecomConnect
                 }
 
             }
-
             if (cmB_сategory.Text == "5")
             {
-                if (cmb_remont_select.Text == "1")
+                if (cmb_remontSelect.Text == "1")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -2986,7 +2929,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "2")
+                if (cmb_remontSelect.Text == "2")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3117,7 +3060,7 @@ namespace ServiceTelecomConnect
 
                 }
 
-                if (cmb_remont_select.Text == "3")
+                if (cmb_remontSelect.Text == "3")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3251,7 +3194,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "4")
+                if (cmb_remontSelect.Text == "4")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3385,7 +3328,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "5")
+                if (cmb_remontSelect.Text == "5")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3519,7 +3462,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "6")
+                if (cmb_remontSelect.Text == "6")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3653,7 +3596,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "7")
+                if (cmb_remontSelect.Text == "7")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3786,7 +3729,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "8")
+                if (cmb_remontSelect.Text == "8")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -3920,7 +3863,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "9")
+                if (cmb_remontSelect.Text == "9")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4053,7 +3996,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "10")
+                if (cmb_remontSelect.Text == "10")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4187,7 +4130,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "11")
+                if (cmb_remontSelect.Text == "11")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4317,7 +4260,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "12")
+                if (cmb_remontSelect.Text == "12")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4451,7 +4394,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "13")
+                if (cmb_remontSelect.Text == "13")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4584,7 +4527,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "14")
+                if (cmb_remontSelect.Text == "14")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4717,7 +4660,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "15")
+                if (cmb_remontSelect.Text == "15")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4845,7 +4788,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "16")
+                if (cmb_remontSelect.Text == "16")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -4978,7 +4921,7 @@ namespace ServiceTelecomConnect
                     }
                 }
 
-                if (cmb_remont_select.Text == "17")
+                if (cmb_remontSelect.Text == "17")
                 {
                     if (txB_model.Text == "Motorola GP-340")
                     {
@@ -5113,12 +5056,9 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-
-
         #endregion
 
-        void TxB_parts()
+        void TxbParts()
         {
             foreach (Control control in panel2.Controls)
             {
@@ -5142,8 +5082,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void TxB_completed_works()
+        void TxbCompletedWorks()
         {
             foreach (Control control in panel1.Controls)
             {
@@ -5165,27 +5104,22 @@ namespace ServiceTelecomConnect
                             this.listBox1.Items.Add(list[i]);
 
                     }
-                    //control.SelectionStart = txtBox.Text.Length;
                 }
             }
         }
-
-        void ListBox1_Click(object sender, EventArgs e)
+        void ListBox1Click(object sender, EventArgs e)
         {
             if (focusedTB != null)
             {
                 if (listBox1.SelectedIndex != -1)
                 {
                     focusedTB.Focus(); //возвращаем фокус в текстбокс
-
                     foreach (Control control in panel1.Controls)
                     {
                         if (control is TextBox && control.ContainsFocus)
                         {
                             control.Text = listBox1.SelectedItem.ToString();
-
-                            string value = "";
-
+                            string value = String.Empty;
                             if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Motorola GP-360")
                             {
                                 if (txB_сompleted_works_1.ContainsFocus)
@@ -5252,7 +5186,6 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-
                             else if (txB_model.Text == "Motorola DP-2400е" || txB_model.Text == "Motorola DP-2400")
                             {
                                 if (txB_сompleted_works_1.ContainsFocus)
@@ -5319,7 +5252,6 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-
                             else if (txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT"
                             || txB_model.Text == "Icom IC-F16" || txB_model.Text == "Icom IC-F11")
                             {
@@ -5387,7 +5319,6 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-
                             else if (txB_model.Text == "Motorola GP-300")
                             {
                                 if (txB_сompleted_works_1.ContainsFocus)
@@ -5454,7 +5385,6 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-
                             else if (txB_model.Text == "Альтавия-301М")
                             {
                                 if (txB_сompleted_works_1.ContainsFocus)
@@ -5521,7 +5451,6 @@ namespace ServiceTelecomConnect
                                     }
                                 }
                             }
-
                             else if (txB_model.Text == "Comrade R5")
                             {
                                 if (txB_сompleted_works_1.ContainsFocus)
@@ -5595,32 +5524,23 @@ namespace ServiceTelecomConnect
                         this.listBox1.Items.Add(list[i]);
                 }
             }
-
         }
-
-        private void ListBox2_Click(object sender, EventArgs e)
+        private void ListBox2Click(object sender, EventArgs e)
         {
             if (listBox2.SelectedIndex != -1)
             {
-                if (focusedTB2 != null)
-                    focusedTB2.Focus(); //возвращаем фокус в текстбокс
-
+                focusedTB2?.Focus(); //возвращаем фокус в текстбокс
                 foreach (Control control in panel2.Controls)
-                {
                     if (control is TextBox && control.ContainsFocus)
-                    {
                         control.Text = listBox2.SelectedItem.ToString();
-                    }
-                }
                 this.listBox2.Items.Clear();
                 for (int i = 0; i < list2.Count; i++)
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
+       
         #region изменение в тест боксах для словаря
-
-        void TxB_parts_1_TextChanged(object sender, EventArgs e)
+        void TxbParts1TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_1.Text.Length > 0)
             {
@@ -5638,8 +5558,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_2_TextChanged(object sender, EventArgs e)
+        void TxbParts2TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_2.Text.Length > 0)
             {
@@ -5657,8 +5576,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_3_TextChanged(object sender, EventArgs e)
+        void TxbParts3TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_3.Text.Length > 0)
             {
@@ -5676,8 +5594,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_4_TextChanged(object sender, EventArgs e)
+        void TxbParts4TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_4.Text.Length > 0)
             {
@@ -5695,8 +5612,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_5_TextChanged(object sender, EventArgs e)
+        void TxbParts5TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_5.Text.Length > 0)
             {
@@ -5714,8 +5630,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_6_TextChanged(object sender, EventArgs e)
+        void TxbParts6TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_6.Text.Length > 0)
             {
@@ -5733,8 +5648,7 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
-        private void TxB_parts_7_TextChanged(object sender, EventArgs e)
+        void TxbParts7TextChanged(object sender, EventArgs e)
         {
             if (txB_parts_7.Text.Length > 0)
             {
@@ -5752,7 +5666,6 @@ namespace ServiceTelecomConnect
                     this.listBox2.Items.Add(list2[i]);
             }
         }
-
         #endregion
     }
 }
