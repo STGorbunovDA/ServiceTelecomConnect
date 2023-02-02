@@ -209,6 +209,7 @@ namespace ServiceTelecomConnect
             decimal sumRemont = 0;
             int inRepair = 0;
             int verified = 0;
+            int decommission = 0;
 
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
@@ -218,6 +219,8 @@ namespace ServiceTelecomConnect
                     verified++;
                 if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "?"))
                     inRepair++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "0"))
+                    decommission++;
                 sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                 sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
             }
@@ -226,8 +229,9 @@ namespace ServiceTelecomConnect
             lbl_inRepair.Text = inRepair.ToString();
             lbL_count.Text = dataGridView1.Rows.Count.ToString();
             lbL_summ.Text = sumTO.ToString();
-            lbL_count_remont.Text = colRemont.ToString();
-            lbL_summ_remont.Text = sumRemont.ToString();
+            lbL_countRemont.Text = colRemont.ToString();
+            lbL_sumRemont.Text = sumRemont.ToString();
+            lbl_decommission.Text = decommission.ToString();
         }
 
         #endregion
