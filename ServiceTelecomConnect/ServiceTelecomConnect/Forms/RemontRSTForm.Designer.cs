@@ -76,7 +76,7 @@
             this.txB_serialNumber = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.txB_model = new System.Windows.Forms.TextBox();
-            this.cmb_remont_select = new System.Windows.Forms.ComboBox();
+            this.cmb_remontSelect = new System.Windows.Forms.ComboBox();
             this.lbL_last_act_remont = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txB_MainMeans = new System.Windows.Forms.TextBox();
@@ -102,7 +102,7 @@
             this.picB_clear.Size = new System.Drawing.Size(34, 34);
             this.picB_clear.TabIndex = 8;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.picB_clear.Click += new System.EventHandler(this.ClearControlPanel1AndPanel2Click);
             // 
             // lbL_AddRemontRST
             // 
@@ -126,7 +126,7 @@
             this.btn_save_add_rst_remont.TabIndex = 28;
             this.btn_save_add_rst_remont.Text = "Добавить";
             this.btn_save_add_rst_remont.UseVisualStyleBackColor = false;
-            this.btn_save_add_rst_remont.Click += new System.EventHandler(this.Button_save_add_rst_remont_Click);
+            this.btn_save_add_rst_remont.Click += new System.EventHandler(this.BtnSaveAddRadiostantionRemontClick);
             // 
             // txB_сompleted_works_1
             // 
@@ -197,7 +197,7 @@
             this.cmB_сategory.Name = "cmB_сategory";
             this.cmB_сategory.Size = new System.Drawing.Size(78, 28);
             this.cmB_сategory.TabIndex = 99;
-            this.cmB_сategory.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_сategory_SelectionChangeCommitted);
+            this.cmB_сategory.SelectionChangeCommitted += new System.EventHandler(this.CmbCategorySelectionChangeCommitted);
             // 
             // label39
             // 
@@ -262,7 +262,7 @@
             this.txB_parts_1.Name = "txB_parts_1";
             this.txB_parts_1.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_1.TabIndex = 122;
-            this.txB_parts_1.TextChanged += new System.EventHandler(this.TxB_parts_1_TextChanged);
+            this.txB_parts_1.TextChanged += new System.EventHandler(this.TxbParts1TextChanged);
             // 
             // txB_parts_2
             // 
@@ -273,7 +273,7 @@
             this.txB_parts_2.Name = "txB_parts_2";
             this.txB_parts_2.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_2.TabIndex = 126;
-            this.txB_parts_2.TextChanged += new System.EventHandler(this.TxB_parts_2_TextChanged);
+            this.txB_parts_2.TextChanged += new System.EventHandler(this.TxbParts2TextChanged);
             // 
             // label4
             // 
@@ -316,7 +316,7 @@
             this.txB_parts_3.Name = "txB_parts_3";
             this.txB_parts_3.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_3.TabIndex = 130;
-            this.txB_parts_3.TextChanged += new System.EventHandler(this.TxB_parts_3_TextChanged);
+            this.txB_parts_3.TextChanged += new System.EventHandler(this.TxbParts3TextChanged);
             // 
             // label6
             // 
@@ -359,7 +359,7 @@
             this.txB_parts_4.Name = "txB_parts_4";
             this.txB_parts_4.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_4.TabIndex = 134;
-            this.txB_parts_4.TextChanged += new System.EventHandler(this.TxB_parts_4_TextChanged);
+            this.txB_parts_4.TextChanged += new System.EventHandler(this.TxbParts4TextChanged);
             // 
             // label8
             // 
@@ -402,7 +402,7 @@
             this.txB_parts_5.Name = "txB_parts_5";
             this.txB_parts_5.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_5.TabIndex = 138;
-            this.txB_parts_5.TextChanged += new System.EventHandler(this.TxB_parts_5_TextChanged);
+            this.txB_parts_5.TextChanged += new System.EventHandler(this.TxbParts5TextChanged);
             // 
             // label10
             // 
@@ -445,7 +445,7 @@
             this.txB_parts_6.Name = "txB_parts_6";
             this.txB_parts_6.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_6.TabIndex = 142;
-            this.txB_parts_6.TextChanged += new System.EventHandler(this.TxB_parts_6_TextChanged);
+            this.txB_parts_6.TextChanged += new System.EventHandler(this.TxbParts6TextChanged);
             // 
             // label12
             // 
@@ -488,7 +488,7 @@
             this.txB_parts_7.Name = "txB_parts_7";
             this.txB_parts_7.Size = new System.Drawing.Size(262, 47);
             this.txB_parts_7.TabIndex = 146;
-            this.txB_parts_7.TextChanged += new System.EventHandler(this.TxB_parts_7_TextChanged);
+            this.txB_parts_7.TextChanged += new System.EventHandler(this.TxbParts7TextChanged);
             // 
             // label14
             // 
@@ -591,7 +591,7 @@
             this.label_company.Size = new System.Drawing.Size(138, 27);
             this.label_company.TabIndex = 156;
             this.label_company.Text = "ПЧ ИССО-2";
-            this.label_company.DoubleClick += new System.EventHandler(this.Label_company_DoubleClick);
+            this.label_company.DoubleClick += new System.EventHandler(this.LblCompanyDoubleClick);
             // 
             // txB_serialNumber
             // 
@@ -629,11 +629,11 @@
             // 
             // cmb_remont_select
             // 
-            this.cmb_remont_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_remont_select.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmb_remont_select.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_remont_select.FormattingEnabled = true;
-            this.cmb_remont_select.Items.AddRange(new object[] {
+            this.cmb_remontSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_remontSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmb_remontSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_remontSelect.FormattingEnabled = true;
+            this.cmb_remontSelect.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -651,12 +651,12 @@
             "15",
             "16",
             "17"});
-            this.cmb_remont_select.Location = new System.Drawing.Point(745, 12);
-            this.cmb_remont_select.Name = "cmb_remont_select";
-            this.cmb_remont_select.Size = new System.Drawing.Size(58, 28);
-            this.cmb_remont_select.TabIndex = 160;
-            this.cmb_remont_select.Visible = false;
-            this.cmb_remont_select.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            this.cmb_remontSelect.Location = new System.Drawing.Point(745, 12);
+            this.cmb_remontSelect.Name = "cmb_remont_select";
+            this.cmb_remontSelect.Size = new System.Drawing.Size(58, 28);
+            this.cmb_remontSelect.TabIndex = 160;
+            this.cmb_remontSelect.Visible = false;
+            this.cmb_remontSelect.SelectedIndexChanged += new System.EventHandler(this.CmbSelectedIndexChanged);
             // 
             // lbL_last_act_remont
             // 
@@ -718,7 +718,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(262, 69);
             this.listBox1.TabIndex = 168;
-            this.listBox1.Click += new System.EventHandler(this.ListBox1_Click);
+            this.listBox1.Click += new System.EventHandler(this.ListBox1Click);
             // 
             // panel1
             // 
@@ -774,7 +774,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(262, 69);
             this.listBox2.TabIndex = 171;
-            this.listBox2.Click += new System.EventHandler(this.ListBox2_Click);
+            this.listBox2.Click += new System.EventHandler(this.ListBox2Click);
             // 
             // lbL_road
             // 
@@ -817,7 +817,7 @@
             this.Controls.Add(this.txB_MainMeans);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.lbL_last_act_remont);
-            this.Controls.Add(this.cmb_remont_select);
+            this.Controls.Add(this.cmb_remontSelect);
             this.Controls.Add(this.txB_model);
             this.Controls.Add(this.txB_serialNumber);
             this.Controls.Add(this.label22);
@@ -843,8 +843,8 @@
             this.Name = "RemontRSTForm";
             this.ShowIcon = false;
             this.Text = "Добавление ремонта";
-            this.Load += new System.EventHandler(this.RemontRSTForm_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RemontRSTForm_KeyUp);
+            this.Load += new System.EventHandler(this.RemontRSTFormLoad);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RemontRadiostantionFormKeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -904,7 +904,7 @@
         internal System.Windows.Forms.TextBox txB_serialNumber;
         private System.Windows.Forms.Label label22;
         internal System.Windows.Forms.TextBox txB_model;
-        internal System.Windows.Forms.ComboBox cmb_remont_select;
+        internal System.Windows.Forms.ComboBox cmb_remontSelect;
         internal System.Windows.Forms.Label lbL_last_act_remont;
         private System.Windows.Forms.Label label24;
         internal System.Windows.Forms.TextBox txB_MainMeans;
