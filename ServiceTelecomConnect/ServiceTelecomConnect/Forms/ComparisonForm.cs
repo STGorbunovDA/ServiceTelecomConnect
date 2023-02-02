@@ -473,7 +473,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region отк. формы изменения РСТ
-        void Сhange_rst_form_curator_Click(object sender, EventArgs e)
+        void СhangeRadiostantionFormCuratorClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -514,20 +514,17 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region изменения РСТ в выполнение по плану
-
         void AddExecutionCurator(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             else
             {
                 string Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -558,7 +555,7 @@ namespace ServiceTelecomConnect
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
-                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Сhange_rst_form_curator_Click));
+                    m.MenuItems.Add(new MenuItem("Изменить радиостанцию", СhangeRadiostantionFormCuratorClick));
                     m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                     m.MenuItems.Add(new MenuItem("Убрать из выполнения", BtnDeleteClick));
                     m.MenuItems.Add(new MenuItem("Сохранение БД", BtnSaveInFileCuratorClick));
@@ -569,8 +566,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region для выбора значения в Control(TXB)
-
-        void Refresh_values_TXB_CMB(int currRowIndex)
+        void RefreshValuesTxbCmb(int currRowIndex)
         {
             DataGridViewRow row = dataGridView1.Rows[currRowIndex];
             txB_id.Text = row.Cells[0].Value.ToString();
@@ -595,28 +591,25 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region поиск по dataGrid без запроса к БД и открытие функциональной панели Control + K
-        void DataGridView1_KeyDown(object sender, KeyEventArgs e)
+        void DataGridView1KeyDown(object sender, KeyEventArgs e)
         {
             // открывем панель поиска по гриду по зав номеру РСТ
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
                 panel_seach_datagrid_curator.Enabled = true;
                 panel_seach_datagrid_curator.Visible = true;
-                this.ActiveControl = txB_seach_panel_datagrid_curator;
+                this.ActiveControl = txBSeachPanelDatagridCurator;
             }
             // открываем функциональную панель
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
-                Button_Functional_loading_panel(sender, e);
+                BtnFunctionalLoadingPanel(sender, e);
         }
-
-        void Seach_datagrid_curator()
+        void SeachDatagridCurator()
         {
-            if (txB_seach_panel_datagrid_curator.Text != "")
+            if (!String.IsNullOrEmpty(txBSeachPanelDatagridCurator.Text))
             {
-                string searchValue = txB_seach_panel_datagrid_curator.Text;
-
+                string searchValue = txBSeachPanelDatagridCurator.Text;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
                 for (int j = 0; j < dataGridView1.ColumnCount; j++)
                 {
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -626,59 +619,50 @@ namespace ServiceTelecomConnect
                             dataGridView1.Rows[i].Cells[j].Selected = true;
                             int currRowIndex = dataGridView1.Rows[i].Cells[j].RowIndex;
                             dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-                            Refresh_values_TXB_CMB(currRowIndex);
+                            RefreshValuesTxbCmb(currRowIndex);
                             break;
                         }
                     }
                 }
-
-                txB_seach_panel_datagrid_curator.Text = "";
+                txBSeachPanelDatagridCurator.Text = "";
                 panel_seach_datagrid_curator.Enabled = false;
                 panel_seach_datagrid_curator.Visible = false;
             }
             else
             {
                 string Mesage2 = "Поле поиска не должно быть пустым!";
-
                 if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-
         }
-        void Button_close_panel_seach_datagrid_Click(object sender, EventArgs e)
+        void BtnClosePanelSeachDatagridClick(object sender, EventArgs e)
         {
             panel_seach_datagrid_curator.Enabled = false;
             panel_seach_datagrid_curator.Visible = false;
         }
-        void Button_seach_panel_seach_datagrid_Click(object sender, EventArgs e)
+        void BtnSeachPanelSeachDatagridClick(object sender, EventArgs e)
         {
-            Seach_datagrid_curator();
+            SeachDatagridCurator();
         }
-        void TextBox_seach_panel_seach_datagrid_KeyDown(object sender, KeyEventArgs e)
+        void TxbSeachPanelSeachDatagridKeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return)
-                Seach_datagrid_curator();
+                SeachDatagridCurator();
         }
-
-        void TextBox_seach_panel_seach_datagrid_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSeachPanelSeachDatagridKeyPress(object sender, KeyPressEventArgs e)
         {
             e.KeyChar = char.ToUpper(e.KeyChar);
-
             char ch = e.KeyChar;
             if ((ch < 'A' || ch > 'Z') && (ch <= 47 || ch >= 58) && ch != '/' && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void TextBox_seach_panel_seach_datagrid_KeyUp(object sender, KeyEventArgs e)
+        void TxbSeachPanelSeachDatagridKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-
-
         #endregion
 
         #region при выборе строк ползьзователем и их подсчёт
-
         void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
 
@@ -725,7 +709,7 @@ namespace ServiceTelecomConnect
             panel3.Enabled = true;
         }
 
-        void Button_Functional_loading_panel(object sender, EventArgs e)
+        void BtnFunctionalLoadingPanel(object sender, EventArgs e)
         {
             if (_user.Login == "Admin")
             {
@@ -807,7 +791,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_change_rst_Click(object sender, EventArgs e)
         {
-            Сhange_rst_form_curator_Click(sender, e);
+            СhangeRadiostantionFormCuratorClick(sender, e);
         }
 
         void MTrip_delete_rst_Click(object sender, EventArgs e)
