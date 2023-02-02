@@ -957,7 +957,7 @@
             this.picB_update.Size = new System.Drawing.Size(50, 47);
             this.picB_update.TabIndex = 2;
             this.picB_update.TabStop = false;
-            this.picB_update.Click += new System.EventHandler(this.PictureBox2_update_Click);
+            this.picB_update.Click += new System.EventHandler(this.UpdateClick);
             // 
             // picB_clear
             // 
