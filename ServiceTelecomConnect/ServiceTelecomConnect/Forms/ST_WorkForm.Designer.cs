@@ -31,11 +31,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.loading_file_last_year = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -216,9 +216,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.lbL_summ_remont = new System.Windows.Forms.Label();
+            this.lbL_sumRemont = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.lbL_count_remont = new System.Windows.Forms.Label();
+            this.lbL_countRemont = new System.Windows.Forms.Label();
             this.lbL_count = new System.Windows.Forms.Label();
             this.lbL_summ = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -269,6 +269,8 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.lbl_decommission = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -310,44 +312,44 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SkyBlue;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.Location = new System.Drawing.Point(0, 179);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
@@ -2386,6 +2388,8 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources._999;
+            this.panel3.Controls.Add(this.label38);
+            this.panel3.Controls.Add(this.lbl_decommission);
             this.panel3.Controls.Add(this.lbl_inRepair);
             this.panel3.Controls.Add(this.lbl_121);
             this.panel3.Controls.Add(this.label35);
@@ -2397,9 +2401,9 @@
             this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.label22);
-            this.panel3.Controls.Add(this.lbL_summ_remont);
+            this.panel3.Controls.Add(this.lbL_sumRemont);
             this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.lbL_count_remont);
+            this.panel3.Controls.Add(this.lbL_countRemont);
             this.panel3.Controls.Add(this.lbL_count);
             this.panel3.Controls.Add(this.lbL_summ);
             this.panel3.Location = new System.Drawing.Point(1, 716);
@@ -2563,17 +2567,17 @@
             // 
             // lbL_summ_remont
             // 
-            this.lbL_summ_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbL_summ_remont.AutoSize = true;
-            this.lbL_summ_remont.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_summ_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbL_summ_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_summ_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbL_summ_remont.Location = new System.Drawing.Point(614, 36);
-            this.lbL_summ_remont.Name = "lbL_summ_remont";
-            this.lbL_summ_remont.Size = new System.Drawing.Size(107, 16);
-            this.lbL_summ_remont.TabIndex = 25;
-            this.lbL_summ_remont.Text = "9999999999.99";
+            this.lbL_sumRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_sumRemont.AutoSize = true;
+            this.lbL_sumRemont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_sumRemont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_sumRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_sumRemont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_sumRemont.Location = new System.Drawing.Point(614, 36);
+            this.lbL_sumRemont.Name = "lbL_summ_remont";
+            this.lbL_sumRemont.Size = new System.Drawing.Size(107, 16);
+            this.lbL_sumRemont.TabIndex = 25;
+            this.lbL_sumRemont.Text = "9999999999.99";
             // 
             // label19
             // 
@@ -2591,17 +2595,17 @@
             // 
             // lbL_count_remont
             // 
-            this.lbL_count_remont.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbL_count_remont.AutoSize = true;
-            this.lbL_count_remont.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_count_remont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbL_count_remont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_count_remont.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbL_count_remont.Location = new System.Drawing.Point(674, 14);
-            this.lbL_count_remont.Name = "lbL_count_remont";
-            this.lbL_count_remont.Size = new System.Drawing.Size(47, 16);
-            this.lbL_count_remont.TabIndex = 23;
-            this.lbL_count_remont.Text = "55555";
+            this.lbL_countRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lbL_countRemont.AutoSize = true;
+            this.lbL_countRemont.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_countRemont.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbL_countRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_countRemont.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbL_countRemont.Location = new System.Drawing.Point(674, 14);
+            this.lbL_countRemont.Name = "lbL_count_remont";
+            this.lbL_countRemont.Size = new System.Drawing.Size(47, 16);
+            this.lbL_countRemont.TabIndex = 23;
+            this.lbL_countRemont.Text = "55555";
             // 
             // lbL_count
             // 
@@ -3037,6 +3041,34 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
+            // label38
+            // 
+            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label38.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label38.Location = new System.Drawing.Point(993, 11);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(125, 20);
+            this.label38.TabIndex = 36;
+            this.label38.Text = "Общ. списание:";
+            // 
+            // lbl_decommission
+            // 
+            this.lbl_decommission.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_decommission.AutoSize = true;
+            this.lbl_decommission.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_decommission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_decommission.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_decommission.Location = new System.Drawing.Point(1126, 14);
+            this.lbl_decommission.Name = "lbl_decommission";
+            this.lbl_decommission.Size = new System.Drawing.Size(39, 16);
+            this.lbl_decommission.TabIndex = 35;
+            this.lbl_decommission.Text = "7500";
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3124,9 +3156,9 @@
         private System.Windows.Forms.Label lbL_summ;
         private System.Windows.Forms.TextBox txB_numberAct;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label lbL_summ_remont;
+        private System.Windows.Forms.Label lbL_sumRemont;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label lbL_count_remont;
+        private System.Windows.Forms.Label lbL_countRemont;
         private System.Windows.Forms.Button btn_actTO_print;
         private System.Windows.Forms.Panel panel_date;
         private System.Windows.Forms.Label label23;
@@ -3347,5 +3379,7 @@
         private System.Windows.Forms.Label lbl_verified;
         private System.Windows.Forms.Label lbl_121;
         private System.Windows.Forms.Label lbl_inRepair;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label lbl_decommission;
     }
 }
