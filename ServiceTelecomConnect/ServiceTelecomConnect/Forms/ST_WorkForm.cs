@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using ServiceTelecomConnect.Classes.Other;
 using ServiceTelecomConnect.Forms;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,6 @@ namespace ServiceTelecomConnect
 {
 
     #region состояние Rows
-
     enum RowState
     {
         Existed,
@@ -29,13 +27,9 @@ namespace ServiceTelecomConnect
     public partial class ST_WorkForm : Form
     {
         #region global perem
-
         private delegate DialogResult ShowOpenFileDialogInvoker();
-
         int selectedRow;
-
         private readonly CheakUser _user;
-
         #endregion
 
         public ST_WorkForm(CheakUser user)
@@ -44,14 +38,12 @@ namespace ServiceTelecomConnect
 
             StartPosition = FormStartPosition.CenterScreen;
             cmB_seach.Text = cmB_seach.Items[2].ToString();
-
             dataGridView1.DoubleBuffered(true);
             this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             _user = user;
             IsAdmin();
         }
-
         void IsAdmin()
         {
             if (_user.IsAdmin == "Дирекция связи")
@@ -108,26 +100,20 @@ namespace ServiceTelecomConnect
                 panel4.Visible = false;
             }
         }
-
-        private void ST_WorkForm_Load(object sender, EventArgs e)
+        void STWorkFormLoad(object sender, EventArgs e)
         {
-            QuerySettingDataBase.GettingTeamData(lbL_FIO_chief, lbL_FIO_Engineer, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
-
+            QuerySettingDataBase.GettingTeamData(lbl_ChiefFIO, lbl_EngineerFIO, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
-
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
             QuerySettingDataBase.CreateColums(dataGridView1);
             QuerySettingDataBase.CreateColums(dataGridView2);
-
-
             this.dataGridView1.Sort(this.dataGridView1.Columns["dateTO"], ListSortDirection.Ascending);
             dataGridView1.Columns["dateTO"].ValueType = typeof(DateTime);
             dataGridView1.Columns["dateTO"].DefaultCellStyle.Format = "dd.MM.yyyy";
             dataGridView1.Columns["dateTO"].ValueType = System.Type.GetType("System.Date");
-
             RegistryKey reg1 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\City");
             if (reg1 != null)
             {
@@ -138,8 +124,6 @@ namespace ServiceTelecomConnect
                 helloKey.Close();
             }
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-
-
             Counters();
             /// получение актов который не заполенны из реестра, которые указал пользователь
             RegistryKey reg2 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
@@ -152,12 +136,12 @@ namespace ServiceTelecomConnect
                 string[] split = registry.Split(new Char[] { ';' });
 
                 foreach (string s in split)
-                    if (s != "")
-                        cmB_add_Fill_Full_ActTO.Items.Add(s);
+                    if (!String.IsNullOrEmpty(s))
+                        cmB_AddFillFullActTO.Items.Add(s);
                 helloKey.Close();
-                cmB_add_Signature.Sorted = true;
-                if (cmB_add_Fill_Full_ActTO.Items.Count > 0)
-                    cmB_add_Fill_Full_ActTO.Text = cmB_add_Fill_Full_ActTO.Items[cmB_add_Fill_Full_ActTO.Items.Count - 1].ToString();
+                cmB_AddSignature.Sorted = true;
+                if (cmB_AddFillFullActTO.Items.Count > 0)
+                    cmB_AddFillFullActTO.Text = cmB_AddFillFullActTO.Items[cmB_AddFillFullActTO.Items.Count - 1].ToString();
             }
             RegistryKey reg3 = Registry.CurrentUser.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
             if (reg3 != null)
@@ -169,13 +153,13 @@ namespace ServiceTelecomConnect
                 string[] split = registry2.Split(new Char[] { ';' });
 
                 foreach (string s in split)
-                    if (s != "")
-                        cmB_add_Signature.Items.Add(s);
+                    if (!String.IsNullOrEmpty(s))
+                        cmB_AddSignature.Items.Add(s);
 
                 helloKey.Close();
-                cmB_add_Signature.Sorted = true;
-                if (cmB_add_Signature.Items.Count > 0)
-                    cmB_add_Signature.Text = cmB_add_Signature.Items[cmB_add_Signature.Items.Count - 1].ToString();
+                cmB_AddSignature.Sorted = true;
+                if (cmB_AddSignature.Items.Count > 0)
+                    cmB_AddSignature.Text = cmB_AddSignature.Items[cmB_AddSignature.Items.Count - 1].ToString();
             }
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
@@ -186,7 +170,6 @@ namespace ServiceTelecomConnect
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
         }
-
         void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             if (dataGridView1.Rows.Count == 0)
@@ -201,7 +184,6 @@ namespace ServiceTelecomConnect
         }
 
         #region Счётчики
-
         void Counters()
         {
             decimal sumTO = 0;
@@ -233,7 +215,6 @@ namespace ServiceTelecomConnect
             lbL_sumRemont.Text = sumRemont.ToString();
             lbl_decommission.Text = decommission.ToString();
         }
-
         #endregion
 
         #region загрузка всей таблицы ТО в текущем году
@@ -655,7 +636,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
 
             PrintExcel.PrintExcelStatementParameters(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
-               lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+               lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
                lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
 
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
@@ -699,7 +680,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
 
             PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
-                lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+                lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
                 lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
         }
@@ -719,7 +700,7 @@ namespace ServiceTelecomConnect
                 string mainMeans = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
                 string nameProductRepaired = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
                 PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
-                     lbL_FIO_chief.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbL_FIO_Engineer.Text,
+                     lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
                      lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
                      cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
                      txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
@@ -1907,11 +1888,11 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
-                if (!cmB_add_Fill_Full_ActTO.Items.Contains(txB_numberAct.Text))
+                if (!cmB_AddFillFullActTO.Items.Contains(txB_numberAct.Text))
                 {
-                    cmB_add_Fill_Full_ActTO.Items.Add(txB_numberAct.Text);
+                    cmB_AddFillFullActTO.Items.Add(txB_numberAct.Text);
                     string registry3 = String.Empty;
-                    foreach (var CmBItem in cmB_add_Fill_Full_ActTO.Items)
+                    foreach (var CmBItem in cmB_AddFillFullActTO.Items)
                     {
                         registry3 += CmBItem.ToString() + ";";
                         RegistryKey currentUserKey = Registry.CurrentUser;
@@ -1919,17 +1900,17 @@ namespace ServiceTelecomConnect
                         helloKey.SetValue("Акты_незаполненные", $"{registry3}");
                         helloKey.Close();
                     }
-                    cmB_add_Fill_Full_ActTO.Sorted = true;
-                    cmB_add_Fill_Full_ActTO.Text = cmB_add_Fill_Full_ActTO.Items[cmB_add_Fill_Full_ActTO.Items.Count - 1].ToString();
+                    cmB_AddFillFullActTO.Sorted = true;
+                    cmB_AddFillFullActTO.Text = cmB_AddFillFullActTO.Items[cmB_AddFillFullActTO.Items.Count - 1].ToString();
                 }
             }
         }
 
         void PicB_delete_Item_Fill_Full_ActTO_Click(object sender, EventArgs e)
         {
-            if (cmB_add_Fill_Full_ActTO.Items.Count > 0)
-                cmB_add_Fill_Full_ActTO.Items.Remove(cmB_add_Fill_Full_ActTO.Text);
-            if (cmB_add_Fill_Full_ActTO.Items.Count == 0)
+            if (cmB_AddFillFullActTO.Items.Count > 0)
+                cmB_AddFillFullActTO.Items.Remove(cmB_AddFillFullActTO.Text);
+            if (cmB_AddFillFullActTO.Items.Count == 0)
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
@@ -1938,14 +1919,14 @@ namespace ServiceTelecomConnect
             }
 
             string registry4 = String.Empty;
-            foreach (var CmBItem in cmB_add_Fill_Full_ActTO.Items)
+            foreach (var CmBItem in cmB_AddFillFullActTO.Items)
             {
                 registry4 += CmBItem.ToString() + ";";
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_Заполняем_До_full");
                 helloKey.SetValue("Акты_незаполненные", $"{registry4}");
                 helloKey.Close();
-                cmB_add_Fill_Full_ActTO.Text = cmB_add_Fill_Full_ActTO.Items[cmB_add_Fill_Full_ActTO.Items.Count - 1].ToString();
+                cmB_AddFillFullActTO.Text = cmB_AddFillFullActTO.Items[cmB_AddFillFullActTO.Items.Count - 1].ToString();
             }
         }
 
@@ -1962,11 +1943,11 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrEmpty(txB_numberAct.Text))
             {
-                if (!cmB_add_Signature.Items.Contains(txB_numberAct.Text))
+                if (!cmB_AddSignature.Items.Contains(txB_numberAct.Text))
                 {
-                    cmB_add_Signature.Items.Add(txB_numberAct.Text);
+                    cmB_AddSignature.Items.Add(txB_numberAct.Text);
                     string registry5 = String.Empty;
-                    foreach (var CmBItem in cmB_add_Signature.Items)
+                    foreach (var CmBItem in cmB_AddSignature.Items)
                     {
                         registry5 += CmBItem.ToString() + ";";
                         RegistryKey currentUserKey = Registry.CurrentUser;
@@ -1974,17 +1955,17 @@ namespace ServiceTelecomConnect
                         helloKey.SetValue("Акты_на_подпись", $"{registry5}");
                         helloKey.Close();
                     }
-                    cmB_add_Signature.Sorted = true;
-                    cmB_add_Signature.Text = cmB_add_Signature.Items[cmB_add_Signature.Items.Count - 1].ToString();
+                    cmB_AddSignature.Sorted = true;
+                    cmB_AddSignature.Text = cmB_AddSignature.Items[cmB_AddSignature.Items.Count - 1].ToString();
                 }
             }
         }
 
         void PicB_delete_Item_Signature_Click(object sender, EventArgs e)
         {
-            if (cmB_add_Signature.Items.Count > 0)
-                cmB_add_Signature.Items.Remove(cmB_add_Signature.Text);
-            if (cmB_add_Signature.Items.Count == 0)
+            if (cmB_AddSignature.Items.Count > 0)
+                cmB_AddSignature.Items.Remove(cmB_AddSignature.Text);
+            if (cmB_AddSignature.Items.Count == 0)
             {
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
@@ -1993,14 +1974,14 @@ namespace ServiceTelecomConnect
             }
 
             string registry6 = String.Empty;
-            foreach (var CmBItem in cmB_add_Signature.Items)
+            foreach (var CmBItem in cmB_AddSignature.Items)
             {
                 registry6 += CmBItem.ToString() + ";";
                 RegistryKey currentUserKey = Registry.CurrentUser;
                 RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Акты_на_подпись");
                 helloKey.SetValue("Акты_на_подпись", $"{registry6}");
                 helloKey.Close();
-                cmB_add_Signature.Text = cmB_add_Signature.Items[cmB_add_Signature.Items.Count - 1].ToString();
+                cmB_AddSignature.Text = cmB_AddSignature.Items[cmB_AddSignature.Items.Count - 1].ToString();
             }
         }
 
@@ -2319,7 +2300,7 @@ namespace ServiceTelecomConnect
                     {"year", year },
                     {"day2", day2 },
                     {"year2", year2 },
-                    {"Engineer", lbL_FIO_Engineer.Text },
+                    {"Engineer", lbl_EngineerFIO.Text },
                     {"road", cmB_road.Text }
 
                 };
@@ -2371,13 +2352,13 @@ namespace ServiceTelecomConnect
         #region Поиск по номеру акта из Combobox-ов (на подпись и заполнем до полного акты)
         void CmB_add_Signature_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_add_Signature.Text);
+            QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddSignature.Text);
             Counters();
         }
 
         void CmB_add_Fill_Full_ActTO_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_add_Fill_Full_ActTO.Text);
+            QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddFillFullActTO.Text);
             Counters();
         }
 
