@@ -355,7 +355,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
@@ -1469,7 +1469,7 @@
             this.btn_close_panel_date_info.TabIndex = 37;
             this.btn_close_panel_date_info.Text = "X";
             this.btn_close_panel_date_info.UseVisualStyleBackColor = false;
-            this.btn_close_panel_date_info.Click += new System.EventHandler(this.Button_close_panel_date_info_Click);
+            this.btn_close_panel_date_info.Click += new System.EventHandler(this.BtnClosePanelDateInfoClick);
             // 
             // label23
             // 
@@ -2098,7 +2098,7 @@
             this.cmB_road.Name = "cmB_road";
             this.cmB_road.Size = new System.Drawing.Size(235, 28);
             this.cmB_road.TabIndex = 82;
-            this.cmB_road.SelectionChangeCommitted += new System.EventHandler(this.CmB_road_SelectionChangeCommitted);
+            this.cmB_road.SelectionChangeCommitted += new System.EventHandler(this.CmbRoadSelectionChangeCommitted);
             // 
             // label18
             // 
@@ -2141,7 +2141,7 @@
             this.btn_all_BD.TabIndex = 78;
             this.btn_all_BD.Text = "Полная БД";
             this.btn_all_BD.UseVisualStyleBackColor = false;
-            this.btn_all_BD.Click += new System.EventHandler(this.Button_all_BD_Click);
+            this.btn_all_BD.Click += new System.EventHandler(this.BtnAllDataBaseClick);
             // 
             // cmB_city
             // 
@@ -2154,8 +2154,8 @@
             this.cmB_city.Name = "cmB_city";
             this.cmB_city.Size = new System.Drawing.Size(235, 28);
             this.cmB_city.TabIndex = 77;
-            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmB_city_SelectionChangeCommitted);
-            this.cmB_city.Click += new System.EventHandler(this.CmB_city_Click);
+            this.cmB_city.SelectionChangeCommitted += new System.EventHandler(this.CmbCitySelectionChangeCommitted);
+            this.cmB_city.Click += new System.EventHandler(this.CmbCityClick);
             // 
             // picB_seach_datadrid_replay
             // 
@@ -2244,7 +2244,7 @@
             this.btn_new_add_rst_form.TabIndex = 6;
             this.btn_new_add_rst_form.Text = "Добавить новую радиостанцию";
             this.btn_new_add_rst_form.UseVisualStyleBackColor = false;
-            this.btn_new_add_rst_form.Click += new System.EventHandler(this.Button_new_add_rst_form_Click);
+            this.btn_new_add_rst_form.Click += new System.EventHandler(this.BtnNewAddRadiostantionFormClick);
             // 
             // label24
             // 
@@ -2267,7 +2267,7 @@
             this.btn_add_city.TabIndex = 15;
             this.btn_add_city.Text = "+";
             this.btn_add_city.UseVisualStyleBackColor = false;
-            this.btn_add_city.Click += new System.EventHandler(this.Button_add_city_Click);
+            this.btn_add_city.Click += new System.EventHandler(this.BtnAddCityClick);
             // 
             // btn_seach_BD_city
             // 
@@ -2280,7 +2280,7 @@
             this.btn_seach_BD_city.TabIndex = 14;
             this.btn_seach_BD_city.Text = "...";
             this.btn_seach_BD_city.UseVisualStyleBackColor = false;
-            this.btn_seach_BD_city.Click += new System.EventHandler(this.Button_seach_BD_city_Click);
+            this.btn_seach_BD_city.Click += new System.EventHandler(this.BtnSeachDataBaseCityClick);
             // 
             // btn_search
             // 
@@ -2356,7 +2356,7 @@
             this.picB_update.Size = new System.Drawing.Size(50, 50);
             this.picB_update.TabIndex = 2;
             this.picB_update.TabStop = false;
-            this.picB_update.Click += new System.EventHandler(this.PicB_update_Click);
+            this.picB_update.Click += new System.EventHandler(this.PicbUpdateClick);
             // 
             // picB_clear
             // 
