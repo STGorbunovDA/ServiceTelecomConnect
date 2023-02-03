@@ -2056,7 +2056,7 @@
             this.button_save_in_file.TabIndex = 84;
             this.button_save_in_file.Text = "Сохранение базы";
             this.button_save_in_file.UseVisualStyleBackColor = false;
-            this.button_save_in_file.Click += new System.EventHandler(this.Button_save_in_file_Click);
+            this.button_save_in_file.Click += new System.EventHandler(this.BtnSaveInFileClick);
             // 
             // button_change_rst_form
             // 
@@ -2128,7 +2128,7 @@
             this.cmb_number_unique_acts.Size = new System.Drawing.Size(251, 28);
             this.cmb_number_unique_acts.TabIndex = 79;
             this.cmb_number_unique_acts.Visible = false;
-            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.Cmb_number_unique_acts_SelectionChangeCommitted);
+            this.cmb_number_unique_acts.SelectionChangeCommitted += new System.EventHandler(this.CmbNumberUniqueActsSelectionChangeCommitted);
             // 
             // btn_all_BD
             // 
@@ -2294,7 +2294,7 @@
             this.btn_search.TabIndex = 13;
             this.btn_search.Text = "...";
             this.btn_search.UseVisualStyleBackColor = false;
-            this.btn_search.Click += new System.EventHandler(this.Button_search_Click);
+            this.btn_search.Click += new System.EventHandler(this.BtnSearchClick);
             // 
             // cmB_seach
             // 
@@ -2331,8 +2331,8 @@
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(141, 29);
             this.txB_numberAct.TabIndex = 27;
-            this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_numberAct_KeyPress);
-            this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TextBox_numberAct_MouseDoubleClick);
+            this.txB_numberAct.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbNumberActKeyPress);
+            this.txB_numberAct.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TxbNumberActMouseDoubleClick);
             // 
             // textBox_search
             // 
@@ -2343,7 +2343,7 @@
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(249, 29);
             this.textBox_search.TabIndex = 4;
-            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_search_KeyPress);
+            this.textBox_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSearchKeyPress);
             // 
             // picB_update
             // 
