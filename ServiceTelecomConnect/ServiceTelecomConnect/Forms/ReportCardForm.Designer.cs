@@ -81,8 +81,8 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(796, 505);
             this.dataGridView1.TabIndex = 91;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             // 
             // panel1
             // 
@@ -169,7 +169,7 @@
             this.btn_save_excel.TabIndex = 100;
             this.btn_save_excel.Text = "Сохранить в excel";
             this.btn_save_excel.UseVisualStyleBackColor = false;
-            this.btn_save_excel.Click += new System.EventHandler(this.Btn_save_excel_Click);
+            this.btn_save_excel.Click += new System.EventHandler(this.BtnSaveExcelClick);
             // 
             // cmB_dateTimeInput
             // 
@@ -186,7 +186,7 @@
             this.cmB_dateTimeInput.Name = "cmB_dateTimeInput";
             this.cmB_dateTimeInput.Size = new System.Drawing.Size(228, 28);
             this.cmB_dateTimeInput.TabIndex = 101;
-            this.cmB_dateTimeInput.SelectionChangeCommitted += new System.EventHandler(this.CmB_dateTimeInput_SelectionChangeCommitted);
+            this.cmB_dateTimeInput.SelectionChangeCommitted += new System.EventHandler(this.CmbDateTimeInputSelectionChangeCommitted);
             // 
             // picB_delete
             // 
@@ -197,7 +197,7 @@
             this.picB_delete.Size = new System.Drawing.Size(33, 30);
             this.picB_delete.TabIndex = 102;
             this.picB_delete.TabStop = false;
-            this.picB_delete.Click += new System.EventHandler(this.PicB_delete_Click);
+            this.picB_delete.Click += new System.EventHandler(this.PicbDeleteClick);
             // 
             // ReportCardForm
             // 
@@ -216,7 +216,7 @@
             this.MinimumSize = new System.Drawing.Size(836, 604);
             this.Name = "ReportCardForm";
             this.Text = "Табель";
-            this.Load += new System.EventHandler(this.ReportCardForm_Load);
+            this.Load += new System.EventHandler(this.ReportCardFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
