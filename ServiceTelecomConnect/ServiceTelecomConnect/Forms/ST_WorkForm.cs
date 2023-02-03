@@ -1626,7 +1626,7 @@ namespace ServiceTelecomConnect
             panel1.Enabled = true;
             panel3.Enabled = true;
         }
-        
+
         #region добавление из файла
         void LoadingFileCurrentDataBaseClick(object sender, EventArgs e)
         {
@@ -1715,24 +1715,21 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region close form
-        void ST_WorkForm_FormClosed(object sender, FormClosedEventArgs e)
+        void STWorkFormFormClosed(object sender, FormClosedEventArgs e)
         {
             System.Environment.Exit(0);
         }
-
-        private void ST_WorkForm_FormClosing(object sender, FormClosingEventArgs e)
+        void STWorkFormFormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = FormClose.GetInstance.FClose(_user.Login);
         }
         #endregion
 
         #region добавление актов на заполнение
-
-        private void Btn_Add_Fill_Full_ActTO_Click(object sender, EventArgs e)
+        void BtnAddFillFullActTOClick(object sender, EventArgs e)
         {
             AddFillFullActTO(sender, e);
         }
-
         void AddFillFullActTO(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_numberAct.Text))
@@ -1754,8 +1751,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void PicB_delete_Item_Fill_Full_ActTO_Click(object sender, EventArgs e)
+        void PicbDeleteItemFillFullActTOClick(object sender, EventArgs e)
         {
             if (cmB_AddFillFullActTO.Items.Count > 0)
                 cmB_AddFillFullActTO.Items.Remove(cmB_AddFillFullActTO.Text);
@@ -1766,7 +1762,6 @@ namespace ServiceTelecomConnect
                 helloKey.SetValue("Акты_незаполненные", $"");
                 helloKey.Close();
             }
-
             string registry4 = String.Empty;
             foreach (var CmBItem in cmB_AddFillFullActTO.Items)
             {
@@ -1778,16 +1773,13 @@ namespace ServiceTelecomConnect
                 cmB_AddFillFullActTO.Text = cmB_AddFillFullActTO.Items[cmB_AddFillFullActTO.Items.Count - 1].ToString();
             }
         }
-
         #endregion
 
         #region добавление актов на подпись представителю ПП
-
-        void Btn_Add_Signature_ActTO_Click(object sender, EventArgs e)
+        void BtnAddSignatureActTOClick(object sender, EventArgs e)
         {
             AddSignatureActTO(sender, e);
         }
-
         void AddSignatureActTO(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_numberAct.Text))
@@ -1809,8 +1801,7 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-
-        void PicB_delete_Item_Signature_Click(object sender, EventArgs e)
+        void PicbDeleteItemSignatureClick(object sender, EventArgs e)
         {
             if (cmB_AddSignature.Items.Count > 0)
                 cmB_AddSignature.Items.Remove(cmB_AddSignature.Text);
@@ -1821,7 +1812,6 @@ namespace ServiceTelecomConnect
                 helloKey.SetValue("Акты_на_подпись", $"");
                 helloKey.Close();
             }
-
             string registry6 = String.Empty;
             foreach (var CmBItem in cmB_AddSignature.Items)
             {
@@ -1833,12 +1823,10 @@ namespace ServiceTelecomConnect
                 cmB_AddSignature.Text = cmB_AddSignature.Items[cmB_AddSignature.Items.Count - 1].ToString();
             }
         }
-
         #endregion
 
         #region списание РСТ
-
-        void Btn_decommissionSerialNumber_close_Click(object sender, EventArgs e)
+        void BtnDecommissionSerialNumberCloseClick(object sender, EventArgs e)
         {
             panel_decommissionSerialNumber.Visible = false;
             panel_decommissionSerialNumber.Enabled = false;
@@ -1847,7 +1835,6 @@ namespace ServiceTelecomConnect
             panel3.Enabled = true;
             dataGridView1.Enabled = true;
         }
-
         void DecommissionSerialNumber(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_serialNumber.Text))
@@ -1858,10 +1845,8 @@ namespace ServiceTelecomConnect
                     return;
                 }
                 string Mesage = $"Вы действительно хотите списать радиостанцию? Номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
-
                 QuerySettingDataBase.LoadingLastDecommissionSerialNumber(lbL_last_decommission, cmB_city.Text, cmB_road.Text);
                 panel1.Enabled = false;
                 panel2.Enabled = false;
@@ -1875,9 +1860,7 @@ namespace ServiceTelecomConnect
                 else txB_reason_decommission.Text = "Коррозия основной печатной платы с многочисленными обрывами проводников, вызванная попаданием влаги внутрь радиостанции. Восстановлению не подлежит.";
             }
         }
-
-
-        void Btn_record_decommissionSerialNumber_Click(object sender, EventArgs e)
+        void BtnRecordDecommissionSerialNumberClick(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB1_decommissionSerialNumber.Text) && !String.IsNullOrEmpty(txB_reason_decommission.Text))
             {
@@ -1887,13 +1870,11 @@ namespace ServiceTelecomConnect
                     txB1_decommissionSerialNumber.Select();
                     return;
                 }
-
                 if (!Regex.IsMatch(txB_reason_decommission.Text, @"[А-Яа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
                 {
                     MessageBox.Show("Введите корректно поле \"Причина\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_reason_decommission.Select();
                     string Mesage = "Вы действительно хотите продолжить?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
@@ -1906,7 +1887,6 @@ namespace ServiceTelecomConnect
                     txB_price.Text, txB_representative.Text, txB_post.Text, txB_numberIdentification.Text, txB_dateIssue.Text,
                     txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
                     txB_reason_decommission.Text, cmB_road.Text);
-
                 BtnUpdateClick(sender, e);
                 panel_decommissionSerialNumber.Visible = false;
                 panel_decommissionSerialNumber.Enabled = false;
@@ -1924,11 +1904,8 @@ namespace ServiceTelecomConnect
         {
             string Mesage;
             Mesage = $"Вы действительно хотите удалить списание на данную радиостанцию: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-            {
                 return;
-            }
             QuerySettingDataBase.DeleteDecommissionSerialNumberRadiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
                 txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
             BtnUpdateClick(sender, e);
@@ -1936,7 +1913,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать списания
-        void Show_radiostantion_decommission_Click(object sender, EventArgs e)
+        void ShowRadiostantionDecommissionClick(object sender, EventArgs e)
         {
             panel1.Enabled = false;
             panel3.Enabled = false;
@@ -1948,17 +1925,15 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region сформировать акт списания
-
         void PrintWordActDecommission(object sender, EventArgs e)
         {
-            if (txB_decommissionSerialNumber.Text != "")
+            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 string decommissionSerialNumber_company = $"{txB_decommissionSerialNumber.Text}-{txB_company.Text}";
                 DateTime dateTime = DateTime.Today;
                 string dateDecommission = dateTime.ToString("dd.MM.yyyy");
                 string city = txB_city.Text;
                 string comment = txB_comment.Text;
-
                 var items = new Dictionary<string, string>
                 {
                     {"<numberActTZPP>", decommissionSerialNumber_company },
@@ -1968,7 +1943,6 @@ namespace ServiceTelecomConnect
                     {"<dateDecommission>", dateDecommission },
                     {"<comment>", comment}
                 };
-
                 PrintDocWord.GetInstance.ProcessPrintWordDecommission(items, decommissionSerialNumber_company, dateDecommission, city, comment);
             }
         }
@@ -2326,7 +2300,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_Show_radiostantion_decommission_Click_Click(object sender, EventArgs e)
         {
-            Show_radiostantion_decommission_Click(sender, e);
+            ShowRadiostantionDecommissionClick(sender, e);
         }
 
         void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
