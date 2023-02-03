@@ -195,18 +195,13 @@ namespace ServiceTelecomConnect
 
             for (int i = 0; i < dataGridView1.Rows.Count; ++i)
             {
-                if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != ""))
-                    colRemont++;
-                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "+"))
-                    verified++;
-                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "?"))
-                    inRepair++;
-                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "0"))
-                    decommission++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["category"].Value.ToString() != "")) colRemont++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "+")) verified++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "?")) inRepair++;
+                if ((Boolean)(dataGridView1.Rows[i].Cells["verifiedRST"].Value.ToString() == "0")) decommission++;
                 sumTO += Convert.ToDecimal(dataGridView1.Rows[i].Cells["price"].Value);
                 sumRemont += Convert.ToDecimal(dataGridView1.Rows[i].Cells["priceRemont"].Value);
             }
-
             lbl_verified.Text = verified.ToString();
             lbl_inRepair.Text = inRepair.ToString();
             lbL_count.Text = dataGridView1.Rows.Count.ToString();
@@ -218,7 +213,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region загрузка всей таблицы ТО в текущем году
-        void Button_all_BD_Click(object sender, EventArgs e)
+        void BtnAllDataBaseClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -229,31 +224,28 @@ namespace ServiceTelecomConnect
             Counters();
             txb_flag_all_BD.Text = "Вся БД";
         }
-
         #endregion
 
         #region загрузка городов CmB_city_Click
-        void CmB_city_Click(object sender, EventArgs e)
+        void CmbCityClick(object sender, EventArgs e)
         {
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
         }
-
-        void CmB_city_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbCitySelectionChangeCommitted(object sender, EventArgs e)
         {
-            Button_seach_BD_city_Click(sender, e);
+            BtnSeachDataBaseCityClick(sender, e);
         }
         #endregion
 
         #region загрузка городов в cmB_road
-        void CmB_road_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbRoadSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
         }
         #endregion
 
         #region panel date information
-
-        void Button_close_panel_date_info_Click(object sender, EventArgs e)
+        void BtnClosePanelDateInfoClick(object sender, EventArgs e)
         {
             panel_date.Visible = false;
             dataGridView1.Enabled = true;
@@ -263,14 +255,13 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Сохранение поля город проведения проверки
-        void Button_add_city_Click(object sender, EventArgs e)
+        void BtnAddCityClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_city.Text))
             {
                 MessageBox.Show("Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
             RegistryKey currentUserKey = Registry.CurrentUser;
             RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting");
             helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
@@ -279,12 +270,10 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region получение данных в Control-ы, button right mouse
-
-        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
             selectedRow = e.RowIndex;
-
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
@@ -334,16 +323,14 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Clear contorl-ы
-
         void ClearFields()
         {
             foreach (Control control in panel1.Controls)
                 if (control is TextBox)
-                    control.Text = "";
-
+                    control.Text = String.Empty;
             foreach (Control control in panel2.Controls)
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
         }
 
         void PictureBox1_clear_Click(object sender, EventArgs e)
@@ -358,8 +345,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Удаление из БД
-
-        void Button_delete_Click(object sender, EventArgs e)
+        void BtnDeleteClick(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
@@ -373,7 +359,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-
             if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 string Mesage = $"На РСТ №: {txB_serialNumber.Text}, предприятия: {txB_company.Text} есть списание. Точно удалить?";
@@ -386,19 +371,14 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-
             QuerySettingDataBase.DeleteRowCellRadiostantion(dataGridView1);
             txB_serialNumber.Clear();
             txB_numberAct.Clear();
             txB_numberActRemont.Clear();
-
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
             txB_numberAct.Text = String.Empty;
-
             dataGridView1.ClearSelection();
-
             if (dataGridView1.RowCount - currRowIndex > 0)
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             Counters();
@@ -407,10 +387,9 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region обновление БД
-
-        void Button_update_Click(object sender, EventArgs e)
+        void BtnUpdateClick(object sender, EventArgs e)
         {
-            txb_flag_all_BD.Text = ""; // для получения данных отст. РСТ по городу(исправлена ошибка при получении полной бд => обновление )
+            txb_flag_all_BD.Text = String.Empty; // для получения данных отст. РСТ по городу(исправлена ошибка при получении полной бд => обновление )
             if (dataGridView1.Rows.Count > 0)
             {
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
@@ -418,7 +397,6 @@ namespace ServiceTelecomConnect
                 QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
                 Counters();
                 dataGridView1.ClearSelection();
-
                 if (currRowIndex >= 0)
                 {
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
@@ -432,16 +410,15 @@ namespace ServiceTelecomConnect
                 dataGridView1.ClearSelection();
             }
         }
-
-        void PicB_update_Click(object sender, EventArgs e)
+        void PicbUpdateClick(object sender, EventArgs e)
         {
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
 
         #endregion
 
         #region Форма добавления РСТ
-        void Button_new_add_rst_form_Click(object sender, EventArgs e)
+        void BtnNewAddRadiostantionFormClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -453,7 +430,6 @@ namespace ServiceTelecomConnect
                     addRSTForm.lbL_city.Text = cmB_city.Text;
                     if (String.IsNullOrEmpty(txB_city.Text))
                         addRSTForm.txB_city.Text = cmB_city.Text;
-
                     else addRSTForm.txB_city.Text = txB_city.Text;
                     addRSTForm.cmB_poligon.Text = cmB_poligon.Text;
                     addRSTForm.txB_company.Text = txB_company.Text;
@@ -473,7 +449,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Параметры радиостанции
-
         void AddRadioStationParameters(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_serialNumber.Text))
@@ -774,7 +749,7 @@ namespace ServiceTelecomConnect
             Counters();
         }
 
-        void Button_seach_BD_city_Click(object sender, EventArgs e)
+        void BtnSeachDataBaseCityClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(cmB_city.Text))
             {
@@ -870,7 +845,7 @@ namespace ServiceTelecomConnect
                 {
                     ContextMenu m3 = new ContextMenu();
                     m3.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
-                    m3.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                    m3.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                     m3.Show(dataGridView1, new Point(e.X, e.Y));
                 }
                 else if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
@@ -879,14 +854,14 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
                             m.MenuItems.Add(new MenuItem("Добавить/изменить ремонт", Button_new_add_rst_form_click_remont));
                             m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
-                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", BtnDeleteClick));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
@@ -898,7 +873,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Печатать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
-                        m.MenuItems.Add(new MenuItem("Обновить базу", Button_update_Click));
+                        m.MenuItems.Add(new MenuItem("Обновить базу", BtnUpdateClick));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
 
                         m.Show(dataGridView1, new Point(e.X, e.Y));
@@ -907,8 +882,8 @@ namespace ServiceTelecomConnect
                     else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
                         ContextMenu m1 = new ContextMenu();
-                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
+                        m1.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
 
                         m1.Show(dataGridView1, new Point(e.X, e.Y));
                     }
@@ -930,7 +905,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
@@ -939,7 +914,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
                         }
-                        m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                         m.MenuItems.Add(new MenuItem("Печатать бирки", FormTag));
 
@@ -949,8 +924,8 @@ namespace ServiceTelecomConnect
                     else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
                         ContextMenu m1 = new ContextMenu();
-                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
+                        m1.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
 
                         m1.Show(dataGridView1, new Point(e.X, e.Y));
                     }
@@ -972,7 +947,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
@@ -980,7 +955,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
                             m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
-                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", BtnDeleteClick));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
@@ -993,7 +968,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Печатать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
-                        m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                         m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
@@ -1003,8 +978,8 @@ namespace ServiceTelecomConnect
                     else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
                         ContextMenu m1 = new ContextMenu();
-                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
+                        m1.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
 
                         m1.Show(dataGridView1, new Point(e.X, e.Y));
                     }
@@ -1026,7 +1001,7 @@ namespace ServiceTelecomConnect
                     {
                         ContextMenu m = new ContextMenu();
 
-                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
+                        int add_new_radio_station = m.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
                         if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                         {
                             m.MenuItems.Add(new MenuItem("Изменить радиостанцию", Button_change_rst_form_Click));
@@ -1034,7 +1009,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить параметры радиостанции", AddRadioStationParameters));
                             m.MenuItems.Add(new MenuItem("Печатать акт ТО", Button_actTO_print_Click));
                             m.MenuItems.Add(new MenuItem("Печатать акт Ремонта", Button_remont_act_Click));
-                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", Button_delete_Click));
+                            m.MenuItems.Add(new MenuItem("Удалить радиостанцию", BtnDeleteClick));
                             m.MenuItems.Add(new MenuItem("Удалить ремонт", Delete_rst_remont_click));
                             m.MenuItems.Add(new MenuItem("Заполняем акт", Add_Fill_Full_ActTO));
                             m.MenuItems.Add(new MenuItem("На подписание акт", Add_Signature_ActTO));
@@ -1048,7 +1023,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Сформировать акт списания", PrintWord_Act_decommission));
                             m.MenuItems.Add(new MenuItem("Удалить списание", Delete_rst_decommission_click));
                         }
-                        m.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
                         m.MenuItems.Add(new MenuItem("Сохранение базы", Button_save_in_file_Click));
                         m.MenuItems.Add(new MenuItem("Сформировать бирки", FormTag));
 
@@ -1058,8 +1033,8 @@ namespace ServiceTelecomConnect
                     else if (dataGridView1.Rows.Count == 0 && panel1.Enabled == true && panel3.Enabled == true)
                     {
                         ContextMenu m1 = new ContextMenu();
-                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", Button_new_add_rst_form_Click));
-                        m1.MenuItems.Add(new MenuItem("Обновить", Button_update_Click));
+                        m1.MenuItems.Add(new MenuItem("Добавить новую радиостанцию", BtnNewAddRadiostantionFormClick));
+                        m1.MenuItems.Add(new MenuItem("Обновить", BtnUpdateClick));
 
                         m1.Show(dataGridView1, new Point(e.X, e.Y));
                     }
@@ -1106,7 +1081,7 @@ namespace ServiceTelecomConnect
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
             QuerySettingDataBase.DeleteRadiostantionRemont(txB_numberActRemont.Text, txB_serialNumber.Text, cmB_city.Text, cmB_road.Text);
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
 
         #endregion
@@ -2058,7 +2033,7 @@ namespace ServiceTelecomConnect
                     txB_phoneNumber.Text, txB_antenna.Text, txB_manipulator.Text, txB_AKB.Text, txB_batteryСharger.Text,
                     txB_reason_decommission.Text, cmB_road.Text);
 
-                Button_update_Click(sender, e);
+                BtnUpdateClick(sender, e);
                 panel_decommissionSerialNumber.Visible = false;
                 panel_decommissionSerialNumber.Enabled = false;
                 panel1.Enabled = true;
@@ -2082,7 +2057,7 @@ namespace ServiceTelecomConnect
             }
             QuerySettingDataBase.DeleteDecommissionSerialNumberRadiostantion(dataGridView2, txB_decommissionSerialNumber.Text,
                 txB_serialNumber.Text, txB_city.Text, cmB_model, txB_numberAct, cmB_road.Text);
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
         #endregion
 
@@ -2382,7 +2357,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_new_add_rst_Click(object sender, EventArgs e)
         {
-            Button_new_add_rst_form_Click(sender, e);
+            BtnNewAddRadiostantionFormClick(sender, e);
         }
 
         void MTrip_change_rst_Click(object sender, EventArgs e)
@@ -2397,7 +2372,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_delete_rst_Click(object sender, EventArgs e)
         {
-            Button_delete_Click(sender, e);
+            BtnDeleteClick(sender, e);
         }
 
         void MTrip_delete_rst_remont_Click(object sender, EventArgs e)
@@ -2422,7 +2397,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_Button_update_Click(object sender, EventArgs e)
         {
-            Button_update_Click(sender, e);
+            BtnUpdateClick(sender, e);
         }
 
         void MTrip_Button_actTO_print_Click(object sender, EventArgs e)
