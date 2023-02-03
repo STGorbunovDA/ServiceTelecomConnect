@@ -31,7 +31,6 @@ namespace ServiceTelecomConnect
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
         }
-
         private void CreateColums()
         {
             dataGridView1.Columns.Add("id", "№");
@@ -41,13 +40,11 @@ namespace ServiceTelecomConnect
             dataGridView1.Columns.Add("IsNew", String.Empty);
             dataGridView1.Columns[4].Visible = false;
         }
-
         void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
             dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1),
                 record.GetString(2), record.GetString(3), RowState.ModifieldNew)));
         }
-
         void RefreshDataGrid(DataGridView dgw)
         {
             if (Internet_check.CheackSkyNET())
@@ -56,9 +53,7 @@ namespace ServiceTelecomConnect
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
                 Thread.CurrentThread.CurrentCulture = myCulture;
                 dgw.Rows.Clear();
-
                 string queryString = $"select id, login, pass, is_admin from users";
-
                 using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -79,7 +74,7 @@ namespace ServiceTelecomConnect
                 dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
             }
         }
-        void Setting_user_Load(object sender, EventArgs e)
+        void SettingUserLoad(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -87,36 +82,30 @@ namespace ServiceTelecomConnect
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
-
             selectedRow = e.RowIndex;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
                 txB_id.Text = row.Cells[0].Value.ToString();
                 txB_login.Text = row.Cells[1].Value.ToString();
-                //txB_pass.Text = row.Cells[2].Value.ToString();
                 txB_pass.Text = Md5.DecryptCipherTextToPlainText(row.Cells[2].Value.ToString());
-                cmB_is_admin_post.Text = row.Cells[3].Value.ToString();
+                cmB_isAdminPost.Text = row.Cells[3].Value.ToString();
             }
         }
-
-        void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
                 e.Cancel = true;
         }
-
-        private void Button_update_Click(object sender, EventArgs e)
+        void ButtonUpdateClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
                 RefreshDataGrid(dataGridView1);
         }
-
-        void Button_delete_Click(object sender, EventArgs e)
+        void ButtonDeleteClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -126,7 +115,6 @@ namespace ServiceTelecomConnect
                 if (Internet_check.CheackSkyNET())
                 {
                     DB.GetInstance.OpenConnection();
-
                     for (int index = 0; index < dataGridView1.Rows.Count; index++)
                     {
                         var rowState = (RowState)dataGridView1.Rows[index].Cells[4].Value;
@@ -136,15 +124,13 @@ namespace ServiceTelecomConnect
                             int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                             var login = dataGridView1.Rows[index].Cells[1].Value;
                             string deleteQuery = $"delete from users where id = {id}";
-
-                            string update_сharacteristics_вrigade = $"UPDATE сharacteristics_вrigade SET section_foreman_FIO = '' " +
+                            string updateCharacteristicsBrigade = $"UPDATE сharacteristics_вrigade SET section_foreman_FIO = '' " +
                                 $"OR engineers_FIO = '' OR curator = '' OR departmentCommunications = '' " +
                                 $"WHERE section_foreman_FIO = '{login}' OR engineers_FIO = '{login}' OR curator = '{login}' " +
                                 $"OR departmentCommunications = '{login}'";
-
                             using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                                 command.ExecuteNonQuery();
-                            using (MySqlCommand command2 = new MySqlCommand(update_сharacteristics_вrigade, DB.GetInstance.GetConnection()))
+                            using (MySqlCommand command2 = new MySqlCommand(updateCharacteristicsBrigade, DB.GetInstance.GetConnection()))
                                 command2.ExecuteNonQuery();
                         }
                     }
@@ -153,17 +139,16 @@ namespace ServiceTelecomConnect
                 RefreshDataGrid(dataGridView1);
             }
         }
-        void Button_change_Click(object sender, EventArgs e)
+        void BtnChangeClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
                 string id = txB_id.Text;
                 string login = txB_login.Text;
                 string pass = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
-                string is_admin = cmB_is_admin_post.Text;
-
-                string changeQuery = $"update users set login = '{login.Trim()}', pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' where id = '{id.Trim()}'";
-
+                string is_admin = cmB_isAdminPost.Text;
+                string changeQuery = $"UPDATE users SET login = '{login.Trim()}', " +
+                    $"pass = '{pass.Trim()}', is_Admin = '{is_admin.Trim()}' WHERE id = '{id.Trim()}'";
                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -174,15 +159,13 @@ namespace ServiceTelecomConnect
                 RefreshDataGrid(dataGridView1);
             }
         }
-
-        void PicB_clear_Click(object sender, EventArgs e)
+        void ClearControlFormClick(object sender, EventArgs e)
         {
             foreach (Control control in panel2.Controls)
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
         }
-
-        void Btn_add_Click(object sender, EventArgs e)
+        void BtnAddClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
             {
@@ -205,19 +188,16 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-
                 string passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                 if (!CheackUser(loginUser, passUser))
                 {
-                    if (!String.IsNullOrEmpty(cmB_is_admin_post.Text))
+                    if (!String.IsNullOrEmpty(cmB_isAdminPost.Text))
                     {
-
-                        string querystring = $"INSERT INTO users (login, pass, is_admin) VALUES ('{loginUser}', '{passUser}', '{cmB_is_admin_post.Text}')";
-
+                        string querystring = $"INSERT INTO users (login, pass, is_admin) " +
+                            $"VALUES ('{loginUser}', '{passUser}', '{cmB_isAdminPost.Text}')";
                         using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
-
                             if (command.ExecuteNonQuery() == 1)
                             {
                                 MessageBox.Show("Аккаунт успешно создан!");
@@ -232,25 +212,19 @@ namespace ServiceTelecomConnect
                 else MessageBox.Show("Такой пользователь уже существует!");
             }
         }
-
         Boolean CheackUser(string loginUser, string passUser)
         {
             if (Internet_check.CheackSkyNET())
             {
                 string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
-
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
                         DataTable table = new DataTable();
-
                         adapter.Fill(table);
-
-                        if (table.Rows.Count > 0)
-                            return true;
-                        else
-                            return false;
+                        if (table.Rows.Count > 0) return true;
+                        else return false;
                     }
                 }
             }
