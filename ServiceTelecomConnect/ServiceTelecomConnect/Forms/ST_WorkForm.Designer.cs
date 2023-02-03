@@ -1386,7 +1386,7 @@
             this.btn_record_decommissionSerialNumber.TabIndex = 36;
             this.btn_record_decommissionSerialNumber.Text = "Списать";
             this.btn_record_decommissionSerialNumber.UseVisualStyleBackColor = false;
-            this.btn_record_decommissionSerialNumber.Click += new System.EventHandler(this.Btn_record_decommissionSerialNumber_Click);
+            this.btn_record_decommissionSerialNumber.Click += new System.EventHandler(this.BtnRecordDecommissionSerialNumberClick);
             // 
             // btn_decommissionSerialNumber_close
             // 
@@ -1398,7 +1398,7 @@
             this.btn_decommissionSerialNumber_close.TabIndex = 34;
             this.btn_decommissionSerialNumber_close.Text = "X";
             this.btn_decommissionSerialNumber_close.UseVisualStyleBackColor = false;
-            this.btn_decommissionSerialNumber_close.Click += new System.EventHandler(this.Btn_decommissionSerialNumber_close_Click);
+            this.btn_decommissionSerialNumber_close.Click += new System.EventHandler(this.BtnDecommissionSerialNumberCloseClick);
             // 
             // label33
             // 
@@ -1949,7 +1949,7 @@
             this.Btn_Add_Fill_Full_ActTO.TabIndex = 119;
             this.Btn_Add_Fill_Full_ActTO.Text = "Добавить";
             this.Btn_Add_Fill_Full_ActTO.UseVisualStyleBackColor = false;
-            this.Btn_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.Btn_Add_Fill_Full_ActTO_Click);
+            this.Btn_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.BtnAddFillFullActTOClick);
             // 
             // Btn_Add_Signature_ActTO
             // 
@@ -1962,7 +1962,7 @@
             this.Btn_Add_Signature_ActTO.TabIndex = 118;
             this.Btn_Add_Signature_ActTO.Text = "Добавить";
             this.Btn_Add_Signature_ActTO.UseVisualStyleBackColor = false;
-            this.Btn_Add_Signature_ActTO.Click += new System.EventHandler(this.Btn_Add_Signature_ActTO_Click);
+            this.Btn_Add_Signature_ActTO.Click += new System.EventHandler(this.BtnAddSignatureActTOClick);
             // 
             // picB_delete_Item_Fill_Full_ActTO
             // 
@@ -1974,7 +1974,7 @@
             this.picB_delete_Item_Fill_Full_ActTO.Size = new System.Drawing.Size(29, 29);
             this.picB_delete_Item_Fill_Full_ActTO.TabIndex = 116;
             this.picB_delete_Item_Fill_Full_ActTO.TabStop = false;
-            this.picB_delete_Item_Fill_Full_ActTO.Click += new System.EventHandler(this.PicB_delete_Item_Fill_Full_ActTO_Click);
+            this.picB_delete_Item_Fill_Full_ActTO.Click += new System.EventHandler(this.PicbDeleteItemFillFullActTOClick);
             // 
             // cmB_add_Signature
             // 
@@ -2001,7 +2001,7 @@
             this.picB_delete_Item_Signature.Size = new System.Drawing.Size(29, 29);
             this.picB_delete_Item_Signature.TabIndex = 115;
             this.picB_delete_Item_Signature.TabStop = false;
-            this.picB_delete_Item_Signature.Click += new System.EventHandler(this.PicB_delete_Item_Signature_Click);
+            this.picB_delete_Item_Signature.Click += new System.EventHandler(this.PicbDeleteItemSignatureClick);
             // 
             // label25
             // 
@@ -3100,8 +3100,8 @@
             this.MinimumSize = new System.Drawing.Size(1366, 768);
             this.Name = "ST_WorkForm";
             this.ShowIcon = false;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ST_WorkForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ST_WorkForm_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.STWorkFormFormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.STWorkFormFormClosed);
             this.Load += new System.EventHandler(this.STWorkFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
