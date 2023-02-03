@@ -354,14 +354,14 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1427, 533);
             this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellValueChanged);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellValueChanged);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
-            this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserAddedRow);
-            this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1_UserDeletedRow);
+            this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserAddedRow);
+            this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1MouseClick);
             // 
             // panel2
             // 
@@ -2166,7 +2166,7 @@
             this.picB_seach_datadrid_replay.Size = new System.Drawing.Size(32, 32);
             this.picB_seach_datadrid_replay.TabIndex = 76;
             this.picB_seach_datadrid_replay.TabStop = false;
-            this.picB_seach_datadrid_replay.Click += new System.EventHandler(this.PictureBox_seach_datadrid_replay_Click);
+            this.picB_seach_datadrid_replay.Click += new System.EventHandler(this.PicbSeachDatadridReplayClick);
             // 
             // btn_remont_act
             // 
@@ -2180,7 +2180,7 @@
             this.btn_remont_act.TabIndex = 73;
             this.btn_remont_act.Text = "Печать";
             this.btn_remont_act.UseVisualStyleBackColor = false;
-            this.btn_remont_act.Click += new System.EventHandler(this.Button_remont_act_Click);
+            this.btn_remont_act.Click += new System.EventHandler(this.BtnRemontActClick);
             // 
             // label_act_remont
             // 
