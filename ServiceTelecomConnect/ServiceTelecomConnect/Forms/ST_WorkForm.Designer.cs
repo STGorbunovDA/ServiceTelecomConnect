@@ -357,7 +357,7 @@
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellValueChanged);
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
+            this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserAddedRow);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserDeletedRow);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
@@ -858,7 +858,7 @@
             this.btn_Show_DB_radiostantion_full.TabIndex = 88;
             this.btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
             this.btn_Show_DB_radiostantion_full.UseVisualStyleBackColor = false;
-            this.btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_full_Click);
+            this.btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.BtnShowDataBaseRadiostantionFullClick);
             // 
             // btn_Show_DB_radiostantion_last_year
             // 
@@ -871,7 +871,7 @@
             this.btn_Show_DB_radiostantion_last_year.TabIndex = 87;
             this.btn_Show_DB_radiostantion_last_year.Text = "Показать БД прошлого года по текущему участку";
             this.btn_Show_DB_radiostantion_last_year.UseVisualStyleBackColor = false;
-            this.btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.Btn_Show_DB_radiostantion_last_year_Click);
+            this.btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.BtnShowDataBaseRadiostantionLastYearClick);
             // 
             // btn_Loading_file_last_year
             // 
@@ -885,7 +885,7 @@
             this.btn_Loading_file_last_year.TabIndex = 86;
             this.btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
             this.btn_Loading_file_last_year.UseVisualStyleBackColor = false;
-            this.btn_Loading_file_last_year.Click += new System.EventHandler(this.Button_Loading_file_last_year_Click);
+            this.btn_Loading_file_last_year.Click += new System.EventHandler(this.BtnLoadingFileLastYearClick);
             // 
             // btn_Uploading_JSON_file
             // 
@@ -898,7 +898,7 @@
             this.btn_Uploading_JSON_file.TabIndex = 85;
             this.btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
             this.btn_Uploading_JSON_file.UseVisualStyleBackColor = false;
-            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.Button_Uploading_JSON_file_Click);
+            this.btn_Uploading_JSON_file.Click += new System.EventHandler(this.BtnUploadingJsonFileClick);
             // 
             // btn_Copying_current_BD_end_of_the_year
             // 
@@ -911,7 +911,7 @@
             this.btn_Copying_current_BD_end_of_the_year.TabIndex = 84;
             this.btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
             this.btn_Copying_current_BD_end_of_the_year.UseVisualStyleBackColor = false;
-            this.btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.Button_Copying_current_BD_end_of_the_year_Click);
+            this.btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.BtnCopyingCurrentDataBaseEndOfTheYearClick);
             // 
             // btn_loading_file_full_BD
             // 
@@ -924,7 +924,7 @@
             this.btn_loading_file_full_BD.TabIndex = 83;
             this.btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
             this.btn_loading_file_full_BD.UseVisualStyleBackColor = false;
-            this.btn_loading_file_full_BD.Click += new System.EventHandler(this.Loading_file_full_BD_Click);
+            this.btn_loading_file_full_BD.Click += new System.EventHandler(this.LoadingFileFullDataBaseClick);
             // 
             // btn_manual_backup_current_DB
             // 
@@ -937,7 +937,7 @@
             this.btn_manual_backup_current_DB.TabIndex = 81;
             this.btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
             this.btn_manual_backup_current_DB.UseVisualStyleBackColor = false;
-            this.btn_manual_backup_current_DB.Click += new System.EventHandler(this.Manual_backup_current_BD_Click);
+            this.btn_manual_backup_current_DB.Click += new System.EventHandler(this.ManualBackupCurrentDataBaseClick);
             // 
             // btn_clear_BD_current_year
             // 
@@ -950,7 +950,7 @@
             this.btn_clear_BD_current_year.TabIndex = 80;
             this.btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
             this.btn_clear_BD_current_year.UseVisualStyleBackColor = false;
-            this.btn_clear_BD_current_year.Click += new System.EventHandler(this.Clear_BD_current_year_Click);
+            this.btn_clear_BD_current_year.Click += new System.EventHandler(this.ClearDataBaseCurrentYearClick);
             // 
             // btn_loading_file_current_DB
             // 
@@ -963,7 +963,7 @@
             this.btn_loading_file_current_DB.TabIndex = 79;
             this.btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
             this.btn_loading_file_current_DB.UseVisualStyleBackColor = false;
-            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.Loading_file_current_BD_Click);
+            this.btn_loading_file_current_DB.Click += new System.EventHandler(this.LoadingFileCurrentDataBaseClick);
             // 
             // btn_loading_json_file_BD
             // 
@@ -976,7 +976,7 @@
             this.btn_loading_json_file_BD.TabIndex = 78;
             this.btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
             this.btn_loading_json_file_BD.UseVisualStyleBackColor = false;
-            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.Loading_json_file_BD_Click);
+            this.btn_loading_json_file_BD.Click += new System.EventHandler(this.LoadingJsonFileDataBaseClick);
             // 
             // btn_close_Functional_loading_panel
             // 
@@ -988,7 +988,7 @@
             this.btn_close_Functional_loading_panel.TabIndex = 37;
             this.btn_close_Functional_loading_panel.Text = "X";
             this.btn_close_Functional_loading_panel.UseVisualStyleBackColor = false;
-            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.Close_Functional_loading_panel_Click);
+            this.btn_close_Functional_loading_panel.Click += new System.EventHandler(this.CloseFunctionalLoadingPanelClick);
             // 
             // label36
             // 
