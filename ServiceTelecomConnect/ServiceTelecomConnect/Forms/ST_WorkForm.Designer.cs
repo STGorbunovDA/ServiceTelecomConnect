@@ -1621,7 +1621,7 @@
             this.btn_Continue_remont_act_excel.TabIndex = 36;
             this.btn_Continue_remont_act_excel.Text = "Продолжить печать";
             this.btn_Continue_remont_act_excel.UseVisualStyleBackColor = false;
-            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.Button_Continue_remont_act_Click);
+            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.BtnContinueRemontActClick);
             // 
             // txB_BE_remont
             // 
@@ -2068,7 +2068,7 @@
             this.button_change_rst_form.TabIndex = 83;
             this.button_change_rst_form.Text = "Изменить радиостанцию";
             this.button_change_rst_form.UseVisualStyleBackColor = false;
-            this.button_change_rst_form.Click += new System.EventHandler(this.Button_change_rst_form_Click);
+            this.button_change_rst_form.Click += new System.EventHandler(this.BtnChangeRadiostantionFormClick);
             // 
             // cmB_road
             // 
@@ -2220,7 +2220,7 @@
             this.btn_actTO_print.TabIndex = 8;
             this.btn_actTO_print.Text = "Печать";
             this.btn_actTO_print.UseVisualStyleBackColor = false;
-            this.btn_actTO_print.Click += new System.EventHandler(this.Button_actTO_print_Click);
+            this.btn_actTO_print.Click += new System.EventHandler(this.BtnActTOPrintClick);
             // 
             // txB_serialNumber
             // 
