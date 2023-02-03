@@ -134,10 +134,10 @@
             this.btn_close_panel_date_info = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.lbL_FIO_chief = new System.Windows.Forms.Label();
+            this.lbl_ChiefFIO = new System.Windows.Forms.Label();
             this.lbL_doverennost = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.lbL_FIO_Engineer = new System.Windows.Forms.Label();
+            this.lbl_EngineerFIO = new System.Windows.Forms.Label();
             this.lbL_road = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -175,11 +175,11 @@
             this.Btn_Add_Fill_Full_ActTO = new System.Windows.Forms.Button();
             this.Btn_Add_Signature_ActTO = new System.Windows.Forms.Button();
             this.picB_delete_Item_Fill_Full_ActTO = new System.Windows.Forms.PictureBox();
-            this.cmB_add_Signature = new System.Windows.Forms.ComboBox();
+            this.cmB_AddSignature = new System.Windows.Forms.ComboBox();
             this.picB_delete_Item_Signature = new System.Windows.Forms.PictureBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.cmB_add_Fill_Full_ActTO = new System.Windows.Forms.ComboBox();
+            this.cmB_AddFillFullActTO = new System.Windows.Forms.ComboBox();
             this.button_save_in_file = new System.Windows.Forms.Button();
             this.button_change_rst_form = new System.Windows.Forms.Button();
             this.cmB_road = new System.Windows.Forms.ComboBox();
@@ -1421,10 +1421,10 @@
             this.panel_date.Controls.Add(this.btn_close_panel_date_info);
             this.panel_date.Controls.Add(this.label23);
             this.panel_date.Controls.Add(this.label30);
-            this.panel_date.Controls.Add(this.lbL_FIO_chief);
+            this.panel_date.Controls.Add(this.lbl_ChiefFIO);
             this.panel_date.Controls.Add(this.lbL_doverennost);
             this.panel_date.Controls.Add(this.label16);
-            this.panel_date.Controls.Add(this.lbL_FIO_Engineer);
+            this.panel_date.Controls.Add(this.lbl_EngineerFIO);
             this.panel_date.Controls.Add(this.lbL_road);
             this.panel_date.Controls.Add(this.label28);
             this.panel_date.Controls.Add(this.label29);
@@ -1495,14 +1495,14 @@
             // 
             // lbL_FIO_chief
             // 
-            this.lbL_FIO_chief.AutoSize = true;
-            this.lbL_FIO_chief.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_chief.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_chief.Location = new System.Drawing.Point(207, 104);
-            this.lbL_FIO_chief.Name = "lbL_FIO_chief";
-            this.lbL_FIO_chief.Size = new System.Drawing.Size(131, 22);
-            this.lbL_FIO_chief.TabIndex = 6;
-            this.lbL_FIO_chief.Text = "Иванов В.В.";
+            this.lbl_ChiefFIO.AutoSize = true;
+            this.lbl_ChiefFIO.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_ChiefFIO.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_ChiefFIO.Location = new System.Drawing.Point(207, 104);
+            this.lbl_ChiefFIO.Name = "lbL_FIO_chief";
+            this.lbl_ChiefFIO.Size = new System.Drawing.Size(131, 22);
+            this.lbl_ChiefFIO.TabIndex = 6;
+            this.lbl_ChiefFIO.Text = "Иванов В.В.";
             // 
             // lbL_doverennost
             // 
@@ -1528,14 +1528,14 @@
             // 
             // lbL_FIO_Engineer
             // 
-            this.lbL_FIO_Engineer.AutoSize = true;
-            this.lbL_FIO_Engineer.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_FIO_Engineer.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_FIO_Engineer.Location = new System.Drawing.Point(207, 138);
-            this.lbL_FIO_Engineer.Name = "lbL_FIO_Engineer";
-            this.lbL_FIO_Engineer.Size = new System.Drawing.Size(142, 22);
-            this.lbL_FIO_Engineer.TabIndex = 18;
-            this.lbL_FIO_Engineer.Text = "Сидоров В.В.";
+            this.lbl_EngineerFIO.AutoSize = true;
+            this.lbl_EngineerFIO.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_EngineerFIO.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_EngineerFIO.Location = new System.Drawing.Point(207, 138);
+            this.lbl_EngineerFIO.Name = "lbL_FIO_Engineer";
+            this.lbl_EngineerFIO.Size = new System.Drawing.Size(142, 22);
+            this.lbl_EngineerFIO.TabIndex = 18;
+            this.lbl_EngineerFIO.Text = "Сидоров В.В.";
             // 
             // lbL_road
             // 
@@ -1928,11 +1928,11 @@
             this.panel4.Controls.Add(this.Btn_Add_Fill_Full_ActTO);
             this.panel4.Controls.Add(this.Btn_Add_Signature_ActTO);
             this.panel4.Controls.Add(this.picB_delete_Item_Fill_Full_ActTO);
-            this.panel4.Controls.Add(this.cmB_add_Signature);
+            this.panel4.Controls.Add(this.cmB_AddSignature);
             this.panel4.Controls.Add(this.picB_delete_Item_Signature);
             this.panel4.Controls.Add(this.label25);
             this.panel4.Controls.Add(this.label26);
-            this.panel4.Controls.Add(this.cmB_add_Fill_Full_ActTO);
+            this.panel4.Controls.Add(this.cmB_AddFillFullActTO);
             this.panel4.Location = new System.Drawing.Point(572, 37);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(332, 89);
@@ -1978,18 +1978,18 @@
             // 
             // cmB_add_Signature
             // 
-            this.cmB_add_Signature.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cmB_add_Signature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmB_add_Signature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_add_Signature.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmB_add_Signature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_add_Signature.FormattingEnabled = true;
-            this.cmB_add_Signature.Location = new System.Drawing.Point(30, 29);
-            this.cmB_add_Signature.Name = "cmB_add_Signature";
-            this.cmB_add_Signature.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmB_add_Signature.Size = new System.Drawing.Size(94, 28);
-            this.cmB_add_Signature.TabIndex = 85;
-            this.cmB_add_Signature.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Signature_SelectionChangeCommitted);
+            this.cmB_AddSignature.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmB_AddSignature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_AddSignature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_AddSignature.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmB_AddSignature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_AddSignature.FormattingEnabled = true;
+            this.cmB_AddSignature.Location = new System.Drawing.Point(30, 29);
+            this.cmB_AddSignature.Name = "cmB_add_Signature";
+            this.cmB_AddSignature.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmB_AddSignature.Size = new System.Drawing.Size(94, 28);
+            this.cmB_AddSignature.TabIndex = 85;
+            this.cmB_AddSignature.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Signature_SelectionChangeCommitted);
             // 
             // picB_delete_Item_Signature
             // 
@@ -2033,18 +2033,18 @@
             // 
             // cmB_add_Fill_Full_ActTO
             // 
-            this.cmB_add_Fill_Full_ActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cmB_add_Fill_Full_ActTO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cmB_add_Fill_Full_ActTO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmB_add_Fill_Full_ActTO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmB_add_Fill_Full_ActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmB_add_Fill_Full_ActTO.FormattingEnabled = true;
-            this.cmB_add_Fill_Full_ActTO.Location = new System.Drawing.Point(179, 29);
-            this.cmB_add_Fill_Full_ActTO.Name = "cmB_add_Fill_Full_ActTO";
-            this.cmB_add_Fill_Full_ActTO.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmB_add_Fill_Full_ActTO.Size = new System.Drawing.Size(94, 28);
-            this.cmB_add_Fill_Full_ActTO.TabIndex = 114;
-            this.cmB_add_Fill_Full_ActTO.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Fill_Full_ActTO_SelectionChangeCommitted);
+            this.cmB_AddFillFullActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmB_AddFillFullActTO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cmB_AddFillFullActTO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmB_AddFillFullActTO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cmB_AddFillFullActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmB_AddFillFullActTO.FormattingEnabled = true;
+            this.cmB_AddFillFullActTO.Location = new System.Drawing.Point(179, 29);
+            this.cmB_AddFillFullActTO.Name = "cmB_add_Fill_Full_ActTO";
+            this.cmB_AddFillFullActTO.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmB_AddFillFullActTO.Size = new System.Drawing.Size(94, 28);
+            this.cmB_AddFillFullActTO.TabIndex = 114;
+            this.cmB_AddFillFullActTO.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Fill_Full_ActTO_SelectionChangeCommitted);
             // 
             // button_save_in_file
             // 
@@ -3102,7 +3102,7 @@
             this.ShowIcon = false;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ST_WorkForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ST_WorkForm_FormClosed);
-            this.Load += new System.EventHandler(this.ST_WorkForm_Load);
+            this.Load += new System.EventHandler(this.STWorkFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -3162,7 +3162,7 @@
         private System.Windows.Forms.Button btn_actTO_print;
         private System.Windows.Forms.Panel panel_date;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label lbL_FIO_chief;
+        private System.Windows.Forms.Label lbl_ChiefFIO;
         private System.Windows.Forms.Label lbL_doverennost;
         private System.Windows.Forms.ComboBox cmB_seach;
         private System.Windows.Forms.Button btn_search;
@@ -3170,7 +3170,7 @@
         private System.Windows.Forms.Button btn_add_city;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label lbL_FIO_Engineer;
+        private System.Windows.Forms.Label lbl_EngineerFIO;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label28;
@@ -3319,9 +3319,9 @@
         private System.Windows.Forms.Button button_change_rst_form;
         private System.Windows.Forms.Button button_save_in_file;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ComboBox cmB_add_Fill_Full_ActTO;
+        private System.Windows.Forms.ComboBox cmB_AddFillFullActTO;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox cmB_add_Signature;
+        private System.Windows.Forms.ComboBox cmB_AddSignature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Signature;
         private System.Windows.Forms.PictureBox picB_delete_Item_Fill_Full_ActTO;
         private System.Windows.Forms.MenuStrip menuStrip1;
