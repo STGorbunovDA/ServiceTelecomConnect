@@ -142,7 +142,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.panel_remont_information_company = new System.Windows.Forms.Panel();
-            this.btn_Continue_remont_act_excel = new System.Windows.Forms.Button();
+            this.btn_ContinueRemontActExcel = new System.Windows.Forms.Button();
             this.txB_BE_remont = new System.Windows.Forms.TextBox();
             this.btn_close_remont_panel = new System.Windows.Forms.Button();
             this.label_company_remont = new System.Windows.Forms.Label();
@@ -360,7 +360,7 @@
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             this.dataGridView1.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserAddedRow);
             this.dataGridView1.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridView1UserDeletedRow);
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1KeyDown);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1MouseClick);
             // 
             // panel2
@@ -1086,7 +1086,7 @@
             this.btn_seach_panel_seach_datagrid.TabIndex = 36;
             this.btn_seach_panel_seach_datagrid.Text = "Поиск";
             this.btn_seach_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.btn_seach_panel_seach_datagrid.Click += new System.EventHandler(this.Button_seach_panel_seach_datagrid_Click);
+            this.btn_seach_panel_seach_datagrid.Click += new System.EventHandler(this.BtnSeachPanelSeachDatagridClick);
             // 
             // btn_close_panel_seach_datagrid
             // 
@@ -1098,7 +1098,7 @@
             this.btn_close_panel_seach_datagrid.TabIndex = 34;
             this.btn_close_panel_seach_datagrid.Text = "X";
             this.btn_close_panel_seach_datagrid.UseVisualStyleBackColor = false;
-            this.btn_close_panel_seach_datagrid.Click += new System.EventHandler(this.Button_close_panel_seach_datagrid_Click);
+            this.btn_close_panel_seach_datagrid.Click += new System.EventHandler(this.BtnClosePanelSeachDatagridClick);
             // 
             // txB_seach_panel_seach_datagrid
             // 
@@ -1107,9 +1107,9 @@
             this.txB_seach_panel_seach_datagrid.Name = "txB_seach_panel_seach_datagrid";
             this.txB_seach_panel_seach_datagrid.Size = new System.Drawing.Size(372, 29);
             this.txB_seach_panel_seach_datagrid.TabIndex = 37;
-            this.txB_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyDown);
-            this.txB_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyPress);
-            this.txB_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_seach_panel_seach_datagrid_KeyUp);
+            this.txB_seach_panel_seach_datagrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxbSeachPanelSeachDatagridKeyDown);
+            this.txB_seach_panel_seach_datagrid.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSeachPanelSeachDatagridKeyPress);
+            this.txB_seach_panel_seach_datagrid.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbSeachPanelSeachDatagridKeyUp);
             // 
             // label37
             // 
@@ -1220,7 +1220,7 @@
             this.btn_close_panel_info_phone_FIO.TabIndex = 34;
             this.btn_close_panel_info_phone_FIO.Text = "X";
             this.btn_close_panel_info_phone_FIO.UseVisualStyleBackColor = false;
-            this.btn_close_panel_info_phone_FIO.Click += new System.EventHandler(this.Button_close_panel_info_phone_FIO_Click);
+            this.btn_close_panel_info_phone_FIO.Click += new System.EventHandler(this.BtnClosePanelInfoPhoneFIOClick);
             // 
             // panel_txB_FIO_representative
             // 
@@ -1575,7 +1575,7 @@
             this.panel_remont_information_company.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_remont_information_company.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_remont_information_company.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_remont_information_company.Controls.Add(this.btn_Continue_remont_act_excel);
+            this.panel_remont_information_company.Controls.Add(this.btn_ContinueRemontActExcel);
             this.panel_remont_information_company.Controls.Add(this.txB_BE_remont);
             this.panel_remont_information_company.Controls.Add(this.btn_close_remont_panel);
             this.panel_remont_information_company.Controls.Add(this.label_company_remont);
@@ -1611,17 +1611,17 @@
             // 
             // btn_Continue_remont_act_excel
             // 
-            this.btn_Continue_remont_act_excel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_Continue_remont_act_excel.Enabled = false;
-            this.btn_Continue_remont_act_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Continue_remont_act_excel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Continue_remont_act_excel.Location = new System.Drawing.Point(616, 413);
-            this.btn_Continue_remont_act_excel.Name = "btn_Continue_remont_act_excel";
-            this.btn_Continue_remont_act_excel.Size = new System.Drawing.Size(163, 29);
-            this.btn_Continue_remont_act_excel.TabIndex = 36;
-            this.btn_Continue_remont_act_excel.Text = "Продолжить печать";
-            this.btn_Continue_remont_act_excel.UseVisualStyleBackColor = false;
-            this.btn_Continue_remont_act_excel.Click += new System.EventHandler(this.BtnContinueRemontActClick);
+            this.btn_ContinueRemontActExcel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_ContinueRemontActExcel.Enabled = false;
+            this.btn_ContinueRemontActExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ContinueRemontActExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_ContinueRemontActExcel.Location = new System.Drawing.Point(616, 413);
+            this.btn_ContinueRemontActExcel.Name = "btn_Continue_remont_act_excel";
+            this.btn_ContinueRemontActExcel.Size = new System.Drawing.Size(163, 29);
+            this.btn_ContinueRemontActExcel.TabIndex = 36;
+            this.btn_ContinueRemontActExcel.Text = "Продолжить печать";
+            this.btn_ContinueRemontActExcel.UseVisualStyleBackColor = false;
+            this.btn_ContinueRemontActExcel.Click += new System.EventHandler(this.BtnContinueRemontActClick);
             // 
             // txB_BE_remont
             // 
@@ -1641,7 +1641,7 @@
             this.btn_close_remont_panel.TabIndex = 34;
             this.btn_close_remont_panel.Text = "X";
             this.btn_close_remont_panel.UseVisualStyleBackColor = false;
-            this.btn_close_remont_panel.Click += new System.EventHandler(this.Button_close_remont_panel_Click);
+            this.btn_close_remont_panel.Click += new System.EventHandler(this.BtnCloseRemontPanelClick);
             // 
             // label_company_remont
             // 
@@ -1872,7 +1872,7 @@
             this.btn_information_remont_company_regedit.TabIndex = 8;
             this.btn_information_remont_company_regedit.Text = "Записать данные";
             this.btn_information_remont_company_regedit.UseVisualStyleBackColor = false;
-            this.btn_information_remont_company_regedit.Click += new System.EventHandler(this.Button_information_remont_company_regedit_Click);
+            this.btn_information_remont_company_regedit.Click += new System.EventHandler(this.BtnInformationRemontCompanyRegeditClick);
             // 
             // label_information_remont_pp
             // 
@@ -3244,7 +3244,7 @@
         private System.Windows.Forms.Label label_company_remont;
         private System.Windows.Forms.Button btn_close_remont_panel;
         private System.Windows.Forms.TextBox txB_BE_remont;
-        private System.Windows.Forms.Button btn_Continue_remont_act_excel;
+        private System.Windows.Forms.Button btn_ContinueRemontActExcel;
         private System.Windows.Forms.Button btn_close_panel_date_info;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label16;
