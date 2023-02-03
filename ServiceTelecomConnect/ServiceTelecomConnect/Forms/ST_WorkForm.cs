@@ -1490,7 +1490,7 @@ namespace ServiceTelecomConnect
                 }
                 // открываем функциональную панель
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.K)
-                    Button_Functional_loading_panel(sender, e);
+                    BtnFunctionalLoadingPanel(sender, e);
                 // открываем панель инфы о ФИО и номере баланосдержателя
                 if (e.Modifiers == Keys.Control && e.KeyCode == Keys.P)
                 {
@@ -1589,13 +1589,10 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region при выборе строк ползьзователем и их подсчёт
-
-        void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        void DataGridView1SelectionChanged(object sender, EventArgs e)
         {
             decimal sum = 0;
-
             HashSet<int> rowIndexes = new HashSet<int>();
-
             foreach (DataGridViewCell cell in dataGridView1.SelectedCells)
             {
                 if (!rowIndexes.Contains(cell.RowIndex))
@@ -1604,16 +1601,13 @@ namespace ServiceTelecomConnect
                     sum += Convert.ToDecimal(dataGridView1.Rows[cell.RowIndex].Cells["price"].Value);
                 }
             }
-
             lbL_cell_rows.Text = rowIndexes.Count.ToString();
             lbL_sum_TO_selection.Text = sum.ToString();
         }
-
         #endregion
 
         #region Функциональная панель
-
-        void Button_Functional_loading_panel(object sender, EventArgs e)
+        void BtnFunctionalLoadingPanel(object sender, EventArgs e)
         {
             if (_user.Login == "Admin")
             {
@@ -1624,7 +1618,7 @@ namespace ServiceTelecomConnect
                 panel3.Enabled = false;
             }
         }
-        void Close_Functional_loading_panel_Click(object sender, EventArgs e)
+        void CloseFunctionalLoadingPanelClick(object sender, EventArgs e)
         {
             Functional_loading_panel.Visible = false;
             Functional_loading_panel.Enabled = false;
@@ -1632,28 +1626,24 @@ namespace ServiceTelecomConnect
             panel1.Enabled = true;
             panel3.Enabled = true;
         }
-
+        
         #region добавление из файла
-
-        void Loading_file_current_BD_Click(object sender, EventArgs e)
+        void LoadingFileCurrentDataBaseClick(object sender, EventArgs e)
         {
             FunctionalPanel.LoadingFileCurrentDatabase();
         }
-
-        void Button_Loading_file_last_year_Click(object sender, EventArgs e)
+        void BtnLoadingFileLastYearClick(object sender, EventArgs e)
         {
             FunctionalPanel.LoadingFileLastYear();
         }
-
-        void Loading_file_full_BD_Click(object sender, EventArgs e)
+        void LoadingFileFullDataBaseClick(object sender, EventArgs e)
         {
             FunctionalPanel.LoadingFileFullDatabase();
         }
-
         #endregion
 
         #region загрузка и обновление json в radiostantion
-        void Loading_json_file_BD_Click(object sender, EventArgs e)
+        void LoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
             if (Internet_check.CheackSkyNET())
                 FunctionalPanel.LoadingJsonFileInDatabase(dataGridView1, cmB_city.Text);
@@ -1661,88 +1651,67 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region выгрузка всех данных из datagrid в JSON
-
-        void Button_Uploading_JSON_file_Click(object sender, EventArgs e)
+        void BtnUploadingJsonFileClick(object sender, EventArgs e)
         {
             FunctionalPanel.GetSaveDataGridViewInJson(dataGridView1, cmB_city.Text);
         }
-
         #endregion
 
         #region копирование текущей таблицы radiostantion в radiostantion_last_year к концу года 
-
-        void Button_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
+        void BtnCopyingCurrentDataBaseEndOfTheYearClick(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите скопировать всю базу данных?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             string Mesage2 = "Данное действие нужно делать к концу года, для следующего года, действительно хотите продолжить?";
-
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             FunctionalPanel.CopyingCurrentLastYear();
-
         }
         #endregion
 
         #region функцональная панель ручное-резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
-        void Manual_backup_current_BD_Click(object sender, EventArgs e)
+        void ManualBackupCurrentDataBaseClick(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите скопировать всю базу данных?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             FunctionalPanel.ManualBackupCurrent();
         }
         #endregion
 
         #region очистка текущей БД, текущий год (radiostantion)
-
-        void Clear_BD_current_year_Click(object sender, EventArgs e)
+        void ClearDataBaseCurrentYearClick(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите удалить всё содержимое базы данных?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             string Mesage2 = "Всё удалится безвозратно!!!Точно хотите удалить всё содержимое Базы данных?";
-
             if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             FunctionalPanel.ClearCurrentYear();
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-
         }
 
         #endregion
 
         #region показать БД прошлого года по участку
-
-        void Btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
+        void BtnShowDataBaseRadiostantionLastYearClick(object sender, EventArgs e)
         {
-            Close_Functional_loading_panel_Click(sender, e);
+            CloseFunctionalLoadingPanelClick(sender, e);
             FunctionalPanel.ShowRadiostantionLastYear(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
-
-
         #endregion
 
         #region показать общую БД по всем радиостанциям
-
-        void Btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
+        void BtnShowDataBaseRadiostantionFullClick(object sender, EventArgs e)
         {
-            Close_Functional_loading_panel_Click(sender, e);
+            CloseFunctionalLoadingPanelClick(sender, e);
             FunctionalPanel.ShowRadiostantionFull(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
         #endregion
-
         #endregion
 
         #region close form
@@ -2362,52 +2331,52 @@ namespace ServiceTelecomConnect
 
         void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
         {
-            Clear_BD_current_year_Click(sender, e);
+            ClearDataBaseCurrentYearClick(sender, e);
         }
 
         void MTrip_btn_manual_backup_current_DB_Click(object sender, EventArgs e)
         {
-            Manual_backup_current_BD_Click(sender, e);
+            ManualBackupCurrentDataBaseClick(sender, e);
         }
 
         void MTrip_btn_loading_file_current_DB_Click(object sender, EventArgs e)
         {
-            Loading_file_current_BD_Click(sender, e);
+            LoadingFileCurrentDataBaseClick(sender, e);
         }
 
         void MTrip_btn_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
         {
-            Button_Copying_current_BD_end_of_the_year_Click(sender, e);
+            BtnCopyingCurrentDataBaseEndOfTheYearClick(sender, e);
         }
 
         void MTrip_btn_Loading_file_last_year_Click(object sender, EventArgs e)
         {
-            Button_Loading_file_last_year_Click(sender, e);
+            BtnLoadingFileLastYearClick(sender, e);
         }
 
         void MTrip_btn_loading_file_full_BD_Click(object sender, EventArgs e)
         {
-            Loading_file_full_BD_Click(sender, e);
+            LoadingFileFullDataBaseClick(sender, e);
         }
 
         void MTrip_btn_loading_json_file_BD_Click(object sender, EventArgs e)
         {
-            Loading_json_file_BD_Click(sender, e);
+            LoadingJsonFileDataBaseClick(sender, e);
         }
 
         void MTrip_btn_Uploading_JSON_file_Click(object sender, EventArgs e)
         {
-            Button_Uploading_JSON_file_Click(sender, e);
+            BtnUploadingJsonFileClick(sender, e);
         }
 
         void MTrip_btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
         {
-            Btn_Show_DB_radiostantion_last_year_Click(sender, e);
+            BtnShowDataBaseRadiostantionLastYearClick(sender, e);
         }
 
         void MTrip_btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
         {
-            Btn_Show_DB_radiostantion_full_Click(sender, e);
+            BtnShowDataBaseRadiostantionFullClick(sender, e);
         }
 
         #endregion
