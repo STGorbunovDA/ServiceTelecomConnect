@@ -205,6 +205,8 @@
             this.picB_clear = new System.Windows.Forms.PictureBox();
             this.txB_numberActRemont = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.lbl_decommission = new System.Windows.Forms.Label();
             this.lbl_inRepair = new System.Windows.Forms.Label();
             this.lbl_121 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -269,8 +271,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.label38 = new System.Windows.Forms.Label();
-            this.lbl_decommission = new System.Windows.Forms.Label();
+            this.mTrip_PrintReportAKB = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -1493,13 +1494,13 @@
             this.label30.TabIndex = 21;
             this.label30.Text = "Доверенность:";
             // 
-            // lbL_FIO_chief
+            // lbl_ChiefFIO
             // 
             this.lbl_ChiefFIO.AutoSize = true;
             this.lbl_ChiefFIO.BackColor = System.Drawing.Color.Transparent;
             this.lbl_ChiefFIO.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_ChiefFIO.Location = new System.Drawing.Point(207, 104);
-            this.lbl_ChiefFIO.Name = "lbL_FIO_chief";
+            this.lbl_ChiefFIO.Name = "lbl_ChiefFIO";
             this.lbl_ChiefFIO.Size = new System.Drawing.Size(131, 22);
             this.lbl_ChiefFIO.TabIndex = 6;
             this.lbl_ChiefFIO.Text = "Иванов В.В.";
@@ -1526,13 +1527,13 @@
             this.label16.TabIndex = 75;
             this.label16.Text = "Дорога:";
             // 
-            // lbL_FIO_Engineer
+            // lbl_EngineerFIO
             // 
             this.lbl_EngineerFIO.AutoSize = true;
             this.lbl_EngineerFIO.BackColor = System.Drawing.Color.Transparent;
             this.lbl_EngineerFIO.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_EngineerFIO.Location = new System.Drawing.Point(207, 138);
-            this.lbl_EngineerFIO.Name = "lbL_FIO_Engineer";
+            this.lbl_EngineerFIO.Name = "lbl_EngineerFIO";
             this.lbl_EngineerFIO.Size = new System.Drawing.Size(142, 22);
             this.lbl_EngineerFIO.TabIndex = 18;
             this.lbl_EngineerFIO.Text = "Сидоров В.В.";
@@ -1609,14 +1610,14 @@
             this.panel_remont_information_company.TabIndex = 29;
             this.panel_remont_information_company.Visible = false;
             // 
-            // btn_Continue_remont_act_excel
+            // btn_ContinueRemontActExcel
             // 
             this.btn_ContinueRemontActExcel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_ContinueRemontActExcel.Enabled = false;
             this.btn_ContinueRemontActExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ContinueRemontActExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_ContinueRemontActExcel.Location = new System.Drawing.Point(616, 413);
-            this.btn_ContinueRemontActExcel.Name = "btn_Continue_remont_act_excel";
+            this.btn_ContinueRemontActExcel.Name = "btn_ContinueRemontActExcel";
             this.btn_ContinueRemontActExcel.Size = new System.Drawing.Size(163, 29);
             this.btn_ContinueRemontActExcel.TabIndex = 36;
             this.btn_ContinueRemontActExcel.Text = "Продолжить печать";
@@ -1976,7 +1977,7 @@
             this.picB_delete_Item_Fill_Full_ActTO.TabStop = false;
             this.picB_delete_Item_Fill_Full_ActTO.Click += new System.EventHandler(this.PicbDeleteItemFillFullActTOClick);
             // 
-            // cmB_add_Signature
+            // cmB_AddSignature
             // 
             this.cmB_AddSignature.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmB_AddSignature.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1985,7 +1986,7 @@
             this.cmB_AddSignature.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_AddSignature.FormattingEnabled = true;
             this.cmB_AddSignature.Location = new System.Drawing.Point(30, 29);
-            this.cmB_AddSignature.Name = "cmB_add_Signature";
+            this.cmB_AddSignature.Name = "cmB_AddSignature";
             this.cmB_AddSignature.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_AddSignature.Size = new System.Drawing.Size(94, 28);
             this.cmB_AddSignature.TabIndex = 85;
@@ -2031,7 +2032,7 @@
             this.label26.TabIndex = 113;
             this.label26.Text = "Заполняем:";
             // 
-            // cmB_add_Fill_Full_ActTO
+            // cmB_AddFillFullActTO
             // 
             this.cmB_AddFillFullActTO.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmB_AddFillFullActTO.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -2040,7 +2041,7 @@
             this.cmB_AddFillFullActTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_AddFillFullActTO.FormattingEnabled = true;
             this.cmB_AddFillFullActTO.Location = new System.Drawing.Point(179, 29);
-            this.cmB_AddFillFullActTO.Name = "cmB_add_Fill_Full_ActTO";
+            this.cmB_AddFillFullActTO.Name = "cmB_AddFillFullActTO";
             this.cmB_AddFillFullActTO.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_AddFillFullActTO.Size = new System.Drawing.Size(94, 28);
             this.cmB_AddFillFullActTO.TabIndex = 114;
@@ -2411,6 +2412,34 @@
             this.panel3.Size = new System.Drawing.Size(1426, 63);
             this.panel3.TabIndex = 29;
             // 
+            // label38
+            // 
+            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.Transparent;
+            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label38.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label38.Location = new System.Drawing.Point(993, 11);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(125, 20);
+            this.label38.TabIndex = 36;
+            this.label38.Text = "Общ. списание:";
+            // 
+            // lbl_decommission
+            // 
+            this.lbl_decommission.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lbl_decommission.AutoSize = true;
+            this.lbl_decommission.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_decommission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_decommission.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_decommission.Location = new System.Drawing.Point(1126, 14);
+            this.lbl_decommission.Name = "lbl_decommission";
+            this.lbl_decommission.Size = new System.Drawing.Size(39, 16);
+            this.lbl_decommission.TabIndex = 35;
+            this.lbl_decommission.Text = "7500";
+            // 
             // lbl_inRepair
             // 
             this.lbl_inRepair.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -2565,7 +2594,7 @@
             this.label22.TabIndex = 22;
             this.label22.Text = "Общее кол-во ремонтов:";
             // 
-            // lbL_summ_remont
+            // lbL_sumRemont
             // 
             this.lbL_sumRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbL_sumRemont.AutoSize = true;
@@ -2574,7 +2603,7 @@
             this.lbL_sumRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbL_sumRemont.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lbL_sumRemont.Location = new System.Drawing.Point(614, 36);
-            this.lbL_sumRemont.Name = "lbL_summ_remont";
+            this.lbL_sumRemont.Name = "lbL_sumRemont";
             this.lbL_sumRemont.Size = new System.Drawing.Size(107, 16);
             this.lbL_sumRemont.TabIndex = 25;
             this.lbL_sumRemont.Text = "9999999999.99";
@@ -2593,7 +2622,7 @@
             this.label19.TabIndex = 24;
             this.label19.Text = "Сумма Ремонтов:";
             // 
-            // lbL_count_remont
+            // lbL_countRemont
             // 
             this.lbL_countRemont.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbL_countRemont.AutoSize = true;
@@ -2602,7 +2631,7 @@
             this.lbL_countRemont.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbL_countRemont.ForeColor = System.Drawing.SystemColors.Desktop;
             this.lbL_countRemont.Location = new System.Drawing.Point(674, 14);
-            this.lbL_countRemont.Name = "lbL_count_remont";
+            this.lbL_countRemont.Name = "lbL_countRemont";
             this.lbL_countRemont.Size = new System.Drawing.Size(47, 16);
             this.lbL_countRemont.TabIndex = 23;
             this.lbL_countRemont.Text = "55555";
@@ -2785,7 +2814,8 @@
             this.mTrip_Button_actTO_print,
             this.mTrip_Button_remont_act,
             this.mTrip_PrintWord_Act_decommission,
-            this.mTrip_PrintStatementParameters});
+            this.mTrip_PrintStatementParameters,
+            this.mTrip_PrintReportAKB});
             this.mTrip_print.Name = "mTrip_print";
             this.mTrip_print.Size = new System.Drawing.Size(62, 20);
             this.mTrip_print.Text = "Печать";
@@ -3041,33 +3071,12 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
             // 
-            // label38
+            // mTrip_PrintReportAKB
             // 
-            this.label38.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.Transparent;
-            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label38.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label38.Location = new System.Drawing.Point(993, 11);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(125, 20);
-            this.label38.TabIndex = 36;
-            this.label38.Text = "Общ. списание:";
-            // 
-            // lbl_decommission
-            // 
-            this.lbl_decommission.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.lbl_decommission.AutoSize = true;
-            this.lbl_decommission.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_decommission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_decommission.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_decommission.Location = new System.Drawing.Point(1126, 14);
-            this.lbl_decommission.Name = "lbl_decommission";
-            this.lbl_decommission.Size = new System.Drawing.Size(39, 16);
-            this.lbl_decommission.TabIndex = 35;
-            this.lbl_decommission.Text = "7500";
+            this.mTrip_PrintReportAKB.Name = "mTrip_PrintReportAKB";
+            this.mTrip_PrintReportAKB.Size = new System.Drawing.Size(291, 22);
+            this.mTrip_PrintReportAKB.Text = "Печать отчёта АКБ по участку";
+            this.mTrip_PrintReportAKB.Click += new System.EventHandler(this.MTrip_PrintReportAKB_Click);
             // 
             // ST_WorkForm
             // 
@@ -3381,5 +3390,6 @@
         private System.Windows.Forms.Label lbl_inRepair;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label lbl_decommission;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_PrintReportAKB;
     }
 }
