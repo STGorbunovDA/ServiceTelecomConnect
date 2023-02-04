@@ -2075,56 +2075,48 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать списанные РСТ по участку
-
-        void Btn_RefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
+        void BtnRefreshDataGridtDecommissionByPlot(object sender, EventArgs e)
         {
             QuerySettingDataBase.RefreshDataGridtDecommissionByPlot(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
-
-
         #endregion
 
         #region Бирка
-
         void FormTag(object sender, EventArgs e)
         {
             panel_Tag.Visible = true;
             panel_Tag.Enabled = true;
             txB_Date_panel_Tag.Select();
         }
-        void TxB_Date_panel_Tag_Click(object sender, EventArgs e)
+        void TxbDatePnlTagClick(object sender, EventArgs e)
         {
             monthCalendar1.Visible = true;
         }
-        void MonthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        void MonthCalendar1DateSelected(object sender, DateRangeEventArgs e)
         {
             txB_Date_panel_Tag.Text = e.End.ToString("dd.MM.yyyy");
             monthCalendar1.Visible = false;
         }
-        void Btn_close_panel_Tag_Click(object sender, EventArgs e)
+        void BtnClosePnlTagClick(object sender, EventArgs e)
         {
             panel_Tag.Visible = false;
         }
-        void Btn_FormTag_Click(object sender, EventArgs e)
+        void BtnFormTagClick(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_Date_panel_Tag.Text))
             {
                 string month2;
-
                 DateTime dateTag = Convert.ToDateTime(txB_Date_panel_Tag.Text);
                 DateTime mothCheackTag = dateTag.AddMonths(0).AddDays(0);
-
                 if (dateTag == mothCheackTag)
                     month2 = dateTag.AddMonths(1).ToString("MM");
                 else month2 = dateTag.ToString("MM");
-
                 string month = dateTag.ToString("MM");
                 string day = dateTag.ToString("dd");
                 string year = dateTag.ToString("yyyy");
                 string day2 = dateTag.AddDays(1).ToString("dd");
                 string year2 = dateTag.AddYears(1).ToString("yyyy");
-
                 var items2 = new Dictionary<string, string>
                 {
                     {"day", day },
@@ -2139,28 +2131,22 @@ namespace ServiceTelecomConnect
                 };
                 PrintDocExcel.GetInstance.ProcessPrintWordTag(items2, txB_Date_panel_Tag.Text);
             }
-
             else MessageBox.Show("Заполни дату!");
         }
-
-
         #endregion
 
         #region Добавление радиостанций в выполнение для куратора
-
         void AddExecution(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage = $"Вы действительно хотите добавить радиостанции в выполнение: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
             else
             {
                 string Mesage = $"Вы действительно хотите добавить радиостанцию в выполнение: {txB_serialNumber.Text}, предприятия: {txB_company.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -2179,7 +2165,6 @@ namespace ServiceTelecomConnect
             m.MenuItems.Add(new MenuItem("Декабрь", (s, ee) => AddExecutionСurator.AddExecutionRowСell(dataGridView1, "Декабрь")));
             m.Show(dataGridView1, new Point(dataGridView1.Location.X + 700, dataGridView1.Location.Y));
         }
-
         #endregion
 
         #region Поиск по номеру акта из Combobox-ов (на подпись и заполнем до полного акты)
@@ -2300,7 +2285,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click(object sender, EventArgs e)
         {
-            Btn_RefreshDataGridtDecommissionByPlot(sender, e);
+            BtnRefreshDataGridtDecommissionByPlot(sender, e);
         }
 
         void MTrip_PictureBox_seach_datadrid_replay_Click_Click(object sender, EventArgs e)
