@@ -1990,7 +1990,7 @@
             this.cmB_AddSignature.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_AddSignature.Size = new System.Drawing.Size(94, 28);
             this.cmB_AddSignature.TabIndex = 85;
-            this.cmB_AddSignature.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Signature_SelectionChangeCommitted);
+            this.cmB_AddSignature.SelectionChangeCommitted += new System.EventHandler(this.CmbAddSignatureSelectionChangeCommitted);
             // 
             // picB_delete_Item_Signature
             // 
@@ -2045,7 +2045,7 @@
             this.cmB_AddFillFullActTO.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_AddFillFullActTO.Size = new System.Drawing.Size(94, 28);
             this.cmB_AddFillFullActTO.TabIndex = 114;
-            this.cmB_AddFillFullActTO.SelectionChangeCommitted += new System.EventHandler(this.CmB_add_Fill_Full_ActTO_SelectionChangeCommitted);
+            this.cmB_AddFillFullActTO.SelectionChangeCommitted += new System.EventHandler(this.CmbAddFillFullActTOSelectionChangeCommitted);
             // 
             // button_save_in_file
             // 
