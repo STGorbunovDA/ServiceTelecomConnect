@@ -2710,35 +2710,35 @@
             this.mTrip_new_add_rst.Name = "mTrip_new_add_rst";
             this.mTrip_new_add_rst.Size = new System.Drawing.Size(288, 22);
             this.mTrip_new_add_rst.Text = "Добавить новую радиостанцию";
-            this.mTrip_new_add_rst.Click += new System.EventHandler(this.MTrip_new_add_rst_Click);
+            this.mTrip_new_add_rst.Click += new System.EventHandler(this.MTripNewAddRadiostantionClick);
             // 
             // mTrip_change_rst
             // 
             this.mTrip_change_rst.Name = "mTrip_change_rst";
             this.mTrip_change_rst.Size = new System.Drawing.Size(288, 22);
             this.mTrip_change_rst.Text = "Изменить радиостанцию";
-            this.mTrip_change_rst.Click += new System.EventHandler(this.MTrip_change_rst_Click);
+            this.mTrip_change_rst.Click += new System.EventHandler(this.MTripChangeRadiostantionClick);
             // 
             // mTrip_new_add_rst_remont
             // 
             this.mTrip_new_add_rst_remont.Name = "mTrip_new_add_rst_remont";
             this.mTrip_new_add_rst_remont.Size = new System.Drawing.Size(288, 22);
             this.mTrip_new_add_rst_remont.Text = "Добавить/изменить ремонт";
-            this.mTrip_new_add_rst_remont.Click += new System.EventHandler(this.MTrip_new_add_rst_remont_Click);
+            this.mTrip_new_add_rst_remont.Click += new System.EventHandler(this.MTripNewAddRadiostantionRemontClick);
             // 
             // mTrip_pnl_ChangeNumberActTOFull
             // 
             this.mTrip_pnl_ChangeNumberActTOFull.Name = "mTrip_pnl_ChangeNumberActTOFull";
             this.mTrip_pnl_ChangeNumberActTOFull.Size = new System.Drawing.Size(288, 22);
             this.mTrip_pnl_ChangeNumberActTOFull.Text = "Изменить номер акта";
-            this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTrip_pnl_ChangeNumberActTOFull_Click);
+            this.mTrip_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.MTripPnlChangeNumberActTOFullClick);
             // 
             // mTrip_AddRadioStationParameters
             // 
             this.mTrip_AddRadioStationParameters.Name = "mTrip_AddRadioStationParameters";
             this.mTrip_AddRadioStationParameters.Size = new System.Drawing.Size(288, 22);
             this.mTrip_AddRadioStationParameters.Text = "Добавить параметры радиостанции";
-            this.mTrip_AddRadioStationParameters.Click += new System.EventHandler(this.MTrip_AddRadioStationParameters_Click);
+            this.mTrip_AddRadioStationParameters.Click += new System.EventHandler(this.MTripAddRadioStationParametersClick);
             // 
             // mTrip_delete
             // 
@@ -2755,21 +2755,21 @@
             this.mTrip_delete_rst.Name = "mTrip_delete_rst";
             this.mTrip_delete_rst.Size = new System.Drawing.Size(212, 22);
             this.mTrip_delete_rst.Text = "Удалить радиостанцию";
-            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTrip_delete_rst_Click);
+            this.mTrip_delete_rst.Click += new System.EventHandler(this.MTripDeleteRadiostantionClick);
             // 
             // mTrip_delete_rst_remont
             // 
             this.mTrip_delete_rst_remont.Name = "mTrip_delete_rst_remont";
             this.mTrip_delete_rst_remont.Size = new System.Drawing.Size(212, 22);
             this.mTrip_delete_rst_remont.Text = "Удалить ремонт";
-            this.mTrip_delete_rst_remont.Click += new System.EventHandler(this.MTrip_delete_rst_remont_Click);
+            this.mTrip_delete_rst_remont.Click += new System.EventHandler(this.MTripDeleteRadiostantionRemontClick);
             // 
             // mTrip_delete_rst_decommission
             // 
             this.mTrip_delete_rst_decommission.Name = "mTrip_delete_rst_decommission";
             this.mTrip_delete_rst_decommission.Size = new System.Drawing.Size(212, 22);
             this.mTrip_delete_rst_decommission.Text = "Удалить списание";
-            this.mTrip_delete_rst_decommission.Click += new System.EventHandler(this.MTrip_delete_rst_decommission_Click);
+            this.mTrip_delete_rst_decommission.Click += new System.EventHandler(this.MTripDeleteRadiostantionDecommissionClick);
             // 
             // mTrip_decommission
             // 
@@ -2784,7 +2784,7 @@
             this.mTrip_rst_decommission.Name = "mTrip_rst_decommission";
             this.mTrip_rst_decommission.Size = new System.Drawing.Size(149, 22);
             this.mTrip_rst_decommission.Text = "Списать РСТ";
-            this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTrip_rst_decommission_Click);
+            this.mTrip_rst_decommission.Click += new System.EventHandler(this.MTripRadiostantionDecommissionClick);
             // 
             // mTrip_Curator
             // 
@@ -2799,14 +2799,14 @@
             this.mTrip_AddExecution.Name = "mTrip_AddExecution";
             this.mTrip_AddExecution.Size = new System.Drawing.Size(217, 22);
             this.mTrip_AddExecution.Text = "Добавить в выполнение";
-            this.mTrip_AddExecution.Click += new System.EventHandler(this.MTrip_AddExecution_Click);
+            this.mTrip_AddExecution.Click += new System.EventHandler(this.MTripAddExecutionClick);
             // 
             // mTrip_Button_update
             // 
             this.mTrip_Button_update.Name = "mTrip_Button_update";
             this.mTrip_Button_update.Size = new System.Drawing.Size(77, 20);
             this.mTrip_Button_update.Text = "Обновить";
-            this.mTrip_Button_update.Click += new System.EventHandler(this.MTrip_Button_update_Click);
+            this.mTrip_Button_update.Click += new System.EventHandler(this.MTripBtnUpdateClick);
             // 
             // mTrip_print
             // 
@@ -2825,28 +2825,28 @@
             this.mTrip_Button_actTO_print.Name = "mTrip_Button_actTO_print";
             this.mTrip_Button_actTO_print.Size = new System.Drawing.Size(291, 22);
             this.mTrip_Button_actTO_print.Text = "Печатать акт ТО";
-            this.mTrip_Button_actTO_print.Click += new System.EventHandler(this.MTrip_Button_actTO_print_Click);
+            this.mTrip_Button_actTO_print.Click += new System.EventHandler(this.MTripBtnActTOPrintClick);
             // 
             // mTrip_Button_remont_act
             // 
             this.mTrip_Button_remont_act.Name = "mTrip_Button_remont_act";
             this.mTrip_Button_remont_act.Size = new System.Drawing.Size(291, 22);
             this.mTrip_Button_remont_act.Text = "Печатать акт Ремонта";
-            this.mTrip_Button_remont_act.Click += new System.EventHandler(this.MTrip_Button_remont_act_Click);
+            this.mTrip_Button_remont_act.Click += new System.EventHandler(this.MTripBtnRemontActClick);
             // 
             // mTrip_PrintWord_Act_decommission
             // 
             this.mTrip_PrintWord_Act_decommission.Name = "mTrip_PrintWord_Act_decommission";
             this.mTrip_PrintWord_Act_decommission.Size = new System.Drawing.Size(291, 22);
             this.mTrip_PrintWord_Act_decommission.Text = "Печатать акт Списания";
-            this.mTrip_PrintWord_Act_decommission.Click += new System.EventHandler(this.MTrip_PrintWord_Act_decommission_Click);
+            this.mTrip_PrintWord_Act_decommission.Click += new System.EventHandler(this.MTripPrintWordActDecommissionClick);
             // 
             // mTrip_PrintStatementParameters
             // 
             this.mTrip_PrintStatementParameters.Name = "mTrip_PrintStatementParameters";
             this.mTrip_PrintStatementParameters.Size = new System.Drawing.Size(291, 22);
             this.mTrip_PrintStatementParameters.Text = "Печатать ведомость с параметрами";
-            this.mTrip_PrintStatementParameters.Click += new System.EventHandler(this.MTrip_PrintStatementParameters_Click);
+            this.mTrip_PrintStatementParameters.Click += new System.EventHandler(this.MTripPrintStatementParametersClick);
             // 
             // mTrip_expansion
             // 
@@ -2864,28 +2864,28 @@
             this.mTrip_Button_save_in_file.Name = "mTrip_Button_save_in_file";
             this.mTrip_Button_save_in_file.Size = new System.Drawing.Size(185, 22);
             this.mTrip_Button_save_in_file.Text = "Сохранение базы";
-            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTrip_Button_save_in_file_Click);
+            this.mTrip_Button_save_in_file.Click += new System.EventHandler(this.MTripBtnSaveInFileClick);
             // 
             // mTrip_FormTag
             // 
             this.mTrip_FormTag.Name = "mTrip_FormTag";
             this.mTrip_FormTag.Size = new System.Drawing.Size(185, 22);
             this.mTrip_FormTag.Text = "Печатать бирки";
-            this.mTrip_FormTag.Click += new System.EventHandler(this.MTrip_FormTag_Click);
+            this.mTrip_FormTag.Click += new System.EventHandler(this.MTripFormTagClick);
             // 
             // mTrip_Add_Fill_Full_ActTO
             // 
             this.mTrip_Add_Fill_Full_ActTO.Name = "mTrip_Add_Fill_Full_ActTO";
             this.mTrip_Add_Fill_Full_ActTO.Size = new System.Drawing.Size(185, 22);
             this.mTrip_Add_Fill_Full_ActTO.Text = "Заполняем акт";
-            this.mTrip_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.MTrip_Add_Fill_Full_ActTO_Click);
+            this.mTrip_Add_Fill_Full_ActTO.Click += new System.EventHandler(this.MTripAddFillFullActTOClick);
             // 
             // mTrip_Add_Signature_ActTO
             // 
             this.mTrip_Add_Signature_ActTO.Name = "mTrip_Add_Signature_ActTO";
             this.mTrip_Add_Signature_ActTO.Size = new System.Drawing.Size(185, 22);
             this.mTrip_Add_Signature_ActTO.Text = "На подписание акт";
-            this.mTrip_Add_Signature_ActTO.Click += new System.EventHandler(this.MTrip_Add_Signature_ActTO_Click);
+            this.mTrip_Add_Signature_ActTO.Click += new System.EventHandler(this.MTripAddSignatureActTOClick);
             // 
             // mTrip_show
             // 
@@ -2903,28 +2903,28 @@
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Name = "mTrip_Btn_RefreshDataGridWithoutDecommission";
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Btn_RefreshDataGridWithoutDecommission.Text = "Показать РСТ без списаний по участку";
-            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Click += new System.EventHandler(this.MTrip_Btn_RefreshDataGridWithoutDecommission_Click);
+            this.mTrip_Btn_RefreshDataGridWithoutDecommission.Click += new System.EventHandler(this.MTripBtnRefreshDataGridWithoutDecommissionClick);
             // 
             // mTrip_Btn_RefreshDataGridtDecommissionByPlot
             // 
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Name = "mTrip_Btn_RefreshDataGridtDecommissionByPlot";
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Text = "Показать списанные РСТ по участку";
-            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Click += new System.EventHandler(this.MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click);
+            this.mTrip_Btn_RefreshDataGridtDecommissionByPlot.Click += new System.EventHandler(this.MTripBtnRefreshDataGridtDecommissionByPlotClick);
             // 
             // mTrip_PictureBox_seach_datadrid_replay_Click
             // 
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Name = "mTrip_PictureBox_seach_datadrid_replay_Click";
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Size = new System.Drawing.Size(326, 22);
             this.mTrip_PictureBox_seach_datadrid_replay_Click.Text = "Показать совпадение с предыдущим годом";
-            this.mTrip_PictureBox_seach_datadrid_replay_Click.Click += new System.EventHandler(this.MTrip_PictureBox_seach_datadrid_replay_Click_Click);
+            this.mTrip_PictureBox_seach_datadrid_replay_Click.Click += new System.EventHandler(this.MTripPictureBoxSeachDatadridReplayClick);
             // 
             // mTrip_Show_radiostantion_decommission_Click
             // 
             this.mTrip_Show_radiostantion_decommission_Click.Name = "mTrip_Show_radiostantion_decommission_Click";
             this.mTrip_Show_radiostantion_decommission_Click.Size = new System.Drawing.Size(326, 22);
             this.mTrip_Show_radiostantion_decommission_Click.Text = "Показать все списания по дороге";
-            this.mTrip_Show_radiostantion_decommission_Click.Click += new System.EventHandler(this.MTrip_Show_radiostantion_decommission_Click_Click);
+            this.mTrip_Show_radiostantion_decommission_Click.Click += new System.EventHandler(this.MTripShowRadiostantionDecommissionClick);
             // 
             // mTrip_funcionalpanel
             // 
@@ -2948,7 +2948,7 @@
             this.mTrip_btn_clear_BD_current_year.Name = "mTrip_btn_clear_BD_current_year";
             this.mTrip_btn_clear_BD_current_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_clear_BD_current_year.Text = "Полная очистка БД текущего года";
-            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTrip_btn_clear_BD_current_year_Click);
+            this.mTrip_btn_clear_BD_current_year.Click += new System.EventHandler(this.MTripBtnClearDataBaseCurrentYearClick);
             // 
             // mTrip_btn_manual_backup_current_DB
             // 
