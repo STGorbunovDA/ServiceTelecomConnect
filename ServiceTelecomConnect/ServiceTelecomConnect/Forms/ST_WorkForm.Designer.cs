@@ -1266,7 +1266,7 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 39;
             this.monthCalendar1.Visible = false;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1DateSelected);
             // 
             // btn_FormTag
             // 
@@ -1278,7 +1278,7 @@
             this.btn_FormTag.TabIndex = 36;
             this.btn_FormTag.Text = "Сформировать";
             this.btn_FormTag.UseVisualStyleBackColor = false;
-            this.btn_FormTag.Click += new System.EventHandler(this.Btn_FormTag_Click);
+            this.btn_FormTag.Click += new System.EventHandler(this.BtnFormTagClick);
             // 
             // btn_close_panel_Tag
             // 
@@ -1290,7 +1290,7 @@
             this.btn_close_panel_Tag.TabIndex = 34;
             this.btn_close_panel_Tag.Text = "X";
             this.btn_close_panel_Tag.UseVisualStyleBackColor = false;
-            this.btn_close_panel_Tag.Click += new System.EventHandler(this.Btn_close_panel_Tag_Click);
+            this.btn_close_panel_Tag.Click += new System.EventHandler(this.BtnClosePnlTagClick);
             // 
             // txB_Date_panel_Tag
             // 
@@ -1301,7 +1301,7 @@
             this.txB_Date_panel_Tag.ReadOnly = true;
             this.txB_Date_panel_Tag.Size = new System.Drawing.Size(185, 29);
             this.txB_Date_panel_Tag.TabIndex = 37;
-            this.txB_Date_panel_Tag.Click += new System.EventHandler(this.TxB_Date_panel_Tag_Click);
+            this.txB_Date_panel_Tag.Click += new System.EventHandler(this.TxbDatePnlTagClick);
             // 
             // label34
             // 
