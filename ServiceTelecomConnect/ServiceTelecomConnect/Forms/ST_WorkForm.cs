@@ -1967,8 +1967,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать кол-во уникальных актов
-
-        void ComboBox_seach_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbSeachSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -1992,7 +1991,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueLocationFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_location(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueLocation(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 2)
             {
@@ -2007,7 +2006,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueDateTOFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_dateTO(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueDateTO(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 4)
             {
@@ -2017,7 +2016,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueNumberActFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_numberAct(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueNumberAct(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 5)
             {
@@ -2027,7 +2026,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueNumberActRemontFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_numberActRemont(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueNumberActRemont(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 6)
             {
@@ -2037,7 +2036,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueRepresentativeFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_representative(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueRepresentative(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 7)
             {
@@ -2047,7 +2046,7 @@ namespace ServiceTelecomConnect
 
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueDecommissionActsFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_decommissionActs(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueDecommissionActs(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else if (cmB_seach.SelectedIndex == 8)
             {
@@ -2056,7 +2055,7 @@ namespace ServiceTelecomConnect
                 textBox_search.Clear();
                 if (txb_flag_all_BD.Text == "Вся БД")
                     QuerySettingDataBase.NumberUniqueModelFullDataBase(cmb_number_unique_acts, cmB_road.Text);
-                else QuerySettingDataBase.Number_unique_model(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
+                else QuerySettingDataBase.NumberUniqueModel(cmB_city.Text, cmb_number_unique_acts, cmB_road.Text);
             }
             else
             {
@@ -2068,14 +2067,11 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region показать РСТ без списаний по участку
-
-        void Btn_RefreshDataGridWithoutDecommission(object sender, EventArgs e)
+        void BtnRefreshDataGridWithoutDecommission(object sender, EventArgs e)
         {
             QuerySettingDataBase.RefreshDataGridWithoutDecommission(dataGridView1, cmB_city.Text, cmB_road.Text);
             Counters();
         }
-
-
         #endregion
 
         #region показать списанные РСТ по участку
@@ -2299,7 +2295,7 @@ namespace ServiceTelecomConnect
 
         void MTrip_Btn_RefreshDataGridWithoutDecommission_Click(object sender, EventArgs e)
         {
-            Btn_RefreshDataGridWithoutDecommission(sender, e);
+            BtnRefreshDataGridWithoutDecommission(sender, e);
         }
 
         void MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click(object sender, EventArgs e)
