@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -2239,7 +2241,7 @@ namespace ServiceTelecomConnect
                     {
                         try
                         {
-                            if(frequencyTransmitter[u].Contains("/"))
+                            if (frequencyTransmitter[u].Contains("/"))
                             {
                                 Excel.Range _excelCells300 = (Excel.Range)workSheet.get_Range($"X{countCell}", $"Y{countCell}").Cells;
                                 _excelCells300.Merge(Type.Missing);
@@ -2254,7 +2256,7 @@ namespace ServiceTelecomConnect
                             count++;
                             countCell++;
                             continue;
-                        }    
+                        }
                     }
 
                     string transmitterFrequenciesRST = String.Empty;
@@ -2491,12 +2493,12 @@ namespace ServiceTelecomConnect
                             countDop++;
                             countCellTwo++;
                         }
-                        catch 
+                        catch
                         {
                             countCellTwo++;
                             countDop++;
                             continue;
-                        }                      
+                        }
                     }
                     s4 = 1;
                     jj3 = 40;
@@ -2662,11 +2664,9 @@ namespace ServiceTelecomConnect
             try
             {
                 Type officeType = Type.GetTypeFromProgID("Excel.Application");
-
                 if (officeType == null)
                 {
                     string Mesage2 = "У Вас не установлен Excel!";
-
                     if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
@@ -2674,7 +2674,6 @@ namespace ServiceTelecomConnect
                 {
 
                     exApp.SheetsInNewWorkbook = 2;
-
                     exApp.Workbooks.Add();
                     exApp.DisplayAlerts = false;
 
@@ -3757,8 +3756,56 @@ namespace ServiceTelecomConnect
                 GC.WaitForPendingFinalizers();
 
                 MessageBox.Show(ex.ToString());
-                Environment.Exit(0);
             }
         }
+
+        internal static void PrintExcelReportAKB(string cmb_city, string cmb_road)
+        {
+            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{cmb_city}' " +
+               $"AND road = '{cmb_road}' ORDER BY company";
+            string value = String.Empty;
+            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetString(0);
+
+                        Excel.Application exApp = new Excel.Application();
+
+                        try
+                        {
+                            Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                            if (officeType == null)
+                            {
+                                string Mesage2 = "У Вас не установлен Excel!";
+                                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                                    return;
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (exApp != null)
+                                exApp = null;
+
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+
+                            MessageBox.Show(ex.ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                DB.GetInstance.CloseConnection();
+            }
+        }
+
+
     }
 }
