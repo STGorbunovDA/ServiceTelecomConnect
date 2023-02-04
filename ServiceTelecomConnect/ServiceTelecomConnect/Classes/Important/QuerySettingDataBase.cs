@@ -2111,7 +2111,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_model(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueModel(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             string querystring2 = $"SELECT DISTINCT model FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY model";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
@@ -2130,7 +2130,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_location(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueLocation(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
 
             string querystring2 = $"SELECT DISTINCT location FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY location";
@@ -2150,7 +2150,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_dateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueDateTO(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             List<string> newList = new List<string>();
             string querystring2 = $"SELECT DISTINCT dateTO FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY dateTO DESC";
@@ -2174,7 +2174,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_numberAct(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueNumberAct(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             string querystring2 = $"SELECT DISTINCT numberAct FROM radiostantion " +
                 $"WHERE city = '{comboBox_city}' AND road = '{road}' AND numberAct != ''";
@@ -2194,7 +2194,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_numberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueNumberActRemont(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             string querystring2 = $"SELECT DISTINCT numberActRemont FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY numberActRemont";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
@@ -2213,7 +2213,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_representative(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueRepresentative(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
             string querystring2 = $"SELECT DISTINCT representative FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY representative";
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
@@ -2232,7 +2232,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void Number_unique_decommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
+        internal static void NumberUniqueDecommissionActs(string comboBox_city, ComboBox cmb_number_unique_acts, string road)
         {
 
             string querystring2 = $"SELECT DISTINCT decommissionSerialNumber FROM radiostantion WHERE city = '{comboBox_city}' AND road = '{road}' ORDER BY decommissionSerialNumber";
