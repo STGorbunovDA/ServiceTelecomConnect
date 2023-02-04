@@ -8,8 +8,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-//using System.Text.RegularExpressions;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace ServiceTelecomConnect
 {
@@ -2674,15 +2672,15 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    exApp.SheetsInNewWorkbook = 2;
+                    exApp.SheetsInNewWorkbook = 1;
                     exApp.Workbooks.Add();
                     exApp.DisplayAlerts = false;
 
                     Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
-                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
+                    DateTime dateTime = new DateTime();
+                    dateTime = DateTime.Now;
 
-                    workSheet.Name = $"Сводный отчёт г. {city}";
-                    workSheet2.Name = $"Общий отчёт г. {city}";
+                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime.ToString("yyyy")} г.";
 
                     #region Сводный отчёт
 
@@ -2706,8 +2704,7 @@ namespace ServiceTelecomConnect
                     _excelCells700.EntireRow.RowHeight = 25;
                     _excelCells700.Font.Size = 16;
                     _excelCells700.Font.Bold = true;
-                    DateTime dateTime = new DateTime();
-                    dateTime = DateTime.Now;
+                    
                     workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон {poligon} участка {city} {dateTime.ToString("yyyy")} г.";
                     Excel.Range _excelCells701 = (Excel.Range)workSheet.get_Range("A1").Cells;
                     _excelCells701.EntireColumn.ColumnWidth = 4;
@@ -2827,11 +2824,7 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    #region Общий отчёт
-
-                    #endregion
-
-                    string file = $"{city}_Отчёт_АКБ.xlsx";
+                    string file = $"{city}_Отчёт_АКБ_{dateTime.ToString("yyyy")}.xlsx";
 
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
                     {
