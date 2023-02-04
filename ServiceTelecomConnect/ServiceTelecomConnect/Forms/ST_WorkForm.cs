@@ -2173,132 +2173,107 @@ namespace ServiceTelecomConnect
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddSignature.Text);
             Counters();
         }
-
         void CmbAddFillFullActTOSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddFillFullActTO.Text);
             Counters();
         }
-
         #endregion
 
         #region MenuTrip
-
-        void MTrip_PrintStatementParameters_Click(object sender, EventArgs e)
+        void MTripPrintStatementParametersClick(object sender, EventArgs e)
         {
             PrintStatementParameters(sender, e);
         }
-
-        void MTrip_AddRadioStationParameters_Click(object sender, EventArgs e)
+        void MTripAddRadioStationParametersClick(object sender, EventArgs e)
         {
             AddRadioStationParameters(sender, e);
         }
-        void MTrip_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        void MTripPnlChangeNumberActTOFullClick(object sender, EventArgs e)
         {
             ChangeNumberAct(sender, e);
         }
-
-        void MTrip_new_add_rst_Click(object sender, EventArgs e)
+        void MTripNewAddRadiostantionClick(object sender, EventArgs e)
         {
             BtnNewAddRadiostantionFormClick(sender, e);
         }
-
-        void MTrip_change_rst_Click(object sender, EventArgs e)
+        void MTripChangeRadiostantionClick(object sender, EventArgs e)
         {
             BtnChangeRadiostantionFormClick(sender, e);
         }
-
-        void MTrip_new_add_rst_remont_Click(object sender, EventArgs e)
+        void MTripNewAddRadiostantionRemontClick(object sender, EventArgs e)
         {
             BtnNewAddRadiostantionFormClickRemont(sender, e);
         }
-
-        void MTrip_delete_rst_Click(object sender, EventArgs e)
+        void MTripDeleteRadiostantionClick(object sender, EventArgs e)
         {
             BtnDeleteClick(sender, e);
         }
-
-        void MTrip_delete_rst_remont_Click(object sender, EventArgs e)
+        void MTripDeleteRadiostantionRemontClick(object sender, EventArgs e)
         {
             DeleteRadiostantionRemontClick(sender, e);
         }
-
-        void MTrip_delete_rst_decommission_Click(object sender, EventArgs e)
+        void MTripDeleteRadiostantionDecommissionClick(object sender, EventArgs e)
         {
             DeleteRadiostantionDecommissionClick(sender, e);
         }
-
-        void MTrip_rst_decommission_Click(object sender, EventArgs e)
+        void MTripRadiostantionDecommissionClick(object sender, EventArgs e)
         {
             DecommissionSerialNumber(sender, e);
         }
-
-        void MTrip_AddExecution_Click(object sender, EventArgs e)
+        void MTripAddExecutionClick(object sender, EventArgs e)
         {
             AddExecution(sender, e);
         }
-
-        void MTrip_Button_update_Click(object sender, EventArgs e)
+        void MTripBtnUpdateClick(object sender, EventArgs e)
         {
             BtnUpdateClick(sender, e);
         }
-
-        void MTrip_Button_actTO_print_Click(object sender, EventArgs e)
+        void MTripBtnActTOPrintClick(object sender, EventArgs e)
         {
             BtnActTOPrintClick(sender, e);
         }
-
-        void MTrip_Button_remont_act_Click(object sender, EventArgs e)
+        void MTripBtnRemontActClick(object sender, EventArgs e)
         {
             BtnRemontActClick(sender, e);
         }
-
-        void MTrip_PrintWord_Act_decommission_Click(object sender, EventArgs e)
+        void MTripPrintWordActDecommissionClick(object sender, EventArgs e)
         {
             PrintWordActDecommission(sender, e);
         }
-
-        void MTrip_Button_save_in_file_Click(object sender, EventArgs e)
+        void MTripBtnSaveInFileClick(object sender, EventArgs e)
         {
             BtnSaveInFileClick(sender, e);
         }
-
-        void MTrip_FormTag_Click(object sender, EventArgs e)
+        void MTripFormTagClick(object sender, EventArgs e)
         {
             FormTag(sender, e);
         }
-
-        void MTrip_Add_Fill_Full_ActTO_Click(object sender, EventArgs e)
+        void MTripAddFillFullActTOClick(object sender, EventArgs e)
         {
             AddFillFullActTO(sender, e);
         }
-
-        void MTrip_Add_Signature_ActTO_Click(object sender, EventArgs e)
+        void MTripAddSignatureActTOClick(object sender, EventArgs e)
         {
             AddSignatureActTO(sender, e);
         }
-
-        void MTrip_Btn_RefreshDataGridWithoutDecommission_Click(object sender, EventArgs e)
+        void MTripBtnRefreshDataGridWithoutDecommissionClick(object sender, EventArgs e)
         {
             BtnRefreshDataGridWithoutDecommission(sender, e);
         }
-
-        void MTrip_Btn_RefreshDataGridtDecommissionByPlot_Click(object sender, EventArgs e)
+        void MTripBtnRefreshDataGridtDecommissionByPlotClick(object sender, EventArgs e)
         {
             BtnRefreshDataGridtDecommissionByPlot(sender, e);
         }
-
-        void MTrip_PictureBox_seach_datadrid_replay_Click_Click(object sender, EventArgs e)
+        void MTripPictureBoxSeachDatadridReplayClick(object sender, EventArgs e)
         {
             PicbSeachDatadridReplayClick(sender, e);
         }
-
-        void MTrip_Show_radiostantion_decommission_Click_Click(object sender, EventArgs e)
+        void MTripShowRadiostantionDecommissionClick(object sender, EventArgs e)
         {
             ShowRadiostantionDecommissionClick(sender, e);
         }
-
-        void MTrip_btn_clear_BD_current_year_Click(object sender, EventArgs e)
+        void MTripBtnClearDataBaseCurrentYearClick(object sender, EventArgs e)
         {
             ClearDataBaseCurrentYearClick(sender, e);
         }
