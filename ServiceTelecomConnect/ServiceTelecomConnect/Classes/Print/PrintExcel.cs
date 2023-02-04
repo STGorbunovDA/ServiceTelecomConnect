@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 //using System.Text.RegularExpressions;
@@ -2600,7 +2601,7 @@ namespace ServiceTelecomConnect
                     }
 
                     #endregion
-                  
+
                     string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
 
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\Ведомости\{city}\"))
@@ -2644,94 +2645,231 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void PrintExcelReportAKB(string city, string road)
+        internal static void PrintExcelReportAKB(string city, string road, string poligon)
         {
+            List<string> fList = new List<string>();
             string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
                $"AND road = '{road}' ORDER BY company";
-            string value = String.Empty;
             using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
-                        value = reader.GetString(0);
-
-                        Excel.Application exApp = new Excel.Application();
-
-                        try
-                        {
-                            Type officeType = Type.GetTypeFromProgID("Excel.Application");
-                            if (officeType == null)
-                            {
-                                string Mesage2 = "У Вас не установлен Excel!";
-                                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                    return;
-                            }
-                            else
-                            {
-                                exApp.SheetsInNewWorkbook = 2;
-                                exApp.Workbooks.Add();
-                                exApp.DisplayAlerts = false;
-
-                                Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
-                                Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
-
-                                workSheet.Name = $"Сводный отчёт г. {city}";
-                                workSheet2.Name = $"Общий отчёт г. {city}";
-
-                                #region Сводный отчёт
-
-                                #endregion
-
-                                #region Общий отчёт
-
-                                #endregion
-
-                                string file = $"{city}_Отчёт_АКБ.xlsx";
-
-                                if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
-                                {
-                                    try
-                                    {
-                                        Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\АКБ\{city}\");
-                                        workSheet.SaveAs($@"C:\Documents_ServiceTelekom\Ведомости\{city}\" + file);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show(ex.Message);
-                                        MessageBox.Show("Не удаётся сохранить файл.");
-                                    }
-                                }
-                                else
-                                {
-                                    try
-                                    {
-                                        workSheet.SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show(ex.Message);
-                                        MessageBox.Show("Не удаётся сохранить файл.");
-                                    }
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            if (exApp != null)
-                                exApp = null;
-
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
-
-                            MessageBox.Show(ex.ToString());
-                        }
-                    }
+                        fList.Add(reader.GetString(0));
                     reader.Close();
                 }
                 DB.GetInstance.CloseConnection();
+            }
+
+            Excel.Application exApp = new Excel.Application();
+            try
+            {
+                Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                if (officeType == null)
+                {
+                    string Mesage2 = "У Вас не установлен Excel!";
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                }
+                else
+                {
+                    exApp.SheetsInNewWorkbook = 2;
+                    exApp.Workbooks.Add();
+                    exApp.DisplayAlerts = false;
+
+                    Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
+                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
+
+                    workSheet.Name = $"Сводный отчёт г. {city}";
+                    workSheet2.Name = $"Общий отчёт г. {city}";
+
+                    #region Сводный отчёт
+
+                    workSheet.PageSetup.Zoom = false;
+                    workSheet.PageSetup.FitToPagesWide = 1;
+                    workSheet.PageSetup.FitToPagesTall = 1;
+                    workSheet.Rows.Font.Size = 10;
+                    workSheet.Rows.Font.Name = "Times New Roman";
+                    workSheet.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                    workSheet.PageSetup.CenterHorizontally = true;
+                    workSheet.PageSetup.CenterVertically = true;
+                    workSheet.PageSetup.TopMargin = 0;
+                    workSheet.PageSetup.BottomMargin = 0;
+                    workSheet.PageSetup.LeftMargin = 0;
+                    workSheet.PageSetup.RightMargin = 0;
+
+                    Excel.Range _excelCells700 = (Excel.Range)workSheet.get_Range("B1", "L2").Cells;
+                    _excelCells700.Merge(Type.Missing);
+                    _excelCells700.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells700.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells700.EntireRow.RowHeight = 25;
+                    _excelCells700.Font.Size = 16;
+                    _excelCells700.Font.Bold = true;
+                    DateTime dateTime = new DateTime();
+                    dateTime = DateTime.Now;
+                    workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон {poligon} участка {city} {dateTime.ToString("yyyy")} г.";
+                    Excel.Range _excelCells701 = (Excel.Range)workSheet.get_Range("A1").Cells;
+                    _excelCells701.EntireColumn.ColumnWidth = 4;
+                    Excel.Range _excelCells702 = (Excel.Range)workSheet.get_Range("B3", "E3").Cells;
+                    _excelCells702.Merge(Type.Missing);
+                    workSheet.Cells[3, 2] = $"Предприятие";
+                    Excel.Range _excelCells703 = (Excel.Range)workSheet.get_Range("F3", "H3").Cells;
+                    _excelCells703.Merge(Type.Missing);
+                    workSheet.Cells[3, 6] = $"Итого (шт.)";
+                    Excel.Range _excelCells704 = (Excel.Range)workSheet.get_Range("I3", "J3").Cells;
+                    _excelCells704.Merge(Type.Missing);
+                    workSheet.Cells[3, 9] = $"Неиспр.(шт.)";
+                    Excel.Range _excelCells705 = (Excel.Range)workSheet.get_Range("K3", "L3").Cells;
+                    _excelCells705.Merge(Type.Missing);
+                    workSheet.Cells[3, 11] = $"Неиспр.(%)";
+                    Excel.Range _excelCells706 = (Excel.Range)workSheet.get_Range("B3", "L3").Cells;
+                    _excelCells706.Font.Size = 13;
+                    _excelCells706.Font.Bold = true;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.EntireRow.RowHeight = 20;
+                    _excelCells706.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells706.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                    int count = 1;
+                    int countCells = 4;
+                    for (int i = 0; i <= fList.Count; i++)
+                    {
+                        Excel.Range _excelCells707 = (Excel.Range)workSheet.get_Range($"B{countCells}", $"E{countCells}").Cells;
+                        _excelCells707.EntireRow.RowHeight = 15;
+                        _excelCells707.Font.Bold = true;
+                        _excelCells707.Merge(Type.Missing);
+                        Excel.Range _excelCells708 = (Excel.Range)workSheet.get_Range($"F{countCells}", $"H{countCells}").Cells;
+                        _excelCells708.EntireRow.RowHeight = 15;
+                        _excelCells708.Font.Bold = true;
+                        _excelCells708.Merge(Type.Missing);
+                        Excel.Range _excelCells709 = (Excel.Range)workSheet.get_Range($"I{countCells}", $"J{countCells}").Cells;
+                        _excelCells709.EntireRow.RowHeight = 15;
+                        _excelCells709.Font.Bold = true;
+                        _excelCells709.Merge(Type.Missing);
+                        Excel.Range _excelCells710 = (Excel.Range)workSheet.get_Range($"K{countCells}", $"L{countCells}").Cells;
+                        _excelCells710.EntireRow.RowHeight = 15;
+                        _excelCells710.Font.Bold = true;
+                        _excelCells710.Merge(Type.Missing);
+                        Excel.Range _excelCells711 = (Excel.Range)workSheet.get_Range($"A{countCells}", $"L{countCells}").Cells;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells711.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        if (i < fList.Count)
+                        {
+                            double countAKB = 0;
+                            string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE company = '{fList[i]}' AND percentAKB != '-'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        countAKB = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+                            double countPercentMalfunctionAKB = 0;
+                            string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE company = '{fList[i]}' AND percentAKB != '-'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        try
+                                        {
+                                            if (Convert.ToDouble(reader.GetString(0)) < 70)
+                                                countPercentMalfunctionAKB++;
+                                        }
+                                        catch
+                                        {
+                                            countPercentMalfunctionAKB++;
+                                            continue;
+                                        }
+                                    }
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+                            workSheet.Cells[4 + i, 1] = $"{count++}";
+                            workSheet.Cells[4 + i, 2] = $"{fList[i]}";
+                            workSheet.Cells[4 + i, 6] = $"{countAKB}";
+                            workSheet.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
+                            double percentMalfunctionAKB = 0;
+                            if (countAKB != 0)
+                                percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
+                            workSheet.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
+                        }
+                        else
+                        {
+                            workSheet.Cells[4 + i, 2] = $"ИТОГ:";
+                            workSheet.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                            workSheet.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                            //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
+                            workSheet.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
+                        }
+                        countCells++;
+                    }
+
+                    #endregion
+
+                    #region Общий отчёт
+
+                    #endregion
+
+                    string file = $"{city}_Отчёт_АКБ.xlsx";
+
+                    if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\АКБ\{city}\");
+                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    exApp.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (exApp != null)
+                    exApp = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -3848,7 +3986,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-    
+
 
 
     }
