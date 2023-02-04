@@ -2321,7 +2321,7 @@
             this.cmB_seach.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmB_seach.Size = new System.Drawing.Size(219, 28);
             this.cmB_seach.TabIndex = 8;
-            this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.ComboBox_seach_SelectionChangeCommitted);
+            this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.CmbSeachSelectionChangeCommitted);
             // 
             // txB_numberAct
             // 
