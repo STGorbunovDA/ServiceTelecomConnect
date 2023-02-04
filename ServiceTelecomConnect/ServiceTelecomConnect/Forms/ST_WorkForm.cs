@@ -605,7 +605,12 @@ namespace ServiceTelecomConnect
         #region Печать отчёт по АКБ
         void PrintReportAKB(object sender, EventArgs e)
         {
-            PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text);
+            if(String.IsNullOrEmpty(cmB_poligon.Text))
+            {
+                MessageBox.Show("Нажми на строчку в таблице.");
+                return;
+            }
+            PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text);
         }
         #endregion
 
