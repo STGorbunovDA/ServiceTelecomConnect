@@ -2277,61 +2277,46 @@ namespace ServiceTelecomConnect
         {
             ClearDataBaseCurrentYearClick(sender, e);
         }
-
-        void MTrip_btn_manual_backup_current_DB_Click(object sender, EventArgs e)
+        void MTripBtnManualBackupCurrentDataBaseClick(object sender, EventArgs e)
         {
             ManualBackupCurrentDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_loading_file_current_DB_Click(object sender, EventArgs e)
+        void MTripBtnLoadingFileCurrentDataBaseClick(object sender, EventArgs e)
         {
             LoadingFileCurrentDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_Copying_current_BD_end_of_the_year_Click(object sender, EventArgs e)
+        void MTripBtnCopyingCurrentDateBaseEndOfTheYearClick(object sender, EventArgs e)
         {
             BtnCopyingCurrentDataBaseEndOfTheYearClick(sender, e);
         }
-
-        void MTrip_btn_Loading_file_last_year_Click(object sender, EventArgs e)
+        void MTripBtnLoadingFileLastYearClick(object sender, EventArgs e)
         {
             BtnLoadingFileLastYearClick(sender, e);
         }
-
-        void MTrip_btn_loading_file_full_BD_Click(object sender, EventArgs e)
+        void MTripBtnLoadingFileFullDataBaseClick(object sender, EventArgs e)
         {
             LoadingFileFullDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_loading_json_file_BD_Click(object sender, EventArgs e)
+        void MTripBtnLoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
             LoadingJsonFileDataBaseClick(sender, e);
         }
-
-        void MTrip_btn_Uploading_JSON_file_Click(object sender, EventArgs e)
+        void MTripBtnUploadingJsonFileClick(object sender, EventArgs e)
         {
             BtnUploadingJsonFileClick(sender, e);
         }
-
-        void MTrip_btn_Show_DB_radiostantion_last_year_Click(object sender, EventArgs e)
+        void MTripBtnShowDataBaseRadiostantionLastYearClick(object sender, EventArgs e)
         {
             BtnShowDataBaseRadiostantionLastYearClick(sender, e);
         }
-
-        void MTrip_btn_Show_DB_radiostantion_full_Click(object sender, EventArgs e)
+        void MTripBtnShowDataBaseRadiostantionFullClick(object sender, EventArgs e)
         {
             BtnShowDataBaseRadiostantionFullClick(sender, e);
         }
-
-        void MTrip_PrintReportAKB_Click(object sender, EventArgs e)
-        {
-            PrintReportAKB(sender, e);
-        }
-
+        void MTripPrintReportAKBClick(object sender, EventArgs e)
         #endregion
 
         #region изменить номер акта у радиостанции
-
         void Btn_close_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
         {
             pnl_ChangeNumberActTOFull.Visible = false;

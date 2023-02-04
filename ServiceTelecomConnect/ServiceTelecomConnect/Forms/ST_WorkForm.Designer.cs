@@ -2955,21 +2955,21 @@
             this.mTrip_btn_manual_backup_current_DB.Name = "mTrip_btn_manual_backup_current_DB";
             this.mTrip_btn_manual_backup_current_DB.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_manual_backup_current_DB.Text = "Ручное-резервное копирование текущей БД";
-            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTrip_btn_manual_backup_current_DB_Click);
+            this.mTrip_btn_manual_backup_current_DB.Click += new System.EventHandler(this.MTripBtnManualBackupCurrentDataBaseClick);
             // 
             // mTrip_btn_loading_file_current_DB
             // 
             this.mTrip_btn_loading_file_current_DB.Name = "mTrip_btn_loading_file_current_DB";
             this.mTrip_btn_loading_file_current_DB.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_file_current_DB.Text = "Загрузка из файла для текущей БД";
-            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTrip_btn_loading_file_current_DB_Click);
+            this.mTrip_btn_loading_file_current_DB.Click += new System.EventHandler(this.MTripBtnLoadingFileCurrentDataBaseClick);
             // 
             // mTrip_btn_Copying_current_BD_end_of_the_year
             // 
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Name = "mTrip_btn_Copying_current_BD_end_of_the_year";
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Copying_current_BD_end_of_the_year.Text = "Копирование текущей БД (конец года) для БД прошлого года";
-            this.mTrip_btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.MTrip_btn_Copying_current_BD_end_of_the_year_Click);
+            this.mTrip_btn_Copying_current_BD_end_of_the_year.Click += new System.EventHandler(this.MTripBtnCopyingCurrentDateBaseEndOfTheYearClick);
             // 
             // mTrip_btn_Loading_file_last_year
             // 
@@ -2977,42 +2977,42 @@
             this.mTrip_btn_Loading_file_last_year.Name = "mTrip_btn_Loading_file_last_year";
             this.mTrip_btn_Loading_file_last_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Loading_file_last_year.Text = "Загрузка из файла для БД прошлого года";
-            this.mTrip_btn_Loading_file_last_year.Click += new System.EventHandler(this.MTrip_btn_Loading_file_last_year_Click);
+            this.mTrip_btn_Loading_file_last_year.Click += new System.EventHandler(this.MTripBtnLoadingFileLastYearClick);
             // 
             // mTrip_btn_loading_file_full_BD
             // 
             this.mTrip_btn_loading_file_full_BD.Name = "mTrip_btn_loading_file_full_BD";
             this.mTrip_btn_loading_file_full_BD.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_file_full_BD.Text = "Загрузка из файла для общей БД";
-            this.mTrip_btn_loading_file_full_BD.Click += new System.EventHandler(this.MTrip_btn_loading_file_full_BD_Click);
+            this.mTrip_btn_loading_file_full_BD.Click += new System.EventHandler(this.MTripBtnLoadingFileFullDataBaseClick);
             // 
             // mTrip_btn_loading_json_file_BD
             // 
             this.mTrip_btn_loading_json_file_BD.Name = "mTrip_btn_loading_json_file_BD";
             this.mTrip_btn_loading_json_file_BD.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_loading_json_file_BD.Text = "Загрузка и обновление резервного файла JSON";
-            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTrip_btn_loading_json_file_BD_Click);
+            this.mTrip_btn_loading_json_file_BD.Click += new System.EventHandler(this.MTripBtnLoadingJsonFileDataBaseClick);
             // 
             // mTrip_btn_Uploading_JSON_file
             // 
             this.mTrip_btn_Uploading_JSON_file.Name = "mTrip_btn_Uploading_JSON_file";
             this.mTrip_btn_Uploading_JSON_file.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Uploading_JSON_file.Text = "Выгрузка файла JSON";
-            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTrip_btn_Uploading_JSON_file_Click);
+            this.mTrip_btn_Uploading_JSON_file.Click += new System.EventHandler(this.MTripBtnUploadingJsonFileClick);
             // 
             // mTrip_btn_Show_DB_radiostantion_last_year
             // 
             this.mTrip_btn_Show_DB_radiostantion_last_year.Name = "mTrip_btn_Show_DB_radiostantion_last_year";
             this.mTrip_btn_Show_DB_radiostantion_last_year.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Show_DB_radiostantion_last_year.Text = "Показать БД прошлого года по текущему участку";
-            this.mTrip_btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_last_year_Click);
+            this.mTrip_btn_Show_DB_radiostantion_last_year.Click += new System.EventHandler(this.MTripBtnShowDataBaseRadiostantionLastYearClick);
             // 
             // mTrip_btn_Show_DB_radiostantion_full
             // 
             this.mTrip_btn_Show_DB_radiostantion_full.Name = "mTrip_btn_Show_DB_radiostantion_full";
             this.mTrip_btn_Show_DB_radiostantion_full.Size = new System.Drawing.Size(429, 22);
             this.mTrip_btn_Show_DB_radiostantion_full.Text = "Показать общую БД по всем участкам";
-            this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTrip_btn_Show_DB_radiostantion_full_Click);
+            this.mTrip_btn_Show_DB_radiostantion_full.Click += new System.EventHandler(this.MTripBtnShowDataBaseRadiostantionFullClick);
             // 
             // pnl_ChangeNumberActTOFull
             // 
@@ -3076,7 +3076,7 @@
             this.mTrip_PrintReportAKB.Name = "mTrip_PrintReportAKB";
             this.mTrip_PrintReportAKB.Size = new System.Drawing.Size(291, 22);
             this.mTrip_PrintReportAKB.Text = "Печать отчёта АКБ по участку";
-            this.mTrip_PrintReportAKB.Click += new System.EventHandler(this.MTrip_PrintReportAKB_Click);
+            this.mTrip_PrintReportAKB.Click += new System.EventHandler(this.MTripPrintReportAKBClick);
             // 
             // ST_WorkForm
             // 
