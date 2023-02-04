@@ -605,7 +605,7 @@ namespace ServiceTelecomConnect
         #region Печать отчёт по АКБ
         void PrintReportAKB(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(cmB_poligon.Text))
+            if (String.IsNullOrEmpty(cmB_poligon.Text))
             {
                 MessageBox.Show("Нажми на строчку в таблице.");
                 return;
@@ -926,7 +926,6 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
-                            m.MenuItems.Add(new MenuItem("Печатать отчёта АКБ", PrintReportAKB));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
@@ -976,7 +975,6 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
-                            m.MenuItems.Add(new MenuItem("Печатать отчёта АКБ", PrintReportAKB));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
@@ -2369,6 +2367,11 @@ namespace ServiceTelecomConnect
             BtnShowDataBaseRadiostantionFullClick(sender, e);
         }
 
+        void MTrip_PrintReportAKB_Click(object sender, EventArgs e)
+        {
+            PrintReportAKB(sender, e);
+        }
+
         #endregion
 
         #region изменить номер акта у радиостанции
@@ -2440,7 +2443,7 @@ namespace ServiceTelecomConnect
 
 
         #endregion
-
+      
     }
 }
 
