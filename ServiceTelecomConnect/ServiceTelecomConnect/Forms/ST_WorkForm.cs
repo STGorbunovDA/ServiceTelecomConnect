@@ -2168,13 +2168,13 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Поиск по номеру акта из Combobox-ов (на подпись и заполнем до полного акты)
-        void CmB_add_Signature_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbAddSignatureSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddSignature.Text);
             Counters();
         }
 
-        void CmB_add_Fill_Full_ActTO_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbAddFillFullActTOSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.SearchNumberActCombobox(dataGridView1, cmB_city.Text, cmB_road.Text, cmB_AddFillFullActTO.Text);
             Counters();
