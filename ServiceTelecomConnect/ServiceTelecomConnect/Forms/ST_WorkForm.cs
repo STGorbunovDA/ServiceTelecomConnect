@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32;
+using MySql.Data.MySqlClient;
 using ServiceTelecomConnect.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -600,6 +602,13 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
+        #region Печать отчёт по АКБ
+        void PrintReportAKB(object sender, EventArgs e)
+        {
+            PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text);
+        }
+        #endregion
+
         #region АКТ => excel
         void BtnActTOPrintClick(object sender, EventArgs e)
         {
@@ -912,6 +921,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Списать РСТ", DecommissionSerialNumber));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
+                            m.MenuItems.Add(new MenuItem("Печатать отчёта АКБ", PrintReportAKB));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
@@ -961,6 +971,7 @@ namespace ServiceTelecomConnect
                             m.MenuItems.Add(new MenuItem("Добавить в выполнение", AddExecution));
                             m.MenuItems.Add(new MenuItem("Изменить номер акта", ChangeNumberAct));
                             m.MenuItems.Add(new MenuItem("Печатать ведомость с параметрами", PrintStatementParameters));
+                            m.MenuItems.Add(new MenuItem("Печатать отчёта АКБ", PrintReportAKB));
                         }
                         if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
                         {
