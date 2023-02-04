@@ -2099,12 +2099,12 @@ namespace ServiceTelecomConnect
             using (MySqlCommand command = new MySqlCommand(querystring2, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
-                DataTable act_table_unique = new DataTable();
+                DataTable table = new DataTable();
 
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                 {
-                    adapter.Fill(act_table_unique);
-                    cmb_NumberUniqueActs.DataSource = act_table_unique;
+                    adapter.Fill(table);
+                    cmb_NumberUniqueActs.DataSource = table;
                     cmb_NumberUniqueActs.DisplayMember = "company";
                     DB.GetInstance.CloseConnection();
                 }
