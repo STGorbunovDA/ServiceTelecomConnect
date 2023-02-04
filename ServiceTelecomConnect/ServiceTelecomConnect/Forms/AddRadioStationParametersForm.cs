@@ -31,7 +31,7 @@ namespace ServiceTelecomConnect.Forms
                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
                $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
                $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
-               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST " +
+               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST, company " +
                $"FROM radiostation_parameters WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' " +
                $"AND serialNumber = '{txB_serialNumber.Text}'";
                 using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB_3.GetInstance.GetConnection()))
@@ -65,6 +65,7 @@ namespace ServiceTelecomConnect.Forms
                             lbL_nameAKB.Text = reader[21].ToString();
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
+                            lbL_company.Text = reader[25].ToString();
 
                             if (reader[24].ToString() == "+")
                                 lbl_verifiedRST.Visible = true;
@@ -1053,6 +1054,7 @@ namespace ServiceTelecomConnect.Forms
                 string receptionModeCurrentConsumption = txB_ReceptionModeCurrentConsumption.Text;
                 string transmissionModeCurrentConsumption = txB_TransmissionModeCurrentConsumption.Text;
                 string batteryDischargeAlarmCurrentConsumption = txB_BatteryDischargeAlarmCurrentConsumption.Text;
+                
 
                 string transmitterFrequencies = txB_TransmitterFrequencies.Text;
                 //var regex = new Regex(Environment.NewLine);
@@ -1111,10 +1113,9 @@ namespace ServiceTelecomConnect.Forms
                 lbl_verifiedRST.Visible = true;
                 if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    string changeQueryParameters = $"UPDATE radiostation_parameters SET numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
-                        $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', " +
-                        $"highPowerLevelTransmitter = '{highPowerLevelTransmitter}', frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', " +
-                        $"sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
+                    string changeQueryParameters = $"UPDATE radiostation_parameters SET company = '{lbL_company.Text}', numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
+                        $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', highPowerLevelTransmitter = '{highPowerLevelTransmitter}', " +
+                        $"frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
                         $"outputPowerVoltReceiver = '{outputPowerVoltReceiver}', outputPowerWattReceiver = '{outputPowerWattReceiver}', " +
                         $"selectivityReceiver = '{selectivityReceiver}', sensitivityReceiver = '{sensitivityReceiver}', kniReceiver = '{kniReceiver}', " +
                         $"suppressorReceiver = '{suppressorReceiver}', standbyModeCurrentConsumption ='{standbyModeCurrentConsumption}', " +
@@ -1133,13 +1134,13 @@ namespace ServiceTelecomConnect.Forms
                 }
                 else
                 {
-                    string addQueryParameters = $"INSERT INTO radiostation_parameters (road, city, numberAct, serialNumber, dateTO," +
+                    string addQueryParameters = $"INSERT INTO radiostation_parameters (road, city, company, numberAct, serialNumber, dateTO," +
                                $"model, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter, " +
                                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
                                $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
                                $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
                                $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, " +
-                               $"nameAKB, percentAKB, noteRadioStationParameters, verifiedRST) VALUES ('{road}', '{city}', '{numberAct}'," +
+                               $"nameAKB, percentAKB, noteRadioStationParameters, verifiedRST) VALUES ('{road}', '{city}', '{lbL_company.Text}', '{numberAct}'," +
                                $"'{serialNumber}','{dateTO}', '{model}', '{lowPowerLevelTransmitter}', " +
                                $"'{highPowerLevelTransmitter}','{frequencyDeviationTransmitter}','{sensitivityTransmitter}', " +
                                $"'{kniTransmitter}', '{deviationTransmitter}', '{outputPowerVoltReceiver}', " +
