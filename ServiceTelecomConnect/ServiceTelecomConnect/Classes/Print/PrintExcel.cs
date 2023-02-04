@@ -2332,7 +2332,6 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    #region
                     #region Частоты
 
                     workSheet2.PageSetup.Zoom = false;
@@ -2601,8 +2600,7 @@ namespace ServiceTelecomConnect
                     }
 
                     #endregion
-                    #endregion
-
+                  
                     string file = $"{numberAct.Replace('/', '.')}-{company}_Ведомость_с_параметрами.xlsx";
 
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\Ведомости\{city}\"))
@@ -2622,7 +2620,7 @@ namespace ServiceTelecomConnect
                     {
                         try
                         {
-                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\Акты ТО\{city}\" + file);
+                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\Ведомости\{city}\" + file);
                         }
                         catch (Exception ex)
                         {
@@ -2643,6 +2641,97 @@ namespace ServiceTelecomConnect
                 GC.WaitForPendingFinalizers();
                 Environment.Exit(0);
                 MessageBox.Show(ex.ToString());
+            }
+        }
+
+        internal static void PrintExcelReportAKB(string city, string road)
+        {
+            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
+               $"AND road = '{road}' ORDER BY company";
+            string value = String.Empty;
+            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        value = reader.GetString(0);
+
+                        Excel.Application exApp = new Excel.Application();
+
+                        try
+                        {
+                            Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                            if (officeType == null)
+                            {
+                                string Mesage2 = "У Вас не установлен Excel!";
+                                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                                    return;
+                            }
+                            else
+                            {
+                                exApp.SheetsInNewWorkbook = 2;
+                                exApp.Workbooks.Add();
+                                exApp.DisplayAlerts = false;
+
+                                Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
+                                Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
+
+                                workSheet.Name = $"Сводный отчёт г. {city}";
+                                workSheet2.Name = $"Общий отчёт г. {city}";
+
+                                #region Сводный отчёт
+
+                                #endregion
+
+                                #region Общий отчёт
+
+                                #endregion
+
+                                string file = $"{city}_Отчёт_АКБ.xlsx";
+
+                                if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
+                                {
+                                    try
+                                    {
+                                        Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\АКБ\{city}\");
+                                        workSheet.SaveAs($@"C:\Documents_ServiceTelekom\Ведомости\{city}\" + file);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.Message);
+                                        MessageBox.Show("Не удаётся сохранить файл.");
+                                    }
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        workSheet.SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show(ex.Message);
+                                        MessageBox.Show("Не удаётся сохранить файл.");
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (exApp != null)
+                                exApp = null;
+
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+
+                            MessageBox.Show(ex.ToString());
+                        }
+                    }
+                    reader.Close();
+                }
+                DB.GetInstance.CloseConnection();
             }
         }
 
@@ -3759,52 +3848,7 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void PrintExcelReportAKB(string cmb_city, string cmb_road)
-        {
-            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{cmb_city}' " +
-               $"AND road = '{cmb_road}' ORDER BY company";
-            string value = String.Empty;
-            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
-            {
-                DB.GetInstance.OpenConnection();
-                using (MySqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        value = reader.GetString(0);
-
-                        Excel.Application exApp = new Excel.Application();
-
-                        try
-                        {
-                            Type officeType = Type.GetTypeFromProgID("Excel.Application");
-                            if (officeType == null)
-                            {
-                                string Mesage2 = "У Вас не установлен Excel!";
-                                if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                                    return;
-                            }
-                            else
-                            {
-
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            if (exApp != null)
-                                exApp = null;
-
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
-
-                            MessageBox.Show(ex.ToString());
-                        }
-                    }
-                    reader.Close();
-                }
-                DB.GetInstance.CloseConnection();
-            }
-        }
+    
 
 
     }
