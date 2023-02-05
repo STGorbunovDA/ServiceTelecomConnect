@@ -46,7 +46,7 @@ namespace ServiceTelecomConnect
             _user = user;
             IsAdmin();
         }
-        void IsAdmin()
+         void IsAdmin()
         {
             if (_user.IsAdmin == "Дирекция связи")
             {
@@ -78,6 +78,7 @@ namespace ServiceTelecomConnect
                 txB_serialNumber.Enabled = true;
                 button_save_in_file.Enabled = true;
                 mTrip_PrintStatementParameters.Visible = false;
+                mTrip_PrintReportAKB.Visible = false;
             }
             if (_user.IsAdmin == "Куратор" || _user.IsAdmin == "Руководитель")
                 mTrip_funcionalpanel.Visible = false;
@@ -2108,8 +2109,8 @@ namespace ServiceTelecomConnect
             {
                 string month2;
                 DateTime dateTag = Convert.ToDateTime(txB_Date_panel_Tag.Text);
-                DateTime mothCheackTag = dateTag.AddMonths(0).AddDays(0);
-                if (dateTag == mothCheackTag)
+                string mothCheackTag = DateTime.DaysInMonth(dateTag.Year, dateTag.Month).ToString();
+                if (dateTag.ToString("dd") == mothCheackTag)
                     month2 = dateTag.AddMonths(1).ToString("MM");
                 else month2 = dateTag.ToString("MM");
                 string month = dateTag.ToString("MM");
@@ -2314,9 +2315,13 @@ namespace ServiceTelecomConnect
             BtnShowDataBaseRadiostantionFullClick(sender, e);
         }
         void MTripPrintReportAKBClick(object sender, EventArgs e)
+        {
+            PrintReportAKB(sender, e);
+        }
         #endregion
 
         #region изменить номер акта у радиостанции
+
         void Btn_close_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
         {
             pnl_ChangeNumberActTOFull.Visible = false;
