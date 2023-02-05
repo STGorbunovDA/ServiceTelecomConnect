@@ -475,7 +475,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         void СhangeRadiostantionFormCuratorClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (dataGridView1.Rows.Count == 0)
                 {
@@ -751,7 +751,7 @@ namespace ServiceTelecomConnect
         #region Загрузка и обновление резервного файла JSON
         void BtnLoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 FunctionalPanel.LoadingJsonFileInDatabaseCurator(dataGridView1, cmB_city.Text);
             }
@@ -766,7 +766,7 @@ namespace ServiceTelecomConnect
         #region Выгрузка файла JSON
         void BtnUploadingJsonFileClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
                 FunctionalPanel.GetSaveDataGridViewInJsonCurator(dataGridView1, cmB_city.Text);
         }
 
