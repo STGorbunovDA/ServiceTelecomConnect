@@ -18,7 +18,7 @@ namespace ServiceTelecomConnect
 
         internal static void ShowRadiostantionFull(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (String.IsNullOrEmpty(city))
                 {
@@ -75,7 +75,7 @@ namespace ServiceTelecomConnect
 
         internal static void ShowRadiostantionLastYear(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -551,7 +551,7 @@ namespace ServiceTelecomConnect
         #region добавление из файла для текущей БД
         internal static void LoadingFileCurrentDatabase()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 OpenFileDialog openFile = new OpenFileDialog
                 {
@@ -620,7 +620,7 @@ namespace ServiceTelecomConnect
 
         internal static void LoadingFileCurrentDatabaseCurator()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 OpenFileDialog openFile = new OpenFileDialog
                 {
@@ -681,7 +681,7 @@ namespace ServiceTelecomConnect
 
         internal static void LoadingFileLastYear()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 OpenFileDialog openFile = new OpenFileDialog
                 {
@@ -748,7 +748,7 @@ namespace ServiceTelecomConnect
 
         internal static void LoadingFileFullDatabase()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 OpenFileDialog openFile = new OpenFileDialog
                 {
