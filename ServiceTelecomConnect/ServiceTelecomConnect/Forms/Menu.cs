@@ -32,7 +32,7 @@ namespace ServiceTelecomConnect
         }
         void MenuLoad(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 DateTime Date = DateTime.Now;
                 string inputDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
