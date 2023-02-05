@@ -74,7 +74,7 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string city = txB_city.Text;
 
@@ -574,7 +574,7 @@ namespace ServiceTelecomConnect
         #region проверка в таблице radiostantion_full и если есть изменение записей
         Boolean CheacSerialNumberRadiostantionFull(string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -910,7 +910,7 @@ namespace ServiceTelecomConnect
 
         void BtnModelRadiostationNameAddClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 AddChangeModelRST addChangeModel = new AddChangeModelRST();
                 if (Application.OpenForms["AddChangeModelRST"] == null)
@@ -960,7 +960,7 @@ namespace ServiceTelecomConnect
                 return;
             }
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string city = txB_city.Text;
 
