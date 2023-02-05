@@ -37,7 +37,7 @@ namespace ServiceTelecomConnect.Forms
                 return;
             }
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!CheackFrequencies(cmB_Frequencies.Text))
                 {
@@ -62,7 +62,7 @@ namespace ServiceTelecomConnect.Forms
             if (String.IsNullOrEmpty(cmB_Frequencies.Text))
                 return;
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string addQuery = $"UPDATE frequencies SET frequency = '{cmB_Frequencies.Text}' WHERE frequency = '{selectedItemFrequenciesCmb}'";
 
@@ -99,7 +99,7 @@ namespace ServiceTelecomConnect.Forms
         }
         public Boolean CheackFrequencies(string frequency)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT frequency FROM frequencies WHERE frequency = '{frequency}'";
                 MySqlCommand command = new MySqlCommand(querystring, DB_3.GetInstance.GetConnection());
