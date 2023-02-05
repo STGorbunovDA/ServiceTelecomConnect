@@ -26,7 +26,7 @@ namespace ServiceTelecomConnect.Forms
 
         void BtnAddModelRSTClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if(!CheacModelRST(cmB_model.Text))
                 {
@@ -52,7 +52,7 @@ namespace ServiceTelecomConnect.Forms
             if (String.IsNullOrEmpty(cmB_model.Text))
                 return;
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string addQuery = $"UPDATE model_radiostation SET model_radiostation_name = '{cmB_model.Text}' WHERE model_radiostation_name = '{selectedItem_cmB_model}'";
 
@@ -90,7 +90,7 @@ namespace ServiceTelecomConnect.Forms
 
         public Boolean CheacModelRST(string model)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT model_radiostation_name FROM model_radiostation WHERE model_radiostation_name = '{model}'";
                 MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
