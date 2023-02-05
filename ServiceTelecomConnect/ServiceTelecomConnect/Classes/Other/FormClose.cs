@@ -27,7 +27,7 @@ namespace ServiceTelecomConnect
             DialogResult result = MessageBox.Show("Вы действительно хотите закрыть программу?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
-                if (Internet_check.CheackSkyNET())
+                if (InternetCheck.CheackSkyNET())
                 {
                     DateTime Date = DateTime.Now;
                     string exitDate = Date.ToString("yyyy-MM-dd HH:mm:ss");
