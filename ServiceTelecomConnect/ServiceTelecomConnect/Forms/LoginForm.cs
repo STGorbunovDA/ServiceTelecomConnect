@@ -51,7 +51,7 @@ namespace ServiceTelecomConnect
         }
         void EnterButtonLoginClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string loginUser = txB_loginField.Text;
                 string passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
