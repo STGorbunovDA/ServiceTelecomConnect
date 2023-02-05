@@ -458,7 +458,7 @@ namespace ServiceTelecomConnect.Forms
 
         void BtnFrequenciesClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 AddFrequenciesForm addFrequencies = new AddFrequenciesForm();
                 if (Application.OpenForms["AddFrequencies"] == null)
@@ -478,7 +478,7 @@ namespace ServiceTelecomConnect.Forms
         #region Добавляем параметры в БД
         void BtnSaveAddRadiostantionRemontClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if(!chb_repeater.Checked)
                 {
