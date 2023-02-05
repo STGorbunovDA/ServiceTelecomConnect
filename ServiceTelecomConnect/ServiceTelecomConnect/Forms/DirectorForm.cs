@@ -71,7 +71,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -100,7 +100,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void DirectorFormLoad(object sender, System.EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT id, login, is_admin FROM users WHERE is_admin = 'Начальник участка'";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -230,7 +230,7 @@ namespace ServiceTelecomConnect.Forms
                 txB_numberPrintDocument.Select();
                 return;
             }
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var addQuery = $"INSERT INTO сharacteristics_вrigade (section_foreman_FIO, engineers_FIO, attorney, " +
                     $"road, numberPrintDocument, curator, departmentCommunications) VALUES ('{cmB_sectionForemanFIO.Text}', " +
@@ -254,7 +254,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnChangeRegistrationEmployeesClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var id = txB_id.Text.Trim();
                 var re = new Regex(Environment.NewLine);
@@ -318,7 +318,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnDeleteRegistrationEmployeesClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     dataGridView1.Rows[row.Index].Cells[8].Value = RowState.Deleted;
