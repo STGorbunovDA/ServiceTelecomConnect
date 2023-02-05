@@ -64,7 +64,7 @@ namespace ServiceTelecomConnect
         }
         void EnterBtnLoginClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string loginUser = txB_loginField.Text;
                 string passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
@@ -96,7 +96,7 @@ namespace ServiceTelecomConnect
         }
         Boolean CheackUser(string loginUser, string passUser)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
