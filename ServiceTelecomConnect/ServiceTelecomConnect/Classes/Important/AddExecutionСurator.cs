@@ -10,7 +10,7 @@ namespace ServiceTelecomConnect
 
         internal static void AddExecutionRowСell(DataGridView dgw, string months)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             { 
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[41].Value = months;
@@ -74,7 +74,7 @@ namespace ServiceTelecomConnect
 
         internal static void AddExecutionRowСellCurator(DataGridView dgw, string month, ComboBox road, ComboBox cmB_month)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[19].Value = month;
