@@ -20,7 +20,7 @@ namespace ServiceTelecomConnect
         void AddToProblemRadiostantionLoad(object sender, EventArgs e)
         {
             lbL_Author.Text = _user.Login;
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect
                     control.Text.Trim();
                 }
             }
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string problem = String.Empty;
                 string model = cmB_model.Text;
