@@ -105,7 +105,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -197,7 +197,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridTimerEventProcessor(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -276,7 +276,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridEngineer(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -323,7 +323,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridEngineerModel(DataGridView dgw, string model)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -364,7 +364,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridEngineerModelProblem(DataGridView dgw, string model, string problem)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -405,7 +405,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridEngineerAuthor(DataGridView dgw, string author)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -481,7 +481,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridСurator(DataGridView dgw, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(road))
                 {
@@ -532,7 +532,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridСuratorCity(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -583,7 +583,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridСuratorMonth(DataGridView dgw, string road, string month)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(road))
                 {
@@ -641,7 +641,7 @@ namespace ServiceTelecomConnect
         }
         internal static void RefreshDataGridСuratorTimerEventProcessor(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -697,7 +697,7 @@ namespace ServiceTelecomConnect
 
         internal static void FullDataBase(DataGridView dgw, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -745,7 +745,7 @@ namespace ServiceTelecomConnect
         }
         internal static void FullDataBaseCurator(DataGridView dgw, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -796,7 +796,7 @@ namespace ServiceTelecomConnect
 
         internal static void SearchEngineer(DataGridView dgw, string cmb_Unique, string txB_Search, string cmb_NumberUnique)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string searchString = string.Empty;
                 string peremComboBox = string.Empty;
@@ -853,7 +853,7 @@ namespace ServiceTelecomConnect
         internal static void Search(DataGridView dgw, string cmb_Search, string city, string txb_Search,
             string cmb_NumberUnique, string road, string txb_FlagAllDataBase)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string searchString = string.Empty;
                 string peremComboBox = "serialNumber";
@@ -1035,7 +1035,7 @@ namespace ServiceTelecomConnect
         }
         internal static void SearchCurator(DataGridView dgw, string cmb_Search, string city, string txb_Search, string cmb_NumberUnique, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string searchString = string.Empty;
                 string peremComboBox = "serialNumber";
@@ -1159,7 +1159,7 @@ namespace ServiceTelecomConnect
 
         internal static void SeachDataGridReplayRST(DataGridView dgw, TextBox txb_FlagAllDataBase, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (txb_FlagAllDataBase.Text == "Вся БД")
                 {
@@ -1256,7 +1256,7 @@ namespace ServiceTelecomConnect
 
         internal static int UpdateDataGridViewNumberAct(DataGridView dgw, string city, string numberAct, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 dgw.Rows.Clear();
                 dgw.AllowUserToAddRows = false;
@@ -1304,7 +1304,7 @@ namespace ServiceTelecomConnect
 
         internal static void UpdateDataGridViewNumberActCurator(DataGridView dgw, string city, string numberAct)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 dgw.Rows.Clear();
                 dgw.AllowUserToAddRows = false;
@@ -1348,13 +1348,13 @@ namespace ServiceTelecomConnect
         #region для счётчика резервное копирование радиостанций из текущей radiostantion в radiostantion_copy
         internal static void CopyDataBaseRadiostantionInRadiostantionCopy()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string clearBD = "TRUNCATE TABLE radiostantion_copy";
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    if (Internet_check.CheackSkyNET())
+                    if (InternetCheck.CheackSkyNET())
                     {
                         DB_2.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
@@ -1366,7 +1366,7 @@ namespace ServiceTelecomConnect
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    if (Internet_check.CheackSkyNET())
+                    if (InternetCheck.CheackSkyNET())
                     {
                         DB_2.GetInstance.OpenConnection();
                         command2.ExecuteNonQuery();
@@ -1378,13 +1378,13 @@ namespace ServiceTelecomConnect
 
         internal static void CopyDataBaseRadiostantionComparisonInRadiostantionComparisonCopy()
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string clearBD = "TRUNCATE TABLE radiostantion_сomparison_copy";
 
                 using (MySqlCommand command = new MySqlCommand(clearBD, DB_2.GetInstance.GetConnection()))
                 {
-                    if (Internet_check.CheackSkyNET())
+                    if (InternetCheck.CheackSkyNET())
                     {
                         DB_2.GetInstance.OpenConnection();
                         command.ExecuteNonQuery();
@@ -1396,7 +1396,7 @@ namespace ServiceTelecomConnect
 
                 using (MySqlCommand command2 = new MySqlCommand(copyBD, DB_2.GetInstance.GetConnection()))
                 {
-                    if (Internet_check.CheackSkyNET())
+                    if (InternetCheck.CheackSkyNET())
                     {
                         DB_2.GetInstance.OpenConnection();
                         command2.ExecuteNonQuery();
@@ -1413,7 +1413,7 @@ namespace ServiceTelecomConnect
 
         internal static void ChangeNumberAct(DataGridView dgw, string txB_PnlChangeNumberActTOFull, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[42].Value = RowState.Change;
@@ -1447,7 +1447,7 @@ namespace ServiceTelecomConnect
 
         internal static void DeleteRowCellRadiostantion(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[42].Value = RowState.Deleted;
@@ -1486,7 +1486,7 @@ namespace ServiceTelecomConnect
 
         internal static void DeleteRowСellCurator(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dgw.SelectedRows)
                     dgw.Rows[row.Index].Cells[19].Value = RowState.Deleted;
@@ -1516,7 +1516,7 @@ namespace ServiceTelecomConnect
 
         internal static void DeleteRadiostantionRemont(string numberActRemont, string serialNumber, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(numberActRemont))
                 {
@@ -1543,7 +1543,7 @@ namespace ServiceTelecomConnect
 
         static Boolean CheackNumberActRemontRadiostantion(string numberActRemont)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string queryCheackNumberActRemontRadiostantion = $"SELECT numberActRemont FROM radiostantion WHERE numberActRemont = '{numberActRemont}'";
 
@@ -1570,7 +1570,7 @@ namespace ServiceTelecomConnect
             string representative, string post, string numberIdentification, string dateIssue, string phoneNumber,
             string antenna, string manipulator, string AKB, string batteryСharger, string txB_ReasonDecommission, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(serialNumber))
                 {
@@ -1640,7 +1640,7 @@ namespace ServiceTelecomConnect
         internal static void DeleteDecommissionSerialNumberRadiostantion(DataGridView dgw2, string decommissionSerialNumber, string serialNumber,
             string city, ComboBox cmB_model, TextBox txB_numberAct, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string price = String.Empty;
                 if (!String.IsNullOrEmpty(decommissionSerialNumber))
@@ -1685,7 +1685,7 @@ namespace ServiceTelecomConnect
 
         internal static void ShowRadiostantionDecommission(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -2261,7 +2261,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridtDecommissionByPlot(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -2299,7 +2299,7 @@ namespace ServiceTelecomConnect
 
         internal static void RefreshDataGridWithoutDecommission(DataGridView dgw, string city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(city))
                 {
@@ -2350,7 +2350,7 @@ namespace ServiceTelecomConnect
         #region заполнение cmB_city из таблицы
         internal static void SelectCityGropByCurator(ComboBox cmB_city, ComboBox cmB_road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT city FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY city";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2379,7 +2379,7 @@ namespace ServiceTelecomConnect
         }
         internal static void SelectCityGropByMonthRoad(ComboBox cmB_road, ComboBox cmB_month)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT month FROM radiostantion_сomparison WHERE road = '{cmB_road.Text}' GROUP BY month";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2404,7 +2404,7 @@ namespace ServiceTelecomConnect
         }
         internal static void SelectCityGropByMonthCity(ComboBox cmB_city, ComboBox cmB_road, ComboBox cmB_month)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT month FROM radiostantion_сomparison WHERE city = '{cmB_city.Text}' AND road = '{cmB_road.Text}' GROUP BY month";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2428,7 +2428,7 @@ namespace ServiceTelecomConnect
         }
         internal static void ProblemGetEngineerAuthor(ComboBox cmB_problem, string author)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT problem FROM problem_engineer WHERE author = '{author}' GROUP BY problem";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2452,7 +2452,7 @@ namespace ServiceTelecomConnect
         }
         internal static void ModelGetEngineerAuthor(ComboBox cmB_model, string author)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT model FROM problem_engineer WHERE author = '{author}' GROUP BY model";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2476,7 +2476,7 @@ namespace ServiceTelecomConnect
         }
         internal static void SelectCityGropBy(ComboBox cmB_city, ComboBox cmB_road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT city FROM radiostantion WHERE road = '{cmB_road.Text}' GROUP BY city";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -2507,7 +2507,7 @@ namespace ServiceTelecomConnect
             string nameProductRepaired = String.Empty;
             try
             {
-                if (Internet_check.CheackSkyNET())
+                if (InternetCheck.CheackSkyNET())
                 {
                     string querySelectOC = $"SELECT mainMeans, nameProductRepaired FROM radiostantion_full " +
                         $"WHERE serialNumber = '{serialNumber}' AND city = '{city}' AND road = '{road}'";
@@ -2584,7 +2584,7 @@ namespace ServiceTelecomConnect
         }
         internal static void LoadingLastNumberActTO(Label lbL_last_act, string cmB_city, string road)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 try
                 {
@@ -2621,7 +2621,7 @@ namespace ServiceTelecomConnect
                     $"curator, departmentCommunications FROM сharacteristics_вrigade WHERE section_foreman_FIO = '{_user.Login}' " +
                     $"OR engineers_FIO = '{_user.Login}' OR curator = '{_user.Login}' OR departmentCommunications = '{_user.Login}'";
 
-                if (Internet_check.CheackSkyNET())
+                if (InternetCheck.CheackSkyNET())
                 {
                     using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
                     {
@@ -2671,7 +2671,7 @@ namespace ServiceTelecomConnect
         #region получение Даты регистрации входа в программу для табеля
         public static DateTime CheacDateTimeInputLogUserDatabase(string user)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 DateTime Date = DateTime.Now;
                 string queryString = $"SELECT dateTimeInput FROM logUserDB WHERE user = '{user}' " +
