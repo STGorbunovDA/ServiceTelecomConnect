@@ -24,7 +24,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheackSerialNumberRadiostantionDecommission(string road, string city, string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion_decommission " +
                     $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
@@ -42,7 +42,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheackSerialNumberRadiostationParameters(string road, string city, string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostation_parameters " +
                     $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
@@ -60,7 +60,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheackSerialNumberRadiostantion(string road, string city, string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion " +
                     $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect
         }
         public Boolean CheackSerialNumberRadiostantionCurator(string road, string city, string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion_сomparison " +
                     $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheackNumberActRadiostantionChangeForm2(string road, string city, string numberAct)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT numberAct FROM radiostantion " +
                     $"WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}'";
@@ -113,7 +113,7 @@ namespace ServiceTelecomConnect
 
         public Boolean CheackNumberActRadiostantion(string road, string city, string numberAct)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT numberAct FROM radiostantion " +
                     $"WHERE road = '{road}' AND city = '{city}' AND numberAct = '{numberAct}'";
@@ -130,7 +130,7 @@ namespace ServiceTelecomConnect
         }
         public Boolean CheackSerialNumberRadiostantionFull(string road, string city, string serialNumber)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT serialNumber FROM radiostantion_full " +
                     $"WHERE road = '{road}' AND city = '{city}' AND serialNumber = '{serialNumber}'";
