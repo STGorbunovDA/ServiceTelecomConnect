@@ -56,7 +56,7 @@ namespace ServiceTelecomConnect
 
         void ComboBox_model_Click(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 DB.GetInstance.OpenConnection();
                 string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
