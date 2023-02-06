@@ -116,7 +116,7 @@
             this.picB_clear.Size = new System.Drawing.Size(35, 36);
             this.picB_clear.TabIndex = 8;
             this.picB_clear.TabStop = false;
-            this.picB_clear.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.picB_clear.Click += new System.EventHandler(this.ClearControlForm);
             // 
             // label1
             // 
@@ -138,7 +138,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(30, 30);
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
+            this.pictureBox5.Click += new System.EventHandler(this.ClearControlDateTO);
             // 
             // txB_dateTO
             // 
@@ -178,9 +178,9 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
-            this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxB_serialNumber_KeyDown);
-            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
-            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
+            this.txB_serialNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyDown);
+            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSerialNumberKeyPress);
+            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyUp);
             // 
             // txB_company
             // 
@@ -313,7 +313,7 @@
             this.txB_price.ReadOnly = true;
             this.txB_price.Size = new System.Drawing.Size(110, 26);
             this.txB_price.TabIndex = 39;
-            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_price_KeyPress);
+            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbPriceKeyPress);
             // 
             // txB_location
             // 
@@ -323,7 +323,7 @@
             this.txB_location.Name = "txB_location";
             this.txB_location.Size = new System.Drawing.Size(232, 26);
             this.txB_location.TabIndex = 53;
-            this.txB_location.Click += new System.EventHandler(this.TextBox_location_Click);
+            this.txB_location.Click += new System.EventHandler(this.TxbLocationClick);
             // 
             // monthCalendar1
             // 
@@ -560,8 +560,8 @@
             this.txB_dateIssue.Size = new System.Drawing.Size(209, 26);
             this.txB_dateIssue.TabIndex = 73;
             this.txB_dateIssue.Click += new System.EventHandler(this.TextBox_dateIssue_Click);
-            this.txB_dateIssue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_dateIssue_KeyPress);
-            this.txB_dateIssue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_dateIssue_KeyUp);
+            this.txB_dateIssue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbDateIssueKeyPress);
+            this.txB_dateIssue.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbDateIssueKeyUp);
             // 
             // txB_phoneNumber
             // 
@@ -644,7 +644,7 @@
             this.pictureBox6.Size = new System.Drawing.Size(30, 30);
             this.pictureBox6.TabIndex = 81;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.PictureBox6_Click);
+            this.pictureBox6.Click += new System.EventHandler(this.ClearControlDataIssue);
             // 
             // label29
             // 
@@ -713,8 +713,8 @@
             this.txB_AKB.TabIndex = 89;
             this.txB_AKB.Text = "-";
             this.txB_AKB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_AKB.Click += new System.EventHandler(this.TxB_AKB_Click);
-            this.txB_AKB.Leave += new System.EventHandler(this.TextBox_AKB_Leave);
+            this.txB_AKB.Click += new System.EventHandler(this.TxbAKBClick);
+            this.txB_AKB.Leave += new System.EventHandler(this.TxbAKBLeave);
             // 
             // txB_manipulator
             // 
@@ -726,10 +726,10 @@
             this.txB_manipulator.TabIndex = 91;
             this.txB_manipulator.Text = "-";
             this.txB_manipulator.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_manipulator.Click += new System.EventHandler(this.TextBox_manipulator_Click);
-            this.txB_manipulator.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_manipulator_KeyPress);
-            this.txB_manipulator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_manipulator_KeyUp);
-            this.txB_manipulator.Leave += new System.EventHandler(this.TextBox_manipulator_Leave);
+            this.txB_manipulator.Click += new System.EventHandler(this.TxbManipulatorClick);
+            this.txB_manipulator.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbManipulatorKeyPress);
+            this.txB_manipulator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbManipulatorKeyUp);
+            this.txB_manipulator.Leave += new System.EventHandler(this.TxbManipulatorLeave);
             // 
             // label33
             // 
@@ -753,10 +753,10 @@
             this.txB_antenna.TabIndex = 93;
             this.txB_antenna.Text = "-";
             this.txB_antenna.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_antenna.Click += new System.EventHandler(this.TextBox_antenna_Click);
-            this.txB_antenna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_antenna_KeyPress);
-            this.txB_antenna.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_antenna_KeyUp);
-            this.txB_antenna.Leave += new System.EventHandler(this.TextBox_antenna_Leave);
+            this.txB_antenna.Click += new System.EventHandler(this.TxbAntennaClick);
+            this.txB_antenna.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbAntennaKeyPress);
+            this.txB_antenna.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbAntennaKeyUp);
+            this.txB_antenna.Leave += new System.EventHandler(this.TxbAntennaLeave);
             // 
             // label34
             // 
@@ -790,10 +790,10 @@
             this.txB_batteryСharger.TabIndex = 95;
             this.txB_batteryСharger.Text = "-";
             this.txB_batteryСharger.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txB_batteryСharger.Click += new System.EventHandler(this.TextBox_batteryСharger_Click);
-            this.txB_batteryСharger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_batteryСharger_KeyPress);
-            this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_batteryСharger_KeyUp);
-            this.txB_batteryСharger.Leave += new System.EventHandler(this.TextBox_batteryСharger_Leave);
+            this.txB_batteryСharger.Click += new System.EventHandler(this.TxbBatteryСhargerClick);
+            this.txB_batteryСharger.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbBatteryСhargerKeyPress);
+            this.txB_batteryСharger.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbBatteryСhargerKeyUp);
+            this.txB_batteryСharger.Leave += new System.EventHandler(this.TxbBatteryСhargerLeave);
             // 
             // cmB_model
             // 
@@ -806,7 +806,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
-            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
+            this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmbModelSelectionChangeCommitted);
             this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // monthCalendar2
@@ -849,7 +849,7 @@
             this.btn_identityCard_change_rst_act.TabIndex = 111;
             this.btn_identityCard_change_rst_act.Text = "Изменить в Акте";
             this.btn_identityCard_change_rst_act.UseVisualStyleBackColor = false;
-            this.btn_identityCard_change_rst_act.Click += new System.EventHandler(this.Btn_identityCard_change_rst_act_Click);
+            this.btn_identityCard_change_rst_act.Click += new System.EventHandler(this.BtnIdentityCardChangeRadiostantionActClick);
             // 
             // btn_identityCard_change_rst_company
             // 
@@ -861,7 +861,7 @@
             this.btn_identityCard_change_rst_company.TabIndex = 112;
             this.btn_identityCard_change_rst_company.Text = "Изменить у всего ПП";
             this.btn_identityCard_change_rst_company.UseVisualStyleBackColor = false;
-            this.btn_identityCard_change_rst_company.Click += new System.EventHandler(this.Btn_identityCard_change_rst_company_Click);
+            this.btn_identityCard_change_rst_company.Click += new System.EventHandler(this.BtnIdentityCardChangeRadiostantionCompanyClick);
             // 
             // label20
             // 
@@ -906,7 +906,7 @@
             this.chB_numberActTO_Enable.Size = new System.Drawing.Size(15, 14);
             this.chB_numberActTO_Enable.TabIndex = 116;
             this.chB_numberActTO_Enable.UseVisualStyleBackColor = false;
-            this.chB_numberActTO_Enable.Click += new System.EventHandler(this.ChB_numberActTO_Enable_Click);
+            this.chB_numberActTO_Enable.Click += new System.EventHandler(this.ChbNumberActTOEnableClick);
             // 
             // lbL_road
             // 
@@ -932,7 +932,7 @@
             this.chB_analog.TabIndex = 118;
             this.chB_analog.Text = ".Аналог";
             this.chB_analog.UseVisualStyleBackColor = false;
-            this.chB_analog.Click += new System.EventHandler(this.ChB_analog_Click);
+            this.chB_analog.Click += new System.EventHandler(this.ChbAnalogClick);
             // 
             // chB_digital
             // 
@@ -946,7 +946,7 @@
             this.chB_digital.TabIndex = 119;
             this.chB_digital.Text = "Цифр.";
             this.chB_digital.UseVisualStyleBackColor = false;
-            this.chB_digital.Click += new System.EventHandler(this.ChB_digital_Click);
+            this.chB_digital.Click += new System.EventHandler(this.ChbDigitalClick);
             // 
             // СhangeRSTForm
             // 
@@ -1035,7 +1035,6 @@
             this.ShowIcon = false;
             this.Text = "Изменение РСТ";
             this.Load += new System.EventHandler(this.ChangeRSTFormLoad);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
