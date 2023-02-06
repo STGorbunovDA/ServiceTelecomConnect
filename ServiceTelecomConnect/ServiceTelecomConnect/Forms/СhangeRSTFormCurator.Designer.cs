@@ -94,7 +94,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(35, 36);
             this.pictureBox4.TabIndex = 8;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.PictureBox4_Click);
+            this.pictureBox4.Click += new System.EventHandler(this.ClearControlForm);
             // 
             // label1
             // 
@@ -116,7 +116,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(30, 30);
             this.pictureBox5.TabIndex = 9;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.PictureBox5_Click);
+            this.pictureBox5.Click += new System.EventHandler(this.ClearControlDateTO);
             // 
             // txB_dateTO
             // 
@@ -128,7 +128,7 @@
             this.txB_dateTO.ReadOnly = true;
             this.txB_dateTO.Size = new System.Drawing.Size(232, 26);
             this.txB_dateTO.TabIndex = 26;
-            this.txB_dateTO.Click += new System.EventHandler(this.TextBox_dateTO_Click);
+            this.txB_dateTO.Click += new System.EventHandler(this.TxbDateTOClick);
             // 
             // txB_networkNumber
             // 
@@ -138,8 +138,8 @@
             this.txB_networkNumber.Name = "txB_networkNumber";
             this.txB_networkNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_networkNumber.TabIndex = 25;
-            this.txB_networkNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_networkNumber_KeyPress);
-            this.txB_networkNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_networkNumber_KeyUp);
+            this.txB_networkNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbNetworkNumberKeyPress);
+            this.txB_networkNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbNetworkNumberKeyUp);
             // 
             // txB_inventoryNumber
             // 
@@ -159,9 +159,9 @@
             this.txB_serialNumber.Name = "txB_serialNumber";
             this.txB_serialNumber.Size = new System.Drawing.Size(232, 26);
             this.txB_serialNumber.TabIndex = 23;
-            this.txB_serialNumber.Click += new System.EventHandler(this.TextBox_serialNumber_Click);
-            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_serialNumber_KeyPress);
-            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_serialNumber_KeyUp);
+            this.txB_serialNumber.Click += new System.EventHandler(this.TxbSerialNumberClick);
+            this.txB_serialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSerialNumberKeyPress);
+            this.txB_serialNumber.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbSerialNumberKeyUp);
             // 
             // txB_company
             // 
@@ -171,8 +171,8 @@
             this.txB_company.Name = "txB_company";
             this.txB_company.Size = new System.Drawing.Size(232, 26);
             this.txB_company.TabIndex = 22;
-            this.txB_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_company_KeyPress);
-            this.txB_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_company_KeyUp);
+            this.txB_company.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbCompanyKeyPress);
+            this.txB_company.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbCompanyKeyUp);
             // 
             // label7
             // 
@@ -296,7 +296,7 @@
             this.txB_price.ReadOnly = true;
             this.txB_price.Size = new System.Drawing.Size(232, 26);
             this.txB_price.TabIndex = 39;
-            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_price_KeyPress);
+            this.txB_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbPriceKeyPress);
             // 
             // txB_location
             // 
@@ -306,9 +306,9 @@
             this.txB_location.Name = "txB_location";
             this.txB_location.Size = new System.Drawing.Size(232, 26);
             this.txB_location.TabIndex = 53;
-            this.txB_location.Click += new System.EventHandler(this.TextBox_location_Click);
-            this.txB_location.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_location_KeyPress);
-            this.txB_location.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_location_KeyUp);
+            this.txB_location.Click += new System.EventHandler(this.TxbLocationClick);
+            this.txB_location.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbLocationKeyPress);
+            this.txB_location.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbLocationKeyUp);
             // 
             // monthCalendar1
             // 
@@ -316,7 +316,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(253, 209);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 54;
-            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1_DateSelected);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1DateSelected);
             // 
             // cmB_poligon
             // 
@@ -449,7 +449,7 @@
             this.txB_numberAct.Name = "txB_numberAct";
             this.txB_numberAct.Size = new System.Drawing.Size(232, 26);
             this.txB_numberAct.TabIndex = 64;
-            this.txB_numberAct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_numberAct_KeyUp);
+            this.txB_numberAct.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbNumberActKeyUp);
             // 
             // label19
             // 
@@ -481,8 +481,8 @@
             this.txB_city.Name = "txB_city";
             this.txB_city.Size = new System.Drawing.Size(232, 26);
             this.txB_city.TabIndex = 84;
-            this.txB_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_city_KeyPress);
-            this.txB_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox_city_KeyUp);
+            this.txB_city.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbCityKeyPress);
+            this.txB_city.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxbCityKeyUp);
             // 
             // label31
             // 
@@ -508,7 +508,7 @@
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
-            this.cmB_model.SelectedIndexChanged += new System.EventHandler(this.ComboBox_model_SelectedIndexChanged);
+            this.cmB_model.SelectedIndexChanged += new System.EventHandler(this.CmbModelSelectedIndexChanged);
             this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // label36
@@ -632,7 +632,7 @@
             this.cmB_сategory.Name = "cmB_сategory";
             this.cmB_сategory.Size = new System.Drawing.Size(232, 28);
             this.cmB_сategory.TabIndex = 145;
-            this.cmB_сategory.SelectionChangeCommitted += new System.EventHandler(this.CmB_сategory_SelectionChangeCommitted);
+            this.cmB_сategory.SelectionChangeCommitted += new System.EventHandler(this.CmbCategorySelectionChangeCommitted);
             // 
             // label24
             // 
