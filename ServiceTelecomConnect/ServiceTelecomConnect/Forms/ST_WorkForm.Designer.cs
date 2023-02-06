@@ -3045,7 +3045,7 @@
             this.btn_pnl_ChangeNumberActTOFull.TabIndex = 40;
             this.btn_pnl_ChangeNumberActTOFull.Text = "Изменить";
             this.btn_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
-            this.btn_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_pnl_ChangeNumberActTOFull_Click);
+            this.btn_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.BtnChangePnlNumberActTOFullClick);
             // 
             // label27
             // 
@@ -3076,7 +3076,7 @@
             this.btn_close_pnl_ChangeNumberActTOFull.TabIndex = 35;
             this.btn_close_pnl_ChangeNumberActTOFull.Text = "X";
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
-            this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.Btn_close_pnl_ChangeNumberActTOFull_Click);
+            this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.BtnClosePnlChangeNumberActTOFullClick);
             // 
             // ST_WorkForm
             // 
