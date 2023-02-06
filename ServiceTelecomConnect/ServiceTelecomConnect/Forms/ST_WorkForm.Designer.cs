@@ -272,6 +272,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
+            this.chb_pass_txB_3_FIO = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -1576,6 +1577,7 @@
             this.panel_remont_information_company.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_remont_information_company.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_remont_information_company.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
+            this.panel_remont_information_company.Controls.Add(this.chb_pass_txB_3_FIO);
             this.panel_remont_information_company.Controls.Add(this.btn_ContinueRemontActExcel);
             this.panel_remont_information_company.Controls.Add(this.txB_BE_remont);
             this.panel_remont_information_company.Controls.Add(this.btn_close_remont_panel);
@@ -3078,6 +3080,16 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.BtnClosePnlChangeNumberActTOFullClick);
             // 
+            // chb_pass_txB_3_FIO
+            // 
+            this.chb_pass_txB_3_FIO.AutoSize = true;
+            this.chb_pass_txB_3_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chb_pass_txB_3_FIO.Location = new System.Drawing.Point(785, 387);
+            this.chb_pass_txB_3_FIO.Name = "chb_pass_txB_3_FIO";
+            this.chb_pass_txB_3_FIO.Size = new System.Drawing.Size(15, 14);
+            this.chb_pass_txB_3_FIO.TabIndex = 37;
+            this.chb_pass_txB_3_FIO.UseVisualStyleBackColor = true;
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3085,6 +3097,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.panel_remont_information_company);
             this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.pnl_ChangeNumberActTOFull);
@@ -3096,7 +3109,6 @@
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel_remont_information_company);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dataGridView1);
@@ -3391,5 +3403,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label lbl_decommission;
         private System.Windows.Forms.ToolStripMenuItem mTrip_PrintReportAKB;
+        private System.Windows.Forms.CheckBox chb_pass_txB_3_FIO;
     }
 }
