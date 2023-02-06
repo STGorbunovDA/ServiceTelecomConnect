@@ -21,8 +21,7 @@ namespace ServiceTelecomConnect
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
         }
-
-        void ChangeRSTForm_Load(object sender, EventArgs e)
+        void ChangeRSTFormLoad(object sender, EventArgs e)
         {
             cmB_model.Text = cmB_model.Items[0].ToString();
             if (String.IsNullOrEmpty(txB_numberActRemont.Text))
@@ -51,10 +50,8 @@ namespace ServiceTelecomConnect
                 lbL_Date.Text = "Дата списания:";
                 txB_decommission.Focus();
             }
-
         }
-
-        void ComboBox_model_Click(object sender, EventArgs e)
+        void CmbModelClick(object sender, EventArgs e)
         {
             if (InternetCheck.CheackSkyNET())
             {
@@ -62,11 +59,11 @@ namespace ServiceTelecomConnect
                 string querystring = $"SELECT id, model_radiostation_name FROM model_radiostation";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
                 {
-                    DataTable model_RSR_table = new DataTable();
+                    DataTable table = new DataTable();
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
                     {
-                        adapter.Fill(model_RSR_table);
-                        cmB_model.DataSource = model_RSR_table;
+                        adapter.Fill(table);
+                        cmB_model.DataSource = table;
                         cmB_model.ValueMember = "id";
                         cmB_model.DisplayMember = "model_radiostation_name";
                     }
@@ -76,7 +73,7 @@ namespace ServiceTelecomConnect
         }
 
         #region изменяем рст
-        void Button_сhange_rst_Click(object sender, EventArgs e)
+        void BtnChangeRadiostantionClick(object sender, EventArgs e)
         {
 
             foreach (Control control in this.Controls)
