@@ -1169,6 +1169,7 @@ namespace ServiceTelecomConnect
         }
         void BtnInformationRemontCompanyRegeditClick(object sender, EventArgs e)
         {
+            
             #region проверка пустых строк
             if (String.IsNullOrEmpty(txB_Full_name_company.Text))
             {
@@ -1333,25 +1334,7 @@ namespace ServiceTelecomConnect
                     txB_2_FIO_remont_company.Select();
                     return;
                 }
-            }
-            if (!txB_3_FIO_remont_company.Text.Contains("-"))
-            {
-                if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
-                {
-                    MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_3_FIO_remont_company.Select();
-                    return;
-                }
-            }
-            if (txB_3_FIO_remont_company.Text.Contains("-"))
-            {
-                if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
-                {
-                    MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txB_3_FIO_remont_company.Select();
-                    return;
-                }
-            }
+            }     
             if (!Regex.IsMatch(txB_director_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
                 MessageBox.Show("Введите корректно поле \"Должность руководителя\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1384,15 +1367,35 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-            if (!Regex.IsMatch(txB_3_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+            if(!chb_pass_txB_3_FIO.Checked)
             {
-                MessageBox.Show("Введите корректно поле \"Должность 3 члена комиссии\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txB_3_post_remont_company.Select();
-                string Mesage = "Вы действительно хотите продолжить?";
-                if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                    return;
+                if (!Regex.IsMatch(txB_3_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
+                {
+                    MessageBox.Show("Введите корректно поле \"Должность 3 члена комиссии\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txB_3_post_remont_company.Select();
+                    string Mesage = "Вы действительно хотите продолжить?";
+                    if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                }
+                if (!txB_3_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\s]+[А-Я][\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_3_FIO_remont_company.Select();
+                        return;
+                    }
+                }
+                if (txB_3_FIO_remont_company.Text.Contains("-"))
+                {
+                    if (!Regex.IsMatch(txB_3_FIO_remont_company.Text, @"^[А-ЯЁ][а-яё]*(([\-][А-Я][а-яё]*[\s]+[А-Я]+[\.]+[А-Я]+[\.])$)"))
+                    {
+                        MessageBox.Show("Введите корректно поле \"3 член Ком.: ФИО\"\nP.s. пример: Иванов-Петров В.В.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_3_FIO_remont_company.Select();
+                        return;
+                    }
+                }
             }
-
             RegistryKey currentUserKey = Registry.CurrentUser;
             RegistryKey helloKey = currentUserKey.CreateSubKey($"SOFTWARE\\ServiceTelekom_Setting\\{txB_company.Text.Trim()}");
             helloKey.SetValue("Полное наименование предприятия", $"{txB_Full_name_company.Text.Trim()}");
