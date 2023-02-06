@@ -47,7 +47,7 @@ namespace ServiceTelecomConnect
         }
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -76,7 +76,7 @@ namespace ServiceTelecomConnect
         }
         void SettingUserLoad(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 CreateColums();
                 RefreshDataGrid(dataGridView1);
@@ -102,17 +102,17 @@ namespace ServiceTelecomConnect
         }
         void ButtonUpdateClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
                 RefreshDataGrid(dataGridView1);
         }
         void ButtonDeleteClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     dataGridView1.Rows[row.Index].Cells[4].Value = RowState.Deleted;
 
-                if (Internet_check.CheackSkyNET())
+                if (InternetCheck.CheackSkyNET())
                 {
                     DB.GetInstance.OpenConnection();
                     for (int index = 0; index < dataGridView1.Rows.Count; index++)
@@ -141,7 +141,7 @@ namespace ServiceTelecomConnect
         }
         void BtnChangeClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string id = txB_id.Text;
                 string login = txB_login.Text;
@@ -167,7 +167,7 @@ namespace ServiceTelecomConnect
         }
         void BtnAddClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string loginUser = txB_login.Text;
                 if (!loginUser.Contains("-"))
@@ -214,7 +214,7 @@ namespace ServiceTelecomConnect
         }
         Boolean CheackUser(string loginUser, string passUser)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string querystring = $"SELECT * FROM users WHERE login = '{loginUser}' AND pass = '{passUser}'";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
