@@ -13,7 +13,6 @@ namespace ServiceTelecomConnect
     {
         private delegate DialogResult ShowOpenFileDialogInvoker();
 
-        //string temporaryNumbetAct;
         public СhangeRSTForm()
         {
             InitializeComponent();
@@ -24,8 +23,7 @@ namespace ServiceTelecomConnect
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
         }
-
-        void ChangeRSTForm_Load(object sender, EventArgs e)
+        void ChangeRSTFormLoad(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
@@ -58,16 +56,11 @@ namespace ServiceTelecomConnect
                 btn_identityCard_change_rst_company.Enabled = false;
                 chB_analog.Enabled = false;
                 chB_digital.Enabled = false;
-
                 lbL_Date.Text = "Дата списания:";
-
                 txB_decommissionSerialNumber.Focus();
-
             }
             else txB_decommissionSerialNumber.Enabled = false;
-
             cmB_model.Text = cmB_model.Items[0].ToString();
-
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
@@ -86,14 +79,13 @@ namespace ServiceTelecomConnect
                 chB_analog.CheckState = CheckState.Unchecked;
             }
         }
-
-        void ComboBox_model_Click(object sender, EventArgs e)
+        void CmbModelClick(object sender, EventArgs e)
         {
             QuerySettingDataBase.CmbGettingModelRST(cmB_model);
         }
 
         #region изменяем рст по номеру акта
-        void Btn_change_rst_act_Click(object sender, EventArgs e)
+        void BtnChangeRadiostantionActClick(object sender, EventArgs e)
         {
             if (CheacSerialNumber.GetInstance.CheackNumberActRadiostantion(lbL_road.Text, txB_city.Text, txB_numberAct.Text))
             {
@@ -104,7 +96,6 @@ namespace ServiceTelecomConnect
 
             Regex re = new Regex(Environment.NewLine);
             txB_numberAct.Text = re.Replace(txB_numberAct.Text, " ");
-
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
@@ -114,17 +105,17 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string numberAct = txB_numberAct.Text;
                 Regex reg = new Regex(Environment.NewLine);
                 numberAct = reg.Replace(numberAct, " ");
                 string serialNumber = txB_serialNumber.Text;
                 string road = lbL_road.Text;
-
-                string changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
-                string changeQuery2 = $"UPDATE radiostantion_full SET numberAct = '{numberAct.Trim()}' WHERE serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
+                string changeQuery = $"UPDATE radiostantion SET numberAct = '{numberAct.Trim()}' WHERE " +
+                    $"serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
+                string changeQuery2 = $"UPDATE radiostantion_full SET numberAct = '{numberAct.Trim()}' WHERE " +
+                    $"serialNumber = '{serialNumber.Trim()}' AND road = '{road}'";
                 using (MySqlCommand command = new MySqlCommand(changeQuery, DB.GetInstance.GetConnection()))
                 {
                     DB.GetInstance.OpenConnection();
@@ -144,7 +135,7 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region изменяем рст full
-        void Button_сhange_rst_full_Click(object sender, EventArgs e)
+        void BtnChangeRadiostantionFullClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
@@ -154,12 +145,6 @@ namespace ServiceTelecomConnect
                     txB_serialNumber.Select();
                     return;
                 }
-                //if (temporaryNumbetAct != txB_numberAct.Text)
-                //{
-                //    MessageBox.Show($"\"Номер акта был изменён\" воспользуйтесь другой функцией \"Изменить акт\"\nБыл: {temporaryNumbetAct}, текущий: {txB_numberAct.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    txB_numberAct.Select();
-                //    return;
-                //}
             }
             foreach (Control control in this.Controls)
             {
@@ -170,11 +155,10 @@ namespace ServiceTelecomConnect
                     control.Text.Trim();
                 }
             }
-
-            Change_rst_radiostantion();
+            ChangeRadiostantion();
         }
 
-        void Change_rst_radiostantion()
+        void ChangeRadiostantion()
         {
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
@@ -185,46 +169,34 @@ namespace ServiceTelecomConnect
                     return;
                 }
             }
-
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 string decommission = txB_decommissionSerialNumber.Text;
-
                 string city = txB_city.Text;
-
                 if (!Regex.IsMatch(city, @"^[А-Я][а-я]*(?:[\s-][А-Я][а-я]*)*$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Город\".\n P.s. название города должно быть с большой буквы.\nпример: \"Нижний-Новгород\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_city.Select();
-
                     string Mesage = "Вы действительно хотите изменить радиостанцию?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-
                 string poligon = cmB_poligon.Text;
                 string company = txB_company.Text;
-
                 if (!Regex.IsMatch(company, @"^[А-Я]*([/s-]?[0-9]*)$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_company.Select();
-
                     string Mesage = "Вы действительно хотите изменить радиостанцию?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
                 string location = txB_location.Text;
-
                 if (!Regex.IsMatch(location, @"^[с][т][.][\s][А-Я][а-я]*(([\s-]?[0-9])*$)?([\s-]?[А-Я][а-я]*)*$"))
                 {
                     MessageBox.Show("Введите корректно поле \"Место нахождения\"\n P.s. пример: \"ст. Сейма\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_location.Select();
-
                     string Mesage = "Вы действительно хотите изменить радиостанцию?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
@@ -493,23 +465,19 @@ namespace ServiceTelecomConnect
                 }
                 #endregion
                 string inventoryNumber = txB_inventoryNumber.Text;
-
                 if (inventoryNumber.Contains("\\"))
                     inventoryNumber = inventoryNumber.Replace("\\", "\\\\");
-
                 if (String.IsNullOrEmpty(decommission))
                 {
                     if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                     {
                         MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_inventoryNumber.Select();
-
                         string Mesage = "Вы действительно хотите продолжить?";
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                             return;
                     }
                 }
-
                 string networkNumber = txB_networkNumber.Text;
                 if (networkNumber.Contains("\\"))
                     networkNumber = networkNumber.Replace("\\", "\\\\");
@@ -519,13 +487,11 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле: \"Сетевой номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_networkNumber.Select();
-
                         string Mesage = "Вы действительно хотите продолжить?";
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                             return;
                     }
                 }
-
                 string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
                 if (String.IsNullOrEmpty(dateTO))
                 {
@@ -571,7 +537,6 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_numberIdentification.Select();
-
                     string Mesage = "Вы действительно хотите продолжить?";
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
@@ -590,13 +555,11 @@ namespace ServiceTelecomConnect
                     {
                         MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_phoneNumber.Select();
-
                         string Mesage = "Вы действительно хотите продолжить?";
                         if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                             return;
                     }
                 }
-
                 if (!String.IsNullOrEmpty(decommission))
                 {
                     if (!Regex.IsMatch(decommission, @"^[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?[СC]{1,1}([.\-][0-9]+)?)$"))
@@ -606,15 +569,12 @@ namespace ServiceTelecomConnect
                         return;
                     }
                 }
-
                 string antenna = txB_antenna.Text;
                 string manipulator = txB_manipulator.Text;
                 string AKB = txB_AKB.Text;
                 string batteryСharger = txB_batteryСharger.Text;
                 string comment = txB_comment.Text;
                 string road = lbL_road.Text;
-
-
                 if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
                 && !(serialNumber == "") && !(dateTO == "") && !(city == "")
                 && !(representative == "") && !(post == "") && !(numberIdentification == "")
