@@ -11,43 +11,35 @@ namespace ServiceTelecomConnect.Forms
     public partial class TutorialForm : Form
     {
         private readonly CheakUser _user;
-
         int selectedRow;
-
         public TutorialForm(CheakUser user)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-
             dataGridView1.DoubleBuffered(true);
             this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             _user = user;
             cmB_seach.Text = cmB_seach.Items[3].ToString();
         }
-
-        void TutorialForm_Load(object sender, EventArgs e)
+        void TutorialFormLoad(object sender, EventArgs e)
         {
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black; //цвет ячейки
-
             QuerySettingDataBase.CreateColumsEngineer(dataGridView1);
             QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
-
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
         }
-
-        void PicB_update_Click(object sender, EventArgs e)
+        void Update_Click(object sender, EventArgs e)
         {
             QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
         }
-
-        void Btn_new_rst_problem_Click(object sender, EventArgs e)
+        void BtnNewRadiostantionProblemClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 AddToProblemRST addProblemRST = new AddToProblemRST(_user);
                 if (Application.OpenForms["AddToProblemRST"] == null)
@@ -57,8 +49,7 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
         }
-
-        void Cmb_seach_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbSeachSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmB_seach.SelectedIndex == 0)
             {
@@ -87,24 +78,20 @@ namespace ServiceTelecomConnect.Forms
                 cmb_unique.Visible = false;
             }
         }
-
-        void Cmb_unique_SelectedIndexChanged(object sender, EventArgs e)
+        void CmbUniqueSelectedIndexChanged(object sender, EventArgs e)
         {
             QuerySettingDataBase.SearchEngineer(dataGridView1, cmB_seach.Text, txB_search.Text, cmb_unique.Text);
         }
-
-        void TxB_search_DoubleClick(object sender, EventArgs e)
+        void TxbSearchDoubleClick(object sender, EventArgs e)
         {
             QuerySettingDataBase.SearchEngineer(dataGridView1, cmB_seach.Text, txB_search.Text, cmb_unique.Text);
         }
-
-        private void TxB_search_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSearchKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Return)
                 QuerySettingDataBase.SearchEngineer(dataGridView1, cmB_seach.Text, txB_search.Text, cmb_unique.Text);
         }
-
-        void Btn_brief_info_Click(object sender, EventArgs e)
+        void BtnBriefInfoClick(object sender, EventArgs e)
         {
             MessageBox.Show("Перед началом проверки радиостанции необходимо визуально " +
                 "осмотреть корпус на сквозные трещины, сколы корпуса, батарейные контакты, " +
@@ -116,12 +103,10 @@ namespace ServiceTelecomConnect.Forms
                 "абсорбирующую ткань, кубки для мытья посуды или влажные салфетки.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
-        void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.ReadOnly = false;
             selectedRow = e.RowIndex;
-
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[selectedRow];
@@ -131,17 +116,14 @@ namespace ServiceTelecomConnect.Forms
                 txB_info.Text = row.Cells[3].Value.ToString();
                 txB_actions.Text = row.Cells[4].Value.ToString();
                 txB_author.Text = row.Cells[5].Value.ToString();
-
             }
         }
-
-        void Btn_change_problem_Click(object sender, EventArgs e)
+        void BtnChangeProblemClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(txB_id.Text))
                 {
-                    //ChangeToProblemRST changeToProblem = new ChangeToProblemRST(_user);
                     ChangeToProblemRST changeToProblem = new ChangeToProblemRST(_user);
                     if (Application.OpenForms["ChangeToProblemRST"] == null)
                     {
@@ -156,8 +138,7 @@ namespace ServiceTelecomConnect.Forms
                 }
             }
         }
-
-        void Btn_delete_problem_Click(object sender, EventArgs e)
+        void BtnDeleteProblemClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_id.Text))
             {
@@ -167,25 +148,21 @@ namespace ServiceTelecomConnect.Forms
             if (dataGridView1.SelectedRows.Count > 1)
             {
                 string Mesage = $"Вы действительно хотите удалить неисправность у модели: {txB_model.Text}?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
 
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     dataGridView1.Rows[row.Index].Cells[6].Value = RowState.Deleted;
-
                 for (int index = 0; index < dataGridView1.Rows.Count; index++)
                 {
                     var rowState = (RowState)dataGridView1.Rows[index].Cells[6].Value;
-
                     if (rowState == RowState.Deleted)
                     {
                         int id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                         string deleteQuery = $"DELETE FROM problem_engineer WHERE id = {id}";
-
                         using (MySqlCommand command = new MySqlCommand(deleteQuery, DB.GetInstance.GetConnection()))
                         {
                             DB.GetInstance.OpenConnection();
@@ -197,19 +174,16 @@ namespace ServiceTelecomConnect.Forms
                 int currRowIndex = dataGridView1.CurrentCell.RowIndex;
                 QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
                 dataGridView1.ClearSelection();
-
                 if (dataGridView1.RowCount - currRowIndex > 0)
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             }
         }
-
-        void DataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex != 0)
                 e.Cancel = true;
         }
-
-        void DataGridView1_MouseClick(object sender, MouseEventArgs e)
+        void DataGridView1MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -218,24 +192,23 @@ namespace ServiceTelecomConnect.Forms
                     if (!String.IsNullOrEmpty(txB_id.Text))
                     {
                         ContextMenu m1 = new ContextMenu();
-                        m1.MenuItems.Add(new MenuItem("Добавить новую неисправность", Btn_new_rst_problem_Click));
-                        m1.MenuItems.Add(new MenuItem("Изменить неисправность", Btn_change_problem_Click));
-                        m1.MenuItems.Add(new MenuItem("Удалить неисправность", Btn_delete_problem_Click));
-                        m1.MenuItems.Add(new MenuItem("Сохранить в excel", Btn_save_excel_Click));
-                        m1.MenuItems.Add(new MenuItem("Краткая иформация", Btn_brief_info_Click));
+                        m1.MenuItems.Add(new MenuItem("Добавить новую неисправность", BtnNewRadiostantionProblemClick));
+                        m1.MenuItems.Add(new MenuItem("Изменить неисправность", BtnChangeProblemClick));
+                        m1.MenuItems.Add(new MenuItem("Удалить неисправность", BtnDeleteProblemClick));
+                        m1.MenuItems.Add(new MenuItem("Сохранить в excel", BtnSaveExcelClick));
+                        m1.MenuItems.Add(new MenuItem("Краткая иформация", BtnBriefInfoClick));
                         m1.Show(dataGridView1, new Point(e.X, e.Y));
                     }
                 }
                 if (dataGridView1.Rows.Count == 0)
                 {
                     ContextMenu m2 = new ContextMenu();
-                    m2.MenuItems.Add(new MenuItem("Добавить новую неисправность", Btn_new_rst_problem_Click));
-                    m2.MenuItems.Add(new MenuItem("Краткая иформация", Btn_brief_info_Click));
+                    m2.MenuItems.Add(new MenuItem("Добавить новую неисправность", BtnNewRadiostantionProblemClick));
+                    m2.MenuItems.Add(new MenuItem("Краткая иформация", BtnBriefInfoClick));
                 }
             }
         }
-
-        void Btn_save_excel_Click(object sender, EventArgs e)
+        void BtnSaveExcelClick(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0)
             {
@@ -247,17 +220,13 @@ namespace ServiceTelecomConnect.Forms
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
             sfd.FileName = $"ОБЩАЯ База_Неисправностей_{dateTimeString}";
-
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.Unicode))
                 {
                     string note = string.Empty;
-
                     note += $"Номер\tМодель\tНеисправность\tОписание неисправности\tВиды работ по устраненнию дефекта\tАвтор";
-
                     sw.WriteLine(note);
-
                     for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         for (int j = 0; j < dataGridView1.ColumnCount; j++)
@@ -265,10 +234,6 @@ namespace ServiceTelecomConnect.Forms
                             Regex re = new Regex(Environment.NewLine);
                             string value = dataGridView1.Rows[i].Cells[j].Value.ToString();
                             value = re.Replace(value, " ");
-                            //if (dataGridView1.Columns[j].HeaderText.ToString() == "№")
-                            //{
-
-                            //}
                             if (dataGridView1.Columns[j].HeaderText.ToString() == "Автор")
                                 sw.Write(value);
                             else if (dataGridView1.Columns[j].HeaderText.ToString() == "RowState")
@@ -279,7 +244,6 @@ namespace ServiceTelecomConnect.Forms
                         }
                         sw.WriteLine();
                     }
-
                 }
                 MessageBox.Show("Файл успешно сохранен!");
             }
