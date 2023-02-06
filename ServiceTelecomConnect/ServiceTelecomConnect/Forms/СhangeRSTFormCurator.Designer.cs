@@ -251,7 +251,7 @@
             this.button_save_add_rst.TabIndex = 28;
             this.button_save_add_rst.Text = "Изменить";
             this.button_save_add_rst.UseVisualStyleBackColor = false;
-            this.button_save_add_rst.Click += new System.EventHandler(this.Button_сhange_rst_Click);
+            this.button_save_add_rst.Click += new System.EventHandler(this.BtnChangeRadiostantionClick);
             // 
             // label8
             // 
@@ -509,7 +509,7 @@
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
             this.cmB_model.SelectedIndexChanged += new System.EventHandler(this.ComboBox_model_SelectedIndexChanged);
-            this.cmB_model.Click += new System.EventHandler(this.ComboBox_model_Click);
+            this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // label36
             // 
@@ -762,7 +762,7 @@
             this.Name = "СhangeRSTFormCurator";
             this.ShowIcon = false;
             this.Text = "Изменение РСТ";
-            this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
+            this.Load += new System.EventHandler(this.ChangeRSTFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
