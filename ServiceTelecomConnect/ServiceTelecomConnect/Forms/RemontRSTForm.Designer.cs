@@ -543,6 +543,7 @@
             this.txB_data_remont.ReadOnly = true;
             this.txB_data_remont.Size = new System.Drawing.Size(107, 28);
             this.txB_data_remont.TabIndex = 148;
+            this.txB_data_remont.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label19
             // 
@@ -626,8 +627,9 @@
             this.txB_model.ReadOnly = true;
             this.txB_model.Size = new System.Drawing.Size(170, 28);
             this.txB_model.TabIndex = 159;
+            this.txB_model.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // cmb_remont_select
+            // cmb_remontSelect
             // 
             this.cmb_remontSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_remontSelect.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -652,7 +654,7 @@
             "16",
             "17"});
             this.cmb_remontSelect.Location = new System.Drawing.Point(745, 12);
-            this.cmb_remontSelect.Name = "cmb_remont_select";
+            this.cmb_remontSelect.Name = "cmb_remontSelect";
             this.cmb_remontSelect.Size = new System.Drawing.Size(58, 28);
             this.cmb_remontSelect.TabIndex = 160;
             this.cmb_remontSelect.Visible = false;
