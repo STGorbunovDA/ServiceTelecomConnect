@@ -423,7 +423,7 @@ namespace ServiceTelecomConnect
         #region Форма добавления РСТ
         void BtnNewAddRadiostantionFormClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 AddRSTForm addRSTForm = new AddRSTForm();
                 if (Application.OpenForms["AddRSTForm"] == null)
@@ -461,7 +461,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нельзя добавить параметры на радиостанцию, есть списание");
                 return;
             }
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 AddRadioStationParametersForm addParameters = new AddRadioStationParametersForm();
                 if (Application.OpenForms["AddRadioStationParametersForm"] == null)
@@ -487,7 +487,7 @@ namespace ServiceTelecomConnect
         #region отк. формы изменения РСТ
         void BtnChangeRadiostantionFormClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
@@ -1013,7 +1013,7 @@ namespace ServiceTelecomConnect
         #region обновляем БД после показа отсутсвующих радиостанций после проверки на участке
         void BtnUpdateClickAfterSeachDataGridReplayRadiostantion(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (dataGridView1.Rows.Count >= 0)
                 {
@@ -1043,7 +1043,7 @@ namespace ServiceTelecomConnect
         #region отк. формы добавления ремонтов
         private void BtnNewAddRadiostantionFormClickRemont(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
@@ -1093,7 +1093,7 @@ namespace ServiceTelecomConnect
         #region panel_remont_info 
         void BtnRemontActClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (String.IsNullOrEmpty(txB_numberActRemont.Text))
                 {
@@ -1660,7 +1660,7 @@ namespace ServiceTelecomConnect
         #region загрузка и обновление json в radiostantion
         void LoadingJsonFileDataBaseClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
                 FunctionalPanel.LoadingJsonFileInDatabase(dataGridView1, cmB_city.Text);
         }
         #endregion
@@ -2321,14 +2321,12 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region изменить номер акта у радиостанции
-
-        void Btn_close_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        void BtnClosePnlChangeNumberActTOFullClick(object sender, EventArgs e)
         {
             pnl_ChangeNumberActTOFull.Visible = false;
             dataGridView1.Enabled = true;
             panel1.Enabled = true;
         }
-
         void ChangeNumberAct(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_numberAct.Text))
@@ -2355,7 +2353,7 @@ namespace ServiceTelecomConnect
             dataGridView1.Enabled = false;
             panel1.Enabled = false;
         }
-        void Btn_pnl_ChangeNumberActTOFull_Click(object sender, EventArgs e)
+        void BtnChangePnlNumberActTOFullClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_pnl_ChangeNumberActTOFull.Text))
             {
@@ -2369,27 +2367,18 @@ namespace ServiceTelecomConnect
                 txB_numberAct.Select();
                 return;
             }
-
             QuerySettingDataBase.ChangeNumberAct(dataGridView1, txB_pnl_ChangeNumberActTOFull.Text, cmB_city.Text, cmB_road.Text);
-
             int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-
             QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-            txB_numberAct.Text = "";
-
+            txB_numberAct.Text = String.Empty;
             dataGridView1.ClearSelection();
-
             if (dataGridView1.RowCount - currRowIndex > 0)
                 dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             txB_pnl_ChangeNumberActTOFull.Clear();
             Counters();
-            Btn_close_pnl_ChangeNumberActTOFull_Click(sender, e);
+            BtnClosePnlChangeNumberActTOFullClick(sender, e);
         }
-
-
-
-        #endregion
-      
+        #endregion    
     }
 }
 
