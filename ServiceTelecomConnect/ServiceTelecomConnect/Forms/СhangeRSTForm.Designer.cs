@@ -268,7 +268,7 @@
             this.btn_change_rst_full.TabIndex = 28;
             this.btn_change_rst_full.Text = "Изменить всё";
             this.btn_change_rst_full.UseVisualStyleBackColor = false;
-            this.btn_change_rst_full.Click += new System.EventHandler(this.Button_сhange_rst_full_Click);
+            this.btn_change_rst_full.Click += new System.EventHandler(this.BtnChangeRadiostantionFullClick);
             // 
             // label8
             // 
@@ -807,7 +807,7 @@
             this.cmB_model.Size = new System.Drawing.Size(232, 28);
             this.cmB_model.TabIndex = 52;
             this.cmB_model.SelectionChangeCommitted += new System.EventHandler(this.CmB_model_SelectionChangeCommitted);
-            this.cmB_model.Click += new System.EventHandler(this.ComboBox_model_Click);
+            this.cmB_model.Click += new System.EventHandler(this.CmbModelClick);
             // 
             // monthCalendar2
             // 
@@ -895,7 +895,7 @@
             this.btn_change_rst_act.TabIndex = 115;
             this.btn_change_rst_act.Text = "Изменить акт";
             this.btn_change_rst_act.UseVisualStyleBackColor = false;
-            this.btn_change_rst_act.Click += new System.EventHandler(this.Btn_change_rst_act_Click);
+            this.btn_change_rst_act.Click += new System.EventHandler(this.BtnChangeRadiostantionActClick);
             // 
             // chB_numberActTO_Enable
             // 
@@ -1034,7 +1034,7 @@
             this.Name = "СhangeRSTForm";
             this.ShowIcon = false;
             this.Text = "Изменение РСТ";
-            this.Load += new System.EventHandler(this.ChangeRSTForm_Load);
+            this.Load += new System.EventHandler(this.ChangeRSTFormLoad);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ChangeRSTForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
