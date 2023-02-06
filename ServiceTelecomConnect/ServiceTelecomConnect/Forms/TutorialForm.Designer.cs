@@ -86,7 +86,7 @@
             this.btn_delete_problem.TabIndex = 98;
             this.btn_delete_problem.Text = "Удалить иформацию";
             this.btn_delete_problem.UseVisualStyleBackColor = false;
-            this.btn_delete_problem.Click += new System.EventHandler(this.Btn_delete_problem_Click);
+            this.btn_delete_problem.Click += new System.EventHandler(this.BtnDeleteProblemClick);
             // 
             // btn_change_problem
             // 
@@ -98,7 +98,7 @@
             this.btn_change_problem.TabIndex = 97;
             this.btn_change_problem.Text = "Изменить неисправность";
             this.btn_change_problem.UseVisualStyleBackColor = false;
-            this.btn_change_problem.Click += new System.EventHandler(this.Btn_change_problem_Click);
+            this.btn_change_problem.Click += new System.EventHandler(this.BtnChangeProblemClick);
             // 
             // btn_brief_info
             // 
@@ -110,7 +110,7 @@
             this.btn_brief_info.TabIndex = 96;
             this.btn_brief_info.Text = "Краткая иформация";
             this.btn_brief_info.UseVisualStyleBackColor = false;
-            this.btn_brief_info.Click += new System.EventHandler(this.Btn_brief_info_Click);
+            this.btn_brief_info.Click += new System.EventHandler(this.BtnBriefInfoClick);
             // 
             // cmb_unique
             // 
@@ -123,7 +123,7 @@
             this.cmb_unique.Size = new System.Drawing.Size(229, 28);
             this.cmb_unique.TabIndex = 95;
             this.cmb_unique.Visible = false;
-            this.cmb_unique.SelectedIndexChanged += new System.EventHandler(this.Cmb_unique_SelectedIndexChanged);
+            this.cmb_unique.SelectedIndexChanged += new System.EventHandler(this.CmbUniqueSelectedIndexChanged);
             // 
             // cmB_seach
             // 
@@ -140,7 +140,7 @@
             this.cmB_seach.Name = "cmB_seach";
             this.cmB_seach.Size = new System.Drawing.Size(228, 28);
             this.cmB_seach.TabIndex = 94;
-            this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.Cmb_seach_SelectionChangeCommitted);
+            this.cmB_seach.SelectionChangeCommitted += new System.EventHandler(this.CmbSeachSelectionChangeCommitted);
             // 
             // btn_new_rst_problem
             // 
@@ -152,7 +152,7 @@
             this.btn_new_rst_problem.TabIndex = 93;
             this.btn_new_rst_problem.Text = "Добавить новую неисправность";
             this.btn_new_rst_problem.UseVisualStyleBackColor = false;
-            this.btn_new_rst_problem.Click += new System.EventHandler(this.Btn_new_rst_problem_Click);
+            this.btn_new_rst_problem.Click += new System.EventHandler(this.BtnNewRadiostantionProblemClick);
             // 
             // picB_update
             // 
@@ -165,7 +165,7 @@
             this.picB_update.Size = new System.Drawing.Size(50, 48);
             this.picB_update.TabIndex = 92;
             this.picB_update.TabStop = false;
-            this.picB_update.Click += new System.EventHandler(this.PicB_update_Click);
+            this.picB_update.Click += new System.EventHandler(this.Update_Click);
             // 
             // txB_search
             // 
@@ -176,8 +176,8 @@
             this.txB_search.Name = "txB_search";
             this.txB_search.Size = new System.Drawing.Size(229, 29);
             this.txB_search.TabIndex = 89;
-            this.txB_search.DoubleClick += new System.EventHandler(this.TxB_search_DoubleClick);
-            this.txB_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxB_search_KeyPress);
+            this.txB_search.DoubleClick += new System.EventHandler(this.TxbSearchDoubleClick);
+            this.txB_search.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxbSearchKeyPress);
             // 
             // dataGridView1
             // 
@@ -224,9 +224,9 @@
             this.dataGridView1.ShowCellToolTips = false;
             this.dataGridView1.Size = new System.Drawing.Size(1349, 548);
             this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1_CellBeginEdit);
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
-            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1_MouseClick);
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridView1CellBeginEdit);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellClick);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DataGridView1MouseClick);
             // 
             // panel2
             // 
@@ -297,7 +297,7 @@
             this.btn_save_excel.TabIndex = 99;
             this.btn_save_excel.Text = "Сохранить в excel";
             this.btn_save_excel.UseVisualStyleBackColor = false;
-            this.btn_save_excel.Click += new System.EventHandler(this.Btn_save_excel_Click);
+            this.btn_save_excel.Click += new System.EventHandler(this.BtnSaveExcelClick);
             // 
             // TutorialForm
             // 
@@ -314,7 +314,7 @@
             this.MinimumSize = new System.Drawing.Size(1368, 700);
             this.Name = "TutorialForm";
             this.Text = "Обучалка";
-            this.Load += new System.EventHandler(this.TutorialForm_Load);
+            this.Load += new System.EventHandler(this.TutorialFormLoad);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picB_update)).EndInit();
