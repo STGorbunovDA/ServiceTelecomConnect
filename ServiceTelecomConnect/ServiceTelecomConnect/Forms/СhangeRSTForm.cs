@@ -157,7 +157,6 @@ namespace ServiceTelecomConnect
             }
             ChangeRadiostantion();
         }
-
         void ChangeRadiostantion()
         {
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
@@ -575,11 +574,12 @@ namespace ServiceTelecomConnect
                 string batteryСharger = txB_batteryСharger.Text;
                 string comment = txB_comment.Text;
                 string road = lbL_road.Text;
-                if (!(poligon == "") && !(company == "") && !(location == "") && !(model == "")
-                && !(serialNumber == "") && !(dateTO == "") && !(city == "")
-                && !(representative == "") && !(post == "") && !(numberIdentification == "")
-                && !(dateIssue == "") && !(phoneNumber == "") && !(antenna == "")
-                && !(manipulator == "") && !(AKB == "") && !(batteryСharger == ""))
+                if (!String.IsNullOrEmpty(poligon) && !String.IsNullOrEmpty(company) && !String.IsNullOrEmpty(location) 
+                    && !String.IsNullOrEmpty(model)&& !String.IsNullOrEmpty(serialNumber) && !String.IsNullOrEmpty(dateTO) 
+                    && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(representative) && !String.IsNullOrEmpty(post) 
+                    && !String.IsNullOrEmpty(numberIdentification) && !String.IsNullOrEmpty(dateIssue) 
+                    && !String.IsNullOrEmpty(phoneNumber) && !String.IsNullOrEmpty(antenna) && !String.IsNullOrEmpty(manipulator) 
+                    && !String.IsNullOrEmpty(AKB) && !String.IsNullOrEmpty(batteryСharger))
                 {
 
                     string changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
@@ -606,7 +606,6 @@ namespace ServiceTelecomConnect
                         command.ExecuteNonQuery();
                         DB.GetInstance.CloseConnection();
                     }
-
                     using (MySqlCommand command2 = new MySqlCommand(changeQuery2, DB.GetInstance.GetConnection()))
                     {
                         DB.GetInstance.OpenConnection();
@@ -618,7 +617,6 @@ namespace ServiceTelecomConnect
                 else MessageBox.Show("Вы не заполнили нужные поля со (*)!");
             }
         }
-
         #endregion
 
         #region Очищаем Conrol-ы
@@ -951,7 +949,6 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region смена удостоврения сразу у всех рст по номеру акта или по пп
-
         void Btn_identityCard_change_rst_act_Click(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
@@ -1142,7 +1139,6 @@ namespace ServiceTelecomConnect
         }
 
         #endregion
-
         void ChB_numberActTO_Enable_Click(object sender, EventArgs e)
         {
             if (chB_numberActTO_Enable.Checked)
@@ -1158,7 +1154,6 @@ namespace ServiceTelecomConnect
                 btn_change_rst_full.Enabled = true;
             }
         }
-
         void ChB_analog_Click(object sender, EventArgs e)
         {
             chB_digital.CheckState = CheckState.Unchecked;
@@ -1169,7 +1164,6 @@ namespace ServiceTelecomConnect
                 txB_price.Text = "1919.57";
             }
         }
-
         void ChB_digital_Click(object sender, EventArgs e)
         {
             chB_analog.CheckState = CheckState.Unchecked;
