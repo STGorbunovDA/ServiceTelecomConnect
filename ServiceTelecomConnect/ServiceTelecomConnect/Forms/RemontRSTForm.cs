@@ -345,7 +345,7 @@ namespace ServiceTelecomConnect
         }
         void BtnSaveAddRadiostantionRemontClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 if (!String.IsNullOrEmpty(txB_сompleted_works_1.Text) && !String.IsNullOrEmpty(txB_parts_1.Text))
                 {
