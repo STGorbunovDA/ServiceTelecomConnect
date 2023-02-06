@@ -48,7 +48,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void RefreshDataGrid(DataGridView dgw)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 var myCulture = new CultureInfo("ru-RU");
                 myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -185,7 +185,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void PicbDeleteClick(object sender, EventArgs e)
         {
-            if (Internet_check.CheackSkyNET())
+            if (InternetCheck.CheackSkyNET())
             {
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     dataGridView1.Rows[row.Index].Cells[5].Value = RowState.Deleted;
