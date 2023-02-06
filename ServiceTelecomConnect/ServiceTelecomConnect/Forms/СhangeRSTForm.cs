@@ -12,7 +12,6 @@ namespace ServiceTelecomConnect
     public partial class СhangeRSTForm : Form
     {
         private delegate DialogResult ShowOpenFileDialogInvoker();
-
         public СhangeRSTForm()
         {
             InitializeComponent();
@@ -574,11 +573,11 @@ namespace ServiceTelecomConnect
                 string batteryСharger = txB_batteryСharger.Text;
                 string comment = txB_comment.Text;
                 string road = lbL_road.Text;
-                if (!String.IsNullOrEmpty(poligon) && !String.IsNullOrEmpty(company) && !String.IsNullOrEmpty(location) 
-                    && !String.IsNullOrEmpty(model)&& !String.IsNullOrEmpty(serialNumber) && !String.IsNullOrEmpty(dateTO) 
-                    && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(representative) && !String.IsNullOrEmpty(post) 
-                    && !String.IsNullOrEmpty(numberIdentification) && !String.IsNullOrEmpty(dateIssue) 
-                    && !String.IsNullOrEmpty(phoneNumber) && !String.IsNullOrEmpty(antenna) && !String.IsNullOrEmpty(manipulator) 
+                if (!String.IsNullOrEmpty(poligon) && !String.IsNullOrEmpty(company) && !String.IsNullOrEmpty(location)
+                    && !String.IsNullOrEmpty(model) && !String.IsNullOrEmpty(serialNumber) && !String.IsNullOrEmpty(dateTO)
+                    && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(representative) && !String.IsNullOrEmpty(post)
+                    && !String.IsNullOrEmpty(numberIdentification) && !String.IsNullOrEmpty(dateIssue)
+                    && !String.IsNullOrEmpty(phoneNumber) && !String.IsNullOrEmpty(antenna) && !String.IsNullOrEmpty(manipulator)
                     && !String.IsNullOrEmpty(AKB) && !String.IsNullOrEmpty(batteryСharger))
                 {
 
@@ -620,15 +619,14 @@ namespace ServiceTelecomConnect
         #endregion
 
         #region Очищаем Conrol-ы
-        void PictureBox4_Click(object sender, EventArgs e)
+        void ClearControlForm(object sender, EventArgs e)
         {
             string Mesage = "Вы действительно хотите очистить все введенные вами поля?";
-
             if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
             foreach (Control control in this.Controls)
                 if (control is TextBox)
-                    control.Text = "";
+                    control.Text = String.Empty;
 
             txB_antenna.Text = "-";
             txB_manipulator.Text = "-";
@@ -658,15 +656,19 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region Очищаем дату проведения ТО
-        void PictureBox6_Click(object sender, EventArgs e)
+        #region Очищаем дату выдачи удостоверения и дату ТО
+        void ClearControlDataIssue(object sender, EventArgs e)
         {
-            txB_dateIssue.Text = "";
+            txB_dateIssue.Text = String.Empty;
+        }
+        void ClearControlDateTO(object sender, EventArgs e)
+        {
+            txB_dateTO.Text = String.Empty;
         }
         #endregion
 
         #region KeyUp KeyPress для Control-ов
-        void TextBox_price_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbPriceKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             char decimalSeparatorChar = Convert.ToChar(Thread.CurrentThread.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
@@ -675,20 +677,19 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
                 return;
             }
-
             if (!Char.IsDigit(ch) && ch != 8 && ch != decimalSeparatorChar)
                 e.Handled = true;
         }
-        void CmB_model_SelectionChangeCommitted(object sender, EventArgs e)
+        void CmbModelSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
             {
                 if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
-               cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
-               cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
-               cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
-               cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
-               cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
+                cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
+                cmB_model.Text == "Motorola GP-300" || cmB_model.Text == "Motorola GP-320" || cmB_model.Text == "Motorola GP-340" ||
+                cmB_model.Text == "Motorola GP-360" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Comrade R5" ||
+                cmB_model.Text == "Гранит Р33П-1" || cmB_model.Text == "Гранит Р-43" || cmB_model.Text == "Радий-301" ||
+                cmB_model.Text == "Kenwood ТК-2107" || cmB_model.Text == "Vertex - 261" || cmB_model.Text == "РА-160")
                 {
                     txB_price.Text = "1411.18";
                     chB_analog.CheckState = CheckState.Checked;
@@ -703,35 +704,23 @@ namespace ServiceTelecomConnect
             }
             else txB_price.Text = "0.00";
         }
-
-        void PictureBox5_Click(object sender, EventArgs e)
-        {
-            txB_dateTO.Text = "";
-        }
-        void TextBox_location_Click(object sender, EventArgs e)
+        void TxbLocationClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_location.Text))
                 txB_location.Text = $"ст. {txB_city.Text}";
         }
-        void TxB_serialNumber_KeyDown(object sender, KeyEventArgs e)
+        void TxbSerialNumberKeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
                 if (!String.IsNullOrEmpty(txB_serialNumber.Text))
                 {
                     string serialNumber = txB_serialNumber.Text;
-
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
-
                     MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection());
-
                     MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-
                     DataTable table = new DataTable();
-
                     adapter.Fill(table);
-
                     if (table.Rows.Count > 0)
                     {
                         cmB_poligon.Text = table.Rows[0].ItemArray[1].ToString();
@@ -785,11 +774,11 @@ namespace ServiceTelecomConnect
                 }
             }
         }
-        void TextBox_serialNumber_KeyUp(object sender, KeyEventArgs e)
+        void TxbSerialNumberKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_serialNumber_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbSerialNumberKeyPress(object sender, KeyPressEventArgs e)
         {
             if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16"
                 || cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Альтавия-301М" || cmB_model.Text == "Элодия-351М"
@@ -833,7 +822,6 @@ namespace ServiceTelecomConnect
                 else e.Handled = true;
             }
         }
-        //Shortcuts для ctrl+c ctrl + x ctrl + V
         void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
         {
             TextBox t = (TextBox)sender;
@@ -863,93 +851,87 @@ namespace ServiceTelecomConnect
                 e.Handled = true;
             }
         }
-        void TextBox_antenna_Click(object sender, EventArgs e)
+        void TxbAntennaClick(object sender, EventArgs e)
         {
-            txB_antenna.Text = "";
+            txB_antenna.Text = String.Empty;
         }
-        void TextBox_antenna_KeyUp(object sender, KeyEventArgs e)
+        void TxbAntennaKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_antenna_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbAntennaKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_antenna_Leave(object sender, EventArgs e)
+        void TxbAntennaLeave(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_antenna.Text))
                 txB_antenna.Text = "-";
         }
-        void TextBox_manipulator_Click(object sender, EventArgs e)
+        void TxbManipulatorClick(object sender, EventArgs e)
         {
-            txB_manipulator.Text = "";
+            txB_manipulator.Text = String.Empty;
         }
-        void TextBox_manipulator_KeyUp(object sender, KeyEventArgs e)
+        void TxbManipulatorKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_manipulator_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbManipulatorKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_manipulator_Leave(object sender, EventArgs e)
+        void TxbManipulatorLeave(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_manipulator.Text))
                 txB_manipulator.Text = "-";
         }
-        void TextBox_AKB_Leave(object sender, EventArgs e)
+        void TxbAKBLeave(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txB_AKB.Text))
                 txB_AKB.Text = "-";
         }
-        void TextBox_batteryСharger_Click(object sender, EventArgs e)
+        void TxbBatteryСhargerClick(object sender, EventArgs e)
         {
-            txB_batteryСharger.Text = "";
+            txB_batteryСharger.Text = String.Empty;
         }
-        void TextBox_batteryСharger_KeyUp(object sender, KeyEventArgs e)
+        void TxbBatteryСhargerKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_batteryСharger_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbBatteryСhargerKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if (ch != '\b' && ch != '-' && ch != '1')
                 e.Handled = true;
         }
-        void TextBox_batteryСharger_Leave(object sender, EventArgs e)
+        void TxbBatteryСhargerLeave(object sender, EventArgs e)
         {
-            if (txB_batteryСharger.Text == "")
+            if (txB_batteryСharger.Text == String.Empty)
                 txB_batteryСharger.Text = "-";
         }
-        void TextBox_dateIssue_KeyUp(object sender, KeyEventArgs e)
+        void TxbDateIssueKeyUp(object sender, KeyEventArgs e)
         {
             ProcessKbdCtrlShortcuts(sender, e);
         }
-        void TextBox_dateIssue_KeyPress(object sender, KeyPressEventArgs e)
+        void TxbDateIssueKeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
             if ((ch <= 47 || ch >= 58) && ch != '\b' && ch != '.')
                 e.Handled = true;
         }
-
-        void ChangeRSTForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1)
-                toolTip1.Active = toolTip1.Active ? false : true;
-        }
-        void TxB_AKB_Click(object sender, EventArgs e)
+        void TxbAKBClick(object sender, EventArgs e)
         {
             if (txB_AKB.Text == "-")
-                txB_AKB.Text = "";
+                txB_AKB.Text = String.Empty;
         }
         #endregion
 
         #region смена удостоврения сразу у всех рст по номеру акта или по пп
-        void Btn_identityCard_change_rst_act_Click(object sender, EventArgs e)
+        void BtnIdentityCardChangeRadiostantionActClick(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
             {
@@ -960,10 +942,8 @@ namespace ServiceTelecomConnect
                     control.Text.Trim();
                 }
             }
-
             if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего акта?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             string representative = txB_representative.Text;
             if (!representative.Contains("-"))
             {
@@ -1017,7 +997,6 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-
             if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
             {
                 MessageBox.Show("Введите корректно \"№ Акта ТО\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1044,8 +1023,7 @@ namespace ServiceTelecomConnect
             }
             else MessageBox.Show("В БД нет акта по которому вы хотите поменять удостоверение представителя");
         }
-
-        void Btn_identityCard_change_rst_company_Click(object sender, EventArgs e)
+        void BtnIdentityCardChangeRadiostantionCompanyClick(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
             {
@@ -1059,7 +1037,6 @@ namespace ServiceTelecomConnect
 
             if (MessageBox.Show("Вы действительно хотите сменить удостоверение представителя у всего предприятия?", "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
-
             string representative = txB_representative.Text;
             if (!representative.Contains("-"))
             {
@@ -1092,7 +1069,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Введите корректно поле \"Номер удостоверения\"\nP.s. пример: V 149062", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_numberIdentification.Select();
                 string Mesage = "Вы действительно хотите продолжить?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -1109,7 +1085,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Введите корректно поле \"Номер телефона\"\nP.s. пример: +79246291675", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_phoneNumber.Select();
                 string Mesage = "Вы действительно хотите продолжить?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -1118,9 +1093,7 @@ namespace ServiceTelecomConnect
             {
                 MessageBox.Show("Введите корректно поле \"Предприятие\"\n P.s. В РЖД наименование предприятий с большой буквы\nпример: \"ПЧИССО-2\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_company.Select();
-
                 string Mesage = "Вы действительно хотите добавить радиостанцию?";
-
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
@@ -1137,9 +1110,8 @@ namespace ServiceTelecomConnect
                 MessageBox.Show($"Всё данные удостоверния по предприятию изменены ", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         #endregion
-        void ChB_numberActTO_Enable_Click(object sender, EventArgs e)
+        void ChbNumberActTOEnableClick(object sender, EventArgs e)
         {
             if (chB_numberActTO_Enable.Checked)
             {
@@ -1154,7 +1126,7 @@ namespace ServiceTelecomConnect
                 btn_change_rst_full.Enabled = true;
             }
         }
-        void ChB_analog_Click(object sender, EventArgs e)
+        void ChbAnalogClick(object sender, EventArgs e)
         {
             chB_digital.CheckState = CheckState.Unchecked;
             txB_price.Text = "1411.18";
@@ -1164,7 +1136,7 @@ namespace ServiceTelecomConnect
                 txB_price.Text = "1919.57";
             }
         }
-        void ChB_digital_Click(object sender, EventArgs e)
+        void ChbDigitalClick(object sender, EventArgs e)
         {
             chB_analog.CheckState = CheckState.Unchecked;
             txB_price.Text = "1919.57";
