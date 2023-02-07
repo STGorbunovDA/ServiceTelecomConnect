@@ -30,7 +30,7 @@ namespace ServiceTelecomConnect.Forms
                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, selectivityReceiver," +
                $"sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, receptionModeCurrentConsumption, " +
                $"transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, transmitterFrequencies, receiverFrequencies, " +
-               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST, company " +
+               $"batteryChargerAccessories, manipulatorAccessories, nameAKB, percentAKB, noteRadioStationParameters, verifiedRST, company, location " +
                $"FROM radiostation_parameters WHERE road = '{lbL_road.Text}' AND city = '{lbL_city.Text}' " +
                $"AND serialNumber = '{txB_serialNumber.Text}'";
                 using (MySqlCommand command = new MySqlCommand(queryRadiostantionParameters, DB_3.GetInstance.GetConnection()))
@@ -65,6 +65,7 @@ namespace ServiceTelecomConnect.Forms
                             txB_percentAKB.Text = reader[22].ToString();
                             txB_NoteRadioStationParameters.Text = reader[23].ToString();
                             lbL_company.Text = reader[25].ToString();
+                            lbl_location.Text = reader[26].ToString();
 
                             if (reader[24].ToString() == "+")
                                 lbl_verifiedRST.Visible = true;
