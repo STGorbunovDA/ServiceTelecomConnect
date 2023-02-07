@@ -2,10 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -2643,11 +2642,18 @@ namespace ServiceTelecomConnect
             }
         }
 
-        internal static void PrintExcelReportAKB(string city, string road, string poligon)
+        internal static void PrintExcelReportAKB(string city, string road, string poligon, TextBox txb_FlagAllDataBase)
         {
             List<string> fList = new List<string>();
-            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
-               $"AND road = '{road}' ORDER BY company";
+            string queryString = String.Empty;
+            if (txb_FlagAllDataBase.Text == "Вся БД")
+            {
+                queryString = $"SELECT DISTINCT company FROM radiostantion WHERE road = '{road}' ORDER BY company";
+                poligon = "Общий";
+                city = "Общий";
+            }
+            else queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
+                  $"AND road = '{road}' ORDER BY company";
             using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
@@ -2672,15 +2678,17 @@ namespace ServiceTelecomConnect
                 }
                 else
                 {
-                    exApp.SheetsInNewWorkbook = 1;
+                    exApp.SheetsInNewWorkbook = 2;
                     exApp.Workbooks.Add();
                     exApp.DisplayAlerts = false;
 
                     Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
+                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
                     DateTime dateTime = new DateTime();
                     dateTime = DateTime.Now;
 
-                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime.ToString("yyyy")} г.";
+                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime:yyyy} г.";
+                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime:yyyy} г. по станциям";
 
                     #region Сводный отчёт
 
@@ -2704,8 +2712,8 @@ namespace ServiceTelecomConnect
                     _excelCells700.EntireRow.RowHeight = 25;
                     _excelCells700.Font.Size = 16;
                     _excelCells700.Font.Bold = true;
-                    
-                    workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон {poligon} участка {city} {dateTime.ToString("yyyy")} г.";
+
+                    workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" {dateTime.ToString("yyyy")} г.";
                     Excel.Range _excelCells701 = (Excel.Range)workSheet.get_Range("A1").Cells;
                     _excelCells701.EntireColumn.ColumnWidth = 4;
                     Excel.Range _excelCells702 = (Excel.Range)workSheet.get_Range("B3", "E3").Cells;
@@ -2825,7 +2833,6 @@ namespace ServiceTelecomConnect
                     #endregion
 
                     string file = $"{city}_Отчёт_АКБ_{dateTime.ToString("yyyy")}.xlsx";
-
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
                     {
                         try
@@ -2861,7 +2868,6 @@ namespace ServiceTelecomConnect
 
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -2880,7 +2886,6 @@ namespace ServiceTelecomConnect
             string txb_3_post_remont_company, string txb_3_FIO_remont_company, string mainMeans, string nameProductRepaired)
         {
             Excel.Application exApp = new Excel.Application();
-
             try
             {
                 Type officeType = Type.GetTypeFromProgID("Excel.Application");
@@ -3974,7 +3979,6 @@ namespace ServiceTelecomConnect
 
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
-
                 MessageBox.Show(ex.ToString());
             }
         }
