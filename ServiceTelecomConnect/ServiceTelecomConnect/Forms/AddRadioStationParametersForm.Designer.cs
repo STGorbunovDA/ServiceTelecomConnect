@@ -108,6 +108,7 @@
             this.btn_DecommissionRadiostantion = new System.Windows.Forms.Button();
             this.lbL_company = new System.Windows.Forms.Label();
             this.chb_repeater = new System.Windows.Forms.CheckBox();
+            this.lbl_location = new System.Windows.Forms.Label();
             this.pnl_transmitter.SuspendLayout();
             this.pnl_frequencies.SuspendLayout();
             this.pnl_Receiver.SuspendLayout();
@@ -993,7 +994,7 @@
             this.lbL_city.AutoSize = true;
             this.lbL_city.BackColor = System.Drawing.Color.Transparent;
             this.lbL_city.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_city.Location = new System.Drawing.Point(10, 112);
+            this.lbL_city.Location = new System.Drawing.Point(92, 11);
             this.lbL_city.Name = "lbL_city";
             this.lbL_city.Size = new System.Drawing.Size(52, 18);
             this.lbL_city.TabIndex = 182;
@@ -1005,7 +1006,7 @@
             this.lbL_road.AutoSize = true;
             this.lbL_road.BackColor = System.Drawing.Color.Transparent;
             this.lbL_road.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_road.Location = new System.Drawing.Point(68, 114);
+            this.lbL_road.Location = new System.Drawing.Point(150, 11);
             this.lbL_road.Name = "lbL_road";
             this.lbL_road.Size = new System.Drawing.Size(60, 18);
             this.lbL_road.TabIndex = 194;
@@ -1087,12 +1088,25 @@
             this.chb_repeater.Text = "Ретранслятор";
             this.chb_repeater.UseVisualStyleBackColor = false;
             // 
+            // lbl_location
+            // 
+            this.lbl_location.AutoSize = true;
+            this.lbl_location.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_location.Location = new System.Drawing.Point(20, 10);
+            this.lbl_location.Name = "lbl_location";
+            this.lbl_location.Size = new System.Drawing.Size(66, 18);
+            this.lbl_location.TabIndex = 200;
+            this.lbl_location.Text = "Станция";
+            this.lbl_location.Visible = false;
+            // 
             // AddRadioStationParametersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.ClientSize = new System.Drawing.Size(1055, 631);
+            this.Controls.Add(this.lbl_location);
             this.Controls.Add(this.chb_repeater);
             this.Controls.Add(this.lbL_company);
             this.Controls.Add(this.btn_DecommissionRadiostantion);
@@ -1225,5 +1239,6 @@
         private System.Windows.Forms.Button btn_DecommissionRadiostantion;
         internal System.Windows.Forms.Label lbL_company;
         private System.Windows.Forms.CheckBox chb_repeater;
+        internal System.Windows.Forms.Label lbl_location;
     }
 }
