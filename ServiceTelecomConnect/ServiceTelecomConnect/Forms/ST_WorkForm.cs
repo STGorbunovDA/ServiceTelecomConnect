@@ -478,6 +478,7 @@ namespace ServiceTelecomConnect
                     addParameters.lbL_city.Text = txB_city.Text;
                     addParameters.lbL_road.Text = cmB_road.Text;
                     addParameters.lbL_company.Text = txB_company.Text;
+                    addParameters.lbl_location.Text = txB_location.Text;
                     addParameters.Show();
                 }
             }
