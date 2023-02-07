@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.Office.Interop.Word;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -2687,8 +2688,8 @@ namespace ServiceTelecomConnect
                     DateTime dateTime = new DateTime();
                     dateTime = DateTime.Now;
 
-                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime:yyyy} г.";
-                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime:yyyy} г. по станциям";
+                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime.ToString("yyyy")} г.";
+                    workSheet2.Name = $"По станциям г. {city}_{dateTime.ToString("yyyy")} г.";
 
                     #region Сводный отчёт
 
@@ -2829,6 +2830,69 @@ namespace ServiceTelecomConnect
                         }
                         countCells++;
                     }
+
+                    #endregion
+
+                    #region по станциям
+                    if (txb_FlagAllDataBase.Text != "Вся БД")
+                    {
+                        workSheet2.PageSetup.Zoom = false;
+                        workSheet2.PageSetup.FitToPagesWide = 1;
+                        workSheet2.PageSetup.FitToPagesTall = 1;
+                        workSheet2.Rows.Font.Size = 10;
+                        workSheet2.Rows.Font.Name = "Times New Roman";
+                        workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                        workSheet2.PageSetup.CenterHorizontally = true;
+                        workSheet2.PageSetup.CenterVertically = true;
+                        workSheet2.PageSetup.TopMargin = 0;
+                        workSheet2.PageSetup.BottomMargin = 0;
+                        workSheet2.PageSetup.LeftMargin = 0;
+                        workSheet2.PageSetup.RightMargin = 0;
+
+                        string result = fList.FirstOrDefault(s => s.Contains("ДЦС"));
+
+                        Excel.Range _excelCells800 = (Excel.Range)workSheet2.get_Range("B1", "L2").Cells;
+                        _excelCells800.Merge(Type.Missing);
+                        _excelCells800.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells800.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells800.EntireRow.RowHeight = 25;
+                        _excelCells800.Font.Size = 16;
+                        _excelCells800.Font.Bold = true;
+
+                        workSheet2.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" \nпо станциям {dateTime.ToString("yyyy")} г.";
+                        Excel.Range _excelCells801 = (Excel.Range)workSheet2.get_Range("A1").Cells;
+                        _excelCells801.EntireColumn.ColumnWidth = 4;
+                        Excel.Range _excelCells802 = (Excel.Range)workSheet2.get_Range("B3", "E3").Cells;
+                        _excelCells802.Merge(Type.Missing);
+                        workSheet2.Cells[3, 2] = $"Станция";
+                        Excel.Range _excelCells803 = (Excel.Range)workSheet2.get_Range("F3", "H3").Cells;
+                        _excelCells803.Merge(Type.Missing);
+                        workSheet2.Cells[3, 6] = $"Итого (шт.)";
+                        Excel.Range _excelCells804 = (Excel.Range)workSheet2.get_Range("I3", "J3").Cells;
+                        _excelCells804.Merge(Type.Missing);
+                        workSheet2.Cells[3, 9] = $"Неиспр.(шт.)";
+                        Excel.Range _excelCells805 = (Excel.Range)workSheet2.get_Range("K3", "L3").Cells;
+                        _excelCells805.Merge(Type.Missing);
+                        workSheet2.Cells[3, 11] = $"Неиспр.(%)";
+                        Excel.Range _excelCells806 = (Excel.Range)workSheet2.get_Range("B3", "L3").Cells;
+                        _excelCells806.Font.Size = 13;
+                        _excelCells806.Font.Bold = true;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.EntireRow.RowHeight = 20;
+                        _excelCells806.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells806.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+
+
+                    }
+
+
+
 
                     #endregion
 
