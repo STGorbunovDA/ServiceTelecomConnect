@@ -611,7 +611,8 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Нажми на строчку в таблице.");
                 return;
             }
-            PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text);
+
+            PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text, txb_flag_all_BD);
         }
         #endregion
 
