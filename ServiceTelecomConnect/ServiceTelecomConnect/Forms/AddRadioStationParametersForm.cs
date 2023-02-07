@@ -1110,7 +1110,8 @@ namespace ServiceTelecomConnect.Forms
                 lbl_verifiedRST.Visible = true;
                 if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
                 {
-                    string changeQueryParameters = $"UPDATE radiostation_parameters SET company = '{lbL_company.Text}', numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
+                    string changeQueryParameters = $"UPDATE radiostation_parameters SET company = '{lbL_company.Text}', location = '{lbl_location.Text}', " +
+                        $"numberAct = '{numberAct}', dateTO = '{dateTO}', model = '{model}', " +
                         $"lowPowerLevelTransmitter = '{lowPowerLevelTransmitter}', highPowerLevelTransmitter = '{highPowerLevelTransmitter}', " +
                         $"frequencyDeviationTransmitter = '{frequencyDeviationTransmitter}', sensitivityTransmitter = '{sensitivityTransmitter}', kniTransmitter = '{kniTransmitter}', deviationTransmitter = '{deviationTransmitter}', " +
                         $"outputPowerVoltReceiver = '{outputPowerVoltReceiver}', outputPowerWattReceiver = '{outputPowerWattReceiver}', " +
@@ -1131,14 +1132,14 @@ namespace ServiceTelecomConnect.Forms
                 }
                 else
                 {
-                    string addQueryParameters = $"INSERT INTO radiostation_parameters (road, city, company, numberAct, serialNumber, dateTO," +
+                    string addQueryParameters = $"INSERT INTO radiostation_parameters (road, city, company, location, numberAct, serialNumber, dateTO," +
                                $"model, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter, " +
                                $"sensitivityTransmitter, kniTransmitter, deviationTransmitter, outputPowerVoltReceiver, outputPowerWattReceiver, " +
                                $"selectivityReceiver, sensitivityReceiver, kniReceiver, suppressorReceiver, standbyModeCurrentConsumption, " +
                                $"receptionModeCurrentConsumption, transmissionModeCurrentConsumption, batteryDischargeAlarmCurrentConsumption, " +
                                $"transmitterFrequencies, receiverFrequencies, batteryChargerAccessories, manipulatorAccessories, " +
-                               $"nameAKB, percentAKB, noteRadioStationParameters, verifiedRST) VALUES ('{road}', '{city}', '{lbL_company.Text}', '{numberAct}'," +
-                               $"'{serialNumber}','{dateTO}', '{model}', '{lowPowerLevelTransmitter}', " +
+                               $"nameAKB, percentAKB, noteRadioStationParameters, verifiedRST) VALUES ('{road}', '{city}', '{lbL_company.Text}', " +
+                               $"'{lbl_location.Text}', '{numberAct}', '{serialNumber}','{dateTO}', '{model}', '{lowPowerLevelTransmitter}', " +
                                $"'{highPowerLevelTransmitter}','{frequencyDeviationTransmitter}','{sensitivityTransmitter}', " +
                                $"'{kniTransmitter}', '{deviationTransmitter}', '{outputPowerVoltReceiver}', " +
                                $"'{outputPowerWattReceiver}', '{selectivityReceiver}', '{sensitivityReceiver}', '{kniReceiver}', " +
