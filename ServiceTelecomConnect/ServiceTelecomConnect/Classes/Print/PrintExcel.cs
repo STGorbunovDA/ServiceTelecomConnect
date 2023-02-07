@@ -2118,9 +2118,9 @@ namespace ServiceTelecomConnect
                     string percentAKB = String.Empty;
                     List<string> fList = new List<string>();
                     string[] frequencyTransmitter = fList.ToArray();
-                    string[] frequencyReceiver = fList.ToArray();
+                    //string[] frequencyReceiver = fList.ToArray();
                     string[] temporaryArrayFrequencyTransmitter = fList.ToArray();
-                    string[] temporaryArrayFrequencyReceiver = fList.ToArray();
+                    //string[] temporaryArrayFrequencyReceiver = fList.ToArray();
 
                     for (int i = 0; i < dgw.Rows.Count; i++)
                     {
@@ -2198,23 +2198,23 @@ namespace ServiceTelecomConnect
                         {
                             frequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                             frequencyTransmitter = frequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                            frequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            frequencyReceiver = frequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
-                            workSheet.Cells[19 + s4, 22] = $"1 - {frequencyReceiver.Length}";
+                            //frequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            //frequencyReceiver = frequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            workSheet.Cells[19 + s4, 22] = $"1 - {frequencyTransmitter.Length}";
                         }
                         else
                         {
                             Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
-                            Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+                            //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                             temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                             temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-                            temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            //temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                            //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
-                            frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
+                            //frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
                         }
 
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
@@ -2246,7 +2246,7 @@ namespace ServiceTelecomConnect
                                 _excelCells300.Merge(Type.Missing);
                             }
                             workSheet.Cells[3 + count, 24] = frequencyTransmitter[u];
-                            workSheet.Cells[3 + count, 25] = frequencyReceiver[u];
+                            workSheet.Cells[3 + count, 25] = frequencyTransmitter[u];
                             count++;
                             countCell++;
                         }
@@ -2259,7 +2259,7 @@ namespace ServiceTelecomConnect
                     }
 
                     string transmitterFrequenciesRST = String.Empty;
-                    string receiverFrequenciesRST = String.Empty;
+                    //string receiverFrequenciesRST = String.Empty;
                     int count2 = 1;
 
                     for (int i = 0; i < dgw.Rows.Count; i++)
@@ -2277,26 +2277,26 @@ namespace ServiceTelecomConnect
                                 while (reader.Read())
                                 {
                                     transmitterFrequenciesRST = reader[0].ToString();
-                                    receiverFrequenciesRST = reader[1].ToString();
+                                    //receiverFrequenciesRST = reader[1].ToString();
                                 }
                                 reader.Close();
                             }
                             DB.GetInstance.CloseConnection();
                         }
-                        if (String.IsNullOrEmpty(transmitterFrequenciesRST) || String.IsNullOrEmpty(receiverFrequenciesRST))
+                        if (String.IsNullOrEmpty(transmitterFrequenciesRST))
                         {
                             count2++;
                             continue;
                         }
 
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
-                        Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+                        //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                         temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                         temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-                        temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        //temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
                         string frequency = String.Empty;
                         int p = 0;
@@ -2487,7 +2487,7 @@ namespace ServiceTelecomConnect
                                 _excelCells301.Merge(Type.Missing);
                             }
                             workSheet2.Cells[4 + countDop, 3] = frequencyTransmitter[u];
-                            workSheet2.Cells[4 + countDop, 5] = frequencyReceiver[u];
+                            workSheet2.Cells[4 + countDop, 5] = frequencyTransmitter[u];
                             countDop++;
                             countCellTwo++;
                         }
@@ -2535,7 +2535,7 @@ namespace ServiceTelecomConnect
                     }
 
                     transmitterFrequenciesRST = String.Empty;
-                    receiverFrequenciesRST = String.Empty;
+                    //receiverFrequenciesRST = String.Empty;
                     count2 = 1;
                     for (int i = 0; i < dgw.Rows.Count; i++)
                     {
@@ -2553,26 +2553,26 @@ namespace ServiceTelecomConnect
                                 while (reader.Read())
                                 {
                                     transmitterFrequenciesRST = reader[0].ToString();
-                                    receiverFrequenciesRST = reader[1].ToString();
+                                    //receiverFrequenciesRST = reader[1].ToString();
                                 }
                                 reader.Close();
                             }
                             DB.GetInstance.CloseConnection();
                         }
-                        if (String.IsNullOrEmpty(transmitterFrequenciesRST) || String.IsNullOrEmpty(receiverFrequenciesRST))
+                        if (String.IsNullOrEmpty(transmitterFrequenciesRST))
                         {
                             count2++;
                             continue;
                         }
 
                         Array.Clear(temporaryArrayFrequencyTransmitter, 0, temporaryArrayFrequencyTransmitter.Length);
-                        Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
+                        //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                         temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
                         temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
-                        temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        //temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
+                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
 
                         string frequency = String.Empty;
                         int p = 0;
@@ -2700,7 +2700,7 @@ namespace ServiceTelecomConnect
                     workSheet.Rows.Font.Name = "Times New Roman";
                     workSheet.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
                     workSheet.PageSetup.CenterHorizontally = true;
-                    workSheet.PageSetup.CenterVertically = true;
+                    //workSheet.PageSetup.CenterVertically = true;
                     workSheet.PageSetup.TopMargin = 0;
                     workSheet.PageSetup.BottomMargin = 0;
                     workSheet.PageSetup.LeftMargin = 0;
@@ -2843,7 +2843,7 @@ namespace ServiceTelecomConnect
                         workSheet2.Rows.Font.Name = "Times New Roman";
                         workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
                         workSheet2.PageSetup.CenterHorizontally = true;
-                        workSheet2.PageSetup.CenterVertically = true;
+                        //workSheet2.PageSetup.CenterVertically = true;
                         workSheet2.PageSetup.TopMargin = 0;
                         workSheet2.PageSetup.BottomMargin = 0;
                         workSheet2.PageSetup.LeftMargin = 0;
@@ -2935,7 +2935,8 @@ namespace ServiceTelecomConnect
                             if (i < fList2.Count)
                             {
                                 double countAKB = 0;
-                                string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE location = '{fList[i]}' AND percentAKB != '-'";
+                                string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE location = '{fList2[i]}' " +
+                                    $"AND company = '{resultContainsCompany}' AND percentAKB != '-'";
                                 using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
                                 {
                                     DB.GetInstance.OpenConnection();
@@ -2948,7 +2949,7 @@ namespace ServiceTelecomConnect
                                     DB.GetInstance.CloseConnection();
                                 }
                                 double countPercentMalfunctionAKB = 0;
-                                string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE location = '{fList[i]}' AND percentAKB != '-'";
+                                string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE location = '{fList2[i]}' AND company = '{resultContainsCompany}' AND percentAKB != '-'";
                                 using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
                                 {
                                     DB.GetInstance.OpenConnection();
@@ -2972,7 +2973,7 @@ namespace ServiceTelecomConnect
                                     DB.GetInstance.CloseConnection();
                                 }
                                 workSheet2.Cells[4 + i, 1] = $"{count++}";
-                                workSheet2.Cells[4 + i, 2] = $"{fList[i]}";
+                                workSheet2.Cells[4 + i, 2] = $"{fList2[i]}";
                                 workSheet2.Cells[4 + i, 6] = $"{countAKB}";
                                 workSheet2.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
                                 double percentMalfunctionAKB = 0;
