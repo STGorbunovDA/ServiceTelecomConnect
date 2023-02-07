@@ -24,7 +24,6 @@ namespace ServiceTelecomConnect.Forms
             Thread.CurrentThread.CurrentCulture = myCulture;
             txB_dateTO.ReadOnly = true;
             QuerySettingDataBase.CmbGettingFrequenciesRST(cmB_frequency);
-
             if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostationParameters(lbL_road.Text, lbL_city.Text, txB_serialNumber.Text))
             {
                 var queryRadiostantionParameters = $"SELECT dateTO, lowPowerLevelTransmitter, highPowerLevelTransmitter, frequencyDeviationTransmitter," +
@@ -262,14 +261,12 @@ namespace ServiceTelecomConnect.Forms
 
                 #endregion
 
-                btn_DecommissionRadiostantion.Enabled = false;
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
                 if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
                 if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
                     cmB_ManipulatorAccessories.Enabled = false;
             }
-
             if (String.IsNullOrEmpty(lbL_nameAKB.Text) || lbL_nameAKB.Text == "-")
             {
                 lbL_nameAKB.Visible = false;
