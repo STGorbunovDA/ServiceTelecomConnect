@@ -2849,8 +2849,6 @@ namespace ServiceTelecomConnect
                         workSheet2.PageSetup.LeftMargin = 0;
                         workSheet2.PageSetup.RightMargin = 0;
 
-                        string result = fList.FirstOrDefault(s => s.Contains("ДЦС"));
-
                         Excel.Range _excelCells800 = (Excel.Range)workSheet2.get_Range("B1", "L2").Cells;
                         _excelCells800.Merge(Type.Missing);
                         _excelCells800.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
@@ -2887,8 +2885,111 @@ namespace ServiceTelecomConnect
                         _excelCells806.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells806.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
 
+                        string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
 
+                        List<string> fList2 = new List<string>();
 
+                        queryString = $"SELECT DISTINCT location FROM radiostantion WHERE company = '{resultContainsCompany}' " +
+                            $"AND city = '{city}' AND road = '{road}' ORDER BY location";
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                    fList2.Add(reader.GetString(0));
+                                reader.Close();
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                        count = 1;
+                        countCells = 4;
+                        for (int i = 0; i <= fList2.Count; i++)
+                        {
+                            Excel.Range _excelCells807 = (Excel.Range)workSheet2.get_Range($"B{countCells}", $"E{countCells}").Cells;
+                            _excelCells807.EntireRow.RowHeight = 15;
+                            _excelCells807.Font.Bold = true;
+                            _excelCells807.Merge(Type.Missing);
+                            Excel.Range _excelCells808 = (Excel.Range)workSheet2.get_Range($"F{countCells}", $"H{countCells}").Cells;
+                            _excelCells808.EntireRow.RowHeight = 15;
+                            _excelCells808.Font.Bold = true;
+                            _excelCells808.Merge(Type.Missing);
+                            Excel.Range _excelCells809 = (Excel.Range)workSheet2.get_Range($"I{countCells}", $"J{countCells}").Cells;
+                            _excelCells809.EntireRow.RowHeight = 15;
+                            _excelCells809.Font.Bold = true;
+                            _excelCells809.Merge(Type.Missing);
+                            Excel.Range _excelCells810 = (Excel.Range)workSheet2.get_Range($"K{countCells}", $"L{countCells}").Cells;
+                            _excelCells810.EntireRow.RowHeight = 15;
+                            _excelCells810.Font.Bold = true;
+                            _excelCells810.Merge(Type.Missing);
+                            Excel.Range _excelCells811 = (Excel.Range)workSheet2.get_Range($"A{countCells}", $"L{countCells}").Cells;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells811.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                            if (i < fList2.Count)
+                            {
+                                double countAKB = 0;
+                                string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE location = '{fList[i]}' AND percentAKB != '-'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            countAKB = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+                                double countPercentMalfunctionAKB = 0;
+                                string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE location = '{fList[i]}' AND percentAKB != '-'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                        {
+                                            try
+                                            {
+                                                if (Convert.ToDouble(reader.GetString(0)) < 70)
+                                                    countPercentMalfunctionAKB++;
+                                            }
+                                            catch
+                                            {
+                                                countPercentMalfunctionAKB++;
+                                                continue;
+                                            }
+                                        }
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+                                workSheet2.Cells[4 + i, 1] = $"{count++}";
+                                workSheet2.Cells[4 + i, 2] = $"{fList[i]}";
+                                workSheet2.Cells[4 + i, 6] = $"{countAKB}";
+                                workSheet2.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
+                                double percentMalfunctionAKB = 0;
+                                if (countAKB != 0)
+                                    percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
+                                workSheet2.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
+                            }
+                            else
+                            {
+                                workSheet2.Cells[4 + i, 2] = $"ИТОГ:";
+                                workSheet2.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                                workSheet2.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                                //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
+                                workSheet2.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
+                            }
+                            countCells++;
+                        }
                     }
 
 
