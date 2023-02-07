@@ -1093,12 +1093,11 @@
             this.lbl_location.AutoSize = true;
             this.lbl_location.BackColor = System.Drawing.Color.Transparent;
             this.lbl_location.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_location.Location = new System.Drawing.Point(20, 10);
+            this.lbl_location.Location = new System.Drawing.Point(17, 14);
             this.lbl_location.Name = "lbl_location";
             this.lbl_location.Size = new System.Drawing.Size(66, 18);
             this.lbl_location.TabIndex = 200;
             this.lbl_location.Text = "Станция";
-            this.lbl_location.Visible = false;
             // 
             // AddRadioStationParametersForm
             // 
