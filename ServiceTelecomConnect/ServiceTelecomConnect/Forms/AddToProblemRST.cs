@@ -40,7 +40,7 @@ namespace ServiceTelecomConnect
         }
         void BtnAddRadiostantionProblemClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_model.Text))
+            if (String.IsNullOrWhiteSpace(cmB_model.Text))
             {
                 MessageBox.Show("Модель не может быть пустой", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cmB_model.Select();
@@ -48,20 +48,20 @@ namespace ServiceTelecomConnect
             }
             if (chB_problem_Enable.Checked)
             {
-                if (String.IsNullOrEmpty(txB_problem.Text))
+                if (String.IsNullOrWhiteSpace(txB_problem.Text))
                 {
                     MessageBox.Show("Опиши неисправность", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_problem.Select();
                     return;
                 }
             }
-            if (String.IsNullOrEmpty(txB_info.Text))
+            if (String.IsNullOrWhiteSpace(txB_info.Text))
             {
                 MessageBox.Show("Не заполнено поле \"Описание дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_info.Select();
                 return;
             }
-            if (String.IsNullOrEmpty(txB_actions.Text))
+            if (String.IsNullOrWhiteSpace(txB_actions.Text))
             {
                 MessageBox.Show("Не заполнено поле \"Виды работ по устраненнию дефекта\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_actions.Select();
