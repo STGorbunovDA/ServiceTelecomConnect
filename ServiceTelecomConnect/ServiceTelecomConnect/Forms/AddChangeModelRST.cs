@@ -49,7 +49,7 @@ namespace ServiceTelecomConnect.Forms
 
         void BtnChangeModelRSTClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_model.Text))
+            if (String.IsNullOrWhiteSpace(cmB_model.Text))
                 return;
 
             if (InternetCheck.CheackSkyNET())
@@ -69,7 +69,7 @@ namespace ServiceTelecomConnect.Forms
 
         void BtnDeleteModelRSTClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_model.Text))
+            if (String.IsNullOrWhiteSpace(cmB_model.Text))
                 return;
 
             string Mesage = $"Вы действительно хотите удалить модель радиостанции?\n Модель: {cmB_model.GetItemText(cmB_model.SelectedItem)}";
