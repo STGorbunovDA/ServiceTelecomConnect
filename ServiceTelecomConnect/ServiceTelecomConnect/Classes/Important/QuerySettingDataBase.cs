@@ -107,7 +107,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -199,7 +199,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -483,7 +483,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(road))
+                if (!String.IsNullOrWhiteSpace(road))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -534,7 +534,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -585,7 +585,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(road))
+                if (!String.IsNullOrWhiteSpace(road))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -643,7 +643,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -1203,7 +1203,7 @@ namespace ServiceTelecomConnect
                     dgw.Columns[17].Width = 120;
                 }
 
-                else if (!String.IsNullOrEmpty(city))
+                else if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -1518,7 +1518,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(numberActRemont))
+                if (!String.IsNullOrWhiteSpace(numberActRemont))
                 {
                     if (CheackNumberActRemontRadiostantion(numberActRemont))
                     {
@@ -1572,7 +1572,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(serialNumber))
+                if (!String.IsNullOrWhiteSpace(serialNumber))
                 {
                     string queryRecordDecommissionRadiostantion = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
@@ -1643,7 +1643,7 @@ namespace ServiceTelecomConnect
             if (InternetCheck.CheackSkyNET())
             {
                 string price = String.Empty;
-                if (!String.IsNullOrEmpty(decommissionSerialNumber))
+                if (!String.IsNullOrWhiteSpace(decommissionSerialNumber))
                 {
                     if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                         cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
@@ -1687,7 +1687,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -2263,7 +2263,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -2301,7 +2301,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
