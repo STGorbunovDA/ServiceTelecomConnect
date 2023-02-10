@@ -24,7 +24,7 @@ namespace ServiceTelecomConnect
         }
         void ChangeRSTFormLoad(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (!String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
             {
                 txB_city.Enabled = false;
                 cmB_poligon.Enabled = false;
@@ -95,7 +95,7 @@ namespace ServiceTelecomConnect
 
             Regex re = new Regex(Environment.NewLine);
             txB_numberAct.Text = re.Replace(txB_numberAct.Text, " ");
-            if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
             {
                 if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                 {
@@ -136,9 +136,9 @@ namespace ServiceTelecomConnect
         #region изменяем рст full
         void BtnChangeRadiostantionFullClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
             {
-                if (String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     MessageBox.Show("\"Заводской номер\" не должен быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_serialNumber.Select();
@@ -158,7 +158,7 @@ namespace ServiceTelecomConnect
         }
         void ChangeRadiostantion()
         {
-            if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
             {
                 if (!Regex.IsMatch(txB_numberAct.Text, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                 {
@@ -465,7 +465,7 @@ namespace ServiceTelecomConnect
                 string inventoryNumber = txB_inventoryNumber.Text;
                 if (inventoryNumber.Contains("\\"))
                     inventoryNumber = inventoryNumber.Replace("\\", "\\\\");
-                if (String.IsNullOrEmpty(decommission))
+                if (String.IsNullOrWhiteSpace(decommission))
                 {
                     if (!Regex.IsMatch(inventoryNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                     {
@@ -479,7 +479,7 @@ namespace ServiceTelecomConnect
                 string networkNumber = txB_networkNumber.Text;
                 if (networkNumber.Contains("\\"))
                     networkNumber = networkNumber.Replace("\\", "\\\\");
-                if (String.IsNullOrEmpty(decommission))
+                if (String.IsNullOrWhiteSpace(decommission))
                 {
                     if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
                     {
@@ -491,14 +491,14 @@ namespace ServiceTelecomConnect
                     }
                 }
                 string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
-                if (String.IsNullOrEmpty(dateTO))
+                if (String.IsNullOrWhiteSpace(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateTO.Select();
                     return;
                 }
                 string price = txB_price.Text;
-                if (String.IsNullOrEmpty(price))
+                if (String.IsNullOrWhiteSpace(price))
                 {
                     MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_price.Select();
@@ -524,7 +524,7 @@ namespace ServiceTelecomConnect
                     }
                 }
                 string post = txB_post.Text;
-                if (String.IsNullOrEmpty(post))
+                if (String.IsNullOrWhiteSpace(post))
                 {
                     MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_post.Select();
@@ -540,14 +540,14 @@ namespace ServiceTelecomConnect
                         return;
                 }
                 string dateIssue = txB_dateIssue.Text;
-                if (String.IsNullOrEmpty(dateIssue))
+                if (String.IsNullOrWhiteSpace(dateIssue))
                 {
                     MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateIssue.Select();
                     return;
                 }
                 string phoneNumber = txB_phoneNumber.Text;
-                if (String.IsNullOrEmpty(decommission))
+                if (String.IsNullOrWhiteSpace(decommission))
                 {
                     if (!Regex.IsMatch(phoneNumber, @"^[+][7][9][0-9]{9,9}$"))
                     {
@@ -558,7 +558,7 @@ namespace ServiceTelecomConnect
                             return;
                     }
                 }
-                if (!String.IsNullOrEmpty(decommission))
+                if (!String.IsNullOrWhiteSpace(decommission))
                 {
                     if (!Regex.IsMatch(decommission, @"^[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?[СC]{1,1}([.\-][0-9]+)?)$"))
                     {
@@ -573,12 +573,12 @@ namespace ServiceTelecomConnect
                 string batteryСharger = txB_batteryСharger.Text;
                 string comment = txB_comment.Text;
                 string road = lbL_road.Text;
-                if (!String.IsNullOrEmpty(poligon) && !String.IsNullOrEmpty(company) && !String.IsNullOrEmpty(location)
-                    && !String.IsNullOrEmpty(model) && !String.IsNullOrEmpty(serialNumber) && !String.IsNullOrEmpty(dateTO)
-                    && !String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(representative) && !String.IsNullOrEmpty(post)
-                    && !String.IsNullOrEmpty(numberIdentification) && !String.IsNullOrEmpty(dateIssue)
-                    && !String.IsNullOrEmpty(phoneNumber) && !String.IsNullOrEmpty(antenna) && !String.IsNullOrEmpty(manipulator)
-                    && !String.IsNullOrEmpty(AKB) && !String.IsNullOrEmpty(batteryСharger))
+                if (!String.IsNullOrWhiteSpace(poligon) && !String.IsNullOrWhiteSpace(company) && !String.IsNullOrWhiteSpace(location)
+                    && !String.IsNullOrWhiteSpace(model) && !String.IsNullOrWhiteSpace(serialNumber) && !String.IsNullOrWhiteSpace(dateTO)
+                    && !String.IsNullOrWhiteSpace(city) && !String.IsNullOrWhiteSpace(representative) && !String.IsNullOrWhiteSpace(post)
+                    && !String.IsNullOrWhiteSpace(numberIdentification) && !String.IsNullOrWhiteSpace(dateIssue)
+                    && !String.IsNullOrWhiteSpace(phoneNumber) && !String.IsNullOrWhiteSpace(antenna) && !String.IsNullOrWhiteSpace(manipulator)
+                    && !String.IsNullOrWhiteSpace(AKB) && !String.IsNullOrWhiteSpace(batteryСharger))
                 {
 
                     string changeQuery = $"UPDATE radiostantion SET city = '{city}', poligon = '{poligon}', company = '{company}', " +
@@ -682,7 +682,7 @@ namespace ServiceTelecomConnect
         }
         void CmbModelSelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_decommissionSerialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
             {
                 if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F11" || cmB_model.Text == "Icom IC-F16" ||
                 cmB_model.Text == "Icom IC-F3GS" || cmB_model.Text == "Motorola P040" || cmB_model.Text == "Motorola P080" ||
@@ -706,14 +706,14 @@ namespace ServiceTelecomConnect
         }
         void TxbLocationClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_location.Text))
+            if (String.IsNullOrWhiteSpace(txB_location.Text))
                 txB_location.Text = $"ст. {txB_city.Text}";
         }
         void TxbSerialNumberKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
-                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     string serialNumber = txB_serialNumber.Text;
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
@@ -742,7 +742,7 @@ namespace ServiceTelecomConnect
 
             if (e.KeyCode == Keys.Return)
             {
-                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     string serialNumber = txB_serialNumber.Text;
 
@@ -867,7 +867,7 @@ namespace ServiceTelecomConnect
         }
         void TxbAntennaLeave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_antenna.Text))
+            if (String.IsNullOrWhiteSpace(txB_antenna.Text))
                 txB_antenna.Text = "-";
         }
         void TxbManipulatorClick(object sender, EventArgs e)
@@ -886,12 +886,12 @@ namespace ServiceTelecomConnect
         }
         void TxbManipulatorLeave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_manipulator.Text))
+            if (String.IsNullOrWhiteSpace(txB_manipulator.Text))
                 txB_manipulator.Text = "-";
         }
         void TxbAKBLeave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_AKB.Text))
+            if (String.IsNullOrWhiteSpace(txB_AKB.Text))
                 txB_AKB.Text = "-";
         }
         void TxbBatteryСhargerClick(object sender, EventArgs e)
@@ -964,7 +964,7 @@ namespace ServiceTelecomConnect
                 }
             }
             string post = txB_post.Text;
-            if (String.IsNullOrEmpty(post))
+            if (String.IsNullOrWhiteSpace(post))
             {
                 MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_post.Select();
@@ -981,7 +981,7 @@ namespace ServiceTelecomConnect
                     return;
             }
             string dateIssue = txB_dateIssue.Text;
-            if (String.IsNullOrEmpty(dateIssue))
+            if (String.IsNullOrWhiteSpace(dateIssue))
             {
                 MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_dateIssue.Select();
@@ -1057,7 +1057,7 @@ namespace ServiceTelecomConnect
                 }
             }
             string post = txB_post.Text;
-            if (String.IsNullOrEmpty(post))
+            if (String.IsNullOrWhiteSpace(post))
             {
                 MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_post.Select();
@@ -1073,7 +1073,7 @@ namespace ServiceTelecomConnect
                     return;
             }
             string dateIssue = txB_dateIssue.Text;
-            if (String.IsNullOrEmpty(dateIssue))
+            if (String.IsNullOrWhiteSpace(dateIssue))
             {
                 MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_dateIssue.Select();
