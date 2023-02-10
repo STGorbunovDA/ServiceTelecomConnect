@@ -444,7 +444,7 @@ namespace ServiceTelecomConnect
                 MessageBox.Show("Добавь радиостанцию в выполнение!");
                 return;
             }
-            if (!String.IsNullOrEmpty(txB_numberAct.Text))
+            if (!String.IsNullOrWhiteSpace(txB_numberAct.Text))
             {
                 QuerySettingDataBase.UpdateDataGridViewNumberActCurator(dataGridView1, cmB_city.Text, txB_numberAct.Text);
                 Counters();
@@ -482,7 +482,7 @@ namespace ServiceTelecomConnect
                     MessageBox.Show("Добавь радиостанцию в выполнение!");
                     return;
                 }
-                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     СhangeRSTFormCurator сhangeRSTFormCurator = new СhangeRSTFormCurator();
                     if (Application.OpenForms["СhangeRSTFormCurator"] == null)
@@ -551,7 +551,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Button == MouseButtons.Right)
             {
-                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Изменить выполнение РСТ", AddExecutionCurator));
@@ -606,7 +606,7 @@ namespace ServiceTelecomConnect
         }
         void SeachDatagridCurator()
         {
-            if (!String.IsNullOrEmpty(txBSeachPanelDatagridCurator.Text))
+            if (!String.IsNullOrWhiteSpace(txBSeachPanelDatagridCurator.Text))
             {
                 string searchValue = txBSeachPanelDatagridCurator.Text;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
