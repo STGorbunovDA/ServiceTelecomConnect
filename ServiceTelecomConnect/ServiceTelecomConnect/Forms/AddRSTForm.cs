@@ -47,7 +47,7 @@ namespace ServiceTelecomConnect
         #region добавление РСТ
         void BtnSaveAddRadiostantionClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_serialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_serialNumber.Text))
             {
                 MessageBox.Show("\"Заводской номер\" не должен быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_serialNumber.Select();
@@ -408,14 +408,14 @@ namespace ServiceTelecomConnect
 
                 string numberAct = txB_numberAct.Text;
                 string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
-                if (String.IsNullOrEmpty(dateTO))
+                if (String.IsNullOrWhiteSpace(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateTO.Select();
                     return;
                 }
                 string price = txB_price.Text;
-                if (String.IsNullOrEmpty(price))
+                if (String.IsNullOrWhiteSpace(price))
                 {
                     MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_price.Select();
@@ -443,7 +443,7 @@ namespace ServiceTelecomConnect
                 }
 
                 string post = txB_post.Text;
-                if (String.IsNullOrEmpty(post))
+                if (String.IsNullOrWhiteSpace(post))
                 {
                     MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_post.Select();
@@ -461,7 +461,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
                 string dateIssue = txB_dateIssue.Text;
-                if (String.IsNullOrEmpty(dateIssue))
+                if (String.IsNullOrWhiteSpace(dateIssue))
                 {
                     MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateIssue.Select();
@@ -686,7 +686,7 @@ namespace ServiceTelecomConnect
         {
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.F)
             {
-                if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+                if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
                 {
                     string serialNumber = txB_serialNumber.Text;
                     string querystring = $"SELECT * FROM radiostantion_full WHERE serialNumber = '{serialNumber}'";
@@ -722,7 +722,7 @@ namespace ServiceTelecomConnect
         }
         void SeachRadiostantionFullReturn()
         {
-            if (!String.IsNullOrEmpty(txB_serialNumber.Text))
+            if (!String.IsNullOrWhiteSpace(txB_serialNumber.Text))
             {
                 string serialNumber = txB_serialNumber.Text;
                 string querystring = $"SELECT poligon, company, location, model, inventoryNumber, networkNumber, city " +
@@ -937,7 +937,7 @@ namespace ServiceTelecomConnect
             if (MessageBox.Show(MesageTwo, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                 return;
 
-            if (String.IsNullOrEmpty(txB_serialNumber.Text))
+            if (String.IsNullOrWhiteSpace(txB_serialNumber.Text))
             {
                 MessageBox.Show("\"Заводской номер\" не должен быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_serialNumber.Select();
@@ -1314,14 +1314,14 @@ namespace ServiceTelecomConnect
 
                 string numberAct = txB_numberAct.Text;
                 string dateTO = txB_dateTO.Text;
-                if (String.IsNullOrEmpty(dateTO))
+                if (String.IsNullOrWhiteSpace(dateTO))
                 {
                     MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateTO.Select();
                     return;
                 }
                 string price = txB_price.Text;
-                if (String.IsNullOrEmpty(price))
+                if (String.IsNullOrWhiteSpace(price))
                 {
                     MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_price.Select();
@@ -1349,7 +1349,7 @@ namespace ServiceTelecomConnect
                 }
 
                 string post = txB_post.Text;
-                if (String.IsNullOrEmpty(post))
+                if (String.IsNullOrWhiteSpace(post))
                 {
                     MessageBox.Show("Поле \"№ Должность\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_post.Select();
@@ -1367,7 +1367,7 @@ namespace ServiceTelecomConnect
                         return;
                 }
                 string dateIssue = txB_dateIssue.Text;
-                if (String.IsNullOrEmpty(dateIssue))
+                if (String.IsNullOrWhiteSpace(dateIssue))
                 {
                     MessageBox.Show("Поле \"№ Дата выдачи\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_dateIssue.Select();
