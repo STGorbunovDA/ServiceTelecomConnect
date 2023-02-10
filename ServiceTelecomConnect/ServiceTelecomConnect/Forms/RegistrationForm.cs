@@ -89,7 +89,7 @@ namespace ServiceTelecomConnect
                         }
                     }
 
-                    if (!String.IsNullOrEmpty(cmB_post.Text)) MessageBox.Show("Вы не указали должность!");
+                    if (!String.IsNullOrWhiteSpace(cmB_post.Text)) MessageBox.Show("Вы не указали должность!");
                 }
                 else MessageBox.Show("Такой пользователь уже существует!");
             }
