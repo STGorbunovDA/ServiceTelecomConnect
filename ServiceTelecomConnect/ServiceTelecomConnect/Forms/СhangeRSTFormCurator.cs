@@ -24,13 +24,13 @@ namespace ServiceTelecomConnect
         void ChangeRSTFormLoad(object sender, EventArgs e)
         {
             cmB_model.Text = cmB_model.Items[0].ToString();
-            if (String.IsNullOrEmpty(txB_numberActRemont.Text))
+            if (String.IsNullOrWhiteSpace(txB_numberActRemont.Text))
             {
                 txB_numberActRemont.Enabled = false;
                 cmB_сategory.Enabled = false;
                 txB_priceRemont.Enabled = false;
             }
-            if (!String.IsNullOrEmpty(txB_numberAct.Text))
+            if (!String.IsNullOrWhiteSpace(txB_numberAct.Text))
                 txB_decommission.Enabled = false;
             else
             {
@@ -386,14 +386,14 @@ namespace ServiceTelecomConnect
                 return;
             }
             string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
-            if (String.IsNullOrEmpty(dateTO))
+            if (String.IsNullOrWhiteSpace(dateTO))
             {
                 MessageBox.Show("Поле \"№ Дата ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_dateTO.Select();
                 return;
             }
             string price = txB_price.Text;
-            if (String.IsNullOrEmpty(price))
+            if (String.IsNullOrWhiteSpace(price))
             {
                 MessageBox.Show("Поле \"№ Цена ТО\" не должно быть пустым", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txB_price.Select();
@@ -401,7 +401,7 @@ namespace ServiceTelecomConnect
             }
             string numberActRemont = txB_numberActRemont.Text;
             string сategory = cmB_сategory.Text;
-            if (!String.IsNullOrEmpty(numberActRemont))
+            if (!String.IsNullOrWhiteSpace(numberActRemont))
             {
                 if (!Regex.IsMatch(numberActRemont, @"[0-9]{2,2}/([0-9]+([A-Z]?[А-Я]?)*[.\-]?[0-9]?[0-9]?[0-9]?[A-Z]?[А-Я]?)$"))
                 {
@@ -409,7 +409,7 @@ namespace ServiceTelecomConnect
                     txB_numberActRemont.Select();
                     return;
                 }
-                if (String.IsNullOrEmpty(сategory))
+                if (String.IsNullOrWhiteSpace(сategory))
                 {
                     MessageBox.Show("Заполните поле категория ремонта");
                     return;
@@ -420,10 +420,10 @@ namespace ServiceTelecomConnect
             string month = cmB_month.Text;
             string road = lbL_road.Text;
 
-            if (!String.IsNullOrEmpty(city) && !String.IsNullOrEmpty(poligon) && !String.IsNullOrEmpty(company) 
-                && !String.IsNullOrEmpty(location) && !String.IsNullOrEmpty(model) && !String.IsNullOrEmpty(serialNumber) 
-                && !String.IsNullOrEmpty(inventoryNumber ) && !String.IsNullOrEmpty(networkNumber) 
-                && !String.IsNullOrEmpty(numberAct) && !String.IsNullOrEmpty(dateTO))
+            if (!String.IsNullOrWhiteSpace(city) && !String.IsNullOrWhiteSpace(poligon) && !String.IsNullOrWhiteSpace(company) 
+                && !String.IsNullOrWhiteSpace(location) && !String.IsNullOrWhiteSpace(model) && !String.IsNullOrWhiteSpace(serialNumber) 
+                && !String.IsNullOrWhiteSpace(inventoryNumber ) && !String.IsNullOrWhiteSpace(networkNumber) 
+                && !String.IsNullOrWhiteSpace(numberAct) && !String.IsNullOrWhiteSpace(dateTO))
             {
                 #region проверка ввода РСТ
                 if (cmB_model.Text == "Icom IC-F3GT" || cmB_model.Text == "Icom IC-F16" || cmB_model.Text == "Icom IC-F11"
