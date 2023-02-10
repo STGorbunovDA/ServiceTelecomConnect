@@ -143,10 +143,10 @@ namespace ServiceTelecomConnect
                                 if (priceRemont == "0.00")
                                     priceRemont = "";
 
-                                if (!String.IsNullOrEmpty(decommissionSerialNumber))
+                                if (!String.IsNullOrWhiteSpace(decommissionSerialNumber))
                                 {
                                     numberAct = "списание"; dateTO = "списание";
-                                    if (!String.IsNullOrEmpty(numberActRemont))
+                                    if (!String.IsNullOrWhiteSpace(numberActRemont))
                                     {
                                         numberActRemont = "";
                                         category = "";
@@ -312,10 +312,10 @@ namespace ServiceTelecomConnect
                                 if (priceRemont == "0.00")
                                     priceRemont = "";
 
-                                if (!String.IsNullOrEmpty(decommissionSerialNumber))
+                                if (!String.IsNullOrWhiteSpace(decommissionSerialNumber))
                                 {
                                     numberAct = "списание"; dateTO = "списание"; month = "списание";
-                                    if (!String.IsNullOrEmpty(numberActRemont))
+                                    if (!String.IsNullOrWhiteSpace(numberActRemont))
                                     {
                                         numberActRemont = "";
                                         category = "";
