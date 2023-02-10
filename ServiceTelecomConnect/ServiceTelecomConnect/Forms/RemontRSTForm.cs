@@ -347,14 +347,14 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(txB_сompleted_works_1.Text) && !String.IsNullOrEmpty(txB_parts_1.Text))
+                if (!String.IsNullOrWhiteSpace(txB_сompleted_works_1.Text) && !String.IsNullOrWhiteSpace(txB_parts_1.Text))
                 {
                     string Mesage = "Вы действительно хотите добавить ремонт?";
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                     foreach (Control control in panel1.Controls)
                     {
-                        if (control is TextBox && !String.IsNullOrEmpty(control.Text))
+                        if (control is TextBox && !String.IsNullOrWhiteSpace(control.Text))
                         {
                             Regex regex = new Regex(Environment.NewLine);
                             control.Text = regex.Replace(control.Text, "");
@@ -363,7 +363,7 @@ namespace ServiceTelecomConnect
                     }
                     foreach (Control control in panel2.Controls)
                     {
-                        if (control is TextBox && !String.IsNullOrEmpty(control.Text))
+                        if (control is TextBox && !String.IsNullOrWhiteSpace(control.Text))
                         {
                             Regex regex2 = new Regex(Environment.NewLine);
                             control.Text = regex2.Replace(control.Text, "");
@@ -378,7 +378,7 @@ namespace ServiceTelecomConnect
                         return;
                     }
                     string сategory = cmB_сategory.Text;
-                    if (String.IsNullOrEmpty(сategory))
+                    if (String.IsNullOrWhiteSpace(сategory))
                     {
                         MessageBox.Show("Заполните поле категория ремонта");
                         return;
@@ -410,9 +410,9 @@ namespace ServiceTelecomConnect
                     txB_NameProductRepaired.Text = regex4.Replace(txB_NameProductRepaired.Text, "");
                     string nameProductRepaired = txB_NameProductRepaired.Text;
 
-                    if (!String.IsNullOrEmpty(numberActRemont) && !String.IsNullOrEmpty(сategory) && 
-                        !String.IsNullOrEmpty(priceRemont) && !String.IsNullOrEmpty(сompleted_works_1) && 
-                        !String.IsNullOrEmpty(parts_1))
+                    if (!String.IsNullOrWhiteSpace(numberActRemont) && !String.IsNullOrWhiteSpace(сategory) && 
+                        !String.IsNullOrWhiteSpace(priceRemont) && !String.IsNullOrWhiteSpace(сompleted_works_1) && 
+                        !String.IsNullOrWhiteSpace(parts_1))
                     {
                         string changeQuery = $"UPDATE radiostantion SET numberActRemont = '{numberActRemont.Trim()}', category = '{сategory}', " +
                             $"priceRemont = '{priceRemont}', completed_works_1 = '{сompleted_works_1}', completed_works_2 = '{сompleted_works_2}', " +
