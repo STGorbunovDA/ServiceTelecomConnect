@@ -191,7 +191,7 @@ namespace ServiceTelecomConnect
                 string passUser = Md5.EncryptPlainTextToCipherText(txB_pass.Text);
                 if (!CheackUser(loginUser, passUser))
                 {
-                    if (!String.IsNullOrEmpty(cmB_isAdminPost.Text))
+                    if (!String.IsNullOrWhiteSpace(cmB_isAdminPost.Text))
                     {
                         string querystring = $"INSERT INTO users (login, pass, is_admin) " +
                             $"VALUES ('{loginUser}', '{passUser}', '{cmB_isAdminPost.Text}')";
