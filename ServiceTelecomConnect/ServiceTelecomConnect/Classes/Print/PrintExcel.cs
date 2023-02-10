@@ -22,7 +22,7 @@ namespace ServiceTelecomConnect
 
             try
             {
-                if (!String.IsNullOrEmpty(numberAct))
+                if (!String.IsNullOrWhiteSpace(numberAct))
                 {
                     Type officeType = Type.GetTypeFromProgID("Excel.Application");
 
@@ -1543,7 +1543,7 @@ namespace ServiceTelecomConnect
             Excel.Application exApp = new Excel.Application();
             try
             {
-                if (String.IsNullOrEmpty(numberAct))
+                if (String.IsNullOrWhiteSpace(numberAct))
                 {
                     MessageBox.Show("Выберете акт, который хотите напечатать!", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -2197,9 +2197,9 @@ namespace ServiceTelecomConnect
                         if (i == 0)
                         {
                             frequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            frequencyTransmitter = frequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            frequencyTransmitter = frequencyTransmitter.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
                             //frequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            //frequencyReceiver = frequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            //frequencyReceiver = frequencyReceiver.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
                             workSheet.Cells[19 + s4, 22] = $"1 - {frequencyTransmitter.Length}";
                         }
                         else
@@ -2208,10 +2208,10 @@ namespace ServiceTelecomConnect
                             //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                             temporaryArrayFrequencyTransmitter = transmitterFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                             //temporaryArrayFrequencyReceiver = receiverFrequencies.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                            //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                            //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
                             //frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
@@ -2283,7 +2283,7 @@ namespace ServiceTelecomConnect
                             }
                             DB.GetInstance.CloseConnection();
                         }
-                        if (String.IsNullOrEmpty(transmitterFrequenciesRST))
+                        if (String.IsNullOrWhiteSpace(transmitterFrequenciesRST))
                         {
                             count2++;
                             continue;
@@ -2293,10 +2293,10 @@ namespace ServiceTelecomConnect
                         //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                         temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         //temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         string frequency = String.Empty;
                         int p = 0;
@@ -2559,7 +2559,7 @@ namespace ServiceTelecomConnect
                             }
                             DB.GetInstance.CloseConnection();
                         }
-                        if (String.IsNullOrEmpty(transmitterFrequenciesRST))
+                        if (String.IsNullOrWhiteSpace(transmitterFrequenciesRST))
                         {
                             count2++;
                             continue;
@@ -2569,10 +2569,10 @@ namespace ServiceTelecomConnect
                         //Array.Clear(temporaryArrayFrequencyReceiver, 0, temporaryArrayFrequencyReceiver.Length);
 
                         temporaryArrayFrequencyTransmitter = transmitterFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        temporaryArrayFrequencyTransmitter = temporaryArrayFrequencyTransmitter.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         //temporaryArrayFrequencyReceiver = receiverFrequenciesRST.Split(new string[] { "\n", "\r" }, StringSplitOptions.None);
-                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrEmpty(x)).ToArray();
+                        //temporaryArrayFrequencyReceiver = temporaryArrayFrequencyReceiver.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
                         string frequency = String.Empty;
                         int p = 0;
@@ -2688,8 +2688,10 @@ namespace ServiceTelecomConnect
                     DateTime dateTime = new DateTime();
                     dateTime = DateTime.Now;
 
+                    string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
+
                     workSheet.Name = $"Сводный отчёт г. {city}_{dateTime.ToString("yyyy")} г.";
-                    workSheet2.Name = $"По станциям г. {city}_{dateTime.ToString("yyyy")} г.";
+                    workSheet2.Name = $"Для ДЦС  г. {city}_{dateTime.ToString("yyyy")} г.";
 
                     #region Сводный отчёт
 
@@ -2857,7 +2859,7 @@ namespace ServiceTelecomConnect
                         _excelCells800.Font.Size = 16;
                         _excelCells800.Font.Bold = true;
 
-                        workSheet2.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" \nпо станциям {dateTime.ToString("yyyy")} г.";
+                        workSheet2.Cells[1, 2] = $"ОТЧЁТ_{dateTime.ToString("yyyy")} г. о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" \nпо станциям для \"{resultContainsCompany}\"";
                         Excel.Range _excelCells801 = (Excel.Range)workSheet2.get_Range("A1").Cells;
                         _excelCells801.EntireColumn.ColumnWidth = 4;
                         Excel.Range _excelCells802 = (Excel.Range)workSheet2.get_Range("B3", "E3").Cells;
@@ -2884,8 +2886,6 @@ namespace ServiceTelecomConnect
                         _excelCells806.EntireRow.RowHeight = 20;
                         _excelCells806.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells806.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
-                        string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
 
                         List<string> fList2 = new List<string>();
 
@@ -3889,7 +3889,7 @@ namespace ServiceTelecomConnect
                     Excel.Range range_Consolidated127 = workSheet2.Rows.get_Range("K5", "K9");
                     Excel.Range range_Consolidated128 = workSheet2.Rows.get_Range("B41", "C41");
 
-                    if (!String.IsNullOrEmpty(mainMeans))
+                    if (!String.IsNullOrWhiteSpace(mainMeans))
                     {
                         if (mainMeans.Length > 35)
                         {
@@ -3973,7 +3973,7 @@ namespace ServiceTelecomConnect
 
                     workSheet2.Cells[19, 7] = $"{dateTO}";
                     workSheet2.Cells[21, 1] = $"Основное средство (здание, оборудование):";
-                    if (String.IsNullOrEmpty(mainMeans))
+                    if (String.IsNullOrWhiteSpace(mainMeans))
                         workSheet2.Cells[21, 5] = $"{model}";
                     else workSheet2.Cells[21, 5] = $"{mainMeans}";
                     workSheet2.Cells[21, 9] = $"Заводской № {serialNumber}";
@@ -4015,13 +4015,13 @@ namespace ServiceTelecomConnect
                     workSheet2.Cells[45, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"6";
                     workSheet2.Cells[46, 1] = $"7";
-                    if (String.IsNullOrEmpty(nameProductRepaired))
+                    if (String.IsNullOrWhiteSpace(nameProductRepaired))
                         workSheet2.Cells[40, 2] = $"{model}";
                     else workSheet2.Cells[40, 2] = $"\n{nameProductRepaired}\n";
                     workSheet2.Cells[41, 2] = $"{serialNumber}";
                     workSheet2.Cells[40, 4] = $"\n{parts_1}\n";
                     workSheet2.Cells[40, 6] = $"\n{сompleted_works_1}\n";
-                    if (!String.IsNullOrEmpty(parts_1) || String.IsNullOrEmpty(сompleted_works_1))
+                    if (!String.IsNullOrWhiteSpace(parts_1) || String.IsNullOrWhiteSpace(сompleted_works_1))
                     {
                         workSheet2.Cells[40, 8] = $"шт.";
                         workSheet2.Cells[40, 9] = $"1";
@@ -4029,7 +4029,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[41, 4] = $"\n{parts_2}\n";
                     workSheet2.Cells[41, 6] = $"\n{сompleted_works_2}\n";
-                    if (!String.IsNullOrEmpty(parts_2) || String.IsNullOrEmpty(сompleted_works_2))
+                    if (!String.IsNullOrWhiteSpace(parts_2) || String.IsNullOrWhiteSpace(сompleted_works_2))
                     {
                         workSheet2.Cells[41, 8] = $"шт.";
                         workSheet2.Cells[41, 9] = $"1";
@@ -4037,7 +4037,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[42, 4] = $"\n{parts_3}\n";
                     workSheet2.Cells[42, 6] = $"\n{сompleted_works_3}\n";
-                    if (!String.IsNullOrEmpty(parts_3) || String.IsNullOrEmpty(сompleted_works_3))
+                    if (!String.IsNullOrWhiteSpace(parts_3) || String.IsNullOrWhiteSpace(сompleted_works_3))
                     {
                         workSheet2.Cells[42, 8] = $"шт.";
                         workSheet2.Cells[42, 9] = $"1";
@@ -4045,7 +4045,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[43, 4] = $"\n{parts_4}\n";
                     workSheet2.Cells[43, 6] = $"\n{сompleted_works_4}\n";
-                    if (!String.IsNullOrEmpty(parts_4) || String.IsNullOrEmpty(сompleted_works_4))
+                    if (!String.IsNullOrWhiteSpace(parts_4) || String.IsNullOrWhiteSpace(сompleted_works_4))
                     {
                         workSheet2.Cells[43, 8] = $"шт.";
                         workSheet2.Cells[43, 9] = $"1";
@@ -4053,7 +4053,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[44, 4] = $"\n{parts_5}\n";
                     workSheet2.Cells[44, 6] = $"\n{сompleted_works_5}\n";
-                    if (!String.IsNullOrEmpty(parts_5) || String.IsNullOrEmpty(сompleted_works_5))
+                    if (!String.IsNullOrWhiteSpace(parts_5) || String.IsNullOrWhiteSpace(сompleted_works_5))
                     {
                         workSheet2.Cells[44, 8] = $"шт.";
                         workSheet2.Cells[44, 9] = $"1";
@@ -4061,7 +4061,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[45, 4] = $"\n{parts_6}\n";
                     workSheet2.Cells[45, 6] = $"\n{сompleted_works_6}\n";
-                    if (!String.IsNullOrEmpty(parts_6) || String.IsNullOrEmpty(сompleted_works_6))
+                    if (!String.IsNullOrWhiteSpace(parts_6) || String.IsNullOrWhiteSpace(сompleted_works_6))
                     {
                         workSheet2.Cells[45, 8] = $"шт.";
                         workSheet2.Cells[45, 9] = $"1";
@@ -4069,7 +4069,7 @@ namespace ServiceTelecomConnect
                     }
                     workSheet2.Cells[46, 4] = $"\n{parts_7}\n";
                     workSheet2.Cells[46, 6] = $"\n{сompleted_works_7}\n";
-                    if (!String.IsNullOrEmpty(parts_7) || String.IsNullOrEmpty(сompleted_works_7))
+                    if (!String.IsNullOrWhiteSpace(parts_7) || String.IsNullOrWhiteSpace(сompleted_works_7))
                     {
                         workSheet2.Cells[46, 8] = $"шт.";
                         workSheet2.Cells[46, 9] = $"1";
