@@ -24,7 +24,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnAddFrequenciesClick(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(cmB_Frequencies.Text))
+            if(String.IsNullOrWhiteSpace(cmB_Frequencies.Text))
             {
                 MessageBox.Show("Нельзя добавить пустую частоту!");
                 return;
@@ -59,7 +59,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnChangeFrequenciesClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_Frequencies.Text))
+            if (String.IsNullOrWhiteSpace(cmB_Frequencies.Text))
                 return;
 
             if (InternetCheck.CheackSkyNET())
@@ -78,7 +78,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnDeleteFrequenciesClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_Frequencies.Text))
+            if (String.IsNullOrWhiteSpace(cmB_Frequencies.Text))
                 return;
 
             string Mesage = $"Вы действительно хотите удалить модель радиостанции?\n Модель: {cmB_Frequencies.GetItemText(cmB_Frequencies.SelectedItem)}";
