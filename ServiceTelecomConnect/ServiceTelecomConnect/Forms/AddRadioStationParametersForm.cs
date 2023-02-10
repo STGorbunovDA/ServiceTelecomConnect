@@ -82,9 +82,9 @@ namespace ServiceTelecomConnect.Forms
                     }
                     DB_3.GetInstance.CloseConnection();
 
-                    if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
+                    if (String.IsNullOrWhiteSpace(cmB_BatteryChargerAccessories.Text) || cmB_BatteryChargerAccessories.Text == "-")
                         cmB_BatteryChargerAccessories.Enabled = false;
-                    if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
+                    if (String.IsNullOrWhiteSpace(cmB_ManipulatorAccessories.Text) || cmB_ManipulatorAccessories.Text == "-")
                         cmB_ManipulatorAccessories.Enabled = false;
                 }
 
@@ -263,12 +263,12 @@ namespace ServiceTelecomConnect.Forms
                 #endregion
 
                 txB_dateTO.Text = DateTime.Now.ToString("dd.MM.yyyy");
-                if (String.IsNullOrEmpty(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
+                if (String.IsNullOrWhiteSpace(lbL_BatteryChargerAccessories.Text) || lbL_BatteryChargerAccessories.Text == "-")
                     cmB_BatteryChargerAccessories.Enabled = false;
-                if (String.IsNullOrEmpty(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
+                if (String.IsNullOrWhiteSpace(lbL_ManipulatorAccessories.Text) || lbL_ManipulatorAccessories.Text == "-")
                     cmB_ManipulatorAccessories.Enabled = false;
             }
-            if (String.IsNullOrEmpty(lbL_nameAKB.Text) || lbL_nameAKB.Text == "-")
+            if (String.IsNullOrWhiteSpace(lbL_nameAKB.Text) || lbL_nameAKB.Text == "-")
             {
                 lbL_nameAKB.Visible = false;
                 txB_percentAKB.Enabled = false;
@@ -492,7 +492,7 @@ namespace ServiceTelecomConnect.Forms
                 {
                     if (control is TextBox)
                     {
-                        if (String.IsNullOrEmpty(control.Text))
+                        if (String.IsNullOrWhiteSpace(control.Text))
                         {
                             MessageBox.Show("Заполните параметры \"Передатчика\"");
                             control.Select();
@@ -504,7 +504,7 @@ namespace ServiceTelecomConnect.Forms
                 {
                     if (control is TextBox)
                     {
-                        if (String.IsNullOrEmpty(control.Text))
+                        if (String.IsNullOrWhiteSpace(control.Text))
                         {
                             MessageBox.Show("Заполните параметры \"Приёмника\"");
                             control.Select();
@@ -516,7 +516,7 @@ namespace ServiceTelecomConnect.Forms
                 {
                     if (control is TextBox)
                     {
-                        if (String.IsNullOrEmpty(control.Text))
+                        if (String.IsNullOrWhiteSpace(control.Text))
                         {
                             MessageBox.Show("Заполните параметры \"Потребляемый ток\"");
                             control.Select();
@@ -530,7 +530,7 @@ namespace ServiceTelecomConnect.Forms
                     {
                         if (control is TextBox)
                         {
-                            if (String.IsNullOrEmpty(control.Text))
+                            if (String.IsNullOrWhiteSpace(control.Text))
                             {
                                 MessageBox.Show("Заполните параметры \"Частоты\"");
                                 control.Select();
@@ -542,7 +542,7 @@ namespace ServiceTelecomConnect.Forms
                 }
                 else
                 {
-                    if(String.IsNullOrEmpty(txB_TransmitterFrequencies.Text))
+                    if(String.IsNullOrWhiteSpace(txB_TransmitterFrequencies.Text))
                     {
                         MessageBox.Show("Заполните параметры \"Частоты (передатчик).\"");
                         return;
@@ -551,7 +551,7 @@ namespace ServiceTelecomConnect.Forms
 
                 if (cmB_BatteryChargerAccessories.Enabled)
                 {
-                    if (String.IsNullOrEmpty(cmB_BatteryChargerAccessories.Text))
+                    if (String.IsNullOrWhiteSpace(cmB_BatteryChargerAccessories.Text))
                     {
                         MessageBox.Show("Заполните параметры \"Аксессуары\"\n\"Зарядное устройство\"");
                         return;
@@ -559,7 +559,7 @@ namespace ServiceTelecomConnect.Forms
                 }
                 if (cmB_ManipulatorAccessories.Enabled)
                 {
-                    if (String.IsNullOrEmpty(cmB_ManipulatorAccessories.Text))
+                    if (String.IsNullOrWhiteSpace(cmB_ManipulatorAccessories.Text))
                     {
                         MessageBox.Show("Заполните параметры \"Аксессуары\"\n\"Манипулятор\"");
                         return;
@@ -571,7 +571,7 @@ namespace ServiceTelecomConnect.Forms
                     {
                         if (control is TextBox)
                         {
-                            if (String.IsNullOrEmpty(control.Text))
+                            if (String.IsNullOrWhiteSpace(control.Text))
                             {
                                 MessageBox.Show("Заполните параметры \"АКБ\"");
                                 control.Select();
@@ -1083,7 +1083,7 @@ namespace ServiceTelecomConnect.Forms
 
                 if (txB_percentAKB.Enabled)
                     percentAKB = txB_percentAKB.Text;
-                else if (!String.IsNullOrEmpty(txB_percentAKB.Text))
+                else if (!String.IsNullOrWhiteSpace(txB_percentAKB.Text))
                     percentAKB = txB_percentAKB.Text;
                 else percentAKB = "-";
 
