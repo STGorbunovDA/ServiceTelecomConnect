@@ -173,15 +173,15 @@ namespace ServiceTelecomConnect.Forms
 
                     }
                 }
-                if (String.IsNullOrEmpty(cmB_departmentCommunications.Text))
+                if (String.IsNullOrWhiteSpace(cmB_departmentCommunications.Text))
                     MessageBox.Show("Добавьте представителя дирекции связи!");
-                if (String.IsNullOrEmpty(cmB_curator.Text))
+                if (String.IsNullOrWhiteSpace(cmB_curator.Text))
                     MessageBox.Show("Добавьте куратора!");
-                if (String.IsNullOrEmpty(cmB_road.Text))
+                if (String.IsNullOrWhiteSpace(cmB_road.Text))
                     cmB_road.Text = cmB_road.Items[0].ToString();
-                if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
+                if (String.IsNullOrWhiteSpace(cmB_EngineersFIO.Text))
                     MessageBox.Show("Добавьте инженера!");
-                if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
+                if (String.IsNullOrWhiteSpace(cmB_sectionForemanFIO.Text))
                     MessageBox.Show("Добавьте начальника участка!");
 
                 CreateColums();
@@ -193,27 +193,27 @@ namespace ServiceTelecomConnect.Forms
             var re = new Regex(Environment.NewLine);
             txB_attorney.Text = re.Replace(txB_attorney.Text, " ");
             txB_attorney.Text.Trim();
-            if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
+            if (String.IsNullOrWhiteSpace(cmB_sectionForemanFIO.Text))
             {
                 MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
+            if (String.IsNullOrWhiteSpace(cmB_EngineersFIO.Text))
             {
                 MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_road.Text))
+            if (String.IsNullOrWhiteSpace(cmB_road.Text))
             {
                 MessageBox.Show("Поле \"Дорога\" не должна быть пустым, добавьте дорогу", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_curator.Text))
+            if (String.IsNullOrWhiteSpace(cmB_curator.Text))
             {
                 MessageBox.Show("Поле \"Куратор\" не должно быть пустым, добавьте куратора", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_departmentCommunications.Text))
+            if (String.IsNullOrWhiteSpace(cmB_departmentCommunications.Text))
             {
                 MessageBox.Show("Поле \"Представитель дирекции связи\" не должно быть пустым, добавьте представителя дирекции связи", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -263,27 +263,27 @@ namespace ServiceTelecomConnect.Forms
                 var re2 = new Regex(Environment.NewLine);
                 txB_numberPrintDocument.Text = re2.Replace(txB_numberPrintDocument.Text, " ");
                 txB_numberPrintDocument.Text.Trim();
-                if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
+                if (String.IsNullOrWhiteSpace(cmB_sectionForemanFIO.Text))
                 {
                     MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
+                if (String.IsNullOrWhiteSpace(cmB_EngineersFIO.Text))
                 {
                     MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (String.IsNullOrEmpty(cmB_road.Text))
+                if (String.IsNullOrWhiteSpace(cmB_road.Text))
                 {
                     MessageBox.Show("Поле \"Дорога\" не должна быть пустым, добавьте дорогу", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (String.IsNullOrEmpty(cmB_curator.Text))
+                if (String.IsNullOrWhiteSpace(cmB_curator.Text))
                 {
                     MessageBox.Show("Поле \"Куратор\" не должно быть пустым, добавьте куратора", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                if (String.IsNullOrEmpty(cmB_departmentCommunications.Text))
+                if (String.IsNullOrWhiteSpace(cmB_departmentCommunications.Text))
                 {
                     MessageBox.Show("Поле \"Представитель дирекции связи\" не должно быть пустым, добавьте представителя дирекции связи", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -344,12 +344,12 @@ namespace ServiceTelecomConnect.Forms
         }
         void ClearControlFormClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(cmB_sectionForemanFIO.Text))
+            if (String.IsNullOrWhiteSpace(cmB_sectionForemanFIO.Text))
             {
                 MessageBox.Show("Поле \"Начальник\" не должен быть пустым, добавьте начальника участка", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (String.IsNullOrEmpty(cmB_EngineersFIO.Text))
+            if (String.IsNullOrWhiteSpace(cmB_EngineersFIO.Text))
             {
                 MessageBox.Show("Поле \"Инженер\" не должен быть пустым, добавьте инженера", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
