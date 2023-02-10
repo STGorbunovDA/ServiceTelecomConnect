@@ -122,7 +122,7 @@ namespace ServiceTelecomConnect.Forms
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(txB_id.Text))
+                if (!String.IsNullOrWhiteSpace(txB_id.Text))
                 {
                     ChangeToProblemRST changeToProblem = new ChangeToProblemRST(_user);
                     if (Application.OpenForms["ChangeToProblemRST"] == null)
@@ -140,7 +140,7 @@ namespace ServiceTelecomConnect.Forms
         }
         void BtnDeleteProblemClick(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txB_id.Text))
+            if (String.IsNullOrWhiteSpace(txB_id.Text))
             {
                 MessageBox.Show("Выбери строку которую хочешь удалить!");
                 return;
@@ -189,7 +189,7 @@ namespace ServiceTelecomConnect.Forms
             {
                 if (dataGridView1.Rows.Count > 0)
                 {
-                    if (!String.IsNullOrEmpty(txB_id.Text))
+                    if (!String.IsNullOrWhiteSpace(txB_id.Text))
                     {
                         ContextMenu m1 = new ContextMenu();
                         m1.MenuItems.Add(new MenuItem("Добавить новую неисправность", BtnNewRadiostantionProblemClick));
