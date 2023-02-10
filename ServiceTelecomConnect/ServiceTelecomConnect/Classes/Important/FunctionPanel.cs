@@ -20,7 +20,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (String.IsNullOrEmpty(city))
+                if (string.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -77,7 +77,7 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                if (!String.IsNullOrEmpty(city))
+                if (!String.IsNullOrWhiteSpace(city))
                 {
                     var myCulture = new CultureInfo("ru-RU");
                     myCulture.NumberFormat.NumberDecimalSeparator = ".";
@@ -560,7 +560,7 @@ namespace ServiceTelecomConnect
 
                 openFile.ShowDialog();
 
-                if (!String.IsNullOrEmpty(openFile.FileName))
+                if (!String.IsNullOrWhiteSpace(openFile.FileName))
                 {
                     string filename = openFile.FileName;
                     int lineNumber = 0;
@@ -629,7 +629,7 @@ namespace ServiceTelecomConnect
 
                 openFile.ShowDialog();
 
-                if (!String.IsNullOrEmpty(openFile.FileName))
+                if (!String.IsNullOrWhiteSpace(openFile.FileName))
                 {
                     string filename = openFile.FileName;
                     int lineNumber = 0;
@@ -690,7 +690,7 @@ namespace ServiceTelecomConnect
 
                 openFile.ShowDialog();
 
-                if (!String.IsNullOrEmpty(openFile.FileName))
+                if (!String.IsNullOrWhiteSpace(openFile.FileName))
                 {
                     string filename = openFile.FileName;
                     int lineNumber = 0;
@@ -757,7 +757,7 @@ namespace ServiceTelecomConnect
 
                 openFile.ShowDialog();
 
-                if (!String.IsNullOrEmpty(openFile.FileName))
+                if (!String.IsNullOrWhiteSpace(openFile.FileName))
                 {
                     string filename = openFile.FileName;
 
