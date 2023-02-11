@@ -183,7 +183,7 @@ namespace ServiceTelecomConnect.Forms
                     //Приёмник
                     txB_OutputPowerVoltReceiver.Text = "5.10";
                     txB_OutputPowerWattReceiver.Text = ">0.5";
-                    txB_SelectivityReceiver.Text = "-";
+                    txB_SelectivityReceiver.Text = "71";
                     txB_SensitivityReceiver.Text = "0.21";
                     txB_KNIReceiver.Text = "1.55";
                     txB_SuppressorReceiver.Text = "0.15";
@@ -227,7 +227,7 @@ namespace ServiceTelecomConnect.Forms
                     //Приёмник
                     txB_OutputPowerVoltReceiver.Text = "5.10";
                     txB_OutputPowerWattReceiver.Text = ">=0.4";
-                    txB_SelectivityReceiver.Text = "71";
+                    txB_SelectivityReceiver.Text = "70";
                     txB_SensitivityReceiver.Text = "0.21";
                     txB_KNIReceiver.Text = "1.55";
                     txB_SuppressorReceiver.Text = "0.15";
@@ -839,34 +839,7 @@ namespace ServiceTelecomConnect.Forms
                         }
                     }
                 }
-
-
-                if (txB_model.Text == "Motorola GP-340" || txB_model.Text == "Icom IC-F3GS" || txB_model.Text == "Icom IC-F3GT" || txB_model.Text == "Icom IC-F16" ||
-                     txB_model.Text == "Icom IC-F11" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-360" || txB_model.Text == "Motorola GP-320" ||
-                     txB_model.Text == "Motorola P080" || txB_model.Text == "Motorola P040" || txB_model.Text == "Гранит Р33П-1" || txB_model.Text == "Гранит Р-43" ||
-                     txB_model.Text == "Радий-301")
-                {
-                    try
-                    {
-                        Regex re = new Regex(@"^([7][1])$");
-                        Match result = re.Match(txB_SelectivityReceiver.Text);
-
-                        var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
-                        if (intOutpuSelectivityReceiver != 71)
-                        {
-                            MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 71", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txB_SelectivityReceiver.Select();
-                            return;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txB_SelectivityReceiver.Select();
-                        return;
-                    }
-                }
-                else if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
+                if (txB_model.Text == "Альтавия-301М" || txB_model.Text == "Элодия-351М")
                 {
                     try
                     {
@@ -888,16 +861,50 @@ namespace ServiceTelecomConnect.Forms
                         return;
                     }
                 }
-                else
+                else if(txB_model.Text == "Comrade R5")
                 {
-                    if (!Regex.IsMatch(txB_SelectivityReceiver.Text, @"^[-]$"))
+                    try
                     {
-                        MessageBox.Show("Введите корректно поле: \"Избирательн., дБ.\"\nДля цифровых радиостанций\nПример: \"-\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Regex re = new Regex(@"^([7][0])$");
+                        Match result = re.Match(txB_SelectivityReceiver.Text);
+
+                        var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
+                        if (intOutpuSelectivityReceiver != 70)
+                        {
+                            MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 70", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_SelectivityReceiver.Select();
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 70 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txB_SelectivityReceiver.Select();
                         return;
                     }
                 }
+                else
+                {
+                    try
+                    {
+                        Regex re = new Regex(@"^([7][1])$");
+                        Match result = re.Match(txB_SelectivityReceiver.Text);
 
+                        var intOutpuSelectivityReceiver = Convert.ToInt32(result.Groups[1].Value);
+                        if (intOutpuSelectivityReceiver != 71)
+                        {
+                            MessageBox.Show($"Введите корректно параметры избирательности приёмника дБ., модели {txB_model.Text}\nПример: 71", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txB_SelectivityReceiver.Select();
+                            return;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show($"Введите корректно поле: \"Избирательн., дБ.\"\nПример: 71 для {txB_model.Text}", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txB_SelectivityReceiver.Select();
+                        return;
+                    }
+                }
                 if (!Regex.IsMatch(txB_KNIReceiver.Text, @"^[0-4]{1,1}[.][0-9]{1,2}$"))
                 {
                     MessageBox.Show("Введите корректно поле: \"КНИ, %\"\nПример: от 0.30 % до 4.99 %", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -939,7 +946,6 @@ namespace ServiceTelecomConnect.Forms
                         return;
                     }
                 }
-
                 if (!Regex.IsMatch(txB_SuppressorReceiver.Text, @"^[0][.][1-2]{1,1}[0-9]{1,1}$"))
                 {
                     MessageBox.Show("Введите корректно поле: \"ШУМ, мкВ.\"\nПример: от 0.11 мкВ. до 0.22 мкВ.", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
