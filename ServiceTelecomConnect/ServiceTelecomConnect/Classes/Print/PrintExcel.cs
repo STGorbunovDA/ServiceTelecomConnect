@@ -1,9 +1,7 @@
-﻿using Microsoft.Office.Interop.Word;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -2643,6 +2641,335 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void PrintExcelFullAKB(string city, string road, string poligon)
+        {
+            List<string> fList = new List<string>();
+            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
+                  $"AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                        fList.Add(reader.GetString(0));
+                    reader.Close();
+                }
+                DB.GetInstance.CloseConnection();
+            }
+            Excel.Application exApp = new Excel.Application();
+            string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
+            try
+            {
+                Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                if (officeType == null)
+                {
+                    string Mesage2 = "У Вас не установлен Excel!";
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                }
+                else
+                {
+                    exApp.SheetsInNewWorkbook = fList.Count;
+                    exApp.Workbooks.Add();
+                    exApp.DisplayAlerts = false;
+
+                    List<Excel.Worksheet> resultWorkSheet = new List<Excel.Worksheet>();
+                    DateTime dateTime = new DateTime();
+                    dateTime = DateTime.Now;
+                    int countWorkSheet = 1;
+                    string queryStringCountAKBCompany = String.Empty;
+                    for (int i = 0; i < fList.Count; i++)
+                    {
+                        Excel.Worksheet x = (Excel.Worksheet)exApp.Worksheets.get_Item(countWorkSheet);
+                        resultWorkSheet.Add(x);
+                        resultWorkSheet[i].Name = $"{fList[i]}";
+                        countWorkSheet++;
+
+                        resultWorkSheet[i].PageSetup.Zoom = false;
+                        resultWorkSheet[i].PageSetup.FitToPagesWide = 1;
+                        resultWorkSheet[i].PageSetup.FitToPagesTall = 1;
+                        resultWorkSheet[i].Rows.Font.Size = 10;
+                        resultWorkSheet[i].Rows.Font.Name = "Times New Roman";
+                        resultWorkSheet[i].PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                        resultWorkSheet[i].PageSetup.CenterHorizontally = true;
+                        resultWorkSheet[i].PageSetup.TopMargin = 0;
+                        resultWorkSheet[i].PageSetup.BottomMargin = 0;
+                        resultWorkSheet[i].PageSetup.LeftMargin = 0;
+                        resultWorkSheet[i].PageSetup.RightMargin = 0;
+
+                        Excel.Range _excelCells900;
+                        if (fList[i].Contains(resultContainsCompany))
+                        {
+                            _excelCells900 = (Excel.Range)resultWorkSheet[i].get_Range("B1", "L2").Cells;
+                            _excelCells900.Font.Size = 16;
+                        }
+                        else
+                        {
+                            _excelCells900 = (Excel.Range)resultWorkSheet[i].get_Range("B1", "J2").Cells;
+                            _excelCells900.Font.Size = 14;
+                        }
+                        _excelCells900.Merge(Type.Missing);
+                        _excelCells900.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells900.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells900.EntireRow.RowHeight = 25;
+                        _excelCells900.Font.Bold = true;
+
+                        resultWorkSheet[i].Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ предприятия \"{fList[i]}\" {dateTime.ToString("dd.MM.yyyy")} г.";
+                        Excel.Range _excelCells901 = (Excel.Range)resultWorkSheet[i].get_Range("A1").Cells;
+                        _excelCells901.EntireColumn.ColumnWidth = 4;
+
+
+                        Excel.Range _excelCells902 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "E3").Cells;
+                        _excelCells902.Merge(Type.Missing);
+                        resultWorkSheet[i].Cells[3, 2] = $"Заводской номер РСТ";
+
+                        Excel.Range _excelCells903 = (Excel.Range)resultWorkSheet[i].get_Range("F3", "H3").Cells;
+                        _excelCells903.Merge(Type.Missing);
+                        resultWorkSheet[i].Cells[3, 6] = $"Номер АКБ";
+
+                        Excel.Range _excelCells904 = (Excel.Range)resultWorkSheet[i].get_Range("I3", "J3").Cells;
+                        _excelCells904.Merge(Type.Missing);
+                        resultWorkSheet[i].Cells[3, 9] = $"Состояние %";
+
+                        Excel.Range _excelCells920;
+                        Excel.Range _excelCells905;
+                        if (fList[i].Contains(resultContainsCompany))
+                        {
+                            _excelCells905 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "L3").Cells;
+                            _excelCells920 = (Excel.Range)resultWorkSheet[i].get_Range("K3", "L3").Cells;
+                            _excelCells920.EntireRow.RowHeight = 15;
+                            _excelCells920.Font.Bold = true;
+                            _excelCells920.Merge(Type.Missing);
+                            resultWorkSheet[i].Cells[3, 11] = $"Станция";
+
+                            queryStringCountAKBCompany = $"SELECT serialNumber, nameAKB, percentAKB, location " +
+                                $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
+                                $"AND company = '{fList[i]}' AND nameAKB != '-'";
+                        }
+                        else
+                        {
+                            _excelCells905 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "J3").Cells;
+                            queryStringCountAKBCompany = $"SELECT serialNumber, nameAKB, percentAKB " +
+                                $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
+                                $"AND company = '{fList[i]}' AND nameAKB != '-'";
+                        }
+
+                        _excelCells905.Font.Size = 13;
+                        _excelCells905.Font.Bold = true;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.EntireRow.RowHeight = 20;
+                        _excelCells905.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells905.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        int countCells = 4;
+                        using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                int count = 1;
+                                int cells = 0;
+                                int gameOverAKB = 0;
+                                while (reader.Read())
+                                {
+                                    Excel.Range _excelCells906 = (Excel.Range)resultWorkSheet[i].get_Range($"B{countCells}", $"E{countCells}").Cells;
+                                    _excelCells906.EntireRow.RowHeight = 15;
+                                    _excelCells906.Font.Bold = true;
+                                    _excelCells906.Merge(Type.Missing);
+                                    Excel.Range _excelCells907 = (Excel.Range)resultWorkSheet[i].get_Range($"F{countCells}", $"H{countCells}").Cells;
+                                    _excelCells907.EntireRow.RowHeight = 15;
+                                    _excelCells907.Font.Bold = true;
+                                    _excelCells907.Merge(Type.Missing);
+                                    Excel.Range _excelCells908 = (Excel.Range)resultWorkSheet[i].get_Range($"I{countCells}", $"J{countCells}").Cells;
+                                    _excelCells908.EntireRow.RowHeight = 15;
+                                    _excelCells908.Font.Bold = true;
+                                    _excelCells908.Merge(Type.Missing);
+
+                                    Excel.Range _excelCells910;
+                                    if (fList[i].Contains(resultContainsCompany))
+                                    {
+                                        _excelCells910 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells}", $"L{countCells}").Cells;
+                                        Excel.Range _excelCells921 = (Excel.Range)resultWorkSheet[i].get_Range($"K{countCells}", $"L{countCells}").Cells;
+                                        _excelCells921.EntireRow.RowHeight = 15;
+                                        _excelCells921.Font.Bold = true;
+                                        _excelCells921.Merge(Type.Missing);
+                                        resultWorkSheet[i].Cells[4 + cells, 11] = $"{reader[3].ToString()}";
+
+                                    }
+                                    else
+                                        _excelCells910 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells}", $"J{countCells}").Cells;
+
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells910.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                                    resultWorkSheet[i].Cells[4 + cells, 1] = $"{count++}";
+                                    resultWorkSheet[i].Cells[4 + cells, 2] = $"{reader[0].ToString()}";
+                                    resultWorkSheet[i].Cells[4 + cells, 6] = $"{reader[1].ToString()}";
+                                    resultWorkSheet[i].Cells[4 + cells, 9] = $"{reader[2].ToString()}";
+
+                                    try
+                                    {
+                                        if (Convert.ToInt32(reader[2]) < 70)
+                                        {
+                                            _excelCells908.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                            gameOverAKB++;
+                                        }      
+                                    }
+                                    catch
+                                    {
+                                        _excelCells908.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                        gameOverAKB++;
+                                    }
+
+                                    countCells++;
+                                    cells++;
+                                }
+
+                                reader.Close();
+                                if (gameOverAKB != 0)
+                                {
+                                    Excel.Range _excelCells930 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells + 1}", $"J{countCells + 1}").Cells;
+                                    _excelCells930.EntireRow.RowHeight = 15;
+                                    _excelCells930.Font.Bold = true;
+                                    _excelCells930.Merge(Type.Missing);
+                                    _excelCells930.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells930.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells930.Font.Size = 14;
+                                    resultWorkSheet[i].Cells[4 + cells + 1, 1] = $"Итого неисправных АКБ: {gameOverAKB} шт.";
+                                }
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+
+                    }
+
+                    #region По номерам предприятий 
+
+                    //int count = 1;
+                    //int countCells = 4;
+                    //for (int i = 0; i <= fList.Count; i++)
+                    //{
+                    //    Excel.Range _excelCells710 = (Excel.Range)workSheet.get_Range($"K{countCells}", $"L{countCells}").Cells;
+                    //    _excelCells710.EntireRow.RowHeight = 15;
+                    //    _excelCells710.Font.Bold = true;
+                    //    _excelCells710.Merge(Type.Missing);
+
+
+                    //    if (i < fList.Count)
+                    //    {
+                    //        double countAKB = 0;
+                    //        string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE company = '{fList[i]}' AND percentAKB != '-'";
+                    //        using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                    //        {
+                    //            DB.GetInstance.OpenConnection();
+                    //            using (MySqlDataReader reader = command.ExecuteReader())
+                    //            {
+                    //                while (reader.Read())
+                    //                    countAKB = Convert.ToDouble(reader.GetString(0));
+                    //                reader.Close();
+                    //            }
+                    //            DB.GetInstance.CloseConnection();
+                    //        }
+                    //        double countPercentMalfunctionAKB = 0;
+                    //        string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE company = '{fList[i]}' AND percentAKB != '-'";
+                    //        using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
+                    //        {
+                    //            DB.GetInstance.OpenConnection();
+                    //            using (MySqlDataReader reader = command.ExecuteReader())
+                    //            {
+                    //                while (reader.Read())
+                    //                {
+                    //                    try
+                    //                    {
+                    //                        if (Convert.ToDouble(reader.GetString(0)) < 70)
+                    //                            countPercentMalfunctionAKB++;
+                    //                    }
+                    //                    catch
+                    //                    {
+                    //                        countPercentMalfunctionAKB++;
+                    //                        continue;
+                    //                    }
+                    //                }
+                    //                reader.Close();
+                    //            }
+                    //            DB.GetInstance.CloseConnection();
+                    //        }
+                    //        workSheet.Cells[4 + i, 1] = $"{count++}";
+                    //        workSheet.Cells[4 + i, 2] = $"{fList[i]}";
+                    //        workSheet.Cells[4 + i, 6] = $"{countAKB}";
+                    //        workSheet.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
+                    //        double percentMalfunctionAKB = 0;
+                    //        if (countAKB != 0)
+                    //            percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
+                    //        workSheet.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
+                    //    }
+                    //    else
+                    //    {
+                    //        workSheet.Cells[4 + i, 2] = $"ИТОГ:";
+                    //        workSheet.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                    //        workSheet.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                    //        //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
+                    //        workSheet.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
+                    //    }
+                    //    countCells++;
+                    //}
+
+                    #endregion
+
+
+                    string file = $"{city}_АКБ_ПП_{dateTime.ToString("dd.MM.yyyy")}.xlsx";
+                    if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\АКБ\{city}\");
+                            resultWorkSheet[0].SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            resultWorkSheet[0].SaveAs($@"C:\Documents_ServiceTelekom\АКБ\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    exApp.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (exApp != null)
+                    exApp = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
         internal static void PrintExcelReportAKB(string city, string road, string poligon, TextBox txb_FlagAllDataBase)
         {
             List<string> fList = new List<string>();
@@ -2685,6 +3012,7 @@ namespace ServiceTelecomConnect
 
                     Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
                     Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
+
                     DateTime dateTime = new DateTime();
                     dateTime = DateTime.Now;
 
@@ -2835,7 +3163,7 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    #region по станциям
+                    #region По станциям
                     if (txb_FlagAllDataBase.Text != "Вся БД")
                     {
                         workSheet2.PageSetup.Zoom = false;
@@ -2998,7 +3326,7 @@ namespace ServiceTelecomConnect
 
                     #endregion
 
-                    string file = $"{city}_Отчёт_АКБ_{dateTime.ToString("yyyy")}.xlsx";
+                    string file = $"{city}_Отчёт_АКБ_{dateTime.ToString("dd.MM.yyyy")}.xlsx";
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
                     {
                         try
