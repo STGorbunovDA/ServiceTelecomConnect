@@ -142,6 +142,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.panel_remont_information_company = new System.Windows.Forms.Panel();
+            this.chb_pass_txB_3_FIO = new System.Windows.Forms.CheckBox();
             this.btn_ContinueRemontActExcel = new System.Windows.Forms.Button();
             this.txB_BE_remont = new System.Windows.Forms.TextBox();
             this.btn_close_remont_panel = new System.Windows.Forms.Button();
@@ -246,6 +247,7 @@
             this.mTrip_PrintWord_Act_decommission = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PrintStatementParameters = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PrintReportAKB = new System.Windows.Forms.ToolStripMenuItem();
+            this.MTripPrintReportFullAKBClick = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_expansion = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_FormTag = new System.Windows.Forms.ToolStripMenuItem();
@@ -272,7 +274,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
-            this.chb_pass_txB_3_FIO = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -1612,6 +1613,16 @@
             this.panel_remont_information_company.TabIndex = 29;
             this.panel_remont_information_company.Visible = false;
             // 
+            // chb_pass_txB_3_FIO
+            // 
+            this.chb_pass_txB_3_FIO.AutoSize = true;
+            this.chb_pass_txB_3_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chb_pass_txB_3_FIO.Location = new System.Drawing.Point(785, 387);
+            this.chb_pass_txB_3_FIO.Name = "chb_pass_txB_3_FIO";
+            this.chb_pass_txB_3_FIO.Size = new System.Drawing.Size(15, 14);
+            this.chb_pass_txB_3_FIO.TabIndex = 37;
+            this.chb_pass_txB_3_FIO.UseVisualStyleBackColor = true;
+            // 
             // btn_ContinueRemontActExcel
             // 
             this.btn_ContinueRemontActExcel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -2817,7 +2828,8 @@
             this.mTrip_Button_remont_act,
             this.mTrip_PrintWord_Act_decommission,
             this.mTrip_PrintStatementParameters,
-            this.mTrip_PrintReportAKB});
+            this.mTrip_PrintReportAKB,
+            this.MTripPrintReportFullAKBClick});
             this.mTrip_print.Name = "mTrip_print";
             this.mTrip_print.Size = new System.Drawing.Size(62, 20);
             this.mTrip_print.Text = "Печать";
@@ -2856,6 +2868,13 @@
             this.mTrip_PrintReportAKB.Size = new System.Drawing.Size(291, 22);
             this.mTrip_PrintReportAKB.Text = "Печать отчёта АКБ по участку";
             this.mTrip_PrintReportAKB.Click += new System.EventHandler(this.MTripPrintReportAKBClick);
+            // 
+            // MTripPrintReportFullAKBClick
+            // 
+            this.MTripPrintReportFullAKBClick.Name = "MTripPrintReportFullAKBClick";
+            this.MTripPrintReportFullAKBClick.Size = new System.Drawing.Size(291, 22);
+            this.MTripPrintReportFullAKBClick.Text = "Печать полного отчёта АКБ по ПП";
+            this.MTripPrintReportFullAKBClick.Click += new System.EventHandler(this.MTripPrintReportFullAKBClick_Click);
             // 
             // mTrip_expansion
             // 
@@ -3079,16 +3098,6 @@
             this.btn_close_pnl_ChangeNumberActTOFull.Text = "X";
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.BtnClosePnlChangeNumberActTOFullClick);
-            // 
-            // chb_pass_txB_3_FIO
-            // 
-            this.chb_pass_txB_3_FIO.AutoSize = true;
-            this.chb_pass_txB_3_FIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chb_pass_txB_3_FIO.Location = new System.Drawing.Point(785, 387);
-            this.chb_pass_txB_3_FIO.Name = "chb_pass_txB_3_FIO";
-            this.chb_pass_txB_3_FIO.Size = new System.Drawing.Size(15, 14);
-            this.chb_pass_txB_3_FIO.TabIndex = 37;
-            this.chb_pass_txB_3_FIO.UseVisualStyleBackColor = true;
             // 
             // ST_WorkForm
             // 
@@ -3404,5 +3413,6 @@
         private System.Windows.Forms.Label lbl_decommission;
         private System.Windows.Forms.ToolStripMenuItem mTrip_PrintReportAKB;
         private System.Windows.Forms.CheckBox chb_pass_txB_3_FIO;
+        private System.Windows.Forms.ToolStripMenuItem MTripPrintReportFullAKBClick;
     }
 }
