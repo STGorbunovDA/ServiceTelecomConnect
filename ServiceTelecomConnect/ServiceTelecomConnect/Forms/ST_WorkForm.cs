@@ -615,6 +615,17 @@ namespace ServiceTelecomConnect
 
             PrintExcel.PrintExcelReportAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text, txb_flag_all_BD);
         }
+
+        void PrintReportFullAKB(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cmB_poligon.Text))
+            {
+                MessageBox.Show("Нажми на строчку в таблице.");
+                return;
+            }
+
+            PrintExcel.PrintExcelFullAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text);
+        }
         #endregion
 
         #region АКТ => excel
@@ -2323,6 +2334,11 @@ namespace ServiceTelecomConnect
         {
             PrintReportAKB(sender, e);
         }
+        void MTripPrintReportFullAKBClick_Click(object sender, EventArgs e)
+        {
+            PrintReportFullAKB(sender, e);
+        }
+
         #endregion
 
         #region изменить номер акта у радиостанции
@@ -2383,7 +2399,10 @@ namespace ServiceTelecomConnect
             Counters();
             BtnClosePnlChangeNumberActTOFullClick(sender, e);
         }
-        #endregion    
+
+        #endregion
+
+       
     }
 }
 
