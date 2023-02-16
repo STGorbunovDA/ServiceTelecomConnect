@@ -2782,14 +2782,17 @@ namespace ServiceTelecomConnect
                                     _excelCells906.EntireRow.RowHeight = 15;
                                     _excelCells906.Font.Bold = true;
                                     _excelCells906.Merge(Type.Missing);
+                                    _excelCells906.NumberFormat = "@";
                                     Excel.Range _excelCells907 = (Excel.Range)resultWorkSheet[i].get_Range($"F{countCells}", $"H{countCells}").Cells;
                                     _excelCells907.EntireRow.RowHeight = 15;
                                     _excelCells907.Font.Bold = true;
                                     _excelCells907.Merge(Type.Missing);
+                                    _excelCells907.NumberFormat = "@";
                                     Excel.Range _excelCells908 = (Excel.Range)resultWorkSheet[i].get_Range($"I{countCells}", $"J{countCells}").Cells;
                                     _excelCells908.EntireRow.RowHeight = 15;
                                     _excelCells908.Font.Bold = true;
                                     _excelCells908.Merge(Type.Missing);
+                                    _excelCells908.NumberFormat = "@";
 
                                     Excel.Range _excelCells910;
                                     if (fList[i].Contains(resultContainsCompany))
@@ -2854,80 +2857,6 @@ namespace ServiceTelecomConnect
                         }
 
                     }
-
-                    #region По номерам предприятий 
-
-                    //int count = 1;
-                    //int countCells = 4;
-                    //for (int i = 0; i <= fList.Count; i++)
-                    //{
-                    //    Excel.Range _excelCells710 = (Excel.Range)workSheet.get_Range($"K{countCells}", $"L{countCells}").Cells;
-                    //    _excelCells710.EntireRow.RowHeight = 15;
-                    //    _excelCells710.Font.Bold = true;
-                    //    _excelCells710.Merge(Type.Missing);
-
-
-                    //    if (i < fList.Count)
-                    //    {
-                    //        double countAKB = 0;
-                    //        string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE company = '{fList[i]}' AND percentAKB != '-'";
-                    //        using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
-                    //        {
-                    //            DB.GetInstance.OpenConnection();
-                    //            using (MySqlDataReader reader = command.ExecuteReader())
-                    //            {
-                    //                while (reader.Read())
-                    //                    countAKB = Convert.ToDouble(reader.GetString(0));
-                    //                reader.Close();
-                    //            }
-                    //            DB.GetInstance.CloseConnection();
-                    //        }
-                    //        double countPercentMalfunctionAKB = 0;
-                    //        string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE company = '{fList[i]}' AND percentAKB != '-'";
-                    //        using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
-                    //        {
-                    //            DB.GetInstance.OpenConnection();
-                    //            using (MySqlDataReader reader = command.ExecuteReader())
-                    //            {
-                    //                while (reader.Read())
-                    //                {
-                    //                    try
-                    //                    {
-                    //                        if (Convert.ToDouble(reader.GetString(0)) < 70)
-                    //                            countPercentMalfunctionAKB++;
-                    //                    }
-                    //                    catch
-                    //                    {
-                    //                        countPercentMalfunctionAKB++;
-                    //                        continue;
-                    //                    }
-                    //                }
-                    //                reader.Close();
-                    //            }
-                    //            DB.GetInstance.CloseConnection();
-                    //        }
-                    //        workSheet.Cells[4 + i, 1] = $"{count++}";
-                    //        workSheet.Cells[4 + i, 2] = $"{fList[i]}";
-                    //        workSheet.Cells[4 + i, 6] = $"{countAKB}";
-                    //        workSheet.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
-                    //        double percentMalfunctionAKB = 0;
-                    //        if (countAKB != 0)
-                    //            percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
-                    //        workSheet.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
-                    //    }
-                    //    else
-                    //    {
-                    //        workSheet.Cells[4 + i, 2] = $"ИТОГ:";
-                    //        workSheet.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
-                    //        workSheet.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
-                    //        //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
-                    //        workSheet.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
-                    //    }
-                    //    countCells++;
-                    //}
-
-                    #endregion
-
 
                     string file = $"{city}_АКБ_ПП_{dateTime.ToString("dd.MM.yyyy")}.xlsx";
                     if (!File.Exists($@"С:\Documents_ServiceTelekom\АКБ\{city}\"))
