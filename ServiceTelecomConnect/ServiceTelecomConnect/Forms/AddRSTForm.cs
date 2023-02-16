@@ -386,13 +386,12 @@ namespace ServiceTelecomConnect
                 {
                     MessageBox.Show("Введите корректно поле: \"Инвентарный номер\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txB_inventoryNumber.Select();
-
                     string Mesage = "Вы действительно хотите продолжить?";
-
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
-
+                if (inventoryNumber.Contains("\\"))
+                    inventoryNumber = inventoryNumber.Replace("\\", "\\\\");
                 string networkNumber = txB_networkNumber.Text;
 
                 if (!Regex.IsMatch(networkNumber, @"^[0-9]{1,}([\-]*[\/]*[\\]*[0-9]*[\\]*[\/]*[0-9]*[\/]*[0-9]*[\*]*[\-]*[0-9]*[\/]*[0-9]*)$"))
@@ -405,6 +404,8 @@ namespace ServiceTelecomConnect
                     if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                         return;
                 }
+                if (networkNumber.Contains("\\"))
+                    networkNumber = networkNumber.Replace("\\", "\\\\");
 
                 string numberAct = txB_numberAct.Text;
                 string dateTO = Convert.ToDateTime(txB_dateTO.Text).ToString("yyyy-MM-dd");
