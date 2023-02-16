@@ -13,15 +13,9 @@ namespace ServiceTelecomConnect
         int selectedRow;
 
         #region состояние Rows
-        /// <summary>
-        /// для значений к базе данных, по данному статусу будем или удалять или редактировать
-        /// </summary>
         enum RowState
         {
-            Existed,
             New,
-            Modifield,
-            ModifieldNew,
             Deleted
         }
         #endregion
@@ -43,7 +37,7 @@ namespace ServiceTelecomConnect
         void ReedSingleRow(DataGridView dgw, IDataRecord record)
         {
             dataGridView1.Invoke((MethodInvoker)(() => dgw.Rows.Add(record.GetInt32(0), record.GetString(1),
-                record.GetString(2), record.GetString(3), RowState.ModifieldNew)));
+                record.GetString(2), record.GetString(3), RowState.New)));
         }
         void RefreshDataGrid(DataGridView dgw)
         {
