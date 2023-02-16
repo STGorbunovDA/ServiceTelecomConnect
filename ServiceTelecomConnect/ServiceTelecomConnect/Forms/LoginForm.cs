@@ -20,18 +20,18 @@ namespace ServiceTelecomConnect
             {
                 if (x.EndsWith("/Admin"))
                 {
-                    txB_loginField.Text = "Admin";
-                    txB_passField.Text = "1818";
+                    txbLogin.Text = "Admin";
+                    txbPassword.Text = "1818";
                 }
             });
         }
         void LoginFormLoad(object sender, EventArgs e)
         {
-            txB_passField.PasswordChar = '*';
-            lbL_hidePassword.Visible = false;
-            txB_loginField.MaxLength = 100;
-            txB_passField.MaxLength = 32;
-            if (txB_loginField.Text == "Admin" || txB_passField.Text == "1818")
+            txbPassword.PasswordChar = '*';
+            hidePassword.Visible = false;
+            txbLogin.MaxLength = 100;
+            txbPassword.MaxLength = 32;
+            if (txbLogin.Text == "Admin" || txbPassword.Text == "1818")
                 EnterButtonLoginClick(sender, e);
             try
             {
@@ -40,8 +40,8 @@ namespace ServiceTelecomConnect
                 {
                     RegistryKey currentUserKey = Registry.CurrentUser;
                     RegistryKey helloKey = currentUserKey.OpenSubKey($"SOFTWARE\\ServiceTelekom_Setting\\Login_Password");
-                    txB_loginField.Text = helloKey.GetValue("Login").ToString();
-                    txB_passField.Text = helloKey.GetValue("Password").ToString();
+                    txbLogin.Text = helloKey.GetValue("Login").ToString();
+                    txbPassword.Text = helloKey.GetValue("Password").ToString();
                     helloKey.Close();
                 }
             }
@@ -53,8 +53,8 @@ namespace ServiceTelecomConnect
         {
             if (InternetCheck.CheackSkyNET())
             {
-                string loginUser = txB_loginField.Text;
-                string passUser = Md5.EncryptPlainTextToCipherText(txB_passField.Text);
+                string loginUser = txbLogin.Text;
+                string passUser = Md5.EncryptPlainTextToCipherText(txbPassword.Text);
                 string querystring = $"SELECT id, login, pass, is_admin	FROM users " +
                     $"WHERE login = '{loginUser}' AND pass = '{passUser}'";
                 using (MySqlCommand command = new MySqlCommand(querystring, DB.GetInstance.GetConnection()))
@@ -71,8 +71,8 @@ namespace ServiceTelecomConnect
                             {
                                 RegistryKey currentUserKey = Registry.CurrentUser;
                                 RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\Login_Password");
-                                helloKey.SetValue("Login", $"{txB_loginField.Text}");
-                                helloKey.SetValue("Password", $"{txB_passField.Text}");
+                                helloKey.SetValue("Login", $"{txbLogin.Text}");
+                                helloKey.SetValue("Password", $"{txbPassword.Text}");
                                 helloKey.Close();
                                 this.Hide();
                                 menu.ShowDialog();
@@ -90,20 +90,20 @@ namespace ServiceTelecomConnect
         }
         void OpenPasswordClick(object sender, EventArgs e)
         {
-            txB_passField.UseSystemPasswordChar = true;
-            lbL_hidePassword.Visible = true;
-            lbL_openPassword.Visible = false;
+            txbPassword.UseSystemPasswordChar = true;
+            hidePassword.Visible = true;
+            openPassword.Visible = false;
         }
         void HidePasswordClick(object sender, EventArgs e)
         {
-            txB_passField.UseSystemPasswordChar = false;
-            lbL_hidePassword.Visible = false;
-            lbL_openPassword.Visible = true;
+            txbPassword.UseSystemPasswordChar = false;
+            hidePassword.Visible = false;
+            openPassword.Visible = true;
         }
         void ClearClick(object sender, EventArgs e)
         {
-            txB_loginField.Text = String.Empty;
-            txB_passField.Text = String.Empty;
+            txbLogin.Text = String.Empty;
+            txbPassword.Text = String.Empty;
         }
         void RegistrationLoginFormClick(object sender, EventArgs e)
         {
@@ -126,19 +126,19 @@ namespace ServiceTelecomConnect
         }
         void OpenPasswordMouseEnter(object sender, EventArgs e)
         {
-            lbL_openPassword.ForeColor = Color.White;
+            openPassword.ForeColor = Color.White;
         }
         void OpenPasswordMouseLeave(object sender, EventArgs e)
         {
-            lbL_openPassword.ForeColor = Color.Black;
+            openPassword.ForeColor = Color.Black;
         }
         void HidePasswordMouseEnter(object sender, EventArgs e)
         {
-            lbL_hidePassword.ForeColor = Color.White;
+            hidePassword.ForeColor = Color.White;
         }
         void HidePasswordMouseLeave(object sender, EventArgs e)
         {
-            lbL_hidePassword.ForeColor = Color.Black;
+            hidePassword.ForeColor = Color.Black;
         }
         void ClearMouseEnter(object sender, EventArgs e)
         {
