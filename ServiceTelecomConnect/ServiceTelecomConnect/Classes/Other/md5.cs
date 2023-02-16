@@ -9,17 +9,17 @@ namespace ServiceTelecomConnect
     class Md5
     {
         private const string SecurityKey = "ServiceTelecomGorbunov2015";
-        public static string HashPassword(string password)
-        {
-            MD5 md5 = MD5.Create();
-            byte[] b = Encoding.ASCII.GetBytes(password);
-            byte[] hash = md5.ComputeHash(b);
-            StringBuilder sb = new StringBuilder();
-            foreach (var a in hash)
-                sb.Append(a.ToString("X2"));
+        //public static string HashPassword(string password)
+        //{
+        //    MD5 md5 = MD5.Create();
+        //    byte[] b = Encoding.ASCII.GetBytes(password);
+        //    byte[] hash = md5.ComputeHash(b);
+        //    StringBuilder sb = new StringBuilder();
+        //    foreach (var a in hash)
+        //        sb.Append(a.ToString("X2"));
             
-            return Convert.ToString(sb);
-        }
+        //    return Convert.ToString(sb);
+        //}
 
         public static string EncryptPlainTextToCipherText(string PlainText)
         {
@@ -47,8 +47,6 @@ namespace ServiceTelecomConnect
             objTripleDESCryptoService.Clear();
             return Convert.ToBase64String(resultArray, 0, resultArray.Length);
         }
-
-
         public static string DecryptCipherTextToPlainText(string CipherText)
         {
             byte[] toEncryptArray = Convert.FromBase64String(CipherText);
