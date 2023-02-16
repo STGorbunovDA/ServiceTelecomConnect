@@ -1574,7 +1574,7 @@ namespace ServiceTelecomConnect
             {
                 if (!String.IsNullOrWhiteSpace(serialNumber))
                 {
-                    string queryRecordDecommissionRadiostantion = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                    string queryRecordDecommissionRadiostantion = $"UPDATE radiostantion SET inventoryNumber = 'списание', networkNumber = 'списание', price = '0.00', " +
                         $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = '', numberActRemont = '', " +
                         $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                         $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
@@ -1590,7 +1590,7 @@ namespace ServiceTelecomConnect
 
                     if (CheacSerialNumber.GetInstance.CheackSerialNumberRadiostantionFull(road, city, serialNumber))
                     {
-                        string queryRecordDecommissionRadiostantionFull = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '{0.00}', " +
+                        string queryRecordDecommissionRadiostantionFull = $"UPDATE radiostantion_full SET inventoryNumber = 'списание', networkNumber = 'списание', price = '0.00', " +
                             $"decommissionSerialNumber = '{decommissionSerialNumber}', numberAct = 'списание', numberActRemont = 'списание', " +
                             $"category = '', completed_works_1 = '', completed_works_2 = '', completed_works_3 = '', completed_works_4 = ''," +
                             $"completed_works_5 = '', completed_works_6 = '', completed_works_7 = '', parts_1 = '', parts_2 = '', parts_3 = '', " +
