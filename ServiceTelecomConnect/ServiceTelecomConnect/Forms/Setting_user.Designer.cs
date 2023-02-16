@@ -188,7 +188,7 @@
             this.btn_update.UseVisualStyleBackColor = false;
             this.btn_update.Click += new System.EventHandler(this.ButtonUpdateClick);
             // 
-            // cmB_is_admin_post
+            // cmB_isAdminPost
             // 
             this.cmB_isAdminPost.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cmB_isAdminPost.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -202,7 +202,7 @@
             "Дирекция связи",
             "Admin"});
             this.cmB_isAdminPost.Location = new System.Drawing.Point(570, 18);
-            this.cmB_isAdminPost.Name = "cmB_is_admin_post";
+            this.cmB_isAdminPost.Name = "cmB_isAdminPost";
             this.cmB_isAdminPost.Size = new System.Drawing.Size(188, 28);
             this.cmB_isAdminPost.TabIndex = 57;
             // 
@@ -242,6 +242,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximumSize = new System.Drawing.Size(825, 500);
             this.MinimumSize = new System.Drawing.Size(825, 500);
             this.Name = "Setting_user";
