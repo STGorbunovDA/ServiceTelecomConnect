@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.AuthorizationLabel = new System.Windows.Forms.Label();
-            this.btn_enterButtonLogin = new System.Windows.Forms.Button();
+            this.btnAuthorization = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txB_loginField = new System.Windows.Forms.TextBox();
+            this.txbLogin = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txB_passField = new System.Windows.Forms.TextBox();
+            this.txbPassword = new System.Windows.Forms.TextBox();
             this.lbL_registrationLoginForm = new System.Windows.Forms.Label();
-            this.lbL_openPassword = new System.Windows.Forms.Label();
-            this.lbL_hidePassword = new System.Windows.Forms.Label();
+            this.openPassword = new System.Windows.Forms.Label();
+            this.hidePassword = new System.Windows.Forms.Label();
             this.lbL_clear = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,19 +56,19 @@
             this.AuthorizationLabel.Text = "Авторизация";
             this.AuthorizationLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btn_enterButtonLogin
+            // btnAuthorization
             // 
-            this.btn_enterButtonLogin.BackColor = System.Drawing.Color.White;
-            this.btn_enterButtonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_enterButtonLogin.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_enterButtonLogin.ForeColor = System.Drawing.Color.Black;
-            this.btn_enterButtonLogin.Location = new System.Drawing.Point(337, 321);
-            this.btn_enterButtonLogin.Name = "btn_enterButtonLogin";
-            this.btn_enterButtonLogin.Size = new System.Drawing.Size(160, 48);
-            this.btn_enterButtonLogin.TabIndex = 16;
-            this.btn_enterButtonLogin.Text = "Enter";
-            this.btn_enterButtonLogin.UseVisualStyleBackColor = false;
-            this.btn_enterButtonLogin.Click += new System.EventHandler(this.EnterButtonLoginClick);
+            this.btnAuthorization.BackColor = System.Drawing.Color.White;
+            this.btnAuthorization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthorization.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAuthorization.ForeColor = System.Drawing.Color.Black;
+            this.btnAuthorization.Location = new System.Drawing.Point(337, 321);
+            this.btnAuthorization.Name = "btnAuthorization";
+            this.btnAuthorization.Size = new System.Drawing.Size(160, 48);
+            this.btnAuthorization.TabIndex = 16;
+            this.btnAuthorization.Text = "Enter";
+            this.btnAuthorization.UseVisualStyleBackColor = false;
+            this.btnAuthorization.Click += new System.EventHandler(this.EnterButtonLoginClick);
             // 
             // label4
             // 
@@ -104,14 +104,14 @@
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
-            // txB_loginField
+            // txbLogin
             // 
-            this.txB_loginField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_loginField.Location = new System.Drawing.Point(214, 255);
-            this.txB_loginField.Multiline = true;
-            this.txB_loginField.Name = "txB_loginField";
-            this.txB_loginField.Size = new System.Drawing.Size(198, 31);
-            this.txB_loginField.TabIndex = 11;
+            this.txbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbLogin.Location = new System.Drawing.Point(214, 255);
+            this.txbLogin.Multiline = true;
+            this.txbLogin.Name = "txbLogin";
+            this.txbLogin.Size = new System.Drawing.Size(198, 31);
+            this.txbLogin.TabIndex = 11;
             // 
             // pictureBox1
             // 
@@ -126,14 +126,14 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
-            // txB_passField
+            // txbPassword
             // 
-            this.txB_passField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txB_passField.Location = new System.Drawing.Point(418, 255);
-            this.txB_passField.Multiline = true;
-            this.txB_passField.Name = "txB_passField";
-            this.txB_passField.Size = new System.Drawing.Size(198, 31);
-            this.txB_passField.TabIndex = 17;
+            this.txbPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txbPassword.Location = new System.Drawing.Point(418, 255);
+            this.txbPassword.Multiline = true;
+            this.txbPassword.Name = "txbPassword";
+            this.txbPassword.Size = new System.Drawing.Size(198, 31);
+            this.txbPassword.TabIndex = 17;
             // 
             // lbL_registrationLoginForm
             // 
@@ -151,35 +151,35 @@
             this.lbL_registrationLoginForm.MouseEnter += new System.EventHandler(this.RegistrationLoginFormMouseEnter);
             this.lbL_registrationLoginForm.MouseLeave += new System.EventHandler(this.RegistrationLoginFormMouseLeave);
             // 
-            // lbL_openPassword
+            // openPassword
             // 
-            this.lbL_openPassword.AutoSize = true;
-            this.lbL_openPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
-            this.lbL_openPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbL_openPassword.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_openPassword.Location = new System.Drawing.Point(468, 289);
-            this.lbL_openPassword.Name = "lbL_openPassword";
-            this.lbL_openPassword.Size = new System.Drawing.Size(112, 14);
-            this.lbL_openPassword.TabIndex = 19;
-            this.lbL_openPassword.Text = "показать пароль";
-            this.lbL_openPassword.Click += new System.EventHandler(this.OpenPasswordClick);
-            this.lbL_openPassword.MouseEnter += new System.EventHandler(this.OpenPasswordMouseEnter);
-            this.lbL_openPassword.MouseLeave += new System.EventHandler(this.OpenPasswordMouseLeave);
+            this.openPassword.AutoSize = true;
+            this.openPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
+            this.openPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.openPassword.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.openPassword.Location = new System.Drawing.Point(504, 289);
+            this.openPassword.Name = "openPassword";
+            this.openPassword.Size = new System.Drawing.Size(112, 14);
+            this.openPassword.TabIndex = 19;
+            this.openPassword.Text = "показать пароль";
+            this.openPassword.Click += new System.EventHandler(this.OpenPasswordClick);
+            this.openPassword.MouseEnter += new System.EventHandler(this.OpenPasswordMouseEnter);
+            this.openPassword.MouseLeave += new System.EventHandler(this.OpenPasswordMouseLeave);
             // 
-            // lbL_hidePassword
+            // hidePassword
             // 
-            this.lbL_hidePassword.AutoSize = true;
-            this.lbL_hidePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
-            this.lbL_hidePassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbL_hidePassword.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_hidePassword.Location = new System.Drawing.Point(483, 289);
-            this.lbL_hidePassword.Name = "lbL_hidePassword";
-            this.lbL_hidePassword.Size = new System.Drawing.Size(98, 14);
-            this.lbL_hidePassword.TabIndex = 20;
-            this.lbL_hidePassword.Text = "скрыть пароль";
-            this.lbL_hidePassword.Click += new System.EventHandler(this.HidePasswordClick);
-            this.lbL_hidePassword.MouseEnter += new System.EventHandler(this.HidePasswordMouseEnter);
-            this.lbL_hidePassword.MouseLeave += new System.EventHandler(this.HidePasswordMouseLeave);
+            this.hidePassword.AutoSize = true;
+            this.hidePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(219)))), ((int)(((byte)(94)))));
+            this.hidePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.hidePassword.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.hidePassword.Location = new System.Drawing.Point(503, 304);
+            this.hidePassword.Name = "hidePassword";
+            this.hidePassword.Size = new System.Drawing.Size(98, 14);
+            this.hidePassword.TabIndex = 20;
+            this.hidePassword.Text = "скрыть пароль";
+            this.hidePassword.Click += new System.EventHandler(this.HidePasswordClick);
+            this.hidePassword.MouseEnter += new System.EventHandler(this.HidePasswordMouseEnter);
+            this.hidePassword.MouseLeave += new System.EventHandler(this.HidePasswordMouseLeave);
             // 
             // lbL_clear
             // 
@@ -198,22 +198,22 @@
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btn_enterButtonLogin;
+            this.AcceptButton = this.btnAuthorization;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_2;
             this.ClientSize = new System.Drawing.Size(799, 461);
             this.Controls.Add(this.lbL_clear);
-            this.Controls.Add(this.lbL_hidePassword);
-            this.Controls.Add(this.lbL_openPassword);
+            this.Controls.Add(this.hidePassword);
+            this.Controls.Add(this.openPassword);
             this.Controls.Add(this.lbL_registrationLoginForm);
-            this.Controls.Add(this.btn_enterButtonLogin);
+            this.Controls.Add(this.btnAuthorization);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.txB_passField);
-            this.Controls.Add(this.txB_loginField);
+            this.Controls.Add(this.txbPassword);
+            this.Controls.Add(this.txbLogin);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.AuthorizationLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -233,16 +233,16 @@
         #endregion
 
         private System.Windows.Forms.Label AuthorizationLabel;
-        private System.Windows.Forms.Button btn_enterButtonLogin;
+        private System.Windows.Forms.Button btnAuthorization;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox txB_loginField;
+        private System.Windows.Forms.TextBox txbLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txB_passField;
+        private System.Windows.Forms.TextBox txbPassword;
         private System.Windows.Forms.Label lbL_registrationLoginForm;
-        private System.Windows.Forms.Label lbL_openPassword;
-        private System.Windows.Forms.Label lbL_hidePassword;
+        private System.Windows.Forms.Label openPassword;
+        private System.Windows.Forms.Label hidePassword;
         private System.Windows.Forms.Label lbL_clear;
     }
 }
