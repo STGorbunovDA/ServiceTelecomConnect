@@ -986,7 +986,7 @@ namespace ServiceTelecomConnect.Forms
                     return;
                 }
 
-                if (txB_model.Text == "РН311М")
+                if (txB_model.Text == "РН311М" || txB_model.Text == "Комбат T-44" || txB_model.Text == "Комбат T-54")
                 {
                     if (!Regex.IsMatch(txB_StandbyModeCurrentConsumption.Text, @"^[1][1-5]{1,1}[0]$"))
                     {
