@@ -170,7 +170,6 @@ namespace ServiceTelecomConnect.Forms
             using (MySqlCommand command = new MySqlCommand(searchString, DB.GetInstance.GetConnection()))
             {
                 DB.GetInstance.OpenConnection();
-
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)

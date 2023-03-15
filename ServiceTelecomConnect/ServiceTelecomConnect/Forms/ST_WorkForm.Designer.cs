@@ -116,12 +116,13 @@
             this.label21 = new System.Windows.Forms.Label();
             this.panel_Tag = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.chbManipulator = new System.Windows.Forms.CheckBox();
             this.btn_FormTag = new System.Windows.Forms.Button();
             this.btn_close_panel_Tag = new System.Windows.Forms.Button();
             this.txB_Date_panel_Tag = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
             this.lbL_last_decommission = new System.Windows.Forms.Label();
+            this.panel_decommissionSerialNumber = new System.Windows.Forms.Panel();
             this.txB_reason_decommission = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txB1_decommissionSerialNumber = new System.Windows.Forms.TextBox();
@@ -248,6 +249,7 @@
             this.mTrip_PrintStatementParameters = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_PrintReportAKB = new System.Windows.Forms.ToolStripMenuItem();
             this.MTripPrintReportFullAKBClick = new System.Windows.Forms.ToolStripMenuItem();
+            this.mTrip_PrintReportManipulator = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_expansion = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_Button_save_in_file = new System.Windows.Forms.ToolStripMenuItem();
             this.mTrip_FormTag = new System.Windows.Forms.ToolStripMenuItem();
@@ -274,6 +276,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.txB_pnl_ChangeNumberActTOFull = new System.Windows.Forms.TextBox();
             this.btn_close_pnl_ChangeNumberActTOFull = new System.Windows.Forms.Button();
+            this.MTripPrintReportFullManipulator = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -684,33 +687,6 @@
             this.cmB_model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmB_model.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmB_model.FormattingEnabled = true;
-            this.cmB_model.Items.AddRange(new object[] {
-            "Icom IC-F3GT",
-            "Icom IC-F11",
-            "Icom IC-F16",
-            "Icom IC-F3GS",
-            "Motorola P040",
-            "Motorola P080",
-            "Motorola DP-1400",
-            "Motorola DP-2400",
-            "Motorola DP-2400е",
-            "Motorola DP-4400",
-            "Motorola GP-300",
-            "Motorola GP-320",
-            "Motorola GP-340",
-            "Motorola GP-360",
-            "Альтавия-301М",
-            "РН311М",
-            "Элодия-351М",
-            "Comrade R5",
-            "Комбат T-44",
-            "Гранит Р33П-1",
-            "Гранит Р-43",
-            "Радий-301",
-            "Kenwood ТК-2107",
-            "Vertex - 261",
-            "РНД-500",
-            "РА-160"});
             this.cmB_model.Location = new System.Drawing.Point(168, 1);
             this.cmB_model.Name = "cmB_model";
             this.cmB_model.Size = new System.Drawing.Size(33, 28);
@@ -1252,6 +1228,7 @@
             this.panel_Tag.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_Tag.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
             this.panel_Tag.Controls.Add(this.monthCalendar1);
+            this.panel_Tag.Controls.Add(this.chbManipulator);
             this.panel_Tag.Controls.Add(this.btn_FormTag);
             this.panel_Tag.Controls.Add(this.btn_close_panel_Tag);
             this.panel_Tag.Controls.Add(this.txB_Date_panel_Tag);
@@ -1264,11 +1241,23 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(75, 7);
+            this.monthCalendar1.Location = new System.Drawing.Point(132, 9);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 39;
             this.monthCalendar1.Visible = false;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1DateSelected);
+            // 
+            // chbManipulator
+            // 
+            this.chbManipulator.AutoSize = true;
+            this.chbManipulator.BackColor = System.Drawing.Color.Transparent;
+            this.chbManipulator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.chbManipulator.Location = new System.Drawing.Point(109, 45);
+            this.chbManipulator.Name = "chbManipulator";
+            this.chbManipulator.Size = new System.Drawing.Size(115, 20);
+            this.chbManipulator.TabIndex = 40;
+            this.chbManipulator.Text = "Манипулятор";
+            this.chbManipulator.UseVisualStyleBackColor = false;
             // 
             // btn_FormTag
             // 
@@ -1316,14 +1305,25 @@
             this.label34.TabIndex = 6;
             this.label34.Text = "Дата:";
             // 
+            // lbL_last_decommission
+            // 
+            this.lbL_last_decommission.AutoSize = true;
+            this.lbL_last_decommission.BackColor = System.Drawing.Color.Transparent;
+            this.lbL_last_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbL_last_decommission.Location = new System.Drawing.Point(210, 27);
+            this.lbL_last_decommission.Name = "lbL_last_decommission";
+            this.lbL_last_decommission.Size = new System.Drawing.Size(54, 15);
+            this.lbL_last_decommission.TabIndex = 103;
+            this.lbL_last_decommission.Text = "Пустой";
+            // 
             // panel_decommissionSerialNumber
             // 
             this.panel_decommissionSerialNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_decommissionSerialNumber.BackColor = System.Drawing.Color.SkyBlue;
             this.panel_decommissionSerialNumber.BackgroundImage = global::ServiceTelecomConnect.Properties.Resources.Untitled_6;
-            this.panel_decommissionSerialNumber.Controls.Add(this.lbL_last_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.txB_reason_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.label2);
+            this.panel_decommissionSerialNumber.Controls.Add(this.lbL_last_decommission);
             this.panel_decommissionSerialNumber.Controls.Add(this.txB1_decommissionSerialNumber);
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_record_decommissionSerialNumber);
             this.panel_decommissionSerialNumber.Controls.Add(this.btn_decommissionSerialNumber_close);
@@ -1334,17 +1334,6 @@
             this.panel_decommissionSerialNumber.Size = new System.Drawing.Size(447, 313);
             this.panel_decommissionSerialNumber.TabIndex = 39;
             this.panel_decommissionSerialNumber.Visible = false;
-            // 
-            // lbL_last_decommission
-            // 
-            this.lbL_last_decommission.AutoSize = true;
-            this.lbL_last_decommission.BackColor = System.Drawing.Color.Transparent;
-            this.lbL_last_decommission.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbL_last_decommission.Location = new System.Drawing.Point(233, 28);
-            this.lbL_last_decommission.Name = "lbL_last_decommission";
-            this.lbL_last_decommission.Size = new System.Drawing.Size(54, 15);
-            this.lbL_last_decommission.TabIndex = 103;
-            this.lbL_last_decommission.Text = "Пустой";
             // 
             // txB_reason_decommission
             // 
@@ -2829,7 +2818,9 @@
             this.mTrip_PrintWord_Act_decommission,
             this.mTrip_PrintStatementParameters,
             this.mTrip_PrintReportAKB,
-            this.MTripPrintReportFullAKBClick});
+            this.MTripPrintReportFullAKBClick,
+            this.mTrip_PrintReportManipulator,
+            this.MTripPrintReportFullManipulator});
             this.mTrip_print.Name = "mTrip_print";
             this.mTrip_print.Size = new System.Drawing.Size(62, 20);
             this.mTrip_print.Text = "Печать";
@@ -2874,7 +2865,14 @@
             this.MTripPrintReportFullAKBClick.Name = "MTripPrintReportFullAKBClick";
             this.MTripPrintReportFullAKBClick.Size = new System.Drawing.Size(291, 22);
             this.MTripPrintReportFullAKBClick.Text = "Печать полного отчёта АКБ по ПП";
-            this.MTripPrintReportFullAKBClick.Click += new System.EventHandler(this.MTripPrintReportFullAKBClick_Click);
+            this.MTripPrintReportFullAKBClick.Click += new System.EventHandler(this.MTripPrintReportFullAKB_Click);
+            // 
+            // mTrip_PrintReportManipulator
+            // 
+            this.mTrip_PrintReportManipulator.Name = "mTrip_PrintReportManipulator";
+            this.mTrip_PrintReportManipulator.Size = new System.Drawing.Size(291, 22);
+            this.mTrip_PrintReportManipulator.Text = "Печать отчёта МАН по участку";
+            this.mTrip_PrintReportManipulator.Click += new System.EventHandler(this.MTrip_PrintReportManipulator_Click);
             // 
             // mTrip_expansion
             // 
@@ -3099,6 +3097,13 @@
             this.btn_close_pnl_ChangeNumberActTOFull.UseVisualStyleBackColor = false;
             this.btn_close_pnl_ChangeNumberActTOFull.Click += new System.EventHandler(this.BtnClosePnlChangeNumberActTOFullClick);
             // 
+            // MTripPrintReportFullManipulator
+            // 
+            this.MTripPrintReportFullManipulator.Name = "MTripPrintReportFullManipulator";
+            this.MTripPrintReportFullManipulator.Size = new System.Drawing.Size(291, 22);
+            this.MTripPrintReportFullManipulator.Text = "Печать полного отчёта МАН по ПП";
+            this.MTripPrintReportFullManipulator.Click += new System.EventHandler(this.MTripPrintReportFullManipulator_Click);
+            // 
             // ST_WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3106,13 +3111,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1424, 777);
+            this.Controls.Add(this.panel_Tag);
+            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_decommissionSerialNumber);
             this.Controls.Add(this.panel_remont_information_company);
-            this.Controls.Add(this.panel_Tag);
             this.Controls.Add(this.pnl_ChangeNumberActTOFull);
             this.Controls.Add(this.pnL_printBase);
             this.Controls.Add(this.Functional_loading_panel);
-            this.Controls.Add(this.panel_date);
             this.Controls.Add(this.panel_seach_datagrid);
             this.Controls.Add(this.panel_info_phone_FIO);
             this.Controls.Add(this.dataGridView3);
@@ -3414,5 +3419,8 @@
         private System.Windows.Forms.ToolStripMenuItem mTrip_PrintReportAKB;
         private System.Windows.Forms.CheckBox chb_pass_txB_3_FIO;
         private System.Windows.Forms.ToolStripMenuItem MTripPrintReportFullAKBClick;
+        private System.Windows.Forms.CheckBox chbManipulator;
+        private System.Windows.Forms.ToolStripMenuItem mTrip_PrintReportManipulator;
+        private System.Windows.Forms.ToolStripMenuItem MTripPrintReportFullManipulator;
     }
 }

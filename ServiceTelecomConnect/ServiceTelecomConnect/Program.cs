@@ -12,11 +12,11 @@ namespace ServiceTelecomConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.ThreadException += new ThreadExceptionEventHandler(Exception_global);
+            Application.ThreadException += new ThreadExceptionEventHandler(ExceptionGlobal);
             Application.Run(new LoginForm());
         }
 
-        static void Exception_global(object sender, ThreadExceptionEventArgs e)
+        static void ExceptionGlobal(object sender, ThreadExceptionEventArgs e)
         {
             LogUser.LogExceptionUserSaveFilePC(e.Exception.Message);
             LogUser.LogExceptionUserSaveFilePC(e.Exception.ToString());

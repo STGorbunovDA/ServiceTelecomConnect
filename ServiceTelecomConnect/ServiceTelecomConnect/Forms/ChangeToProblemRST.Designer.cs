@@ -224,12 +224,12 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.lbL_Author);
             this.Controls.Add(this.txB_problem);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximumSize = new System.Drawing.Size(816, 521);
             this.MinimumSize = new System.Drawing.Size(816, 521);
             this.Name = "ChangeToProblemRST";
             this.ShowIcon = false;
-            this.Text = "Добавление неисправности радиостанции";
+            this.Text = "Изменение неисправности радиостанции";
             this.Load += new System.EventHandler(this.AddToProblemRadiostantionLoad);
             ((System.ComponentModel.ISupportInitialize)(this.picB_clearControl)).EndInit();
             this.ResumeLayout(false);

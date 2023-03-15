@@ -37,18 +37,79 @@ namespace ServiceTelecomConnect.Forms
         {
             QuerySettingDataBase.RefreshDataGridEngineer(dataGridView1);
         }
-        void BtnNewRadiostantionProblemClick(object sender, EventArgs e)
+        void BtnBriefInfoClick(object sender, EventArgs e)
         {
-            if (InternetCheck.CheackSkyNET())
+            MessageBox.Show("Перед началом проверки радиостанции необходимо визуально " +
+                "осмотреть корпус на сквозные трещины, сколы корпуса, батарейные контакты, " +
+                "уплотнитель батарейного контакта, а также ручку регулятора громкости и ручку " +
+                "переключения каналов.Проивести чистку корпуса радиостанции, убрать металлическую " +
+                "стружку из динамика. Чистка внешних поверхностей радиостанции включают фронтальную " +
+                "крышку радиостанции, корпус радиостанции и корпус батареи. Чистку проводить неметаллической " +
+                "короткошерстной щёткой для удаления грязи с радиостанции. Так же Используйте мягкую, " +
+                "абсорбирующую ткань, кубки для мытья посуды или влажные салфетки.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.ReadOnly = false;
+            selectedRow = e.RowIndex;
+            if (e.RowIndex >= 0)
             {
-                AddToProblemRST addProblemRST = new AddToProblemRST(_user);
-                if (Application.OpenForms["AddToProblemRST"] == null)
-                {
-                    addProblemRST.DoubleBufferedForm(true);
-                    addProblemRST.Show();
-                }
+                DataGridViewRow row = dataGridView1.Rows[selectedRow];
+                txB_id.Text = row.Cells[0].Value.ToString();
+                txB_model.Text = row.Cells[1].Value.ToString();
+                txB_problem.Text = row.Cells[2].Value.ToString();
+                txB_info.Text = row.Cells[3].Value.ToString();
+                txB_actions.Text = row.Cells[4].Value.ToString();
+                txB_author.Text = row.Cells[5].Value.ToString();
             }
         }
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex != 0)
+                e.Cancel = true;
+        }
+        void BtnSaveExcelClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DateTime dateTime = DateTime.Now;
+            string dateTimeString = dateTime.ToString("dd.MM.yyyy");
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+            sfd.FileName = $"ОБЩАЯ База_Неисправностей_{dateTimeString}";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.Unicode))
+                {
+                    string note = string.Empty;
+                    note += $"Номер\tМодель\tНеисправность\tОписание неисправности\tВиды работ по устраненнию дефекта\tАвтор";
+                    sw.WriteLine(note);
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
+                        {
+                            Regex re = new Regex(Environment.NewLine);
+                            string value = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            value = re.Replace(value, " ");
+                            if (dataGridView1.Columns[j].HeaderText.ToString() == "Автор")
+                                sw.Write(value);
+                            else if (dataGridView1.Columns[j].HeaderText.ToString() == "RowState")
+                            {
+
+                            }
+                            else sw.Write(value + "\t");
+                        }
+                        sw.WriteLine();
+                    }
+                }
+                MessageBox.Show("Файл успешно сохранен!");
+            }
+        }
+
         void CmbSeachSelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmB_seach.SelectedIndex == 0)
@@ -91,33 +152,19 @@ namespace ServiceTelecomConnect.Forms
             if (e.KeyChar == (char)Keys.Return)
                 QuerySettingDataBase.SearchEngineer(dataGridView1, cmB_seach.Text, txB_search.Text, cmb_unique.Text);
         }
-        void BtnBriefInfoClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Перед началом проверки радиостанции необходимо визуально " +
-                "осмотреть корпус на сквозные трещины, сколы корпуса, батарейные контакты, " +
-                "уплотнитель батарейного контакта, а также ручку регулятора громкости и ручку " +
-                "переключения каналов.Проивести чистку корпуса радиостанции, убрать металлическую " +
-                "стружку из динамика. Чистка внешних поверхностей радиостанции включают фронтальную " +
-                "крышку радиостанции, корпус радиостанции и корпус батареи. Чистку проводить неметаллической " +
-                "короткошерстной щёткой для удаления грязи с радиостанции. Так же Используйте мягкую, " +
-                "абсорбирующую ткань, кубки для мытья посуды или влажные салфетки.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        }
-        void DataGridView1CellClick(object sender, DataGridViewCellEventArgs e)
+        void BtnNewRadiostantionProblemClick(object sender, EventArgs e)
         {
-            dataGridView1.ReadOnly = false;
-            selectedRow = e.RowIndex;
-            if (e.RowIndex >= 0)
+            if (InternetCheck.CheackSkyNET())
             {
-                DataGridViewRow row = dataGridView1.Rows[selectedRow];
-                txB_id.Text = row.Cells[0].Value.ToString();
-                txB_model.Text = row.Cells[1].Value.ToString();
-                txB_problem.Text = row.Cells[2].Value.ToString();
-                txB_info.Text = row.Cells[3].Value.ToString();
-                txB_actions.Text = row.Cells[4].Value.ToString();
-                txB_author.Text = row.Cells[5].Value.ToString();
+                AddToProblemRST addProblemRST = new AddToProblemRST(_user);
+                if (Application.OpenForms["AddToProblemRST"] == null)
+                {
+                    addProblemRST.DoubleBufferedForm(true);
+                    addProblemRST.Show();
+                }
             }
-        }
+        }     
         void BtnChangeProblemClick(object sender, EventArgs e)
         {
             if (InternetCheck.CheackSkyNET())
@@ -178,11 +225,7 @@ namespace ServiceTelecomConnect.Forms
                     dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
             }
         }
-        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (e.ColumnIndex != 0)
-                e.Cancel = true;
-        }
+
         void DataGridView1MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -206,46 +249,6 @@ namespace ServiceTelecomConnect.Forms
                     m2.MenuItems.Add(new MenuItem("Добавить новую неисправность", BtnNewRadiostantionProblemClick));
                     m2.MenuItems.Add(new MenuItem("Краткая иформация", BtnBriefInfoClick));
                 }
-            }
-        }
-        void BtnSaveExcelClick(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DateTime dateTime = DateTime.Now;
-            string dateTimeString = dateTime.ToString("dd.MM.yyyy");
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-            sfd.FileName = $"ОБЩАЯ База_Неисправностей_{dateTimeString}";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.Unicode))
-                {
-                    string note = string.Empty;
-                    note += $"Номер\tМодель\tНеисправность\tОписание неисправности\tВиды работ по устраненнию дефекта\tАвтор";
-                    sw.WriteLine(note);
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                    {
-                        for (int j = 0; j < dataGridView1.ColumnCount; j++)
-                        {
-                            Regex re = new Regex(Environment.NewLine);
-                            string value = dataGridView1.Rows[i].Cells[j].Value.ToString();
-                            value = re.Replace(value, " ");
-                            if (dataGridView1.Columns[j].HeaderText.ToString() == "Автор")
-                                sw.Write(value);
-                            else if (dataGridView1.Columns[j].HeaderText.ToString() == "RowState")
-                            {
-
-                            }
-                            else sw.Write(value + "\t");
-                        }
-                        sw.WriteLine();
-                    }
-                }
-                MessageBox.Show("Файл успешно сохранен!");
             }
         }
     }

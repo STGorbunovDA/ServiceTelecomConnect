@@ -1,10 +1,8 @@
 ﻿using Microsoft.Win32;
-using MySql.Data.MySqlClient;
 using ServiceTelecomConnect.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -37,16 +35,15 @@ namespace ServiceTelecomConnect
         public ST_WorkForm(CheakUser user)
         {
             InitializeComponent();
-
             StartPosition = FormStartPosition.CenterScreen;
-            cmB_seach.Text = cmB_seach.Items[2].ToString();
             dataGridView1.DoubleBuffered(true);
+            cmB_seach.Text = cmB_seach.Items[2].ToString();
             this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.GhostWhite;
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             _user = user;
             IsAdmin();
         }
-         void IsAdmin()
+        void IsAdmin()
         {
             if (_user.IsAdmin == "Дирекция связи")
             {
@@ -106,6 +103,7 @@ namespace ServiceTelecomConnect
         void STWorkFormLoad(object sender, EventArgs e)
         {
             QuerySettingDataBase.GettingTeamData(lbl_ChiefFIO, lbl_EngineerFIO, lbL_doverennost, lbL_road, lbL_numberPrintDocument, _user, cmB_road);
+            QuerySettingDataBase.CmbGettingModelRST(cmB_model);
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridView1.ColumnHeadersDefaultCellStyle.Font.FontFamily, 12f, FontStyle.Bold); //жирный курсив размера 16
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.White; //цвет текста
@@ -164,6 +162,7 @@ namespace ServiceTelecomConnect
                 if (cmB_AddSignature.Items.Count > 0)
                     cmB_AddSignature.Text = cmB_AddSignature.Items[cmB_AddSignature.Items.Count - 1].ToString();
             }
+
             ///Таймер
             WinForms::Timer timer = new WinForms::Timer();
             timer.Interval = (31 * 60 * 1000); // 15 mins
@@ -244,16 +243,6 @@ namespace ServiceTelecomConnect
         void CmbRoadSelectionChangeCommitted(object sender, EventArgs e)
         {
             QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
-        }
-        #endregion
-
-        #region panel date information
-        void BtnClosePanelDateInfoClick(object sender, EventArgs e)
-        {
-            panel_date.Visible = false;
-            dataGridView1.Enabled = true;
-            panel1.Enabled = true;
-            panel3.Enabled = true;
         }
         #endregion
 
@@ -344,6 +333,238 @@ namespace ServiceTelecomConnect
                 return;
 
             ClearFields();
+        }
+        #endregion
+
+        #region ProcessKbdCtrlShortcuts
+        void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
+        {
+            TextBox t = (TextBox)sender;
+            if (e.KeyData == (Keys.C | Keys.Control))
+            {
+                t.Copy();
+                e.Handled = true;
+            }
+            else if (e.KeyData == (Keys.X | Keys.Control))
+            {
+                t.Cut();
+                e.Handled = true;
+            }
+            else if (e.KeyData == (Keys.V | Keys.Control))
+            {
+                t.Paste();
+                e.Handled = true;
+            }
+            else if (e.KeyData == (Keys.A | Keys.Control))
+            {
+                t.SelectAll();
+                e.Handled = true;
+            }
+            else if (e.KeyData == (Keys.Z | Keys.Control))
+            {
+                t.Undo();
+                e.Handled = true;
+            }
+        }
+        #endregion
+
+        #region Сохранение БД на PC
+        void BtnSaveInFileClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            pnL_printBase.Visible = true;
+        }
+
+        #region панель для выбора выгрузки базы
+        void PnL_printBaseClose_Click(object sender, EventArgs e)
+        {
+            pnL_printBase.Visible = false;
+        }
+        void Btn_SaveDirectorateBase_Click(object sender, EventArgs e)
+        {
+            pnL_printBase.Visible = false;
+            SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
+        }
+        void Btn_SaveFullBase_Click(object sender, EventArgs e)
+        {
+            pnL_printBase.Visible = false;
+            SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
+        }
+        #endregion
+
+        #endregion
+
+        #region Взаимодействие на форме Key-Press-ы, Button_click
+        void CmbNumberUniqueActsSelectionChangeCommitted(object sender, EventArgs e)
+        {
+            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
+            Counters();
+        }
+        void TxbSearchKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
+                Counters();
+            }
+        }
+        void BtnSearchClick(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
+            Counters();
+        }
+        void BtnSeachDataBaseCityClick(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cmB_city.Text))
+            {
+                MessageBox.Show("Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            RegistryKey currentUserKey = Registry.CurrentUser;
+            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
+            helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
+            helloKey.Close();
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
+            Counters();
+            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
+            if (reg != null)
+            {
+                RegistryKey currentUserKey2 = Registry.CurrentUser;
+                RegistryKey helloKey2 = currentUserKey2.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
+                cmB_city.Text = helloKey2.GetValue("Город проведения проверки").ToString();
+            }
+        }
+        void TxbNumberActKeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    MessageBox.Show("Добавь радиостанцию в выполнение!");
+                    return;
+                }
+                QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
+                Counters();
+            }
+        }
+        void TxbNumberActMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("Добавь радиостанцию в выполнение!");
+                return;
+            }
+            QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            Counters();
+        }
+        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex != 0)
+                e.Cancel = true;
+        }
+        #endregion
+
+        #region dataGridView1.Update() для добавления или удаление строки
+        void DataGridView1UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            dataGridView1.Update();
+        }
+        void DataGridView1UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            dataGridView1.Update();
+        }
+        void DataGridView1CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Update();
+        }
+        #endregion
+
+        #region поиск отсутсвующих рст исходя из предыдущего года
+        void PicbSeachDatadridReplayClick(object sender, EventArgs e)
+        {
+            panel1.Enabled = false;
+            panel3.Enabled = false;
+            menuStrip1.Enabled = false;
+            QuerySettingDataBase.SeachDataGridReplayRST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
+            Counters();
+        }
+
+        #endregion
+
+        #region АКТ => excel
+        void BtnActTOPrintClick(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
+            {
+                MessageBox.Show($"Нельзя напечатать акт ТО, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txB_numberAct.Text))
+            {
+                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int dgwRowsCount = QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
+            if (dgwRowsCount == 0)
+                return;
+            if (dgwRowsCount > 20)
+            {
+                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! В Акте более 20 радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
+            dataGridView1.ClearSelection();
+            if (dataGridView1.CurrentCell.RowIndex >= 0)
+                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
+            RefreshValuesTxbCmb(currRowIndex);
+            if (!String.IsNullOrWhiteSpace(txB_numberAct.Text))
+                dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
+            PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
+                lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
+            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
+        }
+        void BtnContinueRemontActClick(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(txB_Full_name_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_OKPO_remont.Text)
+                && !String.IsNullOrWhiteSpace(txB_BE_remont.Text)
+                && !String.IsNullOrWhiteSpace(txB_director_FIO_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_director_post_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_chairman_FIO_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_chairman_post_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_1_FIO_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_1_post_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_2_FIO_remont_company.Text)
+                && !String.IsNullOrWhiteSpace(txB_2_post_remont_company.Text))
+            {
+                panel_remont_information_company.Visible = false;
+                panel_remont_information_company.Enabled = false;
+                string mainMeans = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
+                string nameProductRepaired = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
+                PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
+                     lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
+                     lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
+                     cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
+                     txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
+                     txB_сompleted_works_4.Text, txB_parts_4.Text, txB_сompleted_works_5.Text, txB_parts_5.Text, txB_сompleted_works_6.Text,
+                     txB_parts_6.Text, txB_сompleted_works_7.Text, txB_parts_7.Text, txB_OKPO_remont.Text, txB_BE_remont.Text,
+                     txB_Full_name_company.Text, txB_director_FIO_remont_company.Text, txB_numberActRemont.Text,
+                     txB_chairman_post_remont_company.Text, txB_chairman_FIO_remont_company.Text, txB_1_post_remont_company.Text,
+                     txB_1_FIO_remont_company.Text, txB_2_post_remont_company.Text, txB_2_FIO_remont_company.Text,
+                     txB_3_post_remont_company.Text, txB_3_FIO_remont_company.Text, mainMeans, nameProductRepaired);
+                panel1.Enabled = true;
+            }
         }
         #endregion
 
@@ -537,37 +758,15 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
-        #region ProcessKbdCtrlShortcuts
-        void ProcessKbdCtrlShortcuts(object sender, KeyEventArgs e)
+        #region panel date information
+        void BtnClosePanelDateInfoClick(object sender, EventArgs e)
         {
-            TextBox t = (TextBox)sender;
-            if (e.KeyData == (Keys.C | Keys.Control))
-            {
-                t.Copy();
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.X | Keys.Control))
-            {
-                t.Cut();
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.V | Keys.Control))
-            {
-                t.Paste();
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.A | Keys.Control))
-            {
-                t.SelectAll();
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.Z | Keys.Control))
-            {
-                t.Undo();
-                e.Handled = true;
-            }
+            panel_date.Visible = false;
+            dataGridView1.Enabled = true;
+            panel1.Enabled = true;
+            panel3.Enabled = true;
         }
-        #endregion
+        #endregion   
 
         #region Печать ведомости с параметрами => excel
         void PrintStatementParameters(object sender, EventArgs e)
@@ -604,6 +803,30 @@ namespace ServiceTelecomConnect
         }
         #endregion
 
+        #region Печать отчёта по Манипуляторам
+
+        void PrintReportManipulator(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cmB_poligon.Text))
+            {
+                MessageBox.Show("Нажми на строчку в таблице.");
+                return;
+            }
+            PrintExcel.PrintReportManipulator(cmB_city.Text, cmB_road.Text, cmB_poligon.Text, txb_flag_all_BD);
+        }
+
+        void PrintReportFullManipulator(object sender, EventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(cmB_poligon.Text))
+            {
+                MessageBox.Show("Нажми на строчку в таблице.");
+                return;
+            }
+            PrintExcel.PrintExcelFullManipulator(cmB_city.Text, cmB_road.Text, cmB_poligon.Text);
+        }
+
+        #endregion
+
         #region Печать отчёт по АКБ
         void PrintReportAKB(object sender, EventArgs e)
         {
@@ -626,205 +849,6 @@ namespace ServiceTelecomConnect
 
             PrintExcel.PrintExcelFullAKB(cmB_city.Text, cmB_road.Text, cmB_poligon.Text);
         }
-        #endregion
-
-        #region АКТ => excel
-        void BtnActTOPrintClick(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrWhiteSpace(txB_decommissionSerialNumber.Text))
-            {
-                MessageBox.Show($"Нельзя напечатать акт ТО, на радиостанцию номер: {txB_serialNumber.Text} от предприятия {txB_company.Text}, есть списание!");
-                return;
-            }
-            if (String.IsNullOrWhiteSpace(txB_numberAct.Text))
-            {
-                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! Выбери \"Акт ТО\" в таблице", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            int dgwRowsCount = QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, txB_city.Text, txB_numberAct.Text, cmB_road.Text);
-            if (dgwRowsCount == 0)
-                return;
-            if (dgwRowsCount > 20)
-            {
-                MessageBox.Show("Нельзя напечатать \"Акт ТО\"! В Акте более 20 радиостанций", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            int currRowIndex = dataGridView1.CurrentCell.RowIndex;
-            dataGridView1.ClearSelection();
-            if (dataGridView1.CurrentCell.RowIndex >= 0)
-                dataGridView1.CurrentCell = dataGridView1[0, currRowIndex];
-            RefreshValuesTxbCmb(currRowIndex);
-            if (!String.IsNullOrWhiteSpace(txB_numberAct.Text))
-                dataGridView1.Sort(dataGridView1.Columns["model"], ListSortDirection.Ascending);
-            PrintExcel.PrintExcelActTo(dataGridView1, txB_numberAct.Text, txB_dateTO.Text, txB_company.Text, txB_location.Text,
-                lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
-                lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text);
-            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-        }
-        void BtnContinueRemontActClick(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrWhiteSpace(txB_Full_name_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_OKPO_remont.Text)
-                && !String.IsNullOrWhiteSpace(txB_BE_remont.Text)
-                && !String.IsNullOrWhiteSpace(txB_director_FIO_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_director_post_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_chairman_FIO_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_chairman_post_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_1_FIO_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_1_post_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_2_FIO_remont_company.Text)
-                && !String.IsNullOrWhiteSpace(txB_2_post_remont_company.Text))
-            {
-                panel_remont_information_company.Visible = false;
-                panel_remont_information_company.Enabled = false;
-                string mainMeans = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item1;
-                string nameProductRepaired = QuerySettingDataBase.LoadingValuesOC6(txB_serialNumber.Text, cmB_city.Text, cmB_road.Text).Item2;
-                PrintExcel.PrintExcelActRemont(dataGridView1, txB_dateTO.Text, txB_company.Text, txB_location.Text,
-                     lbl_ChiefFIO.Text, txB_post.Text, txB_representative.Text, txB_numberIdentification.Text, lbl_EngineerFIO.Text,
-                     lbL_doverennost.Text, cmB_road.Text, txB_dateIssue.Text, txB_city.Text, cmB_poligon.Text, cmB_сategory.Text,
-                     cmB_model.Text, txB_serialNumber.Text, txB_inventoryNumber.Text, txB_networkNumber.Text, txB_сompleted_works_1.Text,
-                     txB_parts_1.Text, txB_сompleted_works_2.Text, txB_parts_2.Text, txB_сompleted_works_3.Text, txB_parts_3.Text,
-                     txB_сompleted_works_4.Text, txB_parts_4.Text, txB_сompleted_works_5.Text, txB_parts_5.Text, txB_сompleted_works_6.Text,
-                     txB_parts_6.Text, txB_сompleted_works_7.Text, txB_parts_7.Text, txB_OKPO_remont.Text, txB_BE_remont.Text,
-                     txB_Full_name_company.Text, txB_director_FIO_remont_company.Text, txB_numberActRemont.Text,
-                     txB_chairman_post_remont_company.Text, txB_chairman_FIO_remont_company.Text, txB_1_post_remont_company.Text,
-                     txB_1_FIO_remont_company.Text, txB_2_post_remont_company.Text, txB_2_FIO_remont_company.Text,
-                     txB_3_post_remont_company.Text, txB_3_FIO_remont_company.Text, mainMeans, nameProductRepaired);
-                panel1.Enabled = true;
-            }
-        }
-        #endregion
-
-        #region Сохранение БД на PC
-        void BtnSaveInFileClick(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            pnL_printBase.Visible = true;
-        }
-        #region панель для выбора выгрузки базы
-        void PnL_printBaseClose_Click(object sender, EventArgs e)
-        {
-            pnL_printBase.Visible = false;
-        }
-        void Btn_SaveDirectorateBase_Click(object sender, EventArgs e)
-        {
-            pnL_printBase.Visible = false;
-            SaveFileDataGridViewPC.DirectorateSaveFilePC(dataGridView1, cmB_city.Text);
-        }
-        void Btn_SaveFullBase_Click(object sender, EventArgs e)
-        {
-            pnL_printBase.Visible = false;
-            SaveFileDataGridViewPC.SaveFullBasePC(dataGridView1, cmB_city.Text);
-        }
-        #endregion
-
-        #endregion
-
-        #region Взаимодействие на форме Key-Press-ы, Button_click
-        void CmbNumberUniqueActsSelectionChangeCommitted(object sender, EventArgs e)
-        {
-            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
-            Counters();
-        }
-        void TxbSearchKeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Return)
-            {
-                QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
-                Counters();
-            }
-        }
-        void BtnSearchClick(object sender, EventArgs e)
-        {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Сначала добавь радиостанцию", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            QuerySettingDataBase.Search(dataGridView1, cmB_seach.Text, cmB_city.Text, textBox_search.Text, cmb_number_unique_acts.Text, cmB_road.Text, txb_flag_all_BD.Text);
-            Counters();
-        }
-        void BtnSeachDataBaseCityClick(object sender, EventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(cmB_city.Text))
-            {
-                MessageBox.Show("Комбобокс \"Город\" пуст, необходимо добавить новую радиостанцию\n P.s. Ввводи город правильно", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            RegistryKey currentUserKey = Registry.CurrentUser;
-            RegistryKey helloKey = currentUserKey.CreateSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
-            helloKey.SetValue("Город проведения проверки", $"{cmB_city.Text}");
-            helloKey.Close();
-            QuerySettingDataBase.RefreshDataGrid(dataGridView1, cmB_city.Text, cmB_road.Text);
-            QuerySettingDataBase.SelectCityGropBy(cmB_city, cmB_road);
-            Counters();
-            RegistryKey reg = Registry.CurrentUser.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
-            if (reg != null)
-            {
-                RegistryKey currentUserKey2 = Registry.CurrentUser;
-                RegistryKey helloKey2 = currentUserKey2.OpenSubKey("SOFTWARE\\ServiceTelekom_Setting\\City");
-                cmB_city.Text = helloKey2.GetValue("Город проведения проверки").ToString();
-            }
-        }
-        void TxbNumberActKeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Return)
-            {
-                if (dataGridView1.Rows.Count == 0)
-                {
-                    MessageBox.Show("Добавь радиостанцию в выполнение!");
-                    return;
-                }
-                QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
-                Counters();
-            }
-        }
-        void TxbNumberActMouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (dataGridView1.Rows.Count == 0)
-            {
-                MessageBox.Show("Добавь радиостанцию в выполнение!");
-                return;
-            }
-            QuerySettingDataBase.UpdateDataGridViewNumberAct(dataGridView1, cmB_city.Text, txB_numberAct.Text, cmB_road.Text);
-            Counters();
-        }
-        void DataGridView1CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-            if (e.ColumnIndex != 0)
-                e.Cancel = true;
-        }
-        #endregion
-
-        #region dataGridView1.Update() для добавления или удаление строки
-        void DataGridView1UserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            dataGridView1.Update();
-        }
-        void DataGridView1UserAddedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            dataGridView1.Update();
-        }
-        void DataGridView1CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView1.Update();
-        }
-        #endregion
-
-        #region поиск отсутсвующих рст исходя из предыдущего года
-        void PicbSeachDatadridReplayClick(object sender, EventArgs e)
-        {
-            panel1.Enabled = false;
-            panel3.Enabled = false;
-            menuStrip1.Enabled = false;
-            QuerySettingDataBase.SeachDataGridReplayRST(dataGridView1, txb_flag_all_BD, cmB_city.Text, cmB_road.Text);
-            Counters();
-        }
-
         #endregion
 
         #region ContextMenu datagrid
@@ -1182,7 +1206,7 @@ namespace ServiceTelecomConnect
         }
         void BtnInformationRemontCompanyRegeditClick(object sender, EventArgs e)
         {
-            
+
             #region проверка пустых строк
             if (String.IsNullOrWhiteSpace(txB_Full_name_company.Text))
             {
@@ -1347,7 +1371,7 @@ namespace ServiceTelecomConnect
                     txB_2_FIO_remont_company.Select();
                     return;
                 }
-            }     
+            }
             if (!Regex.IsMatch(txB_director_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
             {
                 MessageBox.Show("Введите корректно поле \"Должность руководителя\"", "Отмена", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1380,7 +1404,7 @@ namespace ServiceTelecomConnect
                 if (MessageBox.Show(Mesage, "Внимание", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No)
                     return;
             }
-            if(!chb_pass_txB_3_FIO.Checked)
+            if (!chb_pass_txB_3_FIO.Checked)
             {
                 if (!Regex.IsMatch(txB_3_post_remont_company.Text, @"[А-ЯЁа-яё]*[\s]*[\-]*[""]*[\.]*[0-9]*"))
                 {
@@ -2123,6 +2147,7 @@ namespace ServiceTelecomConnect
         {
             if (!String.IsNullOrWhiteSpace(txB_Date_panel_Tag.Text))
             {
+                string cheak = "РСТ";
                 string month2;
                 DateTime dateTag = Convert.ToDateTime(txB_Date_panel_Tag.Text);
                 string mothCheackTag = DateTime.DaysInMonth(dateTag.Year, dateTag.Month).ToString();
@@ -2134,8 +2159,11 @@ namespace ServiceTelecomConnect
                 string year = dateTag.ToString("yyyy");
                 string day2 = dateTag.AddDays(1).ToString("dd");
                 string year2 = dateTag.AddYears(1).ToString("yyyy");
+                if (chbManipulator.Checked)
+                    cheak = "МАН";
                 var items2 = new Dictionary<string, string>
                 {
+                    {"cheak", cheak },
                     {"day", day },
                     {"month", month },
                     {"month2", month2 },
@@ -2334,11 +2362,19 @@ namespace ServiceTelecomConnect
         {
             PrintReportAKB(sender, e);
         }
-        void MTripPrintReportFullAKBClick_Click(object sender, EventArgs e)
+        void MTripPrintReportFullAKB_Click(object sender, EventArgs e)
         {
             PrintReportFullAKB(sender, e);
         }
 
+        void MTrip_PrintReportManipulator_Click(object sender, EventArgs e)
+        {
+            PrintReportManipulator(sender, e);
+        }
+        void MTripPrintReportFullManipulator_Click(object sender, EventArgs e)
+        {
+            PrintReportFullManipulator(sender, e);
+        }
         #endregion
 
         #region изменить номер акта у радиостанции
@@ -2400,9 +2436,11 @@ namespace ServiceTelecomConnect
             BtnClosePnlChangeNumberActTOFullClick(sender, e);
         }
 
+
+
         #endregion
 
-       
+        
     }
 }
 
