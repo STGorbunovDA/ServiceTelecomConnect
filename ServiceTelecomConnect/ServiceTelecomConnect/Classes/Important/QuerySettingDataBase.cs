@@ -103,6 +103,7 @@ namespace ServiceTelecomConnect
             dgw.Columns[41].Visible = false;
             dgw.Columns[42].Visible = false;
         }
+
         internal static void RefreshDataGrid(DataGridView dgw, string city, string road)
         {
             if (InternetCheck.CheackSkyNET())

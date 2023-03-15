@@ -479,11 +479,11 @@ namespace ServiceTelecomConnect
 
                             Excel.Range _excelCells30 = (Excel.Range)workSheet.get_Range($"G{j}").Cells;
                             _excelCells30.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            workSheet.Cells[7 + s, 7] = dgw.Rows[i].Cells["manipulator"].Value.ToString();
+                            workSheet.Cells[7 + s, 7] = "-"; ///dgw.Rows[i].Cells["manipulator"].Value.ToString();
 
                             Excel.Range _excelCells31 = (Excel.Range)workSheet.get_Range($"N{j}").Cells;
                             _excelCells31.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                            workSheet.Cells[7 + s, 15] = dgw.Rows[i].Cells["manipulator"].Value.ToString();
+                            workSheet.Cells[7 + s, 15] = "-"; ///dgw.Rows[i].Cells["manipulator"].Value.ToString();
 
                             s++;
                             j++;
@@ -2114,6 +2114,7 @@ namespace ServiceTelecomConnect
                     string manipulatorAccessories = String.Empty;
                     string nameAKB = String.Empty;
                     string percentAKB = String.Empty;
+                    bool flag;
                     List<string> fList = new List<string>();
                     string[] frequencyTransmitter = fList.ToArray();
                     //string[] frequencyReceiver = fList.ToArray();
@@ -2137,11 +2138,13 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryParametersRadiostantion, DB.GetInstance.GetConnection()))
                         {
+                            flag = false;
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
                                 {
+                                    flag = true;
                                     lowPowerLevelTransmitter = reader[0].ToString();
                                     highPowerLevelTransmitter = reader[1].ToString();
                                     frequencyDeviationTransmitter = reader[2].ToString();
@@ -2169,8 +2172,16 @@ namespace ServiceTelecomConnect
                             }
                             DB.GetInstance.CloseConnection();
                         }
-
                         workSheet.Cells[19 + s4, 1] = serialNumber;
+                        Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
+                        _excelCells239.Merge(Type.Missing);
+                        if (!flag)
+                        {
+                            s4++;
+                            j4++;
+                            continue;
+                        }
+
                         workSheet.Cells[19 + s4, 2] = nameAKB;
                         workSheet.Cells[19 + s4, 3] = percentAKB;
                         workSheet.Cells[19 + s4, 4] = lowPowerLevelTransmitter;
@@ -2214,18 +2225,11 @@ namespace ServiceTelecomConnect
                             frequencyTransmitter = frequencyTransmitter.Union(temporaryArrayFrequencyTransmitter, StringComparer.InvariantCultureIgnoreCase).ToArray();
                             //frequencyReceiver = frequencyReceiver.Union(temporaryArrayFrequencyReceiver, StringComparer.InvariantCultureIgnoreCase).ToArray();
                         }
-
-                        Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
-                        _excelCells239.Merge(Type.Missing);
                         s4++;
                         j4++;
-
                     }
                     while (s4 <= 20)
                     {
-                        Excel.Range _excelCells242 = (Excel.Range)workSheet.get_Range($"A{j4}").Cells;
-                        _excelCells242.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-
                         Excel.Range _excelCells239 = (Excel.Range)workSheet.get_Range($"V{j4}", $"Y{j4}").Cells;
                         _excelCells239.Merge(Type.Missing);
                         s4++;
@@ -2269,11 +2273,13 @@ namespace ServiceTelecomConnect
 
                         using (MySqlCommand command = new MySqlCommand(queryFrequencies, DB.GetInstance.GetConnection()))
                         {
+                            flag = false;
                             DB.GetInstance.OpenConnection();
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
                                 while (reader.Read())
                                 {
+                                    flag = true;
                                     transmitterFrequenciesRST = reader[0].ToString();
                                     //receiverFrequenciesRST = reader[1].ToString();
                                 }
@@ -2322,7 +2328,8 @@ namespace ServiceTelecomConnect
                         if (frequency.Length > 53)
                             range_Consolidated246.Font.Size = 7.5;
                         else range_Consolidated246.Font.Size = 10;
-                        workSheet.Cells[19 + count2, 22] = frequency;
+                        if (flag)
+                            workSheet.Cells[19 + count2, 22] = frequency;
                         count2++;
                     }
 
@@ -2641,6 +2648,251 @@ namespace ServiceTelecomConnect
             }
         }
 
+        internal static void PrintExcelFullManipulator(string city, string road, string poligon)
+        {
+            List<string> fList = new List<string>();
+            string queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
+                  $"AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                        fList.Add(reader.GetString(0));
+                    reader.Close();
+                }
+                DB.GetInstance.CloseConnection();
+            }
+            Excel.Application exApp = new Excel.Application();
+            string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
+            try
+            {
+                Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                if (officeType == null)
+                {
+                    string Mesage2 = "У Вас не установлен Excel!";
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                }
+                else
+                {
+                    exApp.SheetsInNewWorkbook = fList.Count;
+                    exApp.Workbooks.Add();
+                    exApp.DisplayAlerts = false;
+
+                    List<Excel.Worksheet> resultWorkSheet = new List<Excel.Worksheet>();
+                    DateTime dateTime = new DateTime();
+                    dateTime = DateTime.Now;
+                    int countWorkSheet = 1;
+                    string queryStringCountAKBCompany = String.Empty;
+
+                    for (int i = 0; i < fList.Count; i++)
+                    {
+                        Excel.Worksheet x = (Excel.Worksheet)exApp.Worksheets.get_Item(countWorkSheet);
+                        resultWorkSheet.Add(x);
+                        resultWorkSheet[i].Name = $"{fList[i]}";
+                        countWorkSheet++;
+
+                        resultWorkSheet[i].PageSetup.Zoom = false;
+                        resultWorkSheet[i].PageSetup.FitToPagesWide = 1;
+                        resultWorkSheet[i].PageSetup.FitToPagesTall = 1;
+                        resultWorkSheet[i].Rows.Font.Size = 10;
+                        resultWorkSheet[i].Rows.Font.Name = "Times New Roman";
+                        resultWorkSheet[i].PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                        resultWorkSheet[i].PageSetup.CenterHorizontally = true;
+                        resultWorkSheet[i].PageSetup.TopMargin = 0;
+                        resultWorkSheet[i].PageSetup.BottomMargin = 0;
+                        resultWorkSheet[i].PageSetup.LeftMargin = 0;
+                        resultWorkSheet[i].PageSetup.RightMargin = 0;
+
+                        Excel.Range _excelCells900;
+                        if (fList[i].Contains(resultContainsCompany))
+                        {
+                            _excelCells900 = (Excel.Range)resultWorkSheet[i].get_Range("B1", "J2").Cells;
+                            _excelCells900.Font.Size = 16;
+                        }
+                        else
+                        {
+                            _excelCells900 = (Excel.Range)resultWorkSheet[i].get_Range("B1", "H2").Cells;
+                            _excelCells900.Font.Size = 14;
+                        }
+                        _excelCells900.Merge(Type.Missing);
+                        _excelCells900.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells900.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells900.EntireRow.RowHeight = 25;
+                        _excelCells900.Font.Bold = true;
+
+                        resultWorkSheet[i].Cells[1, 2] = $"ОТЧЁТ неисправных Манипуляторов\n предприятия \"{fList[i]}\" {dateTime.ToString("dd.MM.yyyy")} г.";
+                        Excel.Range _excelCells901 = (Excel.Range)resultWorkSheet[i].get_Range("A1").Cells;
+                        _excelCells901.EntireColumn.ColumnWidth = 4;
+
+                        Excel.Range _excelCells902 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "E3").Cells;
+                        _excelCells902.Merge(Type.Missing);
+                        resultWorkSheet[i].Cells[3, 2] = $"Заводской номер РСТ";
+
+                        Excel.Range _excelCells903 = (Excel.Range)resultWorkSheet[i].get_Range("F3", "H3").Cells;
+                        _excelCells903.Merge(Type.Missing);
+                        resultWorkSheet[i].Cells[3, 6] = $"Состояние";
+
+                        Excel.Range _excelCells920;
+                        Excel.Range _excelCells905;
+                        if (fList[i].Contains(resultContainsCompany))
+                        {
+                            _excelCells905 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "J3").Cells;
+                            _excelCells920 = (Excel.Range)resultWorkSheet[i].get_Range("I3", "J3").Cells;
+                            _excelCells920.EntireRow.RowHeight = 15;
+                            _excelCells920.Font.Bold = true;
+                            _excelCells920.Merge(Type.Missing);
+                            resultWorkSheet[i].Cells[3, 9] = $"Станция";
+
+                            queryStringCountAKBCompany = $"SELECT serialNumber, manipulatorAccessories, location " +
+                                $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
+                                $"AND company = '{fList[i]}' AND manipulatorAccessories != '-'";
+                        }
+                        else
+                        {
+                            _excelCells905 = (Excel.Range)resultWorkSheet[i].get_Range("B3", "H3").Cells;
+                            queryStringCountAKBCompany = $"SELECT serialNumber, manipulatorAccessories " +
+                                $"FROM radiostation_parameters WHERE road = '{road}' AND city = '{city}' " +
+                                $"AND company = '{fList[i]}' AND manipulatorAccessories != '-'";
+                        }
+
+                        _excelCells905.Font.Size = 13;
+                        _excelCells905.Font.Bold = true;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells905.EntireRow.RowHeight = 20;
+                        _excelCells905.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells905.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        int countCells = 4;
+                        using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                int count = 1;
+                                int cells = 0;
+                                int gameOverMAN = 0;
+                                while (reader.Read())
+                                {
+                                    Excel.Range _excelCells906 = (Excel.Range)resultWorkSheet[i].get_Range($"B{countCells}", $"E{countCells}").Cells;
+                                    _excelCells906.EntireRow.RowHeight = 15;
+                                    _excelCells906.Font.Bold = true;
+                                    _excelCells906.Merge(Type.Missing);
+                                    _excelCells906.NumberFormat = "@";
+                                    Excel.Range _excelCells907 = (Excel.Range)resultWorkSheet[i].get_Range($"F{countCells}", $"H{countCells}").Cells;
+                                    _excelCells907.EntireRow.RowHeight = 15;
+                                    _excelCells907.Font.Bold = true;
+                                    _excelCells907.Merge(Type.Missing);
+                                    _excelCells907.NumberFormat = "@";
+                                    //Excel.Range _excelCells908 = (Excel.Range)resultWorkSheet[i].get_Range($"I{countCells}", $"J{countCells}").Cells;
+                                    //_excelCells908.EntireRow.RowHeight = 15;
+                                    //_excelCells908.Font.Bold = true;
+                                    //_excelCells908.Merge(Type.Missing);
+                                    //_excelCells908.NumberFormat = "@";
+
+                                    Excel.Range _excelCells910;
+                                    if (fList[i].Contains(resultContainsCompany))
+                                    {
+                                        _excelCells910 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells}", $"J{countCells}").Cells;
+                                        Excel.Range _excelCells921 = (Excel.Range)resultWorkSheet[i].get_Range($"I{countCells}", $"J{countCells}").Cells;
+                                        _excelCells921.EntireRow.RowHeight = 15;
+                                        _excelCells921.Font.Bold = true;
+                                        _excelCells921.Merge(Type.Missing);
+                                        resultWorkSheet[i].Cells[4 + cells, 9] = $"{reader[2]}";
+
+                                    }
+                                    else
+                                        _excelCells910 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells}", $"H{countCells}").Cells;
+
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                                    _excelCells910.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells910.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                                    resultWorkSheet[i].Cells[4 + cells, 1] = $"{count++}";
+                                    resultWorkSheet[i].Cells[4 + cells, 2] = $"{reader[0]}";
+                                    resultWorkSheet[i].Cells[4 + cells, 6] = $"{reader[1]}";
+
+
+                                    if (reader[1].ToString() == "неиспр.")
+                                    {
+                                        _excelCells907.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
+                                        gameOverMAN++;
+                                    }
+
+                                    countCells++;
+                                    cells++;
+                                }
+
+                                reader.Close();
+                                if (gameOverMAN != 0)
+                                {
+                                    Excel.Range _excelCells930 = (Excel.Range)resultWorkSheet[i].get_Range($"A{countCells + 1}", $"H{countCells + 1}").Cells;
+                                    _excelCells930.EntireRow.RowHeight = 15;
+                                    _excelCells930.Font.Bold = true;
+                                    _excelCells930.Merge(Type.Missing);
+                                    _excelCells930.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells930.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                                    _excelCells930.Font.Size = 14;
+                                    resultWorkSheet[i].Cells[4 + cells + 1, 1] = $"Итого неисправных Манипуляторов: {gameOverMAN} шт.";
+                                }
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+
+                    }
+
+                    string file = $"{city}_МАН_ПП_{dateTime.ToString("dd.MM.yyyy")}.xlsx";
+                    if (!File.Exists($@"С:\Documents_ServiceTelekom\МАН\{city}\"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\МАН\{city}\");
+                            resultWorkSheet[0].SaveAs($@"C:\Documents_ServiceTelekom\МАН\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            resultWorkSheet[0].SaveAs($@"C:\Documents_ServiceTelekom\МАН\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    exApp.Visible = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                if (exApp != null)
+                    exApp = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                MessageBox.Show(ex.ToString());
+            }
+        }
         internal static void PrintExcelFullAKB(string city, string road, string poligon)
         {
             List<string> fList = new List<string>();
@@ -2828,7 +3080,7 @@ namespace ServiceTelecomConnect
                                         {
                                             _excelCells908.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Red);
                                             gameOverAKB++;
-                                        }      
+                                        }
                                     }
                                     catch
                                     {
@@ -2899,6 +3151,441 @@ namespace ServiceTelecomConnect
 
         }
 
+        internal static void PrintReportManipulator(string city, string road, string poligon, TextBox txb_FlagAllDataBase)
+        {
+            List<string> fList = new List<string>();
+            string queryString = String.Empty;
+            if (txb_FlagAllDataBase.Text == "Вся БД")
+            {
+                queryString = $"SELECT DISTINCT company FROM radiostantion WHERE road = '{road}' ORDER BY company";
+                poligon = "Общий";
+                city = "Общий";
+            }
+            else queryString = $"SELECT DISTINCT company FROM radiostantion WHERE city = '{city}' " +
+                  $"AND road = '{road}' ORDER BY company";
+            using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+            {
+                DB.GetInstance.OpenConnection();
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                        fList.Add(reader.GetString(0));
+                    reader.Close();
+                }
+                DB.GetInstance.CloseConnection();
+            }
+            Excel.Application exApp = new Excel.Application();
+            try
+            {
+                Type officeType = Type.GetTypeFromProgID("Excel.Application");
+                if (officeType == null)
+                {
+                    string Mesage2 = "У Вас не установлен Excel!";
+                    if (MessageBox.Show(Mesage2, "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                        return;
+                }
+                else
+                {
+                    exApp.SheetsInNewWorkbook = 2;
+                    exApp.Workbooks.Add();
+                    exApp.DisplayAlerts = false;
+
+                    Excel.Worksheet workSheet = (Excel.Worksheet)exApp.Worksheets.get_Item(1);
+                    Excel.Worksheet workSheet2 = (Excel.Worksheet)exApp.Worksheets.get_Item(2);
+
+                    DateTime dateTime = new DateTime();
+                    dateTime = DateTime.Now;
+
+                    string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
+                    workSheet.Name = $"Сводный отчёт";
+                    workSheet2.Name = $"Для ДЦС";
+
+                    #region сводный отчёт
+
+                    workSheet.PageSetup.Zoom = false;
+                    workSheet.PageSetup.FitToPagesWide = 1;
+                    workSheet.PageSetup.FitToPagesTall = 1;
+                    workSheet.Rows.Font.Size = 10;
+                    workSheet.Rows.Font.Name = "Times New Roman";
+                    workSheet.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                    workSheet.PageSetup.CenterHorizontally = true;
+                    workSheet.PageSetup.TopMargin = 0;
+                    workSheet.PageSetup.BottomMargin = 0;
+                    workSheet.PageSetup.LeftMargin = 0;
+                    workSheet.PageSetup.RightMargin = 0;
+
+                    Excel.Range _excelCells700 = (Excel.Range)workSheet.get_Range("B1", "J2").Cells;
+                    _excelCells700.Merge(Type.Missing);
+                    _excelCells700.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells700.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells700.EntireRow.RowHeight = 25;
+                    _excelCells700.Font.Size = 16;
+                    _excelCells700.Font.Bold = true;
+
+                    workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных Манипуляторов, полигон \"{poligon}\" участка \"{city}\" {dateTime.ToString("yyyy")} г.";
+                    Excel.Range _excelCells701 = (Excel.Range)workSheet.get_Range("A1").Cells;
+                    _excelCells701.EntireColumn.ColumnWidth = 4;
+                    Excel.Range _excelCells702 = (Excel.Range)workSheet.get_Range("B3", "E4").Cells;
+                    _excelCells702.Merge(Type.Missing);
+                    _excelCells702.EntireRow.RowHeight = 40;
+                    workSheet.Cells[3, 2] = $"Предприятие";
+                    Excel.Range _excelCells703 = (Excel.Range)workSheet.get_Range("F3", "H3").Cells;
+                    _excelCells703.Merge(Type.Missing);
+                    _excelCells703.EntireColumn.ColumnWidth = 20;
+                    workSheet.Cells[3, 6] = $"Поступило РСТ";
+                    workSheet.Cells[4, 6] = $"всего";
+                    workSheet.Cells[4, 7] = $"в т.ч. с МАН.";
+                    workSheet.Cells[4, 8] = $"% (доставки)";
+                    Excel.Range _excelCells704 = (Excel.Range)workSheet.get_Range("I3", "J3").Cells;
+                    _excelCells704.Merge(Type.Missing);
+                    workSheet.Cells[3, 9] = $"Состояние поступившых МАН.";
+                    _excelCells704.EntireColumn.ColumnWidth = 20;
+                    workSheet.Cells[4, 9] = $"Исправ.";
+                    workSheet.Cells[4, 10] = $"Неисправ.";
+                    //workSheet.Cells[4, 11] = $"70-80%";
+                    //workSheet.Cells[4, 12] = $">80%";
+                    Excel.Range _excelCells706 = (Excel.Range)workSheet.get_Range("B3", "J4").Cells;
+                    _excelCells706.Font.Size = 14;
+                    _excelCells706.Font.Bold = true;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                    _excelCells706.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    _excelCells706.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range _excelCells759 = (Excel.Range)workSheet.get_Range("B4", "J4").Cells;
+                    _excelCells759.Font.Size = 12;
+
+
+                    int count = 1;
+                    int countCells = 5;
+                    for (int i = 0; i <= fList.Count; i++)
+                    {
+                        Excel.Range _excelCells707 = (Excel.Range)workSheet.get_Range($"B{countCells}", $"E{countCells}").Cells;
+                        _excelCells707.EntireRow.RowHeight = 20;
+                        _excelCells707.Font.Bold = true;
+                        _excelCells707.Merge(Type.Missing);
+                        Excel.Range _excelCells711 = (Excel.Range)workSheet.get_Range($"A{countCells}", $"J{countCells}").Cells;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                        _excelCells711.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells711.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                        if (i < fList.Count)
+                        {
+                            double countMANFULL = 0;
+                            double countMAN = 0;
+                            double ServiceableMAN = 0;
+                            double NotServiceableMAN = 0;
+                            string queryStringCountMANCompanyFull = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE road = '{road}' AND company = '{fList[i]}'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringCountMANCompanyFull, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        countMANFULL = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                            string queryStringCountMANCompanyInAKB = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE road = '{road}' AND company = '{fList[i]}' AND manipulatorAccessories != '-'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringCountMANCompanyInAKB, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        countMAN = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                            string queryStringServiceableMANCompany = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                $"road = '{road}' AND company = '{fList[i]}' AND manipulatorAccessories = 'испр.'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringServiceableMANCompany, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        ServiceableMAN = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+                            string queryStringNotServiceableMANCompany = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                $"road = '{road}' AND company = '{fList[i]}' AND manipulatorAccessories = 'неиспр.'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringNotServiceableMANCompany, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        NotServiceableMAN = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                            workSheet.Cells[5 + i, 1] = $"{count++}";
+                            workSheet.Cells[5 + i, 2] = $"{fList[i]}";
+                            workSheet.Cells[5 + i, 6] = $"{countMANFULL}";//общее кол-во радиостанций с МАН и без
+                            workSheet.Cells[5 + i, 7] = $"{countMAN}";// с МАН
+                            if (countMAN != 0)
+                                workSheet.Cells[5 + i, 8] = $"{Math.Round(countMAN / countMANFULL * 100, 2)}";// с МАН
+                            else workSheet.Cells[5 + i, 8] = $"0";// с АКБ
+                            workSheet.Cells[5 + i, 9] = $"{ServiceableMAN}";
+                            workSheet.Cells[5 + i, 10] = $"{NotServiceableMAN}";
+                        }
+                        else
+                        {
+                            Excel.Range _excelCells757 = (Excel.Range)workSheet.get_Range($"F{countCells}", $"J{countCells}").Cells;
+                            _excelCells757.Font.Bold = true;
+                            workSheet.Cells[5 + i, 2] = $"ИТОГ:";
+                            workSheet.Cells[5 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                            workSheet.Cells[5 + i, 7] = $"=SUM(G4:G{countCells - 1})";
+                            workSheet.Cells[5 + i, 8] = $"=ROUND(G{countCells}/F{countCells}*100,2)";
+                            workSheet.Cells[5 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                            workSheet.Cells[5 + i, 10] = $"=SUM(J4:J{countCells - 1})";
+                        }
+                        countCells++;
+                    }
+
+                    #endregion
+
+                    #region По станциям
+
+                    if (txb_FlagAllDataBase.Text != "Вся БД")
+                    {
+                        workSheet2.PageSetup.Zoom = false;
+                        workSheet2.PageSetup.FitToPagesWide = 1;
+                        workSheet2.PageSetup.FitToPagesTall = 1;
+                        workSheet2.Rows.Font.Size = 10;
+                        workSheet2.Rows.Font.Name = "Times New Roman";
+                        workSheet2.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
+                        workSheet2.PageSetup.CenterHorizontally = true;
+                        workSheet2.PageSetup.TopMargin = 0;
+                        workSheet2.PageSetup.BottomMargin = 0;
+                        workSheet2.PageSetup.LeftMargin = 0;
+                        workSheet2.PageSetup.RightMargin = 0;
+
+                        Excel.Range _excelCells800 = (Excel.Range)workSheet2.get_Range("B1", "J2").Cells;
+                        _excelCells800.Merge(Type.Missing);
+                        _excelCells800.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells800.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells800.EntireRow.RowHeight = 25;
+                        _excelCells800.Font.Size = 16;
+                        _excelCells800.Font.Bold = true;
+
+                        workSheet2.Cells[1, 2] = $"ОТЧЁТ_{dateTime.ToString("yyyy")} г. о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" \nпо станциям для \"{resultContainsCompany}\"";
+                        Excel.Range _excelCells801 = (Excel.Range)workSheet2.get_Range("A1").Cells;
+                        _excelCells801.EntireColumn.ColumnWidth = 4;
+                        Excel.Range _excelCells802 = (Excel.Range)workSheet2.get_Range("B3", "E4").Cells;
+                        _excelCells802.Merge(Type.Missing);
+                        _excelCells802.EntireRow.RowHeight = 40;
+                        workSheet2.Cells[3, 2] = $"Станция";
+                        Excel.Range _excelCells803 = (Excel.Range)workSheet2.get_Range("F3", "H3").Cells;
+                        _excelCells803.Merge(Type.Missing);
+                        _excelCells803.EntireColumn.ColumnWidth = 20;
+                        workSheet2.Cells[3, 6] = $"Поступило РСТ";
+                        workSheet2.Cells[4, 6] = $"всего";
+                        workSheet2.Cells[4, 7] = $"в т.ч. с МАН.";
+                        workSheet2.Cells[4, 8] = $"% (доставки)";
+                        Excel.Range _excelCells804 = (Excel.Range)workSheet2.get_Range("I3", "J3").Cells;
+                        _excelCells804.Merge(Type.Missing);
+                        workSheet2.Cells[3, 9] = $"Состояние поступившых МАН.";
+                        _excelCells804.EntireColumn.ColumnWidth = 20;
+                        workSheet2.Cells[4, 9] = $"Исправ.";
+                        workSheet2.Cells[4, 10] = $"Неисправ.";
+                        Excel.Range _excelCells806 = (Excel.Range)workSheet2.get_Range("B3", "J4").Cells;
+                        _excelCells806.Font.Size = 14;
+                        _excelCells806.Font.Bold = true;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
+                        _excelCells806.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        _excelCells806.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range _excelCells805 = (Excel.Range)workSheet2.get_Range("B4", "J4").Cells;
+                        _excelCells805.Font.Size = 12;
+
+                        List<string> fList2 = new List<string>();
+
+                        queryString = $"SELECT DISTINCT location FROM radiostantion WHERE company = '{resultContainsCompany}' " +
+                            $"AND city = '{city}' AND road = '{road}' ORDER BY location";
+                        using (MySqlCommand command = new MySqlCommand(queryString, DB.GetInstance.GetConnection()))
+                        {
+                            DB.GetInstance.OpenConnection();
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                    fList2.Add(reader.GetString(0));
+                                reader.Close();
+                            }
+                            DB.GetInstance.CloseConnection();
+                        }
+                        count = 1;
+                        countCells = 5;
+                        for (int i = 0; i <= fList2.Count; i++)
+                        {
+                            Excel.Range _excelCells807 = (Excel.Range)workSheet2.get_Range($"B{countCells}", $"E{countCells}").Cells;
+                            _excelCells807.EntireRow.RowHeight = 20;
+                            _excelCells807.Font.Bold = true;
+                            _excelCells807.Merge(Type.Missing);
+                            Excel.Range _excelCells811 = (Excel.Range)workSheet2.get_Range($"A{countCells}", $"J{countCells}").Cells;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlDash;
+                            _excelCells811.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                            _excelCells811.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+                            if (i < fList2.Count)
+                            {
+                                double countMANFULL = 0;
+                                double countMAN = 0;
+                                double ServiceableMAN = 0;
+                                double NotServiceableMAN = 0;
+                                string queryStringCountMANCompanyFull = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                    $"road = '{road}' AND company = '{resultContainsCompany}' AND location = '{fList2[i]}'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringCountMANCompanyFull, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            countMANFULL = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+
+                                string queryStringCountMANCompanyInAKB = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                    $"road = '{road}' AND company = '{resultContainsCompany}' AND location = '{fList2[i]}' AND manipulatorAccessories != '-'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringCountMANCompanyInAKB, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            countMAN = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+
+                                string queryStringServiceableMANCompany = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                    $"road = '{road}' AND company = '{resultContainsCompany}' AND location = '{fList2[i]}' AND manipulatorAccessories = 'испр.'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringServiceableMANCompany, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            ServiceableMAN = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+                                string queryStringNotServiceableMANCompany = $"SELECT COUNT(manipulatorAccessories) FROM radiostation_parameters WHERE " +
+                                    $"road = '{road}' AND company = '{resultContainsCompany}' AND location = '{fList2[i]}' AND manipulatorAccessories = 'неиспр.'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringNotServiceableMANCompany, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            NotServiceableMAN = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+
+                                workSheet2.Cells[5 + i, 1] = $"{count++}";
+                                workSheet2.Cells[5 + i, 2] = $"{fList2[i]}";
+                                workSheet2.Cells[5 + i, 6] = $"{countMANFULL}";//общее кол-во радиостанций с МАН и без
+                                workSheet2.Cells[5 + i, 7] = $"{countMAN}";// с МАН
+                                if (countMAN != 0)
+                                    workSheet2.Cells[5 + i, 8] = $"{Math.Round(countMAN / countMANFULL * 100, 2)}";// с МАН
+                                else workSheet2.Cells[5 + i, 8] = $"0";// с АКБ
+                                workSheet2.Cells[5 + i, 9] = $"{ServiceableMAN}";
+                                workSheet2.Cells[5 + i, 10] = $"{NotServiceableMAN}";
+
+                            }
+                            else
+                            {
+                                Excel.Range _excelCells857 = (Excel.Range)workSheet2.get_Range($"F{countCells}", $"L{countCells}").Cells;
+                                _excelCells857.Font.Bold = true;
+                                workSheet2.Cells[5 + i, 2] = $"ИТОГ:";
+                                workSheet2.Cells[5 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                                workSheet2.Cells[5 + i, 7] = $"=SUM(G4:G{countCells - 1})";
+                                workSheet2.Cells[5 + i, 8] = $"=ROUND(G{countCells}/F{countCells}*100,2)";
+                                workSheet2.Cells[5 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                                workSheet2.Cells[5 + i, 10] = $"=SUM(J4:J{countCells - 1})";
+
+                            }
+                            countCells++;
+                        }
+                    }
+
+
+
+
+                    #endregion
+
+                    string file = $"{city}_Отчёт_МАН_{dateTime.ToString("dd.MM.yyyy")}.xlsx";
+                    if (!File.Exists($@"С:\Documents_ServiceTelekom\МАН\{city}\"))
+                    {
+                        try
+                        {
+                            Directory.CreateDirectory($@"C:\Documents_ServiceTelekom\МАН\{city}\");
+                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\МАН\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            workSheet.SaveAs($@"C:\Documents_ServiceTelekom\МАН\{city}\" + file);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            MessageBox.Show("Не удаётся сохранить файл.");
+                        }
+                    }
+                    exApp.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (exApp != null)
+                    exApp = null;
+
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         internal static void PrintExcelReportAKB(string city, string road, string poligon, TextBox txb_FlagAllDataBase)
         {
             List<string> fList = new List<string>();
@@ -2947,8 +3634,8 @@ namespace ServiceTelecomConnect
 
                     string resultContainsCompany = fList.FirstOrDefault(s => s.Contains("ДЦС"));
 
-                    workSheet.Name = $"Сводный отчёт г. {city}_{dateTime.ToString("yyyy")} г.";
-                    workSheet2.Name = $"Для ДЦС  г. {city}_{dateTime.ToString("yyyy")} г.";
+                    workSheet.Name = $"Сводный отчёт";
+                    workSheet2.Name = $"Для ДЦС ";
 
                     #region Сводный отчёт
 
@@ -2959,7 +3646,6 @@ namespace ServiceTelecomConnect
                     workSheet.Rows.Font.Name = "Times New Roman";
                     workSheet.PageSetup.Orientation = Excel.XlPageOrientation.xlLandscape;
                     workSheet.PageSetup.CenterHorizontally = true;
-                    //workSheet.PageSetup.CenterVertically = true;
                     workSheet.PageSetup.TopMargin = 0;
                     workSheet.PageSetup.BottomMargin = 0;
                     workSheet.PageSetup.LeftMargin = 0;
@@ -2976,20 +3662,27 @@ namespace ServiceTelecomConnect
                     workSheet.Cells[1, 2] = $"ОТЧЁТ о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" {dateTime.ToString("yyyy")} г.";
                     Excel.Range _excelCells701 = (Excel.Range)workSheet.get_Range("A1").Cells;
                     _excelCells701.EntireColumn.ColumnWidth = 4;
-                    Excel.Range _excelCells702 = (Excel.Range)workSheet.get_Range("B3", "E3").Cells;
+                    Excel.Range _excelCells702 = (Excel.Range)workSheet.get_Range("B3", "E4").Cells;
                     _excelCells702.Merge(Type.Missing);
+                    _excelCells702.EntireRow.RowHeight = 40;
                     workSheet.Cells[3, 2] = $"Предприятие";
                     Excel.Range _excelCells703 = (Excel.Range)workSheet.get_Range("F3", "H3").Cells;
                     _excelCells703.Merge(Type.Missing);
-                    workSheet.Cells[3, 6] = $"Итого (шт.)";
-                    Excel.Range _excelCells704 = (Excel.Range)workSheet.get_Range("I3", "J3").Cells;
+                    _excelCells703.EntireColumn.ColumnWidth = 20;
+                    workSheet.Cells[3, 6] = $"Поступило РСТ";
+                    workSheet.Cells[4, 6] = $"всего";
+                    workSheet.Cells[4, 7] = $"в т.ч. с АБ";
+                    workSheet.Cells[4, 8] = $"% (доставки)";
+                    Excel.Range _excelCells704 = (Excel.Range)workSheet.get_Range("I3", "L3").Cells;
                     _excelCells704.Merge(Type.Missing);
-                    workSheet.Cells[3, 9] = $"Неиспр.(шт.)";
-                    Excel.Range _excelCells705 = (Excel.Range)workSheet.get_Range("K3", "L3").Cells;
-                    _excelCells705.Merge(Type.Missing);
-                    workSheet.Cells[3, 11] = $"Неиспр.(%)";
-                    Excel.Range _excelCells706 = (Excel.Range)workSheet.get_Range("B3", "L3").Cells;
-                    _excelCells706.Font.Size = 13;
+                    workSheet.Cells[3, 9] = $"Состояние поступивших АБ (остаточная ёмкость)";
+                    _excelCells704.EntireColumn.ColumnWidth = 20;
+                    workSheet.Cells[4, 9] = $"<60%,\nв т.ч. неисправные";
+                    workSheet.Cells[4, 10] = $"60-70%";
+                    workSheet.Cells[4, 11] = $"70-80%";
+                    workSheet.Cells[4, 12] = $">80%";
+                    Excel.Range _excelCells706 = (Excel.Range)workSheet.get_Range("B3", "L4").Cells;
+                    _excelCells706.Font.Size = 14;
                     _excelCells706.Font.Bold = true;
                     _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -2997,30 +3690,19 @@ namespace ServiceTelecomConnect
                     _excelCells706.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells706.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
                     _excelCells706.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
-                    _excelCells706.EntireRow.RowHeight = 20;
                     _excelCells706.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     _excelCells706.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    Excel.Range _excelCells759 = (Excel.Range)workSheet.get_Range("B4", "L4").Cells;
+                    _excelCells759.Font.Size = 12;
 
                     int count = 1;
-                    int countCells = 4;
+                    int countCells = 5;
                     for (int i = 0; i <= fList.Count; i++)
                     {
                         Excel.Range _excelCells707 = (Excel.Range)workSheet.get_Range($"B{countCells}", $"E{countCells}").Cells;
-                        _excelCells707.EntireRow.RowHeight = 15;
+                        _excelCells707.EntireRow.RowHeight = 20;
                         _excelCells707.Font.Bold = true;
                         _excelCells707.Merge(Type.Missing);
-                        Excel.Range _excelCells708 = (Excel.Range)workSheet.get_Range($"F{countCells}", $"H{countCells}").Cells;
-                        _excelCells708.EntireRow.RowHeight = 15;
-                        _excelCells708.Font.Bold = true;
-                        _excelCells708.Merge(Type.Missing);
-                        Excel.Range _excelCells709 = (Excel.Range)workSheet.get_Range($"I{countCells}", $"J{countCells}").Cells;
-                        _excelCells709.EntireRow.RowHeight = 15;
-                        _excelCells709.Font.Bold = true;
-                        _excelCells709.Merge(Type.Missing);
-                        Excel.Range _excelCells710 = (Excel.Range)workSheet.get_Range($"K{countCells}", $"L{countCells}").Cells;
-                        _excelCells710.EntireRow.RowHeight = 15;
-                        _excelCells710.Font.Bold = true;
-                        _excelCells710.Merge(Type.Missing);
                         Excel.Range _excelCells711 = (Excel.Range)workSheet.get_Range($"A{countCells}", $"L{countCells}").Cells;
                         _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
                         _excelCells711.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
@@ -3033,9 +3715,23 @@ namespace ServiceTelecomConnect
 
                         if (i < fList.Count)
                         {
+                            double countAKBFULL = 0;
                             double countAKB = 0;
-                            string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE company = '{fList[i]}' AND percentAKB != '-'";
-                            using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                            string queryStringCountAKBCompanyFull = $"SELECT COUNT(percentAKB) FROM radiostation_parameters WHERE company = '{fList[i]}'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompanyFull, DB.GetInstance.GetConnection()))
+                            {
+                                DB.GetInstance.OpenConnection();
+                                using (MySqlDataReader reader = command.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        countAKBFULL = Convert.ToDouble(reader.GetString(0));
+                                    reader.Close();
+                                }
+                                DB.GetInstance.CloseConnection();
+                            }
+
+                            string queryStringCountAKBCompanyInAKB = $"SELECT COUNT(percentAKB) FROM radiostation_parameters WHERE company = '{fList[i]}' AND percentAKB != '-'";
+                            using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompanyInAKB, DB.GetInstance.GetConnection()))
                             {
                                 DB.GetInstance.OpenConnection();
                                 using (MySqlDataReader reader = command.ExecuteReader())
@@ -3046,7 +3742,10 @@ namespace ServiceTelecomConnect
                                 }
                                 DB.GetInstance.CloseConnection();
                             }
-                            double countPercentMalfunctionAKB = 0;
+                            double countErrorLess60 = 0;
+                            double countErrorLess70 = 0;
+                            double countErrorLess80 = 0;
+                            double countErrorMore80 = 0;
                             string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE company = '{fList[i]}' AND percentAKB != '-'";
                             using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
                             {
@@ -3057,12 +3756,18 @@ namespace ServiceTelecomConnect
                                     {
                                         try
                                         {
-                                            if (Convert.ToDouble(reader.GetString(0)) < 70)
-                                                countPercentMalfunctionAKB++;
+                                            if (Convert.ToDouble(reader.GetString(0)) < 60)
+                                                countErrorLess60++;
+                                            else if (Convert.ToDouble(reader.GetString(0)) > 59 && Convert.ToDouble(reader.GetString(0)) < 70)
+                                                countErrorLess70++;
+                                            else if (Convert.ToDouble(reader.GetString(0)) > 69 && Convert.ToDouble(reader.GetString(0)) < 80)
+                                                countErrorLess80++;
+                                            else if (Convert.ToDouble(reader.GetString(0)) > 79)
+                                                countErrorMore80++;
                                         }
                                         catch
                                         {
-                                            countPercentMalfunctionAKB++;
+                                            countErrorLess60++;
                                             continue;
                                         }
                                     }
@@ -3070,22 +3775,32 @@ namespace ServiceTelecomConnect
                                 }
                                 DB.GetInstance.CloseConnection();
                             }
-                            workSheet.Cells[4 + i, 1] = $"{count++}";
-                            workSheet.Cells[4 + i, 2] = $"{fList[i]}";
-                            workSheet.Cells[4 + i, 6] = $"{countAKB}";
-                            workSheet.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
-                            double percentMalfunctionAKB = 0;
+                            workSheet.Cells[5 + i, 1] = $"{count++}";
+                            workSheet.Cells[5 + i, 2] = $"{fList[i]}";
+                            workSheet.Cells[5 + i, 6] = $"{countAKBFULL}";//общее кол-во радиостанций с АКБ и без
+                            workSheet.Cells[5 + i, 7] = $"{countAKB}";// с АКБ
                             if (countAKB != 0)
-                                percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
-                            workSheet.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
+                                workSheet.Cells[5 + i, 8] = $"{Math.Round(countAKB / countAKBFULL * 100, 2)}";// с АКБ
+                            else workSheet.Cells[5 + i, 8] = $"0";// с АКБ
+                            workSheet.Cells[5 + i, 9] = $"{countErrorLess60}";
+                            workSheet.Cells[5 + i, 10] = $"{countErrorLess70}";
+                            workSheet.Cells[5 + i, 11] = $"{countErrorLess80}";
+                            workSheet.Cells[5 + i, 12] = $"{countErrorMore80}";
+
                         }
                         else
                         {
-                            workSheet.Cells[4 + i, 2] = $"ИТОГ:";
-                            workSheet.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
-                            workSheet.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
-                            //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
-                            workSheet.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
+                            Excel.Range _excelCells757 = (Excel.Range)workSheet.get_Range($"F{countCells}", $"L{countCells}").Cells;
+                            _excelCells757.Font.Bold = true;
+                            workSheet.Cells[5 + i, 2] = $"ИТОГ:";
+                            workSheet.Cells[5 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                            workSheet.Cells[5 + i, 7] = $"=SUM(G4:G{countCells - 1})";
+                            workSheet.Cells[5 + i, 8] = $"=ROUND(G{countCells}/F{countCells}*100,2)";
+                            workSheet.Cells[5 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                            workSheet.Cells[5 + i, 10] = $"=SUM(J4:J{countCells - 1})";
+                            workSheet.Cells[5 + i, 11] = $"=SUM(K4:K{countCells - 1})";
+                            workSheet.Cells[5 + i, 12] = $"=SUM(L4:L{countCells - 1})";
+
                         }
                         countCells++;
                     }
@@ -3119,20 +3834,27 @@ namespace ServiceTelecomConnect
                         workSheet2.Cells[1, 2] = $"ОТЧЁТ_{dateTime.ToString("yyyy")} г. о неисправных АКБ полигон \"{poligon}\" участка \"{city}\" \nпо станциям для \"{resultContainsCompany}\"";
                         Excel.Range _excelCells801 = (Excel.Range)workSheet2.get_Range("A1").Cells;
                         _excelCells801.EntireColumn.ColumnWidth = 4;
-                        Excel.Range _excelCells802 = (Excel.Range)workSheet2.get_Range("B3", "E3").Cells;
+                        Excel.Range _excelCells802 = (Excel.Range)workSheet2.get_Range("B3", "E4").Cells;
                         _excelCells802.Merge(Type.Missing);
+                        _excelCells802.EntireRow.RowHeight = 40;
                         workSheet2.Cells[3, 2] = $"Станция";
                         Excel.Range _excelCells803 = (Excel.Range)workSheet2.get_Range("F3", "H3").Cells;
                         _excelCells803.Merge(Type.Missing);
-                        workSheet2.Cells[3, 6] = $"Итого (шт.)";
-                        Excel.Range _excelCells804 = (Excel.Range)workSheet2.get_Range("I3", "J3").Cells;
+                        _excelCells803.EntireColumn.ColumnWidth = 20;
+                        workSheet2.Cells[3, 6] = $"Поступило РСТ";
+                        workSheet2.Cells[4, 6] = $"всего";
+                        workSheet2.Cells[4, 7] = $"в т.ч. с АБ";
+                        workSheet2.Cells[4, 8] = $"% (доставки)";
+                        Excel.Range _excelCells804 = (Excel.Range)workSheet2.get_Range("I3", "L3").Cells;
                         _excelCells804.Merge(Type.Missing);
-                        workSheet2.Cells[3, 9] = $"Неиспр.(шт.)";
-                        Excel.Range _excelCells805 = (Excel.Range)workSheet2.get_Range("K3", "L3").Cells;
-                        _excelCells805.Merge(Type.Missing);
-                        workSheet2.Cells[3, 11] = $"Неиспр.(%)";
-                        Excel.Range _excelCells806 = (Excel.Range)workSheet2.get_Range("B3", "L3").Cells;
-                        _excelCells806.Font.Size = 13;
+                        workSheet2.Cells[3, 9] = $"Состояние поступивших АБ (остаточная ёмкость)";
+                        _excelCells804.EntireColumn.ColumnWidth = 20;
+                        workSheet2.Cells[4, 9] = $"<60%,\nв т.ч. неисправные";
+                        workSheet2.Cells[4, 10] = $"60-70%";
+                        workSheet2.Cells[4, 11] = $"70-80%";
+                        workSheet2.Cells[4, 12] = $">80%";
+                        Excel.Range _excelCells806 = (Excel.Range)workSheet2.get_Range("B3", "L4").Cells;
+                        _excelCells806.Font.Size = 14;
                         _excelCells806.Font.Bold = true;
                         _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlContinuous;
                         _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlContinuous;
@@ -3140,9 +3862,10 @@ namespace ServiceTelecomConnect
                         _excelCells806.Borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlContinuous;
                         _excelCells806.Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
                         _excelCells806.Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
-                        _excelCells806.EntireRow.RowHeight = 20;
                         _excelCells806.VerticalAlignment = Excel.XlHAlign.xlHAlignCenter;
                         _excelCells806.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                        Excel.Range _excelCells805 = (Excel.Range)workSheet2.get_Range("B4", "L4").Cells;
+                        _excelCells805.Font.Size = 12;
 
                         List<string> fList2 = new List<string>();
 
@@ -3160,25 +3883,13 @@ namespace ServiceTelecomConnect
                             DB.GetInstance.CloseConnection();
                         }
                         count = 1;
-                        countCells = 4;
+                        countCells = 5;
                         for (int i = 0; i <= fList2.Count; i++)
                         {
                             Excel.Range _excelCells807 = (Excel.Range)workSheet2.get_Range($"B{countCells}", $"E{countCells}").Cells;
-                            _excelCells807.EntireRow.RowHeight = 15;
+                            _excelCells807.EntireRow.RowHeight = 20;
                             _excelCells807.Font.Bold = true;
                             _excelCells807.Merge(Type.Missing);
-                            Excel.Range _excelCells808 = (Excel.Range)workSheet2.get_Range($"F{countCells}", $"H{countCells}").Cells;
-                            _excelCells808.EntireRow.RowHeight = 15;
-                            _excelCells808.Font.Bold = true;
-                            _excelCells808.Merge(Type.Missing);
-                            Excel.Range _excelCells809 = (Excel.Range)workSheet2.get_Range($"I{countCells}", $"J{countCells}").Cells;
-                            _excelCells809.EntireRow.RowHeight = 15;
-                            _excelCells809.Font.Bold = true;
-                            _excelCells809.Merge(Type.Missing);
-                            Excel.Range _excelCells810 = (Excel.Range)workSheet2.get_Range($"K{countCells}", $"L{countCells}").Cells;
-                            _excelCells810.EntireRow.RowHeight = 15;
-                            _excelCells810.Font.Bold = true;
-                            _excelCells810.Merge(Type.Missing);
                             Excel.Range _excelCells811 = (Excel.Range)workSheet2.get_Range($"A{countCells}", $"L{countCells}").Cells;
                             _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlDash;
                             _excelCells811.Borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlDash;
@@ -3191,10 +3902,25 @@ namespace ServiceTelecomConnect
 
                             if (i < fList2.Count)
                             {
+                                double countAKBFULL = 0;
                                 double countAKB = 0;
-                                string queryStringCountAKBCompany = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE location = '{fList2[i]}' " +
+                                string queryStringCountAKBCompanyFull = $"SELECT COUNT(percentAKB) FROM radiostation_parameters WHERE location = '{fList2[i]}' " +
+                                    $"AND company = '{resultContainsCompany}'";
+                                using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompanyFull, DB.GetInstance.GetConnection()))
+                                {
+                                    DB.GetInstance.OpenConnection();
+                                    using (MySqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        while (reader.Read())
+                                            countAKBFULL = Convert.ToDouble(reader.GetString(0));
+                                        reader.Close();
+                                    }
+                                    DB.GetInstance.CloseConnection();
+                                }
+
+                                string queryStringCountAKBCompanyInAKB = $"SELECT COUNT(percentAKB) FROM `radiostation_parameters` WHERE location = '{fList2[i]}' " +
                                     $"AND company = '{resultContainsCompany}' AND percentAKB != '-'";
-                                using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompany, DB.GetInstance.GetConnection()))
+                                using (MySqlCommand command = new MySqlCommand(queryStringCountAKBCompanyInAKB, DB.GetInstance.GetConnection()))
                                 {
                                     DB.GetInstance.OpenConnection();
                                     using (MySqlDataReader reader = command.ExecuteReader())
@@ -3205,8 +3931,12 @@ namespace ServiceTelecomConnect
                                     }
                                     DB.GetInstance.CloseConnection();
                                 }
-                                double countPercentMalfunctionAKB = 0;
-                                string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters WHERE location = '{fList2[i]}' AND company = '{resultContainsCompany}' AND percentAKB != '-'";
+                                double countErrorLess60 = 0;
+                                double countErrorLess70 = 0;
+                                double countErrorLess80 = 0;
+                                double countErrorMore80 = 0;
+                                string queryStringPrecentAKBCompany = $"SELECT percentAKB FROM radiostation_parameters " +
+                                    $"WHERE location = '{fList2[i]}' AND company = '{resultContainsCompany}' AND percentAKB != '-'";
                                 using (MySqlCommand command = new MySqlCommand(queryStringPrecentAKBCompany, DB.GetInstance.GetConnection()))
                                 {
                                     DB.GetInstance.OpenConnection();
@@ -3216,12 +3946,18 @@ namespace ServiceTelecomConnect
                                         {
                                             try
                                             {
-                                                if (Convert.ToDouble(reader.GetString(0)) < 70)
-                                                    countPercentMalfunctionAKB++;
+                                                if (Convert.ToDouble(reader.GetString(0)) < 60)
+                                                    countErrorLess60++;
+                                                else if (Convert.ToDouble(reader.GetString(0)) > 59 && Convert.ToDouble(reader.GetString(0)) < 70)
+                                                    countErrorLess70++;
+                                                else if (Convert.ToDouble(reader.GetString(0)) > 69 && Convert.ToDouble(reader.GetString(0)) < 80)
+                                                    countErrorLess80++;
+                                                else if (Convert.ToDouble(reader.GetString(0)) > 79)
+                                                    countErrorMore80++;
                                             }
                                             catch
                                             {
-                                                countPercentMalfunctionAKB++;
+                                                countErrorLess60++;
                                                 continue;
                                             }
                                         }
@@ -3229,22 +3965,32 @@ namespace ServiceTelecomConnect
                                     }
                                     DB.GetInstance.CloseConnection();
                                 }
-                                workSheet2.Cells[4 + i, 1] = $"{count++}";
-                                workSheet2.Cells[4 + i, 2] = $"{fList2[i]}";
-                                workSheet2.Cells[4 + i, 6] = $"{countAKB}";
-                                workSheet2.Cells[4 + i, 9] = $"{countPercentMalfunctionAKB}";
-                                double percentMalfunctionAKB = 0;
+                                workSheet2.Cells[5 + i, 1] = $"{count++}";
+                                workSheet2.Cells[5 + i, 2] = $"{fList2[i]}";
+                                workSheet2.Cells[5 + i, 6] = $"{countAKBFULL}";//общее кол-во радиостанций с АКБ и без
+                                workSheet2.Cells[5 + i, 7] = $"{countAKB}";// с АКБ
                                 if (countAKB != 0)
-                                    percentMalfunctionAKB = Math.Round(countPercentMalfunctionAKB / countAKB * 100, 2);
-                                workSheet2.Cells[4 + i, 11] = $"{percentMalfunctionAKB} %";
+                                    workSheet2.Cells[5 + i, 8] = $"{Math.Round(countAKB / countAKBFULL * 100, 2)}";// с АКБ
+                                else workSheet2.Cells[5 + i, 8] = $"0";// с АКБ
+                                workSheet2.Cells[5 + i, 9] = $"{countErrorLess60}";
+                                workSheet2.Cells[5 + i, 10] = $"{countErrorLess70}";
+                                workSheet2.Cells[5 + i, 11] = $"{countErrorLess80}";
+                                workSheet2.Cells[5 + i, 12] = $"{countErrorMore80}";
+
                             }
                             else
                             {
-                                workSheet2.Cells[4 + i, 2] = $"ИТОГ:";
-                                workSheet2.Cells[4 + i, 6] = $"=SUM(F4:F{countCells - 1})";
-                                workSheet2.Cells[4 + i, 9] = $"=SUM(I4:I{countCells - 1})";
-                                //workSheet.Cells[4 + i, 11] = $"I{countCells}/F{countCells} %";
-                                workSheet2.Cells[4 + i, 11] = $"=ROUND(I{countCells}/F{countCells}*100,2) ";
+                                Excel.Range _excelCells857 = (Excel.Range)workSheet2.get_Range($"F{countCells}", $"L{countCells}").Cells;
+                                _excelCells857.Font.Bold = true;
+                                workSheet2.Cells[5 + i, 2] = $"ИТОГ:";
+                                workSheet2.Cells[5 + i, 6] = $"=SUM(F4:F{countCells - 1})";
+                                workSheet2.Cells[5 + i, 7] = $"=SUM(G4:G{countCells - 1})";
+                                workSheet2.Cells[5 + i, 8] = $"=ROUND(G{countCells}/F{countCells}*100,2)";
+                                workSheet2.Cells[5 + i, 9] = $"=SUM(I4:I{countCells - 1})";
+                                workSheet2.Cells[5 + i, 10] = $"=SUM(J4:J{countCells - 1})";
+                                workSheet2.Cells[5 + i, 11] = $"=SUM(K4:K{countCells - 1})";
+                                workSheet2.Cells[5 + i, 12] = $"=SUM(L4:L{countCells - 1})";
+
                             }
                             countCells++;
                         }
@@ -4405,8 +5151,6 @@ namespace ServiceTelecomConnect
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
 
 
     }
